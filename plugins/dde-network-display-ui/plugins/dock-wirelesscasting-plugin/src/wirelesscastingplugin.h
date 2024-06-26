@@ -5,7 +5,7 @@
 #ifndef WIRELESSCASTINGPLUGIN_H
 #define WIRELESSCASTINGPLUGIN_H
 #include "wirelesscastingitem.h"
-#include <pluginsiteminterface_v2.h>
+#include "pluginsiteminterface_v2.h"
 
 #include <QObject>
 

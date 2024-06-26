@@ -112,7 +112,6 @@ bool AccessPointProxyNM::isWlan6() const
     if (capability.testFlag(NetworkManager::AccessPoint::Capability::He))
         return true;
 #endif
-
     return false;
 }
 
