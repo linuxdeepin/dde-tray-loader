@@ -1,3 +1,14 @@
+dde-tray-loader (0.0.1) unstable; urgency=medium
+
+  * chore: add dde-dock.pc
+  * FIX 1070 errors
+  * fix: compile errors
+  * fix: solve the problem of failed compilation
+  * chore: add plugins and loader
+  * chore: add the README
+
+ -- Wang Fei <wangfei@deepin.org>  Wed, 26 Jun 2024 11:33:24 +0800
+
 dde-tray-loader (0.0.0) unstable; urgency=medium
 
   * 0.0.0
