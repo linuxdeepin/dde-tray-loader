@@ -1,4 +1,8 @@
-include_directories(../../src/loader/interfaces)
+# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+#
+# SPDX-License-Identifier: CC0-1.0
+
+include_directories(../../interfaces)
 include_directories(util)
 include_directories(widgets)
 include_directories(dbus)

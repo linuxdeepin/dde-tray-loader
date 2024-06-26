@@ -647,8 +647,8 @@ NetworkManager::WirelessSecuritySetting::KeyMgmt WirelessDeviceManagerRealize::g
         keyMgmt = NetworkManager::WirelessSecuritySetting::KeyMgmt::Wep;
     }
 
-    if (wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::keyMgmtSae) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::keyMgmtSae)) {
-        keyMgmt = NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaSae;
+    if (wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE)) {
+        keyMgmt = NetworkManager::WirelessSecuritySetting::KeyMgmt::SAE;
     }
 
     if (wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtPsk) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtPsk)) {
@@ -677,8 +677,8 @@ bool WirelessDeviceManagerRealize::checkKeyMgmt(const NetworkManager::AccessPoin
         return true;
     }
 
-    if ((wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::keyMgmtSae) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::keyMgmtSae))
-        && keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaSae) {
+    if ((wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE))
+        && keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::SAE) {
         return true;
     }
 

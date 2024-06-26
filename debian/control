@@ -28,7 +28,7 @@ Build-Depends: debhelper (>= 8.0.0),
  qttools5-dev,
  libxcursor-dev,
  dde-api-dev (>>5.6.3),
- libkf5networkmanagerqt-dev,
+ libkf5networkmanagerqt-dev (>=5.103.0-1deepin2),
  libkf5wayland-dev
 Standards-Version: 3.9.8
 Homepage: http://www.deepin.org/
@@ -51,7 +51,7 @@ Conflicts:
 Replaces:
  dde-dock
 Description: deepin desktop-environment - the plugins of tray for dde-dock
-  Tray plugins module
+ Tray plugins module
 
 Package: dde-tray-loader-dev
 Architecture: any

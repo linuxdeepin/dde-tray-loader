@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+#
+# SPDX-License-Identifier: CC0-1.0
+
 set(CMAKE_INSTALL_PREFIX "/usr" CACHE PATH "Installation prefix")
 
 set(CMAKE_CXX_STANDARD 11)
@@ -11,8 +15,6 @@ find_package(Qt5 COMPONENTS Core Widgets DBus Svg LinguistTools REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(DtkWidget REQUIRED)
 find_package(DtkCore REQUIRED)
-find_package(DdeControlCenter REQUIRED)
-find_package(DdeDock REQUIRED)
 
 pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
 
@@ -48,6 +50,7 @@ target_include_directories(${Dock_Plugin_Name} PUBLIC
     ${DDE_DOCK_INCLUDE_DIR}
     ${COMMON_DIR}
     ${DFrameworkDBus_INCLUDE_DIRS}
+    "../../../interfaces"
     )
 target_link_libraries(dock-wirelesscasting-plugin
     ${DtkWidget_LIBRARIES}

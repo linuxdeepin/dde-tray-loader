@@ -1,4 +1,4 @@
-usr/include/dde-tray-loader
+usr/include/dde-dock
 usr/include/dde-tray-loader/protocol
 usr/lib/*/pkgconfig
 usr/lib/*/cmake

@@ -107,9 +107,11 @@ bool AccessPointProxyNM::hidden() const
 
 bool AccessPointProxyNM::isWlan6() const
 {
+#if 0 // not support
     NetworkManager::AccessPoint::Capabilities capability = m_network->referenceAccessPoint()->capabilities();
     if (capability.testFlag(NetworkManager::AccessPoint::Capability::He))
         return true;
+#endif
 
     return false;
 }

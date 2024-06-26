@@ -5,7 +5,7 @@
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
 find_package(Dtk REQUIRED COMPONENTS Gui Widget)
 
-file(GLOB SRCS "*.h" "*.cpp" "interfaces/*.h" "utils/*.h" "utils/*.cpp")
+file(GLOB SRCS "*.h" "*.cpp" "../../interfaces/*.h" "utils/*.h" "utils/*.cpp")
 
 add_executable(dockplugin-loader
     main.cpp
@@ -21,7 +21,7 @@ add_executable(dockplugin-loader
 
 target_include_directories(dockplugin-loader PUBLIC
     "utils/"
-    "interfaces/"
+    "../../interfaces/"
     "../plugin/"
 )
 

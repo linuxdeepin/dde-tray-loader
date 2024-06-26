@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.7)
+# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+#
+# SPDX-License-Identifier: CC0-1.0
 
 set(PLUGIN_NAME "dock-network-plugin")
 
@@ -27,7 +29,6 @@ find_package(Qt5 COMPONENTS Core Widgets DBus Network LinguistTools REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(Qt5Svg REQUIRED)
 find_package(DtkWidget REQUIRED)
-find_package(DdeDock REQUIRED)
 find_package(KF5NetworkManagerQt REQUIRED)
 
 pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
@@ -64,6 +65,7 @@ target_include_directories(${PLUGIN_NAME} PUBLIC
     ${DDE_DOCK_INCLUDE_DIR}
     ${Qt5Network_INCLUDE_DIRS}
     ${KF5_QT_INCLUDE_DIRS}
+    "../../../interfaces"
     "../net-view/operation"
     "../net-view/window"
 )

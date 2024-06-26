@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+#
+# SPDX-License-Identifier: LGPL-3.0-or-later
+
 # 学习 cmake 时建议直接从命令列表作为入口，遇到不清楚意思的命令都可以在此处查阅：
 # https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
 # 另外下面是完整的文档入口：

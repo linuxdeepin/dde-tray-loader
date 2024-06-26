@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+#
+# SPDX-License-Identifier: CC0-1.0
+
 set(PLUGIN_NAME "notification")
 find_package(Qt5 REQUIRED COMPONENTS DBus)
 find_package(Dtk REQUIRED COMPONENTS Widget Gui)
@@ -15,7 +19,7 @@ target_compile_definitions(${PLUGIN_NAME} PRIVATE QT_PLUGIN)
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ..)
 
 target_include_directories(${PLUGIN_NAME} PRIVATE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../../src/loader/interfaces>
+   "../../interfaces"
 )
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+#
+# SPDX-License-Identifier: CC0-1.0
 
 set(PLUGIN_NAME "bluetooth")
 
@@ -7,18 +10,16 @@ project(${PLUGIN_NAME})
 file(GLOB_RECURSE SRCS
     "*.h"
     "*.cpp"
-    "../../widgets/*.h"
-    "../../widgets/*.cpp"
-    "../../frame/util/imageutil.h"
-    "../../frame/util/imageutil.cpp"
-    "../../frame/util/statebutton.h"
-     "../../frame/util/statebutton.cpp"
-    "../../frame/util/horizontalseparator.h"
-    "../../frame/util/horizontalseparator.cpp"
+    "../widgets/*.h"
+    "../widgets/*.cpp"
+    "../util/imageutil.h"
+    "../util/imageutil.cpp"
+    "../util/statebutton.h"
+    "../util/statebutton.cpp"
+    "../util/horizontalseparator.h"
+    "../util/horizontalseparator.cpp"
     "../common/*.h"
     "../common/*.cpp"
-    "../../common/*.h"
-    "../../common/*.cpp"
 )
 
 find_package(PkgConfig REQUIRED)
@@ -38,10 +39,7 @@ target_include_directories(${PLUGIN_NAME} PUBLIC ${DtkWidget_INCLUDE_DIRS}
   ${DFrameworkDBus_INCLUDE_DIRS}
   ${QGSettings_INCLUDE_DIRS}
   ../../interfaces
-  ../../frame
-  ../tray
   ../common
-  ../../common
   componments)
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE

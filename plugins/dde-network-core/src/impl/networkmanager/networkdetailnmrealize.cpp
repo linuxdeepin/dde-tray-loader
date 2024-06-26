@@ -175,7 +175,7 @@ QString NetworkDetailNMRealize::getSecurity(const NetworkManager::Device::Ptr &d
     case NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaPsk:
         security = QObject::tr("WPA/WPA2 Personal");
         break;
-    case NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaSae:
+    case NetworkManager::WirelessSecuritySetting::KeyMgmt::SAE:
         security = QObject::tr("WPA3 Personal");
         break;
     case NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaEap: {
