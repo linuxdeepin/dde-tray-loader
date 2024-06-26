@@ -24,6 +24,9 @@ public:
     int pluginFlags() const;
     void setPluginFlags(int flags);
 
+signals:
+    void recvMouseEvent(int type);
+
 protected:
     void mousePressEvent(QMouseEvent *e) override;
     void mouseReleaseEvent(QMouseEvent *e) override;
@@ -31,15 +34,16 @@ protected:
     void leaveEvent(QEvent *event) override;
 
     virtual QWidget *centralWidget();
-    virtual void mouseRightButtonClicked();
-    virtual void showPluginTooltip();
+    virtual QMenu *pluginContextMenu();
+    virtual QWidget *pluginTooltip();
 
     PluginsItemInterface * pluginsItemInterface();
     void initPluginMenu();
-    void showTooltip(const QString &itemKey);
+    QWidget *itemTooltip(const QString &itemKey);
+    bool executeCommand();
 
 private:
-    void mouseLeftButtonClicked();
+    QWidget *itemPopupApplet();
 
 private:
     void updatePopupSize(const QRect &rect);

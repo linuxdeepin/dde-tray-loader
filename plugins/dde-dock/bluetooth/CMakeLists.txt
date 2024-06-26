@@ -38,8 +38,10 @@ set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../syst
 target_include_directories(${PLUGIN_NAME} PUBLIC ${DtkWidget_INCLUDE_DIRS}
   ${DFrameworkDBus_INCLUDE_DIRS}
   ${QGSettings_INCLUDE_DIRS}
-  ../../interfaces
+  ../../../interfaces
   ../common
+  ../util
+  ../widgets
   componments)
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE

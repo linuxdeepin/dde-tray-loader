@@ -87,6 +87,6 @@ endif()
 include_directories(src)
 
 add_subdirectory("src")
-add_subdirectory("dock-network-plugin")
+add_subdirectory("dock-tray-network-plugin")
 add_subdirectory("network-service-plugin")
 

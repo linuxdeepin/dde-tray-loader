@@ -72,5 +72,5 @@ set_target_properties(dockpluginmanager-interface PROPERTIES
 )
 
 # Do not install .so development library for we don't want others to link to it.
-install(TARGETS dockpluginmanager-interface LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS dockpluginmanager-interface DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS dockpluginmanager DESTINATION ${KDE_INSTALL_QTPLUGINDIR}/wayland-shell-integration)

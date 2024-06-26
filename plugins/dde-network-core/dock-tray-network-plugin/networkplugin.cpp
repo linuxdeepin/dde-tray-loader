@@ -42,7 +42,7 @@ NetworkPlugin::NetworkPlugin(QObject *parent)
     , m_netLimited(false)
 {
     QTranslator *translator = new QTranslator(this);
-    translator->load(QString("/usr/share/dock-network-plugin/translations/dock-network-plugin_%1").arg(QLocale().name()));
+    translator->load(QString("/usr/share/dock-tray-network-plugin/translations/dock-network-plugin_%1").arg(QLocale().name()));
     QCoreApplication::installTranslator(translator);
 }
 

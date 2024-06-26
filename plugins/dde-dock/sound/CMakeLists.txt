@@ -10,16 +10,14 @@ project(${PLUGIN_NAME})
 file(GLOB_RECURSE SRCS
     "*.h"
     "*.cpp"
-    "../../widgets/*.h"
-    "../../widgets/*.cpp"
-    "../../frame/util/imageutil.h"
-    "../../frame/util/imageutil.cpp"
-    "../../frame/util/horizontalseparator.h"
-    "../../frame/util/horizontalseparator.cpp"
+    "../widgets/*.h"
+    "../widgets/*.cpp"
+    "../util/imageutil.h"
+    "../util/imageutil.cpp"
+    "../util/horizontalseparator.h"
+    "../util/horizontalseparator.cpp"
     "../common/*.h"
     "../common/*.cpp"
-    "../../common/*.h"
-    "../../common/*.cpp"
 )
 
 find_package(PkgConfig REQUIRED)
@@ -38,13 +36,11 @@ set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../syst
 target_include_directories(${PLUGIN_NAME} PUBLIC ${DtkWidget_INCLUDE_DIRS}
     ${DFrameworkDBus_INCLUDE_DIRS}
     ${QGSettings_INCLUDE_DIRS}
-    ../../interfaces
-    ../../frame
-    ../../frame/accessible
+    ../../../interfaces
+    ../util
     ../tray
-    ../../common
     ../common
-    ../../widgets
+    ../widgets
     )
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE

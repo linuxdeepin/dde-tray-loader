@@ -7,7 +7,7 @@ set(PLUGIN_NAME "datetime")
 project(${PLUGIN_NAME})
 
 # Sources files
-file(GLOB_RECURSE SRCS "*.h" "*.cpp" "../../widgets/*.h" "../../widgets/*.cpp" "../common/*.h" "../common/*.cpp")
+file(GLOB_RECURSE SRCS "*.h" "*.cpp" "../widgets/*.h" "../widgets/*.cpp" "../common/*.h" "../common/*.cpp")
 
 find_package(PkgConfig REQUIRED)
 find_package(Qt5Widgets REQUIRED)
@@ -26,8 +26,10 @@ target_include_directories(${PLUGIN_NAME} PUBLIC
   ${DtkWidget_INCLUDE_DIRS}
   ${DFrameworkDBus_INCLUDE_DIRS}
   ${QGSettings_INCLUDE_DIRS}
-  ../../interfaces
+  ../../../interfaces
   ../common
+  ../widgets
+  ../util
   calendar
   )
 target_link_libraries(${PLUGIN_NAME} PRIVATE

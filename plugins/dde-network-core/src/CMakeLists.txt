@@ -4,7 +4,7 @@
 
 cmake_minimum_required(VERSION 3.7)
 
-project(dde-network-core)
+project(dde-tray-network-core)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -90,7 +90,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     ${Libudev_LIBRARIES}
 )
 
-configure_file(dde-network-core.pc.in ${CMAKE_BINARY_DIR}/dde-network-core.pc @ONLY)
+configure_file(dde-tray-network-core.pc.in ${CMAKE_BINARY_DIR}/dde-tray-network-core.pc @ONLY)
 
 set(INTERFACEFILES
     impl/dslcontroller.h
@@ -105,8 +105,8 @@ set(INTERFACEFILES
     wirelessdevice.h)
 
 install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(FILES ${CMAKE_BINARY_DIR}/dde-network-core.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
-install(FILES ${INTERFACEFILES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libddenetworkcore)
-install(FILES ../config/org.deepin.dde.network.json DESTINATION ${CMAKE_INSTALL_DATADIR}/dsg/configs/org.deepin.dde.network)
+install(FILES ${CMAKE_BINARY_DIR}/dde-tray-network-core.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+install(FILES ${INTERFACEFILES} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/libddetraynetworkcore)
+install(FILES ../config/org.deepin.dde.network.json DESTINATION ${CMAKE_INSTALL_DATADIR}/dsg/configs/org.deepin.dde.tray.network)
 # 安装 .qm 文件
 install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/translations)

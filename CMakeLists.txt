@@ -55,10 +55,10 @@ install(FILES ${CMAKE_BINARY_DIR}/dde-tray-loader.pc
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
 configure_file(
-    ${CMAKE_SOURCE_DIR}/cmake/DdeTrayLoader/DdeTrayLoader.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/DdeTrayLoader.cmake
+    ${CMAKE_SOURCE_DIR}/cmake/DdeTrayLoader/DdeTrayLoaderConfig.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/DdeTrayLoaderConfig.cmake
     @ONLY)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/DdeTrayLoader.cmake
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/DdeTrayLoaderConfig.cmake
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/DdeTrayLoader)
 
 configure_file(

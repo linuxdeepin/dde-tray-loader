@@ -10,10 +10,10 @@ project(${PLUGIN_NAME})
 file(GLOB_RECURSE SRCS
     "*.h"
     "*.cpp"
-    "../../widgets/*.h"
-    "../../widgets/*.cpp"
-    "../../frame/util/imageutil.h"
-    "../../frame/util/imageutil.cpp"
+    "../widgets/*.h"
+    "../widgets/*.cpp"
+    "../util/imageutil.h"
+    "../util/imageutil.cpp"
     "../common/commoniconbutton.h"
     "../common/commoniconbutton.cpp"
 )
@@ -35,8 +35,10 @@ set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../)
 target_include_directories(${PLUGIN_NAME} PUBLIC ${DtkWidget_INCLUDE_DIRS}
                                                  ${Qt5DBus_INCLUDE_DIRS}
                                                  ${QGSettings_INCLUDE_DIRS}
-                                                 ../../interfaces
-                                                 ../common)
+                                                 ../../../interfaces
+                                                 ../common
+                                                 ../util
+                                                 ../widgets)
 target_link_libraries(${PLUGIN_NAME} PRIVATE
     ${DtkWidget_LIBRARIES}
     ${XCB_EWMH_LIBRARIES}
