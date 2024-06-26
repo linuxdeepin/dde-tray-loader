@@ -124,8 +124,8 @@ WirelessSecuritySetting::KeyMgmt NetWirelessConnect::getKeyMgmtByAp(dde::network
 
 #ifdef USE_DEEPIN_NMQT
     // 判断是否是wpa3加密的，因为wpa3加密方式，实际上是wpa2的扩展，所以其中会包含KeyMgmtPsk枚举值
-    if (wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::keyMgmtSae) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::keyMgmtSae)) {
-        keyMgmt = NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaSae;
+    if (wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE)) {
+        keyMgmt = NetworkManager::WirelessSecuritySetting::KeyMgmt::SAE;
     }
 #else
     if (wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE)) {
@@ -250,7 +250,7 @@ bool NetWirelessConnect::initConnection()
                     wsSetting->setWepKeyFlags(Setting::None);
                 } else if (keyMgmt == WirelessSecuritySetting::KeyMgmt::WpaPsk
 #ifdef USE_DEEPIN_NMQT
-                           || keyMgmt == WirelessSecuritySetting::KeyMgmt::WpaSae) {
+                           || keyMgmt == WirelessSecuritySetting::KeyMgmt::SAE) {
 #else
                            || keyMgmt == WirelessSecuritySetting::KeyMgmt::SAE) {
 #endif
@@ -280,7 +280,7 @@ void NetWirelessConnect::setPassword(const QString &password)
         wsSetting->setWepKey0(password);
     } else if (keyMgmt == WirelessSecuritySetting::KeyMgmt::WpaPsk
 #ifdef USE_DEEPIN_NMQT
-               || keyMgmt == WirelessSecuritySetting::KeyMgmt::WpaSae) {
+               || keyMgmt == WirelessSecuritySetting::KeyMgmt::SAE) {
 #else
                || keyMgmt == WirelessSecuritySetting::KeyMgmt::SAE) {
 #endif
@@ -301,7 +301,7 @@ QVariantMap NetWirelessConnect::setAuthen(const QVariantMap &param)
     wsSetting->setKeyMgmt(keyMgmt);
     if (keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::Wep) {
         wsSetting->setWepKey0(param.value("wep-key0").toString());
-    } else if (keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaPsk || keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaSae) {
+    } else if (keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaPsk || keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::SAE) {
         wsSetting->setPsk(param.value("psk").toString());
 
         if (keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaPsk) {

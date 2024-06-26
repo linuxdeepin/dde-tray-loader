@@ -1,8 +1,8 @@
-# SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
 #
 # SPDX-License-Identifier: CC0-1.0
 
-CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.16)
 
 set(DTL_VERSION "0.0.1" CACHE STRING "Define project version")
 project(dde-tray-loader
@@ -40,10 +40,10 @@ add_subdirectory(plugins)
 add_subdirectory(src)
 
 ## dev files
-file(GLOB INTERFACES "src/loader/interfaces/*.h"
+file(GLOB INTERFACES "interfaces/*.h"
                      "src/tray-wayland-intergration/plugin.h")
 install(FILES ${INTERFACES}
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dde-tray-loader)
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dde-dock)
 
 ## protocol
 file(GLOB PROTOCOL "src/protocol/*.xml")

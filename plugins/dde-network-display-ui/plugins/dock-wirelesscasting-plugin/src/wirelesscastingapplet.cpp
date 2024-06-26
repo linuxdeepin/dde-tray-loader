@@ -4,8 +4,8 @@
 
 #include "wirelesscastingapplet.h"
 #include "wirelesscastingmodel.h"
+#include "constants.h"
 
-#include <constants.h>
 #include <qnamespace.h>
 
 #include <DPaletteHelper>
