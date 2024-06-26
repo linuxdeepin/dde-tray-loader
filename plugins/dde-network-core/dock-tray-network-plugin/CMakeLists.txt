@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-set(PLUGIN_NAME "dock-network-plugin")
+set(PLUGIN_NAME "dock-tray-network-plugin")
 
 project(${PLUGIN_NAME})
 include(GNUInstallDirs)
@@ -32,7 +32,6 @@ find_package(DtkWidget REQUIRED)
 find_package(KF5NetworkManagerQt REQUIRED)
 
 pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
-pkg_check_modules(DDE-Dock REQUIRED dde-dock)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=address -O0")
@@ -61,8 +60,6 @@ target_include_directories(${PLUGIN_NAME} PUBLIC
     ${DtkWidget_INCLUDE_DIRS}
     ${Qt5DBus_INCLUDE_DIRS}
     ${DFrameworkDBus_INCLUDE_DIRS}
-    ${DDE-Network-Core_INCLUDE_DIRS}
-    ${DDE_DOCK_INCLUDE_DIR}
     ${Qt5Network_INCLUDE_DIRS}
     ${KF5_QT_INCLUDE_DIRS}
     "../../../interfaces"
@@ -75,11 +72,10 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     ${Qt5Widgets_LIBRARIES}
     ${Qt5Svg_LIBRARIES}
     ${Qt5DBus_LIBRARIES}
-    ${DDE-Network-Core_LIBRARIES}
     ${DFrameworkDBus_LIBRARIES}
     ${KF5_QT_LIBRARIES}
     ${Qt5Network_LIBRARIES}
-    dde-network-core
+    dde-tray-network-core
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-trays)

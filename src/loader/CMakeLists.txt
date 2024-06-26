@@ -17,12 +17,13 @@ add_executable(dockplugin-loader
     quickpluginitem.cpp
     utils/setproctitle.h
     utils/setproctitle.cpp
+    loader.qrc
 )
 
 target_include_directories(dockplugin-loader PUBLIC
     "utils/"
     "../../interfaces/"
-    "../plugin/"
+    "../tray-wayland-integration/"
 )
 
 target_link_libraries(dockplugin-loader PRIVATE

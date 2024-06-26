@@ -23,6 +23,10 @@ PluginSurface::PluginSurface(PluginManager *manager, QtWaylandClient::QWaylandWi
     connect(m_plugin, &EmbedPlugin::requestMessage, manager, [manager, this](const QString &msg) {
         manager->requestMessage(m_plugin->pluginId(), m_plugin->itemKey(), msg);
     });
+
+    connect(m_plugin, &EmbedPlugin::pluginRecvMouseEvent, this, [this] (int type){
+        mouse_event(type);
+    });
 }
 
 PluginSurface::~PluginSurface()
@@ -36,7 +40,9 @@ void PluginSurface::plugin_close()
 
 void PluginSurface::plugin_geometry(int32_t x, int32_t y, int32_t width, int32_t height)
 {
-    m_window->setGeometry(x, y, width, height);
+    if (width > 0 && height > 0) {
+        m_window->setGeometry(x, y, width, height);
+    }
 
     Q_EMIT m_plugin->eventGeometry(QRect(x, y, width, height));
 }
