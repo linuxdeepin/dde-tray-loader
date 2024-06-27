@@ -74,6 +74,7 @@ public:
     QWidget *itemWidget(const QString &itemKey) override;
     QWidget *itemTipsWidget(const QString &itemKey) override;
     QWidget *itemPopupApplet(const QString &itemKey) override;
+    PluginSizePolicy pluginSizePolicy() const override { return Custom; }
 
     int itemSortKey(const QString &itemKey) override;
     void setSortKey(const QString &itemKey, int order) override;

@@ -541,11 +541,11 @@ void DatetimeWidget::paintEvent(QPaintEvent *e)
 
 void DatetimeWidget::setDockPanelSize(const QSize &dockSize)
 {
-    // 任务栏高度最小是40，小于40说明在隐藏和显示动画中
-    if (dockSize.width() < 40) {
+    // 任务栏高度最小是37，小于37说明在隐藏和显示动画中
+    if (dockSize.width() < 37) {
         return;
     }
-    if (dockSize.height() < 40) {
+    if (dockSize.height() < 37) {
         return;
     }
 
