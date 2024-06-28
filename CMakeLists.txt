@@ -39,6 +39,10 @@ include(CMakePackageConfigHelpers)
 add_subdirectory(plugins)
 add_subdirectory(src)
 
+configure_file(dde-dock.pc.in dde-dock.pc @ONLY)
+install(FILES ${CMAKE_BINARY_DIR}/dde-dock.pc
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+
 ## dev files
 file(GLOB INTERFACES "interfaces/*.h"
                      "src/tray-wayland-intergration/plugin.h")
