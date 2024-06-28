@@ -22,6 +22,7 @@ public:
     int pluginFlags;
     int pluginType;
     int sizePolicy;
+    QPoint globalPos;
 };
 
 EmbedPlugin::EmbedPlugin(QWindow* window)
@@ -59,6 +60,21 @@ int EmbedPlugin::pluginFlags() const
 int EmbedPlugin::pluginSizePolicy() const
 {
     return d->sizePolicy;
+}
+
+QPoint EmbedPlugin::rawGlobalPos() const
+{
+    return d->globalPos;
+}
+
+void EmbedPlugin::setRawGlobalPos(const QPoint& pos)
+{
+    if (d->globalPos == pos) {
+        return;
+    }
+
+    d->globalPos = pos;
+    Q_EMIT rawGlobalPosChanged();
 }
 
 void EmbedPlugin::setPluginId(const QString& pluginid)

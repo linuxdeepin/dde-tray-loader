@@ -102,6 +102,10 @@
       <arg name="width" type="int"/>
       <arg name="height" type="int"/>
     </event>
+    <event name="raw_global_pos">
+      <arg name="x" type="int"/>
+      <arg name="y" type="int"/>
+    </event>
     <request name="mouse_event" >
         <arg name="type" type="int"/>
     </request>
