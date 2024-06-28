@@ -20,6 +20,21 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
     , m_menu(new QMenu(this))
 {
     init();
+    connect(m_menu, &QMenu::triggered, this, [this](QAction *action){
+        QString actionStr = action->data().toString();
+        if (actionStr == Dock::dockMenuItemId || actionStr == Dock::unDockMenuItemId) {
+            auto widget = m_pluginsItemInterface->itemWidget(m_itemKey);
+            if (widget && widget->window() && widget->window()->windowHandle()) {
+                if (actionStr == Dock::dockMenuItemId) {
+                    widget->window()->windowHandle()->show();
+                } else if (actionStr == Dock::unDockMenuItemId) {
+                    widget->window()->windowHandle()->hide();
+                }
+            }
+        } else {
+            m_pluginsItemInterface->invokedMenuItem(m_itemKey, action->data().toString(), action->isCheckable() ? action->isChecked() : true);
+        }
+    });
 }
 
 PluginItem::~PluginItem() = default;
