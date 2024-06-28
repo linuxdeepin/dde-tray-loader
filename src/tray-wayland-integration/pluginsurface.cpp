@@ -47,6 +47,11 @@ void PluginSurface::plugin_geometry(int32_t x, int32_t y, int32_t width, int32_t
     Q_EMIT m_plugin->eventGeometry(QRect(x, y, width, height));
 }
 
+void PluginSurface::plugin_raw_global_pos(int32_t x, int32_t y)
+{
+    m_plugin->setRawGlobalPos(QPoint(x, y));
+}
+
 PluginPopupSurface::PluginPopupSurface(PluginManager *manager, QtWaylandClient::QWaylandWindow *window)
     : QtWaylandClient::QWaylandShellSurface(window)
     , QtWayland::plugin_popup()
