@@ -117,6 +117,10 @@ EmbedPlugin* EmbedPlugin::get(QWindow* window)
     auto plugin = s_map.value(window);
     if (!plugin) {
         plugin = new EmbedPlugin(window);
+        connect(window, &QWindow::destroyed, plugin, [window, plugin]{
+            plugin->deleteLater();
+            s_map.remove(window);
+        });
         s_map.insert(window, plugin);
     }
 
@@ -269,6 +273,10 @@ PluginPopup* PluginPopup::get(QWindow* window)
     auto popup = s_popupMap.value(window);
     if (!popup) {
         popup = new PluginPopup(window);
+        connect(window, &QWindow::destroyed, popup, [popup, window]{
+            popup->deleteLater();
+            s_popupMap.remove(window);
+        });
         s_popupMap.insert(window, popup);
     }
 
