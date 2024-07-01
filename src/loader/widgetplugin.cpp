@@ -139,7 +139,7 @@ void WidgetPlugin::itemRemoved(PluginsItemInterface * const itemInter, const QSt
     }
 
     auto popupWidget = m_pluginsItemInterface->itemPopupApplet(itemKey);
-    if(popupWidget) popupWidget->windowHandle()->hide();
+    if(popupWidget && popupWidget->windowHandle()) popupWidget->windowHandle()->hide();
 
     auto tipsWidget = m_pluginsItemInterface->itemTipsWidget(itemKey);
     if(tipsWidget && tipsWidget->windowHandle()) tipsWidget->windowHandle()->hide();
