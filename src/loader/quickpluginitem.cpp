@@ -9,10 +9,63 @@
 #include <QMouseEvent>
 #include <QMenu>
 
+class Q_DECL_HIDDEN EventFilter : public QObject
+{
+public:
+    explicit EventFilter(PluginItem *target)
+        : QObject (target)
+        , m_target(target)
+        , m_timer (new QTimer(this))
+    {
+        m_timer->setSingleShot(true);
+        m_timer->setInterval(0); // handle event in next EventLoop
+        QObject::connect(m_timer, &QTimer::timeout, this, [this] () {
+            onAcceptedMouseEvent();
+        });
+    }
+
+public:
+    bool eventFilter(QObject *watched, QEvent *event)
+    {
+        switch (event->type()) {
+        case QEvent::MouseButtonPress:
+        case QEvent::MouseButtonRelease:
+            break;
+        default:
+            return false;
+        }
+
+        if (watched == m_target) {
+            m_accepedEvent = QEvent::None;
+            if (m_timer->isActive())
+                m_timer->stop();
+        } else {
+            const auto children = m_target->findChildren<QWidget *>();
+            if (children.contains(qobject_cast<QWidget *>(watched))) {
+                m_accepedEvent = event->type();
+                m_timer->start();
+            }
+        }
+        return false;
+    }
+private:
+    void onAcceptedMouseEvent()
+    {
+        if (m_accepedEvent == QEvent::None)
+            return;
+
+        Q_EMIT m_target->recvMouseEvent(m_accepedEvent);
+    }
+    QTimer *m_timer = nullptr;
+    PluginItem *m_target = nullptr;
+    QEvent::Type m_accepedEvent = {QEvent::None};
+};
+
 QuickPluginItem::QuickPluginItem(PluginsItemInterface *pluginInterface, const QString &itemKey, QWidget *parent)
     : PluginItem(pluginInterface, itemKey, parent)
     , m_onDockAction(nullptr)
 {
+    qApp->installEventFilter(new EventFilter(this));
 }
 
 QWidget *QuickPluginItem::centralWidget()
@@ -86,11 +139,4 @@ QWidget *QuickPluginItem::pluginTooltip()
         popup->windowHandle()->hide();
 
     return itemTooltip(Dock::QUICK_ITEM_KEY);
-}
-
-void QuickPluginItem::mousePressEvent(QMouseEvent *e)
-{
-    Q_EMIT recvMouseEvent(e->type());
-
-    PluginItem::mousePressEvent(e);
 }
