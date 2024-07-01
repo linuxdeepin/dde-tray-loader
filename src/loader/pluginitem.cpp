@@ -295,7 +295,10 @@ bool PluginItem::executeCommand()
     const QString command = m_pluginsItemInterface->itemCommand(m_itemKey);
     if (!command.isEmpty()) {
         qInfo() << "command: " << command;
-        QProcess::startDetached(command, QStringList());
+        QStringList commandList = command.split(" ");
+        QString program = commandList.takeFirst(); // 剩下是参数
+
+        QProcess::startDetached(program, commandList);
         return true;
     }
     return false;
