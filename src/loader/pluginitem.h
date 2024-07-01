@@ -18,7 +18,6 @@ public:
     explicit PluginItem(PluginsItemInterface *pluginsItemInterface, const QString &itemKey, QWidget *parent = nullptr);
     ~PluginItem() override;
 
-    void init();
     void updateItemWidgetSize(const QSize &size);
 
     int pluginFlags() const;
@@ -43,6 +42,7 @@ protected:
     bool executeCommand();
 
 private:
+    void init();
     QWidget *itemPopupApplet();
 
 private:

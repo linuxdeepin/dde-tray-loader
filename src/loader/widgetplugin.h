@@ -18,13 +18,12 @@ namespace Plugin {
 class EmbedPlugin;
 }
 namespace dock {
-class TrayIconWidget;
 class WidgetPlugin : public QObject, public PluginProxyInterface
 {
     Q_OBJECT
 
 public:
-    WidgetPlugin(PluginsItemInterface* pluginItem, QPluginLoader *pluginLoader);
+    WidgetPlugin(PluginsItemInterface* pluginItem, QObject *pluginInstance);
     ~WidgetPlugin();
 
     // proxy interface
@@ -57,8 +56,7 @@ private:
 private:
     PluginsItemInterface* m_pluginsItemInterface;
     QScopedPointer<PluginItem> m_pluginItem;
-    QList<PluginItem*> m_pluginItems;
-    QPluginLoader* m_pluginLoader;
+    QObject * m_pluginInstance;
 };
 
 }

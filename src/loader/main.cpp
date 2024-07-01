@@ -34,7 +34,7 @@ static QString pluginDisplayName;
         .arg(QString("dde-control-center"))
         .arg(static_cast<uint>(0))
         .arg(QString("preferences-system"))
-        .arg(QString("Dock Plugin Crashed!"))
+        .arg(QString("Tray Plugin Crashed!"))
         .arg(QString("%1 plugin is crashed").arg(pluginDisplayName))
         .arg(QStringList())
         .arg(QVariantMap())
@@ -92,15 +92,12 @@ int main(int argc, char *argv[], char *envp[])
     }
 
     PluginsItemInterface *interface = qobject_cast<PluginsItemInterface *>(pluginLoader->instance());
-
-    if (!interface) {
-      interface = qobject_cast<PluginsItemInterfaceV2*>(pluginLoader->instance());
-    }
     if (!interface) {
         qWarning() << "get interface failed!" << pluginLoader->instance() << qobject_cast<PluginsItemInterfaceV2*>(pluginLoader->instance());;
-        return 0;
+        return -1;
     }
-    dock::WidgetPlugin dockPlugin(interface, pluginLoader);
+    pluginDisplayName = interface->pluginDisplayName();
+    dock::WidgetPlugin dockPlugin(interface, pluginLoader->instance());
 
     app.setApplicationName(interface->pluginName());
     app.setApplicationDisplayName(interface->pluginDisplayName());

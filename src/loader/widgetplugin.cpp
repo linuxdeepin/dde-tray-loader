@@ -19,10 +19,10 @@
 DGUI_USE_NAMESPACE
 
 namespace dock {
-WidgetPlugin::WidgetPlugin(PluginsItemInterface* pluginsItemInterface, QPluginLoader *pluginLoader)
+WidgetPlugin::WidgetPlugin(PluginsItemInterface* pluginsItemInterface, QObject *pluginInstance)
     : QObject()
     , m_pluginsItemInterface(pluginsItemInterface)
-    , m_pluginLoader(pluginLoader)
+    , m_pluginInstance(pluginInstance)
 {
     QMetaObject::invokeMethod(this, [this](){
         m_pluginsItemInterface->init(this);
@@ -46,7 +46,6 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Quick)) {
             PluginItem *item = new QuickPluginItem(itemInter, itemKey);
             item->setPluginFlags(flag);
-            item->init();
             Plugin::EmbedPlugin* plugin = Plugin::EmbedPlugin::get(item->windowHandle());
             initConnections(plugin, item);
             plugin->setPluginFlags(flag);
@@ -57,7 +56,6 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
             plugin->setPluginSizePolicy(itemInter->pluginSizePolicy());
             item->windowHandle()->hide();
             item->show();
-            m_pluginItems << item;
         } else {
             auto quickItem = m_pluginsItemInterface->itemWidget(Dock::QUICK_ITEM_KEY);
             if(quickItem) {
@@ -70,7 +68,6 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Tray, itemKey) && m_pluginsItemInterface->itemWidget(itemKey)) {
             PluginItem *item = new PluginItem(itemInter, itemKey);
             item->setPluginFlags(flag);
-            item->init();
             Plugin::EmbedPlugin* plugin = Plugin::EmbedPlugin::get(item->windowHandle());
             initConnections(plugin, item);
             plugin->setPluginFlags(flag);
@@ -81,7 +78,6 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
             plugin->setPluginSizePolicy(itemInter->pluginSizePolicy());
             item->windowHandle()->hide();
             item->show();
-            m_pluginItems << item;
         } else {
             auto trayItem = m_pluginsItemInterface->itemWidget(itemKey);
             if (trayItem) {
@@ -93,7 +89,6 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Fixed, itemKey)) {
             PluginItem *item = new PluginItem(itemInter, itemKey);
             item->setPluginFlags(flag);
-            item->init();
             Plugin::EmbedPlugin* plugin = Plugin::EmbedPlugin::get(item->windowHandle());
             initConnections(plugin, item);
             plugin->setPluginFlags(flag);
@@ -104,7 +99,6 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
             plugin->setPluginSizePolicy(itemInter->pluginSizePolicy());
             item->windowHandle()->hide();
             item->show();
-            m_pluginItems << item;
         }
     }
 }
@@ -272,13 +266,9 @@ int WidgetPlugin::getPluginFlags()
     if (pluginsItemInterfaceV2) {
         return pluginsItemInterfaceV2->flags();
     }
-    auto obj = m_pluginLoader->instance();
-    if (!obj) {
-        qWarning() << "the instance of plugin loader is nullptr";
-        return UNADAPTED_PLUGIN_FLAGS;
-    }
+
     bool ok;
-    auto flags = obj->property("pluginFlags").toInt(&ok);
+    auto flags = m_pluginInstance->property("pluginFlags").toInt(&ok);
     if (!ok) {
         qWarning() << "failed to pluginFlags toInt!";
         return UNADAPTED_PLUGIN_FLAGS;
