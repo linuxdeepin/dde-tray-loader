@@ -24,6 +24,7 @@ target_include_directories(dockplugin-loader PUBLIC
     "utils/"
     "../../interfaces/"
     "../tray-wayland-integration/"
+    "${CMAKE_BINARY_DIR}/"
 )
 
 target_link_libraries(dockplugin-loader PRIVATE

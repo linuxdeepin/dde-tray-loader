@@ -113,5 +113,8 @@
     <request name="mouse_event" >
         <arg name="type" type="int"/>
     </request>
+    <request name="dcc_icon" >
+        <arg name="type" type="string"/>
+    </request>
   </interface>
 </protocol>

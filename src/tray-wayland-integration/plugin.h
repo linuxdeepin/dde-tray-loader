@@ -20,6 +20,7 @@ class Q_DECL_EXPORT EmbedPlugin : public QObject
     Q_PROPERTY(int pluginFlags READ pluginFlags WRITE setPluginFlags NOTIFY pluginFlagsChanged)
     Q_PROPERTY(uint32_t pluginSizePolicy READ pluginSizePolicy WRITE setPluginSizePolicy NOTIFY pluginSizePolicyChanged)
     Q_PROPERTY(QPoint rawGlobalPos READ rawGlobalPos WRITE setRawGlobalPos NOTIFY rawGlobalPosChanged)
+    Q_PROPERTY(QString dccIcon READ dccIcon WRITE setDccIcon NOTIFY dccIconChanged)
 
 public:
     enum PluginType {
@@ -52,6 +53,9 @@ public:
     QPoint rawGlobalPos() const;
     void setRawGlobalPos(const QPoint& pos);
 
+    QString dccIcon() const;
+    void setDccIcon(const QString &dccIcon);
+
     static EmbedPlugin *getWithoutCreating(QWindow *window);
     static EmbedPlugin* get(QWindow* window);
     static bool contains(QWindow* window);
@@ -64,6 +68,7 @@ Q_SIGNALS:
     void dockPositionChanged(uint32_t position);
     void dockColorThemeChanged(uint32_t colorType);
     void pluginSupportFlagChanged(bool);
+    void dccIconChanged(const QString &dccIcon);
 
 Q_SIGNALS:
     void itemKeyChanged();
