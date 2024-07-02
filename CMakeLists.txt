@@ -71,3 +71,5 @@ configure_file(
     @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/DdeDockConfig.cmake
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/DdeDock)
+
+configure_file(environments.h.in environments.h @ONLY)

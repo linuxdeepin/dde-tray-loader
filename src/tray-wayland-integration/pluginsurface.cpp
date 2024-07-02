@@ -18,6 +18,7 @@ PluginSurface::PluginSurface(PluginManager *manager, QtWaylandClient::QWaylandWi
     , m_window(window->window())
 {
     init(manager->create_plugin(m_plugin->pluginId(), m_plugin->itemKey(), m_plugin->displayName(), m_plugin->pluginFlags(), m_plugin->pluginType(), m_plugin->pluginSizePolicy(), window->wlSurface()));
+    dcc_icon(m_plugin->dccIcon());
     connect(manager, &PluginManager::dockPositionChanged, m_plugin, &EmbedPlugin::dockPositionChanged);
     connect(manager, &PluginManager::dockColorThemeChanged, m_plugin, &EmbedPlugin::dockColorThemeChanged);
     connect(manager, &PluginManager::eventMessage, m_plugin, &EmbedPlugin::eventMessage);

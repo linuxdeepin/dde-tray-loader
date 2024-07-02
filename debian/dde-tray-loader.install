@@ -21,5 +21,6 @@ usr/share/dde-dock/icons/dcc-setting
 usr/share/dock-wirelesscasting-plugin/translations
 usr/share/dsg/configs/org.deepin.dde.dock/org.deepin.dde.dock.plugin.common.json
 usr/share/dsg/configs/org.deepin.dde.tray.network/org.deepin.dde.network.json
+usr/share/dde-dock/icons/dcc-setting/*.svg
 usr/share/glib-2.0/schemas/com.deepin.dde.control-center.gschema.xml
 usr/lib/*/qt5/plugins/wayland-shell-integration/libplugin-shell.so

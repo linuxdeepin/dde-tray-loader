@@ -23,6 +23,7 @@ public:
     int pluginType;
     int sizePolicy;
     QPoint globalPos;
+    QString dccIcon;
 };
 
 EmbedPlugin::EmbedPlugin(QWindow* window)
@@ -183,6 +184,20 @@ QString EmbedPlugin::displayName() const
 void EmbedPlugin::setDisplayName(const QString &displayName)
 {
     d->displayName = displayName;
+}
+
+QString EmbedPlugin::dccIcon() const
+{
+    return d->dccIcon;
+}
+
+void EmbedPlugin::setDccIcon(const QString &dccIcon)
+{
+    if (d->dccIcon == dccIcon) {
+        return;
+    }
+    d->dccIcon = dccIcon;
+    Q_EMIT dccIconChanged(d->dccIcon);
 }
 
 class PluginPopupPrivate

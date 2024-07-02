@@ -6,6 +6,7 @@
 #include "plugin.h"
 #include "widgetplugin.h"
 #include "quickpluginitem.h"
+#include "environments.h"
 
 #include <QMenu>
 #include <QPainter>
@@ -18,6 +19,8 @@
 #include <qglobal.h>
 
 DGUI_USE_NAMESPACE
+
+const QString DCCIconPath = CMAKE_INSTALL_PREFIX + QString("/share/dde-dock/icons/dcc-setting/");
 
 namespace {
 class Q_DECL_HIDDEN EventFilter : public QObject
@@ -126,6 +129,10 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
             plugin->setItemKey(itemKey);
             plugin->setPluginType(Plugin::EmbedPlugin::Tray);
             plugin->setPluginSizePolicy(itemInter->pluginSizePolicy());
+            if (flag & Dock::Attribute_CanSetting) {
+                const QString path = DCCIconPath + itemInter->pluginName() + ".svg";
+                plugin->setDccIcon(path);
+            }
             item->windowHandle()->hide();
             item->show();
         } else {
