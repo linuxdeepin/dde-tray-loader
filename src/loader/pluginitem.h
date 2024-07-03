@@ -22,6 +22,7 @@ public:
 
     int pluginFlags() const;
     void setPluginFlags(int flags);
+    void init();
 
 signals:
     void recvMouseEvent(int type);
@@ -42,7 +43,6 @@ protected:
     bool executeCommand();
 
 private:
-    void init();
     QWidget *itemPopupApplet();
 
 private:

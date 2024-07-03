@@ -93,7 +93,10 @@ int main(int argc, char *argv[], char *envp[])
         return 0;
     }
 
-    PluginsItemInterface *interface = qobject_cast<PluginsItemInterface *>(pluginLoader->instance());
+    PluginsItemInterface *interface = qobject_cast<PluginsItemInterfaceV2 *>(pluginLoader->instance());
+    if (!interface) {
+        interface = qobject_cast<PluginsItemInterface*>(pluginLoader->instance());
+    }
     if (!interface) {
         qWarning() << "get interface failed!" << pluginLoader->instance() << qobject_cast<PluginsItemInterfaceV2*>(pluginLoader->instance());;
         return -1;

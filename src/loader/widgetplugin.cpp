@@ -45,6 +45,7 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
     if (flag & Dock::Type_Quick) {
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Quick)) {
             PluginItem *item = new QuickPluginItem(itemInter, itemKey);
+            item->init();
             item->setPluginFlags(flag);
             Plugin::EmbedPlugin* plugin = Plugin::EmbedPlugin::get(item->windowHandle());
             initConnections(plugin, item);
@@ -67,6 +68,7 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
         || flag & Dock::Type_Tray || flag & Dock::Attribute_Normal) {
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Tray, itemKey) && m_pluginsItemInterface->itemWidget(itemKey)) {
             PluginItem *item = new PluginItem(itemInter, itemKey);
+            item->init();
             item->setPluginFlags(flag);
             Plugin::EmbedPlugin* plugin = Plugin::EmbedPlugin::get(item->windowHandle());
             initConnections(plugin, item);
@@ -88,6 +90,7 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
     if (flag & Dock::Type_Tool) {
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Fixed, itemKey)) {
             PluginItem *item = new PluginItem(itemInter, itemKey);
+            item->init();
             item->setPluginFlags(flag);
             Plugin::EmbedPlugin* plugin = Plugin::EmbedPlugin::get(item->windowHandle());
             initConnections(plugin, item);
