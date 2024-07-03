@@ -116,6 +116,7 @@ void QuickPanelWidget::mouseReleaseEvent(QMouseEvent *event)
         break;
     }
     m_clickPoint = QPoint();
+    return QWidget::mouseReleaseEvent(event);
 }
 
 void QuickPanelWidget::initUi()

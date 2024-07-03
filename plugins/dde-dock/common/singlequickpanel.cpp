@@ -75,6 +75,7 @@ void SignalQuickPanel::mouseReleaseEvent(QMouseEvent *event)
     if (underMouse()) {
         Q_EMIT clicked();
     }
+    return QWidget::mouseReleaseEvent(event);
 }
 
 void SignalQuickPanel::refreshBg()
