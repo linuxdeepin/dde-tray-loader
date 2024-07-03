@@ -36,6 +36,8 @@ endif()
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
+set(TRAY_PLUGIN_DIRECTORY ${PROJECT_BINARY_DIR}/dock-tray/plugins/ CACHE STRING "output path of tray plugins")
+
 add_subdirectory(plugins)
 add_subdirectory(src)
 

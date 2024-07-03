@@ -16,7 +16,7 @@ add_library(${PLUGIN_NAME} SHARED
     notification.qrc
 )
 target_compile_definitions(${PLUGIN_NAME} PRIVATE QT_PLUGIN)
-set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ..)
+set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${TRAY_PLUGIN_DIRECTORY})
 
 target_include_directories(${PLUGIN_NAME} PRIVATE
    "../../interfaces"

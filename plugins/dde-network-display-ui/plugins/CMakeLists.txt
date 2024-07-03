@@ -42,6 +42,7 @@ ${COMMON_FILE}
 dock-wirelesscasting-plugin/res/resources.qrc
 dock-wirelesscasting-plugin/translations/translations.qrc
 )
+set_target_properties(${Dock_Plugin_Name} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${TRAY_PLUGIN_DIRECTORY}/system-trays)
 
 target_include_directories(${Dock_Plugin_Name} PUBLIC
     ${DtkWidget_INCLUDE_DIRS}

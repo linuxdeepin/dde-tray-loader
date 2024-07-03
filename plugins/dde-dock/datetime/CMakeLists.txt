@@ -21,7 +21,7 @@ pkg_check_modules(QGSettings REQUIRED gsettings-qt)
 
 add_definitions("${QT_DEFINITIONS} -DQT_PLUGIN")
 add_library(${PLUGIN_NAME} SHARED ${SRCS} resources/datetime.qrc)
-set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../)
+set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${TRAY_PLUGIN_DIRECTORY}/)
 target_include_directories(${PLUGIN_NAME} PUBLIC
   ${DtkWidget_INCLUDE_DIRS}
   ${DFrameworkDBus_INCLUDE_DIRS}

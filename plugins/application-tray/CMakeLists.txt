@@ -59,6 +59,6 @@ target_include_directories(${PLUGIN_NAME} PUBLIC
     "${CMAKE_SOURCE_DIR}/interfaces/"
     "${CMAKE_SOURCE_DIR}/src/tray-wayland-integration/"
 )
-set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/plugins/dde-dock)
+set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${TRAY_PLUGIN_DIRECTORY})
 # 设置执行 make install 时哪个目标应该被 install 到哪个位置
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
