@@ -36,6 +36,9 @@ protected:
     virtual void plugin_manager_v1_event_message(const QString &msg);
 
 private:
+    bool tryCreatePopupForSubWindow(QWindow *window);
+
+private:
     uint32_t m_dockPosition;
     uint32_t m_dockColorType;
 };

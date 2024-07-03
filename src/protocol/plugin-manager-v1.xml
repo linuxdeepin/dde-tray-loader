@@ -92,6 +92,10 @@
       <arg name="width" type="int"/>
       <arg name="height" type="int"/>
     </event>
+    <request name="set_position" >
+        <arg name="x" type="int"/>
+        <arg name="y" type="int"/>
+    </request>
   </interface>
 
   <interface name="plugin" version="1">

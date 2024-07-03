@@ -52,6 +52,7 @@ public:
     QPoint rawGlobalPos() const;
     void setRawGlobalPos(const QPoint& pos);
 
+    static EmbedPlugin *getWithoutCreating(QWindow *window);
     static EmbedPlugin* get(QWindow* window);
     static bool contains(QWindow* window);
     static bool contains(const QString &pluginId, int type, const QString &itemKey = QString());
@@ -118,6 +119,7 @@ public:
     int y() const;
     void setY(const int& y);
 
+    static PluginPopup *getWithoutCreating(QWindow *window);
     static PluginPopup* get(QWindow* window);
     static bool contains(QWindow* window);
 
