@@ -19,7 +19,6 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
     , m_itemKey(itemKey)
     , m_menu(new QMenu(this))
 {
-    init();
     connect(m_menu, &QMenu::triggered, this, [this](QAction *action){
         QString actionStr = action->data().toString();
         if (actionStr == Dock::dockMenuItemId || actionStr == Dock::unDockMenuItemId) {
