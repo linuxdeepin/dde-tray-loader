@@ -128,12 +128,21 @@ void EmbedPlugin::setPluginSizePolicy(int sizePolicy)
 }
 
 static QMap<QWindow*, EmbedPlugin*> s_map;
+EmbedPlugin *EmbedPlugin::getWithoutCreating(QWindow *window)
+{
+    if (contains(window))
+        return get(window);
+    return nullptr;
+}
 EmbedPlugin* EmbedPlugin::get(QWindow* window)
 {
     auto plugin = s_map.value(window);
     if (!plugin) {
         plugin = new EmbedPlugin(window);
         s_map.insert(window, plugin);
+        QObject::connect(plugin, &EmbedPlugin::destroyed, window, [window] () {
+            s_map.remove(window);
+        });
     }
 
     return plugin;
@@ -280,12 +289,21 @@ void PluginPopup::setY(const int& y)
 }
 
 static QMap<QWindow*, PluginPopup*> s_popupMap;
+PluginPopup* PluginPopup::getWithoutCreating(QWindow* window)
+{
+    if (contains(window))
+        return get(window);
+    return nullptr;
+}
 PluginPopup* PluginPopup::get(QWindow* window)
 {
     auto popup = s_popupMap.value(window);
     if (!popup) {
         popup = new PluginPopup(window);
         s_popupMap.insert(window, popup);
+        QObject::connect(popup, &PluginPopup::destroyed, window, [window] () {
+            s_popupMap.remove(window);
+        });
     }
 
     return popup;

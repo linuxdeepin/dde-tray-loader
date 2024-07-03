@@ -20,6 +20,7 @@ protected:
     virtual void mouseReleaseEvent(QMouseEvent *e) override;
     virtual QMenu *pluginContextMenu() override;
     virtual QWidget *pluginTooltip() override;
+    virtual QString itemKey() const override;
 
 private:
     QAction *m_onDockAction;

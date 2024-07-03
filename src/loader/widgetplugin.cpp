@@ -12,11 +12,52 @@
 #include <QProcess>
 #include <QVBoxLayout>
 #include <QMouseEvent>
+#include <QToolTip>
 
 #include <DGuiApplicationHelper>
 #include <qglobal.h>
 
 DGUI_USE_NAMESPACE
+
+namespace {
+class Q_DECL_HIDDEN EventFilter : public QObject
+{
+public:
+    explicit EventFilter(QObject *parent)
+        : QObject(parent)
+    {
+    }
+
+public:
+    bool eventFilter(QObject *watched, QEvent *event)
+    {
+        if (event->type() == QEvent::ToolTip) {
+            const auto pos = static_cast<QHelpEvent*>(event)->globalPos();
+            QMetaObject::invokeMethod(this, [this, pos] () {
+                updateToolTipPosition(pos);
+            }, Qt::QueuedConnection);
+        }
+        return false;
+    }
+private:
+    void updateToolTipPosition(const QPoint &pos)
+    {
+        const auto allWindows = qGuiApp->allWindows();
+        const auto iter = std::find_if(allWindows.begin(), allWindows.end(), [] (QWindow *window) {
+            return window->objectName() == "qtooltip_labelWindow";
+        });
+
+        if (iter == allWindows.end())
+            return;
+
+        const auto toolTipWindow = *iter;
+        if (auto pluginPopup = Plugin::PluginPopup::getWithoutCreating(toolTipWindow)) {
+            pluginPopup->setX(toolTipWindow->transientParent()->x() + pos.x());
+            pluginPopup->setY(toolTipWindow->transientParent()->y() + pos.y());
+        }
+    }
+};
+}
 
 namespace dock {
 WidgetPlugin::WidgetPlugin(PluginsItemInterface* pluginsItemInterface, QObject *pluginInstance)
@@ -32,6 +73,13 @@ WidgetPlugin::WidgetPlugin(PluginsItemInterface* pluginsItemInterface, QObject *
     if (pluginsItemInterfaceV2) {
         pluginsItemInterfaceV2->setMessageCallback(WidgetPlugin::messageCallback);
     }
+
+    // transparent background for tooltip.
+    auto pt = QToolTip::palette();
+    pt.setBrush(QPalette::Window, Qt::transparent);
+    QToolTip::setPalette(pt);
+
+    qApp->installEventFilter(new EventFilter(this));
 }
 
 WidgetPlugin::~WidgetPlugin()

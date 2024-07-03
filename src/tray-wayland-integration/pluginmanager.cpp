@@ -42,6 +42,26 @@ void PluginManager::plugin_manager_v1_event_message(const QString &msg)
     Q_EMIT eventMessage(msg);
 }
 
+bool PluginManager::tryCreatePopupForSubWindow(QWindow *window)
+{
+    auto parentWindow = window->transientParent();
+    if (!parentWindow)
+        return false;
+
+    auto plugin = EmbedPlugin::getWithoutCreating(parentWindow);
+    if (!plugin)
+        return false;
+
+    auto pluginPopup = PluginPopup::get(window);
+    pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeTooltip);
+    pluginPopup->setPluginId(plugin->pluginId());
+    pluginPopup->setItemKey(plugin->itemKey());
+    pluginPopup->setX(parentWindow->x() + window->x());
+    pluginPopup->setY(parentWindow->y() + window->y());
+
+    return true;
+}
+
 void PluginManager::requestMessage(const QString &plugin_id, const QString &item_key, const QString &msg)
 {
     request_message(plugin_id, item_key, msg);
@@ -54,6 +74,10 @@ QtWaylandClient::QWaylandShellSurface* PluginManager::createPluginSurface(QtWayl
     }
 
     if (PluginPopup::contains(window->window())) {
+        return new PluginPopupSurface(this, window);
+    }
+
+    if (tryCreatePopupForSubWindow(window->window())) {
         return new PluginPopupSurface(this, window);
     }
 

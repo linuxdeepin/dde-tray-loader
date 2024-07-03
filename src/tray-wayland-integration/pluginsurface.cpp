@@ -8,6 +8,8 @@
 
 #include "qwayland-plugin-manager-v1.h"
 
+#include <QTimer>
+
 namespace Plugin {
 PluginSurface::PluginSurface(PluginManager *manager, QtWaylandClient::QWaylandWindow *window)
     : QtWaylandClient::QWaylandShellSurface(window)
@@ -57,8 +59,18 @@ PluginPopupSurface::PluginPopupSurface(PluginManager *manager, QtWaylandClient::
     , QtWayland::plugin_popup()
     , m_popup(PluginPopup::get(window->window()))
     , m_window(window->window())
+    , m_dirtyTimer(new QTimer(this))
 {
     init(manager->create_popup_at(m_popup->pluginId(), m_popup->itemKey(), m_popup->popupType(), m_popup->x(), m_popup->y(), window->wlSurface()));
+
+    // merge multi signal of position changed to one.
+    m_dirtyTimer->setInterval(0);
+    m_dirtyTimer->setSingleShot(true);
+    connect(m_popup, &PluginPopup::xChanged, this, &PluginPopupSurface::dirtyPosition);
+    connect(m_popup, &PluginPopup::yChanged, this, &PluginPopupSurface::dirtyPosition);
+    connect(m_dirtyTimer, &QTimer::timeout, this, [this]{
+        set_position(m_popup->x(), m_popup->y());
+    });
 }
 
 PluginPopupSurface::~PluginPopupSurface()
@@ -76,6 +88,11 @@ void PluginPopupSurface::plugin_popup_geometry(int32_t x, int32_t y, int32_t wid
     if (plugin) {
         Q_EMIT plugin->eventGeometry(QRect(x, y, width, height));
     }
+}
+
+void PluginPopupSurface::dirtyPosition()
+{
+    m_dirtyTimer->start();
 }
 
 }

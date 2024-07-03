@@ -24,6 +24,9 @@ public:
     void setPluginFlags(int flags);
     void init();
 
+    QString pluginId() const { return m_pluginsItemInterface->pluginName(); }
+    virtual QString itemKey() const { return m_itemKey; }
+
 signals:
     void recvMouseEvent(int type);
 

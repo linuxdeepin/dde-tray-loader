@@ -134,9 +134,10 @@ QMenu *QuickPluginItem::pluginContextMenu()
 
 QWidget *QuickPluginItem::pluginTooltip()
 {
-    auto popup = pluginsItemInterface()->itemPopupApplet(m_itemKey);
-    if (popup && popup->isVisible())
-        popup->windowHandle()->hide();
+    return nullptr;
+}
 
-    return itemTooltip(Dock::QUICK_ITEM_KEY);
+QString QuickPluginItem::itemKey() const
+{
+    return Dock::QUICK_ITEM_KEY;
 }

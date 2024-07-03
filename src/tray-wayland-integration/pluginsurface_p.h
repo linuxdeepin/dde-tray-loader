@@ -43,8 +43,12 @@ protected:
     virtual void plugin_popup_geometry(int32_t x, int32_t y, int32_t width, int32_t height) override;
 
 private:
+    void dirtyPosition();
+
+private:
     PluginPopup* m_popup;
     QWindow* m_window;
+    QTimer *m_dirtyTimer = nullptr;
 };
 
 }
