@@ -124,6 +124,7 @@ void QuickPanelWidget::mouseReleaseEvent(QMouseEvent *event)
     if (underMouse()) {
         Q_EMIT clicked();
     }
+    return QWidget::mouseReleaseEvent(event);
 }
 
 QuickPanelWidget::~QuickPanelWidget()
