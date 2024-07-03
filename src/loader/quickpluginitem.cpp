@@ -87,7 +87,7 @@ void QuickPluginItem::mouseReleaseEvent(QMouseEvent *e)
                 const auto offset = e->pos();
                 pluginPopup->setX(geometry.x() + offset.x());
                 pluginPopup->setY(geometry.y() + offset.y());
-                menu->exec();
+                menu->show();
             }
         }
         e->accept();
