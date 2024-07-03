@@ -85,8 +85,16 @@ void PluginPopupSurface::plugin_popup_close()
 void PluginPopupSurface::plugin_popup_geometry(int32_t x, int32_t y, int32_t width, int32_t height)
 {
     auto plugin = PluginPopup::get(m_window);
+    auto rect = QRect(x, y, width, height);
+    if (rect.width() <= 0)
+        rect.setWidth(m_window->width());
+
+    if (rect.height() <= 0)
+        rect.setHeight(m_window->height());
+
+    m_window->setGeometry(rect);
     if (plugin) {
-        Q_EMIT plugin->eventGeometry(QRect(x, y, width, height));
+        Q_EMIT plugin->eventGeometry(rect);
     }
 }
 
