@@ -116,7 +116,7 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
         }
     }
     if (flag & Dock::Type_Quick || flag & Dock::Type_System
-        || flag & Dock::Type_Tray || flag & Dock::Attribute_Normal) {
+        || flag & Dock::Type_Tray) {
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Tray, itemKey) && m_pluginsItemInterface->itemWidget(itemKey)) {
             PluginItem *item = new PluginItem(itemInter, itemKey);
             item->init();
