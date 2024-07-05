@@ -318,7 +318,7 @@ void WidgetPlugin::initConnections(Plugin::EmbedPlugin *plugin, PluginItem *plug
 
 int WidgetPlugin::getPluginFlags()
 {
-    const Dock::PluginFlags UNADAPTED_PLUGIN_FLAGS = Dock::PluginFlag::Type_Unadapted | Dock::PluginFlag::Attribute_Normal;
+    const Dock::PluginFlags defaultPluginFlags = Dock::PluginFlag::Type_Tray | Dock::PluginFlag::Attribute_Normal;
 
     auto pluginsItemInterfaceV2 = dynamic_cast<PluginsItemInterfaceV2 *>(m_pluginsItemInterface);
     if (pluginsItemInterfaceV2) {
@@ -329,7 +329,7 @@ int WidgetPlugin::getPluginFlags()
     auto flags = m_pluginInstance->property("pluginFlags").toInt(&ok);
     if (!ok) {
         qWarning() << "failed to pluginFlags toInt!";
-        return UNADAPTED_PLUGIN_FLAGS;
+        return defaultPluginFlags;
     }
     return flags;
 }

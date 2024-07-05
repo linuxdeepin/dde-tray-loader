@@ -23,6 +23,8 @@ const QString KDB_LAYOUT_DCC_NAME = "keyboardLayout";
 // get fcitx status and data
 const QString FCITX_ADDRESSS = "org.fcitx.Fcitx";
 
+Q_LOGGING_CATEGORY(KEYBOARD_LAYOUT, "org.deepin.dde.dock.keyboardLayout")
+
 DBusAdaptors::DBusAdaptors(QObject *parent)
     : QDBusAbstractAdaptor(parent),
       m_keyboard(new Keyboard("com.deepin.daemon.InputDevices",

@@ -53,7 +53,8 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  startdde (>=5.8.9),
  lastore-daemon (>=5.2.9),
  qtxdg-dev-tools,
- deepin-service-plugin-network
+ deepin-service-plugin-network,
+ dde-api-dbus-proxy-v1 (>=1.0.10)
 Conflicts:
  dde-dock
 Replaces:
