@@ -6,6 +6,7 @@
 #define PLUGINSITEM_H
 
 #include "pluginsiteminterface_v2.h"
+#include "dockdbusproxy.h"
 
 #include <QWidget>
 
@@ -44,6 +45,7 @@ protected:
     void initPluginMenu();
     QWidget *itemTooltip(const QString &itemKey);
     bool executeCommand();
+    void setPluginVisible(bool isvisible);
 
 private:
     QWidget *itemPopupApplet();
@@ -54,6 +56,7 @@ private:
 protected:
     QString m_itemKey;
     QMenu *m_menu;
+    QScopedPointer<DockDBusProxy> m_dbusProxy;
 
 private:
     PluginsItemInterface *m_pluginsItemInterface;

@@ -9,6 +9,8 @@ file(GLOB SRCS "*.h" "*.cpp" "../../interfaces/*.h" "utils/*.h" "utils/*.cpp")
 
 add_executable(dockplugin-loader
     main.cpp
+    dockdbusproxy.cpp
+    dockdbusproxy.h
     widgetplugin.h
     widgetplugin.cpp
     pluginitem.h
