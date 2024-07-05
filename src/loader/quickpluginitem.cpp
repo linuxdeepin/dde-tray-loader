@@ -65,7 +65,10 @@ QuickPluginItem::QuickPluginItem(PluginsItemInterface *pluginInterface, const QS
     : PluginItem(pluginInterface, itemKey, parent)
     , m_onDockAction(nullptr)
 {
+    if (m_dbusProxy.isNull())
+        m_dbusProxy.reset(new DockDBusProxy);
     qApp->installEventFilter(new EventFilter(this));
+    connect(m_dbusProxy.data(), &DockDBusProxy::pluginVisibleChanged, this, &QuickPluginItem::onPluginVisibleChanged);
 }
 
 QWidget *QuickPluginItem::centralWidget()
@@ -110,7 +113,7 @@ QMenu *QuickPluginItem::pluginContextMenu()
     }
 
     if (m_onDockAction) {
-        bool onDock = true; // TODO 要找到对应插件是否在任务栏上显示，1070通过dbus获取
+        bool onDock = pluginIsVisible();
         QString itemText = onDock ? tr("Remove from dock") : tr("Pin to dock");
         m_onDockAction->setText(itemText);
         m_onDockAction->setData(onDock ? Dock::unDockMenuItemId : Dock::dockMenuItemId);
@@ -141,3 +144,24 @@ QString QuickPluginItem::itemKey() const
 {
     return Dock::QUICK_ITEM_KEY;
 }
+
+void QuickPluginItem::onPluginVisibleChanged(const QString &itemKey, bool visible)
+{
+    if (itemKey == m_itemKey) {
+        setPluginVisible(visible);
+    }
+}
+
+bool QuickPluginItem::pluginIsVisible()
+{
+    const QString itemKey = m_itemKey;
+
+    DockItemInfos plugins = m_dbusProxy->plugins();
+    for (const DockItemInfo &info : plugins) {
+        if (info.itemKey == itemKey) {
+            return info.visible;
+        }
+    }
+    return false;
+}
+
