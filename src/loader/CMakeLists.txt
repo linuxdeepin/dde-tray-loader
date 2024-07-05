@@ -42,3 +42,4 @@ dtk_add_config_meta_files(APPID org.deepin.dde.dock FILES ./configs/org.deepin.d
 
 #schemas
 install(FILES configs/com.deepin.dde.control-center.gschema.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/glib-2.0/schemas)
+install(FILES configs/com.deepin.dde.dock.module.gschema.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/glib-2.0/schemas)
