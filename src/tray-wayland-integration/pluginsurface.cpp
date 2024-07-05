@@ -43,11 +43,14 @@ void PluginSurface::plugin_close()
 
 void PluginSurface::plugin_geometry(int32_t x, int32_t y, int32_t width, int32_t height)
 {
-    if (width > 0 && height > 0) {
-        m_window->setGeometry(x, y, width, height);
-    }
+    QRect rect(x, y, width, height);
+    if (width <= 0)
+        rect.setWidth(m_window->width());
+    if (height <= 0)
+        rect.setHeight(m_window->height());
 
-    Q_EMIT m_plugin->eventGeometry(QRect(x, y, width, height));
+    m_window->setGeometry(rect);
+    Q_EMIT m_plugin->eventGeometry(rect);
 }
 
 void PluginSurface::plugin_raw_global_pos(int32_t x, int32_t y)
