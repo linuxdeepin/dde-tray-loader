@@ -30,3 +30,4 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
+install(FILES "icons/notification.svg" DESTINATION share/dde-dock/icons/dcc-setting)
