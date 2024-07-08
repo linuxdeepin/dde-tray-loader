@@ -14,13 +14,14 @@ add_subdirectory("onboard")
 add_subdirectory("power")
 add_subdirectory("shutdown")
 add_subdirectory("sound")
+add_subdirectory("notification")
 
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast")
 
     # generate qm
     execute_process(COMMAND bash "translate_generation.sh"
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 endif ()
 
 ## qm files

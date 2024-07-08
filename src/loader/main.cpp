@@ -18,9 +18,12 @@
 
 #include <cstdlib>
 #include <DGuiApplicationHelper>
+#include <DStandardPaths>
+#include <DPathBuf>
 #include <signal.h>
 
 DGUI_USE_NAMESPACE
+DCORE_USE_NAMESPACE
 
 static QString pluginDisplayName;
 
@@ -63,6 +66,14 @@ int main(int argc, char *argv[], char *envp[])
     Dtk::Widget::DApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setQuitOnLastWindowClosed(false);
+
+    QList<QString> translateDirs;
+    auto dataDirs = DStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
+    for (const auto &path : dataDirs) {
+        DPathBuf DPathBuf(path);
+        translateDirs << (DPathBuf / "dde-dock/translations").toString();
+    }
+    DGuiApplicationHelper::loadTranslator("dde-dock", translateDirs, QList<QLocale>() << QLocale::system());
 
     QCommandLineParser parser;
     parser.addHelpOption();

@@ -627,6 +627,33 @@
     </message>
 </context>
 <context>
+    <name>NotificationPlugin</name>
+    <message>
+        <source>No messages</source>
+        <translation>No messages</translation>
+    </message>
+    <message>
+        <source>Notification settings</source>
+        <translation>Notification settings</translation>
+    </message>
+    <message>
+        <source>Notifications</source>
+        <translation>Notifications</translation>
+    </message>
+    <message>
+        <source>Turn off DND mode</source>
+        <translation>Turn off DND mode</translation>
+    </message>
+    <message>
+        <source>Turn on DND mode</source>
+        <translation>Turn on DND mode</translation>
+    </message>
+    <message>
+        <source>Notification</source>
+        <translation>Notification</translation>
+    </message>
+</context>
+<context>
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
