@@ -19,7 +19,7 @@ target_compile_definitions(${PLUGIN_NAME} PRIVATE QT_PLUGIN)
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../dde-dock)
 
 target_include_directories(${PLUGIN_NAME} PRIVATE
-   "../../interfaces"
+   "../../../interfaces"
 )
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE

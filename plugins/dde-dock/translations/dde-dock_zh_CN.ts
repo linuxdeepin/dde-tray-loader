@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -622,6 +624,33 @@
     <message>
         <source>Multitasking View</source>
         <translation>多任务视图</translation>
+    </message>
+</context>
+<context>
+    <name>NotificationPlugin</name>
+    <message>
+        <source>No messages</source>
+        <translation>暂无新消息</translation>
+    </message>
+    <message>
+        <source>Notification settings</source>
+        <translation>通知设置</translation>
+    </message>
+    <message>
+        <source>Notifications</source>
+        <translation>条通知</translation>
+    </message>
+    <message>
+        <source>Turn off DND mode</source>
+        <translation>关闭勿扰模式</translation>
+    </message>
+    <message>
+        <source>Turn on DND mode</source>
+        <translation>开启勿扰模式</translation>
+    </message>
+    <message>
+        <source>Notification</source>
+        <translation>通知</translation>
     </message>
 </context>
 <context>
