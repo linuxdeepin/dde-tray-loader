@@ -68,6 +68,8 @@ Conflicts:
  dde-dock-dev
 Replaces:
  dde-dock-dev
+Provides:
+ dde-dock-dev
 Description: deepin desktop-environment - tray plugins module development files
  Tray plugins module development files of deepin desktop-environment
 
