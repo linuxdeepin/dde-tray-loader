@@ -23,7 +23,7 @@ ConfigWatcher::ConfigWatcher(QObject *parent)
     , m_enableAccountNetwork(false)
 {
     if (!dConfig)
-        dConfig = Dtk::Core::DConfig::create("org.deepin.dde.network", "org.deepin.dde.network");
+        dConfig = Dtk::Core::DConfig::create("org.deepin.dde.tray.network", "org.deepin.dde.network");
 
     if (!gSettingsConfig && QGSettings::isSchemaInstalled("com.deepin.dde.control-center"))
         gSettingsConfig = new QGSettings("com.deepin.dde.control-center", QByteArray(), this);
