@@ -38,7 +38,8 @@ PluginSurface::~PluginSurface()
 
 void PluginSurface::plugin_close()
 {
-    m_window->hide();
+    // it would be delete this object directly.
+    m_window->close();
 }
 
 void PluginSurface::plugin_geometry(int32_t x, int32_t y, int32_t width, int32_t height)
@@ -83,7 +84,8 @@ PluginPopupSurface::~PluginPopupSurface()
 
 void PluginPopupSurface::plugin_popup_close()
 {
-    m_window->hide();
+    // it would be delete this object directly.
+    m_window->close();
 }
 
 void PluginPopupSurface::plugin_popup_geometry(int32_t x, int32_t y, int32_t width, int32_t height)
