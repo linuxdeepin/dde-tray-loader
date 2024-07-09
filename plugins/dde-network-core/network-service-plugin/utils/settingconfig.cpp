@@ -77,7 +77,7 @@ SettingConfig::SettingConfig(QObject *parent)
     , m_enableAccountNetwork(false)
 {
     if (!dConfig)
-        dConfig = Dtk::Core::DConfig::create("org.deepin.dde.network", "org.deepin.dde.network");
+        dConfig = Dtk::Core::DConfig::create("org.deepin.dde.tray.network", "org.deepin.dde.network");
 
     if (dConfig && dConfig->isValid()) {
         connect(dConfig, &Dtk::Core::DConfig::valueChanged, this, &SettingConfig::onValueChanged);
