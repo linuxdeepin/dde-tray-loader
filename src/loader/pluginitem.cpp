@@ -8,8 +8,6 @@
 
 #include <QHBoxLayout>
 #include <QMouseEvent>
-#include <qglobal.h>
-#include <qobject.h>
 #include <QMenu>
 
 const static QString DockQuickPlugins = "Dock_Quick_Plugins";
@@ -20,7 +18,11 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
     , m_pluginsItemInterfacev2(dynamic_cast<PluginsItemInterfaceV2*>(pluginItemInterface))
     , m_itemKey(itemKey)
     , m_menu(new QMenu(this))
+    , m_tooltipTimer(new QTimer(this))
 {
+    m_tooltipTimer->setSingleShot(true);
+    m_tooltipTimer->setInterval(200);
+
     connect(m_menu, &QMenu::triggered, this, [this](QAction *action){
         QString actionStr = action->data().toString();
         if (actionStr == Dock::dockMenuItemId || actionStr == Dock::unDockMenuItemId) {
@@ -150,7 +152,12 @@ void PluginItem::enterEvent(QEvent *event)
             const auto offset = e->pos();
             pluginPopup->setX(geometry.x() + offset.x());
             pluginPopup->setY(geometry.y() + offset.y());
-            toolTip->show();
+
+            connect(m_tooltipTimer, &QTimer::timeout, toolTip, [this, toolTip] {
+                toolTip->show(); 
+                m_tooltipTimer->disconnect(toolTip);
+            });
+            m_tooltipTimer->start();
         }
     }
 
@@ -159,6 +166,10 @@ void PluginItem::enterEvent(QEvent *event)
 
 void PluginItem::leaveEvent(QEvent *event)
 {
+    if (m_tooltipTimer->isActive()) {
+        m_tooltipTimer->stop();
+    }
+
     auto tooltip = m_pluginsItemInterface->itemTipsWidget(m_itemKey);
     if (tooltip && tooltip->windowHandle())
         tooltip->windowHandle()->hide();
