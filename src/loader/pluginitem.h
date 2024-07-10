@@ -49,6 +49,7 @@ protected:
 
 private:
     QWidget *itemPopupApplet();
+    bool panelPopupExisted() const;
 
 private:
     void updatePopupSize(const QRect &rect);
@@ -63,7 +64,6 @@ private:
     PluginsItemInterfaceV2 *m_pluginsItemInterfacev2;
 
     int m_pluginFlags = 0;
-    bool m_isPanelPopupShow = false;
 };
 
 #endif // PLUGINSITEM_H

@@ -207,6 +207,8 @@ void WidgetPlugin::requestRefreshWindowVisible(PluginsItemInterface * const item
 
 void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInter, const QString &itemKey, const bool visible)
 {
+    if (!visible) return;
+
     auto setPluginMsg = [itemInter]  {
         auto pluginsItemInterfaceV2 = dynamic_cast<PluginsItemInterfaceV2 *>(itemInter);
         if (!pluginsItemInterfaceV2)

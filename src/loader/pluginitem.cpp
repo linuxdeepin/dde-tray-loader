@@ -52,13 +52,14 @@ QWidget *PluginItem::itemPopupApplet()
     };
 
     if (auto popup = m_pluginsItemInterface->itemPopupApplet(m_itemKey)) {
-        if (!m_isPanelPopupShow && popup->isVisible()) {
+        bool existed = panelPopupExisted();
+        if (!existed && popup->isVisible()) {
             popup->windowHandle()->hide();
         }
 
-        if (m_isPanelPopupShow) {
+        // hided, when clicked again
+        if (existed) {
             popup->windowHandle()->hide();
-            m_isPanelPopupShow = false;
             return nullptr;
         }
 
@@ -67,17 +68,12 @@ QWidget *PluginItem::itemPopupApplet()
         popup->setAttribute(Qt::WA_TranslucentBackground);
         popup->winId();
 
-        auto geometry = windowHandle()->geometry();
-        bool hasCreated = Plugin::PluginPopup::contains(popup->windowHandle());
         auto pluginPopup = Plugin::PluginPopup::get(popup->windowHandle());
-        if (!hasCreated) {
-            connect(pluginPopup, &Plugin::PluginPopup::eventGeometry, this, &PluginItem::updatePopupSize);
-        }
+        connect(pluginPopup, &Plugin::PluginPopup::eventGeometry, this, &PluginItem::updatePopupSize);
 
         pluginPopup->setPluginId(m_pluginsItemInterface->pluginName());
         pluginPopup->setItemKey(m_itemKey);
         pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypePanel);
-        m_isPanelPopupShow = true;
         return popup;
     }
     return nullptr;
@@ -103,7 +99,6 @@ QMenu *PluginItem::pluginContextMenu()
     pluginPopup->setItemKey(m_itemKey);
     pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeMenu);
     m_menu->setFixedSize(m_menu->sizeHint());
-    m_isPanelPopupShow = false;
     return m_menu;
 }
 
@@ -143,6 +138,11 @@ void PluginItem::mouseReleaseEvent(QMouseEvent *e)
 
 void PluginItem::enterEvent(QEvent *event)
 {
+    // panel popup existed, not show tooltip
+    if (panelPopupExisted()) {
+        return QWidget::enterEvent(event);
+    }
+
     if (auto toolTip = pluginTooltip()) {
         if (auto pluginPopup = Plugin::PluginPopup::get(toolTip->windowHandle())) {
             auto geometry = windowHandle()->geometry();
@@ -309,4 +309,15 @@ void PluginItem::setPluginVisible(bool isVisible)
             widget->window()->windowHandle()->hide();
         }
     }
+}
+
+bool PluginItem::panelPopupExisted() const
+{
+    if (auto popup = m_pluginsItemInterface->itemPopupApplet(m_itemKey)) {
+        if (Plugin::PluginPopup::contains(popup->windowHandle())) {
+            return true;
+        }
+    }
+
+    return false;
 }
