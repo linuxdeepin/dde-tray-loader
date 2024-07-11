@@ -118,7 +118,7 @@ void PluginItem::mouseReleaseEvent(QMouseEvent *e)
         if (auto popup = itemPopupApplet()) {
             if (auto pluginPopup = Plugin::PluginPopup::get(popup->windowHandle())) {
                 auto geometry = windowHandle()->geometry();
-                const auto offset = e->pos();
+                const auto offset = QPoint(0, 0);
                 pluginPopup->setX(geometry.x() + offset.x());
                 pluginPopup->setY(geometry.y() + offset.y());
                 popup->show();
@@ -149,7 +149,7 @@ void PluginItem::enterEvent(QEvent *event)
         if (auto pluginPopup = Plugin::PluginPopup::get(toolTip->windowHandle())) {
             auto geometry = windowHandle()->geometry();
             auto e = dynamic_cast<QEnterEvent *>(event);
-            const auto offset = e->pos();
+            const auto offset = QPoint(0, 0);
             pluginPopup->setX(geometry.x() + offset.x());
             pluginPopup->setY(geometry.y() + offset.y());
 
