@@ -27,7 +27,7 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
         QString actionStr = action->data().toString();
         if (actionStr == Dock::dockMenuItemId || actionStr == Dock::unDockMenuItemId) {
             setPluginVisible(actionStr == Dock::dockMenuItemId);
-            m_dbusProxy->setItemOnDock(DockQuickPlugins, PluginItem::itemKey(), actionStr == Dock::dockMenuItemId);
+            m_dbusProxy->setItemOnDock(DockQuickPlugins, pluginId() + "::" + m_itemKey, actionStr == Dock::dockMenuItemId);
         } else {
             m_pluginsItemInterface->invokedMenuItem(m_itemKey, action->data().toString(), action->isCheckable() ? action->isChecked() : true);
         }
