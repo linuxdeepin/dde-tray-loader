@@ -9,6 +9,7 @@
 #include <QMouseEvent>
 #include <QMenu>
 
+namespace {
 class Q_DECL_HIDDEN EventFilter : public QObject
 {
 public:
@@ -36,9 +37,11 @@ public:
         }
 
         if (watched == m_target) {
-            m_accepedEvent = QEvent::None;
-            if (m_timer->isActive())
-                m_timer->stop();
+            if (event->type() != QEvent::MouseButtonRelease) {
+                m_accepedEvent = QEvent::None;
+                if (m_timer->isActive())
+                    m_timer->stop();
+            }
         } else {
             const auto children = m_target->findChildren<QWidget *>();
             if (children.contains(qobject_cast<QWidget *>(watched))) {
@@ -55,11 +58,13 @@ private:
             return;
 
         Q_EMIT m_target->recvMouseEvent(m_accepedEvent);
+        m_accepedEvent = QEvent::None;
     }
     QTimer *m_timer = nullptr;
     PluginItem *m_target = nullptr;
     QEvent::Type m_accepedEvent = {QEvent::None};
 };
+}
 
 QuickPluginItem::QuickPluginItem(PluginsItemInterface *pluginInterface, const QString &itemKey, QWidget *parent)
     : PluginItem(pluginInterface, itemKey, parent)
