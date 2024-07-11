@@ -62,6 +62,7 @@ protected:
 private:
     PluginsItemInterface *m_pluginsItemInterface;
     PluginsItemInterfaceV2 *m_pluginsItemInterfacev2;
+    QTimer* m_tooltipTimer;
 
     int m_pluginFlags = 0;
 };
