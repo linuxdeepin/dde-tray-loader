@@ -85,6 +85,7 @@ public:
     ~NetWidget() Q_DECL_OVERRIDE;
 
     void setCentralWidget(QWidget *widget);
+    QWidget *centralWidget() const;
     void addPasswordWidget(QWidget *widget);
     void setNoMousePropagation(bool noMousePropagation);
     void removePasswordWidget();
@@ -104,7 +105,6 @@ public Q_SLOTS:
     void closeInput();
 
 protected:
-    bool event(QEvent *e) override;
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void sendRequest(NetManager::CmdType cmd, const QString &id, const QVariantMap &param = QVariantMap());

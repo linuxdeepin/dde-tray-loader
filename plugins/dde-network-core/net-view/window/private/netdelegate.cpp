@@ -174,9 +174,10 @@ void NetDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, c
     if (textColor.isValid()) {
         boption.palette.setBrush(QPalette::BrightText, textColor);
         boption.palette.setBrush(QPalette::Highlight, textColor);
-        QWidget *w = m_view->indexWidget(index);
-        if (w) {
-            w->setPalette(boption.palette);
+        if (auto widget = qobject_cast<NetWidget *>(m_view->indexWidget(index))) {
+            if (auto w = widget->centralWidget()) {
+                w->setPalette(boption.palette);
+            }
         }
     }
     if (bgColor.isValid()) {
@@ -346,6 +347,13 @@ void NetWidget::setCentralWidget(QWidget *widget)
     m_mainLayout->addWidget(widget);
 }
 
+QWidget *NetWidget::centralWidget() const
+{
+    if (m_mainLayout->count() <= 0)
+        return nullptr;
+    return m_mainLayout->itemAt(0)->widget();
+}
+
 void NetWidget::addPasswordWidget(QWidget *widget)
 {
     m_mainLayout->addWidget(widget);
@@ -439,23 +447,6 @@ void NetWidget::closeInput()
 {
     removePasswordWidget();
     Q_EMIT requestUpdateLayout();
-}
-
-bool NetWidget::event(QEvent *e)
-{
-    switch (e->type()) {
-    case QEvent::PaletteChange: {
-        QLayout *layout = this->layout();
-        for (int i = 0; i < layout->count(); i++) {
-            QWidget *widget = layout->itemAt(i)->widget();
-            if (widget && !qobject_cast<NetSecretWidget *>(widget))
-                widget->setPalette(palette());
-        }
-    } break;
-    default:
-        break;
-    }
-    return QWidget::event(e);
 }
 
 void NetWidget::mousePressEvent(QMouseEvent *event)
