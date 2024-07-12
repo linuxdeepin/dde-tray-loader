@@ -144,6 +144,13 @@ EmbedPlugin* EmbedPlugin::get(QWindow* window)
         QObject::connect(plugin, &EmbedPlugin::destroyed, window, [window] () {
             s_map.remove(window);
         });
+
+        QObject::connect(window, &QWindow::visibleChanged, window, [window, plugin] (bool visible) {
+            if (!visible) {
+                plugin->deleteLater();
+                s_map.remove(window);
+            }
+        });
     }
 
     return plugin;

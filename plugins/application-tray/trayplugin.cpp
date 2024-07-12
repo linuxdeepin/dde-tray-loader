@@ -69,13 +69,13 @@ Dock::PluginFlags TrayPlugin::flags() const
     return Dock::Attribute_CanDrag | Dock::Attribute_CanInsert | Dock::Type_Tray;
 }
 
-
 void TrayPlugin::onTrayhandlerCreatd(QPointer<AbstractTrayProtocolHandler> handler)
 {
     auto id = handler->id();
     m_widget.insert(id, new TrayWidget(handler));
 
     auto remove = [this, id]() {
+        m_proyInter->itemRemoved(this, id);
         auto widget = m_widget.value(id);
         if (widget) {
             widget->deleteLater();

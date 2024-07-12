@@ -13,10 +13,6 @@
 
 #include <QMouseEvent>
 #include <QWindow>
-#include <qlabel.h>
-#include <qobjectdefs.h>
-#include <qpoint.h>
-#include <qwidget.h>
 
 // Q_LOGGING_CATEGORY(sniTrayLod, "dde.shell.tray.sni")
 
@@ -165,16 +161,23 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                 m_sniInter->Activate(0, 0);
             } else if (mouseEvent->button() == Qt::RightButton) {
                 auto menu = m_dbusMenuImporter->menu();
+                if (!menu) return false;
+                menu->setFixedSize(menu->sizeHint());
+                auto pa = menu->palette();
+                pa.setColor(QPalette::ColorRole::Window, Qt::transparent);
+                menu->setPalette(pa);
                 menu->winId();
+
                 auto widget = static_cast<QWidget*>(parent());
                 auto geometry = widget->window()->windowHandle()->geometry();
                 auto pluginPopup = Plugin::PluginPopup::get(menu->windowHandle());
                 pluginPopup->setPluginId("application-tray");
                 pluginPopup->setItemKey(id());
                 pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeMenu);
-                pluginPopup->setX(geometry.x() + geometry.width() / 2);
-                pluginPopup->setY(geometry.y() + geometry.height() / 2);
-                menu->setFixedSize(menu->sizeHint());
+                const auto offset = mouseEvent->pos();
+                pluginPopup->setX(geometry.x() + offset.x());
+                pluginPopup->setY(geometry.y() + offset.y());
+                // FIXME: show() will not get inputfocus while exec() case a ui issue
                 menu->exec();
             }
         }
