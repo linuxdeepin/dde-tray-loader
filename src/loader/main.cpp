@@ -117,7 +117,7 @@ int main(int argc, char *argv[], char *envp[])
 
     app.setApplicationName(interface->pluginName());
     app.setApplicationDisplayName(interface->pluginDisplayName());
-    setproctitle((QStringLiteral("dock plugin: ") + interface->pluginName()).toStdString().c_str());
+    setproctitle((QStringLiteral("tray plugin: ") + interface->pluginName()).toStdString().c_str());
     qputenv("QT_SCALE_FACTOR", "");
     return app.exec();
 }

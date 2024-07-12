@@ -66,7 +66,7 @@ set_target_properties(dockpluginmanager PROPERTIES
 
 set_target_properties(dockpluginmanager-interface PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/plugins/"
-    OUTPUT_NAME dde-dockplugin-interface
+    OUTPUT_NAME dde-trayplugin-interface
     VERSION ${CMAKE_PROJECT_VERSION}
     SOVERSION ${CMAKE_PROJECT_VERSION_MAJOR}
 )
