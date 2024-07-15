@@ -138,13 +138,25 @@ QIcon SniTrayProtocolHandler::attentionIcon() const
 
 QIcon SniTrayProtocolHandler::icon() const
 {
-    auto iconName = m_sniInter->iconName();
+    const QString iconName = m_sniInter->iconName();
+    const QString iconThemePath = m_sniInter->iconThemePath();
+    QIcon resIcon;
+
     if (!iconName.isEmpty()) {
-        return QIcon::fromTheme(iconName);
+        resIcon = QIcon::fromTheme(iconName);
+        if (!resIcon.isNull()) {
+            return resIcon;
+        }
     }
 
-    auto icon = dbusImageList2QIcon(m_sniInter->iconPixmap());
-    return icon;
+    if (!iconThemePath.isEmpty()) {
+        resIcon = QIcon(iconThemePath + QDir::separator() + iconName);
+        if (!resIcon.isNull()) {
+            return resIcon;
+        }
+    }
+
+    return dbusImageList2QIcon(m_sniInter->iconPixmap());
 }
 
 bool SniTrayProtocolHandler::enabled() const
