@@ -83,9 +83,11 @@ QWidget *PluginItem::itemPopupApplet()
 
 QMenu *PluginItem::pluginContextMenu()
 {
-    if (m_menu->actions().isEmpty()) {
-        initPluginMenu();
+    if (!m_menu->actions().isEmpty()) {
+        m_menu->clear();
     }
+
+    initPluginMenu();
 
     qDebug() << "mouseRightButtonClicked:" << m_itemKey << m_menu->actions().size();
     m_menu->setAttribute(Qt::WA_TranslucentBackground, true);
