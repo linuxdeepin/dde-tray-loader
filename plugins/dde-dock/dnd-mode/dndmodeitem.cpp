@@ -36,7 +36,7 @@ void DndModeItem::init()
     m_tipsLabel->setVisible(false);
 
     m_applet->setVisible(false);
-    m_applet->setDccPage("notification", "System Notification");
+    m_applet->setDccPage("notification", "SystemNotify");
     m_applet->setTitle(tr("DND Mode"));
     m_applet->setDescription(tr("DND mode settings"));
     m_applet->setIcon(QIcon::fromTheme("open-arrow"));

@@ -23,7 +23,7 @@ PowerStatusWidget::PowerStatusWidget(QWidget *parent)
     m_iconWidget->setFixedSize(Dock::DOCK_PLUGIN_ITEM_FIXED_SIZE);
 
     m_applet->setVisible(false);
-    m_applet->setDccPage("power", "General");
+    m_applet->setDccPage("power", "general");
     m_applet->setDescription(tr("Power settings"));
     m_applet->setIcon(QIcon::fromTheme("open-arrow"));
 
