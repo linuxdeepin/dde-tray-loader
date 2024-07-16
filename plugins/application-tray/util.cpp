@@ -156,7 +156,7 @@ QSize Util::getX11WindowSize(const xcb_window_t& window)
     auto cookie = xcb_get_geometry(m_x11connection, window);
     QSharedPointer<xcb_get_geometry_reply_t> clientGeom(xcb_get_geometry_reply(m_x11connection, cookie, nullptr));
 
-    return QSize(clientGeom->width, clientGeom->height);
+    return clientGeom ? QSize(clientGeom->width, clientGeom->height) : QSize(0, 0);
 }
 
 QString Util::getX11WindowName(const xcb_window_t& window)
