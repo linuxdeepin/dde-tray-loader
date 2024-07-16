@@ -88,7 +88,7 @@ void SoundApplet::initUi()
 
     // sound setting button
     m_settingButton->setAutoShowPage(true);
-    m_settingButton->setDccPage("sound", "Speaker");
+    m_settingButton->setDccPage("sound", "output");
     m_settingButton->setIcon(QIcon::fromTheme("open-arrow"));
     m_settingButton->setDescription(tr("Sound settings"));
 
