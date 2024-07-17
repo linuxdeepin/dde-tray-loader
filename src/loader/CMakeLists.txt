@@ -7,7 +7,7 @@ find_package(Dtk REQUIRED COMPONENTS Gui Widget)
 
 file(GLOB SRCS "*.h" "*.cpp" "../../interfaces/*.h" "utils/*.h" "utils/*.cpp")
 
-add_executable(trayplugin-loader
+add_executable(dockplugin-loader
     main.cpp
     dockdbusproxy.cpp
     dockdbusproxy.h
@@ -22,14 +22,14 @@ add_executable(trayplugin-loader
     loader.qrc
 )
 
-target_include_directories(trayplugin-loader PUBLIC
+target_include_directories(dockplugin-loader PUBLIC
     "utils/"
     "../../interfaces/"
     "../tray-wayland-integration/"
     "${CMAKE_BINARY_DIR}/"
 )
 
-target_link_libraries(trayplugin-loader PRIVATE
+target_link_libraries(dockplugin-loader PRIVATE
     dockpluginmanager-interface
     Qt5::Core
     Qt5::Widgets
@@ -37,7 +37,7 @@ target_link_libraries(trayplugin-loader PRIVATE
     Dtk::Gui
 )
 
-install(TARGETS trayplugin-loader DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
+install(TARGETS dockplugin-loader DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
 
 #dconfig
 dtk_add_config_meta_files(APPID org.deepin.dde.dock FILES ./configs/org.deepin.dde.dock.plugin.common.json)
