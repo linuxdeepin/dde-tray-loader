@@ -45,7 +45,6 @@ protected:
     void initPluginMenu();
     QWidget *itemTooltip(const QString &itemKey);
     bool executeCommand();
-    void setPluginVisible(bool isvisible);
 
 private:
     QWidget *itemPopupApplet();

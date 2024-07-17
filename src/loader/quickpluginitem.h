@@ -22,9 +22,6 @@ protected:
     virtual QWidget *pluginTooltip() override;
     virtual QString itemKey() const override;
 
-public Q_SLOTS:
-    void onPluginVisibleChanged(const QString &itemKey, bool visible);
-
 private:
     bool pluginIsVisible();
 
