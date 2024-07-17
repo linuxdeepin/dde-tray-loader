@@ -26,8 +26,7 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
     connect(m_menu, &QMenu::triggered, this, [this](QAction *action){
         QString actionStr = action->data().toString();
         if (actionStr == Dock::dockMenuItemId || actionStr == Dock::unDockMenuItemId) {
-            setPluginVisible(actionStr == Dock::dockMenuItemId);
-            m_dbusProxy->setItemOnDock(DockQuickPlugins, pluginId() + "::" + m_itemKey, actionStr == Dock::dockMenuItemId);
+            m_dbusProxy->setItemOnDock(DockQuickPlugins, m_itemKey, actionStr == Dock::dockMenuItemId);
         } else {
             m_pluginsItemInterface->invokedMenuItem(m_itemKey, action->data().toString(), action->isCheckable() ? action->isChecked() : true);
         }
@@ -310,18 +309,6 @@ bool PluginItem::executeCommand()
         return true;
     }
     return false;
-}
-
-void PluginItem::setPluginVisible(bool isVisible)
-{
-    auto widget = m_pluginsItemInterface->itemWidget(m_itemKey);
-    if (widget && widget->window() && widget->window()->windowHandle()) {
-        if (isVisible) {
-            widget->window()->windowHandle()->show();
-        } else {
-            widget->window()->windowHandle()->hide();
-        }
-    }
 }
 
 bool PluginItem::panelPopupExisted() const

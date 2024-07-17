@@ -73,7 +73,6 @@ QuickPluginItem::QuickPluginItem(PluginsItemInterface *pluginInterface, const QS
     if (m_dbusProxy.isNull())
         m_dbusProxy.reset(new DockDBusProxy);
     qApp->installEventFilter(new EventFilter(this));
-    connect(m_dbusProxy.data(), &DockDBusProxy::pluginVisibleChanged, this, &QuickPluginItem::onPluginVisibleChanged);
 }
 
 QWidget *QuickPluginItem::centralWidget()
@@ -148,13 +147,6 @@ QWidget *QuickPluginItem::pluginTooltip()
 QString QuickPluginItem::itemKey() const
 {
     return Dock::QUICK_ITEM_KEY;
-}
-
-void QuickPluginItem::onPluginVisibleChanged(const QString &itemKey, bool visible)
-{
-    if (itemKey == m_itemKey) {
-        setPluginVisible(visible);
-    }
 }
 
 bool QuickPluginItem::pluginIsVisible()
