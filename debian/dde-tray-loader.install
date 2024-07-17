@@ -1,5 +1,5 @@
-usr/libexec/dockplugin-loader
-usr/lib/*/libdde-dockplugin-interface.so.*
+usr/libexec/trayplugin-loader
+usr/lib/*/libdde-trayplugin-interface.so.*
 usr/lib/dde-dock/plugins/libapplication-tray.so
 usr/lib/dde-dock/plugins/libdatetime.so
 usr/lib/dde-dock/plugins/libshutdown.so
