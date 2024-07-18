@@ -39,6 +39,7 @@ public:
     void setAutoScanInterval(int ms);
     void setAutoScanEnabled(bool enabled);
     void setEnabled(bool enabled);
+    void setServerKey(const QString &serverKey);
     void init();
     bool netCheckAvailable();
 

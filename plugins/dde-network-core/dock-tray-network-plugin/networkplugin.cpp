@@ -89,6 +89,7 @@ void NetworkPlugin::init(PluginProxyInterface *proxyInter)
     m_manager->setMonitorNetworkNotify(false);
     m_manager->setUseSecretAgent(true);
     m_manager->setNetwork8021XMode(NetManager::ToControlCenterUnderConnect);
+    m_manager->setServerKey("dock");
     m_manager->init();
     m_netStatus->setDirection(position() == Dock::Top || position() == Dock::Bottom ? QBoxLayout::LeftToRight : QBoxLayout::TopToBottom);
 

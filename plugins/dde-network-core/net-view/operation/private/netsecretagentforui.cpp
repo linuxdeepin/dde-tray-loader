@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "netsecretagentforui.h"
+
 #include "networkconst.h"
 
 #include <QApplication>
@@ -23,12 +24,12 @@ static QMap<QString, void (NetSecretAgentForUI::*)(QLocalSocket *, const QByteAr
     { "requestSecrets", &NetSecretAgentForUI::requestSecrets },
 };
 
-NetSecretAgentForUI::NetSecretAgentForUI(PasswordCallbackFunc fun, QObject *parent)
+NetSecretAgentForUI::NetSecretAgentForUI(PasswordCallbackFunc fun, const QString &serverKey, QObject *parent)
     : QObject(parent)
     , NetSecretAgentInterface(fun)
     , m_server(nullptr)
 {
-    setServerName("dde-network-dialog" + QString::number(getuid()) + QApplication::applicationName().right(4));
+    setServerName("dde-network-dialog" + QString::number(getuid()) + serverKey);
 }
 
 bool NetSecretAgentForUI::hasTask()

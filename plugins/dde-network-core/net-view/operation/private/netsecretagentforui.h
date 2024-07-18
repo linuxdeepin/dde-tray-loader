@@ -20,7 +20,7 @@ class NetSecretAgentForUI : public QObject, public NetSecretAgentInterface
 {
     Q_OBJECT
 public:
-    explicit NetSecretAgentForUI(PasswordCallbackFunc fun, QObject *parent = Q_NULLPTR);
+    explicit NetSecretAgentForUI(PasswordCallbackFunc fun, const QString &serverKey, QObject *parent = Q_NULLPTR);
     ~NetSecretAgentForUI() override;
 
     bool hasTask() override;
