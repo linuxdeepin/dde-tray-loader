@@ -283,8 +283,10 @@ QWidget *NetStatus::createDockIconWidget()
 
 void NetStatus::setDirection(QBoxLayout::Direction position)
 {
-    if (m_dockIconWidgetlayout)
+    if (m_dockIconWidgetlayout) {
         m_dockIconWidgetlayout->setDirection(position);
+        updateItemWidgetSize();
+    }
 }
 
 void NetStatus::refreshIcon()
@@ -489,9 +491,7 @@ void NetStatus::updateVpnAndProxyStatus()
         const bool visible = m_vpnItem.Connected || m_proxyItem.Enabled;
         if (m_vpnAndProxyIconVisibel != visible) {
             m_vpnAndProxyIconVisibel = visible;
-            if (m_dockIconWidgetlayout->parentWidget()) {
-                m_dockIconWidgetlayout->parentWidget()->setFixedSize(visible ? QSize(42, 16) : QSize(16, 16));
-            }
+            updateItemWidgetSize();
             Q_EMIT vpnAndProxyIconVisibelChanged(m_vpnAndProxyIconVisibel);
         }
         m_vpnAndProxyBut->setVisible(m_vpnAndProxyIconVisibel);
@@ -1075,6 +1075,16 @@ QVector<NetItem *> NetStatus::getDeviceConnections(unsigned type, unsigned conne
     }
     return activeItems[static_cast<unsigned>(NetConnectionStatus::Connecting)] + activeItems[static_cast<unsigned>(NetConnectionStatus::Connected)]
             + activeItems[static_cast<unsigned>(NetConnectionStatus::UnConnected)];
+}
+
+void NetStatus::updateItemWidgetSize()
+{
+    if (!m_dockIconWidgetlayout)
+        return;
+
+    if (auto itemWidget = m_dockIconWidgetlayout->parentWidget()) {
+        itemWidget->setFixedSize(itemWidget->sizeHint());
+    }
 }
 
 } // namespace network
