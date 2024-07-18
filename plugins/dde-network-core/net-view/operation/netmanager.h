@@ -24,6 +24,7 @@ public:
     void setServiceLoadForNM(bool isNM);        // 使用NM
     void setMonitorNetworkNotify(bool monitor); // 发网络通知
     void setUseSecretAgent(bool enabled);       // 实现密码代理
+    void setServerKey(const QString &serverKey);
     // 以上设置需在init之前设置，不支持动态修改
     void init();
 

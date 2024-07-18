@@ -53,6 +53,7 @@ public:
     void setAutoUpdateHiddenConfig(bool autoUpdate);
     void setAutoScanInterval(int ms);
     void setAutoScanEnabled(bool enabled);
+    void setServerKey(const QString &serverKey);
 
     void init();
 
@@ -208,6 +209,7 @@ private:
 
     bool m_netCheckAvailable;
     bool m_airplaneModeEnabled;
+    QString m_serverKey;
 };
 
 } // namespace network

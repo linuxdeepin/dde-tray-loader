@@ -5,9 +5,9 @@
 #include "netmanager.h"
 
 #include "netitem.h"
+#include "networkconst.h"
 #include "private/netmanager_p.h"
 #include "private/netmanagerthreadprivate.h"
-#include "networkconst.h"
 
 #include <QApplication>
 #include <QDebug>
@@ -43,6 +43,12 @@ void NetManager::setUseSecretAgent(bool enabled)
 {
     Q_D(NetManager);
     d->setUseSecretAgent(enabled);
+}
+
+void NetManager::setServerKey(const QString &serverKey)
+{
+    Q_D(NetManager);
+    d->setServerKey(serverKey);
 }
 
 void NetManager::init()
@@ -285,6 +291,11 @@ void NetManagerPrivate::setAutoScanEnabled(bool enabled)
 void NetManagerPrivate::setEnabled(bool enabled)
 {
     m_managerThread->setEnabled(enabled);
+}
+
+void NetManagerPrivate::setServerKey(const QString &serverKey)
+{
+    m_managerThread->setServerKey(serverKey);
 }
 
 void NetManagerPrivate::init()

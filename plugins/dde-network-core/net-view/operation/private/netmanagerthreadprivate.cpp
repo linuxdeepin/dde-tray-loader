@@ -14,8 +14,8 @@
 #include "wirelessdevice.h"
 #include "configwatcher.h"
 
-#include <vpncontroller.h>
 #include <proxycontroller.h>
+#include <vpncontroller.h>
 #include <NetworkManagerQt/AccessPoint>
 #include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/Security8021xSetting>
@@ -89,6 +89,7 @@ NetManagerThreadPrivate::NetManagerThreadPrivate()
     , m_lastState(NetworkManager::Device::State::UnknownState)
     , m_secretAgent(nullptr)
     , m_netCheckAvailable(false)
+    , m_serverKey("dock")
 {
     moveToThread(m_thread);
     m_thread->start();
@@ -212,6 +213,11 @@ void NetManagerThreadPrivate::setAutoScanEnabled(bool enabled)
     }
 }
 
+void NetManagerThreadPrivate::setServerKey(const QString &serverKey)
+{
+    m_serverKey = serverKey;
+}
+
 void NetManagerThreadPrivate::init()
 {
     // 在主线程中先安装翻译器，因为直接在子线程中安装翻译器可能会引起崩溃
@@ -328,7 +334,7 @@ void NetManagerThreadPrivate::doInit()
         if (m_loadForNM) {
             m_secretAgent = new NetSecretAgent(std::bind(&NetManagerThreadPrivate::requestPassword, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), true, this);
         } else {
-            m_secretAgent = new NetSecretAgentForUI(std::bind(&NetManagerThreadPrivate::requestPassword, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), this);
+            m_secretAgent = new NetSecretAgentForUI(std::bind(&NetManagerThreadPrivate::requestPassword, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3), m_serverKey, this);
         }
     }
 
@@ -362,7 +368,7 @@ void NetManagerThreadPrivate::doInit()
         vpnConnectionStateChanged();
     };
 
-    auto vpnEnableChanged = [this] (const bool enabled) {
+    auto vpnEnableChanged = [this](const bool enabled) {
         Q_EMIT dataChanged(DataChanged::EnabledChanged, "NetVPNControlItem", enabled);
     };
 
