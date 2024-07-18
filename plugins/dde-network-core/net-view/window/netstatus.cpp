@@ -489,6 +489,9 @@ void NetStatus::updateVpnAndProxyStatus()
         const bool visible = m_vpnItem.Connected || m_proxyItem.Enabled;
         if (m_vpnAndProxyIconVisibel != visible) {
             m_vpnAndProxyIconVisibel = visible;
+            if (m_dockIconWidgetlayout->parentWidget()) {
+                m_dockIconWidgetlayout->parentWidget()->setFixedSize(visible ? QSize(42, 16) : QSize(16, 16));
+            }
             Q_EMIT vpnAndProxyIconVisibelChanged(m_vpnAndProxyIconVisibel);
         }
         m_vpnAndProxyBut->setVisible(m_vpnAndProxyIconVisibel);
