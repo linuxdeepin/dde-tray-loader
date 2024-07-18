@@ -319,6 +319,8 @@ void DatetimePlugin::positionChanged(const Dock::Position position)
 {
     Q_UNUSED(position);
     if (m_centralWidget) {
+        // 任务栏位置发生改变的时候需要重新设置窗口大小
+        m_centralWidget.data()->setFixedSize(m_centralWidget.data()->sizeHint());
         m_centralWidget.data()->dockPositionChanged();
     }
 }
