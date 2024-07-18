@@ -105,18 +105,17 @@ void QuickPluginItem::mouseReleaseEvent(QMouseEvent *e)
 
 QMenu *QuickPluginItem::pluginContextMenu()
 {
-    if (m_menu->isEmpty()) {
-        initPluginMenu();
+    m_menu->clear();
+    initPluginMenu();
 
-        int flags = pluginFlags();
-        if (flags & Dock::Attribute_CanSetting) {
+    int flags = pluginFlags();
+    if (flags & Dock::Attribute_CanSetting) {
+        if (!m_onDockAction) {
             m_onDockAction = new QAction();
-            m_onDockAction->setEnabled(true);
-            m_menu->addAction(m_onDockAction);
         }
-    }
+        m_onDockAction->setEnabled(true);
+        m_menu->addAction(m_onDockAction);
 
-    if (m_onDockAction) {
         bool onDock = pluginIsVisible();
         QString itemText = onDock ? tr("Remove from dock") : tr("Pin to dock");
         m_onDockAction->setText(itemText);
