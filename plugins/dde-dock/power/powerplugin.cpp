@@ -239,6 +239,7 @@ void PowerPlugin::loadPlugin()
     updateBatteryVisible();
 
     onGSettingsChanged("showtimetofull");
+    m_powerStatusWidget->refreshIcon();
 }
 
 void PowerPlugin::refreshPluginItemsVisible()
