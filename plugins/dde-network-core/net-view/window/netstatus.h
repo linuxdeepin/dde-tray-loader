@@ -137,6 +137,7 @@ Q_SIGNALS:
 
 private:
     QVector<NetItem *> getDeviceConnections(unsigned type, unsigned connectType) const;
+    void updateItemWidgetSize();
 
 private:
     NetManager *m_manager;
