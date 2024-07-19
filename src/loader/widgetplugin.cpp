@@ -155,6 +155,10 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
             plugin->setItemKey(itemKey);
             plugin->setPluginType(Plugin::EmbedPlugin::Fixed);
             plugin->setPluginSizePolicy(itemInter->pluginSizePolicy());
+            if (flag & Dock::Attribute_CanSetting) {
+                const QString path = DCCIconPath + itemInter->pluginName() + ".svg";
+                plugin->setDccIcon(path);
+            }
             item->windowHandle()->hide();
             item->show();
         }
