@@ -1,139 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>dde::network::DockContentWidget</name>
     <message>
         <source>Network settings</source>
-        <translation type="unfinished"></translation>
+        <translation>网络设置</translation>
     </message>
     <message>
         <source>Network Detection</source>
-        <translation type="unfinished"></translation>
+        <translation>网络检测</translation>
     </message>
 </context>
 <context>
     <name>dde::network::NetAirplaneModeTipsItem</name>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a wireless network</source>
-        <translation type="unfinished"></translation>
+        <source>Disable Airplane Mode first if you want to connect to a wireless network</source>
+        <translation>若要使用无线网络功能，请先关闭飞行模式</translation>
     </message>
 </context>
 <context>
     <name>dde::network::NetManagerPrivate</name>
     <message>
         <source>IP conflict</source>
-        <translation type="unfinished"></translation>
+        <translation>IP地址冲突</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>网络</translation>
     </message>
 </context>
 <context>
     <name>dde::network::NetManagerThreadPrivate</name>
     <message>
         <source>Connecting &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>正在连接&quot;%1&quot;</translation>
     </message>
     <message>
         <source>&quot;%1&quot; connected</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot;已连接</translation>
     </message>
     <message>
         <source>&quot;%1&quot; disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot;已断开</translation>
     </message>
     <message>
         <source>Unable to connect &quot;%1&quot;, please check your router or net cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>未能加入&quot;%1&quot;，请检查路由器或网线。</translation>
     </message>
     <message>
         <source>Unable to connect &quot;%1&quot;, please keep closer to the wireless router</source>
-        <translation type="unfinished"></translation>
+        <translation>未能加入&quot;%1&quot;，请尝试靠近无线路由器</translation>
     </message>
     <message>
         <source>Connection failed, unable to connect &quot;%1&quot;, wrong password</source>
-        <translation type="unfinished"></translation>
+        <translation>连接失败，未能加入&quot;%1&quot;，密码不正确</translation>
     </message>
     <message>
         <source>Password is required to connect &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>连接&quot;%1&quot;需要密码</translation>
     </message>
     <message>
         <source>The &quot;%1&quot; 802.11 WLAN network could not be found</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; 802.11 WLAN网络无法找到</translation>
     </message>
     <message>
         <source>To connect &quot;%1&quot;, please set up your authentication info after logging in</source>
-        <translation type="unfinished"></translation>
+        <translation>连接“%1”需要登录后配置认证信息</translation>
     </message>
 </context>
 <context>
     <name>dde::network::NetSecretWidget</name>
     <message>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入密码</translation>
     </message>
     <message>
         <source>Private Pwd</source>
-        <translation type="unfinished"></translation>
+        <translation>私钥密码</translation>
     </message>
     <message>
         <source>key</source>
-        <translation type="unfinished"></translation>
+        <translation>密钥</translation>
     </message>
     <message>
         <source>Proxy Password</source>
-        <translation type="unfinished"></translation>
+        <translation>代理密码</translation>
     </message>
     <message>
         <source>Group Password</source>
-        <translation type="unfinished"></translation>
+        <translation>组密码</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入用户名</translation>
     </message>
     <message>
         <source>Name (SSID)</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入网络名称（SSID）</translation>
     </message>
     <message>
         <source>Cancel</source>
         <comment>button</comment>
-        <translation type="unfinished"></translation>
+        <translation>取 消</translation>
     </message>
     <message>
         <source>Connect</source>
         <comment>button</comment>
-        <translation type="unfinished"></translation>
+        <translation>连 接</translation>
     </message>
 </context>
 <context>
     <name>dde::network::NetStatus</name>
     <message>
-        <source>Close wired connection</source>
+        <source>Disable wired connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open wired connection</source>
+        <source>Enable wired connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Close wireless connection</source>
+        <source>Disable wireless connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open wireless connection</source>
+        <source>Enable wireless connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Close network</source>
+        <source>Disable network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open network</source>
+        <source>Enable network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable VPN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable VPN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable system proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable system proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -141,8 +157,20 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Connected</source>
+        <source>Multiple services started</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected to: %1</source>
+        <translation type="unfinished">已连接到%1</translation>
+    </message>
+    <message>
+        <source>System proxy enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected</source>
+        <translation>已连接</translation>
     </message>
     <message>
         <source>Network off</source>
@@ -162,7 +190,7 @@
     </message>
     <message>
         <source>Connected but no Internet access</source>
-        <translation type="unfinished"></translation>
+        <translation>已连接网络但无法访问互联网</translation>
     </message>
     <message>
         <source>Connection failed</source>
@@ -178,7 +206,7 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"></translation>
+        <translation>已连接%1</translation>
     </message>
     <message>
         <source>Off</source>
@@ -190,6 +218,27 @@
     </message>
     <message>
         <source>Network</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>dde::network::NetSystemProxyControlItem</name>
+    <message>
+        <source>System Proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>dde::network::NetVPNControlItem</name>
+    <message>
+        <source>VPN</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>dde::network::NetVPNTipsItem</name>
+    <message>
+        <source>VPN configuration is not connected or failed to connect. Please &lt;a style=&quot;text-decoration: none;&quot; href=&quot;go to the control center&quot;&gt;go to the control center&lt;/a&gt; for inspection.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
