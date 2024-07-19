@@ -8,11 +8,11 @@
         <file>texts/onlyone-f_16px.svg</file>
         <file>texts/onlyone-s_16px.svg</file>
         <file>texts/open-display-settings_16px.svg</file>
-        <file>texts/network-display-succeed_16px.svg</file>
-        <file>texts/network-display-failed_16px.svg</file>
-        <file>texts/network-display-succeed_24px.svg</file>
-        <file>texts/network-display-failed_24px.svg</file>
-        <file>texts/network-display-off_24px.svg</file>
+        <file>texts/network-display-succeed-symbolic_16px.svg</file>
+        <file>texts/network-display-failed-symbolic_16px.svg</file>
+        <file>texts/network-display-succeed-symbolic_24px.svg</file>
+        <file>texts/network-display-failed-symbolic_24px.svg</file>
+        <file>texts/network-display-off-symbolic_24px.svg</file>
         <file>dark/icons/none_128px.svg</file>
         <file>dark/icons/success_128px.svg</file>
         <file>light/icons/none_128px.svg</file>

@@ -10,7 +10,9 @@
 #include <QMouseEvent>
 #include <dapplication.h>
 #include <QTimer>
+#include <DGuiApplicationHelper>
 
+DGUI_USE_NAMESPACE
 namespace tray {
 uint16_t trayIconSize = 16;
 TrayWidget::TrayWidget(QPointer<AbstractTrayProtocolHandler> handler)
@@ -47,10 +49,17 @@ void TrayWidget::paintEvent(QPaintEvent* event)
     Q_UNUSED(event)
 
     // TODO: support attentionIcon/overlayIcon
+    QPalette palette;
+    auto textColor = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType ? Qt::black : Qt::white;
+    palette.setColor(QPalette::WindowText, textColor);
+    setPalette(palette);
+
     QPainter painter(this);
-    auto pixmap = m_attentionTimer->isActive() ? 
-        m_handler->attentionIcon().pixmap(trayIconSize, trayIconSize) : 
-        m_handler->icon().pixmap(trayIconSize, trayIconSize);
-    painter.drawPixmap(0, 0, pixmap);
+    if(m_attentionTimer->isActive()) {
+        m_handler->attentionIcon().paint(&painter, QRect(0, 0, trayIconSize, trayIconSize));
+    } else {
+        m_handler->icon().paint(&painter, QRect(0, 0, trayIconSize, trayIconSize));
+
+    }
 }
 }

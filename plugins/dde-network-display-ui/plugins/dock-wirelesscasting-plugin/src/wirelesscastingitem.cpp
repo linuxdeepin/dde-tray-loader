@@ -38,8 +38,8 @@ WirelessCastingItem::WirelessCastingItem(QWidget *parent)
         if (canCasting != m_canCasting)
             Q_EMIT canCastingChanged(m_canCasting);
 
-        *m_trayIcon = QIcon::fromTheme("network-display-failed");
-        m_quickPanel->setIcon(QIcon::fromTheme("network-display-failed"));
+        *m_trayIcon = QIcon::fromTheme("network-display-failed-symbolic");
+        m_quickPanel->setIcon(QIcon::fromTheme("network-display-failed-symbolic"));
         m_quickPanel->setActive(false);
         if (m_model->state() == WirelessCastingModel::Connected && m_displayMode->screens().size() > 1) {
             m_quickPanel->setDescription(tr("Multiple services started"));
@@ -52,8 +52,8 @@ WirelessCastingItem::WirelessCastingItem(QWidget *parent)
                 m_quickPanel->setDescription(tr("Not connected"));
             }
         } else {
-            *m_trayIcon = QIcon::fromTheme("network-display-succeed");
-            m_quickPanel->setIcon(QIcon::fromTheme("network-display-succeed"));
+            *m_trayIcon = QIcon::fromTheme("network-display-succeed-symbolic");
+            m_quickPanel->setIcon(QIcon::fromTheme("network-display-succeed-symbolic"));
             m_quickPanel->setActive(true);
             m_quickPanel->setDescription(m_model->curMonitorName());
         }
@@ -171,9 +171,9 @@ void WirelessCastingItem::init()
     m_quickPanel->setActive(true);
     m_quickPanel->setText(tr("Multiple Displays"));
     m_quickPanel->setDescription(tr("Not connected"));
-    m_quickPanel->setIcon(QIcon::fromTheme("network-display-failed"));
+    m_quickPanel->setIcon(QIcon::fromTheme("network-display-failed-symbolic"));
 
-    *m_trayIcon = QIcon::fromTheme("network-display-succeed");
+    *m_trayIcon = QIcon::fromTheme("network-display-succeed-symbolic");
     setForegroundRole(QPalette::BrightText);
 }
 
