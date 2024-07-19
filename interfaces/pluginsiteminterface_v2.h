@@ -74,7 +74,7 @@ public:
 
 QT_BEGIN_NAMESPACE
 
-#define ModuleInterface_iid_V2 "com.deepin.dock.PluginsItemInterface_V2"
+#define ModuleInterface_iid_V2 "com.deepin.dock.PluginsItemInterface_2_0_0"
 
 Q_DECLARE_INTERFACE(PluginsItemInterfaceV2, ModuleInterface_iid_V2)
 QT_END_NAMESPACE
