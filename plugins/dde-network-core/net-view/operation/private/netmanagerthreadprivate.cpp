@@ -390,6 +390,9 @@ void NetManagerThreadPrivate::doInit()
         networkController->proxyController()->querySysProxyData();
         ProxyMethod method = networkController->proxyController()->proxyMethod();
         const bool enabled = method == ProxyMethod::Auto || method == ProxyMethod::Manual;
+        if (enabled) {
+            ConfigWatcher::instance()->setProxyMethod(method);
+        }
         Q_EMIT dataChanged(DataChanged::EnabledChanged, "NetSystemProxyControlItem", enabled);
     };
     auto systemProxyExistChanged = [this, networkController] {
