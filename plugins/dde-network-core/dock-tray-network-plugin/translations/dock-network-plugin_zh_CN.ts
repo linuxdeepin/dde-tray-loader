@@ -13,11 +13,7 @@
 <context>
     <name>dde::network::NetAirplaneModeTipsItem</name>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a wireless network</source>
-        <translation>若要使用无线网络功能，请先关闭 &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;飞行模式&lt;/a&gt; </translation>
-    </message>
-    <message>
-        <source>Disable airplane mode first if you want to connect to a wireless network</source>
+        <source>Disable Airplane Mode first if you want to connect to a wireless network</source>
         <translation>若要使用无线网络功能，请先关闭飞行模式</translation>
     </message>
 </context>
@@ -115,32 +111,60 @@
 <context>
     <name>dde::network::NetStatus</name>
     <message>
-        <source>Close wired connection</source>
-        <translation>关闭有线网络</translation>
+        <source>Disable wired connection</source>
+        <translation>禁用有线连接</translation>
     </message>
     <message>
-        <source>Open wired connection</source>
-        <translation>开启有线网络</translation>
+        <source>Enable wired connection</source>
+        <translation>启用有线连接</translation>
     </message>
     <message>
-        <source>Close wireless connection</source>
-        <translation>关闭无线网络</translation>
+        <source>Disable wireless connection</source>
+        <translation>禁用无线连接</translation>
     </message>
     <message>
-        <source>Open wireless connection</source>
-        <translation>开启无线网络</translation>
+        <source>Enable wireless connection</source>
+        <translation>启用无线连接</translation>
     </message>
     <message>
-        <source>Close network</source>
-        <translation>关闭网络</translation>
+        <source>Disable network</source>
+        <translation>禁用网络</translation>
     </message>
     <message>
-        <source>Open network</source>
-        <translation>开启网络</translation>
+        <source>Enable network</source>
+        <translation>启用网络</translation>
+    </message>
+    <message>
+        <source>Disable VPN</source>
+        <translation>禁用VPN</translation>
+    </message>
+    <message>
+        <source>Enable VPN</source>
+        <translation>启用VPN</translation>
+    </message>
+    <message>
+        <source>Disable system proxy</source>
+        <translation>禁用系统代理</translation>
+    </message>
+    <message>
+        <source>Enable system proxy</source>
+        <translation>启用系统代理</translation>
     </message>
     <message>
         <source>Network settings</source>
         <translation>网络设置</translation>
+    </message>
+    <message>
+        <source>Multiple services started</source>
+        <translation>多项服务启动</translation>
+    </message>
+    <message>
+        <source>Connected to: %1</source>
+        <translation>已连接到%1</translation>
+    </message>
+    <message>
+        <source>System proxy enabled</source>
+        <translation>系统代理已启用</translation>
     </message>
     <message>
         <source>Connected</source>
@@ -193,6 +217,27 @@
     <message>
         <source>Network</source>
         <translation>网络</translation>
+    </message>
+</context>
+<context>
+    <name>dde::network::NetSystemProxyControlItem</name>
+    <message>
+        <source>System Proxy</source>
+        <translation>系统代理</translation>
+    </message>
+</context>
+<context>
+    <name>dde::network::NetVPNControlItem</name>
+    <message>
+        <source>VPN</source>
+        <translation>VPN</translation>
+    </message>
+</context>
+<context>
+    <name>dde::network::NetVPNTipsItem</name>
+    <message>
+        <source>VPN configuration is not connected or failed to connect. Please &lt;a style=&quot;text-decoration: none;&quot; href=&quot;go to the control center&quot;&gt;go to the control center&lt;/a&gt; for inspection.</source>
+        <translation>VPN 配置未连接或连接失败。请&lt;a style=&quot;text-decoration: none;&quot; href=&quot;前往控制中心&quot;&gt;前往控制中心&lt;/a&gt;进行检查。</translation>
     </message>
 </context>
 <context>
