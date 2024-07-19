@@ -392,7 +392,9 @@ NetItemType NetAirplaneModeTipsItem::itemType() const
 
 void NetAirplaneModeTipsItem::retranslateUi()
 {
-    updateName(tr("Disable <a style=\"text-decoration: none;\" href=\"Airplane Mode\">Airplane Mode</a> first if you want to connect to a wireless network"));
+    //updateName(tr("Disable <a style=\"text-decoration: none;\" href=\"Airplane Mode\">Airplane Mode</a> first if you want to connect to a wireless network"));
+    // v23控制中心无“飞行模式”模块，因此不能跳转到控制中心模块
+    updateName(tr("Disable Airplane Mode first if you want to connect to a wireless network"));
 }
 
 // 有线禁用项
