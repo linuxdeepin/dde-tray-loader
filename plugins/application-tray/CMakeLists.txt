@@ -38,6 +38,7 @@ qt5_add_dbus_interfaces(
 add_library(${PLUGIN_NAME} SHARED
     ${DBUS_INTERFACES}
     ${TRAY_SOURCES}
+    application-tray.qrc
 )
 
 target_compile_definitions(${PLUGIN_NAME} PRIVATE "QT_PLUGIN")
