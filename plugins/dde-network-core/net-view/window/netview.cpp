@@ -80,11 +80,6 @@ NetView::NetView(NetManager *manager)
 
     connect(this, &NetView::clicked, this, &NetView::activated);
     connect(this, &NetView::activated, this, &NetView::onActivated);
-
-    // 支持在触摸屏上滚动
-    QScroller::grabGesture(viewport(), QScroller::LeftMouseButtonGesture);
-    QScrollerProperties sp;
-    sp.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, QScrollerProperties::OvershootAlwaysOff);
 }
 
 NetView::~NetView() = default;
