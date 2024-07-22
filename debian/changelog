@@ -1,3 +1,10 @@
+dde-tray-loader (0.0.2) unstable; urgency=medium
+
+  * fix: datetime plugin in DCC dosn't have icon
+  * fix: Responding to proxy change signals (#58)
+
+ -- Yingzhen zhao <zhaoyingzhen@uniontech.com>  Fri, 19 Jul 2024 17:32:20 +0800
+
 dde-tray-loader (0.0.1) unstable; urgency=medium
 
   * chore: add dde-dock.pc
