@@ -77,3 +77,8 @@ void CommonApplet::setDccPage(const QString &module, const QString &page)
 {
     m_settingButton->setDccPage(module, page);
 }
+
+void CommonApplet::hideSettingButton()
+{
+    m_settingButton->setVisible(false);
+}

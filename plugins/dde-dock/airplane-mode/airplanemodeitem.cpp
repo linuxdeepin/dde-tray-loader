@@ -35,6 +35,7 @@ AirplaneModeItem::AirplaneModeItem(QWidget* parent)
     m_applet->setDccPage("network", "Airplane Mode");
     m_applet->setDescription(tr("Airplane mode settings"));
     m_applet->setIcon(QIcon::fromTheme("open-arrow"));
+    m_applet->hideSettingButton();
 
     auto vLayout = new QVBoxLayout(this);
     vLayout->setSpacing(0);

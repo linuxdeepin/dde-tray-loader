@@ -23,6 +23,7 @@ public:
     void setIcon(const QIcon &icon);
     void setDescription(const QString &description);
     void setDccPage(const QString &first, const QString &second);
+    void hideSettingButton();
 
 signals:
     void enableChanged(bool enable);
