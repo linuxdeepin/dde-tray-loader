@@ -21,6 +21,7 @@
 DGUI_USE_NAMESPACE
 
 const QString DCCIconPath = CMAKE_INSTALL_PREFIX + QString("/share/dde-dock/icons/dcc-setting/");
+const static int DockItemMargins = 0;
 
 namespace {
 class Q_DECL_HIDDEN EventFilter : public QObject
@@ -120,6 +121,7 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Tray, itemKey) && m_pluginsItemInterface->itemWidget(itemKey)) {
             PluginItem *item = new PluginItem(itemInter, itemKey);
             item->init();
+            item->updatePluginContentMargin(DockItemMargins);
             item->setPluginFlags(flag);
             Plugin::EmbedPlugin* plugin = Plugin::EmbedPlugin::get(item->windowHandle());
             initConnections(plugin, item);
@@ -146,6 +148,7 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Fixed, itemKey)) {
             PluginItem *item = new PluginItem(itemInter, itemKey);
             item->init();
+            item->updatePluginContentMargin(DockItemMargins);
             item->setPluginFlags(flag);
             Plugin::EmbedPlugin* plugin = Plugin::EmbedPlugin::get(item->windowHandle());
             initConnections(plugin, item);
