@@ -28,6 +28,8 @@ public:
     QString pluginId() const { return m_pluginsItemInterface->pluginName(); }
     virtual QString itemKey() const { return m_itemKey; }
 
+    void updatePluginContentMargin(int spacing);
+
 signals:
     void recvMouseEvent(int type);
 

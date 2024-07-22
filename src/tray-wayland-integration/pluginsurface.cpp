@@ -54,6 +54,13 @@ void PluginSurface::plugin_geometry(int32_t x, int32_t y, int32_t width, int32_t
     Q_EMIT m_plugin->eventGeometry(rect);
 }
 
+void PluginSurface::plugin_margin(int32_t spacing)
+{
+    if (spacing > 0) {
+        Q_EMIT m_plugin->contentMarginChanged(spacing);
+    }
+}
+
 void PluginSurface::plugin_raw_global_pos(int32_t x, int32_t y)
 {
     m_plugin->setRawGlobalPos(QPoint(x, y));
