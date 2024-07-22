@@ -26,14 +26,17 @@ public:
 
     bool supportColorTemperature() const { return m_supportColorTemperature; }
     QString gtkTheme() const;
+    QString globalTheme() const;
 
 Q_SIGNALS:
     void eyeComfortModeChanged(bool enabled);
     void supportColorTemperatureChanged(bool support);
-    void gtkThemeChanged(const QString &value);
+    void globalThemeChanged(const QString &value);
 
 public slots:
     void setGtkTheme(const QString &value);
+    // 适配v23接口
+    void setGlobalTheme(const QString &value);
 
 private:
     EyeComfortModeController();

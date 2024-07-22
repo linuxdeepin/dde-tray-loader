@@ -13,9 +13,9 @@
 #include <DSwitchButton>
 #include <DLabel>
 
-const QString DEEPIN_LIGHT = "deepin";
-const QString DEEPIN_DARK = "deepin-dark";
-const QString DEEPIN_AUTO = "deepin-auto";
+const QString THEME_LIGHT = "light";
+const QString THEME_DARK = "dark";
+const QString THEME_AUTO = "auto";
 
 class EyeComfortmodeApplet : public QWidget
 {
@@ -28,18 +28,16 @@ public:
     void setIcon(const QIcon &icon);
     void setDescription(const QString &description);
     void setDccPage(const QString &first, const QString &second);
-    const QString gtkTheme();
-    void setGtkTheme(const QString & value);
     void setEyeComfortVisible(bool visible);
     void setHeight(int height);
 
 signals:
     void enableChanged(bool enable);
     void requestHideApplet();
-    void gtkThemeChanged(const QString & value);
+    void globalThemeChanged(const QString &globalTheme);
 
 public slots:
-    void onGtkThemeChanged(const QString & value);
+    void onGlobalThemeChanged(const QString &value);
 
 private slots:
     void onThemeListClicked(const QModelIndex &index);
@@ -47,6 +45,7 @@ private slots:
 private:
     void initUi();
     void initConnect();
+    void switchTheme(const QString &themeTypeName);
 
 private:
     Dtk::Widget::DLabel *m_title;
@@ -57,7 +56,7 @@ private:
     PluginItem *m_lightTheme;
     PluginItem *m_darkTheme;
     PluginItem *m_autoTheme;
-    QString m_gtkTheme;
+    QString m_themeTypeName;
 };
 
 #endif // EYECOMFORTMODEAPPLET_H

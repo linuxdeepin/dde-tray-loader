@@ -22,7 +22,7 @@ class EyeComfortModeItem : public QWidget
 
 public:
 
-    enum Gtktheme {
+    enum ThemeType {
         Light,
         Dark,
         Auto
@@ -39,7 +39,7 @@ public:
     void updateTips();
     QString displayName() const;
     bool airplaneEnable();
-    Gtktheme gtkTheme(const QString gtkTheme);
+    ThemeType getThemeType(const QString &globalTheme);
     void setAppletHeight(int height);
 
 signals:
@@ -62,7 +62,7 @@ private:
     QPixmap m_iconPixmap;
     QuickPanelWidget *m_quickPanel;
     bool m_supportColorTemperature;
-    Gtktheme m_gtkTheme;
+    ThemeType m_themeType;
 };
 
 #endif // EYE_COMFORT_MODE_ITEM_H

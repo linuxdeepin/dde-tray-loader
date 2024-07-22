@@ -4,6 +4,7 @@
 
 #include "eyecomfortmodeapplet.h"
 #include "constants.h"
+#include "eyecomfortmodecontroller.h"
 
 #include <DSwitchButton>
 #include <DBlurEffectWidget>
@@ -11,7 +12,6 @@
 
 #include <QLabel>
 #include <QHBoxLayout>
-#include <QVBoxLayout>
 #include <QStandardItemModel>
 
 DWIDGET_USE_NAMESPACE
@@ -26,7 +26,6 @@ EyeComfortmodeApplet::EyeComfortmodeApplet(QWidget *parent)
     , m_lightTheme(new PluginItem(QIcon::fromTheme("theme-light"), tr("Light")))
     , m_darkTheme(new PluginItem(QIcon::fromTheme("theme-dark"), tr("Dark")))
     , m_autoTheme(new PluginItem(QIcon::fromTheme("theme-auto"), tr("Auto")))
-    , m_gtkTheme(QString())
 {
     initUi();
     initConnect();
@@ -115,20 +114,6 @@ void EyeComfortmodeApplet::setDccPage(const QString &module, const QString &page
     m_settingButton->setDccPage(module, page);
 }
 
-const QString EyeComfortmodeApplet::gtkTheme()
-{
-    return m_gtkTheme;
-}
-
-void EyeComfortmodeApplet::setGtkTheme(const QString &value)
-{
-    if (m_gtkTheme == value)
-        return;
-
-    m_gtkTheme = value;
-    Q_EMIT gtkThemeChanged(value);
-}
-
 void EyeComfortmodeApplet::setEyeComfortVisible(bool visible)
 {
     m_title->setVisible(visible);
@@ -141,20 +126,20 @@ void EyeComfortmodeApplet::setHeight(int height)
     resize(width(), height);
 }
 
-void EyeComfortmodeApplet::onGtkThemeChanged(const QString & value)
+void EyeComfortmodeApplet::onGlobalThemeChanged(const QString &value)
 {
-    if (value == DEEPIN_LIGHT) {
-        m_gtkTheme = DEEPIN_LIGHT;
+    if (value.endsWith(THEME_LIGHT)) {
+        m_themeTypeName = THEME_LIGHT;
         m_lightTheme->updateState(PluginItemState::ConnectedOnlyPrompt);
         m_darkTheme->updateState(PluginItemState::NoState);
         m_autoTheme->updateState(PluginItemState::NoState);
-    } else if (value == DEEPIN_DARK) {
-        m_gtkTheme = DEEPIN_DARK;
+    } else if (value.endsWith(THEME_DARK)) {
+        m_themeTypeName = THEME_DARK;
         m_lightTheme->updateState(PluginItemState::NoState);
         m_darkTheme->updateState(PluginItemState::ConnectedOnlyPrompt);
         m_autoTheme->updateState(PluginItemState::NoState);
     } else {
-        m_gtkTheme = DEEPIN_AUTO;
+        m_themeTypeName = THEME_AUTO;
         m_lightTheme->updateState(PluginItemState::NoState);
         m_darkTheme->updateState(PluginItemState::NoState);
         m_autoTheme->updateState(PluginItemState::ConnectedOnlyPrompt);
@@ -164,9 +149,31 @@ void EyeComfortmodeApplet::onGtkThemeChanged(const QString & value)
 void EyeComfortmodeApplet::onThemeListClicked(const QModelIndex &index)
 {
     if (m_lightTheme == m_themeItemModel->itemFromIndex(index) && m_lightTheme->state() == NoState)
-        setGtkTheme(DEEPIN_LIGHT);
+        switchTheme(THEME_LIGHT);
     else if (m_darkTheme == m_themeItemModel->itemFromIndex(index) && m_darkTheme->state() == NoState)
-        setGtkTheme(DEEPIN_DARK);
+        switchTheme(THEME_DARK);
     else if (m_autoTheme == m_themeItemModel->itemFromIndex(index) && m_autoTheme->state() == NoState)
-        setGtkTheme(DEEPIN_AUTO);
+        switchTheme(THEME_AUTO);
+}
+
+void EyeComfortmodeApplet::switchTheme(const QString &themeTypeName)
+{
+    if (m_themeTypeName == themeTypeName)
+        return;
+
+    m_themeTypeName = themeTypeName;
+
+    auto curGlobalTheme = EyeComfortModeController::ref().globalTheme();
+    auto theme = curGlobalTheme.left(curGlobalTheme.indexOf("."));
+
+    QString newGlobalTheme;
+    if (themeTypeName == THEME_LIGHT) {
+        newGlobalTheme = theme + ".light";
+    } else if(themeTypeName == THEME_DARK){
+        newGlobalTheme = theme + ".dark";
+    } else {
+        newGlobalTheme = theme;
+    }
+
+    Q_EMIT globalThemeChanged(newGlobalTheme);
 }

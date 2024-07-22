@@ -21,7 +21,7 @@ EyeComfortModeController::EyeComfortModeController()
     }
 
     QDBusConnection::sessionBus().connect("com.deepin.daemon.Display", "/com/deepin/daemon/Display", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
-    connect(m_themeInter, &DBusTheme::GtkThemeChanged, this, &EyeComfortModeController::gtkThemeChanged);
+    connect(m_themeInter, &DBusTheme::GlobalThemeChanged, this, &EyeComfortModeController::globalThemeChanged);
 
     m_eyeComfortModeEnabled = m_displayInter->property(COLOR_TEMPERATURE_ENABLED).toBool();
     m_supportColorTemperature = m_displayInter->property(SUPPORT_COLOR_TEMPERATURE).toBool();
@@ -53,7 +53,20 @@ QString EyeComfortModeController::gtkTheme() const
     return m_themeInter->gtkTheme();
 }
 
+QString EyeComfortModeController::globalTheme() const
+{
+    return m_themeInter->globalTheme();
+}
+
 void EyeComfortModeController::enable(bool enable)
 {
     m_displayInter->setProperty(COLOR_TEMPERATURE_ENABLED, !isEyeComfortModeEnabled());
+}
+
+void EyeComfortModeController::setGlobalTheme(const QString &value)
+{
+    if (m_themeInter->globalTheme() == value)
+        return;
+
+    m_themeInter->Set("globaltheme", value);
 }
