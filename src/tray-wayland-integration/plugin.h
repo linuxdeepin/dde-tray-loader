@@ -65,6 +65,7 @@ public:
 Q_SIGNALS:
     void eventMessage(const QString &msg);
     void eventGeometry(const QRect &geometry);
+    void contentMarginChanged(int32_t spacing);
     void dockPositionChanged(uint32_t position);
     void dockColorThemeChanged(uint32_t colorType);
     void pluginSupportFlagChanged(bool);

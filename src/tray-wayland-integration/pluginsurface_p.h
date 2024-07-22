@@ -23,6 +23,7 @@ public:
 protected:
     virtual void plugin_close() override;
     virtual void plugin_geometry(int32_t x, int32_t y, int32_t width, int32_t height) override;
+    virtual void plugin_margin(int32_t spacing) override;
     virtual void plugin_raw_global_pos(int32_t x, int32_t y) override;
 
 private:
