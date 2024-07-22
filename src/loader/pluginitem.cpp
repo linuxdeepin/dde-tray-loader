@@ -326,5 +326,6 @@ void PluginItem::updatePluginContentMargin(int spacing)
 {
     if (spacing > 0) {
         setContentsMargins(spacing, spacing, spacing, spacing);
+        setFixedSize(sizeHint());
     }
 }
