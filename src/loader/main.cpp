@@ -67,6 +67,12 @@ int main(int argc, char *argv[], char *envp[])
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setQuitOnLastWindowClosed(false);
 
+    // 创建翻译器
+    QTranslator translator;
+    if (translator.load(QString("/usr/share/trayplugin-loader/translations/trayplugin-loader_%1").arg(QLocale().name()))) {
+        app.installTranslator(&translator);
+    }
+
     QList<QString> translateDirs;
     auto dataDirs = DStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
     for (const auto &path : dataDirs) {
