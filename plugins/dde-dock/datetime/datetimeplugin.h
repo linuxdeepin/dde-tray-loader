@@ -9,6 +9,7 @@
 #include "datetimewidget.h"
 #include "sidebarcalendarwidget.h"
 #include "tipswidget.h"
+#include "regionFormat.h"
 
 #include <QTimer>
 #include <QLabel>
@@ -69,6 +70,9 @@ private:
     QString m_currentTimeString;
     QDBusInterface *m_interface;
     bool m_pluginLoaded;
+
+    RegionFormat* m_RegionFormatModel;
+
 };
 
 

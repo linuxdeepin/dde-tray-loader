@@ -9,6 +9,8 @@
 
 #include <QWidget>
 
+#include "regionFormat.h"
+
 using Timedate = com::deepin::daemon::Timedate;
 
 class DatetimeWidget : public QWidget
@@ -16,13 +18,15 @@ class DatetimeWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit DatetimeWidget(QWidget *parent = nullptr);
+    explicit DatetimeWidget(RegionFormat *regionFormat, QWidget *parent = nullptr) ;
 
     QSize sizeHint() const;
     inline bool is24HourFormat() const { return m_24HourFormat; }
     inline QString getDateTime() { return m_dateTime; }
     void setDockPanelSize(const QSize &dockSize);
     void dockPositionChanged();
+
+    void setRegionFormat(RegionFormat *newRegionFormat);
 
 protected:
     void resizeEvent(QResizeEvent *event);
@@ -35,33 +39,29 @@ signals:
 public slots:
     void set24HourFormat(const bool value);
     void updateDateTimeString();
+    void updateDateTime();
 
 private Q_SLOTS:
     void setShortDateFormat(int type);
-    void setShortTimeFormat(int type);
-    void setLongDateFormat(int type);
+
     void setWeekdayFormat(int type);
-    void setLongTimeFormat(int type);
 
 private:
     QSize curTimeSize() const;
     void updateWeekdayFormat();
-    void updateLongTimeFormat();
 
 private:
     bool m_24HourFormat;
-    int m_longDateFormatType;
-    int m_longTimeFormatType;
     int m_weekdayFormatType;
     mutable QFont m_timeFont;
     mutable QFont m_dateFont;
     Timedate *m_timedateInter;
     QString m_shortDateFormat;
-    QString m_shortTimeFormat;
     QString m_dateTime;
     QString m_weekFormat;
-    QString m_longTimeFormat;
     QSize m_dockSize;
+
+    RegionFormat *m_regionFormat;
 };
 
 #endif // DATETIMEWIDGET_H
