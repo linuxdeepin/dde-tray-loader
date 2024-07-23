@@ -16,6 +16,7 @@
 #define PERFORMANCE "performance" // 高性能模式
 #define BALANCE     "balance"     // 平衡模式
 #define POWERSAVE   "powersave"   // 节能模式
+#define BALANCEPERFORMANCE "balance_performance" // 性能模式
 
 using SysPowerInter = com::deepin::system::Power;
 
@@ -70,6 +71,15 @@ private:
             m_balanceSupported = outArgs.at(0).value<QDBusVariant>().variant().toBool();
             if (m_balanceSupported) {
                 m_modeList.append({BALANCE, tr("Balanced")});
+            }
+        }
+
+        reply = interface.call("Get", "com.deepin.system.Power", "IsBalancePerformanceSupported");
+        outArgs = reply.arguments();
+        if (outArgs.length() > 0) {
+            bool balancePerformanceSupported = outArgs.at(0).value<QDBusVariant>().variant().toBool();
+            if (balancePerformanceSupported) {
+                m_modeList.append({BALANCEPERFORMANCE, tr("Balance Performance")});
             }
         }
 
