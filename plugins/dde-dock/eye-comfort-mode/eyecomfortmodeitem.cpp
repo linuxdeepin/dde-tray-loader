@@ -29,7 +29,7 @@ EyeComfortModeItem::EyeComfortModeItem(QWidget* parent)
     , m_applet(new EyeComfortmodeApplet(this))
     , m_icon(new CommonIconButton(this))
     , m_supportColorTemperature(EyeComfortModeController::ref().supportColorTemperature())
-    , m_gtkTheme(gtkTheme(EyeComfortModeController::ref().gtkTheme()))
+    , m_themeType(getThemeType(EyeComfortModeController::ref().globalTheme()))
 {
     init();
 }
@@ -44,7 +44,7 @@ void EyeComfortModeItem::init()
     m_applet->setDescription(tr("Display settings"));
     m_applet->setIcon(QIcon::fromTheme("open-arrow"));
     m_applet->setEyeComfortVisible(m_supportColorTemperature);
-    m_applet->onGtkThemeChanged(EyeComfortModeController::ref().gtkTheme());
+    m_applet->onGlobalThemeChanged(EyeComfortModeController::ref().globalTheme());
 
     m_icon->setFixedSize(Dock::DOCK_PLUGIN_ITEM_FIXED_SIZE);
 
@@ -83,13 +83,14 @@ void EyeComfortModeItem::init()
     connect(m_quickPanel, &QuickPanelWidget::panelClicked, this, &EyeComfortModeItem::requestExpand);
     connect(m_applet, &EyeComfortmodeApplet::enableChanged, &EyeComfortModeController::ref(), &EyeComfortModeController::enable);
     connect(m_applet, &EyeComfortmodeApplet::requestHideApplet, this, &EyeComfortModeItem::requestHideApplet);
-    connect(m_applet, &EyeComfortmodeApplet::gtkThemeChanged, &EyeComfortModeController::ref(), &EyeComfortModeController::setGtkTheme);
-    connect(&EyeComfortModeController::ref(), &EyeComfortModeController::gtkThemeChanged, this, [this](const QString &value) {
-        if (m_gtkTheme == gtkTheme(value))
+    connect(m_applet, &EyeComfortmodeApplet::globalThemeChanged, &EyeComfortModeController::ref(), &EyeComfortModeController::setGlobalTheme);
+    connect(&EyeComfortModeController::ref(), &EyeComfortModeController::globalThemeChanged, this, [this](const QString &value) {
+        auto themeType = getThemeType(value);
+        if (m_themeType == themeType)
             return;
 
-        m_gtkTheme = gtkTheme(value);
-        m_applet->onGtkThemeChanged(value);
+        m_themeType = themeType;
+        m_applet->onGlobalThemeChanged(value);
         updateDescription();
         refreshIcon();
         updateTips();
@@ -120,15 +121,14 @@ void EyeComfortModeItem::updateDescription()
                 ? m_quickPanel->setDescription(tr("On"))
                 : m_quickPanel->setDescription(tr("Off"));
     } else {
-        if (m_gtkTheme == Light) {
+        if (m_themeType == Light) {
             m_quickPanel->setDescription(tr("Light"));
-        } else if (m_gtkTheme == Dark) {
+        } else if (m_themeType == Dark) {
             m_quickPanel->setDescription(tr("Dark"));
         } else {
             m_quickPanel->setDescription(tr("Auto"));
         }
     }
-
 }
 
 
@@ -202,10 +202,10 @@ void EyeComfortModeItem::refreshIcon()
     if (m_supportColorTemperature) {
         m_icon->setState(EyeComfortModeController::ref().isEyeComfortModeEnabled() ? CommonIconButton::On : CommonIconButton::Off);
     } else {
-        if (m_gtkTheme == Light) {
+        if (m_themeType == Light) {
             m_quickPanel->setIcon(QIcon::fromTheme("theme-light"));
             m_icon->setIcon(QIcon::fromTheme("theme-light"));
-        } else if (m_gtkTheme == Dark) {
+        } else if (m_themeType == Dark) {
             m_quickPanel->setIcon(QIcon::fromTheme("theme-dark"));
             m_icon->setIcon(QIcon::fromTheme("theme-dark"));
         } else {
@@ -223,9 +223,9 @@ void EyeComfortModeItem::updateTips()
         else
             m_tipsLabel->setText(tr("Eye comfort disabled"));
     } else {
-        if (m_gtkTheme == Light) {
+        if (m_themeType == Light) {
             m_tipsLabel->setText(tr("Theme: Light"));
-        } else if (m_gtkTheme == Dark) {
+        } else if (m_themeType == Dark) {
             m_tipsLabel->setText(tr("Theme: Dark"));
         } else {
             m_tipsLabel->setText(tr("Theme: Auto"));
@@ -243,11 +243,11 @@ bool EyeComfortModeItem::airplaneEnable()
     return EyeComfortModeController::ref().isEyeComfortModeEnabled();
 }
 
-EyeComfortModeItem::Gtktheme EyeComfortModeItem::gtkTheme(const QString gtkTheme)
+EyeComfortModeItem::ThemeType EyeComfortModeItem::getThemeType(const QString &globalTheme)
 {
-    if (gtkTheme == DEEPIN_LIGHT)
+    if (globalTheme.endsWith(THEME_LIGHT))
         return Light;
-    if (gtkTheme == DEEPIN_DARK)
+    if (globalTheme.endsWith(THEME_DARK))
         return Dark;
 
     return Auto;
