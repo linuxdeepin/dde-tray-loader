@@ -19,38 +19,33 @@
 
 DWIDGET_USE_NAMESPACE
 
-DatetimeWidget::DatetimeWidget(QWidget *parent)
+DatetimeWidget::DatetimeWidget(RegionFormat* regionFormat, QWidget *parent)
     : QWidget(parent)
     , m_24HourFormat(false)
-    , m_longDateFormatType(0)
-    , m_longTimeFormatType(0)
     , m_weekdayFormatType(0)
     , m_timedateInter(new Timedate("com.deepin.daemon.Timedate", "/com/deepin/daemon/Timedate", QDBusConnection::sessionBus(), this))
     , m_shortDateFormat("yyyy-MM-dd")
-    , m_shortTimeFormat("hh:mm")
-    , m_longTimeFormat(" hh:mm:ss")
     , m_dockSize(QSize(1920, 40))
+    , m_regionFormat(regionFormat)
 {
     setMinimumSize(PLUGIN_BACKGROUND_MIN_SIZE, PLUGIN_BACKGROUND_MIN_SIZE);
-    setShortDateFormat(m_timedateInter->shortDateFormat());
-    setShortTimeFormat(m_timedateInter->shortTimeFormat());
     setWeekdayFormat(m_timedateInter->weekdayFormat());
-    setLongDateFormat(m_timedateInter->longDateFormat());
-    setLongTimeFormat(m_timedateInter->longTimeFormat());
-    set24HourFormat(m_timedateInter->use24HourFormat());
+    set24HourFormat(m_regionFormat->getShortTimeFormat().contains("AP"));
     updateDateTimeString();
 
-    connect(m_timedateInter, &Timedate::ShortDateFormatChanged, this, &DatetimeWidget::setShortDateFormat);
-    connect(m_timedateInter, &Timedate::ShortTimeFormatChanged, this, &DatetimeWidget::setShortTimeFormat);
-    connect(m_timedateInter, &Timedate::LongDateFormatChanged, this, &DatetimeWidget::setLongDateFormat);
     connect(m_timedateInter, &Timedate::WeekdayFormatChanged, this, &DatetimeWidget::setWeekdayFormat);
-    connect(m_timedateInter, &Timedate::LongTimeFormatChanged, this, &DatetimeWidget::setLongTimeFormat);
     //连接日期时间修改信号,更新日期时间插件的布局
     connect(m_timedateInter, &Timedate::TimeUpdate, this, [ = ]{
         if (isVisible()) {
             emit requestUpdateGeometry();
         }
     });
+
+    connect(m_regionFormat, &RegionFormat::longDateFormatChanged, this, &DatetimeWidget::updateDateTime);
+    connect(m_regionFormat, &RegionFormat::shortTimeFormatChanged, this, &DatetimeWidget::updateDateTime);
+    connect(m_regionFormat, &RegionFormat::shortDateFormatChanged, this, &DatetimeWidget::updateDateTime);
+    connect(m_regionFormat, &RegionFormat::longTimeFormatChanged, this, &DatetimeWidget::updateDateTime);
+    connect(m_regionFormat, &RegionFormat::localeNameChanged, this, &DatetimeWidget::updateDateTime);
 }
 
 void DatetimeWidget::set24HourFormat(const bool value)
@@ -60,7 +55,6 @@ void DatetimeWidget::set24HourFormat(const bool value)
     }
 
     m_24HourFormat = value;
-    updateLongTimeFormat();
     update();
 
     if (isVisible()) {
@@ -100,36 +94,6 @@ void DatetimeWidget::setShortDateFormat(int type)
     }
 }
 
-/**
- * @brief DatetimeWidget::setShortTimeFormat 根据类型设置短时间显示格式
- * @param type 自定义类型
- */
-void DatetimeWidget::setShortTimeFormat(int type)
-{
-    switch (type) {
-    case 0: m_shortTimeFormat = "h:mm"; break;
-    case 1: m_shortTimeFormat = "hh:mm";  break;
-    default: m_shortTimeFormat = "hh:mm"; break;
-    }
-    update();
-
-    if (isVisible()) {
-        emit requestUpdateGeometry();
-    }
-}
-
-/**
- * @brief DatetimeWidget::setLongDateFormat 根据类型设置长时间显示格式
- * @param type 自定义类型
- */
-void DatetimeWidget::setLongDateFormat(int type)
-{
-    if (m_longDateFormatType == type)
-        return;
-
-    m_longDateFormatType = type;
-    updateDateTimeString();
-}
 
 /**
  * @brief DatetimeWidget::setWeekdayFormat 根据类型设置周显示格式
@@ -142,20 +106,6 @@ void DatetimeWidget::setWeekdayFormat(int type)
 
     m_weekdayFormatType = type;
     updateWeekdayFormat();
-    updateDateTimeString();
-}
-
-/**
- * @brief DatetimeWidget::setLongTimeFormat 根据类型设置长时间的显示格式
- * @param type 自定义类型
- */
-void DatetimeWidget::setLongTimeFormat(int type)
-{
-    if (m_longTimeFormatType == type)
-        return;
-
-    m_longTimeFormatType = type;
-    updateLongTimeFormat();
     updateDateTimeString();
 }
 
@@ -224,21 +174,9 @@ void DatetimeWidget::updateWeekdayFormat()
     }
 }
 
-void DatetimeWidget::updateLongTimeFormat()
+void DatetimeWidget::setRegionFormat(RegionFormat *newRegionFormat)
 {
-    if (m_24HourFormat) {
-        switch (m_longTimeFormatType) {
-        case 0: m_longTimeFormat = " h:mm:ss"; break;
-        case 1: m_longTimeFormat = " hh:mm:ss";  break;
-        default: m_longTimeFormat = " hh:mm:ss"; break;
-        }
-    } else {
-        switch (m_longTimeFormatType) {
-        case 0: m_longTimeFormat = " h:mm:ss A"; break;
-        case 1: m_longTimeFormat = " hh:mm:ss A";  break;
-        default: m_longTimeFormat = " hh:mm:ss A"; break;
-        }
-    }
+    m_regionFormat = newRegionFormat;
 }
 
 /**
@@ -246,61 +184,18 @@ void DatetimeWidget::updateLongTimeFormat()
  */
 void DatetimeWidget::updateDateTimeString()
 {
-    QString longTimeFormat("");
-    const QDateTime currentDateTime = QDateTime::currentDateTime();
-    int year = currentDateTime.date().year();
-    int month = currentDateTime.date().month();
-    int day = currentDateTime.date().day();
+    QLocale locale(m_regionFormat->getLocaleName());
+    m_dateTime = locale.toString(QDate::currentDate(), m_regionFormat->getLongDateFormat()) + QDateTime::currentDateTime().toString(m_regionFormat->getLongTimeFormat());
+}
 
-    auto lang = QLocale::system().language();
-    bool isZhLocale = lang == QLocale::Chinese || lang == QLocale::Tibetan || lang == QLocale::Uighur;
+void DatetimeWidget::updateDateTime()
+{
+    set24HourFormat(m_regionFormat->getShortTimeFormat().contains("AP"));
+    updateDateTimeString();
+    update();
 
-    // 根据相应语言去显示对应的格式
-    // 中文： 格式为xxxx年xx月xx日 星期x hh:mm:ss,如:2022年7月25日 星期- 12：00：00
-    // 英文： 格式为x x，xxxx，x hh:mm:ss, 如：July 25，2022，Monday 12:00:00
-    // 其他语言：按照国际当地长时间格式显示
-    if (isZhLocale) {
-        longTimeFormat = QString(tr("%1year%2month%3day")).arg(year).arg(month).arg(day);
-
-        // 实时更新周的日期显示
-        updateWeekdayFormat();
-
-        switch (m_longDateFormatType) {
-        case 0:
-            m_dateTime = longTimeFormat + currentDateTime.toString(m_longTimeFormat);
-            break;
-        case 1:
-            m_dateTime = longTimeFormat + QString(" ") + m_weekFormat + currentDateTime.toString(m_longTimeFormat);
-            break;
-        case 2:
-            m_dateTime = m_weekFormat + QString(" ") + longTimeFormat + currentDateTime.toString(m_longTimeFormat);
-            break;
-        default:
-            m_dateTime = longTimeFormat + QString(" ") + m_weekFormat + currentDateTime.toString(m_longTimeFormat);
-            break;
-        }
-    } else if (lang == QLocale::English) {
-        auto longDateString = currentDateTime.date().toString(Qt::SystemLocaleLongDate);
-        auto week = longDateString.split(",").at(0);
-        // 获取英文的日期格式字符串，-2是去掉","和" "
-        auto longDateTimeFormat = longDateString.right(longDateString.size() - week.size() - 2);
-
-        switch (m_longDateFormatType) {
-        case 0:
-            m_dateTime = longDateTimeFormat + currentDateTime.toString(m_longTimeFormat);
-            break;
-        case 1:
-            m_dateTime = longDateTimeFormat + QString(", ") + week + currentDateTime.toString(m_longTimeFormat);
-            break;
-        case 2:
-            m_dateTime = week + QString(", ") + longDateTimeFormat + currentDateTime.toString(m_longTimeFormat);
-            break;
-        default:
-            m_dateTime = longDateTimeFormat + QString(", ") + week + currentDateTime.toString(m_longTimeFormat);
-            break;
-        }
-    } else {
-        m_dateTime = currentDateTime.date().toString(Qt::SystemLocaleLongDate) + currentDateTime.toString(m_longTimeFormat);
+    if (isVisible()) {
+        emit requestUpdateGeometry();
     }
 }
 
@@ -314,13 +209,13 @@ QSize DatetimeWidget::curTimeSize() const
 
     m_timeFont = TIME_FONT;
     m_dateFont = DATE_FONT;
-    QString timeFormat = m_shortTimeFormat;
-    QString dateFormat = m_shortDateFormat;
-    if (!m_24HourFormat) {
-        if (position == Dock::Top || position == Dock::Bottom)
-            timeFormat = timeFormat.append(" AP");
-        else
-            timeFormat = timeFormat.append("\nAP");
+    QString timeFormat = m_regionFormat->getShortTimeFormat();
+    QString dateFormat = m_regionFormat->getShortDateFormat();
+    if ((position == Dock::Right || position == Dock::Left)) {
+        int index = timeFormat.indexOf("ap");
+        if (index != -1) {
+            timeFormat.insert(index + 2, '\n');
+        }
     }
 
     QString timeString = QDateTime::currentDateTime().toString(timeFormat);
@@ -437,16 +332,16 @@ void DatetimeWidget::paintEvent(QPaintEvent *e)
     QRect dateTextRect = rect();
     QRect dateTextTightRect = rect();
 
-    QString format = m_shortTimeFormat;
-    if (!m_24HourFormat) {
-        if (position == Dock::Top || position == Dock::Bottom)
-            format = format.append(" AP");
-        else
-            format = format.append("\nAP");
+    QString format = m_regionFormat->getShortTimeFormat();
+    if ((position == Dock::Right || position == Dock::Left)) {
+        int index = format.indexOf("ap");
+        if (index != -1) {
+            format.insert(index + 2, '\n');
+        }
     }
     QString timeStr = current.toString(format);
 
-    format = m_shortDateFormat;
+    format = m_regionFormat->getShortDateFormat();
     QString dateStr = current.toString(format);
 
     // 处理绘制文本的矩形size
@@ -559,7 +454,7 @@ void DatetimeWidget::dockPositionChanged()
 {
     // 等待位置变换完成后再更新
     QTimer::singleShot(300, this, [this]{
-        setShortDateFormat(m_timedateInter->shortDateFormat());
+        updateDateTime();
     });
 }
 

@@ -30,6 +30,7 @@ DatetimePlugin::DatetimePlugin(QObject *parent)
     , m_refershTimer(nullptr)
     , m_interface(nullptr)
     , m_pluginLoaded(false)
+    , m_RegionFormatModel(nullptr)
 {
     QDBusConnection sessionBus = QDBusConnection::sessionBus();
     sessionBus.connect("com.deepin.daemon.Timedate", "/com/deepin/daemon/Timedate", "org.freedesktop.DBus.Properties",  "PropertiesChanged", this, SLOT(propertiesChanged()));
@@ -81,6 +82,11 @@ void DatetimePlugin::loadPlugin()
         return;
 
     m_pluginLoaded = true;
+
+    if (!m_RegionFormatModel) {
+        m_RegionFormatModel = new RegionFormat(this);
+    }
+
     m_dateTipsLabel.reset(new TipsWidget);
     m_calendarPopup.reset(new SidebarCalendarWidget);
     m_refershTimer = new QTimer(this);
@@ -89,7 +95,7 @@ void DatetimePlugin::loadPlugin()
     m_refershTimer->setInterval(1000);
     m_refershTimer->start();
 
-    m_centralWidget.reset(new DatetimeWidget);
+    m_centralWidget.reset(new DatetimeWidget(m_RegionFormatModel));
 
     connect(m_centralWidget.data(), &DatetimeWidget::requestUpdateGeometry, this, [this] { m_proxyInter->itemUpdate(this, pluginName()); });
     connect(m_refershTimer, &QTimer::timeout, this, &DatetimePlugin::updateCurrentTimeString);
@@ -320,6 +326,9 @@ void DatetimePlugin::positionChanged(const Dock::Position position)
     Q_UNUSED(position);
     if (m_centralWidget) {
         // 任务栏位置发生改变的时候需要重新设置窗口大小
+        if (m_RegionFormatModel)  {
+            m_RegionFormatModel->onDockPositionChanged(position);
+        }
         m_centralWidget.data()->setFixedSize(m_centralWidget.data()->sizeHint());
         m_centralWidget.data()->dockPositionChanged();
     }
