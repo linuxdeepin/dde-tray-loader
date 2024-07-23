@@ -61,7 +61,7 @@ NetStatus::NetStatus(NetManager *manager, QObject *parent)
     , m_vpnAndProxyBut(nullptr)
     , m_tipsLabel(nullptr)
     , m_dockIconWidgetlayout(nullptr)
-    , m_vpnAndProxyIconVisibel(false)
+    , m_vpnAndProxyIconVisibel(true)
 {
     NetItem *root = m_manager->root();
     connect(root, &NetItem::childRemoved, this, &NetStatus::onChildRemoved);
@@ -491,10 +491,10 @@ void NetStatus::updateVpnAndProxyStatus()
         const bool visible = m_vpnItem.Connected || m_proxyItem.Enabled;
         if (m_vpnAndProxyIconVisibel != visible) {
             m_vpnAndProxyIconVisibel = visible;
+            m_vpnAndProxyBut->setVisible(m_vpnAndProxyIconVisibel);
             updateItemWidgetSize();
             Q_EMIT vpnAndProxyIconVisibelChanged(m_vpnAndProxyIconVisibel);
         }
-        m_vpnAndProxyBut->setVisible(m_vpnAndProxyIconVisibel);
         m_vpnAndProxyBut->setIcon(m_vpnAndProxyIcon);
     }
     if (m_vpnAndProxyTips != tips) {
