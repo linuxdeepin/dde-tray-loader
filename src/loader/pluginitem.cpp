@@ -233,6 +233,7 @@ void PluginItem::init()
     hLayout->addWidget(centralWidget());
     hLayout->setMargin(0);
     hLayout->setSpacing(0);
+    hLayout->setSizeConstraint(QLayout::SetFixedSize);
 
     setLayout(hLayout);
 }
