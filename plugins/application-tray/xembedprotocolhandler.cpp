@@ -106,7 +106,7 @@ uint32_t XembedProtocolHandler::windowId() const
 
 QString XembedProtocolHandler::id() const
 {
-    return sniPfrefix + UTIL->getProcExe(UTIL->getWindowPid(m_windowId));
+    return sniPfrefix + UTIL->getProcExe(UTIL->getWindowPid(m_windowId))  + QString("-%1").arg(windowId());
 }
     
 QString XembedProtocolHandler::title() const
