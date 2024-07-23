@@ -86,7 +86,7 @@ uint32_t SniTrayProtocolHandler::windowId() const
 
 QString SniTrayProtocolHandler::id() const
 {
-    return sniPfrefix + UTIL->getProcExe(QDBusConnection::sessionBus().interface()->servicePid(m_sniInter->service()));
+    return sniPfrefix + UTIL->getProcExe(QDBusConnection::sessionBus().interface()->servicePid(m_sniInter->service())) + QString("-%1").arg(windowId());
 }
     
 QString SniTrayProtocolHandler::title() const
