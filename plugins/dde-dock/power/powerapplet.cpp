@@ -129,8 +129,10 @@ void PowerApplet::initData()
             icon = QIcon::fromTheme("status-efficient-mode");
         } else if (pair.first == BALANCE) {
             icon = QIcon::fromTheme("status-balanced-mode");
-        } else {
+        } else if (pair.first == POWERSAVE) {
             icon = QIcon::fromTheme("status-energy-saving-mode");
+        } else if (pair.first == BALANCEPERFORMANCE) {
+            icon = QIcon::fromTheme("status-performance-mode");
         }
         PluginItem *item = new PluginItem(icon, pair.second);
         item->setData(pair.first, MODE_DATA_ROLE);

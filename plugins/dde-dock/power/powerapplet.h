@@ -58,7 +58,7 @@ private:
     QWidget *m_batteryWidget;
     CommonIconButton *m_batteryIcon;
     DLabel *m_batteryPercentage;
-    DLabel *m_batteryTips;    
+    DLabel *m_batteryTips;
 
     int m_minHeight;
 };
