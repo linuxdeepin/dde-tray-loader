@@ -19,6 +19,7 @@ usr/lib/dde-dock/plugins/system-trays/libkeyboard-layout.so
 usr/share/dock-tray-network-plugin/translations
 usr/share/dde-dock/icons/dcc-setting
 usr/share/dde-dock/translations
+usr/share/trayplugin-loader/translations
 usr/share/dock-wirelesscasting-plugin/translations
 usr/share/dde-tray-network-core/translations
 usr/share/dsg/configs/org.deepin.dde.dock/org.deepin.dde.dock.plugin.common.json
