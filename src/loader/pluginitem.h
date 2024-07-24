@@ -51,6 +51,7 @@ protected:
 private:
     QWidget *itemPopupApplet();
     bool panelPopupExisted() const;
+    bool embedPanelPopupExisted() const;
     void closeToolTip();
 
 private:
