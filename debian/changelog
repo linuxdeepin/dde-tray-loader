@@ -1,3 +1,16 @@
+dde-tray-loader (0.0.3) unstable; urgency=medium
+
+  * feat: plugin item can set content margin (#65)(Influence: plugin item display)
+  * chore: update the eye comfort mode icon(Issue: 9875)
+  * fix: EyeComfortMode plugin can switch theme type (#69)(Issue: 9691)(Influence: can switch themme type)
+  * fix: Fixed the issue that setting custom time format in taskbar does not take effect(Issue: 9724)
+  * fix: Added trayplugin-loader translation(Issue: 9754, 9685)
+  * fix: Modifying proxy icon does not display issue(Issue: 9888)
+  * fix: applicatin-tray coredump while open wechat and wework(issue: 9918)
+  * fix: Hide Airplane mode settings in popup applet(Issue: 9884)
+
+ -- zyz <zhaoyingzhen@uniontech.com>  Wed, 24 Jul 2024 14:31:44 +0800
+
 dde-tray-loader (0.0.2) unstable; urgency=medium
 
   * fix: datetime plugin in DCC dosn't have icon
