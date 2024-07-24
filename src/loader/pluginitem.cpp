@@ -107,6 +107,7 @@ QMenu *PluginItem::pluginContextMenu()
 
 void PluginItem::mousePressEvent(QMouseEvent *e)
 {
+    closeToolTip();
     QWidget::mousePressEvent(e);
 }
 
@@ -167,13 +168,7 @@ void PluginItem::enterEvent(QEvent *event)
 
 void PluginItem::leaveEvent(QEvent *event)
 {
-    if (m_tooltipTimer->isActive()) {
-        m_tooltipTimer->stop();
-    }
-
-    auto tooltip = m_pluginsItemInterface->itemTipsWidget(m_itemKey);
-    if (tooltip && tooltip->windowHandle())
-        tooltip->windowHandle()->hide();
+    closeToolTip();
 }
 
 QWidget* PluginItem::centralWidget()
@@ -321,6 +316,17 @@ bool PluginItem::panelPopupExisted() const
     }
 
     return false;
+}
+
+void PluginItem::closeToolTip()
+{
+    if (m_tooltipTimer->isActive()) {
+        m_tooltipTimer->stop();
+    }
+
+    auto tooltip = m_pluginsItemInterface->itemTipsWidget(m_itemKey);
+    if (tooltip && tooltip->windowHandle() && tooltip->windowHandle()->isVisible())
+        tooltip->windowHandle()->hide();
 }
 
 void PluginItem::updatePluginContentMargin(int spacing)

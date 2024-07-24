@@ -51,6 +51,7 @@ protected:
 private:
     QWidget *itemPopupApplet();
     bool panelPopupExisted() const;
+    void closeToolTip();
 
 private:
     void updatePopupSize(const QRect &rect);
