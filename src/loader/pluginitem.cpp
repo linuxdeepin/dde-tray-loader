@@ -53,7 +53,7 @@ QWidget *PluginItem::itemPopupApplet()
     };
 
     if (auto popup = m_pluginsItemInterface->itemPopupApplet(m_itemKey)) {
-        bool existed = panelPopupExisted();
+        bool existed = panelPopupExisted() && !embedPanelPopupExisted();
         if (!existed && popup->isVisible()) {
             popup->windowHandle()->hide();
         }
@@ -315,6 +315,19 @@ bool PluginItem::panelPopupExisted() const
         }
     }
 
+    return false;
+}
+
+bool PluginItem::embedPanelPopupExisted() const
+{
+    if (panelPopupExisted())
+        return false;
+
+    if (auto popup = m_pluginsItemInterface->itemPopupApplet(m_itemKey)) {
+        if(auto pluginPopup = Plugin::PluginPopup::getWithoutCreating(popup->windowHandle())) {
+            return pluginPopup->popupType() == Plugin::PluginPopup::PopupTypeEmbed;
+        }
+    }
     return false;
 }
 
