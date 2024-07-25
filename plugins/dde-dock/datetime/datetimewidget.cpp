@@ -263,12 +263,12 @@ QSize DatetimeWidget::curTimeSize() const
     } else {
         // 有效宽度，控件与任务栏要至少保持2px的间距（左/右），hover样式美观
         int vaildWidth = widgetSize.width() > (m_dockSize.width() - 4) ? m_dockSize.width() - 4 : widgetSize.width();
-        widgetSize.setWidth(vaildWidth);
 
         // 更新有效宽度下的字体大小
         // 任务栏宽度固定，控件宽度固定，如果要使文本不贴边显示，只能再将文本矩形宽度缩小6px，模拟出内左/右间距3px的效果
         int textWidth = vaildWidth;
-        while (std::max(timeSize.width(), dateSize.width()) > vaildWidth - 6 && m_timeFont.pixelSize() > 1) {
+        while (std::max(timeSize.width(), dateSize.width()) > vaildWidth - 18 && m_timeFont.pixelSize() > 1) {
+
             m_timeFont.setPixelSize(m_timeFont.pixelSize() - 1);
             if (m_24HourFormat) {
                 timeSize.setHeight(QFontMetrics(m_timeFont).boundingRect(timeString).size().height());
@@ -290,6 +290,7 @@ QSize DatetimeWidget::curTimeSize() const
             }
         }
 
+        widgetSize.setWidth(timeSize.width());
         // 新字体大小更新控件的size
         widgetSize.setHeight(timeSize.height() + dateSize.height());
     }
@@ -429,7 +430,23 @@ void DatetimeWidget::paintEvent(QPaintEvent *e)
     }
 
     painter.setFont(m_timeFont);
-    painter.drawText(timeTextRect, Qt::AlignCenter, timeStr);
+
+    if (timeStr.contains("\n")) {
+        QStringList SL = timeStr.split("\n");
+        int height = QFontMetrics(m_timeFont).boundingRect(timeStr).height();
+        for (int index = 0; index < SL.count(); index++) {
+            QRect rect;
+            rect.setX(timeTextRect.x());
+            rect.setY(timeTextRect.y() + height * index);
+            rect.setWidth(timeTextRect.width());
+            rect.setHeight(height);
+            painter.drawText(rect, Qt::AlignCenter, SL.at(index));
+        }
+
+    } else {
+        painter.drawText(timeTextRect, Qt::AlignCenter, timeStr);
+    }
+
 
     painter.setFont(m_dateFont);
     painter.drawText(dateTextRect, Qt::AlignCenter, dateStr);

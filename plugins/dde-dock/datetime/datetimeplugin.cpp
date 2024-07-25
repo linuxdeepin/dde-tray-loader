@@ -97,7 +97,10 @@ void DatetimePlugin::loadPlugin()
 
     m_centralWidget.reset(new DatetimeWidget(m_RegionFormatModel));
 
-    connect(m_centralWidget.data(), &DatetimeWidget::requestUpdateGeometry, this, [this] { m_proxyInter->itemUpdate(this, pluginName()); });
+    connect(m_centralWidget.data(), &DatetimeWidget::requestUpdateGeometry, this, [this] {
+        m_centralWidget.data()->setFixedSize(m_centralWidget.data()->sizeHint());
+        m_proxyInter->itemUpdate(this, pluginName());
+    });
     connect(m_refershTimer, &QTimer::timeout, this, &DatetimePlugin::updateCurrentTimeString);
     connect(m_calendarPopup.data(), &SidebarCalendarWidget::jumpButtonClicked, this, [this]() {
         m_proxyInter->requestSetAppletVisible(this, DATETIME_KEY, false);
