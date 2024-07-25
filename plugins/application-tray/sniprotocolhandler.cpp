@@ -63,6 +63,8 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     , m_tooltip (new QLabel())
 {
     auto pair = serviceAndPath(sniServicePath);
+    // will get a unique dbus name (number like x.xxxx) and dbus path
+    m_dbusUniqueName = pair.first.mid(1);
     m_sniInter = new StatusNotifierItem(pair.first, pair.second, QDBusConnection::sessionBus(), this);
     m_dbusMenuImporter = new DBusMenuImporter(pair.first, m_sniInter->menu().path(), ASYNCHRONOUS, this);
 
@@ -86,7 +88,7 @@ uint32_t SniTrayProtocolHandler::windowId() const
 
 QString SniTrayProtocolHandler::id() const
 {
-    return sniPfrefix + UTIL->getProcExe(QDBusConnection::sessionBus().interface()->servicePid(m_sniInter->service())) + QString("-%1").arg(windowId());
+    return sniPfrefix + UTIL->getProcExe(QDBusConnection::sessionBus().interface()->servicePid(m_sniInter->service())) + QString("-%1").arg(m_dbusUniqueName);
 }
     
 QString SniTrayProtocolHandler::title() const
