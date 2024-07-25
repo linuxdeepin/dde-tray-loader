@@ -56,11 +56,9 @@ public:
 private slots:
     void updateCurrentTimeString();
     void refreshPluginItemsVisible();
-    void propertiesChanged();
 
 private:
     void loadPlugin();
-    QDBusInterface *timedateInterface();
 
 private:
     QScopedPointer<DatetimeWidget> m_centralWidget;

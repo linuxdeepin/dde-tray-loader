@@ -31,7 +31,6 @@ public:
 protected:
     void resizeEvent(QResizeEvent *event);
     void paintEvent(QPaintEvent *e);
-    void showEvent(QShowEvent *e);
 
 signals:
     void requestUpdateGeometry() const;
