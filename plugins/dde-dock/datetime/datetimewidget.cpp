@@ -25,7 +25,7 @@ DatetimeWidget::DatetimeWidget(RegionFormat* regionFormat, QWidget *parent)
     , m_weekdayFormatType(0)
     , m_timedateInter(new Timedate("com.deepin.daemon.Timedate", "/com/deepin/daemon/Timedate", QDBusConnection::sessionBus(), this))
     , m_shortDateFormat("yyyy-MM-dd")
-    , m_dockSize(QSize(1920, 40))
+    , m_dockSize(QSize(1920, 37))
     , m_regionFormat(regionFormat)
 {
     setMinimumSize(PLUGIN_BACKGROUND_MIN_SIZE, PLUGIN_BACKGROUND_MIN_SIZE);
@@ -213,7 +213,7 @@ QSize DatetimeWidget::curTimeSize() const
     QString timeFormat = m_regionFormat->getShortTimeFormat();
     QString dateFormat = m_regionFormat->getShortDateFormat();
     if ((position == Dock::Right || position == Dock::Left)) {
-        int index = timeFormat.indexOf("ap");
+        int index = timeFormat.indexOf("AP", Qt::CaseInsensitive);
         if (index != -1) {
             timeFormat.insert(index + 2, '\n');
         }
@@ -335,7 +335,7 @@ void DatetimeWidget::paintEvent(QPaintEvent *e)
 
     QString format = m_regionFormat->getShortTimeFormat();
     if ((position == Dock::Right || position == Dock::Left)) {
-        int index = format.indexOf("ap");
+        int index = format.indexOf("AP", Qt::CaseInsensitive);
         if (index != -1) {
             format.insert(index + 2, '\n');
         }
@@ -449,6 +449,8 @@ void DatetimeWidget::setDockPanelSize(const QSize &dockSize)
         m_dockSize = dockSize;
         update();
     }
+
+    Q_EMIT requestUpdateGeometry();
 }
 
 void DatetimeWidget::dockPositionChanged()
@@ -457,12 +459,4 @@ void DatetimeWidget::dockPositionChanged()
     QTimer::singleShot(300, this, [this]{
         updateDateTime();
     });
-}
-
-void DatetimeWidget::showEvent(QShowEvent *e)
-{
-    if (topLevelWidget()) {
-        m_dockSize = topLevelWidget()->size();
-    }
-    QWidget::showEvent(e);
 }

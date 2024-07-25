@@ -173,5 +173,5 @@ void RegionFormat::sync24HourFormatConfig(bool is24HourFormat)
 
 bool RegionFormat::is24HourFormat() const
 {
-    return !getShortTimeFormat().contains("AP");
+    return !getShortTimeFormat().contains("AP", Qt::CaseInsensitive);
 }

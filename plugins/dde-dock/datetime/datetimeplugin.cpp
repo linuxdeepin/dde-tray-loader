@@ -32,8 +32,7 @@ DatetimePlugin::DatetimePlugin(QObject *parent)
     , m_pluginLoaded(false)
     , m_RegionFormatModel(nullptr)
 {
-    QDBusConnection sessionBus = QDBusConnection::sessionBus();
-    sessionBus.connect("com.deepin.daemon.Timedate", "/com/deepin/daemon/Timedate", "org.freedesktop.DBus.Properties",  "PropertiesChanged", this, SLOT(propertiesChanged()));
+
 }
 
 DatetimePlugin::~DatetimePlugin()
@@ -97,7 +96,10 @@ void DatetimePlugin::loadPlugin()
 
     m_centralWidget.reset(new DatetimeWidget(m_RegionFormatModel));
 
-    connect(m_centralWidget.data(), &DatetimeWidget::requestUpdateGeometry, this, [this] { m_proxyInter->itemUpdate(this, pluginName()); });
+    connect(m_centralWidget.data(), &DatetimeWidget::requestUpdateGeometry, this, [this] {
+        m_centralWidget.data()->setFixedSize(m_centralWidget.data()->sizeHint());
+        m_proxyInter->itemUpdate(this, pluginName());
+    });
     connect(m_refershTimer, &QTimer::timeout, this, &DatetimePlugin::updateCurrentTimeString);
     connect(m_calendarPopup.data(), &SidebarCalendarWidget::jumpButtonClicked, this, [this]() {
         m_proxyInter->requestSetAppletVisible(this, DATETIME_KEY, false);
@@ -228,11 +230,6 @@ void DatetimePlugin::pluginSettingsChanged()
     if (!m_pluginLoaded)
         return;
 
-    const bool value = timedateInterface()->property(TIME_FORMAT_KEY).toBool();
-
-    m_proxyInter->saveValue(this, TIME_FORMAT_KEY, value);
-    m_centralWidget->set24HourFormat(value);
-
     refreshPluginItemsVisible();
 }
 
@@ -266,27 +263,6 @@ void DatetimePlugin::refreshPluginItemsVisible()
     } else {
         m_proxyInter->itemRemoved(this, pluginName());
     }
-}
-
-void DatetimePlugin::propertiesChanged()
-{
-    pluginSettingsChanged();
-}
-
-QDBusInterface* DatetimePlugin::timedateInterface()
-{
-    if (!m_interface) {
-        if (QDBusConnection::sessionBus().interface()->isServiceRegistered("com.deepin.daemon.Timedate")) {
-            m_interface = new QDBusInterface("com.deepin.daemon.Timedate", "/com/deepin/daemon/Timedate", "com.deepin.daemon.Timedate", QDBusConnection::sessionBus(), this);
-        } else {
-            const QString path = QString("/com/deepin/daemon/Accounts/User%1").arg(QString::number(getuid()));
-            QDBusInterface * systemInterface = new QDBusInterface("com.deepin.daemon.Accounts", path, "com.deepin.daemon.Accounts.User",
-                                                                  QDBusConnection::systemBus(), this);
-            return systemInterface;
-        }
-    }
-
-    return m_interface;
 }
 
 Dock::PluginFlags DatetimePlugin::flags() const
