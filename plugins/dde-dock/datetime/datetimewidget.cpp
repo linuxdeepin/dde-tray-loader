@@ -30,7 +30,7 @@ DatetimeWidget::DatetimeWidget(RegionFormat* regionFormat, QWidget *parent)
 {
     setMinimumSize(PLUGIN_BACKGROUND_MIN_SIZE, PLUGIN_BACKGROUND_MIN_SIZE);
     setWeekdayFormat(m_timedateInter->weekdayFormat());
-    set24HourFormat(m_regionFormat->getShortTimeFormat().contains("AP"));
+    m_24HourFormat = m_regionFormat->is24HourFormat();
     updateDateTimeString();
 
     connect(m_timedateInter, &Timedate::WeekdayFormatChanged, this, &DatetimeWidget::setWeekdayFormat);
@@ -55,6 +55,7 @@ void DatetimeWidget::set24HourFormat(const bool value)
     }
 
     m_24HourFormat = value;
+    m_regionFormat->sync24HourFormatConfig(value);
     update();
 
     if (isVisible()) {
@@ -190,7 +191,7 @@ void DatetimeWidget::updateDateTimeString()
 
 void DatetimeWidget::updateDateTime()
 {
-    set24HourFormat(m_regionFormat->getShortTimeFormat().contains("AP"));
+    m_24HourFormat = m_regionFormat->is24HourFormat();
     updateDateTimeString();
     update();
 

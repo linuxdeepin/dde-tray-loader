@@ -216,9 +216,8 @@ void DatetimePlugin::invokedMenuItem(const QString &itemKey, const QString &menu
                 .arg(QString("datetime"))
                 .call();
     } else if (menuId == "settings") {
-        const bool value = timedateInterface()->property(TIME_FORMAT_KEY).toBool();
-        timedateInterface()->setProperty(TIME_FORMAT_KEY, !value);
-        m_centralWidget->set24HourFormat(!value);
+        const bool is24HourFormat = m_centralWidget->is24HourFormat();
+        m_centralWidget->set24HourFormat(!is24HourFormat);
     } else {
         QProcess::startDetached("dbus-send --print-reply --dest=com.deepin.Calendar /com/deepin/Calendar com.deepin.Calendar.RaiseWindow");
     }

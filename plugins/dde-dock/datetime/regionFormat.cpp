@@ -163,3 +163,15 @@ void RegionFormat::onDockPositionChanged(const Dock::Position position)
         setShortDateFormat(m_config->value(shortDateFormat_key).toString());
     }
 }
+
+void RegionFormat::sync24HourFormatConfig(bool is24HourFormat)
+{
+    // 24小时制/12小时制切换，对应控制中心时间设置格式。
+    QString value = is24HourFormat ? "HH:mm" : "APh:mm";
+    m_config->setValue(shortTimeFormat_key, value);
+}
+
+bool RegionFormat::is24HourFormat() const
+{
+    return !getShortTimeFormat().contains("AP");
+}

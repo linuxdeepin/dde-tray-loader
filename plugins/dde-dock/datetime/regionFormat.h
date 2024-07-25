@@ -45,6 +45,9 @@ public:
     QString getLocaleName() const;
     void setLocaleName(const QString &newLocaleName);
 
+    bool is24HourFormat() const;
+    void sync24HourFormatConfig(bool is24HourFormat);
+
 signals:
     void shortDateFormatChanged() const;
     void longDateFormatChanged() const;
