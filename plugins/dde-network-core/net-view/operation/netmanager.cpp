@@ -229,7 +229,7 @@ NetManagerPrivate::NetManagerPrivate(NetManager *manager, bool tipsLinkEnabled)
     if (!m_isGreeterMode) {
         NetVPNControlItem *vpnControlItem = new NetVPNControlItem("NetVPNControlItem");
         addItem(vpnControlItem);
-        addItem(new NetVPNTipsItem("NetVPNTipsItem", "VPN", tipsLinkEnabled), vpnControlItem);
+        addItem(new NetVPNTipsItem("NetVPNTipsItem", "networkVpn", tipsLinkEnabled), vpnControlItem);
         addItem(new NetSystemProxyControlItem("NetSystemProxyControlItem"), m_root);
     }
     for (int i = 0; i < DeviceItemCount; ++i) {
