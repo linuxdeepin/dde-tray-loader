@@ -1,3 +1,11 @@
+dde-tray-loader (0.0.4) unstable; urgency=medium
+
+  * fix: network view size cannot respond to content changes in a timely manner(Issue: 9881)(Influence: network view size)
+  * fix: Update translation file path(Issue: 9956)
+  * fix: datetime plugin set 24-hour format do not work(Issue: 9717, 9857)(Influence: datetime plugin display)
+
+ -- zyz <zhaoyingzhen@uniontech.com>  Thu, 25 Jul 2024 16:23:30 +0800
+
 dde-tray-loader (0.0.3) unstable; urgency=medium
 
   * feat: plugin item can set content margin (#65)(Influence: plugin item display)
