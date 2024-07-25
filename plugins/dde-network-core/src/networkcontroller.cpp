@@ -109,7 +109,7 @@ void NetworkController::installTranslator(const QString &locale)
     } else {
         m_translator = new QTranslator;
     }
-    m_translator->load(QString("/usr/share/dde-network-core/translations/dde-network-core_%1").arg(localeName));
+    m_translator->load(QString("/usr/share/dde-tray-network-core/translations/dde-network-core_%1").arg(localeName));
     QCoreApplication::installTranslator(m_translator);
 }
 
