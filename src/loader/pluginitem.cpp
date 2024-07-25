@@ -89,6 +89,10 @@ QMenu *PluginItem::pluginContextMenu()
     initPluginMenu();
 
     qDebug() << "mouseRightButtonClicked:" << m_itemKey << m_menu->actions().size();
+
+    if (m_menu->isEmpty())
+        return nullptr;
+
     m_menu->setAttribute(Qt::WA_TranslucentBackground, true);
     // FIXME: qt5integration drawMenuItemBackground will draw a background event is's transparent
     auto pa = this->palette();

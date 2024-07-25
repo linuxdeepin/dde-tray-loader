@@ -329,8 +329,8 @@ PluginPopup* PluginPopup::get(QWindow* window)
 
         QObject::connect(window, &QWindow::visibleChanged, popup, [window, popup] (bool visible) {
             if (!visible) {
-                popup->deleteLater();
                 s_popupMap.remove(window);
+                popup->deleteLater();
             }
         });
     }
