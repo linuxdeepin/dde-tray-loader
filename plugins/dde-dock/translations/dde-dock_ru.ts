@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -34,10 +36,10 @@
     </message>
 </context>
 <context>
-    <name>AppDragWidget</name>
+    <name>BluetoothAdapterItem</name>
     <message>
-        <source>Remove</source>
-        <translation>Удалить</translation>
+        <source>My Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -48,7 +50,7 @@
     </message>
     <message>
         <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Turned off</source>
@@ -87,7 +89,7 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Not connected</source>
@@ -109,25 +111,25 @@
     <name>BrightnessApplet</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -188,7 +190,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -249,61 +251,12 @@
         <source>sunday</source>
         <translation>воскресенье</translation>
     </message>
-    <message>
-        <source>%1year%2month%3day</source>
-        <translation>%1год%2месяц%3день</translation>
-    </message>
 </context>
 <context>
-    <name>DesktopWidget</name>
+    <name>DeviceControlWidget</name>
     <message>
-        <source>Show Desktop</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>DialogManager</name>
-    <message>
-        <source>Are you sure you want to empty %1 items?</source>
-        <translation>Вы уверены, что хотите очистить %1 объектов?</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Отмена</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Удалить</translation>
-    </message>
-    <message>
-        <source>This action cannot be restored</source>
-        <translation>Это действие необратимо</translation>
-    </message>
-</context>
-<context>
-    <name>DiskControlItem</name>
-    <message>
-        <source>Unknown device</source>
-        <translation>Неизвестное устройство</translation>
-    </message>
-    <message>
-        <source>Unknown volume</source>
-        <translation>Неизвестный объем</translation>
-    </message>
-</context>
-<context>
-    <name>DiskMountPlugin</name>
-    <message>
-        <source>Disk</source>
-        <translation>Диск</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>Открыть</translation>
-    </message>
-    <message>
-        <source>Unmount all</source>
-        <translation>Отмонтировать все</translation>
+        <source>Other Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -341,13 +294,6 @@
     </message>
 </context>
 <context>
-    <name>DockPluginsController</name>
-    <message>
-        <source>The plugin %1 is not compatible with the system.</source>
-        <translation>Плагин %1 не совместим с системой.</translation>
-    </message>
-</context>
-<context>
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
@@ -363,104 +309,82 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Выкл.</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>LauncherItem</name>
-    <message>
-        <source>Launcher</source>
-        <translation>Выбор Программ</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindow</name>
-    <message>
-        <source>Exit Safe Mode</source>
-        <translation>Выйти из Безопасного Режима</translation>
-    </message>
-    <message>
-        <source>Dock - Safe Mode</source>
-        <translation>Dock - Безопасный Режим</translation>
-    </message>
-    <message>
-        <source>The Dock is in safe mode, please exit to show it properly</source>
-        <translation>Dock находится в безопасном режиме, пожалуйста, выйдите, чтобы показать ее нормально</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -519,110 +443,30 @@
     </message>
 </context>
 <context>
-    <name>ModuleWidget</name>
+    <name>NotificationPlugin</name>
     <message>
-        <source>Size</source>
-        <translation>Размер</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>No messages</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Multiple Displays</source>
-        <translation>Несколько Дисплеев</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notification settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Plugin Area</source>
-        <translation>Область Плагина</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notifications</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select which icons appear in the Dock</source>
-        <translation>Выбрать значки появляющиеся в Dock</translation>
+        <source>Turn off DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fashion mode</source>
-        <translation>Стильный режим</translation>
+        <source>Turn on DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Efficient mode</source>
-        <translation>Эффективный режим</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Режим</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>На верху</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Внизу</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Слева
-</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Справа</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Расположение</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Keep shown</source>
-        <translation>Отображать</translation>
-    </message>
-    <message>
-        <source>Keep hidden</source>
-        <translation>Скрывать</translation>
-    </message>
-    <message>
-        <source>Smart hide</source>
-        <translation>Умное скрытие</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Статус</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Small</source>
-        <translation>Маленький</translation>
-    </message>
-    <message>
-        <source>Large</source>
-        <translation>Большой</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Показывать Dock</translation>
-    </message>
-    <message>
-        <source>On screen where the cursor is</source>
-        <translation>На экране, где располагается курсор</translation>
-    </message>
-    <message>
-        <source>Only on main screen</source>
-        <translation>Только на главном экране</translation>
-    </message>
-</context>
-<context>
-    <name>MultitaskingPlugin</name>
-    <message>
-        <source>Multitasking View</source>
-        <translation>Многозадачный Вид</translation>
+        <source>Notification</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -637,46 +481,29 @@
     </message>
 </context>
 <context>
-    <name>OverflowItem</name>
-    <message>
-        <source>Show hidden icons</source>
-        <translation>Показать скрытые значки</translation>
-    </message>
-</context>
-<context>
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>PluginsItem</name>
     <message>
-        <source>Undock</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>PopupIndicator</name>
-    <message>
-        <source>Application tray</source>
-        <translation type="unfinished"/>
+        <source>Balance Performance</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -727,65 +554,58 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>QuickPanelItem</name>
-    <message>
-        <source>Quick actions</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Параметры питания</translation>
     </message>
 </context>
 <context>
@@ -796,56 +616,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>QuickPlugin</name>
-    <message>
-        <source>Remove from dock</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Pin to dock</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>SettingsModule</name>
-    <message>
-        <source>Dock</source>
-        <translation>Dock</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Режим</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Расположение</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Статус</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation>Размер</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Показывать Dock</translation>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation>Область Плагина</translation>
-    </message>
-</context>
-<context>
-    <name>ShowDesktopPlugin</name>
-    <message>
-        <source>Show Desktop</source>
-        <translation>Показать Рабочий стол</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -888,142 +659,142 @@
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Понедельник</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Вторник</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Среда</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Четверг</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Пятница</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Суббота</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Воскресенье</translation>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">понедельник</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Вторник</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Среда</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Четверг</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Пятница</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Суббота</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">воскресенье</translation>
     </message>
 </context>
 <context>
@@ -1069,36 +840,6 @@
     <message>
         <source>Volume %1</source>
         <translation>Громкость %1</translation>
-    </message>
-</context>
-<context>
-    <name>TrashPlugin</name>
-    <message>
-        <source>Trash</source>
-        <translation>Корзина</translation>
-    </message>
-    <message>
-        <source>Trash - %1 file</source>
-        <translation>Корзина - %1 файл</translation>
-    </message>
-    <message>
-        <source>Trash - %1 files</source>
-        <translation>Корзина - %1 файлов</translation>
-    </message>
-    <message>
-        <source>Move to Trash</source>
-        <translation>Удалить в корзину</translation>
-    </message>
-</context>
-<context>
-    <name>TrashWidget</name>
-    <message>
-        <source>Open</source>
-        <translation>Открыть</translation>
-    </message>
-    <message>
-        <source>Empty</source>
-        <translation>Очистить</translation>
     </message>
 </context>
 </TS>

@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="az">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="az">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -34,10 +36,10 @@
     </message>
 </context>
 <context>
-    <name>AppDragWidget</name>
+    <name>BluetoothAdapterItem</name>
     <message>
-        <source>Remove</source>
-        <translation>Silmək</translation>
+        <source>My Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -249,61 +251,12 @@
         <source>sunday</source>
         <translation>bazar</translation>
     </message>
-    <message>
-        <source>%1year%2month%3day</source>
-        <translation>%1il%2ay%3gün</translation>
-    </message>
 </context>
 <context>
-    <name>DesktopWidget</name>
+    <name>DeviceControlWidget</name>
     <message>
-        <source>Show Desktop</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>DialogManager</name>
-    <message>
-        <source>Are you sure you want to empty %1 items?</source>
-        <translation>%1 elementi boşaltmaq istədiyinizə əminsiniz?</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>İmtina</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Silmək</translation>
-    </message>
-    <message>
-        <source>This action cannot be restored</source>
-        <translation>Bu əməliyyat bərpa edilə bilməz</translation>
-    </message>
-</context>
-<context>
-    <name>DiskControlItem</name>
-    <message>
-        <source>Unknown device</source>
-        <translation>Naməlum cihaz</translation>
-    </message>
-    <message>
-        <source>Unknown volume</source>
-        <translation>Naməlum həcm</translation>
-    </message>
-</context>
-<context>
-    <name>DiskMountPlugin</name>
-    <message>
-        <source>Disk</source>
-        <translation>Disk</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>Aç</translation>
-    </message>
-    <message>
-        <source>Unmount all</source>
-        <translation>Hamısını çıxartmaq</translation>
+        <source>Other Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -341,13 +294,6 @@
     </message>
 </context>
 <context>
-    <name>DockPluginsController</name>
-    <message>
-        <source>The plugin %1 is not compatible with the system.</source>
-        <translation>%1 qoşması sistem ilə uyğun deyil.</translation>
-    </message>
-</context>
-<context>
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
@@ -363,104 +309,82 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Ekran ayarları</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Söndürülüb</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>LauncherItem</name>
-    <message>
-        <source>Launcher</source>
-        <translation>Başladıcı</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindow</name>
-    <message>
-        <source>Exit Safe Mode</source>
-        <translation>Təhlükəsiz rejimdən çıxın</translation>
-    </message>
-    <message>
-        <source>Dock - Safe Mode</source>
-        <translation>Dok - Təhlükəsiz rejim</translation>
-    </message>
-    <message>
-        <source>The Dock is in safe mode, please exit to show it properly</source>
-        <translation>Dok təhlükəsiz rejimdədir, onun düzgün göstərilməsi üçün çıxın</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -519,109 +443,30 @@
     </message>
 </context>
 <context>
-    <name>ModuleWidget</name>
+    <name>NotificationPlugin</name>
     <message>
-        <source>Size</source>
-        <translation>Ölçü</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>No messages</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Multiple Displays</source>
-        <translation>Çoxsaylı ekran</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notification settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Plugin Area</source>
-        <translation>Plaqin sahəsi</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notifications</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select which icons appear in the Dock</source>
-        <translation>Dok paneldə görünəcək nişanları seçin</translation>
+        <source>Turn off DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fashion mode</source>
-        <translation>Müasir rejim</translation>
+        <source>Turn on DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Efficient mode</source>
-        <translation>Səmərəli rejim</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Rejim</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Yuxarıda</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Aşağıda</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Sol</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Sağ</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Yerləşmə</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Keep shown</source>
-        <translation>Görünsün</translation>
-    </message>
-    <message>
-        <source>Keep hidden</source>
-        <translation>Gizli qalsın</translation>
-    </message>
-    <message>
-        <source>Smart hide</source>
-        <translation>Ağıllı gizlənmə</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Vəziyyəti</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Small</source>
-        <translation>Kiçik</translation>
-    </message>
-    <message>
-        <source>Large</source>
-        <translation>Geniş</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Dok paneli göstərmək</translation>
-    </message>
-    <message>
-        <source>On screen where the cursor is</source>
-        <translation>Kursorun olduğu ekranda</translation>
-    </message>
-    <message>
-        <source>Only on main screen</source>
-        <translation>Yalnız əsas ekranda</translation>
-    </message>
-</context>
-<context>
-    <name>MultitaskingPlugin</name>
-    <message>
-        <source>Multitasking View</source>
-        <translation>Çoxtapşırıqlı görünüş</translation>
+        <source>Notification</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -633,13 +478,6 @@
     <message>
         <source>Settings</source>
         <translation>Tənzimləmələr</translation>
-    </message>
-</context>
-<context>
-    <name>OverflowItem</name>
-    <message>
-        <source>Show hidden icons</source>
-        <translation>Gizlinişanları göstərmək</translation>
     </message>
 </context>
 <context>
@@ -656,26 +494,16 @@
         <source>Power Saver</source>
         <translation>Enerjiyə qənaət</translation>
     </message>
-</context>
-<context>
-    <name>PluginsItem</name>
     <message>
-        <source>Undock</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>PopupIndicator</name>
-    <message>
-        <source>Application tray</source>
-        <translation>Tətbiq vəziyyət çubuğu</translation>
+        <source>Balance Performance</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -726,65 +554,58 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>QuickPanelItem</name>
-    <message>
-        <source>Quick actions</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Elektrik enerjisi ayarları</translation>
     </message>
 </context>
 <context>
@@ -796,55 +617,6 @@
     <message>
         <source>Unknown</source>
         <translation>Naməlum</translation>
-    </message>
-</context>
-<context>
-    <name>QuickPlugin</name>
-    <message>
-        <source>Remove from dock</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Pin to dock</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>SettingsModule</name>
-    <message>
-        <source>Dock</source>
-        <translation>Dok panel</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Rejim</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Yerləşmə</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Vəziyyəti</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation>Ölçü</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Dok paneli göstərmək</translation>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation>Plaqin sahəsi</translation>
-    </message>
-</context>
-<context>
-    <name>ShowDesktopPlugin</name>
-    <message>
-        <source>Show Desktop</source>
-        <translation>Masaüstünü göstərin</translation>
     </message>
 </context>
 <context>
@@ -887,11 +659,11 @@
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -994,7 +766,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Təqvimi açın</translation>
     </message>
     <message>
         <source>monday</source>
@@ -1068,36 +840,6 @@
     <message>
         <source>Volume %1</source>
         <translation>Səs səviyyəsi %1</translation>
-    </message>
-</context>
-<context>
-    <name>TrashPlugin</name>
-    <message>
-        <source>Trash</source>
-        <translation>Zibil Qutusu</translation>
-    </message>
-    <message>
-        <source>Trash - %1 file</source>
-        <translation>Səbət - %1 fayl</translation>
-    </message>
-    <message>
-        <source>Trash - %1 files</source>
-        <translation>Səbət - %1 fayl</translation>
-    </message>
-    <message>
-        <source>Move to Trash</source>
-        <translation>Zibil qutusuna daşı</translation>
-    </message>
-</context>
-<context>
-    <name>TrashWidget</name>
-    <message>
-        <source>Open</source>
-        <translation>Aç</translation>
-    </message>
-    <message>
-        <source>Empty</source>
-        <translation>Boş</translation>
     </message>
 </context>
 </TS>

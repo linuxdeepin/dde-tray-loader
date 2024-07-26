@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ug">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ug">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -34,10 +36,10 @@
     </message>
 </context>
 <context>
-    <name>AppDragWidget</name>
+    <name>BluetoothAdapterItem</name>
     <message>
-        <source>Remove</source>
-        <translation>چىقىرىۋېتىش</translation>
+        <source>My Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -249,61 +251,12 @@
         <source>sunday</source>
         <translation>يەكشەنبە</translation>
     </message>
-    <message>
-        <source>%1year%2month%3day</source>
-        <translation>%1-يىل %2-ئاينىڭ %3-كۈنى</translation>
-    </message>
 </context>
 <context>
-    <name>DesktopWidget</name>
+    <name>DeviceControlWidget</name>
     <message>
-        <source>Show Desktop</source>
-        <translation>ئۈستەليۈزىنى كۆرسىتىش</translation>
-    </message>
-</context>
-<context>
-    <name>DialogManager</name>
-    <message>
-        <source>Are you sure you want to empty %1 items?</source>
-        <translation>راستلا ئەخلەت ساندۇقىدىكى %1 تۈرلۈك مەزمۇننى تازىلامسىز؟</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>بىكار قىلىش</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>ئۆچۈرۈش</translation>
-    </message>
-    <message>
-        <source>This action cannot be restored</source>
-        <translation>بۇ مەشغۇلاتنى ئەسلىگە قايتۇرغىلى بولمايدۇ</translation>
-    </message>
-</context>
-<context>
-    <name>DiskControlItem</name>
-    <message>
-        <source>Unknown device</source>
-        <translation>نامەلۇم ئۈسكۈنە</translation>
-    </message>
-    <message>
-        <source>Unknown volume</source>
-        <translation>سىغىمى نامەلۇم</translation>
-    </message>
-</context>
-<context>
-    <name>DiskMountPlugin</name>
-    <message>
-        <source>Disk</source>
-        <translation>دېسكا</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>ئوچۇق</translation>
-    </message>
-    <message>
-        <source>Unmount all</source>
-        <translation>ھەممىنى ئۆچۈرۈش </translation>
+        <source>Other Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -338,13 +291,6 @@
     <message>
         <source>DND Mode</source>
         <translation>دەخلىسىز ھالەت</translation>
-    </message>
-</context>
-<context>
-    <name>DockPluginsController</name>
-    <message>
-        <source>The plugin %1 is not compatible with the system.</source>
-        <translation>قىستۇرما %1 بىلەن سىستېما نەشرى ماسلاشمايدۇ.</translation>
     </message>
 </context>
 <context>
@@ -442,28 +388,6 @@
     </message>
 </context>
 <context>
-    <name>LauncherItem</name>
-    <message>
-        <source>Launcher</source>
-        <translation>ئۈستەليۈزى قوزغاتقۇچ</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindow</name>
-    <message>
-        <source>Exit Safe Mode</source>
-        <translation>بىخەتەر ھالەتتىن چېكىنىش</translation>
-    </message>
-    <message>
-        <source>Dock - Safe Mode</source>
-        <translation>ۋەزىپە ئىستونى بىخەتەرلىك ھالىتى</translation>
-    </message>
-    <message>
-        <source>The Dock is in safe mode, please exit to show it properly</source>
-        <translation>ۋەزىپە ئىستونى بىخەتەر ھالەتكە كىردى، چېكىنگەندىن كېيىن نورمال كۆرۈنىدۇ</translation>
-    </message>
-</context>
-<context>
     <name>MenuWorker</name>
     <message>
         <source>Fashion Mode</source>
@@ -519,109 +443,30 @@
     </message>
 </context>
 <context>
-    <name>ModuleWidget</name>
+    <name>NotificationPlugin</name>
     <message>
-        <source>Size</source>
-        <translation>چوڭلۇقى</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>No messages</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Multiple Displays</source>
-        <translation>كۆپ ئېكرانلىق كۆرسىتىش تەڭشىكى</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notification settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Plugin Area</source>
-        <translation>قىستۇرما رايونى</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notifications</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select which icons appear in the Dock</source>
-        <translation>ۋەزىپە ئىستونى قىستۇرما رايونىدا كۆرسىتىلىدىغان سىنبەلگىنى تاللاڭ</translation>
+        <source>Turn off DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fashion mode</source>
-        <translation>مودا ھالەت</translation>
+        <source>Turn on DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Efficient mode</source>
-        <translation>يۇقىرى ئۈنۈملۈك ھالەت</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>ھالىتى</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>ئۈستى</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>ئاستى</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>سول</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>ئوڭ</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>ئورنى</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Keep shown</source>
-        <translation>داۋاملىق كۆرسىتىش</translation>
-    </message>
-    <message>
-        <source>Keep hidden</source>
-        <translation>داۋاملىق يوشۇرۇش</translation>
-    </message>
-    <message>
-        <source>Smart hide</source>
-        <translation>ئەقلىي يوشۇرۇش</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>ھالىتى </translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Small</source>
-        <translation>كىچىك</translation>
-    </message>
-    <message>
-        <source>Large</source>
-        <translation>چوڭ</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>ۋەزىپە ئىستونىنىڭ ئورنى</translation>
-    </message>
-    <message>
-        <source>On screen where the cursor is</source>
-        <translation>مائۇسنىڭ ئورنىغا ئەگىشىپ كۆرۈنسۇن</translation>
-    </message>
-    <message>
-        <source>Only on main screen</source>
-        <translation>ئاساسىي ئېكراندىلا كۆرۈنسۇن</translation>
-    </message>
-</context>
-<context>
-    <name>MultitaskingPlugin</name>
-    <message>
-        <source>Multitasking View</source>
-        <translation>كۆپ ۋەزىپە كۆرۈنۈشى</translation>
+        <source>Notification</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -633,13 +478,6 @@
     <message>
         <source>Settings</source>
         <translation>تەڭشەك</translation>
-    </message>
-</context>
-<context>
-    <name>OverflowItem</name>
-    <message>
-        <source>Show hidden icons</source>
-        <translation>يوشۇرۇن سىنبەلگىلەر كۆرۈنسۇن</translation>
     </message>
 </context>
 <context>
@@ -656,19 +494,9 @@
         <source>Power Saver</source>
         <translation>ئېنېرگىيە تېجەش ھالىتى</translation>
     </message>
-</context>
-<context>
-    <name>PluginsItem</name>
     <message>
-        <source>Undock</source>
-        <translation>چىقىرىۋېتىش</translation>
-    </message>
-</context>
-<context>
-    <name>PopupIndicator</name>
-    <message>
-        <source>Application tray</source>
-        <translation>ئەپ تەخسىسى</translation>
+        <source>Balance Performance</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -781,13 +609,6 @@
     </message>
 </context>
 <context>
-    <name>QuickPanelItem</name>
-    <message>
-        <source>Quick actions</source>
-        <translation>تېزلەتمە تەڭشىكى</translation>
-    </message>
-</context>
-<context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
@@ -796,55 +617,6 @@
     <message>
         <source>Unknown</source>
         <translation>نامەلۇم</translation>
-    </message>
-</context>
-<context>
-    <name>QuickPlugin</name>
-    <message>
-        <source>Remove from dock</source>
-        <translation>ۋەزىپە ئىستونىدىن ئۆچۈرۈش</translation>
-    </message>
-    <message>
-        <source>Pin to dock</source>
-        <translation>ۋەزىپە ئىستونىدا كۆرۈنسۇن</translation>
-    </message>
-</context>
-<context>
-    <name>SettingsModule</name>
-    <message>
-        <source>Dock</source>
-        <translation>ۋەزىپە ئىستونى</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>ھالىتى</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>ئورنى</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>ھالىتى </translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation>چوڭلۇقى</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>ۋەزىپە ئىستونىنىڭ ئورنى</translation>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation>قىستۇرما رايونى</translation>
-    </message>
-</context>
-<context>
-    <name>ShowDesktopPlugin</name>
-    <message>
-        <source>Show Desktop</source>
-        <translation>ئۈستەل يۈزىنى كۆرۈش</translation>
     </message>
 </context>
 <context>
@@ -1068,36 +840,6 @@
     <message>
         <source>Volume %1</source>
         <translation>ئاۋاز %1</translation>
-    </message>
-</context>
-<context>
-    <name>TrashPlugin</name>
-    <message>
-        <source>Trash</source>
-        <translation>ئەخلەت ساندۇقى</translation>
-    </message>
-    <message>
-        <source>Trash - %1 file</source>
-        <translation>ئەخلەت ساندۇقى - %1ھۆججەت</translation>
-    </message>
-    <message>
-        <source>Trash - %1 files</source>
-        <translation>ئەخلەت ساندۇقى - %1ھۆججەت</translation>
-    </message>
-    <message>
-        <source>Move to Trash</source>
-        <translation>ئەخلەت ساندۇقىغا يۆتكەش</translation>
-    </message>
-</context>
-<context>
-    <name>TrashWidget</name>
-    <message>
-        <source>Open</source>
-        <translation>ئوچۇق</translation>
-    </message>
-    <message>
-        <source>Empty</source>
-        <translation>قۇرۇقداش</translation>
     </message>
 </context>
 </TS>

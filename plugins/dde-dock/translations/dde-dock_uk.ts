@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="uk">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="uk">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -34,10 +36,10 @@
     </message>
 </context>
 <context>
-    <name>AppDragWidget</name>
+    <name>BluetoothAdapterItem</name>
     <message>
-        <source>Remove</source>
-        <translation>Видалити</translation>
+        <source>My Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -249,61 +251,12 @@
         <source>sunday</source>
         <translation>неділя</translation>
     </message>
-    <message>
-        <source>%1year%2month%3day</source>
-        <translation>%1рік%2місяць%3день</translation>
-    </message>
 </context>
 <context>
-    <name>DesktopWidget</name>
+    <name>DeviceControlWidget</name>
     <message>
-        <source>Show Desktop</source>
-        <translation>Показати стільницю</translation>
-    </message>
-</context>
-<context>
-    <name>DialogManager</name>
-    <message>
-        <source>Are you sure you want to empty %1 items?</source>
-        <translation>Ви справді хочете спорожнити %1 записи?</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Скасувати</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Видалити</translation>
-    </message>
-    <message>
-        <source>This action cannot be restored</source>
-        <translation>Цю дію неможливо відновити</translation>
-    </message>
-</context>
-<context>
-    <name>DiskControlItem</name>
-    <message>
-        <source>Unknown device</source>
-        <translation>Невідомий пристрій</translation>
-    </message>
-    <message>
-        <source>Unknown volume</source>
-        <translation>Невідомий том</translation>
-    </message>
-</context>
-<context>
-    <name>DiskMountPlugin</name>
-    <message>
-        <source>Disk</source>
-        <translation>Диск</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>Відкрити</translation>
-    </message>
-    <message>
-        <source>Unmount all</source>
-        <translation>Відмонтувати все</translation>
+        <source>Other Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -338,13 +291,6 @@
     <message>
         <source>DND Mode</source>
         <translation>Режим «Не турбувати»</translation>
-    </message>
-</context>
-<context>
-    <name>DockPluginsController</name>
-    <message>
-        <source>The plugin %1 is not compatible with the system.</source>
-        <translation>Плагін %1 не сумісний із системою.</translation>
     </message>
 </context>
 <context>
@@ -442,28 +388,6 @@
     </message>
 </context>
 <context>
-    <name>LauncherItem</name>
-    <message>
-        <source>Launcher</source>
-        <translation>Запускач</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindow</name>
-    <message>
-        <source>Exit Safe Mode</source>
-        <translation>Вийти з безпечного режиму</translation>
-    </message>
-    <message>
-        <source>Dock - Safe Mode</source>
-        <translation>Док-станція — безпечний режим</translation>
-    </message>
-    <message>
-        <source>The Dock is in safe mode, please exit to show it properly</source>
-        <translation>Док-станція перебуває у безпечному режимі — будь ласка, вийдіть з нього для належного показу</translation>
-    </message>
-</context>
-<context>
     <name>MenuWorker</name>
     <message>
         <source>Fashion Mode</source>
@@ -519,109 +443,30 @@
     </message>
 </context>
 <context>
-    <name>ModuleWidget</name>
+    <name>NotificationPlugin</name>
     <message>
-        <source>Size</source>
-        <translation>Розмір</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>No messages</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Multiple Displays</source>
-        <translation>Кілька дисплеїв</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notification settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Plugin Area</source>
-        <translation>Область додатків</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notifications</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select which icons appear in the Dock</source>
-        <translation>Виберіть, які піктограми буде показано на бічній панелі</translation>
+        <source>Turn off DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fashion mode</source>
-        <translation>Модний режим</translation>
+        <source>Turn on DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Efficient mode</source>
-        <translation>Ефективний режим</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Режим</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Вгорі</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Внизу</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Ліворуч</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Праворуч</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Розташування</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Keep shown</source>
-        <translation>Показувати постійно</translation>
-    </message>
-    <message>
-        <source>Keep hidden</source>
-        <translation>Залишати прихованим</translation>
-    </message>
-    <message>
-        <source>Smart hide</source>
-        <translation>Розумне приховування</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Стан</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Small</source>
-        <translation>Малий</translation>
-    </message>
-    <message>
-        <source>Large</source>
-        <translation>Великий</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Показувати панель</translation>
-    </message>
-    <message>
-        <source>On screen where the cursor is</source>
-        <translation>На екрані, де перебуває вказівник</translation>
-    </message>
-    <message>
-        <source>Only on main screen</source>
-        <translation>Лише на головному екрані</translation>
-    </message>
-</context>
-<context>
-    <name>MultitaskingPlugin</name>
-    <message>
-        <source>Multitasking View</source>
-        <translation>Багатозадачний перегляд</translation>
+        <source>Notification</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -633,13 +478,6 @@
     <message>
         <source>Settings</source>
         <translation>Налаштування</translation>
-    </message>
-</context>
-<context>
-    <name>OverflowItem</name>
-    <message>
-        <source>Show hidden icons</source>
-        <translation>Показати приховані піктограми</translation>
     </message>
 </context>
 <context>
@@ -656,19 +494,9 @@
         <source>Power Saver</source>
         <translation>Заощадження енергії</translation>
     </message>
-</context>
-<context>
-    <name>PluginsItem</name>
     <message>
-        <source>Undock</source>
-        <translation>Від&apos;єднати</translation>
-    </message>
-</context>
-<context>
-    <name>PopupIndicator</name>
-    <message>
-        <source>Application tray</source>
-        <translation>Лоток програми</translation>
+        <source>Balance Performance</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -781,13 +609,6 @@
     </message>
 </context>
 <context>
-    <name>QuickPanelItem</name>
-    <message>
-        <source>Quick actions</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
@@ -796,55 +617,6 @@
     <message>
         <source>Unknown</source>
         <translation>Невідомий</translation>
-    </message>
-</context>
-<context>
-    <name>QuickPlugin</name>
-    <message>
-        <source>Remove from dock</source>
-        <translation>Вилучити з панелі</translation>
-    </message>
-    <message>
-        <source>Pin to dock</source>
-        <translation>Пришпилити до панелі</translation>
-    </message>
-</context>
-<context>
-    <name>SettingsModule</name>
-    <message>
-        <source>Dock</source>
-        <translation>Панель</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Режим</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Розташування</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Стан</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation>Розмір</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Показувати панель</translation>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation>Область додатків</translation>
-    </message>
-</context>
-<context>
-    <name>ShowDesktopPlugin</name>
-    <message>
-        <source>Show Desktop</source>
-        <translation>Показати Стільницю</translation>
     </message>
 </context>
 <context>
@@ -891,7 +663,7 @@
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1068,36 +840,6 @@
     <message>
         <source>Volume %1</source>
         <translation>Гучність %1</translation>
-    </message>
-</context>
-<context>
-    <name>TrashPlugin</name>
-    <message>
-        <source>Trash</source>
-        <translation>Смітник</translation>
-    </message>
-    <message>
-        <source>Trash - %1 file</source>
-        <translation>Смітник - %1 файл</translation>
-    </message>
-    <message>
-        <source>Trash - %1 files</source>
-        <translation>Смітник - %1 файлів</translation>
-    </message>
-    <message>
-        <source>Move to Trash</source>
-        <translation>Перемістити в кошик для сміття</translation>
-    </message>
-</context>
-<context>
-    <name>TrashWidget</name>
-    <message>
-        <source>Open</source>
-        <translation>Відкрити</translation>
-    </message>
-    <message>
-        <source>Empty</source>
-        <translation>Пусто</translation>
     </message>
 </context>
 </TS>
