@@ -177,18 +177,10 @@ void PluginItem::leaveEvent(QEvent *event)
 
 QWidget* PluginItem::centralWidget()
 {
-    const int trayItemWidth = 16;
-    const int trayItemHeight = 16;
-
     auto trayItemWidget = m_pluginsItemInterface->itemWidget(m_itemKey);
     auto policy = m_pluginsItemInterface->pluginSizePolicy();
     if (policy == PluginsItemInterface::System) {
-        trayItemWidget->setFixedSize(trayItemWidth, trayItemHeight);
-    } else {
-        auto size = trayItemWidget->sizeHint();
-        if (size.width() > 0 && size.height() > 0) {
-            trayItemWidget->setFixedSize(trayItemWidget->sizeHint());
-        }
+        trayItemWidget->setFixedSize(Dock::DOCK_PLUGIN_ITEM_FIXED_SIZE);
     }
 
     return trayItemWidget;
