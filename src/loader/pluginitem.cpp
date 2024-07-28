@@ -155,7 +155,7 @@ void PluginItem::enterEvent(QEvent *event)
         if (auto pluginPopup = Plugin::PluginPopup::get(toolTip->windowHandle())) {
             auto geometry = windowHandle()->geometry();
             auto e = dynamic_cast<QEnterEvent *>(event);
-            const auto offset = QPoint(0, 0);
+            const auto offset = QPoint(width() / 2, height() / 2);
             pluginPopup->setX(geometry.x() + offset.x());
             pluginPopup->setY(geometry.y() + offset.y());
 
