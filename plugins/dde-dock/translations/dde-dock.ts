@@ -36,10 +36,10 @@
     </message>
 </context>
 <context>
-    <name>AppDragWidget</name>
+    <name>BluetoothAdapterItem</name>
     <message>
-        <source>Remove</source>
-        <translation>Remove</translation>
+        <source>My Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -251,61 +251,12 @@
         <source>sunday</source>
         <translation>sunday</translation>
     </message>
-    <message>
-        <source>%1year%2month%3day</source>
-        <translation>%1year%2month%3day</translation>
-    </message>
 </context>
 <context>
-    <name>DesktopWidget</name>
+    <name>DeviceControlWidget</name>
     <message>
-        <source>Show Desktop</source>
-        <translation type="unfinished">Show Desktop</translation>
-    </message>
-</context>
-<context>
-    <name>DialogManager</name>
-    <message>
-        <source>Are you sure you want to empty %1 items?</source>
-        <translation>Are you sure you want to empty %1 items?</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Cancel</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Delete</translation>
-    </message>
-    <message>
-        <source>This action cannot be restored</source>
-        <translation>This action cannot be restored</translation>
-    </message>
-</context>
-<context>
-    <name>DiskControlItem</name>
-    <message>
-        <source>Unknown device</source>
-        <translation>Unknown device</translation>
-    </message>
-    <message>
-        <source>Unknown volume</source>
-        <translation>Unknown volume</translation>
-    </message>
-</context>
-<context>
-    <name>DiskMountPlugin</name>
-    <message>
-        <source>Disk</source>
-        <translation>Disk</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>Open</translation>
-    </message>
-    <message>
-        <source>Unmount all</source>
-        <translation>Unmount all</translation>
+        <source>Other Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -340,13 +291,6 @@
     <message>
         <source>DND Mode</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DockPluginsController</name>
-    <message>
-        <source>The plugin %1 is not compatible with the system.</source>
-        <translation type="unfinished">The plugin %1 is not compatible with the system.</translation>
     </message>
 </context>
 <context>
@@ -444,28 +388,6 @@
     </message>
 </context>
 <context>
-    <name>LauncherItem</name>
-    <message>
-        <source>Launcher</source>
-        <translation>Launcher</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindow</name>
-    <message>
-        <source>Exit Safe Mode</source>
-        <translation>Exit Safe Mode</translation>
-    </message>
-    <message>
-        <source>Dock - Safe Mode</source>
-        <translation>Dock - Safe Mode</translation>
-    </message>
-    <message>
-        <source>The Dock is in safe mode, please exit to show it properly</source>
-        <translation>The Dock is in safe mode, please exit to show it properly</translation>
-    </message>
-</context>
-<context>
     <name>MenuWorker</name>
     <message>
         <source>Fashion Mode</source>
@@ -521,112 +443,6 @@
     </message>
 </context>
 <context>
-    <name>ModuleWidget</name>
-    <message>
-        <source>Size</source>
-        <translation>Size</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Multiple Displays</source>
-        <translation>Multiple Displays</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation>Plugin Area</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Select which icons appear in the Dock</source>
-        <translation>Select which icons appear in the Dock</translation>
-    </message>
-    <message>
-        <source>Fashion mode</source>
-        <translation>Fashion mode</translation>
-    </message>
-    <message>
-        <source>Efficient mode</source>
-        <translation>Efficient mode</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Mode</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Top</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Bottom</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Left</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Right</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Location</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Keep shown</source>
-        <translation>Keep shown</translation>
-    </message>
-    <message>
-        <source>Keep hidden</source>
-        <translation>Keep hidden</translation>
-    </message>
-    <message>
-        <source>Smart hide</source>
-        <translation>Smart hide</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Status</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Small</source>
-        <translation>Small</translation>
-    </message>
-    <message>
-        <source>Large</source>
-        <translation>Large</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Show Dock</translation>
-    </message>
-    <message>
-        <source>On screen where the cursor is</source>
-        <translation>On screen where the cursor is</translation>
-    </message>
-    <message>
-        <source>Only on main screen</source>
-        <translation>Only on main screen</translation>
-    </message>
-</context>
-<context>
-    <name>MultitaskingPlugin</name>
-    <message>
-        <source>Multitasking View</source>
-        <translation>Multitasking View</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -665,13 +481,6 @@
     </message>
 </context>
 <context>
-    <name>OverflowItem</name>
-    <message>
-        <source>Show hidden icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
@@ -685,18 +494,8 @@
         <source>Power Saver</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>PluginsItem</name>
     <message>
-        <source>Undock</source>
-        <translation type="unfinished">Undock</translation>
-    </message>
-</context>
-<context>
-    <name>PopupIndicator</name>
-    <message>
-        <source>Application tray</source>
+        <source>Balance Performance</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -810,13 +609,6 @@
     </message>
 </context>
 <context>
-    <name>QuickPanelItem</name>
-    <message>
-        <source>Quick actions</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
@@ -825,55 +617,6 @@
     <message>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QuickPlugin</name>
-    <message>
-        <source>Remove from dock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pin to dock</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SettingsModule</name>
-    <message>
-        <source>Dock</source>
-        <translation>Dock</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Mode</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Location</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Status</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation>Size</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Show Dock</translation>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation>Plugin Area</translation>
-    </message>
-</context>
-<context>
-    <name>ShowDesktopPlugin</name>
-    <message>
-        <source>Show Desktop</source>
-        <translation>Show Desktop</translation>
     </message>
 </context>
 <context>
@@ -1097,36 +840,6 @@
     <message>
         <source>Volume %1</source>
         <translation type="unfinished">Volume %1</translation>
-    </message>
-</context>
-<context>
-    <name>TrashPlugin</name>
-    <message>
-        <source>Trash</source>
-        <translation>Trash</translation>
-    </message>
-    <message>
-        <source>Trash - %1 file</source>
-        <translation>Trash - %1 file</translation>
-    </message>
-    <message>
-        <source>Trash - %1 files</source>
-        <translation>Trash - %1 files</translation>
-    </message>
-    <message>
-        <source>Move to Trash</source>
-        <translation>Move to Trash</translation>
-    </message>
-</context>
-<context>
-    <name>TrashWidget</name>
-    <message>
-        <source>Open</source>
-        <translation>Open</translation>
-    </message>
-    <message>
-        <source>Empty</source>
-        <translation>Empty</translation>
     </message>
 </context>
 </TS>

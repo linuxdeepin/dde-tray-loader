@@ -36,10 +36,10 @@
     </message>
 </context>
 <context>
-    <name>AppDragWidget</name>
+    <name>BluetoothAdapterItem</name>
     <message>
-        <source>Remove</source>
-        <translation>移除</translation>
+        <source>My Devices</source>
+        <translation>我的设备</translation>
     </message>
 </context>
 <context>
@@ -251,61 +251,12 @@
         <source>sunday</source>
         <translation>周日</translation>
     </message>
-    <message>
-        <source>%1year%2month%3day</source>
-        <translation>%1年%2月%3日</translation>
-    </message>
 </context>
 <context>
-    <name>DesktopWidget</name>
+    <name>DeviceControlWidget</name>
     <message>
-        <source>Show Desktop</source>
-        <translation>显示桌面</translation>
-    </message>
-</context>
-<context>
-    <name>DialogManager</name>
-    <message>
-        <source>Are you sure you want to empty %1 items?</source>
-        <translation>您确定要清空回收站里的%1项内容吗？</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>删除</translation>
-    </message>
-    <message>
-        <source>This action cannot be restored</source>
-        <translation>此操作不可恢复</translation>
-    </message>
-</context>
-<context>
-    <name>DiskControlItem</name>
-    <message>
-        <source>Unknown device</source>
-        <translation>未知的设备</translation>
-    </message>
-    <message>
-        <source>Unknown volume</source>
-        <translation>容量未知</translation>
-    </message>
-</context>
-<context>
-    <name>DiskMountPlugin</name>
-    <message>
-        <source>Disk</source>
-        <translation>磁盘</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>打开</translation>
-    </message>
-    <message>
-        <source>Unmount all</source>
-        <translation>卸载全部</translation>
+        <source>Other Devices</source>
+        <translation>其他设备</translation>
     </message>
 </context>
 <context>
@@ -340,13 +291,6 @@
     <message>
         <source>DND Mode</source>
         <translation>勿扰模式</translation>
-    </message>
-</context>
-<context>
-    <name>DockPluginsController</name>
-    <message>
-        <source>The plugin %1 is not compatible with the system.</source>
-        <translation>插件%1和系统版本不兼容。</translation>
     </message>
 </context>
 <context>
@@ -444,28 +388,6 @@
     </message>
 </context>
 <context>
-    <name>LauncherItem</name>
-    <message>
-        <source>Launcher</source>
-        <translation>启动器</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindow</name>
-    <message>
-        <source>Exit Safe Mode</source>
-        <translation>退出安全模式</translation>
-    </message>
-    <message>
-        <source>Dock - Safe Mode</source>
-        <translation>任务栏安全模式</translation>
-    </message>
-    <message>
-        <source>The Dock is in safe mode, please exit to show it properly</source>
-        <translation>任务栏已进入安全模式，退出安全模式后即可正常显示</translation>
-    </message>
-</context>
-<context>
     <name>MenuWorker</name>
     <message>
         <source>Fashion Mode</source>
@@ -521,112 +443,6 @@
     </message>
 </context>
 <context>
-    <name>ModuleWidget</name>
-    <message>
-        <source>Size</source>
-        <translation>大小</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Multiple Displays</source>
-        <translation>多屏显示设置</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation>插件区域</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Select which icons appear in the Dock</source>
-        <translation>选择显示在任务栏插件区域的图标</translation>
-    </message>
-    <message>
-        <source>Fashion mode</source>
-        <translation>时尚模式</translation>
-    </message>
-    <message>
-        <source>Efficient mode</source>
-        <translation>高效模式</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>模式</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>上</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>下</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>左</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>右</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>位置</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Keep shown</source>
-        <translation>一直显示</translation>
-    </message>
-    <message>
-        <source>Keep hidden</source>
-        <translation>一直隐藏</translation>
-    </message>
-    <message>
-        <source>Smart hide</source>
-        <translation>智能隐藏</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>状态</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Small</source>
-        <translation>小</translation>
-    </message>
-    <message>
-        <source>Large</source>
-        <translation>大</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>任务栏位置</translation>
-    </message>
-    <message>
-        <source>On screen where the cursor is</source>
-        <translation>跟随鼠标位置显示</translation>
-    </message>
-    <message>
-        <source>Only on main screen</source>
-        <translation>仅主屏显示</translation>
-    </message>
-</context>
-<context>
-    <name>MultitaskingPlugin</name>
-    <message>
-        <source>Multitasking View</source>
-        <translation>多任务视图</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -665,13 +481,6 @@
     </message>
 </context>
 <context>
-    <name>OverflowItem</name>
-    <message>
-        <source>Show hidden icons</source>
-        <translation>显示隐藏图标</translation>
-    </message>
-</context>
-<context>
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
@@ -685,19 +494,9 @@
         <source>Power Saver</source>
         <translation>节能模式</translation>
     </message>
-</context>
-<context>
-    <name>PluginsItem</name>
     <message>
-        <source>Undock</source>
-        <translation>移除驻留</translation>
-    </message>
-</context>
-<context>
-    <name>PopupIndicator</name>
-    <message>
-        <source>Application tray</source>
-        <translation>应用托盘</translation>
+        <source>Balance Performance</source>
+        <translation>性能模式</translation>
     </message>
 </context>
 <context>
@@ -810,13 +609,6 @@
     </message>
 </context>
 <context>
-    <name>QuickPanelItem</name>
-    <message>
-        <source>Quick actions</source>
-        <translation>快捷设置</translation>
-    </message>
-</context>
-<context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
@@ -825,55 +617,6 @@
     <message>
         <source>Unknown</source>
         <translation>未知</translation>
-    </message>
-</context>
-<context>
-    <name>QuickPlugin</name>
-    <message>
-        <source>Remove from dock</source>
-        <translation>从任务栏上移除</translation>
-    </message>
-    <message>
-        <source>Pin to dock</source>
-        <translation>在任务栏上驻留</translation>
-    </message>
-</context>
-<context>
-    <name>SettingsModule</name>
-    <message>
-        <source>Dock</source>
-        <translation>任务栏</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>模式</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>位置</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>状态</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation>大小</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>任务栏位置</translation>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation>插件区域</translation>
-    </message>
-</context>
-<context>
-    <name>ShowDesktopPlugin</name>
-    <message>
-        <source>Show Desktop</source>
-        <translation>显示桌面</translation>
     </message>
 </context>
 <context>
@@ -1097,36 +840,6 @@
     <message>
         <source>Volume %1</source>
         <translation>当前音量 %1</translation>
-    </message>
-</context>
-<context>
-    <name>TrashPlugin</name>
-    <message>
-        <source>Trash</source>
-        <translation>回收站</translation>
-    </message>
-    <message>
-        <source>Trash - %1 file</source>
-        <translation>回收站 - %1个文件</translation>
-    </message>
-    <message>
-        <source>Trash - %1 files</source>
-        <translation>回收站 - %1个文件</translation>
-    </message>
-    <message>
-        <source>Move to Trash</source>
-        <translation>移至回收站</translation>
-    </message>
-</context>
-<context>
-    <name>TrashWidget</name>
-    <message>
-        <source>Open</source>
-        <translation>打开</translation>
-    </message>
-    <message>
-        <source>Empty</source>
-        <translation>清空</translation>
     </message>
 </context>
 </TS>

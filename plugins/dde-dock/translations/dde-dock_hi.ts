@@ -1,301 +1,815 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="hi" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="hi">
 <context>
-    <name>AbstractPluginsController</name>
+    <name>AirplaneModeItem</name>
     <message>
-        <source>The plugin %1 is not compatible with the system.</source>
-        <translation type="unfinished"/>
+        <source>Airplane mode enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Airplane Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Airplane mode settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Airplane mode disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AirplaneModePlugin</name>
+    <message>
+        <source>Airplane Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BluetoothAdapterItem</name>
+    <message>
+        <source>My Devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BluetoothApplet</name>
+    <message>
+        <source>Bluetooth settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turned off</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BluetoothItem</name>
+    <message>
+        <source>Bluetooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bluetooth settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turned off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BluetoothPlugin</name>
+    <message>
+        <source>Bluetooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BrightnessApplet</name>
+    <message>
+        <source>Brightness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BrightnessItem</name>
+    <message>
+        <source>Display settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BrightnessPlugin</name>
+    <message>
+        <source>Brightness</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CWeekWidget</name>
+    <message>
+        <source>Sun</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fri</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sat</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DBusAdaptors</name>
     <message>
         <source>Add keyboard layout</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DatetimePlugin</name>
     <message>
         <source>Datetime</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>12 Hour Time</source>
-        <translation type="unfinished"/>
+        <source>12-hour time</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>24 Hour Time</source>
-        <translation type="unfinished"/>
+        <source>24-hour time</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Time Settings</source>
-        <translation type="unfinished"/>
+        <source>Time settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the calendar</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>DeviceItem</name>
+    <name>DatetimeWidget</name>
     <message>
-        <source>Enable network</source>
-        <translation type="unfinished"/>
+        <source>Monday</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disable network</source>
-        <translation type="unfinished"/>
+        <source>Tuesday</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Network settings</source>
-        <translation type="unfinished"/>
+        <source>Wednesday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thursday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Friday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saturday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sunday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>monday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tuesday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>wednesday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>thursday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>friday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>saturday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sunday</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>DialogManager</name>
+    <name>DeviceControlWidget</name>
     <message>
-        <source>Are you sure you want to empty %1 items?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>This action cannot be restored</source>
-        <translation type="unfinished"/>
+        <source>Other Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>DiskControlItem</name>
+    <name>DndModeItem</name>
     <message>
-        <source>Unknown device</source>
-        <translation type="unfinished"/>
+        <source>DND Mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Unknown volume</source>
-        <translation type="unfinished"/>
+        <source>DND mode settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DND mode enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DND mode disabled</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>DiskMountPlugin</name>
+    <name>DndModePlugin</name>
     <message>
-        <source>Disk</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Unmount all</source>
-        <translation type="unfinished"/>
+        <source>DND Mode</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>DockSettings</name>
+    <name>EyeComfortModeItem</name>
+    <message>
+        <source>Eye Comfort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eye comfort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Light</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable eye comfort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable eye comfort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eye comfort enabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eye comfort disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Theme: Light</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Theme: Dark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Theme: Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Visual effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EyeComfortmodeApplet</name>
+    <message>
+        <source>Light</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MenuWorker</name>
     <message>
         <source>Fashion Mode</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Efficient Mode</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mode</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bottom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Right</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keep Shown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keep Hidden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Smart Hide</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Status</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Plugins</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>LauncherItem</name>
-    <message>
-        <source>Launcher</source>
-        <translation type="unfinished"/>
+        <source>Dock settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>MultitaskingPlugin</name>
+    <name>NotificationPlugin</name>
     <message>
-        <source>Multitasking View</source>
-        <translation type="unfinished"/>
+        <source>No messages</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Undock</source>
-        <translation type="unfinished"/>
+        <source>Notification settings</source>
+        <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>NetworkPlugin</name>
     <message>
-        <source>Network</source>
-        <translation type="unfinished"/>
+        <source>Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn off DND mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn on DND mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notification</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PerformanceModeController</name>
+    <message>
+        <source>High Performance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Balanced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Balance Performance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Power Saver</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PowerApplet</name>
+    <message>
+        <source>Power</source>
+        <translation type="unfinished">शक्ति</translation>
     </message>
 </context>
 <context>
     <name>PowerPlugin</name>
     <message>
-        <source>Power</source>
-        <translation>शक्ति</translation>
-    </message>
-    <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Charged %1</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Charging %1 ....</source>
-        <translation type="unfinished"/>
+        <source>Battery</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Capacity %1 ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging, calculating estimated charging time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calculating remaining usage time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Capacity %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 min remaining</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Capacity %1, %2 hr remaining</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 hr remaining</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 hr %2 min remaining</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Capacity %1, not charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Capacity %1, fully charged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fully charged</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging, %1 min until full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging %1, %2 hr until full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging, %1 hr until full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging, %1 hr %2 min until full</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>ShowDesktopPlugin</name>
+    <name>PowerStatusWidget</name>
     <message>
-        <source>Show Desktop</source>
-        <translation type="unfinished"/>
+        <source>Power settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QuickPanelWidget</name>
+    <message>
+        <source>Music</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Undock</source>
-        <translation type="unfinished"/>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ShutdownPlugin</name>
     <message>
-        <source>Power</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Shut down</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Restart</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Suspend</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hibernate</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Lock</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Log out</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Switch account</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shut Down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update and Shut Down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update and Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch user</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SidebarCalendarWidget</name>
+    <message>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the calendar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lunar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>d</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Monday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tuesday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wednesday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thursday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Friday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saturday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sunday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>monday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tuesday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>wednesday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>thursday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>friday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>saturday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sunday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feb</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>May</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jun</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jul</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oct</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nov</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dec</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SoundApplet</name>
     <message>
-        <source>Device</source>
-        <translation type="unfinished"/>
+        <source>Volume</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Application</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>SoundItem</name>
-    <message>
-        <source>Unmute</source>
-        <translation type="unfinished"/>
+        <source>Output</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mute</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Audio Settings</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Current Volume %1</source>
-        <translation type="unfinished"/>
+        <source>Sound settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -306,73 +820,26 @@
     </message>
 </context>
 <context>
-    <name>TrashPlugin</name>
+    <name>SoundView</name>
     <message>
-        <source>Trash</source>
-        <translation>रद्दी</translation>
+        <source>Unmute</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Trash - %1 file</source>
-        <translation type="unfinished"/>
+        <source>Mute</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Trash - %1 files</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>TrashWidget</name>
-    <message>
-        <source>Open</source>
-        <translation type="unfinished"/>
+        <source>Sound settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Empty</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>TrayPlugin</name>
-    <message>
-        <source>System Tray</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>WiredItem</name>
-    <message>
-        <source>Unknown</source>
-        <translation type="unfinished"/>
+        <source>No output devices</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Wired connection: %1</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>WirelessItem</name>
-    <message>
-        <source>No Network</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Wireless Connection: %1</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Connected but no Internet access</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>WirelessList</name>
-    <message>
-        <source>Wireless Network</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Wireless Network %1</source>
-        <translation type="unfinished"/>
+        <source>Volume %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

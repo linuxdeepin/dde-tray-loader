@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fi">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fi">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -34,10 +36,10 @@
     </message>
 </context>
 <context>
-    <name>AppDragWidget</name>
+    <name>BluetoothAdapterItem</name>
     <message>
-        <source>Remove</source>
-        <translation>Poista</translation>
+        <source>My Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -249,61 +251,12 @@
         <source>sunday</source>
         <translation>sunnuntai</translation>
     </message>
-    <message>
-        <source>%1year%2month%3day</source>
-        <translation>%3day%2month%1year</translation>
-    </message>
 </context>
 <context>
-    <name>DesktopWidget</name>
+    <name>DeviceControlWidget</name>
     <message>
-        <source>Show Desktop</source>
-        <translation>Näytä työpöytä</translation>
-    </message>
-</context>
-<context>
-    <name>DialogManager</name>
-    <message>
-        <source>Are you sure you want to empty %1 items?</source>
-        <translation>Haluatko tyhjentää %1 kohdetta?</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Peruuta</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Poista</translation>
-    </message>
-    <message>
-        <source>This action cannot be restored</source>
-        <translation>Tätä toimintoa ei voi kumota</translation>
-    </message>
-</context>
-<context>
-    <name>DiskControlItem</name>
-    <message>
-        <source>Unknown device</source>
-        <translation>Tuntematon laite</translation>
-    </message>
-    <message>
-        <source>Unknown volume</source>
-        <translation>Tuntematon asema</translation>
-    </message>
-</context>
-<context>
-    <name>DiskMountPlugin</name>
-    <message>
-        <source>Disk</source>
-        <translation>Levy</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>Avaa</translation>
-    </message>
-    <message>
-        <source>Unmount all</source>
-        <translation>Irroita kaikki</translation>
+        <source>Other Devices</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -338,13 +291,6 @@
     <message>
         <source>DND Mode</source>
         <translation>Älä häiritse</translation>
-    </message>
-</context>
-<context>
-    <name>DockPluginsController</name>
-    <message>
-        <source>The plugin %1 is not compatible with the system.</source>
-        <translation>Lisäosa %1 ei ole yhteensopiva järjestelmän kanssa.</translation>
     </message>
 </context>
 <context>
@@ -442,28 +388,6 @@
     </message>
 </context>
 <context>
-    <name>LauncherItem</name>
-    <message>
-        <source>Launcher</source>
-        <translation>Käynnistin</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindow</name>
-    <message>
-        <source>Exit Safe Mode</source>
-        <translation>Poistu vikasietotilasta</translation>
-    </message>
-    <message>
-        <source>Dock - Safe Mode</source>
-        <translation>Paneeli - vikasietotila</translation>
-    </message>
-    <message>
-        <source>The Dock is in safe mode, please exit to show it properly</source>
-        <translation>Paneeli on vikasietotilassa. Poistu nähtyäsi sen toimivan oikein</translation>
-    </message>
-</context>
-<context>
     <name>MenuWorker</name>
     <message>
         <source>Fashion Mode</source>
@@ -519,109 +443,30 @@
     </message>
 </context>
 <context>
-    <name>ModuleWidget</name>
+    <name>NotificationPlugin</name>
     <message>
-        <source>Size</source>
-        <translation>Koko</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>No messages</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Multiple Displays</source>
-        <translation>Useita näyttöjä</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notification settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Plugin Area</source>
-        <translation>Laajennusalue</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
+        <source>Notifications</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select which icons appear in the Dock</source>
-        <translation>Valitse mitkä kuvakkeet näkyvät paneelissa</translation>
+        <source>Turn off DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fashion mode</source>
-        <translation>Muodikas </translation>
+        <source>Turn on DND mode</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Efficient mode</source>
-        <translation>Tehokas</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Tila</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Ylhäällä</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Alhaalla</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Vasen</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Oikea</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Sijainti</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Keep shown</source>
-        <translation>Näytä aina</translation>
-    </message>
-    <message>
-        <source>Keep hidden</source>
-        <translation>Pidä piilossa</translation>
-    </message>
-    <message>
-        <source>Smart hide</source>
-        <translation>Älykäs piilotus</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Tila</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Small</source>
-        <translation>Pieni</translation>
-    </message>
-    <message>
-        <source>Large</source>
-        <translation>Suuri</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Näytä paneeli</translation>
-    </message>
-    <message>
-        <source>On screen where the cursor is</source>
-        <translation>Näytöllä, jossa kohdistin on</translation>
-    </message>
-    <message>
-        <source>Only on main screen</source>
-        <translation>Vain päänäytöllä</translation>
-    </message>
-</context>
-<context>
-    <name>MultitaskingPlugin</name>
-    <message>
-        <source>Multitasking View</source>
-        <translation>Työtilan ikkunat</translation>
+        <source>Notification</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -633,13 +478,6 @@
     <message>
         <source>Settings</source>
         <translation>Asetukset</translation>
-    </message>
-</context>
-<context>
-    <name>OverflowItem</name>
-    <message>
-        <source>Show hidden icons</source>
-        <translation>Näytä piilotetut kuvakkeet</translation>
     </message>
 </context>
 <context>
@@ -656,19 +494,9 @@
         <source>Power Saver</source>
         <translation>Virransäästö</translation>
     </message>
-</context>
-<context>
-    <name>PluginsItem</name>
     <message>
-        <source>Undock</source>
-        <translation>Poista</translation>
-    </message>
-</context>
-<context>
-    <name>PopupIndicator</name>
-    <message>
-        <source>Application tray</source>
-        <translation>Sovelluslokero</translation>
+        <source>Balance Performance</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -781,13 +609,6 @@
     </message>
 </context>
 <context>
-    <name>QuickPanelItem</name>
-    <message>
-        <source>Quick actions</source>
-        <translation>Nopeat toiminnot</translation>
-    </message>
-</context>
-<context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
@@ -796,55 +617,6 @@
     <message>
         <source>Unknown</source>
         <translation>Tuntematon</translation>
-    </message>
-</context>
-<context>
-    <name>QuickPlugin</name>
-    <message>
-        <source>Remove from dock</source>
-        <translation>Poista telakasta</translation>
-    </message>
-    <message>
-        <source>Pin to dock</source>
-        <translation>Kiinnitä telakkaan</translation>
-    </message>
-</context>
-<context>
-    <name>SettingsModule</name>
-    <message>
-        <source>Dock</source>
-        <translation>Paneeli</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Tila</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Sijainti</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Tila</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation>Koko</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation>Näytä paneeli</translation>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation>Laajennusalue</translation>
-    </message>
-</context>
-<context>
-    <name>ShowDesktopPlugin</name>
-    <message>
-        <source>Show Desktop</source>
-        <translation>Näytä työpöytä</translation>
     </message>
 </context>
 <context>
@@ -1068,36 +840,6 @@
     <message>
         <source>Volume %1</source>
         <translation>Voimakkuus %1</translation>
-    </message>
-</context>
-<context>
-    <name>TrashPlugin</name>
-    <message>
-        <source>Trash</source>
-        <translation>Roskakori</translation>
-    </message>
-    <message>
-        <source>Trash - %1 file</source>
-        <translation>Roskakori - %1 tiedosto</translation>
-    </message>
-    <message>
-        <source>Trash - %1 files</source>
-        <translation>Roskakori - %1 tiedostoa</translation>
-    </message>
-    <message>
-        <source>Move to Trash</source>
-        <translation>Siirrä roskakoriin</translation>
-    </message>
-</context>
-<context>
-    <name>TrashWidget</name>
-    <message>
-        <source>Open</source>
-        <translation>Avaa</translation>
-    </message>
-    <message>
-        <source>Empty</source>
-        <translation>Tyhjennä</translation>
     </message>
 </context>
 </TS>
