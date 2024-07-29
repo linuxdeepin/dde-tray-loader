@@ -116,7 +116,7 @@ void DndModeItem::invokeMenuItem(const QString menuId, const bool checked)
             .path("/com/deepin/dde/ControlCenter")
             .method(QString("ShowPage"))
             .arg(QString("notification"))
-            .arg(QString("System Notification"))
+            .arg(QString("SystemNotify"))
             .call();
 
         Q_EMIT requestHideApplet();
