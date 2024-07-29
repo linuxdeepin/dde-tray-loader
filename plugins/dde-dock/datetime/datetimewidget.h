@@ -5,14 +5,10 @@
 #ifndef DATETIMEWIDGET_H
 #define DATETIMEWIDGET_H
 
-#include <com_deepin_daemon_timedate.h>
-
 #include <QWidget>
 
-#include "regionFormat.h"
-
-using Timedate = com::deepin::daemon::Timedate;
-
+class QLabel;
+class RegionFormat;
 class DatetimeWidget : public QWidget
 {
     Q_OBJECT
@@ -20,7 +16,6 @@ class DatetimeWidget : public QWidget
 public:
     explicit DatetimeWidget(RegionFormat *regionFormat, QWidget *parent = nullptr) ;
 
-    QSize sizeHint() const;
     inline bool is24HourFormat() const { return m_24HourFormat; }
     inline QString getDateTime() { return m_dateTime; }
     void setDockPanelSize(const QSize &dockSize);
@@ -30,7 +25,6 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent *event);
-    void paintEvent(QPaintEvent *e);
 
 signals:
     void requestUpdateGeometry() const;
@@ -38,23 +32,27 @@ signals:
 public slots:
     void set24HourFormat(const bool value);
     void updateDateTimeString();
-    void updateDateTime();
 
 private Q_SLOTS:
     void setShortDateFormat(int type);
-
     void setWeekdayFormat(int type);
 
 private:
-    QSize curTimeSize() const;
+    void initUI();
+    void adjustUI();
+    void adjustFontSize();
+    void updateDateTime();
     void updateWeekdayFormat();
+
+private:
+    QLabel *m_timeLabel;
+    QLabel *m_dateLabel;
+    QLabel *m_apLabel;
+    QWidget *m_spacerItem;
 
 private:
     bool m_24HourFormat;
     int m_weekdayFormatType;
-    mutable QFont m_timeFont;
-    mutable QFont m_dateFont;
-    Timedate *m_timedateInter;
     QString m_shortDateFormat;
     QString m_dateTime;
     QString m_weekFormat;
