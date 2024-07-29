@@ -435,4 +435,14 @@ void WidgetPlugin::pluginUpdateDockSize(const QSize &size)
     pluginsItemInterfaceV2->message(doc.toJson());
 }
 
+QString WidgetPlugin::activeStateMessage(bool isActive)
+{
+    QJsonObject msg;
+    msg[Dock::MSG_TYPE] = Dock::MSG_ITEM_ACTIVE_STATE;
+    msg[Dock::MSG_DATA] = isActive;
+    QJsonDocument doc;
+    doc.setObject(msg);
+    return doc.toJson();
+}
+
 }
