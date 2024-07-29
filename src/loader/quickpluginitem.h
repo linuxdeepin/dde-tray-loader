@@ -14,8 +14,11 @@ public:
     explicit QuickPluginItem(PluginsItemInterface *pluginInterface, const QString &itemKey, QWidget *parent = nullptr);
     ~QuickPluginItem() override = default;
 
-protected:
+    void requestActiveState();
+
+    virtual void init() override;
     virtual QWidget *centralWidget() override;
+protected:
 
     virtual void mouseReleaseEvent(QMouseEvent *e) override;
     virtual QMenu *pluginContextMenu() override;
@@ -27,6 +30,7 @@ private:
 
 private:
     QAction *m_onDockAction;
+    bool m_isActive = false;
 };
 
 #endif

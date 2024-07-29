@@ -5,6 +5,7 @@
 #include "quickpluginitem.h"
 #include "constants.h"
 #include "plugin.h"
+#include "widgetplugin.h"
 
 #include <QMouseEvent>
 #include <QMenu>
@@ -64,6 +65,27 @@ private:
     PluginItem *m_target = nullptr;
     QEvent::Type m_accepedEvent = {QEvent::None};
 };
+
+class Q_DECL_HIDDEN ItemWidgetEventFilter : public QObject
+{
+public:
+    explicit ItemWidgetEventFilter(QuickPluginItem *target)
+        : QObject (target)
+        , m_target(target)
+    {
+    }
+    bool eventFilter(QObject *watched, QEvent *event) override
+    {
+        if (event->type() == QEvent::Paint) {
+            if (auto widget = m_target->centralWidget(); widget == watched) {
+                m_target->requestActiveState();
+            }
+        }
+        return false;
+    }
+
+    QuickPluginItem *m_target = nullptr;
+};
 }
 
 QuickPluginItem::QuickPluginItem(PluginsItemInterface *pluginInterface, const QString &itemKey, QWidget *parent)
@@ -73,6 +95,14 @@ QuickPluginItem::QuickPluginItem(PluginsItemInterface *pluginInterface, const QS
     if (m_dbusProxy.isNull())
         m_dbusProxy.reset(new DockDBusProxy);
     qApp->installEventFilter(new EventFilter(this));
+}
+
+void QuickPluginItem::init()
+{
+    PluginItem::init();
+    if (auto widget = centralWidget()) {
+        widget->installEventFilter(new ItemWidgetEventFilter(this));
+    }
 }
 
 QWidget *QuickPluginItem::centralWidget()
@@ -159,5 +189,20 @@ bool QuickPluginItem::pluginIsVisible()
         }
     }
     return false;
+}
+
+void QuickPluginItem::requestActiveState()
+{
+    const auto quickItem = centralWidget();
+    if (auto value = quickItem->property("isActive"); value.isValid()) {
+        const auto active = value.toBool();
+        if (active == m_isActive)
+            return;
+
+        m_isActive = active;
+        if (auto plugin = Plugin::EmbedPlugin::getWithoutCreating(this->windowHandle())) {
+            Q_EMIT plugin->requestMessage(dock::WidgetPlugin::activeStateMessage(m_isActive));
+        }
+    }
 }
 

@@ -23,7 +23,7 @@ public:
 
     int pluginFlags() const;
     void setPluginFlags(int flags);
-    void init();
+    virtual void init();
 
     QString pluginId() const { return m_pluginsItemInterface->pluginName(); }
     virtual QString itemKey() const { return m_itemKey; }
