@@ -23,6 +23,7 @@ DWIDGET_USE_NAMESPACE
 class CalendarManager;
 class SidebarCalendarKeyButton;
 class JumpCalendarButton;
+class RegionFormat;
 //小日历类
 class SidebarCalendarWidget : public QWidget
 {
@@ -52,7 +53,7 @@ class SidebarCalendarWidget : public QWidget
 
     Q_OBJECT
 public:
-    explicit SidebarCalendarWidget(QWidget *parent = nullptr);
+    explicit SidebarCalendarWidget(RegionFormat *regionFormat, QWidget *parent = nullptr);
     //设置选中的日期
     void setSelectedDate(const QDate &date);
 
@@ -71,6 +72,7 @@ private slots:
     void onDateFormatChanged(CalendarManager::DateFormat format);
     void onWeekDayFormatChanged(CalendarManager::WeekDayFormat format);
     void backToday();
+    void onShortDateFormatChanged();
 
 protected:
     void hideEvent(QHideEvent *event) override;
@@ -89,6 +91,7 @@ private:
     QString formatedWeekType(CalendarManager::WeekDayFormat format);
 
 private:
+    RegionFormat *m_regionFormat;
     CalendarManager *m_manager;
     QWidget* m_headWidget;                              //头部控件
     CWeekWidget* m_weekWidget;                          //周显示区域控件

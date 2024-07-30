@@ -9,8 +9,6 @@
 
 #include <DConfig>
 
-#include "constants.h"
-
 const QString localeName_key = "localeName";
 const QString country_key = "country";
 const QString languageRegion_key = "languageRegion";
@@ -48,6 +46,8 @@ public:
     bool is24HourFormat() const;
     void sync24HourFormatConfig(bool is24HourFormat);
 
+    QString originShortDateFormat() const { return m_originShortDateFormat; }
+
 signals:
     void shortDateFormatChanged() const;
     void longDateFormatChanged() const;
@@ -56,13 +56,15 @@ signals:
     void localeNameChanged(const QString &localeName);
 
 public slots:
-    void onDockPositionChanged(const Dock::Position position);
+    void onDockPositionChanged(int position);
 
 private:
     QString shortDateFormat;
     QString longDateFormat;
     QString shortTimeFormat;
     QString longTimeFormat;
+    QString m_originShortDateFormat;
+    QString m_12HourFormat;
 
     QString localeName;
     DTK_CORE_NAMESPACE::DConfig *m_config;

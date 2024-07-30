@@ -6,6 +6,7 @@
 #include "tipswidget.h"
 #include "utils.h"
 #include "plugins-logging-category.h"
+#include "regionFormat.h"
 
 #include <DDBusSender>
 #include <DConfig>
@@ -87,7 +88,7 @@ void DatetimePlugin::loadPlugin()
     }
 
     m_dateTipsLabel.reset(new TipsWidget);
-    m_calendarPopup.reset(new SidebarCalendarWidget);
+    m_calendarPopup.reset(new SidebarCalendarWidget(m_RegionFormatModel));
     m_refershTimer = new QTimer(this);
     m_dateTipsLabel->setObjectName("datetime");
 
