@@ -37,6 +37,7 @@ public:
     const QVariant getValue(PluginsItemInterface *const itemInter, const QString &key, const QVariant& fallback = QVariant()) override;
     void removeValue(PluginsItemInterface *const itemInter, const QStringList &keyList) override;
 
+    static void updateDockContainerState(PluginsItemInterface *itemInter, bool onDock);
     static QString activeStateMessage(bool isActive);
 public Q_SLOTS:
     void onDockPositionChanged(uint32_t position);
