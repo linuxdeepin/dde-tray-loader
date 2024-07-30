@@ -81,6 +81,16 @@ public:
                 m_target->requestActiveState();
             }
         }
+        if (event->type() == QEvent::MouseButtonRelease) {
+            auto mouseEvent = dynamic_cast<QMouseEvent*>(event);
+            if (mouseEvent && mouseEvent->button() == Qt::RightButton) {
+                // 右键事件本身不处理, 转发给target
+                auto copy = new QMouseEvent(*mouseEvent);
+                qApp->postEvent(m_target, copy);
+                event->accept();
+                return true;
+            }
+        }
         return false;
     }
 
