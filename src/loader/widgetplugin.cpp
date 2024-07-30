@@ -216,28 +216,14 @@ void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInte
 {
     if (!visible) return;
 
-    auto setPluginMsg = [itemInter]  {
-        auto pluginsItemInterfaceV2 = dynamic_cast<PluginsItemInterfaceV2 *>(itemInter);
-        if (!pluginsItemInterfaceV2)
-            return;
-
-        QJsonObject obj;
-        obj[Dock::MSG_TYPE] = Dock::MSG_APPLET_CONTAINER;
-        obj[Dock::MSG_DATA] = Dock::APPLET_CONTAINER_QUICK_PANEL;
-
-        QJsonDocument msg;
-        msg.setObject(obj);
-
-        pluginsItemInterfaceV2->message(msg.toJson());
-    };
-
     QWidget* appletWidget = itemInter->itemPopupApplet(itemKey);
     if (!appletWidget) {
         qWarning() << itemKey << " plugin applet popup is null";
         return;
     }
 
-    setPluginMsg();
+    updateDockContainerState(itemInter, false);
+
     appletWidget->winId();
     appletWidget->setParent(nullptr);
     appletWidget->setAttribute(Qt::WA_TranslucentBackground);
@@ -270,6 +256,22 @@ void WidgetPlugin::removeValue(PluginsItemInterface *const itemInter, const QStr
 {
 }
 
+void WidgetPlugin::updateDockContainerState(PluginsItemInterface *itemInter, bool onDock)
+{
+    auto iter = dynamic_cast<PluginsItemInterfaceV2 *>(itemInter);
+    if (!iter)
+        return;
+
+    QJsonObject obj;
+    obj[Dock::MSG_TYPE] = Dock::MSG_APPLET_CONTAINER;
+    obj[Dock::MSG_DATA] = onDock ? Dock::APPLET_CONTAINER_DOCK
+                                 : Dock::APPLET_CONTAINER_QUICK_PANEL;
+
+    QJsonDocument msg;
+    msg.setObject(obj);
+
+    iter->message(msg.toJson());
+}
 
 void WidgetPlugin::onDockPositionChanged(uint32_t position)
 {
