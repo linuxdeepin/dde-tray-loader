@@ -6,6 +6,7 @@
 #include "constants.h"
 #include "units.h"
 #include "jumpcalendarbutton.h"
+#include "regionFormat.h"
 
 #include <DApplicationHelper>
 #include <DFontSizeManager>
@@ -14,13 +15,11 @@
 
 #include <QMouseEvent>
 #include <QScreen>
-#include <QDBusAbstractInterface>
 #include <QJsonObject>
-#include <QJsonDocument>
-#include <QDBusAbstractInterface>
 
-SidebarCalendarWidget::SidebarCalendarWidget(QWidget* parent)
+SidebarCalendarWidget::SidebarCalendarWidget(RegionFormat *regionFormat, QWidget* parent)
     : QWidget(parent)
+    , m_regionFormat(regionFormat)
     , m_manager(CalendarManager::instance())
     , m_headWidget(new QWidget(this))
     , m_weekWidget(new CWeekWidget(this))
@@ -163,7 +162,8 @@ void SidebarCalendarWidget::initConnection()
     connect(m_nextPage, &QPushButton::clicked, this, &SidebarCalendarWidget::onNextPageClicked);
     connect(m_previousPage, &QPushButton::clicked, this, &SidebarCalendarWidget::onPreviousPageClicked);
     connect(m_manager, &CalendarManager::sidebarFirstDayChanged, this, &SidebarCalendarWidget::onFirstDayChanged);
-    connect(m_manager, &CalendarManager::dateFormatChanged, this, &SidebarCalendarWidget::onDateFormatChanged);
+    // connect(m_manager, &CalendarManager::dateFormatChanged, this, &SidebarCalendarWidget::onDateFormatChanged);
+    connect(m_regionFormat, &RegionFormat::shortDateFormatChanged, this, &SidebarCalendarWidget::onShortDateFormatChanged);
     connect(m_manager, &CalendarManager::weekDayFormatChanged, this, &SidebarCalendarWidget::onWeekDayFormatChanged);
     connect(m_bakTodayBtn, &DCommandLinkButton::clicked, this, &SidebarCalendarWidget::backToday);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &SidebarCalendarWidget::updateBackground);
@@ -220,7 +220,7 @@ void SidebarCalendarWidget::setDate(const QDate &date)
     auto instance = LunarManager::instace()->huangLiDay(date);
     m_dateTitleWidget->setDateLabelText("/ " + formatedMonth(static_cast<Month>(date.month())), date.day());
     m_weekLabel->setText(formatedWeekDay(static_cast<WeekDay>(date.dayOfWeek()), m_weekdayFormat));
-    m_leftdateLabel->setText(date.toString(formatedDateType(m_manager->dateFormat())));
+    m_leftdateLabel->setText(date.toString(m_regionFormat->originShortDateFormat()));
     m_lunarLabel->setText(tr("Lunar") + instance.mLunarMonthName + instance.mLunarDayName);
     m_lunarDetailLabel->setText(instance.mGanZhiYear + tr("y") + "【"
                                 + instance.mZodiac + tr("y") + "】"
@@ -432,6 +432,11 @@ QString SidebarCalendarWidget::formatedMonth(Month month)
         case Dec: return tr("Dec");
         default:return QString();
     }
+}
+
+void SidebarCalendarWidget::onShortDateFormatChanged()
+{
+    m_leftdateLabel->setText(QDate::currentDate().toString(m_regionFormat->originShortDateFormat()));
 }
 
 SidebarCalendarKeyButton::SidebarCalendarKeyButton(QWidget* parent)

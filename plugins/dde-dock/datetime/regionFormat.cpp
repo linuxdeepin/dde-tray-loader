@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "regionFormat.h"
+#include "constants.h"
 
 #include <qguiapplication.h>
 #include <QLocale>
@@ -78,7 +79,7 @@ QString RegionFormat::getShortDateFormat() const
 
 void RegionFormat::setShortDateFormat(const QString &newShortDateFormat)
 {
-
+    m_originShortDateFormat = newShortDateFormat;
     QString format = newShortDateFormat;
     const Dock::Position position = qApp->property(PROP_POSITION).value<Dock::Position>();
     // 任务栏在左/右的时候不显示年份
@@ -124,6 +125,11 @@ void RegionFormat::setShortTimeFormat(const QString &newShortTimeFormat)
 {
     if (shortTimeFormat == newShortTimeFormat)
         return;
+
+    if (newShortTimeFormat.contains("ap", Qt::CaseInsensitive)) {
+        m_12HourFormat = newShortTimeFormat;
+    }
+
     shortTimeFormat = newShortTimeFormat;
     emit shortTimeFormatChanged();
 }
@@ -154,8 +160,9 @@ void RegionFormat::setLocaleName(const QString &newLocaleName)
     emit localeNameChanged(localeName);
 }
 
-void RegionFormat::onDockPositionChanged(const Dock::Position position)
+void RegionFormat::onDockPositionChanged(int position)
 {
+    Q_UNUSED(position)
     if (m_config->isDefaultValue(shortDateFormat_key)) {
         QLocale locale(QLocale::system().name());
         setShortDateFormat(locale.dateFormat(QLocale::ShortFormat));
@@ -166,8 +173,9 @@ void RegionFormat::onDockPositionChanged(const Dock::Position position)
 
 void RegionFormat::sync24HourFormatConfig(bool is24HourFormat)
 {
+    QString hour12Format = m_12HourFormat.isEmpty() ? "AP h:mm" : m_12HourFormat;
     // 24小时制/12小时制切换，对应控制中心时间设置格式。
-    QString value = is24HourFormat ? "HH:mm" : "APh:mm";
+    QString value = is24HourFormat ? "HH:mm" : hour12Format;
     m_config->setValue(shortTimeFormat_key, value);
 }
 
