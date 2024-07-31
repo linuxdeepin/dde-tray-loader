@@ -60,6 +60,7 @@ public Q_SLOTS:
     void xembedTrayIconChanged(uint32_t windowId);
 
 private:
+    void generateId();
     QPixmap getPixmapFromWidnow();
     void initX11resources();
 
@@ -87,6 +88,7 @@ private:
     QPixmap m_icon;
     QPixmap m_attentionIcon;
     InjectMode m_injectMode;
+    QString m_id;
 
     QTimer *m_hoverTimer;
     QTimer *m_attentionTimer;

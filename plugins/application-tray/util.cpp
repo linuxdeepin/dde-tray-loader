@@ -266,6 +266,23 @@ void Util::sendXembedMessage(const xcb_window_t& window, const long& message, co
     xcb_send_event(m_x11connection, false, window, XCB_EVENT_MASK_NO_EVENT, (char *)&ev);
 }
 
+QString Util::generateUniqueId(const QString &id)
+{
+    for (int i = 0; i < 100; i++) {
+        QString newId = id + "-" + QString::number(i);
+        if (!m_currentIds.contains(newId)) {
+            m_currentIds.insert(newId);
+            return newId;
+        }
+    }
+
+    qWarning() << "failed to generate unique id:" << id;
+    return id;
+}
+
+void Util::removeUniqueId(const QString &id) {
+    m_currentIds.remove(id);
+}
 
 bool Util::isTransparentImage(const QImage &image)
 {

@@ -26,7 +26,7 @@ DGUI_USE_NAMESPACE
 
 namespace tray {
 extern uint16_t trayIconSize;
-static QString sniPfrefix = QStringLiteral("XEMBED:");
+static QString xembedPfrefix = QStringLiteral("XEMBED:");
 
 XembedProtocol::XembedProtocol(QObject *parent)
     : AbstractTrayProtocol(parent)
@@ -80,6 +80,8 @@ XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent
     , m_hoverTimer(new QTimer(this))
     , m_attentionTimer(new QTimer(this))
 {
+    generateId();
+
     m_hoverTimer->setSingleShot(true);
     m_hoverTimer->setInterval(100);
 
@@ -97,6 +99,13 @@ XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent
 
 XembedProtocolHandler::~XembedProtocolHandler()
 {
+    UTIL->removeUniqueId(m_id);
+}
+
+void XembedProtocolHandler::generateId()
+{
+    auto id = xembedPfrefix + UTIL->getProcExe(UTIL->getWindowPid(m_windowId));
+    m_id = UTIL->generateUniqueId(id);
 }
 
 uint32_t XembedProtocolHandler::windowId() const
@@ -106,7 +115,7 @@ uint32_t XembedProtocolHandler::windowId() const
 
 QString XembedProtocolHandler::id() const
 {
-    return sniPfrefix + UTIL->getProcExe(UTIL->getWindowPid(m_windowId))  + QString("-%1").arg(windowId());
+    return m_id;
 }
     
 QString XembedProtocolHandler::title() const

@@ -68,6 +68,8 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     m_sniInter = new StatusNotifierItem(pair.first, pair.second, QDBusConnection::sessionBus(), this);
     m_dbusMenuImporter = new DBusMenuImporter(pair.first, m_sniInter->menu().path(), ASYNCHRONOUS, this);
 
+    generateId();
+
     connect(m_sniInter, &StatusNotifierItem::NewIcon, this, &SniTrayProtocolHandler::iconChanged);
     connect(m_sniInter, &StatusNotifierItem::NewOverlayIcon, this, &SniTrayProtocolHandler::overlayIconChanged);
     connect(m_sniInter, &StatusNotifierItem::NewAttentionIcon, this, &SniTrayProtocolHandler::attentionIconChanged);
@@ -79,6 +81,13 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
 
 SniTrayProtocolHandler::~SniTrayProtocolHandler()
 {
+    UTIL->removeUniqueId(m_id);
+}
+
+void SniTrayProtocolHandler::generateId()
+{
+    auto id = sniPfrefix + m_sniInter->id();
+    m_id = UTIL->generateUniqueId(id);
 }
 
 uint32_t SniTrayProtocolHandler::windowId() const
@@ -88,7 +97,7 @@ uint32_t SniTrayProtocolHandler::windowId() const
 
 QString SniTrayProtocolHandler::id() const
 {
-    return sniPfrefix + UTIL->getProcExe(QDBusConnection::sessionBus().interface()->servicePid(m_sniInter->service())) + QString("-%1").arg(m_dbusUniqueName);
+    return m_id;
 }
     
 QString SniTrayProtocolHandler::title() const
