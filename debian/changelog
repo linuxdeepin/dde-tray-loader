@@ -1,3 +1,19 @@
+dde-tray-loader (0.0.5) unstable; urgency=medium
+
+  * fix: onboard plugin is not installed(Issue: 9820)
+  * fix: ToolTip is positioned to the left(Issue: 9953)
+  * fix: update taskbar plug-in translation (#88)(Issue: 9893)
+  * description: Power switching mode adds performance mode switching(Issue: 9893)
+  * fix: Fixed dnd-mode settings cannot jump to the Control Center(Issue: 9988)
+  * feat: request isActive state for quickpanel(Issue: 10020)
+  * fix: right button also emits clicked for quickpanel(Issue: 9960)
+  * chore: refactor the dateTime plugin display code (#93)(Influence: datetime plugin display)
+  * fix: dateTime panel popup date and 12hour format display does not match the settings (#96)(Influence: datetime plugin display)
+  * fix: removing jump to dcc's airplane mode(Issue: 9990)(Influence: bluetooth can not jump to dcc's airplane mode)
+  * fix: Fixed  the power performance mode initialization dnot get init value (#99)(Issue: 10019)
+
+ -- zyz <zhaoyingzhen@uniontech.com>  Wed, 31 Jul 2024 14:07:12 +0800
+
 dde-tray-loader (0.0.4) unstable; urgency=medium
 
   * fix: network view size cannot respond to content changes in a timely manner(Issue: 9881)(Influence: network view size)
