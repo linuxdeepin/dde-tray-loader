@@ -278,8 +278,8 @@ QWidget * PluginItem::itemTooltip(const QString &itemKey)
     pluginPopup->setPluginId(m_pluginsItemInterface->pluginName());
     pluginPopup->setItemKey(itemKey);
     pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeTooltip);
-    if (toolTip->sizeHint().width() > 0 && toolTip->sizeHint().height() > 0) {
-        toolTip->setFixedSize(toolTip->sizeHint());
+    if (!toolTip->sizeHint().isEmpty() && toolTip->size() != toolTip->sizeHint()) {
+        toolTip->resize(toolTip->sizeHint());
     }
     return toolTip;
 }

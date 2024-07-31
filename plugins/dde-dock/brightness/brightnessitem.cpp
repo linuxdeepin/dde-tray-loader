@@ -12,8 +12,6 @@
 #include <QDBusConnection>
 #include <QIcon>
 #include <QJsonDocument>
-#include <QPainter>
-#include <QVBoxLayout>
 
 DGUI_USE_NAMESPACE
 
@@ -51,6 +49,16 @@ void BrightnessItem::init()
     m_icon->setFixedSize(Dock::DOCK_PLUGIN_ITEM_FIXED_SIZE);
     m_icon->setIcon(QIcon::fromTheme("display-brightness-control"));
     connect(m_applet, &BrightnessApplet::requestHideApplet, this, &BrightnessItem::requestHideApplet);
+
+    if (!m_tipsLabel) {
+        m_tipsLabel = new QLabel();
+        m_tipsLabel->setForegroundRole(QPalette::BrightText);
+        m_tipsLabel->setContentsMargins(10, 5, 10, 5);
+        connect(qApp, &QGuiApplication::fontChanged, this, &BrightnessItem::updateTips);
+        connect(&BrightnessModel::ref(), &BrightnessModel::enabledMonitorListChanged, this, &BrightnessItem::updateTips);
+        connect(&BrightnessModel::ref(), &BrightnessModel::monitorBrightnessChanged, this, &BrightnessItem::updateTips);
+        updateTips();
+    }
 }
 
 const QString BrightnessItem::contextMenu() const
@@ -93,27 +101,21 @@ void BrightnessItem::invokeMenuItem(const QString menuId, const bool checked)
 
 QWidget *BrightnessItem::tipsWidget()
 {
-    if (!m_tipsLabel)
-        updateTips();
+    updateTips();
     return m_tipsLabel;
 }
 
 void BrightnessItem::updateTips()
 {
-    if (!m_tipsLabel) {
-        m_tipsLabel = new QLabel;
-        m_tipsLabel->setForegroundRole(QPalette::BrightText);
-        m_tipsLabel->setContentsMargins(10, 5, 10, 5);
-        connect(qApp, &QGuiApplication::fontChanged, this, &BrightnessItem::updateTips);
-        connect(&BrightnessModel::ref(), &BrightnessModel::enabledMonitorListChanged, this, &BrightnessItem::updateTips);
-        connect(&BrightnessModel::ref(), &BrightnessModel::monitorBrightnessChanged, this, &BrightnessItem::updateTips);
-    }
-
     QString tips;
     for (const auto &monitor : BrightnessModel::ref().enabledMonitors()) {
-        tips += QString("%1: %2%<br/>").arg(monitor->name()).arg(QString::number(monitor->brightness() * 100));
+        tips += QString("%1: %2%\n").arg(monitor->name()).arg(QString::number(monitor->brightness() * 100));
+    }
+
+    if (tips.endsWith("\n")) {
+        tips = tips.remove(tips.count() - 1, 1);
     }
 
     m_tipsLabel->setText(tips);
-    m_tipsLabel->adjustSize();
+    m_tipsLabel->setFixedSize(m_tipsLabel->sizeHint());
 }
