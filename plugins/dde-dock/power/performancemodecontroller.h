@@ -92,9 +92,16 @@ private:
             }
         }
 
-        m_currentMode = m_sysPowerInter->mode();
+        reply = interface.call("Get", "com.deepin.system.Power", "Mode");
+        outArgs = reply.arguments();
+        if (outArgs.length() > 0) {
+            m_currentMode = outArgs.at(0).value<QDBusVariant>().variant().toString();
+        }
+
+        qDebug()  << " currentMode data : " << m_currentMode;
 
         connect(m_sysPowerInter, &SysPowerInter::ModeChanged, this, [this](const QString &mode) {
+            qDebug()  << " system power inter mode changed  : " <<  mode << m_currentMode;
             m_currentMode = mode;
             Q_EMIT powerModeChanged(m_currentMode);
         });
