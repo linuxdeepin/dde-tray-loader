@@ -367,7 +367,7 @@ void BluetoothApplet::updateSize()
     // top and bottom margin
     height += hMargins;
 
-    resize(ItemWidth, height);
+    setFixedSize(ItemWidth, height);
 }
 
 void BluetoothApplet::updateMinHeight(int minHeight)
