@@ -68,9 +68,13 @@ protected:
     virtual bool eventFilter(QObject *watched, QEvent *event) override;
 
 private:
+    void generateId();
+
+private:
     QString m_dbusUniqueName;
     QLabel *m_tooltip;
     StatusNotifierItem *m_sniInter;
     DBusMenuImporter *m_dbusMenuImporter;
+    QString m_id;
 };
 }

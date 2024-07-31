@@ -7,6 +7,7 @@
 #include <QHash>
 #include <QImage>
 #include <QSharedPointer>
+#include <QSet>
 
 #include <cstdint>
 #include <mutex>
@@ -47,6 +48,9 @@ public:
 
     void sendXembedMessage(const xcb_window_t& window, const long& message, const long& data1, const long& data2, const long& data3);
 
+    QString generateUniqueId(const QString &id);
+    void removeUniqueId(const QString &id);
+
 private:
     Util();
     ~Util();
@@ -62,6 +66,8 @@ private:
     xcb_connection_t* m_x11connection;
     xcb_window_t m_rootWindow;
     _XDisplay *m_display;
+
+    QSet<QString> m_currentIds;
 };
 
 }
