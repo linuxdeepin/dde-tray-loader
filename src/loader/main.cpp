@@ -20,6 +20,7 @@
 #include <DGuiApplicationHelper>
 #include <DStandardPaths>
 #include <DPathBuf>
+#include <LogManager.h>
 #include <signal.h>
 
 DGUI_USE_NAMESPACE
@@ -120,6 +121,12 @@ int main(int argc, char *argv[], char *envp[])
     }
     pluginDisplayName = interface->pluginDisplayName();
     dock::WidgetPlugin dockPlugin(interface, pluginLoader->instance());
+
+    DLogManager::setLogFormat("%{time}{yy-MM-ddTHH:mm:ss.zzz} [%{type}] [%{category}] <%{function}> %{message}");
+
+    DLogManager::registerJournalAppender();
+    DLogManager::registerConsoleAppender();
+    DLogManager::registerFileAppender();
 
     app.setApplicationName(interface->pluginName());
     app.setApplicationDisplayName(interface->pluginDisplayName());
