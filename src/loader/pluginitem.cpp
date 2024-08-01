@@ -20,6 +20,7 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
     , m_itemKey(itemKey)
     , m_menu(new QMenu(this))
     , m_tooltipTimer(new QTimer(this))
+    , m_tipsWidget(nullptr)
 {
     m_tooltipTimer->setSingleShot(true);
     m_tooltipTimer->setInterval(200);
@@ -147,7 +148,7 @@ void PluginItem::enterEvent(QEvent *event)
             pluginPopup->setY(geometry.y() + offset.y());
 
             connect(m_tooltipTimer, &QTimer::timeout, toolTip, [this, toolTip] {
-                toolTip->show(); 
+                toolTip->show();
                 m_tooltipTimer->disconnect(toolTip);
             });
             m_tooltipTimer->start();
@@ -263,25 +264,30 @@ QWidget *PluginItem::pluginTooltip()
 
 QWidget * PluginItem::itemTooltip(const QString &itemKey)
 {
-    auto toolTip = m_pluginsItemInterface->itemTipsWidget(itemKey);
-    if (!toolTip) {
-        qDebug() << "no tooltip";
-        return nullptr;
+    if (!m_tipsWidget) {
+        auto toolTip = m_pluginsItemInterface->itemTipsWidget(itemKey);
+        if (!toolTip) {
+            qDebug() << "no tooltip";
+            return nullptr;
+        }
+        m_tipsWidget = new QWidget();
+        QVBoxLayout *layout = new QVBoxLayout(m_tipsWidget);
+        layout->setMargin(0);
+        layout->addWidget(toolTip);
+        layout->setSizeConstraint(QLayout::SetFixedSize);
+        toolTip->setVisible(true);
     }
 
-    toolTip->setParent(nullptr);
-    toolTip->setAttribute(Qt::WA_TranslucentBackground);
-    toolTip->winId();
+    m_tipsWidget->setParent(nullptr);
+    m_tipsWidget->setAttribute(Qt::WA_TranslucentBackground);
+    m_tipsWidget->winId();
 
     auto geometry = windowHandle()->geometry();
-    auto pluginPopup = Plugin::PluginPopup::get(toolTip->windowHandle());
+    auto pluginPopup = Plugin::PluginPopup::get(m_tipsWidget->windowHandle());
     pluginPopup->setPluginId(m_pluginsItemInterface->pluginName());
     pluginPopup->setItemKey(itemKey);
     pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeTooltip);
-    if (toolTip->sizeHint().width() > 0 && toolTip->sizeHint().height() > 0) {
-        toolTip->setFixedSize(toolTip->sizeHint());
-    }
-    return toolTip;
+    return m_tipsWidget;
 }
 
 bool PluginItem::executeCommand()
@@ -328,9 +334,8 @@ void PluginItem::closeToolTip()
         m_tooltipTimer->stop();
     }
 
-    auto tooltip = m_pluginsItemInterface->itemTipsWidget(m_itemKey);
-    if (tooltip && tooltip->windowHandle() && tooltip->windowHandle()->isVisible())
-        tooltip->windowHandle()->hide();
+    if (m_tipsWidget && m_tipsWidget->windowHandle() && m_tipsWidget->windowHandle()->isVisible())
+        m_tipsWidget->windowHandle()->hide();
 }
 
 void PluginItem::updatePluginContentMargin(int spacing)
