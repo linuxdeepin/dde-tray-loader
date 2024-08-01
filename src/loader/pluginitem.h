@@ -66,6 +66,7 @@ private:
     PluginsItemInterface *m_pluginsItemInterface;
     PluginsItemInterfaceV2 *m_pluginsItemInterfacev2;
     QTimer* m_tooltipTimer;
+    QPointer<QWidget> m_tipsWidget;
 
     int m_pluginFlags = 0;
 };
