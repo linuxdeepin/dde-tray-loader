@@ -70,7 +70,7 @@ void XembedProtocol::onTrayIconsChanged()
             }
         }
     });
-    
+
 }
 
 XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent)
@@ -117,7 +117,7 @@ QString XembedProtocolHandler::id() const
 {
     return m_id;
 }
-    
+
 QString XembedProtocolHandler::title() const
 {
     return UTIL->getX11WindowName(m_windowId);
@@ -283,8 +283,8 @@ void XembedProtocolHandler::updateEmbedWindowPosForGetInputEvent()
     QPoint p = getGlobalPos();
     const QPoint clickPoint = calculateClickPoint();
     uint32_t configVals[2] = {0, 0};
-    configVals[0] = static_cast<uint32_t>(p.x() - clickPoint.x());
-    configVals[1] = static_cast<uint32_t>(p.y() - clickPoint.y());
+    configVals[0] = static_cast<uint32_t>(p.x() + clickPoint.x());
+    configVals[1] = static_cast<uint32_t>(p.y() + clickPoint.y());
     UTIL->moveX11Window(m_containerWid, configVals[0], configVals[1]);
 
     // make window normal and above for get input
@@ -294,14 +294,14 @@ void XembedProtocolHandler::updateEmbedWindowPosForGetInputEvent()
 void XembedProtocolHandler::sendHover()
 {
     updateEmbedWindowPosForGetInputEvent();
-    
+
     Display *display = UTIL->getDisplay();
     QPoint p = getGlobalPos();
     const QPoint clickPoint = calculateClickPoint();
 
     if (m_injectMode == XTest) {
         // fake enter event
-        XTestFakeMotionEvent(display, 0, p.x(), p.y(), CurrentTime);
+        XTestFakeRelativeMotionEvent(display, 0, 0, CurrentTime);
         XFlush(display);
     } else {
         // 发送 montion notify event到client，实现hover事件
@@ -388,7 +388,7 @@ void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const 
         releaseEvent->detail = mouseButton;
         xcb_send_event(c, false, m_windowId, XCB_EVENT_MASK_BUTTON_RELEASE, (char *)releaseEvent.get());
     } else {
-        XTestFakeMotionEvent(dis, 0, p.x(), p.y(), 0);
+        XTestFakeRelativeMotionEvent(dis, 0, 0, 0);
         XFlush(dis);
         XTestFakeButtonEvent(dis, mouseButton, true, 0);
         XFlush(dis);
