@@ -13,7 +13,6 @@
 #include <QVBoxLayout>
 #include <QMouseEvent>
 #include <DFontSizeManager>
-#include <DGuiApplicationHelper>
 
 #define PLUGIN_STATE_KEY    "enable"
 #define TIME_FONT DFontSizeManager::instance()->t4()
@@ -319,11 +318,7 @@ void DatetimeWidget::initUI()
     // 当任务栏在左/右时，时间文本和日期的间距
     m_spacerItem->setFixedSize(10, 5);
 
-    // 创建一个70%黑色的QColor对象
-    QColor color(0, 0, 0, 255 * 0.7);
-    QPalette palette = m_dateLabel->palette();
-    palette.setColor(QPalette::WindowText, color);
-    m_dateLabel->setPalette(palette);
+    m_timeLabel->setForegroundRole(QPalette::BrightText);
 
     auto *layout = new QVBoxLayout();
     layout->setMargin(0);
