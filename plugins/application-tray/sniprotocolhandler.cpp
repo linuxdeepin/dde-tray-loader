@@ -200,8 +200,7 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                 const auto offset = mouseEvent->pos();
                 pluginPopup->setX(geometry.x() + offset.x());
                 pluginPopup->setY(geometry.y() + offset.y());
-                // FIXME: show() will not get inputfocus while exec() case a ui issue
-                menu->exec();
+                menu->show();
             }
         }
     }
