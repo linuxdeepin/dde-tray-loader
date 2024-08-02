@@ -38,6 +38,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *e) override;
     void enterEvent(QEvent *event) override;
     void leaveEvent(QEvent *event) override;
+    void moveEvent(QMoveEvent *e) override;
 
     virtual QWidget *centralWidget();
     virtual QMenu *pluginContextMenu();
