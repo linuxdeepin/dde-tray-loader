@@ -158,6 +158,19 @@ void PluginItem::enterEvent(QEvent *event)
     QWidget::enterEvent(event);
 }
 
+void PluginItem::moveEvent(QMoveEvent* e)
+{
+    if (auto popup = m_pluginsItemInterface->itemPopupApplet(m_itemKey); popup && popup->isVisible()) {
+        if (auto pluginPopup = Plugin::PluginPopup::get(popup->windowHandle())) {
+            auto geometry = windowHandle()->geometry();
+            const auto offset = QPoint(0, 0);
+            pluginPopup->setX(geometry.x() + offset.x());
+            pluginPopup->setY(geometry.y() + offset.y());
+        }
+    }
+    QWidget::moveEvent(e);
+}
+
 void PluginItem::leaveEvent(QEvent *event)
 {
     closeToolTip();
