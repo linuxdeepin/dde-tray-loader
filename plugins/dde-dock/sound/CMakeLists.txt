@@ -5,6 +5,7 @@
 set(PLUGIN_NAME "sound")
 
 project(${PLUGIN_NAME})
+set(PLUGINDIR ${CMAKE_INSTALL_LIBDIR}/dde-dock/plugins)
 
 # Sources files
 file(GLOB_RECURSE SRCS
@@ -53,6 +54,6 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     ${Qt5Svg_LIBRARIES}
     )
 
-install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-trays)
+install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION ${PLUGINDIR}/system-trays)
 
 dconfig_meta_files(APPID org.deepin.dde.dock FILES ../configs/org.deepin.dde.dock.plugin.sound.json)

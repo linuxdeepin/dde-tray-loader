@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 set(PLUGIN_NAME "eye-comfort-mode")
+set(PLUGINDIR ${CMAKE_INSTALL_LIBDIR}/dde-dock/plugins)
 
 project(${PLUGIN_NAME})
 
@@ -46,5 +47,5 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     ${QGSettings_LIBRARIES}
 )
 
-install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
+install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION ${PLUGINDIR})
 install(FILES "resources/eye-comfort-mode.svg" DESTINATION share/dde-dock/icons/dcc-setting)
