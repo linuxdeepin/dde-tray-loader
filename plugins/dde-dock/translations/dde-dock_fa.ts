@@ -49,11 +49,11 @@
         <translation>تنظیمات بلوتوث</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
+        <source>Turned off</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Turned off</source>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -49,12 +49,12 @@
         <translation>Rregullime Bluetooth-i</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation>Nëse doni të lidheni me Bluetooth, së pari çaktivizoni &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Mënyrën Aeroplan&lt;/a&gt;</translation>
-    </message>
-    <message>
         <source>Turned off</source>
         <translation>Çaktivizuar</translation>
+    </message>
+    <message>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

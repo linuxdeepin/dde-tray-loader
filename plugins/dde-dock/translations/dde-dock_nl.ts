@@ -49,12 +49,12 @@
         <translation>Bluetooth-instellingen</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation>Schakel de &lt;a href=&quot;Airplane Mode&quot;&gt;vliegtuigstand&lt;/a&gt; uit als je verbinding wilt maken via bluetooth</translation>
-    </message>
-    <message>
         <source>Turned off</source>
         <translation>Uitgeschakeld</translation>
+    </message>
+    <message>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

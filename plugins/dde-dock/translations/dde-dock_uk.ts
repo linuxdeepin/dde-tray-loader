@@ -49,12 +49,12 @@
         <translation>Параметри Bluetooth</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation>Якщо ви хочете встановити з&apos;єднання з Bluetooth, спочатку вимкніть &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Режим польоту&lt;/a&gt;</translation>
-    </message>
-    <message>
         <source>Turned off</source>
         <translation>Вимкнено</translation>
+    </message>
+    <message>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -49,12 +49,12 @@
         <translation>Bluetooth asetukset</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation>Poista ensin &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Lentotila&lt;/a&gt; käytöstä, jos haluat muodostaa bluetooth yhteyden</translation>
-    </message>
-    <message>
         <source>Turned off</source>
         <translation>Pois päältä</translation>
+    </message>
+    <message>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
