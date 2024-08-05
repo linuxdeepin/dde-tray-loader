@@ -160,6 +160,9 @@ public:
     virtual QString name() = 0;
     virtual QList<QPair<QString, QString>> items() = 0;
 
+signals:
+    void infoChanged();
+
 protected:
     explicit NetworkDetailRealize(QObject *parent) : QObject(parent) {}
     virtual ~NetworkDetailRealize() = default;

@@ -11,6 +11,8 @@
 namespace dde {
 namespace network {
 
+class IpManager;
+
 class NetworkDetailNMRealize : public NetworkDetailRealize
 {
     Q_OBJECT
@@ -39,6 +41,7 @@ private:
     NetworkManager::ActiveConnection::Ptr m_activeConnection;
     QString m_name;
     QList<QPair<QString, QString>> m_items;
+    IpManager *m_ipConfig;
 };
 
 }

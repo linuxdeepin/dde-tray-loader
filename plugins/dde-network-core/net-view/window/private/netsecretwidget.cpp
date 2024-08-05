@@ -8,6 +8,7 @@
 #include <DSuggestButton>
 
 #include <QLayout>
+#include <QApplication>
 
 DWIDGET_USE_NAMESPACE
 
@@ -100,8 +101,25 @@ void NetSecretWidget::initUI(const QVariantMap &param)
     connect(connectButton, &DPushButton::clicked, this, &NetSecretWidget::onConnect);
     m_connectButton = connectButton;
     onTextChanged();
+    m_passwordWidget = focusWidget;
     if (focusWidget)
-        QMetaObject::invokeMethod(focusWidget, "setFocus", Qt::QueuedConnection);
+        QMetaObject::invokeMethod(this, "setFocusToEdit", Qt::QueuedConnection);
+}
+
+void NetSecretWidget::setFocusToEdit()
+{
+    if (!m_passwordWidget) {
+        return;
+    }
+
+    QWidget *tlw = m_passwordWidget->window();
+    const QWindow *w = tlw ? tlw->windowHandle() : 0;
+    if (qApp->focusWindow() == w && qApp->activeWindow() != m_passwordWidget->window()) {
+        qApp->setActiveWindow(m_passwordWidget);
+        m_passwordWidget->activateWindow();
+    }
+
+    m_passwordWidget->setFocus();
 }
 
 void NetSecretWidget::showError(const QVariantMap &param)

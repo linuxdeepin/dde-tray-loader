@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "networkdetailnmrealize.h"
 #include "devicemanagerrealize.h"
+#include "ipmanager.h"
 
 #include <NetworkManagerQt/WirelessDevice>
 #include <NetworkManagerQt/WirelessSecuritySetting>
@@ -16,6 +17,7 @@ NetworkDetailNMRealize::NetworkDetailNMRealize(NetworkManager::Device::Ptr devic
     : NetworkDetailRealize(parent)
     , m_device(device)
     , m_activeConnection(activeConnection)
+    , m_ipConfig(new IpManager(m_device, this))
 {
     initProperties();
     initConnection();
@@ -29,6 +31,10 @@ void NetworkDetailNMRealize::initConnection()
 {
     connect(m_activeConnection.get(), &NetworkManager::ActiveConnection::ipV4ConfigChanged, this, &NetworkDetailNMRealize::onUpdateInfo);
     connect(m_activeConnection.get(), &NetworkManager::ActiveConnection::ipV6ConfigChanged, this, &NetworkDetailNMRealize::onUpdateInfo);
+    connect(m_ipConfig, &IpManager::ipChanged, this, [ this ] {
+        onUpdateInfo();
+        emit infoChanged();
+    });
 }
 
 QString NetworkDetailNMRealize::name()
@@ -103,7 +109,12 @@ void NetworkDetailNMRealize::initProperties()
 
     // 获取IPV4
     NetworkManager::IpConfig ipV4Config = m_activeConnection->ipV4Config();
-    QList<NetworkManager::IpAddress> addresses = ipV4Config.addresses();
+    QList<NetworkManager::IpAddress> addresses;
+    if (m_ipConfig) {
+        addresses = m_ipConfig->ipAddresses();
+    } else {
+        addresses = ipV4Config.addresses();
+    }
     for (NetworkManager::IpAddress address : addresses) {
         QString ipv4 = address.ip().toString();
         ipv4 = ipv4.remove("\"");
@@ -220,13 +231,13 @@ QString NetworkDetailNMRealize::macAddress() const
     case NetworkManager::Device::Type::Ethernet: {
         NetworkManager::WiredDevice::Ptr wiredDevice = m_device.dynamicCast<NetworkManager::WiredDevice>();
         if (wiredDevice)
-            return wiredDevice->permanentHardwareAddress();
+            return wiredDevice->hardwareAddress();
         break;
     }
     case NetworkManager::Device::Type::Wifi: {
         NetworkManager::WirelessDevice::Ptr wirelessDevice = m_device.dynamicCast<NetworkManager::WirelessDevice>();
         if (wirelessDevice)
-            return wirelessDevice->permanentHardwareAddress();
+            return wirelessDevice->hardwareAddress();
         break;
     }
     default:
