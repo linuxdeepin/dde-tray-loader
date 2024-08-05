@@ -34,6 +34,7 @@ PluginSurface::PluginSurface(PluginManager *manager, QtWaylandClient::QWaylandWi
 
 PluginSurface::~PluginSurface()
 {
+    plugin_destroy(this->object());
 }
 
 void PluginSurface::plugin_close()
@@ -87,6 +88,7 @@ PluginPopupSurface::PluginPopupSurface(PluginManager *manager, QtWaylandClient::
 
 PluginPopupSurface::~PluginPopupSurface()
 {
+    plugin_popup_destroy(this->object());
 }
 
 void PluginPopupSurface::plugin_popup_close()
