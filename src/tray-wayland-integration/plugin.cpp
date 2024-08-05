@@ -219,8 +219,8 @@ public:
     QString itemKey;
     int pluginFlags;
     int popupType;
-    int x;
-    int y;
+    int x = 0;
+    int y = 0;
 };
 
 PluginPopup::PluginPopup(QWindow* window)
