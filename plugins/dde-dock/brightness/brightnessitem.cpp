@@ -103,7 +103,7 @@ void BrightnessItem::updateTips()
     if (!m_tipsLabel) {
         m_tipsLabel = new QLabel;
         m_tipsLabel->setForegroundRole(QPalette::BrightText);
-        m_tipsLabel->setContentsMargins(10, 5, 10, 5);
+        m_tipsLabel->setContentsMargins(0, 0, 0, 0);
         connect(qApp, &QGuiApplication::fontChanged, this, &BrightnessItem::updateTips);
         connect(&BrightnessModel::ref(), &BrightnessModel::enabledMonitorListChanged, this, &BrightnessItem::updateTips);
         connect(&BrightnessModel::ref(), &BrightnessModel::monitorBrightnessChanged, this, &BrightnessItem::updateTips);
