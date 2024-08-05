@@ -49,12 +49,12 @@
         <translation>蓝牙设置</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation>若要使用蓝牙功能，请先关闭 &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;飞行模式&lt;/a&gt; </translation>
-    </message>
-    <message>
         <source>Turned off</source>
         <translation>蓝牙关闭</translation>
+    </message>
+    <message>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished">如果要连接蓝牙，请先禁用飞行模式</translation>
     </message>
 </context>
 <context>

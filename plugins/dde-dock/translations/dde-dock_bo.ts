@@ -49,12 +49,12 @@
         <translation>སོ་སྔོན་སྒྲིག་འགོད།</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation>སོ་སྔོན་བེད་སྤྱོད་གཏོང་དགོས་ན། ཐོག་མར་&lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;འཕུར་སྐྱོད་དཔེ་རྣམ་&lt;/a&gt; སྒོ་རྒྱོབ།</translation>
-    </message>
-    <message>
         <source>Turned off</source>
         <translation>སོ་སྔོན་ཁ་རྒྱོབ།</translation>
+    </message>
+    <message>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

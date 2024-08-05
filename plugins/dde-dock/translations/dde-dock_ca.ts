@@ -49,12 +49,12 @@
         <translation>Configuració del Bluetooth</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation>Desactiveu primer el &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;mode d&apos;avió&lt;/a&gt; si voleu fer una connexió per bluetooth.</translation>
-    </message>
-    <message>
         <source>Turned off</source>
         <translation>Apagat</translation>
+    </message>
+    <message>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

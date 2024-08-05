@@ -49,12 +49,12 @@
         <translation>Bluetooth ayarları</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation>Bluetooth-a qoşulmaq istəyirsinizsə öncə Uçuş rejimini söndürün</translation>
-    </message>
-    <message>
         <source>Turned off</source>
         <translation>Söndürülüb</translation>
+    </message>
+    <message>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

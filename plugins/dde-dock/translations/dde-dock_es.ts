@@ -49,12 +49,12 @@
         <translation>Ajustes de Bluetooth</translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation>Desactive primero el &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;modo avión&lt;/a&gt; si desea conectarse a un Bluetooth </translation>
-    </message>
-    <message>
         <source>Turned off</source>
         <translation>Desactivado</translation>
+    </message>
+    <message>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -136,31 +136,31 @@
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation>Domingo</translation>
+        <translation>Sun</translation>
     </message>
     <message>
         <source>Mon</source>
-        <translation>Lunes</translation>
+        <translation>Mon</translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation>Mar</translation>
+        <translation>Tue</translation>
     </message>
     <message>
         <source>Wed</source>
-        <translation>Miércoles</translation>
+        <translation>Wed</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation>Jue</translation>
+        <translation>Thu</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation>Viernes</translation>
+        <translation>Fri</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation>Sábado</translation>
+        <translation>Sat</translation>
     </message>
 </context>
 <context>
