@@ -11,15 +11,16 @@ add_library(${PLUGIN_NAME} SHARED
     notification.cpp
     notificationplugin.h
     notificationplugin.cpp
-    tipswidget.h
-    tipswidget.cpp
     notification.qrc
+    ../widgets/tipswidget.h
+    ../widgets/tipswidget.cpp
 )
 target_compile_definitions(${PLUGIN_NAME} PRIVATE QT_PLUGIN)
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../dde-dock)
 
 target_include_directories(${PLUGIN_NAME} PRIVATE
    "../../../interfaces"
+   "../widgets"
 )
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE

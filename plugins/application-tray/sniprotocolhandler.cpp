@@ -87,7 +87,7 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     m_dbusUniqueName = pair.first.mid(1);
     m_sniInter = new StatusNotifierItem(pair.first, pair.second, QDBusConnection::sessionBus(), this);
     m_dbusMenuImporter = new DBusMenu(pair.first, m_sniInter->menu().path(), ASYNCHRONOUS, this);
-
+    m_tooltip->setForegroundRole(QPalette::BrightText);
     generateId();
 
     connect(m_sniInter, &StatusNotifierItem::NewIcon, this, &SniTrayProtocolHandler::iconChanged);

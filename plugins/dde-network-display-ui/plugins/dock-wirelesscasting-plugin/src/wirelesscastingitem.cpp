@@ -85,7 +85,7 @@ QLabel *WirelessCastingItem::tips()
     if (!m_tips) {
         m_tips = new QLabel;
         m_tips->setForegroundRole(QPalette::BrightText);
-        m_tips->setContentsMargins(10, 5, 10, 5);
+        m_tips->setContentsMargins(0, 0, 0, 0);
         connect(qApp, &QGuiApplication::fontChanged, this, &WirelessCastingItem::tips);
     }
 
