@@ -246,9 +246,9 @@ void DatetimeWidget::adjustFontSize()
     const int dateMinFontSize = 8;
 
     const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
-    int validDistance = m_dockSize.height();
+    int validDistance = m_dockSize.height() / qApp->devicePixelRatio();
     if (position == Dock::Left || position == Dock::Right) {
-        validDistance = m_dockSize.width();
+        validDistance = m_dockSize.width() / qApp->devicePixelRatio();
     }
 
     // 4,6是根据设计图计算出的比列值
