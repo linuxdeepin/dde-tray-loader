@@ -48,18 +48,29 @@ bool PluginManager::tryCreatePopupForSubWindow(QWindow *window)
     if (!parentWindow)
         return false;
 
-    auto plugin = EmbedPlugin::getWithoutCreating(parentWindow);
-    if (!plugin)
-        return false;
+    if (auto plugin = EmbedPlugin::getWithoutCreating(parentWindow)) {
+        auto pluginPopup = PluginPopup::get(window);
+        pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeTooltip);
+        pluginPopup->setPluginId(plugin->pluginId());
+        pluginPopup->setItemKey(plugin->itemKey());
+        pluginPopup->setX(parentWindow->x() + window->x());
+        pluginPopup->setY(parentWindow->y() + window->y());
+        return true;
+    }
 
-    auto pluginPopup = PluginPopup::get(window);
-    pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeTooltip);
-    pluginPopup->setPluginId(plugin->pluginId());
-    pluginPopup->setItemKey(plugin->itemKey());
-    pluginPopup->setX(parentWindow->x() + window->x());
-    pluginPopup->setY(parentWindow->y() + window->y());
+    if (auto plugin = PluginPopup::getWithoutCreating(parentWindow)) {
+        auto pluginPopup = PluginPopup::get(window);
+        pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeSubPopup);
+        pluginPopup->setPluginId(plugin->pluginId());
+        pluginPopup->setItemKey(plugin->itemKey());
+        auto geometry = parentWindow->geometry();
+        // TODO move to parentWindow's right position.
+        pluginPopup->setX(geometry.right());
+        pluginPopup->setY(window->y());
+        return true;
+    }
 
-    return true;
+    return false;
 }
 
 void PluginManager::requestMessage(const QString &plugin_id, const QString &item_key, const QString &msg)

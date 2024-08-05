@@ -19,6 +19,26 @@
 namespace tray {
 static QString sniPfrefix = QStringLiteral("SNI:");
 
+class DBusMenu : public DBusMenuImporter {
+public:
+    DBusMenu(const QString &service, const QString &path, DBusMenuImporterType type, QObject *parent = 0)
+        : DBusMenuImporter(service, path, type, parent)
+    {
+    }
+    virtual QMenu *createMenu(QWidget *parent) override
+    {
+        auto menu = DBusMenuImporter::createMenu(parent);
+        menu->setAttribute(Qt::WA_TranslucentBackground);
+        auto pa = menu->palette();
+        pa.setColor(QPalette::ColorRole::Window, Qt::transparent);
+        menu->setPalette(pa);
+        QObject::connect(menu, &QMenu::aboutToShow, menu, [this, menu] () {
+            menu->setFixedSize(menu->sizeHint());
+        });
+        return menu;
+    }
+};
+
 SniTrayProtocol::SniTrayProtocol(QObject *parent)
     : AbstractTrayProtocol(parent)
     , m_trayManager(new OrgKdeStatusNotifierWatcherInterface("org.kde.StatusNotifierWatcher", "/StatusNotifierWatcher", QDBusConnection::sessionBus(), this))
@@ -66,7 +86,7 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     // will get a unique dbus name (number like x.xxxx) and dbus path
     m_dbusUniqueName = pair.first.mid(1);
     m_sniInter = new StatusNotifierItem(pair.first, pair.second, QDBusConnection::sessionBus(), this);
-    m_dbusMenuImporter = new DBusMenuImporter(pair.first, m_sniInter->menu().path(), ASYNCHRONOUS, this);
+    m_dbusMenuImporter = new DBusMenu(pair.first, m_sniInter->menu().path(), ASYNCHRONOUS, this);
 
     generateId();
 
@@ -186,9 +206,6 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                 auto menu = m_dbusMenuImporter->menu();
                 if (!menu) return false;
                 menu->setFixedSize(menu->sizeHint());
-                auto pa = menu->palette();
-                pa.setColor(QPalette::ColorRole::Window, Qt::transparent);
-                menu->setPalette(pa);
                 menu->winId();
 
                 auto widget = static_cast<QWidget*>(parent());

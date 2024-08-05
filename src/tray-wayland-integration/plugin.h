@@ -104,7 +104,8 @@ public:
         PopupTypePanel = 1,
         PopupTypeTooltip = 2,
         PopupTypeMenu = 3,
-        PopupTypeEmbed = 4
+        PopupTypeEmbed = 4,
+        PopupTypeSubPopup = 5
     };
 
 public:
