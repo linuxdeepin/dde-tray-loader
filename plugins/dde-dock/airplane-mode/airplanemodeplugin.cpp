@@ -17,7 +17,7 @@ Q_LOGGING_CATEGORY(AIRPLANE, "org.deepin.dde.dock.airplane-mode")
 AirplaneModePlugin::AirplaneModePlugin(QObject *parent)
     : QObject(parent)
     , m_item(new AirplaneModeItem)
-    , m_dconfig(DConfig::create("org.deepin.dde.tray.network", "org.deepin.dde.network", QString(), this))
+    , m_dconfig(DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.network", QString(), this))
     , m_quickPanelWidget(new QuickPanelWidget)
     , m_messageCallback(nullptr)
 {

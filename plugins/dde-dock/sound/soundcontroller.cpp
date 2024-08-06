@@ -9,7 +9,7 @@ SoundController::SoundController(QObject *parent)
     : QObject(parent)
     , m_audioInter(new DBusAudio("com.deepin.daemon.Audio", "/com/deepin/daemon/Audio", QDBusConnection::sessionBus(), this))
     , m_defaultSinkInter(nullptr)
-    , m_dconfig(DConfig::create("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.sound", QString(), this))
+    , m_dconfig(DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.sound", QString(), this))
 {
     connect(m_audioInter, &DBusAudio::DefaultSinkChanged, this, &SoundController::onDefaultSinkChanged);
     connect(m_audioInter, &DBusAudio::CardsWithoutUnavailableChanged, &SoundModel::ref(), &SoundModel::setCardsInfo);
