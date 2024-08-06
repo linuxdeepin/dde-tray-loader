@@ -1,3 +1,20 @@
+dde-tray-loader (0.0.6) unstable; urgency=medium
+
+  * fix: adjust tooltip display(Issue: 10043)
+  * fix: Cursor instantly move to left side(Issue: 9987)
+  * fix: date text color does not change with theme(Issue: 10104)
+  * fix: bluetooth devices list width(Issue: 9981)
+  * fix: Menu display incomplete(Issue: 9721 9729)
+  * fix: Popup position cannot be refreshed with dock(Issue: 10096)
+  * fix: Error in modifying IP address display(Issue: 10073)
+  * fix: update dde-dock plugins translate(Issue: 10123 10012)
+  * fix: Modify the issue of dock plugin crashing when double clicking(Issue: 10118 10067)
+  * fix: at high PixelRatio, the datetime display is too large
+  * fix: subMenu can't show
+  * fix: The margin issue of Tooltip(Issue: 10005 9997)
+
+ -- Zhang kun <zhangkun2@uniontech.com>  Tue, 06 Aug 2024 15:41:06 +0800
+
 dde-tray-loader (0.0.5) unstable; urgency=medium
 
   * fix: onboard plugin is not installed(Issue: 9820)
