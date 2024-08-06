@@ -118,6 +118,10 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
     }
     if (flag & Dock::Type_Quick || flag & Dock::Type_System
         || flag & Dock::Type_Tray) {
+        if (PluginItem::isForceUndock(flag)) {
+            return;
+        }
+
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Tray, itemKey) && m_pluginsItemInterface->itemWidget(itemKey)) {
             PluginItem *item = new PluginItem(itemInter, itemKey);
             item->init();
@@ -335,16 +339,21 @@ int WidgetPlugin::getPluginFlags()
 
     auto pluginsItemInterfaceV2 = dynamic_cast<PluginsItemInterfaceV2 *>(m_pluginsItemInterface);
     if (pluginsItemInterfaceV2) {
-        return pluginsItemInterfaceV2->flags();
+        Dock::PluginFlags flags;
+        flags = pluginsItemInterfaceV2->flags();
+        if (pluginsItemInterfaceV2->pluginName() == "grand-search") {
+            flags |= (Dock::PluginFlag)Attribute_ForceUnDock;
+        }
+        return flags;
+    } else {
+        bool ok;
+        auto flags = m_pluginInstance->property("pluginFlags").toInt(&ok);
+        if (!ok) {
+            qWarning() << "failed to pluginFlags toInt!";
+            return defaultPluginFlags;
+        }
+        return flags;
     }
-
-    bool ok;
-    auto flags = m_pluginInstance->property("pluginFlags").toInt(&ok);
-    if (!ok) {
-        qWarning() << "failed to pluginFlags toInt!";
-        return defaultPluginFlags;
-    }
-    return flags;
 }
 
 QString WidgetPlugin::messageCallback(PluginsItemInterfaceV2 *pluginItem, const QString &msg)

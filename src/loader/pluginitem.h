@@ -10,6 +10,8 @@
 
 #include <QWidget>
 
+const int Attribute_ForceUnDock = 0x800000;
+
 class QMenu;
 class PluginItem : public QWidget
 {
@@ -29,6 +31,8 @@ public:
     virtual QString itemKey() const { return m_itemKey; }
 
     void updatePluginContentMargin(int spacing);
+
+    static bool isForceUndock(int pluginFlag);
 
 signals:
     void recvMouseEvent(int type);
