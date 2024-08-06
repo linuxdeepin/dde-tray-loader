@@ -121,7 +121,7 @@ void DatetimePlugin::pluginStateSwitched()
 bool DatetimePlugin::pluginIsDisable()
 {
     bool defaultValue = true;
-    auto dconfig = Dtk::Core::DConfig::create("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.common", "");
+    auto dconfig = Dtk::Core::DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.common", "");
     if (dconfig) {
         defaultValue = dconfig->value("defaultDockedPlugins", QStringList()).toStringList().contains(pluginName());
         dconfig->deleteLater();

@@ -34,10 +34,10 @@ SettingManager::SettingManager(QObject *parent)
     , m_enableShowDesktop(true)
 {
     if (!dockConfig)
-        dockConfig = DConfig::create("org.deepin.dde.dock", "org.deepin.dde.dock", QString(), this);
+        dockConfig = DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock", QString(), this);
 
     if (!quickPanelConfig)
-        quickPanelConfig = DConfig::create("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.quick-panel", QString(), this);
+        quickPanelConfig = DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.quick-panel", QString(), this);
 
     if (dockConfig) {
         connect(dockConfig, &DConfig::valueChanged, this, &SettingManager::onDockConfigChanged);

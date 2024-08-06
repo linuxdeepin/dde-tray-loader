@@ -51,7 +51,7 @@ ShutdownPlugin::ShutdownPlugin(QObject *parent)
     , m_powerManagerInter(new DBusPowerManager("com.deepin.daemon.PowerManager", "/com/deepin/daemon/PowerManager", QDBusConnection::systemBus(), this))
     , m_gsettings(Utils::ModuleSettingsPtr("shutdown", QByteArray(), this))
     , m_sessionShellGsettings(Utils::SettingsPtr("com.deepin.dde.session-shell", "/com/deepin/dde/session-shell/", this))
-    , m_dconfig(DConfig::create("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.power", QString(), this))
+    , m_dconfig(DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.power", QString(), this))
     , m_lastoreDConfig(DConfig::create("org.deepin.lastore", "org.deepin.lastore", "", this))
 {
     m_tipsLabel->setVisible(false);
@@ -111,7 +111,7 @@ void ShutdownPlugin::pluginStateSwitched()
 bool ShutdownPlugin::pluginIsDisable()
 {
     bool defaultValue = true;
-    auto dconfig = Dtk::Core::DConfig::create("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.common", "");
+    auto dconfig = Dtk::Core::DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.common", "");
     if (dconfig) {
         defaultValue = dconfig->value("defaultDockedPlugins", QStringList()).toStringList().contains(pluginName());
         dconfig->deleteLater();
