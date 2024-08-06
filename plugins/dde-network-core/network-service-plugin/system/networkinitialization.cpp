@@ -274,8 +274,8 @@ void NetworkInitialization::onUserChanged(const QString &json)
         if (!doc.isObject())
             break;
         int uid = doc.object().value("Uid").toInt();
-        com::deepin::daemon::accounts::User user("com.deepin.daemon.Accounts", QString("/com/deepin/daemon/Accounts/User%1").arg(uid), QDBusConnection::systemBus());
-        installTranslator(user.locale().split(".").first());
+        QDBusInterface user("org.deepin.dde.Accounts1", QString("/org/deepin/dde/Accounts1/User%1").arg(uid), "org.deepin.dde.Accounts1.User", QDBusConnection::systemBus());
+        installTranslator(user.property("Locale").toString().split(".").first());
     } while (0);
 
     if (!m_initilized) {
