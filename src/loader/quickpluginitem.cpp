@@ -138,9 +138,11 @@ void QuickPluginItem::mouseReleaseEvent(QMouseEvent *e)
             }
         }
         e->accept();
-    }
+     } else if (e->button() == Qt::LeftButton) {
+         executeCommand();
+     }
 
-    QWidget::mouseReleaseEvent(e);
+     QWidget::mouseReleaseEvent(e);
 }
 
 QMenu *QuickPluginItem::pluginContextMenu()
@@ -149,7 +151,7 @@ QMenu *QuickPluginItem::pluginContextMenu()
     initPluginMenu();
 
     int flags = pluginFlags();
-    if (flags & Dock::Attribute_CanSetting) {
+    if (flags & Dock::Attribute_CanSetting && !isForceUndock(flags)) {
         if (!m_onDockAction) {
             m_onDockAction = new QAction();
         }

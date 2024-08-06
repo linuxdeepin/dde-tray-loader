@@ -358,3 +358,12 @@ void PluginItem::updatePluginContentMargin(int spacing)
         setFixedSize(sizeHint());
     }
 }
+
+bool PluginItem::isForceUndock(int pluginFlag)
+{
+    if (pluginFlag & Attribute_ForceUnDock) {
+        return true;
+    }
+
+    return false;
+}
