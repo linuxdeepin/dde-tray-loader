@@ -742,6 +742,14 @@ void NetStatus::updateNetworkIcon()
     case NetworkStatus::WiredConnected:
     case NetworkStatus::WirelessConnected: {
         auto type = m_manager->primaryConnectionType();
+        switch (type) {
+        case NetManager::ConnectionType::Wireless:
+        case NetManager::ConnectionType::Wired:
+            break;
+        default:
+            type = networkStatus() == NetworkStatus::WiredConnected ? NetManager::ConnectionType::Wired : NetManager::ConnectionType::Wireless;
+            break;
+        }
         if (type == NetManager::ConnectionType::Wireless) {
             QVector<NetItem *> items = getDeviceConnections(NET_WIRELESS, static_cast<unsigned>(NetConnectionStatus::Connected));
             if (items.isEmpty()) {
