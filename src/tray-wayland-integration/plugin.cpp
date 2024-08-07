@@ -338,6 +338,16 @@ PluginPopup* PluginPopup::get(QWindow* window)
     return popup;
 }
 
+void PluginPopup::remove(QWindow *window)
+{
+    if (auto popup = s_popupMap.value(window)) {
+        s_popupMap.remove(window);
+        window->close();
+        // don't use deleteLater, avoid remove other's Popup.
+        delete popup;
+    }
+}
+
 bool PluginPopup::contains(QWindow *window)
 {
     return s_popupMap.keys().contains(window);

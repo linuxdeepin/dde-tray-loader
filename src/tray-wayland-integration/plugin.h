@@ -128,6 +128,7 @@ public:
 
     static PluginPopup *getWithoutCreating(QWindow *window);
     static PluginPopup* get(QWindow* window);
+    static void remove(QWindow *window);
     static bool contains(QWindow* window);
 
 Q_SIGNALS:
