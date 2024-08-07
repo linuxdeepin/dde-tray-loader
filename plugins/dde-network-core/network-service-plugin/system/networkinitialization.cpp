@@ -33,6 +33,7 @@ NetworkInitialization::NetworkInitialization(QObject *parent)
     : QObject(parent)
     , m_initilized(false)
 {
+    installTranslator(QLocale::system().name());
     initDeviceInfo();
     initConnection();
 }
