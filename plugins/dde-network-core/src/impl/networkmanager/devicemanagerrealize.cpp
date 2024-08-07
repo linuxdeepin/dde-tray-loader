@@ -302,6 +302,9 @@ void DeviceManagerRealize::setEnabled(bool enabled)
     QDBusInterface dbusInter(SYS_NETWORK_INTER, SYS_NETWORK_PATH, SYS_NETWORK_INTER, QDBusConnection::systemBus());
     QDBusReply<QDBusObjectPath> reply = dbusInter.call("EnableDevice", m_device->uni(), enabled);
     deviceEnabledAction(reply, enabled);
+    if (enabled) {
+        m_device->setAutoconnect(true);
+    }
 }
 
 void DeviceManagerRealize::disconnectNetwork()
