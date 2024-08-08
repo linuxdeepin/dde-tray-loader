@@ -45,7 +45,7 @@ install(TARGETS trayplugin-loader DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
 
 #dconfig
 dtk_add_config_meta_files(APPID org.deepin.dde.dock FILES ./configs/org.deepin.dde.dock.plugin.common.json) # compat
-dtk_add_config_meta_files(APPID org.deepin.dde.shell FILES ./configs/org.deepin.dde.dock.plugin.common.json)
+dtk_add_config_meta_files(APPID org.deepin.dde.tray-loader FILES ./configs/org.deepin.dde.dock.plugin.common.json)
 
 #schemas
 install(FILES configs/com.deepin.dde.control-center.gschema.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/glib-2.0/schemas)
