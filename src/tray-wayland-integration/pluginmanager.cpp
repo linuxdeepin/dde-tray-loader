@@ -37,7 +37,7 @@ void PluginManager::plugin_manager_v1_color_theme_changed(uint32_t dock_color_th
 
 void PluginManager::plugin_manager_v1_event_message(const QString &msg)
 {
-    qInfo() << "plugin receive event message" << msg;
+    // qInfo() << "plugin receive event message" << msg;
     Q_UNUSED(msg);
     Q_EMIT eventMessage(msg);
 }
