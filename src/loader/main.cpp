@@ -74,6 +74,7 @@ int main(int argc, char *argv[], char *envp[])
     qputenv("DSG_APP_ID", "dde-dock");
     qputenv("WAYLAND_DISPLAY", "dockplugin");
     qputenv("QT_WAYLAND_SHELL_INTEGRATION", "plugin-shell");
+    qputenv("QT_WAYLAND_RECONNECT", "1");
 
     Dtk::Widget::DApplication app(argc, argv);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
