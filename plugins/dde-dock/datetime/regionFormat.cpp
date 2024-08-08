@@ -30,7 +30,7 @@ void RegionFormat::initConnect()
     } else if (key == shortTimeFormat_key) {
         setShortTimeFormat(m_config->value(key).toString());
     } else if (key == longTimeFormat_key) {
-        setLongTimeFormat(m_config->value(key).toString());
+        setLongTimeFormat(transformLongHourFormat(m_config->value(key).toString()));
     }
 });
 }
@@ -65,9 +65,9 @@ void RegionFormat::initData()
     }
     if (m_config->isDefaultValue(longTimeFormat_key)) {
         QLocale locale(QLocale::system().name());
-        setLongTimeFormat(locale.timeFormat(QLocale::LongFormat));
+        setLongTimeFormat(transformLongHourFormat(locale.timeFormat(QLocale::LongFormat)));
     } else {
-        setLongTimeFormat(m_config->value(longTimeFormat_key).toString());
+        setLongTimeFormat(transformLongHourFormat(m_config->value(longTimeFormat_key).toString()));
     }
 
 }
@@ -132,6 +132,8 @@ void RegionFormat::setShortTimeFormat(const QString &newShortTimeFormat)
 
     shortTimeFormat = newShortTimeFormat;
     emit shortTimeFormatChanged();
+    // 由于tip，长时间也需要更改，而且长时间不能通过ap判断是否是12小时制
+    setLongTimeFormat(transformLongHourFormat(QString()));
 }
 
 QString RegionFormat::getLongTimeFormat() const
@@ -169,6 +171,29 @@ void RegionFormat::onDockPositionChanged(int position)
     } else {
         setShortDateFormat(m_config->value(shortDateFormat_key).toString());
     }
+}
+
+// 长时间不需要保存dconfig，它跟短时间格式和dconfig进行调整
+// 由于dconfig不需要变化，因此可以恢复显示
+QString RegionFormat::transformLongHourFormat(QString longTimeFormat){
+    QLocale locale(QLocale::system().name());
+    bool is24Horur = is24HourFormat();
+    if (longTimeFormat.isEmpty()) {
+        longTimeFormat = m_config->value(longTimeFormat_key).toString();
+    }
+    if(is24Horur && longTimeFormat == locale.timeFormat(QLocale::LongFormat)) {
+        longTimeFormat = "H:mm:ss";
+    } else {
+        QPair<QString,QString> format = is24Horur ? QPair<QString,QString>("h","H") : QPair<QString,QString>("H","h");
+        if (longTimeFormat.contains(format.first)) {
+            longTimeFormat.replace(format.first,format.second);
+        }
+        if (! is24Horur && !(longTimeFormat.contains("ap",Qt::CaseInsensitive))) {
+            longTimeFormat = "ap " + longTimeFormat;
+        }
+    }
+    qDebug() << "long time transform to " << longTimeFormat;
+    return longTimeFormat;
 }
 
 void RegionFormat::sync24HourFormatConfig(bool is24HourFormat)
