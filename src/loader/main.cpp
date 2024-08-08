@@ -28,7 +28,7 @@ DCORE_USE_NAMESPACE
 
 static QString pluginDisplayName;
 
-[[noreturn]] void sig_crash(int sig)
+[[noreturn]] void sig_crash(int signum)
 {
     DDBusSender()
         .service("org.deepin.dde.Notification1")
@@ -44,17 +44,28 @@ static QString pluginDisplayName;
         .arg(QVariantMap())
         .arg(2000)
         .call();
-    exit(-1);
+
+#ifndef QT_DEBUG
+    // 重新触发信号，产生coredump
+    signal(signum, SIG_DFL);
+    raise(signum);
+#endif
 }
 
 int main(int argc, char *argv[], char *envp[])
 {
-
 #ifndef QT_DEBUG
-    signal(SIGSEGV, sig_crash);
-    signal(SIGILL,  sig_crash);
-    signal(SIGABRT, sig_crash);
-    signal(SIGFPE,  sig_crash);
+    // 设置信号处理函数
+    struct sigaction sa;
+    sa.sa_handler = sig_crash;
+    sigemptyset(&sa.sa_mask);
+    // 在处理完信号后恢复默认信号处理
+    sa.sa_flags = SA_RESETHAND;
+
+    sigaction(SIGSEGV, &sa, nullptr);
+    sigaction(SIGILL, &sa, nullptr);
+    sigaction(SIGABRT, &sa, nullptr);
+    sigaction(SIGFPE, &sa, nullptr);
 #endif
 
     DGuiApplicationHelper::setAttribute(DGuiApplicationHelper::UseInactiveColorGroup, false);
