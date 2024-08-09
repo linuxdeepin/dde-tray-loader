@@ -92,6 +92,7 @@ private:
 
     QTimer *m_hoverTimer;
     QTimer *m_attentionTimer;
+    QTimer *m_iconUpdateTimer;
 };
 }
 
