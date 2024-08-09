@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 set(PLUGIN_NAME "application-tray")
+set(PLUGINDIR ${CMAKE_INSTALL_LIBDIR}/dde-dock/plugins)
 
 project(${PLUGIN_NAME})
 
@@ -62,4 +63,4 @@ target_include_directories(${PLUGIN_NAME} PUBLIC
 )
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/plugins/dde-dock)
 # 设置执行 make install 时哪个目标应该被 install 到哪个位置
-install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
+install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION ${PLUGINDIR})

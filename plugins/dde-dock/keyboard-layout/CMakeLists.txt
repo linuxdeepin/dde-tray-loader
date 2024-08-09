@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 set(PLUGIN_NAME "keyboard-layout")
+set(PLUGINDIR ${CMAKE_INSTALL_LIBDIR}/dde-dock/plugins)
 
 project(${PLUGIN_NAME})
 
@@ -49,5 +50,5 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     ${Qt5DBus_LIBRARIES}
 )
 
-install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-trays/)
+install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION ${PLUGINDIR}/system-trays/)
 install(FILES ./keybord_layout.json DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/dde-dock/indicator)

@@ -53,7 +53,6 @@ private slots:
     void updatePorts();
     void removePort(const QString& key);
     void addPort(const SoundCardPort* port);
-    void activePort(const QString& portId, const uint& cardId);
 
 signals:
     void requestHideApplet();

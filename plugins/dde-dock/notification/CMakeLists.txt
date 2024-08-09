@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 set(PLUGIN_NAME "notification")
+set(PLUGINDIR ${CMAKE_INSTALL_LIBDIR}/dde-dock/plugins)
 find_package(Qt5 REQUIRED COMPONENTS DBus)
 find_package(Dtk REQUIRED COMPONENTS Widget Gui)
 
@@ -30,5 +31,5 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     Dtk::Gui
 )
 
-install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
+install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION ${PLUGINDIR})
 install(FILES "icons/notification.svg" DESTINATION share/dde-dock/icons/dcc-setting)

@@ -12,6 +12,8 @@ cmake_minimum_required(VERSION 3.11)
 
 # 使用 set 命令设置一个变量
 set(PLUGIN_NAME "home-monitor")
+# Set plugin dir
+set(PLUGINDIR ${CMAKE_INSTALL_LIBDIR}/dde-dock/plugins)
 
 # 设置项目名称
 project(${PLUGIN_NAME})
@@ -102,4 +104,4 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
 set(CMAKE_INSTALL_PREFIX "/usr")
 
 # 设置执行 make install 时哪个目标应该被 install 到哪个位置
-install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
+install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION ${PLUGINDIR})
