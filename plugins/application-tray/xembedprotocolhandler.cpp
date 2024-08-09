@@ -79,6 +79,7 @@ XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent
     , m_windowId(id)
     , m_hoverTimer(new QTimer(this))
     , m_attentionTimer(new QTimer(this))
+    , m_iconUpdateTimer(new QTimer(this))
 {
     generateId();
 
@@ -88,10 +89,19 @@ XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent
     m_attentionTimer->setSingleShot(true);
     m_attentionTimer->setInterval(100);
 
+    m_iconUpdateTimer->setSingleShot(true);
+    m_iconUpdateTimer->setInterval(200);
+
     connect(m_hoverTimer, &QTimer::timeout, this, &XembedProtocolHandler::sendHover);
     connect(m_attentionTimer, &QTimer::timeout, this, [this](){
         m_attentionIcon = getPixmapFromWidnow();
         Q_EMIT attentionIconChanged();
+        m_iconUpdateTimer->start();
+    });
+
+    connect(m_iconUpdateTimer, &QTimer::timeout, this, [this](){
+        m_icon = getPixmapFromWidnow();
+        Q_EMIT AbstractTrayProtocolHandler::iconChanged();
     });
 
     QMetaObject::invokeMethod(this, &XembedProtocolHandler::initX11resources, Qt::QueuedConnection);
