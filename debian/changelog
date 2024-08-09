@@ -1,3 +1,21 @@
+dde-tray-loader (0.0.7) unstable; urgency=medium
+
+  * chore: 如果长时间格式的dconfig是空的，则设置一个默认值
+  * fix: correct DConfig appid name
+  * feat: add QT_WAYLAND_RECONNECT=1 env
+  * fix!: correct app id used by DConfig
+  * chore: 时间格式的tips能够跟随时间格式的变化而变化
+  * fix: app crashed cannot generate coredump file
+  * chore: removing print too many logs
+  * fix: quickpanel show empty if click tray's item
+  * fix: Translation issue not installed when modifying user acquisition error
+  * fix: Modify network non automatic reconnection issue
+  * fix: When modifying the VPN, the wireless network icon does not display
+  * fix: The DBus service name has been modified
+  * fix: clicking quickItem plugin with the left mouse button donot work
+
+ -- fuleyi <fuleyi@uniontech.com>  Fri, 09 Aug 2024 16:59:50 +0800
+
 dde-tray-loader (0.0.6) unstable; urgency=medium
 
   * fix: adjust tooltip display(Issue: 10043)
