@@ -180,6 +180,9 @@ QString RegionFormat::transformLongHourFormat(QString longTimeFormat){
     bool is24Horur = is24HourFormat();
     if (longTimeFormat.isEmpty()) {
         longTimeFormat = m_config->value(longTimeFormat_key).toString();
+        if (longTimeFormat.isEmpty()) {
+            longTimeFormat = locale.timeFormat(QLocale::LongFormat);
+        }
     }
     if(is24Horur && longTimeFormat == locale.timeFormat(QLocale::LongFormat)) {
         longTimeFormat = "H:mm:ss";
