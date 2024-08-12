@@ -1,3 +1,16 @@
+dde-tray-loader (0.0.7) unstable; urgency=medium
+
+  * fix:  clicking quickItem plugin with the left mouse button donot work(Influence: left mouse clicking quickItem)
+  * fix: The DBus service name has been modified(Issue: 10018)
+  * fix: When modifying the VPN, the wireless network icon does not display(Issue: 10195)
+  * fix: Modify network non automatic reconnection issue(Issue: 10184)
+  * fix: Translation issue not installed when modifying user acquisition error(Issue: 10018)
+  * fix: quickpanel show empty if click tray's item(Issue: 10229)
+  * chore: removing print too many logs(Influence: none)
+  * fix: app crashed cannot generate coredump file(Influence: app crashed has coredump file)
+
+ -- Deepin Packages Builder <packages@deepin.org>  Thu, 08 Aug 2024 15:08:41 +0800
+
 dde-tray-loader (0.0.6) unstable; urgency=medium
 
   * fix: adjust tooltip display(Issue: 10043)
