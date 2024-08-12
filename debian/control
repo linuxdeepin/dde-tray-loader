@@ -56,9 +56,11 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  deepin-service-plugin-network,
  dde-api-dbus-proxy-v1 (>=1.0.10)
 Conflicts:
- dde-dock
+ dde-dock,
+ dde-dock-onboard-plugin
 Replaces:
- dde-dock
+ dde-dock,
+ dde-dock-onboard-plugin
 Description: deepin desktop-environment - the plugins of tray for dde-dock
  Tray plugins module
 
