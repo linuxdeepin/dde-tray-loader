@@ -191,7 +191,6 @@ void EyeComfortModeItem::invokeMenuItem(const QString menuId, const bool checked
             .path("/com/deepin/dde/ControlCenter")
             .method(QString("ShowPage"))
             .arg(QString("display"))
-            .arg(QString("Brightness"))
             .call();
         Q_EMIT requestHideApplet();
     }
