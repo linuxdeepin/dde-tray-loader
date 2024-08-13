@@ -128,17 +128,12 @@ void WirelessCastingApplet::initUI()
     contentLayout->addWidget(m_multiscreenOptionsWidget);
     contentLayout->addStretch();
 
-    QPalette scrollAreaBackground;
     m_scrollArea->setWidgetResizable(true);
     m_scrollArea->setFrameShape(QFrame::NoFrame);
     m_scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-    m_scrollArea->setAutoFillBackground(true);
-    m_scrollArea->viewport()->setAutoFillBackground(true);
-    scrollAreaBackground.setColor(QPalette::Background, Qt::transparent);
-    m_scrollArea->setAutoFillBackground(true);
-    m_scrollArea->setPalette(scrollAreaBackground);
     m_scrollArea->setWidget(m_contentWidget);
+    m_contentWidget->setAttribute(Qt::WA_TranslucentBackground);
     QScroller::grabGesture(m_scrollArea->viewport(), QScroller::LeftMouseButtonGesture);
     QScroller *scroller = QScroller::scroller(m_scrollArea);
     QScrollerProperties sp;
