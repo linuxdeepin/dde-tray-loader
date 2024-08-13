@@ -186,7 +186,7 @@ void DatetimeWidget::setRegionFormat(RegionFormat *newRegionFormat)
 void DatetimeWidget::updateDateTimeString()
 {
     QLocale locale(m_regionFormat->getLocaleName());
-    m_dateTime = locale.toString(QDate::currentDate(), m_regionFormat->getLongDateFormat()) + QDateTime::currentDateTime().toString(m_regionFormat->getLongTimeFormat());
+    m_dateTime = locale.toString(QDate::currentDate(), m_regionFormat->getLongDateFormat()) + " " + QDateTime::currentDateTime().toString(m_regionFormat->getLongTimeFormat());
 
     QDateTime current = QDateTime::currentDateTime();
 
