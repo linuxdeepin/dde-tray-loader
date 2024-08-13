@@ -1,3 +1,11 @@
+dde-tray-loader (0.0.9) unstable; urgency=medium
+
+  * fix: Fixed the right-click display settings cannot jump to the control center (#136)(Issue: 10336)
+  * fix: Remove the Airplane Mode setting option from the Control Center (#137)(Issue: 10335)
+  * fix: tooltip content cannot update(Issue: 10361)
+
+ -- Deepin Packages Builder <packages@deepin.org>  Tue, 13 Aug 2024 16:00:51 +0800
+
 dde-tray-loader (0.0.8) unstable; urgency=medium
 
   * bump version to 0.0.8
