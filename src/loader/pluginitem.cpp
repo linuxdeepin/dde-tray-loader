@@ -290,6 +290,9 @@ QWidget * PluginItem::itemTooltip(const QString &itemKey)
         layout->addWidget(toolTip);
         layout->setSizeConstraint(QLayout::SetFixedSize);
         toolTip->setVisible(true);
+    } else {
+        // can update tooltip content
+        m_pluginsItemInterface->itemTipsWidget(itemKey);
     }
 
     m_tipsWidget->setParent(nullptr);
