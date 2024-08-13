@@ -19,7 +19,6 @@
 DGUI_USE_NAMESPACE
 
 #define SHIFT "shift"
-#define SETTINGS "settings"
 
 AirplaneModeItem::AirplaneModeItem(QWidget* parent)
     : QWidget(parent)
@@ -96,12 +95,6 @@ const QString AirplaneModeItem::contextMenu() const
     shift["isActive"] = true;
     items.push_back(shift);
 
-    QMap<QString, QVariant> settings;
-    settings["itemId"] = SETTINGS;
-    settings["itemText"] = tr("Airplane mode settings");
-    settings["isActive"] = true;
-    items.push_back(settings);
-
     QMap<QString, QVariant> menu;
     menu["items"] = items;
     menu["checkableMenu"] = false;
@@ -117,16 +110,6 @@ void AirplaneModeItem::invokeMenuItem(const QString menuId, const bool checked)
 
     if (menuId == SHIFT) {
         AMC_PTR->toggle();
-    } else if (menuId == SETTINGS) {
-        DDBusSender()
-            .service("com.deepin.dde.ControlCenter")
-            .interface("com.deepin.dde.ControlCenter")
-            .path("/com/deepin/dde/ControlCenter")
-            .method(QString("ShowPage"))
-            .arg(QString("network"))
-            .arg(QString("Airplane Mode"))
-            .call();
-        Q_EMIT requestHideApplet();
     }
 }
 
