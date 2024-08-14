@@ -227,6 +227,9 @@ void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInte
     }
 
     updateDockContainerState(itemInter, false);
+    if (Plugin::PluginPopup::contains(appletWidget->windowHandle())) {
+        Plugin::PluginPopup::remove(appletWidget->windowHandle());
+    }
 
     appletWidget->winId();
     appletWidget->setParent(nullptr);
