@@ -26,6 +26,8 @@
     <description summary="plugin manager">
       This interface allows a client to get server(dock) some info and create plugins to compositor.
     </description>
+    <request name="destroy" type="destructor">
+    </request>
   
     <enum name="error">
       <entry name="role"            value="0" summary="given wl_surface has another role"/>
@@ -85,6 +87,8 @@
     </request>
   </interface>
   <interface name="plugin_popup" version="1">
+    <request name="destroy" type="destructor">
+    </request>
     <event name="close"/>
     <event name="geometry">
       <arg name="x" type="int"/>
@@ -99,6 +103,8 @@
   </interface>
 
   <interface name="plugin" version="1">
+    <request name="destroy" type="destructor">
+    </request>
     <event name="close"/>
     <event name="geometry">
       <arg name="x" type="int"/>
