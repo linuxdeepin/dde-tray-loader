@@ -32,6 +32,7 @@ XembedProtocol::XembedProtocol(QObject *parent)
     : AbstractTrayProtocol(parent)
     , m_trayManager(new TrayManager("org.deepin.dde.TrayManager1", "/org/deepin/dde/TrayManager1", QDBusConnection::sessionBus(), this))
 {
+    m_trayManager->Manage();
     connect(m_trayManager, &TrayManager::Added, this, &XembedProtocol::onTrayIconsChanged);
     connect(m_trayManager, &TrayManager::Removed, this, &XembedProtocol::onTrayIconsChanged);
 
@@ -46,7 +47,6 @@ XembedProtocol::~XembedProtocol()
 void XembedProtocol::onTrayIconsChanged()
 {
     QTimer::singleShot(200, this,[this](){
-        m_trayManager->Manage();
         auto currentRegistedItems = m_trayManager->trayIcons();
 
         if (currentRegistedItems == m_registedItem.keys()) {
