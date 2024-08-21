@@ -580,7 +580,7 @@
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation>Po ngarkohet, %1hr %2m deri sa të jetë plot</translation>
+        <translation>Po ngarkohet, %1h e %2m, deri sa të jetë plot</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
