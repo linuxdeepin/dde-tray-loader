@@ -524,7 +524,7 @@
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>Po ngarkohet %1, edhe %2 hr e %3 minuta deri sa të jetë plot</translation>
+        <translation>Po ngarkohet %1, edhe %2 hr e %3 min., deri sa të jetë plot</translation>
     </message>
     <message>
         <source>Capacity %1</source>
