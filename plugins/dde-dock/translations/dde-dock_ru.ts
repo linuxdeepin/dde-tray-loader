@@ -243,7 +243,7 @@
     </message>
     <message>
         <source>saturday</source>
-        <translation>Суббота</translation>
+        <translation>суббота</translation>
     </message>
     <message>
         <source>sunday</source>
