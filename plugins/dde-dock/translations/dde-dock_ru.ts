@@ -113,7 +113,7 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки дисплея</translation>
     </message>
 </context>
 <context>
