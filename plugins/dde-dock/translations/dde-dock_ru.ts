@@ -11,7 +11,7 @@
     </message>
     <message>
         <source>Disable</source>
-        <translation>Отключить</translation>
+        <translation>Выключить</translation>
     </message>
     <message>
         <source>Enable</source>
