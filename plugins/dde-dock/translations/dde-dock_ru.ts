@@ -7,7 +7,7 @@
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation>Авиарежим выключен</translation>
+        <translation>Режим полета отключен</translation>
     </message>
     <message>
         <source>Disable</source>
