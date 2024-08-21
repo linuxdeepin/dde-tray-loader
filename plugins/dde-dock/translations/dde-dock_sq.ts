@@ -512,11 +512,11 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>Kapacitet %1, edhe %2 min</translation>
+        <translation>Kapacitet %1, edhe %2 min.</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>Kapacitet %1, edhe %2 hr %3 min</translation>
+        <translation>Kapacitet %1, edhe %2 hr %3 min.</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
