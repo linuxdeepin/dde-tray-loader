@@ -303,7 +303,7 @@
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation>Забота о глазах выключена</translation>
+        <translation>Защита глаз выключена</translation>
     </message>
     <message>
         <source>Display settings</source>
