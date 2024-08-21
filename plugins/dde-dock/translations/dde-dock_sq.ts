@@ -87,7 +87,7 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation>I lidhur me %1</translation>
+        <translation>E lidhur me %1</translation>
     </message>
     <message>
         <source>Not connected</source>
