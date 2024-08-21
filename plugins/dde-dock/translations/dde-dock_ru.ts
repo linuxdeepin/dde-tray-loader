@@ -3,7 +3,7 @@
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation>Авиарежим включён</translation>
+        <translation>Режим полета включен</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
