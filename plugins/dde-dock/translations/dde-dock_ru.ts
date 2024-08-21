@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>Открыть календарь</translation>
     </message>
 </context>
 <context>
