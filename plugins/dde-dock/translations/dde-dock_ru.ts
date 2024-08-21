@@ -331,11 +331,11 @@
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Темная</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Авто</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
