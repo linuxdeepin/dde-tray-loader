@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Először tiltsa le a Repülőgép üzemmódot, ha Bluetooth eszközt szeretne csatlakoztatni</translation>
     </message>
 </context>
 <context>
