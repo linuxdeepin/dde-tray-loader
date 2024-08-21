@@ -382,7 +382,7 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Тема</translation>
     </message>
 </context>
 <context>
