@@ -9,7 +9,7 @@
     <message>
         <location filename="../quickpluginitem.cpp" line="120"/>
         <source>Pin to dock</source>
-        <translation type="unfinished"/>
+        <translation>Fixar na dock</translation>
     </message>
 </context>
 </TS>
