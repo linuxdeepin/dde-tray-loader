@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="hu">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="hu">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -39,7 +37,7 @@
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Eszközeim</translation>
     </message>
 </context>
 <context>
@@ -54,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -160,7 +158,7 @@
     </message>
     <message>
         <source>Sat</source>
-        <translation>Szo.</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -174,7 +172,7 @@
     <name>DatetimePlugin</name>
     <message>
         <source>Datetime</source>
-        <translation>Dátum és idő</translation>
+        <translation>Dátum és Idő</translation>
     </message>
     <message>
         <source>12-hour time</source>
@@ -256,7 +254,7 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Egyéb eszközök</translation>
     </message>
 </context>
 <context>
@@ -407,11 +405,11 @@
     </message>
     <message>
         <source>Left</source>
-        <translation>Bal</translation>
+        <translation>Bal oldalt</translation>
     </message>
     <message>
         <source>Right</source>
-        <translation>Jobb</translation>
+        <translation>Jobb oldalt</translation>
     </message>
     <message>
         <source>Keep Shown</source>
@@ -446,27 +444,27 @@
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Nincsenek üzenetek</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Értesítési beállítások</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Értesítések</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne zavarjanak üzemmód kikapcsolása</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne zavarjanak üzemmód bekapcsolása</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Értesítések</translation>
     </message>
 </context>
 <context>
@@ -496,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -663,7 +661,7 @@
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"></translation>
+        <translation>Felhasználóváltás</translation>
     </message>
 </context>
 <context>
@@ -816,7 +814,7 @@
     <name>SoundPlugin</name>
     <message>
         <source>Sound</source>
-        <translation>Hang</translation>
+        <translation>Hangok</translation>
     </message>
 </context>
 <context>
