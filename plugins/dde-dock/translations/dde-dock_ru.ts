@@ -319,11 +319,11 @@
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"/>
+        <translation>Вкл.</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>Выкл.</translation>
     </message>
     <message>
         <source>Light</source>
