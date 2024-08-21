@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -39,14 +37,14 @@
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Mijn apparaten</translation>
     </message>
 </context>
 <context>
     <name>BluetoothApplet</name>
     <message>
         <source>Bluetooth settings</source>
-        <translation>Bluetooth-instellingen</translation>
+        <translation>Bluetoothinstellingen</translation>
     </message>
     <message>
         <source>Turned off</source>
@@ -54,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -69,11 +67,11 @@
     </message>
     <message>
         <source>Bluetooth settings</source>
-        <translation>Bluetooth-instellingen</translation>
+        <translation>Bluetoothinstellingen</translation>
     </message>
     <message>
         <source>%1 connected</source>
-        <translation>%1 verbonden</translation>
+        <translation>Verbonden met ‘%1’</translation>
     </message>
     <message>
         <source>Connecting...</source>
@@ -160,7 +158,7 @@
     </message>
     <message>
         <source>Sat</source>
-        <translation>za</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -256,7 +254,7 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere apparaten</translation>
     </message>
 </context>
 <context>
@@ -446,34 +444,34 @@
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen berichten</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Meldingsinstellingen</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Meldingen</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet storen uitschakelen</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet storen inschakelen</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Melding</translation>
     </message>
 </context>
 <context>
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>Onboard</translation>
+        <translation>Schermtoetsenbord</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -496,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -514,11 +512,11 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>Capaciteit: %1 - %2 min resterend</translation>
+        <translation>Accuniveau: %1 - %2 min resterend</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>Capaciteit: %1 - %2 uur en %3 min resterend</translation>
+        <translation>Accuniveau: %1 - %2 uur en %3 min resterend</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
@@ -530,7 +528,7 @@
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation>Capaciteit: %1</translation>
+        <translation>Accuniveau: %1</translation>
     </message>
     <message>
         <source>Charging %1</source>
@@ -538,11 +536,11 @@
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation>Capaciteit: %1 …</translation>
+        <translation>Accuniveau: %1 …</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>Capaciteit: %1 - volledig opgeladen</translation>
+        <translation>Accuniveau: %1 - volledig opgeladen</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
