@@ -393,7 +393,7 @@
     </message>
     <message>
         <source>Efficient Mode</source>
-        <translation>Эффективный Режим</translation>
+        <translation>Эффективный режим</translation>
     </message>
     <message>
         <source>Top</source>
