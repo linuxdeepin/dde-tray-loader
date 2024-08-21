@@ -311,7 +311,7 @@
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation>Забота о глазах</translation>
+        <translation>Защита глаз</translation>
     </message>
     <message>
         <source>Theme</source>
