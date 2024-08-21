@@ -389,7 +389,7 @@
     <name>MenuWorker</name>
     <message>
         <source>Fashion Mode</source>
-        <translation>Современный Режим</translation>
+        <translation>Современный режим</translation>
     </message>
     <message>
         <source>Efficient Mode</source>
