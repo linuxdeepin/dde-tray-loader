@@ -374,11 +374,11 @@
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Темный</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Авто</translation>
     </message>
     <message>
         <source>Theme</source>
