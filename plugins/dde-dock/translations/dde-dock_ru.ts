@@ -307,7 +307,7 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки дисплея</translation>
     </message>
     <message>
         <source>Eye comfort</source>
