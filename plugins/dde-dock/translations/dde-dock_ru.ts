@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Сначала отключите режим полета, если вы хотите подключиться к Bluetooth.</translation>
     </message>
 </context>
 <context>
