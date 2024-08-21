@@ -269,7 +269,7 @@
     </message>
     <message>
         <source>Disable</source>
-        <translation>Отключено</translation>
+        <translation>Выключить</translation>
     </message>
     <message>
         <source>Enable</source>
