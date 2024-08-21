@@ -18,13 +18,12 @@ add_subdirectory("notification")
 
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast")
-
-    # generate qm
-    execute_process(COMMAND bash "translate_generation.sh"
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 endif ()
 
 ## qm files
-file(GLOB QM_FILES "translations/*.qm")
+file(GLOB TS_FILES "translations/*.ts")
+qt5_add_translation(QM_FILES ${TS_FILES})
+add_custom_target(dde-dock_language ALL DEPENDS ${QM_FILES})
+
 install(FILES ${QM_FILES}
-    DESTINATION share/dde-dock/translations)
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/dde-dock/translations)
