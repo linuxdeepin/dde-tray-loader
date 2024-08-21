@@ -127,7 +127,7 @@
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation>Яркость</translation>
     </message>
 </context>
 <context>
