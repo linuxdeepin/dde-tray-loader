@@ -158,7 +158,7 @@
     </message>
     <message>
         <source>Sat</source>
-        <translation type="unfinished"/>
+        <translation>ds.</translation>
     </message>
 </context>
 <context>
