@@ -235,7 +235,7 @@
     </message>
     <message>
         <source>thursday</source>
-        <translation>Четверг</translation>
+        <translation>четверг</translation>
     </message>
     <message>
         <source>friday</source>
