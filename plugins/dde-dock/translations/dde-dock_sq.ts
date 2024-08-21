@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation>Edhe %1hr %2min.</translation>
+        <translation>Edhe %1h %2m</translation>
     </message>
     <message>
         <source>Not charging</source>
