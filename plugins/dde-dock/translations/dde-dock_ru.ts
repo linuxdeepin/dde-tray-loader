@@ -87,7 +87,7 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"/>
+        <translation>Подключено %1</translation>
     </message>
     <message>
         <source>Not connected</source>
