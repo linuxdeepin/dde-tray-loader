@@ -311,7 +311,7 @@
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Забота о глазах</translation>
     </message>
     <message>
         <source>Theme</source>
