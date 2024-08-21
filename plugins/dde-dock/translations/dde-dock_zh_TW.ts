@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_TW">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_TW">
 <context>
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation>飛航模式開啟</translation>
+        <translation>飛行模式開啟</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation>飛航模式關閉</translation>
+        <translation>飛行模式關閉</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -32,14 +30,14 @@
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation>飛航模式</translation>
+        <translation>飛行模式</translation>
     </message>
 </context>
 <context>
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>我的裝置</translation>
     </message>
 </context>
 <context>
@@ -54,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished">如果要連接藍牙，請先停用飛航模式</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -73,7 +71,7 @@
     </message>
     <message>
         <source>%1 connected</source>
-        <translation>已連接%1</translation>
+        <translation>%1 已連接</translation>
     </message>
     <message>
         <source>Connecting...</source>
@@ -160,29 +158,29 @@
     </message>
     <message>
         <source>Sat</source>
-        <translation>六</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>DBusAdaptors</name>
     <message>
         <source>Add keyboard layout</source>
-        <translation>新增鍵盤配置</translation>
+        <translation>添加鍵盤布局</translation>
     </message>
 </context>
 <context>
     <name>DatetimePlugin</name>
     <message>
         <source>Datetime</source>
-        <translation>日期時間</translation>
+        <translation>時間</translation>
     </message>
     <message>
         <source>12-hour time</source>
-        <translation>12 小時制</translation>
+        <translation>12小時制</translation>
     </message>
     <message>
         <source>24-hour time</source>
-        <translation>24 小時制</translation>
+        <translation>24小時制</translation>
     </message>
     <message>
         <source>Time settings</source>
@@ -256,7 +254,7 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>其他裝置</translation>
     </message>
 </context>
 <context>
@@ -399,27 +397,27 @@
     </message>
     <message>
         <source>Top</source>
-        <translation>頂部</translation>
+        <translation>上</translation>
     </message>
     <message>
         <source>Bottom</source>
-        <translation>底部</translation>
+        <translation>下</translation>
     </message>
     <message>
         <source>Left</source>
-        <translation>左側</translation>
+        <translation>左</translation>
     </message>
     <message>
         <source>Right</source>
-        <translation>右側</translation>
+        <translation>右</translation>
     </message>
     <message>
         <source>Keep Shown</source>
-        <translation>永遠顯示</translation>
+        <translation>一直顯示</translation>
     </message>
     <message>
         <source>Keep Hidden</source>
-        <translation>永遠隱藏</translation>
+        <translation>一直隱藏</translation>
     </message>
     <message>
         <source>Smart Hide</source>
@@ -446,27 +444,27 @@
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -496,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -514,27 +512,27 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>電量 %1，剩餘 %2 分鐘</translation>
+        <translation>電量%1，剩餘%2分鐘</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>電量 %1，剩餘 %2 小時 %3 分鐘</translation>
+        <translation>電量%1，剩餘%2小時%3分鐘</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation>正在充電 %1，距離完成尚餘 %2 分鐘</translation>
+        <translation>正在充電%1，還需%2分鐘</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>正在充電 %1，距離完成尚餘 %2 小時 %3 分鐘</translation>
+        <translation>正在充電%1，還需%2小時%3分鐘</translation>
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation>電量 %1</translation>
+        <translation>電量%1</translation>
     </message>
     <message>
         <source>Charging %1</source>
-        <translation>%1 正在充電</translation>
+        <translation>正在充電%1</translation>
     </message>
     <message>
         <source>Capacity %1 ...</source>
@@ -639,7 +637,7 @@
     </message>
     <message>
         <source>Log out</source>
-        <translation>登出</translation>
+        <translation>註銷</translation>
     </message>
     <message>
         <source>Power settings</source>
@@ -647,7 +645,7 @@
     </message>
     <message>
         <source>Reboot</source>
-        <translation>重新啟動</translation>
+        <translation>重啟</translation>
     </message>
     <message>
         <source>Update and Shut Down</source>
