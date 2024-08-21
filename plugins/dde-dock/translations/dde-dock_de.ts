@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="de">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -39,7 +37,7 @@
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Meine Geräte</translation>
     </message>
 </context>
 <context>
@@ -54,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -190,7 +188,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalender öffnen</translation>
     </message>
 </context>
 <context>
@@ -256,18 +254,18 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere Geräte</translation>
     </message>
 </context>
 <context>
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht-stören-Modus</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen zum Nicht-stören-Modus</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -279,18 +277,18 @@
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht-stören-Modus aktiviert</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht-stören-Modus deaktiviert</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht-stören-Modus</translation>
     </message>
 </context>
 <context>
@@ -309,82 +307,82 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished">Anzeigeeinstellungen</translation>
+        <translation>Anzeigeeinstellungen</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Augenkomfort</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thema</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished">Aus</translation>
+        <translation>Aus</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Hell</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Dunkel</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Augenkomfort deaktivieren</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Augenkomfort aktivieren</translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzeigeeinstellungen</translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Thema: Hell</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Thema: Dunkel</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Thema: Automatisch</translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"></translation>
+        <translation>Visueller Effekt</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Hell</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Dunkel</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Thema</translation>
     </message>
 </context>
 <context>
@@ -446,27 +444,27 @@
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Nachrichten</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Benachrichtigungseinstellungen</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Benachrichtigungen</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht-stören-Modus ausschalten</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht-stören-Modus einschalten</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Benachrichtigung</translation>
     </message>
 </context>
 <context>
@@ -496,14 +494,14 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -514,19 +512,19 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>Kapazität %1, %2 Min. verbleibend</translation>
+        <translation>Kapazität %1, %2 Min. verbleiben</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>Kapazität %1, %2 Std. %3 Min. verbleibend</translation>
+        <translation>Kapazität %1, %2 Std. %3 Min. verbleiben</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation>%1 wird aufgeladen, %2 Min. bis vollständig geladen</translation>
+        <translation>%1 wird aufgeladen, %2 Min. bis vollständig aufgeladen</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>%1 wird aufgeladen, %2 Std. %3 Min. bis vollständig geladen</translation>
+        <translation>%1 wird aufgeladen, %2 Std. %3 Min. bis vollständig aufgeladen</translation>
     </message>
     <message>
         <source>Capacity %1</source>
@@ -542,7 +540,7 @@
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>Kapazität %1, vollständig geladen</translation>
+        <translation>Kapazität %1, vollständig aufgeladen</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
@@ -554,58 +552,58 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"></translation>
+        <translation>Wird aufgeladen, geschätzte Ladezeit wird berechnet</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbleibende Nutzungszeit wird berechnet</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Min. verbleiben</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Std. %2 Min. verbleiben</translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Wird nicht aufgeladen</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"></translation>
+        <translation>Vollständig aufgeladen</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Wird aufgeladen, %1 Min. bis vollständig aufgeladen</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Wird aufgeladen, %1 Std. %2 Min. bis vollständig aufgeladen</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapazität %1, %2 Std. verbleiben</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Std. verbleiben</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 wird aufgeladen, %2 Std. bis vollständig aufgeladen</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Wird aufgeladen, %1 Std. bis vollständig aufgeladen</translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished">Energieeinstellungen</translation>
+        <translation>Energieeinstellungen</translation>
     </message>
 </context>
 <context>
@@ -659,11 +657,11 @@
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Herunterfahren</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzer wechseln</translation>
     </message>
 </context>
 <context>
@@ -674,19 +672,19 @@
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"></translation>
+        <translation>Lunar</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"></translation>
+        <translation>j</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"></translation>
+        <translation>m</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"></translation>
+        <translation>t</translation>
     </message>
     <message>
         <source>Monday</source>
@@ -766,35 +764,35 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalender öffnen</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished">Montag</translation>
+        <translation>Montag</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished">Dienstag</translation>
+        <translation>Dienstag</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished">Mittwoch</translation>
+        <translation>Mittwoch</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished">Donnerstag</translation>
+        <translation>Donnerstag</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished">Freitag</translation>
+        <translation>Freitag</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished">Samstag</translation>
+        <translation>Samstag</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished">Sonntag</translation>
+        <translation>Sonntag</translation>
     </message>
 </context>
 <context>
@@ -805,7 +803,7 @@
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sound settings</source>
