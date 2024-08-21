@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sq">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sq">
 <context>
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation>Mënyra aeroplan është e aktivizuar</translation>
+        <translation>Mënyra aeroplan e aktivizuar</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation>Mënyra aeroplan është e çaktivizuar</translation>
+        <translation>Mënyra aeroplan e çaktivizuar</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -39,7 +37,7 @@
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Pajisjet e Mia</translation>
     </message>
 </context>
 <context>
@@ -54,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -73,7 +71,7 @@
     </message>
     <message>
         <source>%1 connected</source>
-        <translation>%1 u lidh</translation>
+        <translation>%1 e lidhur</translation>
     </message>
     <message>
         <source>Connecting...</source>
@@ -85,7 +83,7 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation>I çaktivizuar</translation>
+        <translation>Çaktivizuar</translation>
     </message>
     <message>
         <source>Connected %1</source>
@@ -178,11 +176,11 @@
     </message>
     <message>
         <source>12-hour time</source>
-        <translation>Orë 12-orëshe</translation>
+        <translation>orë 12-orëshe</translation>
     </message>
     <message>
         <source>24-hour time</source>
-        <translation>Orë 24-orëshe</translation>
+        <translation>orë 24-orëshe</translation>
     </message>
     <message>
         <source>Time settings</source>
@@ -256,7 +254,7 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Pajisje të Tjera</translation>
     </message>
 </context>
 <context>
@@ -395,15 +393,15 @@
     </message>
     <message>
         <source>Efficient Mode</source>
-        <translation>Mënyra Efikase</translation>
+        <translation>Mënyra Efikasitet</translation>
     </message>
     <message>
         <source>Top</source>
-        <translation>Në Krye</translation>
+        <translation>Në krye</translation>
     </message>
     <message>
         <source>Bottom</source>
-        <translation>Në Fund</translation>
+        <translation>Në fund</translation>
     </message>
     <message>
         <source>Left</source>
@@ -446,27 +444,27 @@
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>S’ka mesazhe</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Rregullime njoftimesh</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Njoftim</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Çaktivizo mënyrën DND</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivizo mënyrën DND</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Njoftim</translation>
     </message>
 </context>
 <context>
@@ -484,7 +482,7 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Balanced</source>
@@ -496,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -526,7 +524,7 @@
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>Po ngarkohet %1, edhe %2 hr e %3 min deri sa të jetë plot</translation>
+        <translation>Po ngarkohet %1, edhe %2 hr e %3 minuta deri sa të jetë plot</translation>
     </message>
     <message>
         <source>Capacity %1</source>
@@ -538,11 +536,11 @@
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation>Kapacitet %1 …</translation>
+        <translation>Kapacitet %1…</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>Kapacitet 1%, plotësisht e ngarkuar</translation>
+        <translation>Kapacitet %1, plotësisht e ngarkuar</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
@@ -805,7 +803,7 @@
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sound settings</source>

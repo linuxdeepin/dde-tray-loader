@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ug">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ug">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -39,7 +37,7 @@
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>ئۈسكۈنەم</translation>
     </message>
 </context>
 <context>
@@ -54,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -256,7 +254,7 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>باشقا ئۈسكۈنىلەر</translation>
     </message>
 </context>
 <context>
@@ -446,27 +444,27 @@
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>يېڭى ئۇچۇر يوق</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>ئۇقتۇرۇش تەڭشىكى</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>پارچە ئۇقتۇرۇش</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>تىنچ ھالەتنى تاقاش</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>تىنچ ھالەتنى ئېچىش</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>ئۇقتۇرۇش</translation>
     </message>
 </context>
 <context>
@@ -496,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -522,11 +520,11 @@
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation>زەرەتلىنىۋاتىدۇ%1، يەنە %2 مىنۇتتا توشىدۇ</translation>
+        <translation>توك قاچىلىنىۋاتىدۇ%1، يەنە %2 مىنۇتتا توشىدۇ</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>زەرەتلىنىۋاتىدۇ%1، يەنە %2 سائەت %3 مىنۇتتا توشىدۇ</translation>
+        <translation>توك قاچىلىنىۋاتىدۇ%1، يەنە %2 سائەت %3 مىنۇتتا توشىدۇ</translation>
     </message>
     <message>
         <source>Capacity %1</source>
