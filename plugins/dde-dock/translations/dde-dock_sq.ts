@@ -728,7 +728,7 @@
     </message>
     <message>
         <source>Apr</source>
-        <translation>Prl</translation>
+        <translation>Pri</translation>
     </message>
     <message>
         <source>May</source>
