@@ -421,7 +421,7 @@
     </message>
     <message>
         <source>Smart Hide</source>
-        <translation>Умное Скрытие</translation>
+        <translation>Умное скрытие</translation>
     </message>
     <message>
         <source>Mode</source>
