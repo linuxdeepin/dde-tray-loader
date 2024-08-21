@@ -299,7 +299,7 @@
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation>Забота о глазах включена </translation>
+        <translation>Защита глаз включена </translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
