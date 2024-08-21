@@ -37,7 +37,7 @@
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"/>
+        <translation>Мои устройства</translation>
     </message>
 </context>
 <context>
