@@ -576,7 +576,7 @@
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation>Po ngarkohet, %1m deri sa të jetë plot</translation>
+        <translation>Po ngarkohet, %1m, deri sa të jetë plot</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
