@@ -351,7 +351,7 @@
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"/>
+        <translation>Тема: Светлая</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
