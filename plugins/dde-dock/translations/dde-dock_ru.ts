@@ -295,7 +295,7 @@
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation>Забота о глазах</translation>
+        <translation>Защита глаз</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
