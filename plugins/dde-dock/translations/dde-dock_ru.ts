@@ -227,11 +227,11 @@
     </message>
     <message>
         <source>tuesday</source>
-        <translation>Вторник</translation>
+        <translation>вторник</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation>Среда</translation>
+        <translation>среда</translation>
     </message>
     <message>
         <source>thursday</source>
