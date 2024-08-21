@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation>Hapni kalendar</translation>
+        <translation>Hape kalendarin</translation>
     </message>
 </context>
 <context>
