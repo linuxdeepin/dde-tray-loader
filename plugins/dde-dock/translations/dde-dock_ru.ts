@@ -370,7 +370,7 @@
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>Светлая</translation>
     </message>
     <message>
         <source>Dark</source>
