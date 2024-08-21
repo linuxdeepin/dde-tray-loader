@@ -339,7 +339,7 @@
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Выключить защиту глаз</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
