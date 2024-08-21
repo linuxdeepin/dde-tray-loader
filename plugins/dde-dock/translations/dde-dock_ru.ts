@@ -239,7 +239,7 @@
     </message>
     <message>
         <source>friday</source>
-        <translation>Пятница</translation>
+        <translation>пятница</translation>
     </message>
     <message>
         <source>saturday</source>
