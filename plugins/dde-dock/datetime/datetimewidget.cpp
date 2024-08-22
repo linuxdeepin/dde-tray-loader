@@ -319,6 +319,7 @@ void DatetimeWidget::initUI()
     m_spacerItem->setFixedSize(10, 5);
 
     m_timeLabel->setForegroundRole(QPalette::BrightText);
+    m_apLabel->setForegroundRole(QPalette::BrightText);
 
     auto *layout = new QVBoxLayout();
     layout->setMargin(0);
