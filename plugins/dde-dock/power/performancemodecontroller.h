@@ -51,49 +51,48 @@ private:
         , m_sysPowerInter(new SysPowerInter("com.deepin.system.Power", "/com/deepin/system/Power", QDBusConnection::systemBus(), this))
     {
         m_sysPowerInter->setSync(false);
+        const QList<QPair<QString, QString>> powerModeList = {
+            QPair<QString, QString>(BALANCE, tr("Balanced")),
+            QPair<QString, QString>(BALANCEPERFORMANCE, tr("Balance Performance")),
+            QPair<QString, QString>(PERFORMANCE, tr("High Performance")),
+            QPair<QString, QString>(POWERSAVE, tr("Power Saver"))
+        };
+        const QMap<QString, QString>powerModeProperty = {
+            {BALANCE, "IsBalanceSupported"},
+            {BALANCEPERFORMANCE, "IsBalancePerformanceSupported"},
+            {PERFORMANCE, "IsHighPerformanceSupported"},
+            {POWERSAVE, "IsPowerSaveSupported"}
+        };
 
         QDBusInterface interface("com.deepin.system.Power",
                                  "/com/deepin/system/Power",
                                  "org.freedesktop.DBus.Properties",
                                  QDBusConnection::systemBus());
-        QDBusMessage reply = interface.call("Get", "com.deepin.system.Power", "IsHighPerformanceSupported");
+
+        auto getPowerModeProperty = [](QDBusInterface &interface, QString path, QString property)->bool {
+            QDBusMessage reply = interface.call("Get", path, property);
+            QList<QVariant> outArgs = reply.arguments();
+            if (outArgs.length() > 0) {
+                return  outArgs.at(0).value<QDBusVariant>().variant().toBool();
+            }
+            return false;
+        };
+        for (const auto &pair : powerModeList) {
+            bool powerModeData = getPowerModeProperty(interface, "com.deepin.system.Power", powerModeProperty.value(pair.first));
+            if (powerModeData) {
+                m_modeList.append(pair);
+            }
+            if (pair.first == PERFORMANCE) {
+                m_highPerformanceSupported = powerModeData;
+            } else if (pair.first == BALANCE) {
+                m_balanceSupported = powerModeData;
+            } else if (pair.first == POWERSAVE) {
+                m_powerSaveSupported = powerModeData;
+            }
+        }
+
+        QDBusMessage reply = interface.call("Get", "com.deepin.system.Power", "Mode");
         QList<QVariant> outArgs = reply.arguments();
-        if (outArgs.length() > 0) {
-            m_highPerformanceSupported = outArgs.at(0).value<QDBusVariant>().variant().toBool();
-            if (m_highPerformanceSupported) {
-                m_modeList.append({PERFORMANCE, tr("High Performance")});
-            }
-        }
-
-        reply = interface.call("Get", "com.deepin.system.Power", "IsBalanceSupported");
-        outArgs = reply.arguments();
-        if (outArgs.length() > 0) {
-            m_balanceSupported = outArgs.at(0).value<QDBusVariant>().variant().toBool();
-            if (m_balanceSupported) {
-                m_modeList.append({BALANCE, tr("Balanced")});
-            }
-        }
-
-        reply = interface.call("Get", "com.deepin.system.Power", "IsBalancePerformanceSupported");
-        outArgs = reply.arguments();
-        if (outArgs.length() > 0) {
-            bool balancePerformanceSupported = outArgs.at(0).value<QDBusVariant>().variant().toBool();
-            if (balancePerformanceSupported) {
-                m_modeList.append({BALANCEPERFORMANCE, tr("Balance Performance")});
-            }
-        }
-
-        reply = interface.call("Get", "com.deepin.system.Power", "IsPowerSaveSupported");
-        outArgs = reply.arguments();
-        if (outArgs.length() > 0) {
-            m_powerSaveSupported = outArgs.at(0).value<QDBusVariant>().variant().toBool();
-            if (m_powerSaveSupported) {
-                m_modeList.append({POWERSAVE, tr("Power Saver")});
-            }
-        }
-
-        reply = interface.call("Get", "com.deepin.system.Power", "Mode");
-        outArgs = reply.arguments();
         if (outArgs.length() > 0) {
             m_currentMode = outArgs.at(0).value<QDBusVariant>().variant().toString();
         }
