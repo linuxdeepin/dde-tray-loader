@@ -115,32 +115,60 @@
 <context>
     <name>dde::network::NetStatus</name>
     <message>
-        <source>Close wired connection</source>
+        <source>Disable wired connection</source>
         <translation>關閉有線網絡</translation>
     </message>
     <message>
-        <source>Open wired connection</source>
+        <source>Enable wired connection</source>
         <translation>開啟有線網絡</translation>
     </message>
     <message>
-        <source>Close wireless connection</source>
+        <source>Disable wireless connection</source>
         <translation>關閉無線網絡</translation>
     </message>
     <message>
-        <source>Open wireless connection</source>
-        <translation>開啟無線網路</translation>
+        <source>Enable wireless connection</source>
+        <translation>開啟無線網絡</translation>
     </message>
     <message>
-        <source>Close network</source>
-        <translation>網絡關閉</translation>
+        <source>Disable network</source>
+        <translation>關閉網絡</translation>
     </message>
     <message>
-        <source>Open network</source>
+        <source>Enable network</source>
         <translation>開啟網絡</translation>
+    </message>
+    <message>
+        <source>Disable VPN</source>
+        <translation>關閉VPN</translation>
+    </message>
+    <message>
+        <source>Enable VPN</source>
+        <translation>開啟VPN</translation>
+    </message>
+    <message>
+        <source>Disable system proxy</source>
+        <translation>關閉系統代理</translation>
+    </message>
+    <message>
+        <source>Enable system proxy</source>
+        <translation>開啟系統代理</translation>
     </message>
     <message>
         <source>Network settings</source>
         <translation>網絡設定</translation>
+    </message>
+    <message>
+        <source>Multiple services started</source>
+        <translation>多個服務已開啟</translation>
+    </message>
+    <message>
+        <source>Connected to: %1</source>
+        <translation>已連接至：%1</translation>
+    </message>
+    <message>
+        <source>System proxy enabled</source>
+        <translation>系統代理已開啟</translation>
     </message>
     <message>
         <source>Connected</source>
@@ -193,6 +221,27 @@
     <message>
         <source>Network</source>
         <translation>網絡</translation>
+    </message>
+</context>
+<context>
+    <name>dde::network::NetSystemProxyControlItem</name>
+    <message>
+        <source>System Proxy</source>
+        <translation>系統代理</translation>
+    </message>
+</context>
+<context>
+    <name>dde::network::NetVPNControlItem</name>
+    <message>
+        <source>VPN</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>dde::network::NetVPNTipsItem</name>
+    <message>
+        <source>VPN configuration is not connected or failed to connect. Please &lt;a style=&quot;text-decoration: none;&quot; href=&quot;go to the control center&quot;&gt;go to the control center&lt;/a&gt; for inspection.</source>
+        <translation>VPN配置未連接或連接失敗，請&lt;a style=\&quot;text-decoration: none;\&quot; href=\&quot;go to the control center\&quot;&gt;前往控制中心&lt;/a&gt;檢查</translation>
     </message>
 </context>
 <context>
