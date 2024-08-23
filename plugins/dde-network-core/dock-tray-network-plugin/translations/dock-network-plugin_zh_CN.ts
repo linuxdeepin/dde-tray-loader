@@ -112,43 +112,43 @@
     <name>dde::network::NetStatus</name>
     <message>
         <source>Disable wired connection</source>
-        <translation>禁用有线连接</translation>
+        <translation>关闭有线网络</translation>
     </message>
     <message>
         <source>Enable wired connection</source>
-        <translation>启用有线连接</translation>
+        <translation>开启有线网络</translation>
     </message>
     <message>
         <source>Disable wireless connection</source>
-        <translation>禁用无线连接</translation>
+        <translation>关闭无线网络</translation>
     </message>
     <message>
         <source>Enable wireless connection</source>
-        <translation>启用无线连接</translation>
+        <translation>开启无线网络</translation>
     </message>
     <message>
         <source>Disable network</source>
-        <translation>禁用网络</translation>
+        <translation>关闭网络</translation>
     </message>
     <message>
         <source>Enable network</source>
-        <translation>启用网络</translation>
+        <translation>开启网络</translation>
     </message>
     <message>
         <source>Disable VPN</source>
-        <translation>禁用VPN</translation>
+        <translation>关闭VPN</translation>
     </message>
     <message>
         <source>Enable VPN</source>
-        <translation>启用VPN</translation>
+        <translation>开启VPN</translation>
     </message>
     <message>
         <source>Disable system proxy</source>
-        <translation>禁用系统代理</translation>
+        <translation>关闭系统代理</translation>
     </message>
     <message>
         <source>Enable system proxy</source>
-        <translation>启用系统代理</translation>
+        <translation>开启系统代理</translation>
     </message>
     <message>
         <source>Network settings</source>
@@ -156,15 +156,15 @@
     </message>
     <message>
         <source>Multiple services started</source>
-        <translation>多项服务启动</translation>
+        <translation>多个服务已开启</translation>
     </message>
     <message>
         <source>Connected to: %1</source>
-        <translation>已连接到%1</translation>
+        <translation>已连接至：%1</translation>
     </message>
     <message>
         <source>System proxy enabled</source>
-        <translation>系统代理已启用</translation>
+        <translation>系统代理已开启</translation>
     </message>
     <message>
         <source>Connected</source>
