@@ -25,6 +25,9 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
     m_tooltipTimer->setSingleShot(true);
     m_tooltipTimer->setInterval(200);
 
+    if (m_dbusProxy.isNull())
+        m_dbusProxy.reset(new DockDBusProxy);
+
     connect(m_menu, &QMenu::triggered, this, [this](QAction *action){
         QString actionStr = action->data().toString();
         if (actionStr == Dock::dockMenuItemId || actionStr == Dock::unDockMenuItemId) {
@@ -76,6 +79,16 @@ QMenu *PluginItem::pluginContextMenu()
     }
 
     initPluginMenu();
+    if (m_pluginFlags & Dock::Attribute_CanSetting) {
+        if (!m_unDockAction) {
+            m_unDockAction = new QAction();
+        }
+        m_unDockAction->setEnabled(true);
+        m_menu->addAction(m_unDockAction);
+
+        m_unDockAction->setText(tr("Remove from dock"));
+        m_unDockAction->setData(Dock::unDockMenuItemId);
+    }
 
     qDebug() << "mouseRightButtonClicked:" << m_itemKey << m_menu->actions().size();
 

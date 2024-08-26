@@ -73,6 +73,7 @@ private:
     QTimer* m_tooltipTimer;
     QPointer<QWidget> m_tipsWidget;
 
+    QAction *m_unDockAction = nullptr;
     int m_pluginFlags = 0;
 };
 
