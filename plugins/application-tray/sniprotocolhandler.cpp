@@ -81,6 +81,7 @@ void SniTrayProtocol::registedItemChanged()
 SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QObject *parent)
     : AbstractTrayProtocolHandler(parent)
     , m_tooltip (new QLabel())
+    , m_ignoreFirstAttention(true)
 {
     auto pair = serviceAndPath(sniServicePath);
     // will get a unique dbus name (number like x.xxxx) and dbus path
@@ -92,7 +93,14 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
 
     connect(m_sniInter, &StatusNotifierItem::NewIcon, this, &SniTrayProtocolHandler::iconChanged);
     connect(m_sniInter, &StatusNotifierItem::NewOverlayIcon, this, &SniTrayProtocolHandler::overlayIconChanged);
-    connect(m_sniInter, &StatusNotifierItem::NewAttentionIcon, this, &SniTrayProtocolHandler::attentionIconChanged);
+    connect(m_sniInter, &StatusNotifierItem::NewAttentionIcon, this, [this] {
+        if (m_ignoreFirstAttention) {
+            m_ignoreFirstAttention = false;
+            return;
+        }
+
+        Q_EMIT attentionIconChanged();
+    });
 
     connect(m_sniInter, &StatusNotifierItem::NewTitle, this, &SniTrayProtocolHandler::titleChanged);
     connect(m_sniInter, &StatusNotifierItem::NewStatus, this, &SniTrayProtocolHandler::statusChanged);

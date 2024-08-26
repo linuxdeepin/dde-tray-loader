@@ -23,7 +23,7 @@ TrayWidget::TrayWidget(QPointer<AbstractTrayProtocolHandler> handler)
     m_attentionTimer->setSingleShot(true);
 
     // TODO: read from config get attention time
-    m_attentionTimer->setInterval(3000);
+    m_attentionTimer->setInterval(1000);
 
     setWindowTitle(m_handler->id());
     setFixedSize(trayIconSize, trayIconSize);
@@ -38,6 +38,8 @@ TrayWidget::TrayWidget(QPointer<AbstractTrayProtocolHandler> handler)
         m_attentionTimer->start();
         update();
     });
+
+    connect(m_attentionTimer, &QTimer::timeout, this, [this]{update();});
 }
 
 TrayWidget::~TrayWidget()
