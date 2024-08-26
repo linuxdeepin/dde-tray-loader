@@ -76,5 +76,6 @@ private:
     StatusNotifierItem *m_sniInter;
     DBusMenuImporter *m_dbusMenuImporter;
     QString m_id;
+    bool m_ignoreFirstAttention;
 };
 }
