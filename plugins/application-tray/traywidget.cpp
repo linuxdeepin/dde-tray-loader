@@ -60,8 +60,12 @@ void TrayWidget::paintEvent(QPaintEvent* event)
     if(m_attentionTimer->isActive()) {
         m_handler->attentionIcon().paint(&painter, QRect(0, 0, trayIconSize, trayIconSize));
     } else {
-        m_handler->icon().paint(&painter, QRect(0, 0, trayIconSize, trayIconSize));
-
+        QIcon icon = m_handler->icon();
+        if (icon.isNull()) {
+            static const QIcon defaultIcon = QIcon::fromTheme("application-x-desktop");
+            icon = defaultIcon;
+        }
+        icon.paint(&painter, QRect(0, 0, trayIconSize, trayIconSize));
     }
 }
 }
