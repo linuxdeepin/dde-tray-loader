@@ -102,8 +102,6 @@ QuickPluginItem::QuickPluginItem(PluginsItemInterface *pluginInterface, const QS
     : PluginItem(pluginInterface, itemKey, parent)
     , m_onDockAction(nullptr)
 {
-    if (m_dbusProxy.isNull())
-        m_dbusProxy.reset(new DockDBusProxy);
     qApp->installEventFilter(new EventFilter(this));
 }
 
