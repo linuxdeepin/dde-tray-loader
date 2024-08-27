@@ -494,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Rendimiento equilibrado</translation>
     </message>
 </context>
 <context>
