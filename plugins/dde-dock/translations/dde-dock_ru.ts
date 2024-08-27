@@ -3,15 +3,15 @@
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation>Авиарежим включён</translation>
+        <translation>Режим полета включен</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation>Авиарежим выключен</translation>
+        <translation>Режим полета отключен</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation>Отключено</translation>
+        <translation>Выключить</translation>
     </message>
     <message>
         <source>Enable</source>
@@ -19,25 +19,25 @@
     </message>
     <message>
         <source>Airplane Mode</source>
-        <translation>Авиарежим</translation>
+        <translation>Режим полета</translation>
     </message>
     <message>
         <source>Airplane mode settings</source>
-        <translation>Настройки Авиарежима</translation>
+        <translation>Настройки режима полета</translation>
     </message>
 </context>
 <context>
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation>Авиарежим</translation>
+        <translation>Режим полета</translation>
     </message>
 </context>
 <context>
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"/>
+        <translation>Мои устройства</translation>
     </message>
 </context>
 <context>
@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Сначала отключите режим полета, если вы хотите подключиться к Bluetooth.</translation>
     </message>
 </context>
 <context>
@@ -87,7 +87,7 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"/>
+        <translation>Подключено %1</translation>
     </message>
     <message>
         <source>Not connected</source>
@@ -109,25 +109,25 @@
     <name>BrightnessApplet</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation>Яркость</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки отображения</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки отображения</translation>
     </message>
 </context>
 <context>
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation>Яркость</translation>
     </message>
 </context>
 <context>
@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>Открыть календарь</translation>
     </message>
 </context>
 <context>
@@ -227,23 +227,23 @@
     </message>
     <message>
         <source>tuesday</source>
-        <translation>Вторник</translation>
+        <translation>вторник</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation>Среда</translation>
+        <translation>среда</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation>Четверг</translation>
+        <translation>четверг</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation>Пятница</translation>
+        <translation>пятница</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation>Суббота</translation>
+        <translation>суббота</translation>
     </message>
     <message>
         <source>sunday</source>
@@ -254,7 +254,7 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"/>
+        <translation>Другие устройства</translation>
     </message>
 </context>
 <context>
@@ -269,7 +269,7 @@
     </message>
     <message>
         <source>Disable</source>
-        <translation>Отключено</translation>
+        <translation>Выключить</translation>
     </message>
     <message>
         <source>Enable</source>
@@ -295,105 +295,105 @@
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation>Забота о Глазах</translation>
+        <translation>Защита глаз</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation>Забота о глазах включена </translation>
+        <translation>Защита глаз включена </translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation>Забота о глазах выключена</translation>
+        <translation>Защита глаз выключена</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки отображения</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Защита глаз</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Тема</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"/>
+        <translation>Вкл.</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>Выкл.</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>Светлая</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Темная</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Авто</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Выключить защиту глаз</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Включить защиту глаз</translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки отображения</translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"/>
+        <translation>Тема: Светлая</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"/>
+        <translation>Тема: Темная</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation>Тема: Авто</translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"/>
+        <translation>Визуальный эффект</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>Светлый</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Темный</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Авто</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Тема</translation>
     </message>
 </context>
 <context>
     <name>MenuWorker</name>
     <message>
         <source>Fashion Mode</source>
-        <translation>Современный Режим</translation>
+        <translation>Современный режим</translation>
     </message>
     <message>
         <source>Efficient Mode</source>
-        <translation>Эффективный Режим</translation>
+        <translation>Эффективный режим</translation>
     </message>
     <message>
         <source>Top</source>
@@ -421,7 +421,7 @@
     </message>
     <message>
         <source>Smart Hide</source>
-        <translation>Умное Скрытие</translation>
+        <translation>Умное скрытие</translation>
     </message>
     <message>
         <source>Mode</source>

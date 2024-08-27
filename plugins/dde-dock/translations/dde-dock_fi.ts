@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Poista ensin &quot;Lentotila&quot; käytöstä, jos haluat muodostaa bluetooth yhteyden</translation>
     </message>
 </context>
 <context>
@@ -494,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Tasapainoinen suoritusteho</translation>
     </message>
 </context>
 <context>

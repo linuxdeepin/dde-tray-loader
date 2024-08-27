@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Nëse doni të lidheni me Bluetooth, së pari çaktivizoni Mënyrën Aeroplan</translation>
     </message>
 </context>
 <context>
@@ -87,7 +87,7 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation>I lidhur me %1</translation>
+        <translation>E lidhur me %1</translation>
     </message>
     <message>
         <source>Not connected</source>
@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation>Hapni kalendar</translation>
+        <translation>Hape kalendarin</translation>
     </message>
 </context>
 <context>
@@ -471,7 +471,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>Onboard</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings</source>
@@ -512,19 +512,19 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>Kapacitet %1, edhe %2 min</translation>
+        <translation>Kapacitet %1, edhe %2m</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>Kapacitet %1, edhe %2 hr %3 min</translation>
+        <translation>Kapacitet %1, edhe %2h e %3m</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation>Po ngarkohet %1, edhe %2 min deri sa të jetë plot</translation>
+        <translation>Po ngarkohet %1, edhe %2m, deri sa të jetë plot</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>Po ngarkohet %1, edhe %2 hr e %3 minuta deri sa të jetë plot</translation>
+        <translation>Po ngarkohet %1, edhe %2h e %3m, deri sa të jetë plot</translation>
     </message>
     <message>
         <source>Capacity %1</source>
@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation>Edhe %1hr %2m</translation>
+        <translation>Edhe %1h %2m</translation>
     </message>
     <message>
         <source>Not charging</source>
@@ -576,11 +576,11 @@
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation>Po ngarkohet, %1m deri sa të jetë plot</translation>
+        <translation>Po ngarkohet, %1m, deri sa të jetë plot</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation>Po ngarkohet, %1hr %2m deri sa të jetë plot</translation>
+        <translation>Po ngarkohet, %1h e %2m, deri sa të jetë plot</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
@@ -728,7 +728,7 @@
     </message>
     <message>
         <source>Apr</source>
-        <translation>Prl</translation>
+        <translation>Pri</translation>
     </message>
     <message>
         <source>May</source>

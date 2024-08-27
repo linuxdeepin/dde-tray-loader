@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Desactive primero el modo avión si desea conectarse a un Bluetooth</translation>
     </message>
 </context>
 <context>
@@ -494,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Rendimiento equilibrado</translation>
     </message>
 </context>
 <context>

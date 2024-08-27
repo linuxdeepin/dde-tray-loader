@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Якщо ви хочете встановити з&apos;єднання з Bluetooth, спочатку вимкніть «Режим польоту»</translation>
     </message>
 </context>
 <context>
@@ -494,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Збалансована швидкодія</translation>
     </message>
 </context>
 <context>
