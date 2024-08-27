@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt_BR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt_BR">
 <context>
     <name>PluginItem</name>
     <message>
         <location filename="../pluginitem.cpp" line="89"/>
         <source>Remove from dock</source>
-        <translation>Remover da dock</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
