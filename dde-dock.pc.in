@@ -5,7 +5,7 @@ includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/dde-dock
 
 Name: dde-dock
 Description: dock dev header for deepin
-Version: @VERSION@
+Version: @DOCK_VERSION@
 Libs:
 Cflags: -I${includedir}
 Requires:

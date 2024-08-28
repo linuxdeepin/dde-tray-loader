@@ -5,6 +5,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.16)
 
 set(DTL_VERSION "0.0.1" CACHE STRING "Define project version")
+set(DOCK_VERSION "6.0.37" CACHE STRING "Dock compatible version")
+
 project(dde-tray-loader
     VERSION "${DTL_VERSION}"
     DESCRIPTION "dde-tray-loader"
