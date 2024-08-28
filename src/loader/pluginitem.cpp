@@ -300,8 +300,13 @@ QWidget * PluginItem::itemTooltip(const QString &itemKey)
         m_tipsWidget = new QWidget();
         QVBoxLayout *layout = new QVBoxLayout(m_tipsWidget);
         layout->setMargin(0);
+        // add content margin, tooltip popup do not need to set padding
+        layout->setContentsMargins(8, 4, 8, 4);
         layout->addWidget(toolTip);
-        layout->setSizeConstraint(QLayout::SetFixedSize);
+        // fixme: 这个设置会导致widget resize, 当任务栏在右的时候，窗口变化会会遮住鼠标导致leaveEvent触发，tooltip消失
+        if (itemKey.contains("network")) {
+            layout->setSizeConstraint(QLayout::SetFixedSize);
+        }
         toolTip->setVisible(true);
     } else {
         // can update tooltip content
