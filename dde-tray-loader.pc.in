@@ -5,7 +5,7 @@ includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/dde-tray-loader
 
 Name: dde-tray-loader
 Description: tray plugin dev header for deepin
-Version: @VERSION@
+Version: @PROJECT_VERSION@
 Libs:
 Cflags: -I${includedir}
 Requires:
