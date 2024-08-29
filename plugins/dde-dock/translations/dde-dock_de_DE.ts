@@ -471,7 +471,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>An Bord</translation>
+        <translation>Bildschirmtastatur</translation>
     </message>
     <message>
         <source>Settings</source>
