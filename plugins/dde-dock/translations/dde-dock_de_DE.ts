@@ -265,7 +265,7 @@
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation>DND-Modus-Einstellungen</translation>
+        <translation>Nicht-Stören-Modus-Einstellungen</translation>
     </message>
     <message>
         <source>Disable</source>
