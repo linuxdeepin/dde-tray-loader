@@ -460,7 +460,7 @@
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation>DND-Modus einschalten</translation>
+        <translation>Nicht-Stören-Modus einschalten</translation>
     </message>
     <message>
         <source>Notification</source>
