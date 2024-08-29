@@ -38,14 +38,15 @@ Util* Util::instance()
 Util::Util()
 {
     m_x11connection = xcb_connect(nullptr, nullptr);
-    if (!m_x11connection) {
+    m_display = XOpenDisplay("");
+    if (!m_x11connection || !isXAvaliable()) {
         return;
     }
+
     const xcb_setup_t *setup = xcb_get_setup(m_x11connection);
     xcb_screen_iterator_t iter = xcb_setup_roots_iterator(setup);
     xcb_screen_t* screen = iter.data;
     m_rootWindow = screen->root;
-    m_display = XOpenDisplay("");
 
     xcb_ewmh_init_atoms_replies(&m_ewmh, xcb_ewmh_init_atoms(m_x11connection, &m_ewmh), nullptr);
 }
@@ -74,6 +75,8 @@ bool Util::isXAvaliable()
         // xewmh support
         xcb_ewmh_connection_t ewmh;
         xcb_intern_atom_cookie_t *ewmh_cookie = xcb_ewmh_init_atoms(m_x11connection, &ewmh);
+        if (!ewmh_cookie) return;
+
         xcb_ewmh_init_atoms_replies(&ewmh, ewmh_cookie, NULL);
         avaliable = m_x11connection && m_display &&
             (xtest_ext_reply && xtest_ext_reply->present) &&
