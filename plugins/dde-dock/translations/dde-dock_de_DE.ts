@@ -261,7 +261,7 @@
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation>DND-Modus</translation>
+        <translation>Nicht-Stören-Modus</translation>
     </message>
     <message>
         <source>DND mode settings</source>
