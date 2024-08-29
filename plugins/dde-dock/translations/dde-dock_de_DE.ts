@@ -288,7 +288,7 @@
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation>DND-Modus</translation>
+        <translation>Nicht-Stören-Modus</translation>
     </message>
 </context>
 <context>
@@ -456,7 +456,7 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>DND-Modus ausschalten</translation>
+        <translation>Nicht-Stören-Modus ausschalten</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
