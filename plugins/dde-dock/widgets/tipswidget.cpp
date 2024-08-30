@@ -74,10 +74,10 @@ void TipsWidget::paintEvent(QPaintEvent *event)
 
     QTextOption option;
     option.setAlignment(Qt::AlignCenter);
+    option.setWrapMode(QTextOption::NoWrap);
 
     switch (m_type) {
     case SingleLine: {
-        option.setWrapMode(QTextOption::NoWrap);
         painter.drawText(rect(), m_text, option);
     }
         break;
@@ -85,7 +85,6 @@ void TipsWidget::paintEvent(QPaintEvent *event)
         int x = rect().x();
         int y = rect().y();
         if (m_textList.size() != 1) {
-            x += 10;
             option.setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
         }
         for (const QString& text : m_textList) {
