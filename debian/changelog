@@ -1,3 +1,12 @@
+dde-tray-loader (1.0.0) unstable; urgency=medium
+
+  * Fix incomplete display of Bluetooth plug-in prompts
+    (linuxdeepin/developer-center#10479)
+  * Fix crash on TreeLand
+  * Update translation from Transifex
+
+ -- Wang Zichong <wangzichong@deepin.org>  Mon, 02 Sep 2024 16:22:00 +0800
+
 dde-tray-loader (0.0.12) unstable; urgency=medium
 
   * fix: Updated ordering of performance modes for power supplies (#151)(Issue: 10112)
