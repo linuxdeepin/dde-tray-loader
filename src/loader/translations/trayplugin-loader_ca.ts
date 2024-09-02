@@ -4,7 +4,7 @@
     <message>
         <location filename="../pluginitem.cpp" line="89"/>
         <source>Remove from dock</source>
-        <translation type="unfinished"/>
+        <translation>Elimina de l&apos;acoblador</translation>
     </message>
 </context>
 <context>
