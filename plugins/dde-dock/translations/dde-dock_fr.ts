@@ -825,7 +825,7 @@
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"/>
+        <translation>Muet</translation>
     </message>
     <message>
         <source>Sound settings</source>
