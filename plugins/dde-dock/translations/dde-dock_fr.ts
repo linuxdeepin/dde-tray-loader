@@ -708,19 +708,19 @@
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation>Samedi</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>Dimanche</translation>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"/>
+        <translation>Jan</translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"/>
+        <translation>Fév</translation>
     </message>
     <message>
         <source>Mar</source>
