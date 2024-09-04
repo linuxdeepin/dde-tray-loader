@@ -764,19 +764,19 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>Ouvrir le calendrier</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation>lundi</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation>mardi</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation>mercredi</translation>
     </message>
     <message>
         <source>thursday</source>
