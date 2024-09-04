@@ -736,19 +736,19 @@
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation>Juin</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation>Juil</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation>Août</translation>
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation>Sept</translation>
     </message>
     <message>
         <source>Oct</source>
