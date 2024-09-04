@@ -544,7 +544,7 @@
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"/>
+        <translation>Capacité %1, aucun chargement en cours</translation>
     </message>
     <message>
         <source>Battery</source>
