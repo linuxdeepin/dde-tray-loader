@@ -303,19 +303,19 @@
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation type="unfinished"/>
+        <translation>Confort pour les yeux activés</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Réglages de l&apos;affichage</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Confort pour les yeux</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Thème</translation>
     </message>
     <message>
         <source>On</source>
