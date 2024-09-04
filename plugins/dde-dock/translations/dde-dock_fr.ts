@@ -319,11 +319,11 @@
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"/>
+        <translation>Activé</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>Désactivé</translation>
     </message>
     <message>
         <source>Light</source>
