@@ -572,7 +572,7 @@
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation>Complètement chargé</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
