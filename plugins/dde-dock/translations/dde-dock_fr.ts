@@ -752,15 +752,15 @@
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation>Oct</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation>Nov</translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation>Déc</translation>
     </message>
     <message>
         <source>Open the calendar</source>
