@@ -98,7 +98,7 @@ void QuickPanelWidget::updateUI()
     MediaModel::MediaInfo info = MediaModel::ref().mediaInfo();
     const bool pixmapExist = !info.pixmap.isNull();
     if (!pixmapExist) {
-        info.pixmap = DHiDPIHelper::loadNxPixmap(":/deepin-music.svg").scaled(QSize(32, 32), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        info.pixmap = DHiDPIHelper::loadNxPixmap(":/deepin-music.svg").scaled(QSize(32 * qApp->devicePixelRatio(), 32 * qApp->devicePixelRatio()), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     }
     const bool textInfoExist = !info.artist.isEmpty() || !info.title.isEmpty();
     if (!textInfoExist) {
