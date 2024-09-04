@@ -261,11 +261,11 @@
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation>Mode ne pas déranger</translation>
+        <translation>Mode Ne pas déranger</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"/>
+        <translation>Réglages du mode Ne pas déranger</translation>
     </message>
     <message>
         <source>Disable</source>
