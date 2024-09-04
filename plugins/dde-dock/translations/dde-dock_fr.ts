@@ -837,7 +837,7 @@
     </message>
     <message>
         <source>Volume %1</source>
-        <translation type="unfinished"/>
+        <translation>Volume %1</translation>
     </message>
 </context>
 </TS>
