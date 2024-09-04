@@ -676,7 +676,7 @@
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation>a</translation>
     </message>
     <message>
         <source>m</source>
