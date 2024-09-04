@@ -603,14 +603,14 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>Options d&apos;alimentation</translation>
     </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"/>
+        <translation>Musique</translation>
     </message>
     <message>
         <source>Unknown</source>
