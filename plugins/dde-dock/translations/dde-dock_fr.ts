@@ -596,7 +596,7 @@
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>En charge, %1 heures avant charge complète</translation>
     </message>
 </context>
 <context>
