@@ -347,7 +347,7 @@
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"/>
+        <translation>Réglages de l&apos;affichage</translation>
     </message>
     <message>
         <source>Theme: Light</source>
