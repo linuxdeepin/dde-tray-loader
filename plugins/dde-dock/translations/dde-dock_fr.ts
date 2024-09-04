@@ -821,7 +821,7 @@
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation type="unfinished"/>
+        <translation>Réactiver le son</translation>
     </message>
     <message>
         <source>Mute</source>
