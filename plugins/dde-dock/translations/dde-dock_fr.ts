@@ -653,11 +653,11 @@
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation type="unfinished"/>
+        <translation>Mettre à jour puis redémarrer</translation>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>Éteindre</translation>
     </message>
     <message>
         <source>Switch user</source>
