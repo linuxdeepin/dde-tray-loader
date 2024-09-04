@@ -295,7 +295,7 @@
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation type="unfinished"/>
+        <translation>Confort pour les yeux</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
