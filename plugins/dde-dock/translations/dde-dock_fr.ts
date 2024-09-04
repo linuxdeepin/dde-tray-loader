@@ -576,7 +576,7 @@
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation>En charge, %1 minutes avant charge complète</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
