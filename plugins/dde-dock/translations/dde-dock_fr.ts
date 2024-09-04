@@ -339,11 +339,11 @@
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Désactivé le confort des yeux</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Activer le confort des yeux</translation>
     </message>
     <message>
         <source>Display Settings</source>
