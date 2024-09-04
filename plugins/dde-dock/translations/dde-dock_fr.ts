@@ -649,7 +649,7 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>Mettre à jour puis éteindre</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
