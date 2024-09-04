@@ -564,11 +564,11 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>%1 h %2 restant</translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>Pas en charge</translation>
     </message>
     <message>
         <source>Fully charged</source>
