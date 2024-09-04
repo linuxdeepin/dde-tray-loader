@@ -269,11 +269,11 @@
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"/>
+        <translation>Désactiver</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Activer</translation>
     </message>
     <message>
         <source>DND mode enabled</source>
