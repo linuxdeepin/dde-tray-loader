@@ -1,3 +1,10 @@
+dde-tray-loader (1.0.1) unstable; urgency=medium
+
+  * fix: Music icon is too small in quick panel on High scale ratio screen
+    fix: tooltip style is inconsistent
+
+ -- Yutao Meng <mengyutao@deepin.org>  Wed, 04 Sep 2024 17:43:39 +0800
+
 dde-tray-loader (1.0.0) unstable; urgency=medium
 
   * Fix incomplete display of Bluetooth plug-in prompts
