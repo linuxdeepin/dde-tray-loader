@@ -803,11 +803,11 @@
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"/>
+        <translation>Sortie</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"/>
+        <translation>Réglages du son</translation>
     </message>
 </context>
 <context>
