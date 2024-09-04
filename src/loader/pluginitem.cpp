@@ -11,6 +11,10 @@
 #include <QMouseEvent>
 #include <QMenu>
 
+#include <DFontSizeManager>
+
+DWIDGET_USE_NAMESPACE
+
 const static QString DockQuickPlugins = "Dock_Quick_Plugins";
 
 PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString &itemKey, QWidget *parent)
@@ -316,6 +320,9 @@ QWidget * PluginItem::itemTooltip(const QString &itemKey)
     m_tipsWidget->setParent(nullptr);
     m_tipsWidget->setAttribute(Qt::WA_TranslucentBackground);
     m_tipsWidget->winId();
+
+    DFontSizeManager *fontManager =  DFontSizeManager::instance();
+    fontManager->bind(m_tipsWidget, DFontSizeManager::T7, QFont::Thin);
 
     auto geometry = windowHandle()->geometry();
     auto pluginPopup = Plugin::PluginPopup::get(m_tipsWidget->windowHandle());
