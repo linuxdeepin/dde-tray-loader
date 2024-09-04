@@ -351,11 +351,11 @@
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"/>
+        <translation>Thème : Clair</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"/>
+        <translation>Thème : Sombre</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
