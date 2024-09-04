@@ -374,15 +374,15 @@
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Sombre</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Automatique</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Thème</translation>
     </message>
 </context>
 <context>
@@ -482,15 +482,15 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"/>
+        <translation>Haute performance</translation>
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>Équilibré</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>Économie d&apos;énergie</translation>
     </message>
     <message>
         <source>Balance Performance</source>
