@@ -780,19 +780,19 @@
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation>jeudi</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"/>
+        <translation>vendredi</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation>samedi</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
+        <translation>dimanche</translation>
     </message>
 </context>
 <context>
