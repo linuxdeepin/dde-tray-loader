@@ -16,6 +16,9 @@
 
 using SystemPowerInter = com::deepin::system::Power;
 
+DCORE_BEGIN_NAMESPACE
+class DConfig;
+DCORE_END_NAMESPACE
 
 class PowerPlugin : public QObject, PluginsItemInterfaceV2
 {
@@ -48,7 +51,7 @@ private:
     void updateBatteryVisible();
     void loadPlugin();
     void refreshPluginItemsVisible();
-    void onGSettingsChanged(const QString &key);
+    void onDConfigValueChanged(const QString &key);
     void refreshTipsData();
     void batteryTimeToDisplayData(const qulonglong &time, uint &hour, uint &minute);
     void notifySupportFlagChanged(bool supportFlag);
@@ -64,6 +67,8 @@ private:
     DBusPower *m_powerInter;
     QTimer *m_batteryStateChangedTimer;
     MessageCallbackFunc m_messageCallback;
+
+    Dtk::Core::DConfig *m_config = nullptr;
 };
 
 #endif // POWERPLUGIN_H
