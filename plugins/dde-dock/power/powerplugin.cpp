@@ -12,7 +12,7 @@
 #include <DDBusSender>
 #include <DConfig>
 
-#include <QGSettings>
+#include <DConfig>
 #include <QIcon>
 
 #define PLUGIN_STATE_KEY "enable"
@@ -20,17 +20,6 @@
 Q_LOGGING_CATEGORY(DOCK_POWER, "org.deepin.dde.dock.power")
 
 using namespace Dock;
-
-static QGSettings *GSettingsByApp()
-{
-    static QByteArray schemeid("com.deepin.dde.dock.module.power");
-    if (QGSettings::isSchemaInstalled(schemeid)) {
-        static QGSettings settings(schemeid);
-        return &settings;
-    }
-    qCDebug(DOCK_POWER) << "Cannot find gsettings, schema_id:" << schemeid;
-    return nullptr;
-}
 
 PowerPlugin::PowerPlugin(QObject *parent)
     : QObject(parent)
@@ -42,6 +31,7 @@ PowerPlugin::PowerPlugin(QObject *parent)
     , m_powerInter(new DBusPower(this))
     , m_batteryStateChangedTimer(new QTimer(this))
     , m_messageCallback(nullptr)
+    , m_config(Dtk::Core::DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.power", "", this))
 {
     m_tipsLabel->setVisible(false);
     m_tipsLabel->setObjectName("battery");
@@ -212,10 +202,7 @@ void PowerPlugin::loadPlugin()
     m_systemPowerInter = new SystemPowerInter("com.deepin.system.Power", "/com/deepin/system/Power", QDBusConnection::systemBus(), this);
     m_systemPowerInter->setSync(true);
 
-    QGSettings *appSetting = GSettingsByApp();
-    if (appSetting) {
-    	connect(GSettingsByApp(), &QGSettings::changed, this, &PowerPlugin::onGSettingsChanged);
-    }
+    connect(m_config, &Dtk::Core::DConfig::valueChanged, this, &PowerPlugin::onDConfigValueChanged);
     connect(m_systemPowerInter, &SystemPowerInter::BatteryStatusChanged, this, [&](uint value) {
         // 从状态改变，到计算出相关电量数据，需要时间，避免期间数据有较大误差
         if (value == BatteryState::CHARGING) {
@@ -238,7 +225,7 @@ void PowerPlugin::loadPlugin()
 
     updateBatteryVisible();
 
-    onGSettingsChanged("showtimetofull");
+    onDConfigValueChanged("showTimeToFull");
     m_powerStatusWidget->refreshIcon();
 }
 
@@ -255,16 +242,14 @@ void PowerPlugin::refreshPluginItemsVisible()
     }
 }
 
-void PowerPlugin::onGSettingsChanged(const QString &key)
+void PowerPlugin::onDConfigValueChanged(const QString &key)
 {
-    if (key != "showtimetofull") {
+    if (key != "showTimeToFull") {
         return;
     }
 
-    QGSettings *appSetting = GSettingsByApp();
-    if (appSetting && appSetting->keys().contains("showtimetofull")) {
-        const bool isEnable = appSetting->keys().contains("showtimetofull") && appSetting->get("showtimetofull").toBool();
-        m_showTimeToFull = isEnable && appSetting->get("showtimetofull").toBool();
+    if (m_config->isValid()) {
+        m_showTimeToFull = m_config->value("showTimeToFull").toBool();
     }
 
     refreshTipsData();

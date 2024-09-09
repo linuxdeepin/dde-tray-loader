@@ -232,13 +232,6 @@
           Control Module Enable
       </description>
     </key>
-    <key type="b" name="showtimetofull">
-      <default>true</default>
-      <summary>Show TimeToFull</summary>
-      <description>
-          Show TimeToFull
-      </description>
-    </key>
     <key type="b" name="menu-enable">
       <default>true</default>
       <summary>Menu Enable</summary>
