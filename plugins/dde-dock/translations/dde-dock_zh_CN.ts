@@ -833,7 +833,7 @@
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"/>
+        <translation>无声音输出设备</translation>
     </message>
     <message>
         <source>Volume %1</source>
