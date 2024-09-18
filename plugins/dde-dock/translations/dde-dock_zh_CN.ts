@@ -603,7 +603,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>电源设置</translation>
     </message>
 </context>
 <context>
@@ -625,82 +625,82 @@
     </message>
     <message>
         <source>Suspend</source>
-        <translation type="unfinished"/>
+        <translation>待机</translation>
     </message>
     <message>
         <source>Hibernate</source>
-        <translation type="unfinished"/>
+        <translation>休眠</translation>
     </message>
     <message>
         <source>Lock</source>
-        <translation type="unfinished"/>
+        <translation>锁屏</translation>
     </message>
     <message>
         <source>Log out</source>
-        <translation type="unfinished"/>
+        <translation>注销</translation>
     </message>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>电源设置</translation>
     </message>
     <message>
         <source>Reboot</source>
-        <translation type="unfinished"/>
+        <translation>重启</translation>
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>更新并关机</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation type="unfinished"/>
+        <translation>更新并重启</translation>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>关机</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation>切换用户</translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"/>
+        <translation>今天</translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation>农历</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation>年</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation>月</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation>日</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>星期一</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>星期二</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation>星期三</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>星期四</translation>
     </message>
     <message>
         <source>Friday</source>
