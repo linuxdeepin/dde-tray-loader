@@ -486,11 +486,11 @@
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>平衡模式</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>节能模式</translation>
     </message>
     <message>
         <source>Balance Performance</source>
@@ -501,50 +501,50 @@
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation>电源管理</translation>
     </message>
 </context>
 <context>
     <name>PowerPlugin</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>电源设置</translation>
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>电量%1，剩余%2分钟</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>电量%1，剩余%2小时%3分钟</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation>正在充电%1，还需%2分钟</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation type="unfinished"/>
+        <translation>正在充电%1，还需%2小时%3分钟</translation>
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation type="unfinished"/>
+        <translation>电量%1</translation>
     </message>
     <message>
         <source>Charging %1</source>
-        <translation type="unfinished"/>
+        <translation>正在充电%1</translation>
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation type="unfinished"/>
+        <translation>电量%1 ...</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation type="unfinished"/>
+        <translation>电量%1，已充满</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"/>
+        <translation>电量%1，未充电</translation>
     </message>
     <message>
         <source>Battery</source>
@@ -552,19 +552,19 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation>正在充电，预计充电时间计算中...</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation>剩余使用时间计算中...</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>剩余%1分钟</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>剩余%1小时%2分钟</translation>
     </message>
     <message>
         <source>Not charging</source>
