@@ -548,7 +548,7 @@
     </message>
     <message>
         <source>Battery</source>
-        <translation type="unfinished"/>
+        <translation>电池</translation>
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
@@ -568,35 +568,35 @@
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>未充电</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation>已充满</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation>正在充电，还需%1分钟</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation>正在充电，还需%1小时%2分钟</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>电量%1，剩余%2小时</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>剩余%1小时</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>正在充电%1，还需%2小时</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>正在充电，还需%1小时</translation>
     </message>
 </context>
 <context>
@@ -610,18 +610,18 @@
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"/>
+        <translation>音乐</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>未知</translation>
     </message>
 </context>
 <context>
     <name>ShutdownPlugin</name>
     <message>
         <source>Shut down</source>
-        <translation type="unfinished"/>
+        <translation>关机</translation>
     </message>
     <message>
         <source>Suspend</source>
