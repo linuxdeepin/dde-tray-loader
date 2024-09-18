@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -54,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished">如果要连接蓝牙，请先禁用飞行模式</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -488,358 +486,358 @@
     </message>
     <message>
         <source>Balanced</source>
-        <translation>平衡模式</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation>节能模式</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation>性能模式</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation>电源管理</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>PowerPlugin</name>
     <message>
         <source>Power settings</source>
-        <translation>电源设置</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>电量%1，剩余%2分钟</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>电量%1，剩余%2小时%3分钟</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation>正在充电%1，还需%2分钟</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>正在充电%1，还需%2小时%3分钟</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation>电量%1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Charging %1</source>
-        <translation>正在充电%1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation>电量%1 ...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>电量%1，已充满</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation>电量%1，未充电</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Battery</source>
-        <translation>电池</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation>正在充电，预计充电时间计算中...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation>剩余使用时间计算中...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation>剩余%1分钟</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation>剩余%1小时%2分钟</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Not charging</source>
-        <translation>未充电</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation>已充满</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation>正在充电，还需%1分钟</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation>正在充电，还需%1小时%2分钟</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation>电量%1，剩余%2小时</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation>剩余%1小时</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation>正在充电%1，还需%2小时</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation>正在充电，还需%1小时</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation>电源设置</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation>音乐</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>未知</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>ShutdownPlugin</name>
     <message>
         <source>Shut down</source>
-        <translation>关机</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Suspend</source>
-        <translation>待机</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Hibernate</source>
-        <translation>休眠</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Lock</source>
-        <translation>锁屏</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Log out</source>
-        <translation>注销</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Power settings</source>
-        <translation>电源设置</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Reboot</source>
-        <translation>重启</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation>更新并关机</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation>更新并重启</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation>关机</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Switch user</source>
-        <translation>切换用户</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation>今天</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Lunar</source>
-        <translation>农历</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>y</source>
-        <translation>年</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>m</source>
-        <translation>月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>d</source>
-        <translation>日</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Monday</source>
-        <translation>星期一</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation>星期二</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation>星期三</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Thursday</source>
-        <translation>星期四</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Friday</source>
-        <translation>星期五</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Saturday</source>
-        <translation>星期六</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sunday</source>
-        <translation>星期日</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Jan</source>
-        <translation>1月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Feb</source>
-        <translation>2月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mar</source>
-        <translation>3月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Apr</source>
-        <translation>4月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>May</source>
-        <translation>5月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Jun</source>
-        <translation>6月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Jul</source>
-        <translation>7月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Aug</source>
-        <translation>8月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sept</source>
-        <translation>9月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Oct</source>
-        <translation>10月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Nov</source>
-        <translation>11月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Dec</source>
-        <translation>12月</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation>打开日历</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>monday</source>
-        <translation>周一</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>tuesday</source>
-        <translation>周二</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>wednesday</source>
-        <translation>周三</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>thursday</source>
-        <translation>周四</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>friday</source>
-        <translation>周五</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>saturday</source>
-        <translation>周六</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>sunday</source>
-        <translation>周日</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>SoundApplet</name>
     <message>
         <source>Volume</source>
-        <translation>音量</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Output</source>
-        <translation>输出</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation>声音设置</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>SoundPlugin</name>
     <message>
         <source>Sound</source>
-        <translation>声音</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation>取消静音</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mute</source>
-        <translation>静音</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation>声音设置</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>No output devices</source>
-        <translation>无声音输出设备</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Volume %1</source>
-        <translation>当前音量 %1</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
