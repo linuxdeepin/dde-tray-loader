@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include "common.h"
 #include "pluginitem.h"
 #include "pluginsiteminterface_v2.h"
 
@@ -23,7 +22,7 @@ class WidgetPlugin : public QObject, public PluginProxyInterface
     Q_OBJECT
 
 public:
-    WidgetPlugin(PluginsItemInterface* pluginItem, QObject *pluginInstance);
+    WidgetPlugin(PluginsItemInterface* pluginItem);
     ~WidgetPlugin();
 
     // proxy interface
@@ -58,7 +57,6 @@ private:
 private:
     PluginsItemInterface* m_pluginsItemInterface;
     QScopedPointer<PluginItem> m_pluginItem;
-    QObject * m_pluginInstance;
 };
 
 }

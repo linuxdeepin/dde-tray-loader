@@ -16,12 +16,11 @@
 #include <QPluginLoader>
 #include <QStringLiteral>
 
-#include <cstdlib>
 #include <DGuiApplicationHelper>
 #include <DStandardPaths>
 #include <DPathBuf>
 #include <LogManager.h>
-#include <signal.h>
+#include <qglobal.h>
 
 DGUI_USE_NAMESPACE
 DCORE_USE_NAMESPACE
@@ -71,12 +70,14 @@ int main(int argc, char *argv[], char *envp[])
     DGuiApplicationHelper::setAttribute(DGuiApplicationHelper::UseInactiveColorGroup, false);
     Dtk::Widget::DApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     init_setproctitle(argv, envp);
-    qputenv("DSG_APP_ID", "dde-dock");
+    qputenv("DSG_APP_ID", "org.deepin.dde-tray-loader");
     qputenv("WAYLAND_DISPLAY", "dockplugin");
     qputenv("QT_WAYLAND_SHELL_INTEGRATION", "plugin-shell");
     qputenv("QT_WAYLAND_RECONNECT", "1");
 
     Dtk::Widget::DApplication app(argc, argv);
+    app.setOrganizationName("deepin");
+    app.setApplicationName("org.deepin.dde-tray-loader");
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setQuitOnLastWindowClosed(false);
 
@@ -132,17 +133,16 @@ int main(int argc, char *argv[], char *envp[])
         return -1;
     }
     pluginDisplayName = interface->pluginDisplayName();
-    dock::WidgetPlugin dockPlugin(interface, pluginLoader->instance());
+    dock::WidgetPlugin dockPlugin(interface);
 
     DLogManager::setLogFormat("%{time}{yy-MM-ddTHH:mm:ss.zzz} [%{type}] [%{category}] <%{function}> %{message}");
 
-    DLogManager::registerJournalAppender();
     DLogManager::registerConsoleAppender();
     DLogManager::registerFileAppender();
 
     app.setApplicationName(interface->pluginName());
     app.setApplicationDisplayName(interface->pluginDisplayName());
     setproctitle((QStringLiteral("tray plugin: ") + interface->pluginName()).toStdString().c_str());
-    qputenv("QT_SCALE_FACTOR", "");
+    qunsetenv("QT_SCALE_FACTOR");
     return app.exec();
 }
