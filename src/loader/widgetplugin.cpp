@@ -16,7 +16,6 @@
 #include <QToolTip>
 
 #include <DGuiApplicationHelper>
-#include <qglobal.h>
 
 DGUI_USE_NAMESPACE
 
@@ -64,10 +63,9 @@ private:
 }
 
 namespace dock {
-WidgetPlugin::WidgetPlugin(PluginsItemInterface* pluginsItemInterface, QObject *pluginInstance)
+WidgetPlugin::WidgetPlugin(PluginsItemInterface* pluginsItemInterface)
     : QObject()
     , m_pluginsItemInterface(pluginsItemInterface)
-    , m_pluginInstance(pluginInstance)
 {
     QMetaObject::invokeMethod(this, [this](){
         m_pluginsItemInterface->init(this);
@@ -189,6 +187,7 @@ void WidgetPlugin::itemUpdate(PluginsItemInterface * const itemInter, const QStr
     if (tipsWidget) tipsWidget->update();
 
 }
+
 void WidgetPlugin::itemRemoved(PluginsItemInterface * const itemInter, const QString &itemKey)
 {
     auto widget = m_pluginsItemInterface->itemWidget(itemKey);
@@ -338,25 +337,25 @@ void WidgetPlugin::initConnections(Plugin::EmbedPlugin *plugin, PluginItem *plug
 
 int WidgetPlugin::getPluginFlags()
 {
-    const Dock::PluginFlags defaultPluginFlags = Dock::PluginFlag::Type_Tray | Dock::PluginFlag::Attribute_Normal;
+    Dock::PluginFlags flags = Dock::PluginFlag::Type_Tray | Dock::PluginFlag::Attribute_Normal;
 
     auto pluginsItemInterfaceV2 = dynamic_cast<PluginsItemInterfaceV2 *>(m_pluginsItemInterface);
     if (pluginsItemInterfaceV2) {
-        Dock::PluginFlags flags;
         flags = pluginsItemInterfaceV2->flags();
         if (pluginsItemInterfaceV2->pluginName() == "grand-search") {
             flags |= (Dock::PluginFlag)Attribute_ForceUnDock;
         }
-        return flags;
     } else {
         bool ok;
-        auto flags = m_pluginInstance->property("pluginFlags").toInt(&ok);
+        auto object = dynamic_cast<QObject*>(m_pluginsItemInterface);
+        if (object)
+            flags = (Dock::PluginFlag)object->property("pluginFlags").toInt(&ok);
         if (!ok) {
             qWarning() << "failed to pluginFlags toInt!";
-            return defaultPluginFlags;
         }
-        return flags;
     }
+
+    return flags;
 }
 
 QString WidgetPlugin::messageCallback(PluginsItemInterfaceV2 *pluginItem, const QString &msg)

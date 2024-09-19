@@ -163,7 +163,7 @@ QMenu *QuickPluginItem::pluginContextMenu()
     }
 
     m_menu->setAttribute(Qt::WA_TranslucentBackground, true);
-    // FIXME: qt5integration drawMenuItemBackground will draw a background event is's transparent
+
     auto pa = m_menu->palette();
     pa.setColor(QPalette::ColorRole::Window, Qt::transparent);
     m_menu->setPalette(pa);
@@ -215,4 +215,3 @@ void QuickPluginItem::requestActiveState()
         }
     }
 }
-
