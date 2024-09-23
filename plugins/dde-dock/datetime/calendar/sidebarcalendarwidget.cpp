@@ -16,6 +16,7 @@
 #include <QMouseEvent>
 #include <QScreen>
 #include <QJsonObject>
+#include <QtConcurrent/QtConcurrentRun>
 
 SidebarCalendarWidget::SidebarCalendarWidget(RegionFormat *regionFormat, QWidget* parent)
     : QWidget(parent)
@@ -48,6 +49,10 @@ SidebarCalendarWidget::SidebarCalendarWidget(RegionFormat *regionFormat, QWidget
     initData();
 }
 
+SidebarCalendarWidget::~SidebarCalendarWidget()
+{
+}
+
 void SidebarCalendarWidget::initView()
 {
     setFocusPolicy(Qt::NoFocus);
@@ -64,10 +69,6 @@ void SidebarCalendarWidget::initView()
     m_jumpCalendarButton->setDescription(tr("Open the calendar"));
     m_jumpCalendarButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     m_jumpCalendarButton->setFixedWidth(m_jumpCalendarButton->sizeHint().width());
-    connect(qApp, &QApplication::fontChanged, this, [this]() {
-        m_jumpCalendarButton->setFixedWidth(m_jumpCalendarButton->sizeHint().width());
-        update();
-    });
 
     m_lunarDetailLabel->setElideMode(Qt::TextElideMode::ElideRight);
     DToolTip::setToolTipShowMode(m_lunarDetailLabel, DToolTip::ShowWhenElided);
@@ -176,6 +177,12 @@ void SidebarCalendarWidget::initConnection()
 
         backToday();
     });
+
+    connect(qApp, &QApplication::fontChanged, this, [this]() {
+        m_jumpCalendarButton->setFixedWidth(m_jumpCalendarButton->sizeHint().width());
+        update();
+    });
+    connect(this, &SidebarCalendarWidget::serviceStateChanged, this, &SidebarCalendarWidget::setLunarVisible);
 }
 
 /**
@@ -197,8 +204,9 @@ void SidebarCalendarWidget::initData()
  */
 void SidebarCalendarWidget::setSelectedDate(const QDate &date)
 {
-    if(m_selectedData == date)
+    if(m_selectedData == date && (!m_huangliInfo.isEmpty() && !m_huangliInfo[0].isEmpty())) {
         return;
+    }
 
     m_selectedData = date;
     setDate(date);
@@ -217,16 +225,29 @@ void SidebarCalendarWidget::setDate(const QDate &date)
 
     m_bakTodayBtn->setVisible(date.month() != QDate::currentDate().month() || date.year() != QDate::currentDate().year());
 
-    auto instance = LunarManager::instace()->huangLiDay(date);
+    auto huangliDay = LunarManager::instace()->huangLiDay(date);
+
+    QString lunarDateName = huangliDay.mLunarMonthName + huangliDay.mLunarDayName;
+    QString zodiac        = huangliDay.mZodiac;
+    QString ganzhiYear    = huangliDay.mGanZhiYear;
+    QString ganzhiMonth   = huangliDay.mGanZhiMonth;
+    QString ganzhiDay     = huangliDay.mGanZhiDay;
+
+    m_huangliInfo.clear();
+    m_huangliInfo << lunarDateName << zodiac << ganzhiYear << ganzhiMonth << ganzhiDay;
+
     m_dateTitleWidget->setDateLabelText("/ " + formatedMonth(static_cast<Month>(date.month())), date.day());
     m_weekLabel->setText(formatedWeekDay(static_cast<WeekDay>(date.dayOfWeek()), m_weekdayFormat));
     m_leftdateLabel->setText(date.toString(m_regionFormat->originShortDateFormat()));
-    m_lunarLabel->setText(tr("Lunar") + instance.mLunarMonthName + instance.mLunarDayName);
-    m_lunarDetailLabel->setText(instance.mGanZhiYear + tr("y") + "【"
-                                + instance.mZodiac + tr("y") + "】"
-                                + instance.mGanZhiMonth + tr("m") + " "
-                                + instance.mGanZhiDay + tr("d"));
     m_dateLabel->setText(formatedMonth(static_cast<Month>(date.month())));
+
+    m_lunarLabel->setText(tr("Lunar") + m_huangliInfo[0]);
+    m_lunarDetailLabel->setText(m_huangliInfo[1] + tr("y") + "【"
+                              + m_huangliInfo[2] + tr("y") + "】"
+                              + m_huangliInfo[3] + tr("m") + " "
+                              + m_huangliInfo[4] + tr("d"));
+
+    setLunarVisible(!lunarDateName.isEmpty() && !zodiac.isEmpty() && !ganzhiYear.isEmpty() && !ganzhiMonth.isEmpty() && !ganzhiDay.isEmpty());
 
     if (m_displayedMonth != date) {
         m_displayedMonth = date;
@@ -359,6 +380,25 @@ void SidebarCalendarWidget::backToday()
     setSelectedDate(date);
 }
 
+void SidebarCalendarWidget::setLunarVisible(bool visible)
+{
+    const bool isChinese = QLocale::system().language() == QLocale::Language::Chinese;
+    m_lunarLabel->setVisible(isChinese && visible);
+    m_lunarDetailLabel->setVisible(isChinese && visible);
+    m_jumpCalendarButton->setVisible(isChinese && visible);
+}
+
+void SidebarCalendarWidget::checkService()
+{
+    QtConcurrent::run([this]() {
+        const CaHuangLiDayInfo &day = LunarManager::instace()->huangLiDay(QDate::currentDate());
+        const bool isLunarValid = !day.mLunarMonthName.isEmpty() && !day.mLunarDayName.isEmpty();
+        const bool isLunarDetailValid = !day.mGanZhiYear.isEmpty() && !day.mGanZhiMonth.isEmpty() && !day.mGanZhiDay.isEmpty() && !day.mZodiac.isEmpty();
+        const bool isServiceValid = isLunarValid && isLunarDetailValid;
+        Q_EMIT serviceStateChanged(isServiceValid);
+    });
+}
+
 void SidebarCalendarWidget::hideEvent(QHideEvent *event)
 {
     QWidget::hideEvent(event);
@@ -366,9 +406,8 @@ void SidebarCalendarWidget::hideEvent(QHideEvent *event)
 
 void SidebarCalendarWidget::showEvent(QShowEvent *event)
 {
-    bool showLunar = QLocale::system().language() == QLocale::Language::Chinese;
-    m_lunarLabel->setVisible(showLunar);
-    m_lunarDetailLabel->setVisible(showLunar);
+    checkService();
+
     backToday();
     QWidget::showEvent(event);
 }
