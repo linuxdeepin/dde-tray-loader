@@ -54,11 +54,13 @@ class SidebarCalendarWidget : public QWidget
     Q_OBJECT
 public:
     explicit SidebarCalendarWidget(RegionFormat *regionFormat, QWidget *parent = nullptr);
+    ~SidebarCalendarWidget() override;
     //设置选中的日期
     void setSelectedDate(const QDate &date);
 
 signals:
     void jumpButtonClicked();
+    void serviceStateChanged(bool valid);
 
 private slots:
     //日期按键点击事件
@@ -73,6 +75,8 @@ private slots:
     void onWeekDayFormatChanged(CalendarManager::WeekDayFormat format);
     void backToday();
     void onShortDateFormatChanged();
+    void setLunarVisible(bool visible);
+    void checkService();
 
 protected:
     void hideEvent(QHideEvent *event) override;
@@ -116,6 +120,7 @@ private:
     CalendarManager::WeekDayFormat m_weekdayFormat;
     int m_deltaSum;
     QTimer *m_timer;
+    QList<QString> m_huangliInfo;
 };
 
 
