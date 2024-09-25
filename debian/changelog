@@ -1,3 +1,9 @@
+dde-tray-loader (1.0.2) unstable; urgency=medium
+
+  * fix: the calendar plugin is abnormal when the calendar app does not exist
+
+ -- xionglinlin <xionglinlin@uniontech.com>  Wed, 25 Sep 2024 16:41:33 +0800
+
 dde-tray-loader (1.0.1) unstable; urgency=medium
 
   * fix: Music icon is too small in quick panel on High scale ratio screen
