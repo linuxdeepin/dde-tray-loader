@@ -21,6 +21,9 @@
 #include <DPathBuf>
 #include <LogManager.h>
 #include <qglobal.h>
+#ifndef QT_DEBUG
+#include <signal.h>
+#endif
 
 DGUI_USE_NAMESPACE
 DCORE_USE_NAMESPACE
@@ -81,17 +84,12 @@ int main(int argc, char *argv[], char *envp[])
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setQuitOnLastWindowClosed(false);
 
-    // 创建翻译器
-    QTranslator translator;
-    if (translator.load(QString("/usr/share/trayplugin-loader/translations/trayplugin-loader_%1").arg(QLocale().name()))) {
-        app.installTranslator(&translator);
-    }
-
     QList<QString> translateDirs;
     auto dataDirs = DStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
     for (const auto &path : dataDirs) {
         DPathBuf DPathBuf(path);
         translateDirs << (DPathBuf / "dde-dock/translations").toString();
+        translateDirs << (DPathBuf / "trayplugin-loader/translations").toString();
     }
     DGuiApplicationHelper::loadTranslator("dde-dock", translateDirs, QList<QLocale>() << QLocale::system());
 
