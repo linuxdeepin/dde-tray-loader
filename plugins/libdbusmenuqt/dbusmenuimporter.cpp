@@ -80,6 +80,7 @@ public:
 
     QSet<int> m_idsRefreshedByAboutToShow;
     QSet<int> m_pendingLayoutUpdates;
+    bool m_forceRefresh = false;
 
     QDBusPendingCallWatcher *refresh(int id)
     {
@@ -154,6 +155,7 @@ public:
         for (const QString &key : requestedProperties) {
             updateActionProperty(action, key, map.value(key));
         }
+        m_forceRefresh = false;
     }
 
     void updateActionProperty(QAction *action, const QString &key, const QVariant &value)
@@ -199,7 +201,7 @@ public:
     {
         const QString iconName = value.toString();
         const QString previous = action->property(DBUSMENU_PROPERTY_ICON_NAME).toString();
-        if (previous == iconName) {
+        if (!m_forceRefresh && previous == iconName) {
             return;
         }
         action->setProperty(DBUSMENU_PROPERTY_ICON_NAME, iconName);
@@ -458,8 +460,9 @@ void DBusMenuImporter::sendClickedEvent(int id)
     d->sendEvent(id, QStringLiteral("clicked"));
 }
 
-void DBusMenuImporter::updateMenu()
+void DBusMenuImporter::updateMenu(bool force)
 {
+    d->m_forceRefresh = force;
     updateMenu(DBusMenuImporter::menu());
 }
 

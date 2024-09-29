@@ -45,7 +45,7 @@ public Q_SLOTS:
      * Will Q_EMIT menuUpdated() when complete.
      * This should be done before showing a menu
      */
-    void updateMenu();
+    void updateMenu(bool force = false);
 
     void updateMenu(QMenu *menu);
 

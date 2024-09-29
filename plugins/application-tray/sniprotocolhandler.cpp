@@ -14,6 +14,10 @@
 #include <QMouseEvent>
 #include <QWindow>
 
+#include <DGuiApplicationHelper>
+
+DGUI_USE_NAMESPACE
+
 // Q_LOGGING_CATEGORY(sniTrayLod, "dde.shell.tray.sni")
 
 namespace tray {
@@ -36,6 +40,16 @@ public:
             menu->setFixedSize(menu->sizeHint());
         });
         return menu;
+    }
+
+    virtual QIcon iconForName(const QString &name) override
+    {
+        if (DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType) {
+            QIcon darkIcon = QIcon::fromTheme(name + "-dark");
+            if (!darkIcon.isNull())
+                return darkIcon;
+        }
+        return QIcon::fromTheme(name);
     }
 };
 
@@ -105,6 +119,9 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     connect(m_sniInter, &StatusNotifierItem::NewTitle, this, &SniTrayProtocolHandler::titleChanged);
     connect(m_sniInter, &StatusNotifierItem::NewStatus, this, &SniTrayProtocolHandler::statusChanged);
     connect(m_sniInter, &StatusNotifierItem::NewToolTip, this, &SniTrayProtocolHandler::tooltiChanged);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, [this](DGuiApplicationHelper::ColorType themeType) {
+        m_dbusMenuImporter->updateMenu(true);
+    });
 }
 
 SniTrayProtocolHandler::~SniTrayProtocolHandler()
