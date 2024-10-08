@@ -728,7 +728,7 @@
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation>Bal</translation>
     </message>
     <message>
         <source>May</source>
@@ -736,7 +736,7 @@
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation>Bir</translation>
     </message>
     <message>
         <source>Jul</source>
