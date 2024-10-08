@@ -760,7 +760,7 @@
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation>Gru</translation>
     </message>
     <message>
         <source>Open the calendar</source>
