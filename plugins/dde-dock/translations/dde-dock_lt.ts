@@ -712,7 +712,7 @@
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>Sekmadienis</translation>
     </message>
     <message>
         <source>Jan</source>
