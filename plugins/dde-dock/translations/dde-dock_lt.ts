@@ -740,7 +740,7 @@
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation>Lie</translation>
     </message>
     <message>
         <source>Aug</source>
