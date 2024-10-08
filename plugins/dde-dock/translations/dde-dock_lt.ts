@@ -437,7 +437,7 @@
     </message>
     <message>
         <source>Dock settings</source>
-        <translation type="unfinished"/>
+        <translation>Doko nustatymai</translation>
     </message>
 </context>
 <context>
