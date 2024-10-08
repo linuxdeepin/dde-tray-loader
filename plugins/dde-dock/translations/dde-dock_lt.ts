@@ -732,7 +732,7 @@
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation>Geg</translation>
     </message>
     <message>
         <source>Jun</source>
