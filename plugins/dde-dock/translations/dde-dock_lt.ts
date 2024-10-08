@@ -748,7 +748,7 @@
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation>Rgs</translation>
     </message>
     <message>
         <source>Oct</source>
@@ -756,7 +756,7 @@
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation>Lap</translation>
     </message>
     <message>
         <source>Dec</source>
