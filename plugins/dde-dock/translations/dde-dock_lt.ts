@@ -752,7 +752,7 @@
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation>Spa</translation>
     </message>
     <message>
         <source>Nov</source>
