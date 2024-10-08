@@ -716,7 +716,7 @@
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"/>
+        <translation>Sau</translation>
     </message>
     <message>
         <source>Feb</source>
