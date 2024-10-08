@@ -821,7 +821,7 @@
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation type="unfinished"/>
+        <translation>Įjungti garsą</translation>
     </message>
     <message>
         <source>Mute</source>
