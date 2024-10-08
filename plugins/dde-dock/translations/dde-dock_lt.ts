@@ -610,7 +610,7 @@
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"/>
+        <translation>Muzika</translation>
     </message>
     <message>
         <source>Unknown</source>
