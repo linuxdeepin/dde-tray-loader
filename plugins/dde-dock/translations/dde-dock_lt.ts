@@ -688,11 +688,11 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>Pirmadienis</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Antradienis</translation>
     </message>
     <message>
         <source>Wednesday</source>
@@ -700,7 +700,7 @@
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>Ketvirtadienis</translation>
     </message>
     <message>
         <source>Friday</source>
