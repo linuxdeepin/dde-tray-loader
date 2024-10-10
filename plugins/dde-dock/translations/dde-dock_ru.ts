@@ -556,7 +556,8 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation>Зарядка, расчет расчетного времени зарядки
+</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
