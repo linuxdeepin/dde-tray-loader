@@ -497,7 +497,8 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Сбалансированная Производительность
+</translation>
     </message>
 </context>
 <context>
