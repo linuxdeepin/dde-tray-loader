@@ -574,7 +574,8 @@
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>Не заряжается
+</translation>
     </message>
     <message>
         <source>Fully charged</source>
