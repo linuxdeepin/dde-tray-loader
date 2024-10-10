@@ -712,11 +712,11 @@
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation>Пятница</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation>Суббота</translation>
     </message>
     <message>
         <source>Sunday</source>
