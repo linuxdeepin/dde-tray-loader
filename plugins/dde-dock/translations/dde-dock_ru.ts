@@ -780,11 +780,11 @@
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation>вторник</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation>среда</translation>
     </message>
     <message>
         <source>thursday</source>
