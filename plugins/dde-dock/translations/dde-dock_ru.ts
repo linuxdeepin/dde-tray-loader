@@ -796,7 +796,7 @@
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation>суббота</translation>
     </message>
     <message>
         <source>sunday</source>
