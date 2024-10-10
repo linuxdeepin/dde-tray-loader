@@ -457,7 +457,7 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>Выключите режим DND
+        <translation>Выключите режима &quot;Не беспокоить&quot;
 </translation>
     </message>
     <message>
