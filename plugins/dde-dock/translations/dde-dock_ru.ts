@@ -505,7 +505,7 @@
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation>Питание</translation>
     </message>
 </context>
 <context>
