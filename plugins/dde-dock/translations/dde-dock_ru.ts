@@ -457,7 +457,8 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"/>
+        <translation>Выключите режим DND
+</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
