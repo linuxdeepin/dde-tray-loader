@@ -692,15 +692,15 @@
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation>д</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>Понедельник</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Вторник</translation>
     </message>
     <message>
         <source>Wednesday</source>
