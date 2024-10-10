@@ -764,11 +764,11 @@
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation>Ноя</translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation>Дек</translation>
     </message>
     <message>
         <source>Open the calendar</source>
