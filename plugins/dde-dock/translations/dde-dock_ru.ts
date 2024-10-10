@@ -704,11 +704,11 @@
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation>Среда</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>Четверг</translation>
     </message>
     <message>
         <source>Friday</source>
