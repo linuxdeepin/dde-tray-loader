@@ -561,7 +561,8 @@
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation>Расчет оставшегося времени использования
+</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
