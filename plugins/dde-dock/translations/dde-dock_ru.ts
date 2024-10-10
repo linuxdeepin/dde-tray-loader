@@ -493,7 +493,7 @@
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>Энергосбережение</translation>
     </message>
     <message>
         <source>Balance Performance</source>
