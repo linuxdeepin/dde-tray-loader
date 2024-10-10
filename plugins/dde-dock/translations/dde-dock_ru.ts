@@ -736,11 +736,11 @@
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation>Апр</translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation>Май</translation>
     </message>
     <message>
         <source>Jun</source>
