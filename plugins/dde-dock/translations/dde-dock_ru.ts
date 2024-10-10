@@ -611,7 +611,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>Параметры питания</translation>
     </message>
 </context>
 <context>
@@ -622,7 +622,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Неизвестный</translation>
     </message>
 </context>
 <context>
