@@ -776,7 +776,7 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation>понедельник</translation>
     </message>
     <message>
         <source>tuesday</source>
