@@ -489,7 +489,7 @@
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>Сбалансированный</translation>
     </message>
     <message>
         <source>Power Saver</source>
