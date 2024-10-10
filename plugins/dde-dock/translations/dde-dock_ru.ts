@@ -800,7 +800,7 @@
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
+        <translation>воскресенье</translation>
     </message>
 </context>
 <context>
