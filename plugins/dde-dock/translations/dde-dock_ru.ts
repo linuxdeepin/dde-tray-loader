@@ -457,12 +457,12 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>Выключите режима &quot;Не беспокоить&quot;
+        <translation>Выключить режим &quot;Не беспокоить&quot;
 </translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"/>
+        <translation>Включить режим &quot;Не беспокоить&quot;</translation>
     </message>
     <message>
         <source>Notification</source>
