@@ -680,15 +680,15 @@
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation>Лунный</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation>г</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation>м</translation>
     </message>
     <message>
         <source>d</source>
