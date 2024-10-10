@@ -444,7 +444,7 @@
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"/>
+        <translation>Сообщений нет</translation>
     </message>
     <message>
         <source>Notification settings</source>
