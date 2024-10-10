@@ -732,7 +732,7 @@
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"/>
+        <translation>Мар</translation>
     </message>
     <message>
         <source>Apr</source>
