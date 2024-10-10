@@ -466,7 +466,7 @@
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"/>
+        <translation>Уведомление</translation>
     </message>
 </context>
 <context>
