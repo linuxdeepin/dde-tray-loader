@@ -665,7 +665,7 @@
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>Выключить</translation>
     </message>
     <message>
         <source>Switch user</source>
