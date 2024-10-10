@@ -756,11 +756,11 @@
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation>Сент</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation>Окт</translation>
     </message>
     <message>
         <source>Nov</source>
