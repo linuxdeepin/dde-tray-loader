@@ -448,11 +448,12 @@
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки уведомлений
+</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>Уведомления</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
