@@ -744,15 +744,15 @@
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation>Июн</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation>Июл</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation>Авг</translation>
     </message>
     <message>
         <source>Sept</source>
