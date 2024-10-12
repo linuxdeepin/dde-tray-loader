@@ -16,7 +16,7 @@ add_library(${PLUGIN_NAME} SHARED
     ../widgets/tipswidget.cpp
 )
 target_compile_definitions(${PLUGIN_NAME} PRIVATE QT_PLUGIN)
-set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../dde-dock)
+set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../)
 
 target_include_directories(${PLUGIN_NAME} PRIVATE
    "../../../interfaces"
