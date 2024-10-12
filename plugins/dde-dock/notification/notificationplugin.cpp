@@ -19,6 +19,34 @@ Q_LOGGING_CATEGORY(qLcPluginNotification, "dock.plugin.notification")
 DGUI_USE_NAMESPACE
 using namespace Dock;
 
+static QDBusInterface notificationInterface()
+{
+    return QDBusInterface("org.freedesktop.Notifications",
+                          "/org/freedesktop/Notifications",
+                          "org.freedesktop.Notifications");
+}
+
+static bool newNotifications()
+{
+    static int OptionBool = -1;
+    if (OptionBool < 0) {
+        OptionBool = 0;
+        const QDBusMessage message = notificationInterface().call("GetServerInformation");
+        if (message.type() == QDBusMessage::ErrorMessage) {
+            qWarning() << "Failed to get server information" << message.errorMessage();
+            return false;
+        }
+        const auto values = message.arguments();
+        Q_ASSERT(values.size() == 4);
+
+        const auto version = values.at(2);
+        if (version.toDouble() >= 3.0) {
+            OptionBool = 1;
+        }
+    }
+    return static_cast<bool>(OptionBool);
+}
+
 NotificationPlugin::NotificationPlugin(QObject *parent)
     : QObject(parent)
     , m_pluginLoaded(false)
@@ -66,7 +94,10 @@ bool NotificationPlugin::pluginIsDisable()
 const QString NotificationPlugin::itemCommand(const QString &itemKey)
 {
     Q_UNUSED(itemKey);
-    return QString("dbus-send --session --print-reply --dest=org.deepin.dde.Widgets1 /org/deepin/dde/Widgets1 org.deepin.dde.Widgets1.Toggle");
+    if (!newNotifications()) {
+        return QString("dbus-send --session --print-reply --dest=org.deepin.dde.Widgets1 /org/deepin/dde/Widgets1 org.deepin.dde.Widgets1.Toggle");
+    }
+    return QString("dbus-send --session --print-reply --dest=org.deepin.dde.shell /org/deepin/dde/shell/notification/center org.deepin.dde.shell.notification.center.Toggle");
 }
 
 const QString NotificationPlugin::itemContextMenu(const QString &itemKey)
