@@ -385,7 +385,7 @@ void SidebarCalendarWidget::setLunarVisible(bool visible)
     const bool isChinese = QLocale::system().language() == QLocale::Language::Chinese;
     m_lunarLabel->setVisible(isChinese && visible);
     m_lunarDetailLabel->setVisible(isChinese && visible);
-    m_jumpCalendarButton->setVisible(isChinese && visible);
+    m_jumpCalendarButton->setVisible(visible);
 }
 
 void SidebarCalendarWidget::checkService()
