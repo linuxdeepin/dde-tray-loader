@@ -207,7 +207,7 @@ void DatetimeWidget::updateDateTimeString()
             QString apText = current.toString("AP");
             m_apLabel->setText(apText);
 
-            timeStr = current.toString("h:mm");
+            timeStr = current.toString("AP h:mm").split(" ").at(1);
         } else {
             timeStr = current.toString("hh:mm");
         }
