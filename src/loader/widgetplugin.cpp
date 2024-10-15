@@ -218,36 +218,52 @@ void WidgetPlugin::requestRefreshWindowVisible(PluginsItemInterface * const item
 
 void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInter, const QString &itemKey, const bool visible)
 {
-    if (!visible) return;
-
     QWidget* appletWidget = itemInter->itemPopupApplet(itemKey);
-    if (!appletWidget) {
-        qWarning() << itemKey << " plugin applet popup is null";
-        return;
+
+    if (!visible) {
+        if (appletWidget == nullptr || !appletWidget->isVisible()) {
+            auto window = itemInter->itemWidget(itemKey)->window();
+            if (window != nullptr) {
+                Plugin::EmbedPlugin *plugin = Plugin::EmbedPlugin::get(window->windowHandle());
+                if (plugin) {
+                    qDebug() << "send hide quick panel message";
+                    emit plugin->closeQuickPanel();
+                } else {
+                    qWarning() << "plugin is null";
+                }
+            } else {
+                qWarning() << "item window is null";
+            }
+        }
+    } else {
+        if (!appletWidget) {
+            qWarning() << itemKey << " plugin applet popup is null";
+            return;
+        }
+
+        updateDockContainerState(itemInter, false);
+        if (Plugin::PluginPopup::contains(appletWidget->windowHandle())) {
+            Plugin::PluginPopup::remove(appletWidget->windowHandle());
+        }
+
+        appletWidget->winId();
+        appletWidget->setParent(nullptr);
+        appletWidget->setAttribute(Qt::WA_TranslucentBackground);
+
+        bool hasCreated = Plugin::PluginPopup::contains(appletWidget->windowHandle());
+        auto pluginPopup = Plugin::PluginPopup::get(appletWidget->windowHandle());
+        if (!hasCreated) {
+            connect(pluginPopup, &Plugin::PluginPopup::eventGeometry, appletWidget, [appletWidget](const QRect &geometry) {
+                appletWidget->setFixedSize(geometry.size());
+                appletWidget->update();
+            });
+        }
+
+        pluginPopup->setPluginId(m_pluginsItemInterface->pluginName());
+        pluginPopup->setItemKey(itemKey);
+        pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeEmbed);
+        appletWidget->show();
     }
-
-    updateDockContainerState(itemInter, false);
-    if (Plugin::PluginPopup::contains(appletWidget->windowHandle())) {
-        Plugin::PluginPopup::remove(appletWidget->windowHandle());
-    }
-
-    appletWidget->winId();
-    appletWidget->setParent(nullptr);
-    appletWidget->setAttribute(Qt::WA_TranslucentBackground);
-
-    bool hasCreated = Plugin::PluginPopup::contains(appletWidget->windowHandle());
-    auto pluginPopup = Plugin::PluginPopup::get(appletWidget->windowHandle());
-    if (!hasCreated) {
-        connect(pluginPopup, &Plugin::PluginPopup::eventGeometry, appletWidget, [appletWidget](const QRect &geometry) {
-            appletWidget->setFixedSize(geometry.size());
-            appletWidget->update();
-        });
-    }
-
-    pluginPopup->setPluginId(m_pluginsItemInterface->pluginName());
-    pluginPopup->setItemKey(itemKey);
-    pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeEmbed);
-    appletWidget->show();
 }
 
 void WidgetPlugin::saveValue(PluginsItemInterface * const itemInter, const QString &key, const QVariant &value)
