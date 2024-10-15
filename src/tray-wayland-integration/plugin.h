@@ -85,6 +85,7 @@ Q_SIGNALS:
     void pluginRecvMouseEvent(int type);
     void rawGlobalPosChanged();
     void pluginRequestShutdown(const QString &type);
+    void closeQuickPanel();
 
 private:
     explicit EmbedPlugin(QWindow* window);
