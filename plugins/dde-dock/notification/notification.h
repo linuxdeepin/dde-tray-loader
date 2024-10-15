@@ -26,6 +26,8 @@ public:
     void setDndMode(bool dnd);
     uint notificationCount() const;
 
+    void watchNotification(bool newNotification);
+
 Q_SIGNALS:
     void iconRefreshed();
     void dndModeChanged(bool dnd);

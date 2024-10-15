@@ -174,6 +174,7 @@ void NotificationPlugin::loadPlugin()
     }
     m_pluginLoaded = true;
     m_notification.reset(new Notification);
+    m_notification->watchNotification(newNotifications());
     connect(m_notification.data(), &Notification::iconRefreshed, this, [this]() { m_proxyInter->itemUpdate(this, pluginName()); });
     connect(m_notification.data(), &Notification::notificationCountChanged, this, &NotificationPlugin::updateTipsText);
     m_proxyInter->itemAdded(this, pluginName());

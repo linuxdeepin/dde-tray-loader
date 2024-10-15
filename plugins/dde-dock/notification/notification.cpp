@@ -30,39 +30,6 @@ Notification::Notification(QWidget *parent)
     setMinimumSize(PLUGIN_BACKGROUND_MIN_SIZE, PLUGIN_BACKGROUND_MIN_SIZE);
     connect(this, &Notification::dndModeChanged, this, &Notification::refreshIcon);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &Notification::refreshIcon);
-    QtConcurrent::run([this](){
-        m_dbus.reset(new QDBusInterface("org.deepin.dde.Notification1", "/org/deepin/dde/Notification1", "org.deepin.dde.Notification1"));
-        // Refresh icon for the first time, cause org.deepin.dde.Notification1 might depend on dock's DBus,
-        // we should not call org.deepin.dde.Notification1 in the main thread before dock's dbus is initialized.
-        // Just refresh icon in the other thread.
-        QDBusReply<QDBusVariant> dnd = m_dbus->call(QLatin1String("GetSystemInfo"), QVariant::fromValue(0u));
-        if (!dnd.isValid()) {
-            qCWarning(qLcPluginNotification) << dnd.error();
-        } else {
-            m_dndMode = dnd.value().variant().toBool();
-            refreshIcon();
-        }
-        QDBusConnection::sessionBus().connect("org.deepin.dde.Notification1",
-                                              "/org/deepin/dde/Notification1",
-                                              "org.deepin.dde.Notification1",
-                                              "SystemInfoChanged",
-                                              this,
-                                              SLOT(onSystemInfoChanged(quint32,QDBusVariant))
-                                              );
-        auto recordCountVariant = m_dbus->property("recordCount");
-        if (!recordCountVariant.isValid()) {
-            qCWarning(qLcPluginNotification) << dnd.error();
-        } else {
-            setNotificationCount(recordCountVariant.toUInt());
-        }
-        QDBusConnection::sessionBus().connect("org.deepin.dde.Notification1",
-                                              "/org/deepin/dde/Notification1",
-                                              "org.deepin.dde.Notification1",
-                                              "recordCountChanged",
-                                              this,
-                                              SLOT(setNotificationCount(uint))
-                                              );
-    });
 }
 
 QIcon Notification::icon() const
@@ -102,6 +69,47 @@ void Notification::setDndMode(bool dnd)
 uint Notification::notificationCount() const
 {
     return m_notificationCount;
+}
+
+void Notification::watchNotification(bool newNotification)
+{
+    QtConcurrent::run([this, newNotification](){
+        m_dbus.reset(new QDBusInterface("org.deepin.dde.Notification1", "/org/deepin/dde/Notification1", "org.deepin.dde.Notification1"));
+        // Refresh icon for the first time, cause org.deepin.dde.Notification1 might depend on dock's DBus,
+        // we should not call org.deepin.dde.Notification1 in the main thread before dock's dbus is initialized.
+        // Just refresh icon in the other thread.
+        QDBusReply<QDBusVariant> dnd = m_dbus->call(QLatin1String("GetSystemInfo"), QVariant::fromValue(0u));
+        if (!dnd.isValid()) {
+            qCWarning(qLcPluginNotification) << dnd.error();
+        } else {
+            m_dndMode = dnd.value().variant().toBool();
+            refreshIcon();
+        }
+        QDBusConnection::sessionBus().connect("org.deepin.dde.Notification1",
+                                              "/org/deepin/dde/Notification1",
+                                              "org.deepin.dde.Notification1",
+                                              "SystemInfoChanged",
+                                              this,
+                                              SLOT(onSystemInfoChanged(quint32,QDBusVariant))
+                                              );
+        auto recordCountVariant = m_dbus->property("recordCount");
+        if (!recordCountVariant.isValid()) {
+            qCWarning(qLcPluginNotification) << dnd.error();
+        } else {
+            setNotificationCount(recordCountVariant.toUInt());
+        }
+
+        const QString countChangedSlot = newNotification ?
+                                             "RecordCountChanged" :
+                                             "recordCountChanged";
+        QDBusConnection::sessionBus().connect("org.deepin.dde.Notification1",
+                                              "/org/deepin/dde/Notification1",
+                                              "org.deepin.dde.Notification1",
+                                              countChangedSlot,
+                                              this,
+                                              SLOT(setNotificationCount(uint))
+                                              );
+    });
 }
 
 void Notification::paintEvent(QPaintEvent *e)
