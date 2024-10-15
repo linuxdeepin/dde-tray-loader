@@ -45,6 +45,11 @@ PluginSurface::PluginSurface(PluginManagerIntegration *manager, QtWaylandClient:
     connect(m_plugin, &EmbedPlugin::pluginRequestShutdown, this, [this](const QString &type){
         request_shutdown(type);
     });
+
+    connect(m_plugin, &EmbedPlugin::closeQuickPanel, this, [this] {
+        qDebug() << "send close popup signal";
+        close_quick_panel();
+    });
 }
 
 PluginSurface::~PluginSurface()

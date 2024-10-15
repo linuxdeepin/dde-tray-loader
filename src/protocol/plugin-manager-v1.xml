@@ -160,5 +160,6 @@
         <arg name="width" type="int"/>
         <arg name="height" type="int"/>
     </request>
+    <request name="close_quick_panel" />
   </interface>
 </protocol>
