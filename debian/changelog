@@ -1,3 +1,11 @@
+dde-tray-loader (1.0.3) unstable; urgency=medium
+
+  * fix: right-click menu icon adapts to dark theme
+  * fix: no "Open Calendar" button in non-Chinese environments
+  * fix: wrong time format
+
+ -- xionglinlin <xionglinlin@uniontech.com>  Wed, 16 Oct 2024 16:46:24 +0800
+
 dde-tray-loader (1.0.2) unstable; urgency=medium
 
   * fix: the calendar plugin is abnormal when the calendar app does not exist
