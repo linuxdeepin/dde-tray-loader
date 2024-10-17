@@ -342,9 +342,6 @@ int WidgetPlugin::getPluginFlags()
     auto pluginsItemInterfaceV2 = dynamic_cast<PluginsItemInterfaceV2 *>(m_pluginsItemInterface);
     if (pluginsItemInterfaceV2) {
         flags = pluginsItemInterfaceV2->flags();
-        if (pluginsItemInterfaceV2->pluginName() == "grand-search") {
-            flags |= (Dock::PluginFlag)Attribute_ForceUnDock;
-        }
     } else {
         bool ok;
         auto object = dynamic_cast<QObject*>(m_pluginsItemInterface);
