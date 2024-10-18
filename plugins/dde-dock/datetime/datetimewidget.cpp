@@ -15,8 +15,6 @@
 #include <DFontSizeManager>
 
 #define PLUGIN_STATE_KEY    "enable"
-#define TIME_FONT DFontSizeManager::instance()->t4()
-#define DATE_FONT DFontSizeManager::instance()->t10()
 
 DWIDGET_USE_NAMESPACE
 
@@ -32,9 +30,6 @@ DatetimeWidget::DatetimeWidget(RegionFormat* regionFormat, QWidget *parent)
     , m_dockSize(QSize(1920, 37))
     , m_regionFormat(regionFormat)
 {
-    m_timeLabel->setFont(TIME_FONT);
-    m_dateLabel->setFont(DATE_FONT);
-
     initUI();
 
     m_24HourFormat = m_regionFormat->is24HourFormat();
@@ -239,26 +234,44 @@ void DatetimeWidget::updateDateTime()
 
 void DatetimeWidget::adjustFontSize()
 {
-    // 设计图上标注常量
-    const int timeMaxFontSize = 20;
-    const int timeMinFontSize = 12;
-    const int dateMaxFontSize = 14;
-    const int dateMinFontSize = 8;
-
     const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
     int validDistance = m_dockSize.height() / qApp->devicePixelRatio();
     if (position == Dock::Left || position == Dock::Right) {
         validDistance = m_dockSize.width() / qApp->devicePixelRatio();
     }
 
-    // 4,6是根据设计图计算出的比列值
-    int timeFontSize = qMax(timeMinFontSize, qMin(timeMaxFontSize, validDistance / 4));
-    int dateFontSize = qMax(dateMinFontSize, qMin(dateMaxFontSize, validDistance / 6));
+    // 根据时间和日期字体大小的跨度，将dock栏大小分为不同的区间，每个区域对应不同的字体大小，然后通过判断dock栏大小所在的区间来设置字体大小
+    // 如果任务栏小于37，则字体始终取最小值；如果任务栏大于61，则字体始终取最大值；如果任务栏在37和61之间，则字体大小随任务栏大小线性变化
+    static const QMap<int, QPair<int, int>> fontSizeMap {
+        {0, {12, 9}},
+        {37, {12, 9}},
+        {40, {13, 10}},
+        {43, {14, 10}},
+        {46, {15, 11}},
+        {49, {16, 11}},
+        {52, {17, 12}},
+        {55, {18, 12}},
+        {58, {19, 13}},
+        {61, {20, 14}},
+        {999, {20, 14}}
+    };
+    
+    int timeFontSize = 0;
+    int dateFontSize = 0;
+    QList<int> distances = fontSizeMap.keys();
+    for (int i = 0; i < distances.size() - 1; ++i) {
+        if (validDistance >= distances.at(i) && validDistance < distances.at(i + 1)) {
+            timeFontSize = fontSizeMap.value(distances.at(i)).first;
+            dateFontSize = fontSizeMap.value(distances.at(i)).second;
+            break;
+        }
+    }
+
+    Q_ASSERT(timeFontSize != 0 && dateFontSize != 0);
 
     QFont timeFont = m_timeLabel->font();
     timeFont.setPixelSize(timeFontSize);
     m_timeLabel->setFont(timeFont);
-
     m_apLabel->setFont(timeFont);
 
     QFont dateFont = m_dateLabel->font();

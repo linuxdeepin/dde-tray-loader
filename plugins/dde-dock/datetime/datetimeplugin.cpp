@@ -98,7 +98,8 @@ void DatetimePlugin::loadPlugin()
     m_centralWidget.reset(new DatetimeWidget(m_RegionFormatModel));
 
     connect(m_centralWidget.data(), &DatetimeWidget::requestUpdateGeometry, this, [this] {
-        m_centralWidget.data()->setFixedSize(m_centralWidget.data()->sizeHint());
+        // label的文本和边框之间本身有一定的间距，这里通过减小外部widget的size方式，将内部的label挤压到一起，减小间距
+        m_centralWidget.data()->setFixedSize(m_centralWidget.data()->sizeHint() - QSize(0, 4));
         m_proxyInter->itemUpdate(this, pluginName());
     });
     connect(m_refershTimer, &QTimer::timeout, this, &DatetimePlugin::updateCurrentTimeString);

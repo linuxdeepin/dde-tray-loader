@@ -34,6 +34,8 @@ public:
 
     static bool isForceUndock(int pluginFlag);
 
+    int getSpacing() const { return m_spacing; }
+
 signals:
     void recvMouseEvent(int type);
 
@@ -75,6 +77,7 @@ private:
 
     QAction *m_unDockAction = nullptr;
     int m_pluginFlags = 0;
+    int m_spacing = 0;
 };
 
 #endif // PLUGINSITEM_H
