@@ -332,6 +332,9 @@ void WidgetPlugin::initConnections(Plugin::EmbedPlugin *plugin, PluginItem *plug
     });
 
     connect(plugin, &Plugin::EmbedPlugin::contentMarginChanged, pluginItem, &PluginItem::updatePluginContentMargin);
+    connect(plugin, &Plugin::EmbedPlugin::dockPositionChanged, pluginItem, [pluginItem] {
+        pluginItem->updatePluginContentMargin(pluginItem->getSpacing());
+    });
 
     connect(pluginItem, &PluginItem::recvMouseEvent, plugin, &Plugin::EmbedPlugin::pluginRecvMouseEvent);
 }
