@@ -42,6 +42,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void onSystemInfoChanged(quint32 info, QDBusVariant value);
     void setNotificationCount(uint count);
+    void onNotificationStateChanged(qint64 id, int processedType);
 
 protected:
     void paintEvent(QPaintEvent *e) override;
