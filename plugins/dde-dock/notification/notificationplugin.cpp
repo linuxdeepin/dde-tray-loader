@@ -94,6 +94,8 @@ bool NotificationPlugin::pluginIsDisable()
 const QString NotificationPlugin::itemCommand(const QString &itemKey)
 {
     Q_UNUSED(itemKey);
+    if (m_notification)
+        m_notification->resetNotificationStatus();
     if (!newNotifications()) {
         return QString("dbus-send --session --print-reply --dest=org.deepin.dde.Widgets1 /org/deepin/dde/Widgets1 org.deepin.dde.Widgets1.Toggle");
     }
