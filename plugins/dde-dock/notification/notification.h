@@ -27,11 +27,14 @@ public:
     uint notificationCount() const;
 
     void watchNotification(bool newNotification);
+    void resetNotificationStatus();
+    bool hasNewNotification() const;
 
 Q_SIGNALS:
     void iconRefreshed();
     void dndModeChanged(bool dnd);
     void notificationCountChanged(uint count);
+    void notificationStatusChanged();
 
 public Q_SLOTS:
     void refreshIcon();
@@ -48,6 +51,7 @@ private:
     uint m_notificationCount;
     QScopedPointer<QDBusInterface> m_dbus;
     bool m_dndMode;
+    bool m_hasNewNotification = false;
 };
 
 #endif  // NOTIFICATION_H

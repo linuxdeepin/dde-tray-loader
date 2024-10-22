@@ -29,6 +29,7 @@ Notification::Notification(QWidget *parent)
 {
     setMinimumSize(PLUGIN_BACKGROUND_MIN_SIZE, PLUGIN_BACKGROUND_MIN_SIZE);
     connect(this, &Notification::dndModeChanged, this, &Notification::refreshIcon);
+    connect(this, &Notification::notificationStatusChanged, this, &Notification::refreshIcon);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &Notification::refreshIcon);
 }
 
@@ -46,8 +47,13 @@ void Notification::refreshIcon()
         iconName = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType ?
                 ":/dsg/built-in-icons/notification-off-dark.svg" : ":/dsg/built-in-icons/notification-off.svg";
     } else {
-        iconName = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType ?
+        if (hasNewNotification()) {
+            iconName = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType ?
+                ":/dsg/built-in-icons/notification-unread-dark.svg" : ":/dsg/built-in-icons/notification-unread.svg";
+        } else {
+            iconName = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType ?
                 ":/dsg/built-in-icons/notification-dark.svg" : ":/dsg/built-in-icons/notification.svg";
+        }
     }
 
     m_icon = QIcon(iconName);
@@ -112,6 +118,20 @@ void Notification::watchNotification(bool newNotification)
     });
 }
 
+void Notification::resetNotificationStatus()
+{
+    if (m_hasNewNotification == false)
+        return;
+
+    m_hasNewNotification = false;
+    Q_EMIT notificationStatusChanged();
+}
+
+bool Notification::hasNewNotification() const
+{
+    return m_hasNewNotification;
+}
+
 void Notification::paintEvent(QPaintEvent *e)
 {
     Q_UNUSED(e)
@@ -134,5 +154,7 @@ void Notification::setNotificationCount(uint count)
         return;
     }
     m_notificationCount = count;
+    m_hasNewNotification = true;
+    Q_EMIT notificationStatusChanged();
     Q_EMIT this->notificationCountChanged(count);
 }
