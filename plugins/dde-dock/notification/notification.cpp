@@ -115,6 +115,18 @@ void Notification::watchNotification(bool newNotification)
                                               this,
                                               SLOT(setNotificationCount(uint))
                                               );
+
+        if (newNotification) {
+            QDBusConnection::sessionBus().connect("org.deepin.dde.Notification1",
+                                                  "/org/deepin/dde/Notification1",
+                                                  "org.deepin.dde.Notification1",
+                                                  "NotificationStateChanged",
+                                                  this,
+                                                  SLOT(onNotificationStateChanged(qint64, int))
+                                                  );
+        } else {
+            qDebug(qLcPluginNotification) << "The indicator of notification state doesn't work.";
+        }
     });
 }
 
@@ -154,7 +166,16 @@ void Notification::setNotificationCount(uint count)
         return;
     }
     m_notificationCount = count;
-    m_hasNewNotification = true;
-    Q_EMIT notificationStatusChanged();
     Q_EMIT this->notificationCountChanged(count);
+}
+
+void Notification::onNotificationStateChanged(qint64 id, int processedType)
+{
+    static const int Processed = 2;
+    if (processedType == Processed) {
+        if (!m_hasNewNotification) {
+            m_hasNewNotification = true;
+            Q_EMIT notificationStatusChanged();
+        }
+    }
 }
