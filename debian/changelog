@@ -1,3 +1,19 @@
+dde-tray-loader (1.99.1) UNRELEASED; urgency=medium
+
+  * fix: Music icon is too small in quick panel on High scale ratio screen(Bug: 272035)
+  * style:  Adjust pointer spacing in moveEvent declaration
+  * fix: remove useless function (#143)
+    Thanks to Hillwood Yang
+  * feat: Power module uses DConfig instead of QGSettings
+  * chore: fix code style problem
+  * fix: build failed
+  * feat: support switching new and old notification(task: 35599)
+  * fix: notification number doesn't change(task: 365219)
+  * feat: switching icon when notification status changed(task: 365893)
+  * fix: the indicator of notification state doesn't work(task: 365893)
+
+ -- YeShanShan <yeshanshan@deepin.org>  Wed, 23 Oct 2024 10:09:52 +0800
+
 dde-tray-loader (1.0.0) unstable; urgency=medium
 
   * Fix incomplete display of Bluetooth plug-in prompts
