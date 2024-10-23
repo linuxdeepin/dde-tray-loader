@@ -825,7 +825,7 @@
     </message>
     <message>
         <source>Mute</source>
-        <translation>Mudo</translation>
+        <translation>Ativar mudo</translation>
     </message>
     <message>
         <source>Sound settings</source>
