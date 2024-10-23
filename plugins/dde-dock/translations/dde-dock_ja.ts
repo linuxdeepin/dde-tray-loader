@@ -486,11 +486,11 @@
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>バランス</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>省電力モード</translation>
     </message>
     <message>
         <source>Balance Performance</source>
