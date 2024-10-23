@@ -437,7 +437,7 @@
     </message>
     <message>
         <source>Dock settings</source>
-        <translation type="unfinished"/>
+        <translation>ドックの設定</translation>
     </message>
 </context>
 <context>
