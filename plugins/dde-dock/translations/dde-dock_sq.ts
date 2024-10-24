@@ -471,7 +471,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>Onboard</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings</source>
