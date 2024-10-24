@@ -30,6 +30,11 @@ PluginSurface::PluginSurface(PluginManager *manager, QtWaylandClient::QWaylandWi
     connect(m_plugin, &EmbedPlugin::pluginRecvMouseEvent, this, [this] (int type){
         mouse_event(type);
     });
+
+    connect(m_plugin, &EmbedPlugin::closeQuickPanel, this, [this] {
+        qDebug() << "send close popup signal";
+        close_quick_panel();
+    });
 }
 
 PluginSurface::~PluginSurface()
