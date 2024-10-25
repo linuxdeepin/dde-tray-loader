@@ -23,6 +23,7 @@ public:
     int pluginType;
     int sizePolicy;
     QPoint globalPos;
+    QPoint pluginPos;
     QString dccIcon;
 };
 
@@ -207,6 +208,20 @@ void EmbedPlugin::setDccIcon(const QString &dccIcon)
     Q_EMIT dccIconChanged(d->dccIcon);
 }
 
+QPoint EmbedPlugin::pluginPos()
+{
+    return d->pluginPos;
+}
+
+void EmbedPlugin::setPluginPos(const QPoint &pos)
+{
+    if (d->pluginPos == pos) {
+        return;
+    }
+    d->pluginPos = pos;
+    Q_EMIT pluginPosChanged(d->pluginPos);
+}
+
 class PluginPopupPrivate
 {
 public:
@@ -221,6 +236,7 @@ public:
     int popupType;
     int x = 0;
     int y = 0;
+    QPoint plugPos;
 };
 
 PluginPopup::PluginPopup(QWindow* window)
@@ -308,6 +324,20 @@ void PluginPopup::setY(const int& y)
 
     d->y = y;
     Q_EMIT yChanged();
+}
+
+QPoint PluginPopup::pluginPos()
+{
+    return d->plugPos;
+}
+
+void PluginPopup::setPluginPos(const QPoint &pos)
+{
+    if (d->plugPos == pos) {
+        return;
+    }
+    d->plugPos = pos;
+    Q_EMIT pluginPosChanged(d->plugPos);
 }
 
 static QMap<QWindow*, PluginPopup*> s_popupMap;

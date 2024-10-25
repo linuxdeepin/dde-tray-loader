@@ -128,7 +128,8 @@ void QuickPluginItem::mouseReleaseEvent(QMouseEvent *e)
      if (e->button() == Qt::RightButton) {
         if (auto menu = pluginContextMenu()) {
             if (auto pluginPopup = Plugin::PluginPopup::get(menu->windowHandle())) {
-                auto geometry = windowHandle()->geometry();
+                auto plugin = Plugin::EmbedPlugin::get(windowHandle());
+                auto geometry = plugin->pluginPos();
                 const auto offset = e->pos();
                 pluginPopup->setX(geometry.x() + offset.x());
                 pluginPopup->setY(geometry.y() + offset.y());
@@ -169,7 +170,6 @@ QMenu *QuickPluginItem::pluginContextMenu()
     m_menu->setPalette(pa);
     m_menu->winId();
 
-    auto geometry = windowHandle()->geometry();
     auto pluginPopup = Plugin::PluginPopup::get(m_menu->windowHandle());
     pluginPopup->setPluginId(pluginsItemInterface()->pluginName());
     pluginPopup->setItemKey(Dock::QUICK_ITEM_KEY);
