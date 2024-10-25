@@ -56,7 +56,7 @@ void PluginSurface::plugin_geometry(int32_t x, int32_t y, int32_t width, int32_t
     if (height <= 0)
         rect.setHeight(m_window->height());
 
-    m_window->setGeometry(rect);
+    m_plugin->setPluginPos(QPoint(x, y));
     Q_EMIT m_plugin->eventGeometry(rect);
 }
 
@@ -112,7 +112,7 @@ void PluginPopupSurface::plugin_popup_geometry(int32_t x, int32_t y, int32_t wid
     if (rect.height() <= 0)
         rect.setHeight(m_window->height());
 
-    m_window->setGeometry(rect);
+    m_popup->setPluginPos(QPoint(x, y));
     if (plugin) {
         Q_EMIT plugin->eventGeometry(rect);
     }

@@ -232,7 +232,8 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                 menu->winId();
 
                 auto widget = static_cast<QWidget*>(parent());
-                auto geometry = widget->window()->windowHandle()->geometry();
+                auto plugin = Plugin::EmbedPlugin::get(widget->window()->windowHandle());
+                auto geometry = plugin->pluginPos();
                 auto pluginPopup = Plugin::PluginPopup::get(menu->windowHandle());
                 pluginPopup->setPluginId("application-tray");
                 pluginPopup->setItemKey(id());
