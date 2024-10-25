@@ -56,6 +56,9 @@ public:
     QString dccIcon() const;
     void setDccIcon(const QString &dccIcon);
 
+    QPoint pluginPos();
+    void setPluginPos(const QPoint &pos);
+
     static EmbedPlugin *getWithoutCreating(QWindow *window);
     static EmbedPlugin* get(QWindow* window);
     static bool contains(QWindow* window);
@@ -70,6 +73,7 @@ Q_SIGNALS:
     void dockColorThemeChanged(uint32_t colorType);
     void pluginSupportFlagChanged(bool);
     void dccIconChanged(const QString &dccIcon);
+    void pluginPosChanged(const QPoint &point);
 
 Q_SIGNALS:
     void itemKeyChanged();
@@ -126,6 +130,9 @@ public:
     int y() const;
     void setY(const int& y);
 
+    QPoint pluginPos();
+    void setPluginPos(const QPoint &pos);
+
     static PluginPopup *getWithoutCreating(QWindow *window);
     static PluginPopup* get(QWindow* window);
     static void remove(QWindow *window);
@@ -141,6 +148,7 @@ Q_SIGNALS:
 
     void xChanged();
     void yChanged();
+    void pluginPosChanged(const QPoint &point);
 
 private:
     explicit PluginPopup(QWindow* window);

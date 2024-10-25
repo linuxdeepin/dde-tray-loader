@@ -102,7 +102,6 @@ QMenu *PluginItem::pluginContextMenu()
     m_menu->setPalette(pa);
     m_menu->winId();
 
-    auto geometry = windowHandle()->geometry();
     auto pluginPopup = Plugin::PluginPopup::get(m_menu->windowHandle());
     pluginPopup->setPluginId(m_pluginsItemInterface->pluginName());
     pluginPopup->setItemKey(m_itemKey);
@@ -125,7 +124,8 @@ void PluginItem::mouseReleaseEvent(QMouseEvent *e)
 
         if (auto popup = itemPopupApplet()) {
             if (auto pluginPopup = Plugin::PluginPopup::get(popup->windowHandle())) {
-                auto geometry = windowHandle()->geometry();
+                auto plugin = Plugin::EmbedPlugin::get(window()->windowHandle());
+                auto geometry = plugin->pluginPos();
                 const auto offset = QPoint(0, 0);
                 pluginPopup->setX(geometry.x() + offset.x());
                 pluginPopup->setY(geometry.y() + offset.y());
@@ -135,7 +135,8 @@ void PluginItem::mouseReleaseEvent(QMouseEvent *e)
     } else if (e->button() == Qt::RightButton) {
         if (auto menu = pluginContextMenu()) {
             if (auto pluginPopup = Plugin::PluginPopup::get(menu->windowHandle())) {
-                auto geometry = windowHandle()->geometry();
+                auto plugin = Plugin::EmbedPlugin::get(windowHandle());
+                auto geometry = plugin->pluginPos();
                 const auto offset = e->pos();
                 pluginPopup->setX(geometry.x() + offset.x());
                 pluginPopup->setY(geometry.y() + offset.y());
@@ -155,7 +156,8 @@ void PluginItem::enterEvent(QEvent *event)
 
     if (auto toolTip = pluginTooltip()) {
         if (auto pluginPopup = Plugin::PluginPopup::get(toolTip->windowHandle())) {
-            auto geometry = windowHandle()->geometry();
+            auto plugin = Plugin::EmbedPlugin::get(windowHandle());
+            auto geometry = plugin->pluginPos();
             auto e = dynamic_cast<QEnterEvent *>(event);
             const auto offset = QPoint(width() / 2, height() / 2);
             pluginPopup->setX(geometry.x() + offset.x());
@@ -176,7 +178,8 @@ void PluginItem::moveEvent(QMoveEvent *e)
 {
     if (auto popup = m_pluginsItemInterface->itemPopupApplet(m_itemKey); popup && popup->isVisible()) {
         if (auto pluginPopup = Plugin::PluginPopup::get(popup->windowHandle())) {
-            auto geometry = windowHandle()->geometry();
+            auto plugin = Plugin::EmbedPlugin::get(windowHandle());
+            auto geometry = plugin->pluginPos();
             const auto offset = QPoint(0, 0);
             pluginPopup->setX(geometry.x() + offset.x());
             pluginPopup->setY(geometry.y() + offset.y());
@@ -317,7 +320,6 @@ QWidget * PluginItem::itemTooltip(const QString &itemKey)
     m_tipsWidget->setAttribute(Qt::WA_TranslucentBackground);
     m_tipsWidget->winId();
 
-    auto geometry = windowHandle()->geometry();
     auto pluginPopup = Plugin::PluginPopup::get(m_tipsWidget->windowHandle());
     pluginPopup->setPluginId(m_pluginsItemInterface->pluginName());
     pluginPopup->setItemKey(itemKey);
