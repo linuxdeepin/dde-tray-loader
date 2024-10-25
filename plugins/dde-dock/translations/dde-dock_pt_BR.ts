@@ -37,7 +37,7 @@
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation>Dispositivos pareados</translation>
+        <translation>Meus Dispositivos </translation>
     </message>
 </context>
 <context>
