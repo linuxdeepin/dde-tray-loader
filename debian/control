@@ -82,3 +82,9 @@ Depends: ${misc:Depends},${shlibs:Depends},curl
 Description: the plugin of network service for deepin-service-manager
  deepin-service-plugin-network module
 
+Package: dock-wirelesscasting-plugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ deepin-network-displays (>=0.90.6-deepin2)
+Description: deepin desktop-environment - wireless casting plugin for dde-dock
+ wireless casting plugin module
