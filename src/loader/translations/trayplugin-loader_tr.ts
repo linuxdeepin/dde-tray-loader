@@ -17,7 +17,7 @@
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
         <source>Pin to dock</source>
-        <translation type="unfinished"/>
+        <translation>Rıhtım&apos;a sabitle</translation>
     </message>
 </context>
 </TS>
