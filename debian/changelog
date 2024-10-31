@@ -1,3 +1,9 @@
+dde-tray-loader (1.99.2) UNRELEASED ; urgency=medium
+
+  * bump version to 1.99.2
+
+ -- YeShanShan <yeshanshan@deepin.org>  Thu, 31 Oct 2024 10:34:35 +0800
+
 dde-tray-loader (1.99.1) UNRELEASED; urgency=medium
 
   * fix: Music icon is too small in quick panel on High scale ratio screen(Bug: 272035)
