@@ -17,7 +17,7 @@
 #include <xcb/xcb_ewmh.h>
 #include <xcb/xcb_image.h>
 
-#include <X11/Xlib.h>
+struct _XDisplay;
 
 namespace tray {
 #define UTIL Util::instance()

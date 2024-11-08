@@ -28,7 +28,7 @@ int DockContextMenu::suitableWidth() const
 {
     int maxWidth = 0;
     for (auto action : actions()) {
-        auto textWidth = fontMetrics().width(action->text());
+        auto textWidth = fontMetrics().horizontalAdvance(action->text());
         textWidth += m_showReminderActions.contains(action) ? 26 : 0;
         maxWidth = maxWidth < textWidth ? textWidth : maxWidth;
     }

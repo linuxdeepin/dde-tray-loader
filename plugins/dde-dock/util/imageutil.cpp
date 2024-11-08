@@ -14,7 +14,7 @@
 const QPixmap ImageUtil::loadSvg(const QString &iconName, const QString &localPath, const int size, const qreal ratio)
 {
     QIcon icon = QIcon::fromTheme(iconName);
-    int pixmapSize = QCoreApplication::testAttribute(Qt::AA_UseHighDpiPixmaps) ? size : int(size * ratio);
+    int pixmapSize = size; // QCoreApplication::testAttribute(Qt::AA_UseHighDpiPixmaps) ? size : int(size * ratio);
     if (!icon.isNull()) {
         QPixmap pixmap = icon.pixmap(pixmapSize);
         pixmap.setDevicePixelRatio(ratio);

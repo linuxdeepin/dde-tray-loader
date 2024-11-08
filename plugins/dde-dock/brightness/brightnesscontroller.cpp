@@ -10,20 +10,18 @@
 #include <QDebug>
 #include <QtConcurrent>
 
-#define GSETTINGS_MINIMUM_BRIGHTNESS "brightness-minimum"
+#define DCONFIG_MINIMUM_BRIGHTNESS "minBrightnessValue"
 
-const QString DisplayInterface("com.deepin.daemon.Display");
-const QString DisplaySystemInterface("com.deepin.system.Display");
-const QString DisplaySystemPath("/com/deepin/system/Display");
+const QString DisplayInterface("org.deepin.dde.Display1");
 
 BrightnessController::BrightnessController(QObject *parent)
     : QObject(parent)
-    , m_displayInter(DisplayInterface, "/com/deepin/daemon/Display", QDBusConnection::sessionBus(), this)
-    , m_displayDBusInter(new QDBusInterface("com.deepin.daemon.Display",
-                                            "/com/deepin/daemon/Display",
-                                            "com.deepin.daemon.Display",
+    , m_displayInter(DisplayInterface, "/org/deepin/dde/Display1", QDBusConnection::sessionBus(), this)
+    , m_displayDBusInter(new QDBusInterface("org.deepin.dde.Display1",
+                                            "/org/deepin/dde/Display1",
+                                            "org.deepin.dde.Display1",
                                             QDBusConnection::sessionBus()))
-    , m_gSettings(new QGSettings("com.deepin.dde.control-center", QByteArray(), this))
+    , m_dConfig(DConfig::create("org.deepin.dde.control-center", "org.deepin.dde.control-center.display", QString(), this))
     , m_supportBrightness(false)
 {
 
@@ -58,7 +56,7 @@ void BrightnessController::init()
         qCWarning(BRIGHTNESS) << "Call `GetBuiltinMonitor` error: " << reply.errorMessage();
     }
 
-    BrightnessModel::ref().setMinimumBrightnessScale(m_gSettings->get(GSETTINGS_MINIMUM_BRIGHTNESS).toDouble());
+    BrightnessModel::ref().setMinimumBrightnessScale(m_dConfig->value(DCONFIG_MINIMUM_BRIGHTNESS).toDouble());
     BrightnessModel::ref().setDisplayMode(m_displayInter.GetRealDisplayMode());
     BrightnessModel::ref().setPrimary(m_displayInter.primary());
     BrightnessModel::ref().setBrightnessMap(m_displayInter.brightness());
@@ -67,9 +65,9 @@ void BrightnessController::init()
 
 void BrightnessController::onGSettingsChanged(const QString &key)
 {
-    const QVariant &value = m_gSettings->get(key);
+    const QVariant &value = m_dConfig->value(key);
 
-    if (key == GSETTINGS_MINIMUM_BRIGHTNESS || key == "brightnessMinimum") {
+    if (key == DCONFIG_MINIMUM_BRIGHTNESS || key == "brightnessMinimum") {
         BrightnessModel::ref().setMinimumBrightnessScale(value.toDouble());
     }
 }

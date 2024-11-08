@@ -17,9 +17,9 @@
 
 using namespace network::sessionservice;
 
-#define dockService "com.deepin.dde.Dock"
-#define dockPath "/com/deepin/dde/Dock"
-#define dockInterface "com.deepin.dde.Dock"
+#define dockService "org.deepin.dde.Dock1"
+#define dockPath "/org/deepin/dde/Dock1"
+#define dockInterface "org.deepin.dde.Dock1"
 
 BrowserAssist::BrowserAssist(QObject *parent)
     : QObject(parent)

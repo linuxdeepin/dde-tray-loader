@@ -5,8 +5,7 @@ usr/share/dde-dock/translations
 usr/share/trayplugin-loader/translations
 usr/share/dde-tray-network-core/translations
 usr/share/dsg/configs/*/*.json
-usr/share/glib-2.0/*
-usr/lib/*/qt5/plugins/wayland-shell-integration/libplugin-shell.so
+usr/lib/*/qt6/plugins/wayland-shell-integration/libplugin-shell.so
 usr/lib/dde-dock/plugins/libapplication-tray.so
 usr/lib/dde-dock/plugins/libbrightness.so
 usr/lib/dde-dock/plugins/libdatetime.so

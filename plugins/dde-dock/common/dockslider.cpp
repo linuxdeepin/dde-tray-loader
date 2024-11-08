@@ -36,13 +36,13 @@ void DockSlider::mousePressEvent(QMouseEvent *e)
         if (!rect().contains(e->pos()))
             return;
         m_pressed = true;
-        DSlider::setValue(maximum() * e->x() / rect().width());
+        DSlider::setValue(maximum() * e->position().x() / rect().width());
     }
 }
 
 void DockSlider::mouseMoveEvent(QMouseEvent *e)
 {
-    const int value = minimum() + (double((maximum()) - minimum()) * e->x() / rect().width());
+    const int value = minimum() + (double((maximum()) - minimum()) * e->position().x() / rect().width());
     const int normalized = std::max(std::min(maximum(), value), 0);
 
     DSlider::setValue(normalized);
@@ -67,7 +67,7 @@ void DockSlider::wheelEvent(QWheelEvent *e)
 
     m_timer->start();
 
-    DSlider::setValue(value() + (e->delta() > 0 ? 2 : -2));
+    DSlider::setValue(value() + (e->angleDelta().y() > 0 ? 2 : -2));
 }
 
 void DockSlider::onTimeout()

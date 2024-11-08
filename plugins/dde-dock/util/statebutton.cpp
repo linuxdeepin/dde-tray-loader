@@ -52,7 +52,7 @@ void StateButton::mousePressEvent(QMouseEvent *event)
         emit click();
 }
 
-void StateButton::enterEvent(QEvent *event)
+void StateButton::enterEvent(QEnterEvent *event)
 {
     QWidget::enterEvent(event);
     if (m_switchFork)

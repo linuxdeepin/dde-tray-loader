@@ -322,7 +322,6 @@ void DatetimeWidget::initUI()
     m_apLabel->setForegroundRole(QPalette::BrightText);
 
     auto *layout = new QVBoxLayout();
-    layout->setMargin(0);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
     layout->addWidget(m_apLabel);

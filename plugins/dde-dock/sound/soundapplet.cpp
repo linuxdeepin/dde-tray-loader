@@ -9,7 +9,6 @@
 #include "constants.h"
 
 #include <DApplication>
-#include <DApplicationHelper>
 #include <DFontSizeManager>
 #include <DGuiApplicationHelper>
 #include <DStandardItem>
@@ -20,7 +19,7 @@
 #include <QPainter>
 #include <QScrollBar>
 
-#define GSETTING_SOUND_OUTPUT_SLIDER "soundOutputSlider"
+#define SOUND_OUTPUT_SLIDER "soundOutputSlider"
 
 DWIDGET_USE_NAMESPACE
 DGUI_USE_NAMESPACE
@@ -41,7 +40,7 @@ SoundApplet::SoundApplet(QWidget* parent)
     , m_listView(new PluginListView(this))
     , m_settingButton(new JumpSettingButton(this))
     , m_itemModel(new QStandardItemModel(m_listView))
-    , m_gsettings(Utils::ModuleSettingsPtr("sound", QByteArray(), this))
+    , m_dConfig(Dtk::Core::DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.sound", QString(), this))
     , m_minHeight(-1)
     , m_spacerItem(new QSpacerItem(Dock::DOCK_POPUP_WIDGET_WIDTH, ITEM_SPACING))
 {
@@ -60,7 +59,7 @@ void SoundApplet::initUi()
     DFontSizeManager::instance()->bind(m_volumeLabel, DFontSizeManager::T9, QFont::Medium);
     QHBoxLayout* deviceLayout = new QHBoxLayout(m_deviceWidget);
     deviceLayout->setSpacing(0);
-    deviceLayout->setMargin(0);
+    deviceLayout->setContentsMargins(0, 0, 0, 0);
     deviceLayout->setContentsMargins(10, 0, 10, 0);
     deviceLayout->addWidget(m_deviceLabel, 0, Qt::AlignLeft);
     deviceLayout->addWidget(m_volumeLabel, 0, Qt::AlignRight);
@@ -73,7 +72,7 @@ void SoundApplet::initUi()
     m_sliderContainer->addBackground();
     m_sliderContainer->setButtonsSize(QSize(16, 16));
     m_sliderContainer->setFixedHeight(36);
-    updateVolumeSliderStatus(Utils::SettingValue("com.deepin.dde.dock.module.sound", QByteArray(), "Enabled").toString());
+    updateVolumeSliderStatus(m_dConfig->value(SOUND_OUTPUT_SLIDER, Enabled).toInt());
     refreshIcon();
 
     // Output
@@ -93,7 +92,7 @@ void SoundApplet::initUi()
     m_settingButton->setDescription(tr("Sound settings"));
 
     m_centralLayout = new QVBoxLayout(this);
-    m_centralLayout->setMargin(10);
+    m_centralLayout->setContentsMargins(10,10, 10, 10);
     m_centralLayout->setSpacing(0);
     m_centralLayout->addWidget(m_deviceWidget);
     m_centralLayout->addSpacing(5);
@@ -113,10 +112,10 @@ void SoundApplet::initUi()
 
 void SoundApplet::initConnections()
 {
-    if (m_gsettings) {
-        connect(m_gsettings, &QGSettings::changed, this, [ = ] (const QString &key) {
-            if (key == GSETTING_SOUND_OUTPUT_SLIDER) {
-                updateVolumeSliderStatus(m_gsettings->get(GSETTING_SOUND_OUTPUT_SLIDER).toString());
+    if (m_dConfig) {
+        connect(m_dConfig, &Dtk::Core::DConfig::valueChanged, this, [ = ] (const QString &key) {
+            if (key == SOUND_OUTPUT_SLIDER) {
+                updateVolumeSliderStatus(m_dConfig->value(SOUND_OUTPUT_SLIDER).toInt());
             }
         });
     }
@@ -305,8 +304,8 @@ void SoundApplet::removePort(const QString& key)
 
 void SoundApplet::enableDevice(bool flag)
 {
-    QString status = m_gsettings ? m_gsettings->get(GSETTING_SOUND_OUTPUT_SLIDER).toString() : "Enabled";
-    m_volumeSlider->setEnabled("Disabled" == status ? false : flag);
+    int status = m_dConfig ? m_dConfig->value(SOUND_OUTPUT_SLIDER).toInt() : Enabled;
+    m_volumeSlider->setEnabled(Disabled == status ? false : flag);
     m_sliderContainer->setButtonsEnabled(flag);
 }
 
@@ -323,13 +322,13 @@ void SoundApplet::removeDisabledDevice(QString portName, unsigned int cardId)
     }
 }
 
-void SoundApplet::updateVolumeSliderStatus(const QString& status)
+void SoundApplet::updateVolumeSliderStatus(int status)
 {
-    const bool enabled = "Enabled" == status;
+    const bool enabled = (Enabled == status);
     m_volumeSlider->setEnabled(enabled);
     m_sliderContainer->setButtonsEnabled(enabled);
 
-    const bool visible = "Hiden" != status;
+    const bool visible = (Hidden != status);
     m_sliderContainer->setVisible(visible);
 }
 

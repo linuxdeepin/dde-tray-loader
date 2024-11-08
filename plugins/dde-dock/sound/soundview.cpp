@@ -108,9 +108,9 @@ void SoundView::invokeMenuItem(const QString menuId, const bool checked)
         SoundController::ref().SetMuteQueued(!SoundModel::ref().isMute());
     } else if (menuId == SETTINGS) {
         DDBusSender()
-        .service("com.deepin.dde.ControlCenter")
-        .interface("com.deepin.dde.ControlCenter")
-        .path("/com/deepin/dde/ControlCenter")
+        .service("org.deepin.dde.ControlCenter1")
+        .interface("org.deepin.dde.ControlCenter1")
+        .path("/org/deepin/dde/ControlCenter1")
         .method(QString("ShowModule"))
         .arg(QString("sound"))
         .call();
@@ -140,7 +140,7 @@ bool SoundView::eventFilter(QObject *watched, QEvent *event)
     if (watched == m_iconWidget && event->type() == QEvent::Wheel) {
         auto e = dynamic_cast<QWheelEvent*>(event);
         if (e) {
-            qApp->postEvent(m_applet->mainSlider(), new QWheelEvent(e->pos(), e->delta(), e->buttons(), e->modifiers()));
+            qApp->postEvent(m_applet->mainSlider(), e->clone());
             e->accept();
         }
     }

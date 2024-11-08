@@ -10,7 +10,7 @@
 
 #include <DPaletteHelper>
 #include <DSpinner>
-#include <DHiDPIHelper>
+#include <DIcon>
 #include <DGuiApplicationHelper>
 
 #include <QBoxLayout>
@@ -42,12 +42,12 @@ WirelessCastingApplet::WirelessCastingApplet(WirelessCastingModel *model, Displa
     , m_multiscreenOptionsTitle(new QWidget(this))
     , m_multiscreenOptionsListView(new MonitorListView(this))
     , m_multiscreenOptionsModel(new QStandardItemModel(m_multiscreenOptionsListView))
+    , m_showOnDock(true)
     , m_displaySetting(new JumpSettingButton(this))
     , m_lastConnMonitor(nullptr)
     , m_cfgShowCasting(true)
     , m_cfgEnabled(true)
     , m_minHeight(-1)
-    , m_showOnDock(true)
 {
     initUI();
     initMonitors();
@@ -437,11 +437,11 @@ StatePanel::StatePanel(WirelessCastingModel *model, QWidget *parent)
 
     auto updateThemeType = [this] (DGuiApplicationHelper::ColorType type) {
         if (type == DGuiApplicationHelper::ColorType::LightType) {
-            m_iconConnected->setPixmap(DHiDPIHelper::loadNxPixmap(":/icons/deepin/builtin/light/icons/success_128px.svg"));
-            m_iconNoDevice->setPixmap(DHiDPIHelper::loadNxPixmap(":/icons/deepin/builtin/light/icons/none_128px.svg"));
+            m_iconConnected->setPixmap(DIcon::loadNxPixmap(":/icons/deepin/builtin/light/icons/success_128px.svg"));
+            m_iconNoDevice->setPixmap(DIcon::loadNxPixmap(":/icons/deepin/builtin/light/icons/none_128px.svg"));
         } else {
-            m_iconConnected->setPixmap(DHiDPIHelper::loadNxPixmap(":/icons/deepin/builtin/dark/icons/success_128px.svg"));
-            m_iconNoDevice->setPixmap(DHiDPIHelper::loadNxPixmap(":/icons/deepin/builtin/dark/icons/none_128px.svg"));
+            m_iconConnected->setPixmap(DIcon::loadNxPixmap(":/icons/deepin/builtin/dark/icons/success_128px.svg"));
+            m_iconNoDevice->setPixmap(DIcon::loadNxPixmap(":/icons/deepin/builtin/dark/icons/none_128px.svg"));
         }
     };
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, updateThemeType);

@@ -4,8 +4,6 @@
 
 #include "horizontalseparator.h"
 
-#include <DApplicationHelper>
-
 #include <QPainter>
 
 /**

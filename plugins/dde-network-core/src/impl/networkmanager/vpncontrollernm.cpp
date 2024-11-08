@@ -11,9 +11,9 @@
 #include <NetworkManagerQt/ConnectionSettings>
 #include <NetworkManagerQt/VpnSetting>
 
-#define NETWORKSERVICE "com.deepin.system.Network"
-#define NETWORKPATH "/com/deepin/system/Network"
-#define NETWORKINTERFACE "com.deepin.system.Network"
+#define NETWORKSERVICE "org.deepin.dde.Network1"
+#define NETWORKPATH "/org/deepin/dde/Network1"
+#define NETWORKINTERFACE "org.deepin.dde.Network1"
 #define NETWORKPROPERTIESINTERFACE "org.freedesktop.DBus.Properties"
 #define VPNENABLED "VpnEnabled"
 
@@ -331,8 +331,7 @@ void VPNController_NM::connectItem(VPNItem *item)
     NetworkManager::ActiveConnection::Ptr sameTypeActiveConnection;
     NetworkManager::ActiveConnection::List activeConnections = findActiveConnection();
     for (NetworkManager::ActiveConnection::Ptr activeConnection : activeConnections) {
-        if (connection->path() != activeConnection->connection()->path()
-                && activeConnection->connection()->settings()->setting(NetworkManager::Setting::SettingType::Vpn).
+        if (activeConnection->connection()->settings()->setting(NetworkManager::Setting::SettingType::Vpn).
                 staticCast<NetworkManager::VpnSetting>()->serviceType() == serviceType) {
 
             sameTypeActiveConnection = activeConnection;

@@ -7,6 +7,7 @@
 #include "brightnessmodel.h"
 
 #include <DDBusSender>
+#include <DFontSizeManager>
 #include <DGuiApplicationHelper>
 
 #include <QDBusConnection>
@@ -79,9 +80,9 @@ void BrightnessItem::invokeMenuItem(const QString menuId, const bool checked)
 
     if (menuId == SETTINGS) {
         DDBusSender()
-            .service("com.deepin.dde.ControlCenter")
-            .interface("com.deepin.dde.ControlCenter")
-            .path("/com/deepin/dde/ControlCenter")
+            .service("org.deepin.dde.ControlCenter1")
+            .interface("org.deepin.dde.ControlCenter1")
+            .path("/org/deepin/dde/ControlCenter1")
             .method(QString("ShowPage"))
             .arg(QString("display"))
             .arg(QString(""))
@@ -93,8 +94,7 @@ void BrightnessItem::invokeMenuItem(const QString menuId, const bool checked)
 
 QWidget *BrightnessItem::tipsWidget()
 {
-    if (!m_tipsLabel)
-        updateTips();
+    updateTips();
     return m_tipsLabel;
 }
 
@@ -104,16 +104,23 @@ void BrightnessItem::updateTips()
         m_tipsLabel = new QLabel;
         m_tipsLabel->setForegroundRole(QPalette::BrightText);
         m_tipsLabel->setContentsMargins(0, 0, 0, 0);
-        connect(qApp, &QGuiApplication::fontChanged, this, &BrightnessItem::updateTips);
+        DFontSizeManager::instance()->bind(m_tipsLabel, DFontSizeManager::T5);
         connect(&BrightnessModel::ref(), &BrightnessModel::enabledMonitorListChanged, this, &BrightnessItem::updateTips);
         connect(&BrightnessModel::ref(), &BrightnessModel::monitorBrightnessChanged, this, &BrightnessItem::updateTips);
     }
 
     QString tips;
-    for (const auto &monitor : BrightnessModel::ref().enabledMonitors()) {
+    auto monitors = BrightnessModel::ref().enabledMonitors();
+    for (const auto &monitor : monitors) {
         tips += QString("%1: %2%<br/>").arg(monitor->name()).arg(QString::number(monitor->brightness() * 100));
     }
 
+    // remove HTML default margin
+    tips = "<p style='margin:0;'>" + tips + "</p>";
     m_tipsLabel->setText(tips);
-    m_tipsLabel->adjustSize();
+
+    QFontMetrics fm(m_tipsLabel->font());
+    int lineHeight = fm.height();
+    int textHeight = lineHeight * (int)monitors.count();
+    m_tipsLabel->setFixedHeight(textHeight);
 }

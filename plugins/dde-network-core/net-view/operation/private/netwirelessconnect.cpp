@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "netwirelessconnect.h"
-
+#include "nmnetworkmanager.h"
 #include "configsetting.h"
 
 #include <NetworkManagerQt/AccessPoint>

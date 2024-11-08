@@ -76,6 +76,7 @@ QDateTime ControllItems::timeStamp() const
 void ControllItems::setConnection(const QJsonObject &jsonObj)
 {
     m_connection->updateConnection(jsonObj);
+    Q_EMIT connectionChanged();
 }
 
 void ControllItems::setActiveConnection(const QString &activeConnection)

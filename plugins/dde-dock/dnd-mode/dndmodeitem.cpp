@@ -47,7 +47,7 @@ void DndModeItem::init()
 
     auto vLayout = new QVBoxLayout(this);
     vLayout->setSpacing(0);
-    vLayout->setMargin(0);
+    vLayout->setContentsMargins(0, 0, 0, 0);
     vLayout->addWidget(m_icon, 0, Qt::AlignCenter);
 
     m_applet->setEnabled(DndModeController::ref().isDndModeEnabled());
@@ -111,12 +111,12 @@ void DndModeItem::invokeMenuItem(const QString menuId, const bool checked)
         DndModeController::ref().toggle();
     } else if (menuId == SETTINGS) {
         DDBusSender()
-            .service("com.deepin.dde.ControlCenter")
-            .interface("com.deepin.dde.ControlCenter")
-            .path("/com/deepin/dde/ControlCenter")
+            .service("org.deepin.dde.ControlCenter1")
+            .interface("org.deepin.dde.ControlCenter1")
+            .path("/org/deepin/dde/ControlCenter1")
             .method(QString("ShowPage"))
             .arg(QString("notification"))
-            .arg(QString("SystemNotify"))
+            //.arg(QString("SystemNotify"))
             .call();
 
         Q_EMIT requestHideApplet();

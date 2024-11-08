@@ -19,7 +19,7 @@ Copyright: None
 License: CC0-1.0
 
 # README and documentations
-Files: README.md README.*.md docs/*.md *guide.md
+Files: README.md README.*.md docs/*.md *guide.md */libdbusmenuqt/README */libdbusmenuqt/test/README
 Copyright: UnionTech Software Technology Co., Ltd.
 License: CC-BY-4.0
 
@@ -39,7 +39,7 @@ Copyright: UnionTech Software Technology Co., Ltd.
 License: GPL-3.0-or-later
 
 # dbus api xml files
-Files: *.deepin.dde.*.xml */org.desktopspec.*.xml */dbus/*.xml *.Fcitx.xml
+Files: *.deepin.dde.*.xml */org.desktopspec.*.xml */dbus/*.xml *.Fcitx.xml */libdbusmenuqt/*.xml
 Copyright: UnionTech Software Technology Co., Ltd.
 License: GPL-3.0-or-later
 

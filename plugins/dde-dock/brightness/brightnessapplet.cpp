@@ -46,13 +46,13 @@ void BrightnessApplet::initUI()
     DFontSizeManager::instance()->bind(title, DFontSizeManager::T9, QFont::Medium);
     auto titleLayout = new QHBoxLayout(m_titleWidget);
     titleLayout->setSpacing(0);
-    titleLayout->setMargin(0);
+    titleLayout->setContentsMargins(0, 0, 0, 0);
     titleLayout->addSpacing(10);
     titleLayout->addWidget(title);
     titleLayout->addStretch();
 
     m_monitorsLayout = new QVBoxLayout;
-    m_monitorsLayout->setMargin(0);
+    m_monitorsLayout->setContentsMargins(0, 0, 0, 0);
     m_monitorsLayout->setSpacing(ITEM_SPACING);
     auto *widget = new QWidget;
     widget->setAttribute(Qt::WA_TranslucentBackground);
@@ -78,7 +78,7 @@ void BrightnessApplet::initUI()
 
     auto mainLayout = new QVBoxLayout(this);
     mainLayout->setSpacing(0);
-    mainLayout->setMargin(10);
+    mainLayout->setContentsMargins(10, 10, 10, 10);
     mainLayout->addWidget(m_titleWidget);
     mainLayout->addSpacing(5);
     mainLayout->addWidget(m_scrollArea);

@@ -17,32 +17,22 @@ file(GLOB_RECURSE SRCS
 )
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5Svg REQUIRED)
-find_package(Qt5DBus REQUIRED)
-find_package(DtkWidget REQUIRED)
-
-pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
-pkg_check_modules(QGSettings REQUIRED gsettings-qt)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Widgets Svg DBus)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget)
 
 add_definitions("${QT_DEFINITIONS} -DQT_PLUGIN")
 add_library(${PLUGIN_NAME} SHARED ${SRCS} resources/media.qrc)
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../)
 target_include_directories(${PLUGIN_NAME} PUBLIC
-    ${DtkWidget_INCLUDE_DIRS}
-    ${DFrameworkDBus_INCLUDE_DIRS}
-    ${QGSettings_INCLUDE_DIRS}
     ../../../interfaces
     ../widgets
     ../common
 )
 target_link_libraries(${PLUGIN_NAME} PRIVATE
-    ${DtkWidget_LIBRARIES}
-    ${Qt5DBus_LIBRARIES}
-    ${Qt5Widgets_LIBRARIES}
-    ${Qt5Svg_LIBRARIES}
-    ${DFrameworkDBus_LIBRARIES}
-    ${QGSettings_LIBRARIES}
+    Dtk${DTK_VERSION_MAJOR}::Widget
+    Qt${QT_VERSION_MAJOR}::DBus
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Svg
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)

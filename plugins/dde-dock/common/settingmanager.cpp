@@ -7,7 +7,6 @@
 
 #include <DConfig>
 
-#include <QGSettings>
 #include <QMetaMethod>
 #include <QMetaObject>
 

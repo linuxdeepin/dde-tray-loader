@@ -31,10 +31,11 @@ ConfigSetting::ConfigSetting(QObject *parent)
     , m_dontSetIpIfConflict(false)
     , m_showBrowserLink(false)
     , m_browserUrl("https://www.uniontech.com")
+    , m_nobindEthernetMacDefault(false)
 {
     QStringList keys;
     if (!dConfig)
-        dConfig = Dtk::Core::DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.network");
+        dConfig = Dtk::Core::DConfig::create("org.deepin.dde.network", "org.deepin.dde.network");
 
     if (dConfig && dConfig->isValid()) {
         connect(dConfig, &Dtk::Core::DConfig::valueChanged, this, &ConfigSetting::onValueChanged);
@@ -98,6 +99,8 @@ void ConfigSetting::onValueChanged(const QString &key)
     } else if (key == QString("browserUrl")) {
         m_browserUrl = dConfig->value(key).toString();
         emit browserUrlChanged(m_browserUrl);
+    } else if (key == "NobindEthernetMacDefault") {
+        m_nobindEthernetMacDefault = dConfig->value("NobindEthernetMacDefault").toBool();
     }
 }
 
@@ -195,4 +198,9 @@ bool ConfigSetting::showBrowserLink() const
 QString ConfigSetting::browserUrl() const
 {
     return m_browserUrl;
+}
+    
+bool ConfigSetting::nobindEthernetMacDefault() const
+{
+    return m_nobindEthernetMacDefault;
 }

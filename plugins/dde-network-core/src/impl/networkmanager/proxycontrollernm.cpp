@@ -3,9 +3,9 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "proxycontrollernm.h"
 
-const static QString networkService         = "com.deepin.daemon.Network";
-const static QString proxyChainsPath        = "/com/deepin/daemon/Network/ProxyChains";
-const static QString proxyChainsInterface   = "com.deepin.daemon.Network.ProxyChains";
+const static QString networkService         = "org.deepin.dde.Network1";
+const static QString proxyChainsPath        = "/org/deepin/dde/Network1/ProxyChains";
+const static QString proxyChainsInterface   = "org.deepin.dde.Network1.ProxyChains";
 
 using namespace dde::network;
 
@@ -56,7 +56,7 @@ void ProxyController_NM::initConnection()
 
 void ProxyController_NM::onPropertiesChanged(const QString &interface, const QVariantMap &values)
 {
-    if (interface != "com.deepin.daemon.Network.ProxyChains")
+    if (interface != "org.deepin.dde.Network1.ProxyChains")
         return;
 
     if (values.contains("Enable")) {

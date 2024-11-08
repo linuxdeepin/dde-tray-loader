@@ -19,12 +19,12 @@ else()
     ADD_DEFINITIONS(-DQM_FILES_DIR="/usr/share/deepin-service-manager/network-service/translations")
 endif()
 
-find_package(Qt5 COMPONENTS Core Widgets DBus Network REQUIRED)
-find_package(KF5NetworkManagerQt REQUIRED)
-find_package(DtkCore REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} COMPONENTS Core Widgets DBus Network REQUIRED)
+find_package(KF6NetworkManagerQt REQUIRED)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 file(GLOB TS_FILES "translations/*.ts")
-qt5_add_translation(QM_FILES ${TS_FILES})
+qt_add_translation(QM_FILES ${TS_FILES})
 add_custom_target(${BIN_NAME}_language ALL DEPENDS ${QM_FILES})
 
 pkg_check_modules(LibNM REQUIRED IMPORTED_TARGET libnm)
@@ -35,12 +35,11 @@ add_library(${BIN_NAME} MODULE
 )
 
 target_include_directories(${BIN_NAME} PUBLIC
-  Qt5::Core
-  Qt5::DBus
-  ${Qt5Network_INCLUDE_DIRS}
-  ${DFrameworkDBus_INCLUDE_DIRS}
-  ${KF5_QT_INCLUDE_DIRS}
-  ${DtkCore_INCLUDE_DIRS}
+  Qt${QT_VERSION_MAJOR}::Core
+  Qt${QT_VERSION_MAJOR}::DBus
+  Qt${QT_VERSION_MAJOR}::Network
+  KF6::NetworkManagerQt
+  Dtk${DTK_VERSION_MAJOR}::Core
   .
   system
   session
@@ -52,13 +51,12 @@ target_include_directories(${BIN_NAME} PUBLIC
 )
 
 target_link_libraries(${BIN_NAME} PRIVATE
-  Qt5::Core
-  Qt5::DBus
-  ${Qt5Network_LIBRARIES}
-  ${Qt5Widgets_LIBRARIES}
-  ${DFrameworkDBus_LIBRARIES}
-  ${KF5_QT_LIBRARIES}
-  ${DtkCore_LIBRARIES}
+  Qt${QT_VERSION_MAJOR}::Widgets
+  Qt${QT_VERSION_MAJOR}::Core
+  Qt${QT_VERSION_MAJOR}::DBus
+  Qt${QT_VERSION_MAJOR}::Network
+  KF6::NetworkManagerQt
+  Dtk${DTK_VERSION_MAJOR}::Core
 )
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")

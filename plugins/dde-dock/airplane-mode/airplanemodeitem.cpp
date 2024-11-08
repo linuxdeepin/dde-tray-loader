@@ -38,7 +38,7 @@ AirplaneModeItem::AirplaneModeItem(QWidget* parent)
 
     auto vLayout = new QVBoxLayout(this);
     vLayout->setSpacing(0);
-    vLayout->setMargin(0);
+    vLayout->setContentsMargins(0, 0, 0, 0);
     vLayout->addWidget(m_icon, 0, Qt::AlignCenter);
     m_icon->setFixedSize(Dock::DOCK_PLUGIN_ITEM_FIXED_SIZE);
     m_icon->setStateIconMapping({

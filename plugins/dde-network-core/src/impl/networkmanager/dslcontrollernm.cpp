@@ -81,6 +81,7 @@ void DSLController_NM::initConnection()
         for (NetworkManager::WiredDevice::Ptr wiredDevice : m_devices)
             connectionAppeared(wiredDevice, NetworkManager::listConnections(), path);
     });
+    connect(NetworkManager::settingsNotifier(), &NetworkManager::SettingsNotifier::connectionRemoved, this, &DSLController_NM::onRemoveConnection);
 }
 
 void DSLController_NM::initDeviceConnection(const NetworkManager::WiredDevice::Ptr &wiredDevice)
@@ -89,18 +90,7 @@ void DSLController_NM::initDeviceConnection(const NetworkManager::WiredDevice::P
         connectionAppeared(wiredDevice, wiredDevice->availableConnections(), uni);
     });
 
-    connect(wiredDevice.data(), &NetworkManager::WiredDevice::availableConnectionDisappeared, this, [ wiredDevice, this](const QString &uni) {
-        QList<DSLItem *>::iterator itItem = std::find_if(m_dslItems.begin(), m_dslItems.end(), [ uni ](DSLItem *item) {
-            return (item->connection()->path() == uni);
-        });
-
-        if (itItem != m_dslItems.end()) {
-            DSLItem *rmItem = *itItem;
-            m_dslItems.removeOne(rmItem);
-            Q_EMIT itemRemoved({rmItem});
-            delete rmItem;
-        }
-    });
+    connect(wiredDevice.data(), &NetworkManager::WiredDevice::availableConnectionDisappeared, this, &DSLController_NM::onRemoveConnection);
 
     // 无线网卡不管是否down，都显示，因为在开启飞行模式后，需要显示网卡的信息
     auto deviceCreateOrRemove = [ this ](const NetworkManager::WiredDevice::Ptr &device) {
@@ -204,14 +194,15 @@ DSLItem *DSLController_NM::addPppoeConnection(NetworkManager::WiredDevice::Ptr d
 
 void DSLController_NM::updateActiveConnectionInfo(NetworkManager::WiredDevice *wiredDevice)
 {
-    const NetworkManager::ActiveConnection::Ptr activeConnection = wiredDevice->activeConnection();
-    if (activeConnection.isNull() || activeConnection->connection()->settings()->connectionType() != NetworkManager::ConnectionSettings::ConnectionType::Pppoe)
-        return;
-
     // 将当前设备的所有连接状态变为未连接
     for (DSLItem *item : m_dslItems) {
         item->setConnectionStatus(ConnectionStatus::Deactivated);
         item->setActiveConnection(QString());
+    }
+    const NetworkManager::ActiveConnection::Ptr activeConnection = wiredDevice->activeConnection();
+    if (activeConnection.isNull() || activeConnection->connection()->settings()->connectionType() != NetworkManager::ConnectionSettings::ConnectionType::Pppoe) {
+        Q_EMIT activeConnectionChanged();
+        return;
     }
 
     // 查找当前对应状态的DSL的项，改变其连接状态
@@ -279,6 +270,20 @@ void DSLController_NM::onDeviceRemoved(const QString &uni)
 
     for (NetworkManager::WiredDevice::Ptr device : rmDevices)
         m_devices.removeAll(device);
+}
+
+void DSLController_NM::onRemoveConnection(const QString &connection)
+{
+    QList<DSLItem *>::iterator itItem = std::find_if(m_dslItems.begin(), m_dslItems.end(), [ connection ](DSLItem *item) {
+        return (item->connection()->path() == connection);
+    });
+
+    if (itItem != m_dslItems.end()) {
+        DSLItem *rmItem = *itItem;
+        m_dslItems.removeOne(rmItem);
+        Q_EMIT itemRemoved({rmItem});
+        delete rmItem;
+    }
 }
 
 void DSLController_NM::connectItem(DSLItem *item)

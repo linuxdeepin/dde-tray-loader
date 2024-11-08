@@ -6,8 +6,8 @@
 
 using namespace dde::network;
 
-const static QString networkService     = "com.deepin.daemon.Network";
-const static QString proxyChainsPath    = "/com/deepin/daemon/Network/ProxyChains";
+const static QString networkService     = "org.deepin.dde.Network1";
+const static QString proxyChainsPath    = "/org/deepin/dde/Network1/ProxyChains";
 
 ProxyController_Inter::ProxyController_Inter(QObject *parent)
     : ProxyController(parent)

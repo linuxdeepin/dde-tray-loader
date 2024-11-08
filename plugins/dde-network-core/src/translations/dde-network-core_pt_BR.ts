@@ -98,7 +98,7 @@
     </message>
     <message>
         <source>Prefix</source>
-        <translation type="unfinished"/>
+        <translation>Prefixo</translation>
     </message>
     <message>
         <source>Speed</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Prefix</source>
-        <translation type="unfinished"/>
+        <translation>Prefixo</translation>
     </message>
     <message>
         <source>Speed</source>

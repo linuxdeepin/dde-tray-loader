@@ -279,6 +279,11 @@ void WidgetPlugin::updateDockContainerState(PluginsItemInterface *itemInter, boo
     iter->message(msg.toJson());
 }
 
+void WidgetPlugin::onDockColorThemeChanged(uint32_t type)
+{
+    DGuiApplicationHelper::instance()->setPaletteType(static_cast<DGuiApplicationHelper::ColorType>(type));
+}
+
 void WidgetPlugin::onDockPositionChanged(uint32_t position)
 {
     qApp->setProperty(PROP_POSITION, position);
@@ -311,10 +316,7 @@ void WidgetPlugin::initConnections(Plugin::EmbedPlugin *plugin, PluginItem *plug
     if (!plugin)
         return;
 
-    connect(plugin, &Plugin::EmbedPlugin::dockColorThemeChanged, this, [](uint32_t type){
-        DGuiApplicationHelper::instance()->setPaletteType(static_cast<DGuiApplicationHelper::ColorType>(type));
-    }, Qt::UniqueConnection);
-
+    connect(plugin, &Plugin::EmbedPlugin::dockColorThemeChanged, this, &WidgetPlugin::onDockColorThemeChanged, Qt::UniqueConnection);
     connect(plugin, &Plugin::EmbedPlugin::dockPositionChanged, this, &WidgetPlugin::onDockPositionChanged, Qt::UniqueConnection);
     connect(plugin, &Plugin::EmbedPlugin::eventMessage, this, &WidgetPlugin::onDockEventMessageArrived, Qt::UniqueConnection);
 

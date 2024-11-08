@@ -10,18 +10,28 @@
 #include "netutils.h"
 #include "configsetting.h"
 
+#define SYSTEM_NETWORK_SERVICE "org.deepin.service.SystemNetwork"
+#define SYSTEM_NETWORK_PATH "/org/deepin/service/SystemNetwork"
+#define SYSTEM_NETWORK_INTERFACE "org.deepin.service.SystemNetwork"
+
 using namespace dde::network;
 
 ConnectivityHandler::ConnectivityHandler(QObject *parent)
     : QObject(parent)
     , m_connectivity(Connectivity::Full)
 {
-    initConnectivity();
     initConnection();
+    init();
 }
 
 ConnectivityHandler::~ConnectivityHandler()
 {
+}
+
+void ConnectivityHandler::init()
+{
+    int connectivity = getConnectivity();
+    onConnectivityChanged(connectivity);
 }
 
 Connectivity ConnectivityHandler::connectivity() const
@@ -29,21 +39,21 @@ Connectivity ConnectivityHandler::connectivity() const
     return m_connectivity;
 }
 
-void ConnectivityHandler::initConnectivity()
-{
-    QDBusInterface dbusInter("org.deepin.service.SystemNetwork", "/org/deepin/service/SystemNetwork", "org.deepin.service.SystemNetwork", QDBusConnection::systemBus());
-    m_connectivity = static_cast<Connectivity>(dbusInter.property("Connectivity").toInt());
-}
-
 void ConnectivityHandler::initConnection()
 {
-    QDBusConnection::systemBus().connect("org.deepin.service.SystemNetwork", "/org/deepin/service/SystemNetwork",
-                                         "org.deepin.service.SystemNetwork", "ConnectivityChanged", this, SLOT(onConnectivityChanged(int)));
+    QDBusConnection::systemBus().connect(SYSTEM_NETWORK_SERVICE, SYSTEM_NETWORK_PATH,
+                                         SYSTEM_NETWORK_INTERFACE, "ConnectivityChanged", this, SLOT(onConnectivityChanged(int)));
+}
+
+int ConnectivityHandler::getConnectivity()
+{
+    QDBusInterface dbusInter(SYSTEM_NETWORK_SERVICE, SYSTEM_NETWORK_PATH, SYSTEM_NETWORK_INTERFACE, QDBusConnection::systemBus());
+    return dbusInter.property("Connectivity").toInt();
 }
 
 void ConnectivityHandler::onConnectivityChanged(int connectivity)
 {
-    qDebug() << "connecviticy changed" << connectivity;
+    qCWarning(DNC) << "connecviticy changed" << connectivity;
     m_connectivity = static_cast<Connectivity>(connectivity);
     emit connectivityChanged(m_connectivity);
 }

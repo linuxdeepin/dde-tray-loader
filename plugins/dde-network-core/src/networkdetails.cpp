@@ -20,6 +20,7 @@ NetworkDetails::NetworkDetails(NetworkDetailRealize *realize, QObject *parent)
     : QObject(parent)
     , m_realize(realize)
 {
+    connect(m_realize, &NetworkDetailRealize::infoChanged, this, &NetworkDetails::infoChanged);
 }
 
 NetworkDetails::~NetworkDetails()

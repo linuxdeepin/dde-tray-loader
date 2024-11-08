@@ -25,7 +25,7 @@ DateTitleWidget::DateTitleWidget(QWidget *parent)
     auto font = m_dayofMonthLabel->font();
     font.setPointSize(80);
     font.setFamily("Noto Sans CJK SC");
-    font.setWeight(65);
+    font.setWeight(QFont::Thin);
     m_dayofMonthLabel->setFont(font);
 
     mainlayout->addLayout(leftlayout);

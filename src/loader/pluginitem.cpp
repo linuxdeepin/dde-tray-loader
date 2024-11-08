@@ -16,9 +16,8 @@ const static QString DockQuickPlugins = "Dock_Quick_Plugins";
 PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString &itemKey, QWidget *parent)
     : QWidget(parent)
     , m_pluginsItemInterface(pluginItemInterface)
-    , m_pluginsItemInterfacev2(dynamic_cast<PluginsItemInterfaceV2*>(pluginItemInterface))
     , m_itemKey(itemKey)
-    , m_menu(new QMenu(this))
+    , m_menu(new QMenu)
     , m_tooltipTimer(new QTimer(this))
     , m_tipsWidget(nullptr)
 {
@@ -147,7 +146,7 @@ void PluginItem::mouseReleaseEvent(QMouseEvent *e)
     QWidget::mouseReleaseEvent(e);
 }
 
-void PluginItem::enterEvent(QEvent *event)
+void PluginItem::enterEvent(QEnterEvent *event)
 {
     // panel popup existed, not show tooltip
     if (panelPopupExisted()) {
@@ -158,7 +157,6 @@ void PluginItem::enterEvent(QEvent *event)
         if (auto pluginPopup = Plugin::PluginPopup::get(toolTip->windowHandle())) {
             auto plugin = Plugin::EmbedPlugin::get(windowHandle());
             auto geometry = plugin->pluginPos();
-            auto e = dynamic_cast<QEnterEvent *>(event);
             const auto offset = QPoint(width() / 2, height() / 2);
             pluginPopup->setX(geometry.x() + offset.x());
             pluginPopup->setY(geometry.y() + offset.y());
@@ -248,7 +246,7 @@ void PluginItem::init()
 
     auto hLayout = new QHBoxLayout;
     hLayout->addWidget(centralWidget());
-    hLayout->setMargin(0);
+    hLayout->setContentsMargins(0, 0, 0, 0);
     hLayout->setSpacing(0);
     hLayout->setSizeConstraint(QLayout::SetFixedSize);
 
@@ -302,7 +300,6 @@ QWidget * PluginItem::itemTooltip(const QString &itemKey)
         }
         m_tipsWidget = new QWidget();
         QVBoxLayout *layout = new QVBoxLayout(m_tipsWidget);
-        layout->setMargin(0);
         // add content margin, tooltip popup do not need to set padding
         layout->setContentsMargins(8, 4, 8, 4);
         layout->addWidget(toolTip);
@@ -368,8 +365,8 @@ void PluginItem::closeToolTip()
         m_tooltipTimer->stop();
     }
 
-    if (m_tipsWidget && m_tipsWidget->windowHandle() && m_tipsWidget->windowHandle()->isVisible())
-        m_tipsWidget->windowHandle()->hide();
+    if (m_tipsWidget)
+        m_tipsWidget->hide();
 }
 
 void PluginItem::updatePluginContentMargin(int spacing)

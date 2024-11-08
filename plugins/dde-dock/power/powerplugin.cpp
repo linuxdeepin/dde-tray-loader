@@ -12,7 +12,6 @@
 #include <DDBusSender>
 #include <DConfig>
 
-#include <DConfig>
 #include <QIcon>
 
 #define PLUGIN_STATE_KEY "enable"
@@ -140,9 +139,9 @@ void PowerPlugin::invokedMenuItem(const QString &itemKey, const QString &menuId,
 
     if (menuId == "power") {
         DDBusSender()
-                .service("com.deepin.dde.ControlCenter")
-                .interface("com.deepin.dde.ControlCenter")
-                .path("/com/deepin/dde/ControlCenter")
+                .service("org.deepin.dde.ControlCenter1")
+                .interface("org.deepin.dde.ControlCenter1")
+                .path("/org/deepin/dde/ControlCenter1")
                 .method(QString("ShowModule"))
                 .arg(QString("power"))
                 .call();
@@ -199,7 +198,7 @@ void PowerPlugin::loadPlugin()
         m_proxyInter->requestSetAppletVisible(this, POWER_KEY, false);
     });
 
-    m_systemPowerInter = new SystemPowerInter("com.deepin.system.Power", "/com/deepin/system/Power", QDBusConnection::systemBus(), this);
+    m_systemPowerInter = new SystemPowerInter("org.deepin.dde.Power1", "/org/deepin/dde/Power1", QDBusConnection::systemBus(), this);
     m_systemPowerInter->setSync(true);
 
     connect(m_config, &Dtk::Core::DConfig::valueChanged, this, &PowerPlugin::onDConfigValueChanged);
@@ -257,7 +256,7 @@ void PowerPlugin::onDConfigValueChanged(const QString &key)
 
 void PowerPlugin::batteryTimeToDisplayData(const qulonglong &time, uint &hour, uint &minute)
 {
-    const QDateTime &timeTmp = QDateTime::fromTime_t(time).toUTC();
+    const QDateTime &timeTmp = QDateTime::fromSecsSinceEpoch(time).toUTC();
     hour = timeTmp.toString("hh").toUInt();
     minute = timeTmp.toString("mm").toUInt();
     uint sencond = timeTmp.toString("ss").toInt();

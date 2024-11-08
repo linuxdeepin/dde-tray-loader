@@ -18,8 +18,9 @@ WirelessCastingPlugin::WirelessCastingPlugin(QObject *parent)
     , m_messageCallback(nullptr)
 {
     QTranslator *translator = new QTranslator(this);
-    translator->load(QString("/usr/share/dock-wirelesscasting-plugin/translations/dock-wirelesscasting-plugin_%1.qm").arg(QLocale::system().name()));
-    QCoreApplication::installTranslator(translator);
+    if (translator->load(QString("/usr/share/dock-wirelesscasting-plugin/translations/dock-wirelesscasting-plugin_%1.qm").arg(QLocale::system().name()))) {
+        QCoreApplication::installTranslator(translator);
+    }
 }
 
 void WirelessCastingPlugin::init(PluginProxyInterface *proxyInter)

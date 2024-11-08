@@ -42,8 +42,9 @@ NetworkPlugin::NetworkPlugin(QObject *parent)
     , m_netLimited(false)
 {
     QTranslator *translator = new QTranslator(this);
-    translator->load(QString("/usr/share/dock-tray-network-plugin/translations/dock-network-plugin_%1").arg(QLocale().name()));
-    QCoreApplication::installTranslator(translator);
+    if (translator->load(QString("/usr/share/dock-tray-network-plugin/translations/dock-network-plugin_%1").arg(QLocale().name()))) {
+        QCoreApplication::installTranslator(translator);
+    }
 }
 
 NetworkPlugin::~NetworkPlugin()
@@ -123,7 +124,7 @@ void NetworkPlugin::init(PluginProxyInterface *proxyInter)
             });
     connect(m_netStatus, &NetStatus::hasDeviceChanged, this, &NetworkPlugin::refreshPluginItemsVisible);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &NetworkPlugin::updateIconColor);
-    QDBusConnection::sessionBus().connect("com.deepin.dde.lockFront", "/com/deepin/dde/lockFront", "com.deepin.dde.lockFront", "Visible", this, SLOT(updateLockScreenStatus(bool)));
+    QDBusConnection::sessionBus().connect("org.deepin.dde.LockFront1", "/org/deepin/dde/LockFront1", "org.deepin.dde.LockFront1", "Visible", this, SLOT(updateLockScreenStatus(bool)));
 }
 
 void NetworkPlugin::positionChanged(const Dock::Position position)
@@ -169,9 +170,9 @@ const QString NetworkPlugin::itemCommand(const QString &itemKey)
     Q_UNUSED(itemKey)
     if (m_netStatus->needShowControlCenter()) {
         return QString("dbus-send --print-reply "
-                       "--dest=com.deepin.dde.ControlCenter "
-                       "/com/deepin/dde/ControlCenter "
-                       "com.deepin.dde.ControlCenter.ShowModule "
+                       "--dest=org.deepin.dde.ControlCenter1 "
+                       "/org/deepin/dde/ControlCenter1 "
+                       "org.deepin.dde.ControlCenter1.ShowModule "
                        "\"string:network\"");
     }
 

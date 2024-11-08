@@ -28,7 +28,6 @@ CommonApplet::CommonApplet(QWidget *parent)
     m_title->setForegroundRole(QPalette::BrightText);
 
     QHBoxLayout *appletLayout = new QHBoxLayout;
-    appletLayout->setMargin(0);
     appletLayout->setSpacing(0);
     appletLayout->setContentsMargins(20, 0, 10, 0);
     appletLayout->addWidget(m_title);
@@ -40,7 +39,6 @@ CommonApplet::CommonApplet(QWidget *parent)
     settingLayout->setContentsMargins(10, 0, 10, 0);
     auto mainLayout = new QVBoxLayout;
     mainLayout->setSpacing(0);
-    mainLayout->setMargin(0);
     mainLayout->addLayout(appletLayout, 0);
     mainLayout->addSpacing(10);
     mainLayout->addLayout(settingLayout, 0);

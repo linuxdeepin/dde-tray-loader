@@ -16,11 +16,6 @@
 #include <QSettings>
 
 #define PLUGIN_STATE_KEY "enable"
-#define GSETTING_SHOW_SUSPEND "showSuspend"
-#define GSETTING_SHOW_HIBERNATE "showHibernate"
-#define GSETTING_SHOW_SHUTDOWN "showShutdown"
-#define GSETTING_SHOW_LOCK "showLock"
-#define GSETTING_SHOW_REBOOT "showReboot"
 
 const QString MENU_SHUTDOWN = "Shutdown";
 const QString MENU_UPDATE_SHUTDOWN = "UpdateAndShutdown";
@@ -48,10 +43,8 @@ ShutdownPlugin::ShutdownPlugin(QObject *parent)
     , m_pluginLoaded(false)
     , m_dockIcon(nullptr)
     , m_tipsLabel(new TipsWidget)
-    , m_powerManagerInter(new DBusPowerManager("com.deepin.daemon.PowerManager", "/com/deepin/daemon/PowerManager", QDBusConnection::systemBus(), this))
-    , m_gsettings(Utils::ModuleSettingsPtr("shutdown", QByteArray(), this))
-    , m_sessionShellGsettings(Utils::SettingsPtr("com.deepin.dde.session-shell", "/com/deepin/dde/session-shell/", this))
-    , m_dconfig(DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.power", QString(), this))
+    , m_powerManagerInter(new DBusPowerManager("org.deepin.daemon.PowerManager1", "/org/deepin/daemon/PowerManager1", QDBusConnection::systemBus(), this))
+    , m_dconfig(DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.shutdown", QString(), this))
     , m_lastoreDConfig(DConfig::create("org.deepin.lastore", "org.deepin.lastore", "", this))
 {
     m_tipsLabel->setVisible(false);
@@ -123,7 +116,7 @@ const QString ShutdownPlugin::itemCommand(const QString &itemKey)
 {
     Q_UNUSED(itemKey);
 
-    return QString("dbus-send --print-reply --dest=com.deepin.dde.shutdownFront /com/deepin/dde/shutdownFront com.deepin.dde.shutdownFront.Show");
+    return QString("dbus-send --print-reply --dest=org.deepin.dde.ShutdownFront1 /org/deepin/dde/ShutdownFront1 org.deepin.dde.ShutdownFront1.Show");
 }
 
 const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
@@ -147,6 +140,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
     QList<QVariant> items;
     items.reserve(6);
 
+#if 0 // v25逻辑已变，还未确定，暂时注释掉
     // 从配置文件中读取安装状态，第一位表示安装状态，1： 安装已就绪，0：安装未就绪
     if (m_lastoreDConfig && m_lastoreDConfig->isValid()) {
         bool ok;
@@ -169,17 +163,17 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
             }
         }
     }
+#endif
 
     QMap<QString, QVariant> shutdown;
-    const bool showShutDown = (!m_gsettings || (m_gsettings->keys().contains(GSETTING_SHOW_SHUTDOWN) && m_gsettings->get(GSETTING_SHOW_SHUTDOWN).toBool()));
-    if (showShutDown && contextMenu.contains(MENU_SHUTDOWN)) {
+    if (contextMenu.contains(MENU_SHUTDOWN)) {
         shutdown["itemId"] = "Shutdown";
         shutdown["itemText"] = tr("Shut down");
         shutdown["isActive"] = true;
         items.push_back(shutdown);
     }
 
-    if (showShutDown && contextMenu.contains(MENU_UPDATE_SHUTDOWN)) {
+    if (contextMenu.contains(MENU_UPDATE_SHUTDOWN)) {
         QMap<QString, QVariant> map;
         map["itemId"] = "UpdateAndShutdown";
         map["itemText"] = tr("Update and Shut Down");
@@ -188,8 +182,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
         items.push_back(map);
     }
 
-    const bool showReboot = (!m_gsettings || (m_gsettings->keys().contains(GSETTING_SHOW_REBOOT) && m_gsettings->get(GSETTING_SHOW_REBOOT).toBool()));
-    if (showReboot && contextMenu.contains(MENU_REBOOT)) {
+    if (contextMenu.contains(MENU_REBOOT)) {
         QMap<QString, QVariant> reboot;
         reboot["itemId"] = "Restart";
         reboot["itemText"] = tr("Reboot");
@@ -197,7 +190,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
         items.push_back(reboot);
     }
 
-    if (showReboot && contextMenu.contains(MENU_UPDATE_REBOOT)) {
+    if (contextMenu.contains(MENU_UPDATE_REBOOT)) {
         QMap<QString, QVariant> map;
         map["itemId"] = "UpdateAndReboot";
         map["itemText"] = tr("Update and Reboot");
@@ -215,9 +208,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
     ;
     if (can_sleep) {
         QMap<QString, QVariant> suspend;
-        if ((!m_gsettings || (m_gsettings->keys().contains(GSETTING_SHOW_SUSPEND)
-        && m_gsettings->get(GSETTING_SHOW_SUSPEND).toBool()))
-        && contextMenu.contains(MENU_SUSPEND)) {
+        if (contextMenu.contains(MENU_SUSPEND)) {
             suspend["itemId"] = "Suspend";
             suspend["itemText"] = tr("Suspend");
             suspend["isActive"] = true;
@@ -230,8 +221,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
 
     if (can_hibernate) {
         QMap<QString, QVariant> hibernate;
-        if ((!m_gsettings || (m_gsettings->keys().contains(GSETTING_SHOW_HIBERNATE) && m_gsettings->get(GSETTING_SHOW_HIBERNATE).toBool()))
-        && contextMenu.contains(MENU_HIBERNATE)) {
+        if (contextMenu.contains(MENU_HIBERNATE)) {
             hibernate["itemId"] = "Hibernate";
             hibernate["itemText"] = tr("Hibernate");
             hibernate["isActive"] = true;
@@ -242,8 +232,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
 #endif
 
     QMap<QString, QVariant> lock;
-    if ((!m_gsettings || (m_gsettings->keys().contains(GSETTING_SHOW_LOCK) && m_gsettings->get(GSETTING_SHOW_LOCK).toBool()))
-    && contextMenu.contains(MENU_LOCK)) {
+    if (contextMenu.contains(MENU_LOCK)) {
         lock["itemId"] = "Lock";
         lock["itemText"] = tr("Lock");
         lock["isActive"] = true;
@@ -265,11 +254,11 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
             OnDemand,
             Disabled
         } switchUserConfig = OnDemand;
-
+#if 0 // TODO 等待v25 dde-session-shell重构添加配置为dconfig
         if (m_sessionShellGsettings && m_sessionShellGsettings->keys().contains("switchuser")) {
             switchUserConfig = SwitchUserConfig(m_sessionShellGsettings->get("switchuser").toInt());
         }
-
+#endif
         // 和登录锁屏界面的逻辑保持一致
         if ((AlwaysShow == switchUserConfig ||
                  (OnDemand == switchUserConfig &&
@@ -313,15 +302,15 @@ void ShutdownPlugin::invokedMenuItem(const QString &itemKey, const QString &menu
 
     if (menuId == "power") {
         DDBusSender()
-        .service("com.deepin.dde.ControlCenter")
-        .interface("com.deepin.dde.ControlCenter")
-        .path("/com/deepin/dde/ControlCenter")
+        .service("org.deepin.dde.ControlCenter1")
+        .interface("org.deepin.dde.ControlCenter1")
+        .path("/org/deepin/dde/ControlCenter1")
         .method(QString("ShowModule"))
         .arg(QString("power"))
         .call();
     } else if (menuId == "Lock") {
         if (QFile::exists(ICBC_CONF_FILE)) {
-            QDBusMessage send = QDBusMessage::createMethodCall("com.deepin.dde.lockFront", "/com/deepin/dde/lockFront", "com.deepin.dde.lockFront", "SwitchTTYAndShow");
+            QDBusMessage send = QDBusMessage::createMethodCall("org.deepin.dde.LockFront1", "/org/deepin/dde/LockFront1", "org.deepin.dde.LockFront1", "SwitchTTYAndShow");
             QDBusConnection conn = QDBusConnection::connectToBus("unix:path=/run/user/1000/bus", "unix:path=/run/user/1000/bus");
             QDBusMessage reply = conn.call(send);
 #ifdef QT_DEBUG
@@ -329,13 +318,13 @@ void ShutdownPlugin::invokedMenuItem(const QString &itemKey, const QString &menu
 #endif
 
         } else {
-            QProcess::execute("bash -c \"originmap=$(setxkbmap -query | grep option | awk -F ' ' '{print $2}');/usr/bin/setxkbmap -option grab:break_actions&&/usr/bin/xdotool key XF86Ungrab&&dbus-send --print-reply --dest=com.deepin.dde.lockFront /com/deepin/dde/lockFront com.deepin.dde.lockFront.Show&&setxkbmap -option $originmap\"");
+            QProcess::execute("bash -c \"originmap=$(setxkbmap -query | grep option | awk -F ' ' '{print $2}');/usr/bin/setxkbmap -option grab:break_actions&&/usr/bin/xdotool key XF86Ungrab&&dbus-send --print-reply --dest=org.deepin.dde.LockFront1 /org/deepin/dde/LockFront1 org.deepin.dde.LockFront1.Show&&setxkbmap -option $originmap\"");
         }
     } else
         DDBusSender()
-        .service("com.deepin.dde.shutdownFront")
-        .interface("com.deepin.dde.shutdownFront")
-        .path("/com/deepin/dde/shutdownFront")
+        .service("org.deepin.dde.ShutdownFront1")
+        .interface("org.deepin.dde.ShutdownFront1")
+        .path("/org/deepin/dde/ShutdownFront1")
         .method(QString(menuId))
         .call();
 }

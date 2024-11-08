@@ -40,7 +40,7 @@ signals:
 protected:
     void mousePressEvent(QMouseEvent *e) override;
     void mouseReleaseEvent(QMouseEvent *e) override;
-    void enterEvent(QEvent *event) override;
+    void enterEvent(QEnterEvent *event) override;
     void leaveEvent(QEvent *event) override;
     void moveEvent(QMoveEvent *e) override;
 
@@ -69,7 +69,6 @@ protected:
 
 private:
     PluginsItemInterface *m_pluginsItemInterface;
-    PluginsItemInterfaceV2 *m_pluginsItemInterfacev2;
     QTimer* m_tooltipTimer;
     QPointer<QWidget> m_tipsWidget;
 

@@ -8,6 +8,8 @@
 #include "networkmanagerprocesser.h"
 #include "accesspointproxynm.h"
 #include "configsetting.h"
+#include "ipmanager.h"
+#include "nmnetworkmanager.h"
 
 #include <networkmanagerqt/wirelessdevice.h>
 #include <networkmanagerqt/wireddevice.h>
@@ -17,7 +19,6 @@
 #include <NetworkManagerQt/WirelessSecuritySetting>
 #include <NetworkManagerQt/WirelessSetting>
 #include <NetworkManagerQt/Settings>
-#include <NetworkManagerQt/IpConfig>
 
 #include <wireddevice.h>
 #include <wirelessdevice.h>
@@ -27,13 +28,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <libudev.h>
-
+#define WpaSae SAE
 using namespace dde::network;
 
-using NetworkInter = com::deepin::daemon::Network;
-
-const static QString networkService = "com.deepin.daemon.Network";
-const static QString networkPath = "/com/deepin/daemon/Network";
+const static QString networkService = "org.deepin.dde.Network1";
+const static QString networkPath = "/org/deepin/dde/Network1";
 
 #define MANUAL 1
 
@@ -80,12 +79,13 @@ private:
     AccessPoints *m_accessPoint;
 };
 
-#define SYS_NETWORK_INTER "com.deepin.system.Network"
-#define SYS_NETWORK_PATH "/com/deepin/system/Network"
+#define SYS_NETWORK_INTER "org.deepin.dde.Network1"
+#define SYS_NETWORK_PATH "/org/deepin/dde/Network1"
 
 DeviceManagerRealize::DeviceManagerRealize(NetworkManager::Device::Ptr device, QObject *parent)
     : NetworkDeviceRealize(parent)
     , m_device(device)
+    , m_ipv4Config(new IpManager(m_device))
     , m_isUsbDevice(false)
     , m_isEnabeld(true)
 {
@@ -103,7 +103,7 @@ DeviceManagerRealize::DeviceManagerRealize(NetworkManager::Device::Ptr device, Q
         QStringList deviceConnectionPath;
         NetworkManager::Connection::List connections = m_device->availableConnections();
         // 拔掉网线后，仍然要显示有线项
-        if (m_device->type() == NetworkManager::Device::Type::Ethernet && connections.isEmpty() && deviceStatus() == DeviceStatus::Unavailable) {
+        if (m_device->type() == NetworkManager::Device::Type::Ethernet && connections.isEmpty() && !m_device.staticCast<NetworkManager::WiredDevice>()->carrier()) {
             updateWiredConnections();
         } else {
             for (NetworkManager::Connection::Ptr connection : connections) {
@@ -132,8 +132,6 @@ DeviceManagerRealize::DeviceManagerRealize(NetworkManager::Device::Ptr device, Q
         }
         // 获取连接的状态
         onActiveConnectionChanged();
-        QDBusInterface dbus("org.freedesktop.NetworkManager", m_device->uni(), "org.freedesktop.NetworkManager.Device", QDBusConnection::systemBus());
-        resetConfig(dbus.property("Ip4Config").value<QDBusObjectPath>());
     }, Qt::QueuedConnection);
 }
 
@@ -159,11 +157,10 @@ void DeviceManagerRealize::initConnection()
     connect(m_device.data(), &NetworkManager::Device::stateChanged, this, &DeviceManagerRealize::onDeviceStateChanged);
     connect(m_device.data(), &NetworkManager::Device::ipV4AddressChanged, this, &DeviceManagerRealize::ipV4Changed);
     connect(m_device.data(), &NetworkManager::Device::dhcp4ConfigChanged, this, &DeviceManagerRealize::ipV4Changed);
+    connect(m_ipv4Config.data(), &IpManager::ipChanged, this, &DeviceManagerRealize::ipV4Changed);
     QDBusConnection::systemBus().connect(SYS_NETWORK_INTER, SYS_NETWORK_PATH, SYS_NETWORK_INTER, "DeviceEnabled", this, SLOT(onDeviceEnabledChanged(QDBusObjectPath, bool)));
     connect(NetworkManager::settingsNotifier(), &NetworkManager::SettingsNotifier::connectionRemoved, this, &DeviceManagerRealize::removeConnection);
     connect(NetworkManager::settingsNotifier(), &NetworkManager::SettingsNotifier::connectionAdded, this, &DeviceManagerRealize::onConnectionAdded);
-    QDBusConnection::systemBus().connect("org.freedesktop.NetworkManager", m_device->uni(), "org.freedesktop.DBus.Properties", "PropertiesChanged",
-                                         this, SLOT(onDevicePropertiesChanged(const QString &, const QVariantMap &, const QStringList &)));
 }
 
 void DeviceManagerRealize::initUsbInfo()
@@ -194,12 +191,6 @@ void DeviceManagerRealize::initEnabeld()
     reply.waitForFinished();
     QDBusPendingReply<bool> replyResult = reply.reply();
     m_isEnabeld = replyResult.argumentAt(0).toBool();
-}
-
-void DeviceManagerRealize::resetConfig(const QDBusObjectPath &ipv4ConfigPath)
-{
-    m_ipv4Config.reset(new IpConfig(m_device->ipV4Config(), ipv4ConfigPath.path()));
-    connect(m_ipv4Config.data(), &IpConfig::ipChanged, this, &DeviceManagerRealize::ipV4Changed);
 }
 
 DeviceManagerRealize::~DeviceManagerRealize()
@@ -266,6 +257,15 @@ const QStringList DeviceManagerRealize::ipv4()
     if (!device())
         return QStringList();
 
+    if (m_ipv4Config) {
+        NetworkManager::IpAddresses addresses = m_ipv4Config->ipAddresses();
+        QStringList addres;
+        for (NetworkManager::IpAddress addr : addresses) {
+            addres << addr.ip().toString();
+        }
+
+        return addres;
+    }
     NetworkManager::IpAddresses ipv4AddrList = m_device->ipV4Config().addresses();
     QStringList ipv4s;
     for (const NetworkManager::IpAddress &ipAddr : ipv4AddrList)
@@ -287,11 +287,6 @@ const QStringList DeviceManagerRealize::ipv6()
     return ipv6s;
 }
 
-QJsonObject DeviceManagerRealize::activeConnectionInfo() const
-{
-    return QJsonObject();
-}
-
 void DeviceManagerRealize::setEnabled(bool enabled)
 {
     bool currentEnabled = isEnabled();
@@ -302,9 +297,6 @@ void DeviceManagerRealize::setEnabled(bool enabled)
     QDBusInterface dbusInter(SYS_NETWORK_INTER, SYS_NETWORK_PATH, SYS_NETWORK_INTER, QDBusConnection::systemBus());
     QDBusReply<QDBusObjectPath> reply = dbusInter.call("EnableDevice", m_device->uni(), enabled);
     deviceEnabledAction(reply, enabled);
-    if (enabled) {
-        m_device->setAutoconnect(true);
-    }
 }
 
 void DeviceManagerRealize::disconnectNetwork()
@@ -361,6 +353,13 @@ void DeviceManagerRealize::onDeviceEnabledChanged(QDBusObjectPath path, bool ena
 void DeviceManagerRealize::onConnectionAdded(const QString &connectionUni)
 {
     NetworkManager::Connection::List connections = m_device->availableConnections();
+    // 在没有插入网线的情况下，在新增连接的时候，m_device->availableConnections()中尚未添加当前的连接，
+    // 因此只能从NetworkManager::listConnections()中读取所有的连接，然后再依次查找
+    NetworkManager::Connection::List allConnections = NetworkManager::listConnections();
+    for (NetworkManager::Connection::Ptr connection : allConnections) {
+        if (!connections.contains(connection))
+            connections << connection;
+    }
     NetworkManager::Connection::List::iterator itConnection = std::find_if(connections.begin(), connections.end(), [ connectionUni ](NetworkManager::Connection::Ptr connection) {
         return connection->path() == connectionUni;
     });
@@ -374,19 +373,6 @@ void DeviceManagerRealize::onConnectionAdded(const QString &connectionUni)
 void DeviceManagerRealize::onDeviceStateChanged()
 {
     setDeviceStatus(deviceStatus());
-}
-
-void DeviceManagerRealize::onDevicePropertiesChanged(const QString &interfaceName, const QVariantMap &changedProperties, const QStringList &invalidatedProperties)
-{
-    Q_UNUSED(invalidatedProperties);
-
-    if (!interfaceName.startsWith("org.freedesktop.NetworkManager.Device"))
-        return;
-
-    if (changedProperties.contains("Ip4Config")) {
-        QDBusObjectPath ipv4ConfigPath = changedProperties.value("Ip4Config").value<QDBusObjectPath>();
-        resetConfig(ipv4ConfigPath);
-    }
 }
 
 static QJsonObject createJson(NetworkManager::Device::Ptr device, NetworkManager::Connection::Ptr connection)
@@ -458,7 +444,16 @@ QList<WiredConnection *> WiredDeviceManagerRealize::wiredItems() const
 
 void WiredDeviceManagerRealize::addConnection(const NetworkManager::Connection::Ptr &connection)
 {
-    if (connection->settings()->connectionType() != NetworkManager::ConnectionSettings::ConnectionType::Wired)
+    QString interfaceName = connection->settings()->interfaceName();
+    if (!interfaceName.isEmpty() && interfaceName != m_device->interfaceName())
+        return;
+
+    if (connection->uuid().isEmpty() || connection->settings()->connectionType() != NetworkManager::ConnectionSettings::ConnectionType::Wired)
+        return;
+
+    NetworkManager::WiredSetting::Ptr settings = connection->settings()->setting(NetworkManager::Setting::Wired).staticCast<NetworkManager::WiredSetting>();
+    // 如果当前连接的MAC地址不为空且连接的MAC地址不等于当前设备的MAC地址，则认为不是当前的连接，跳过
+    if (settings.isNull() || (!settings->macAddress().isEmpty() && m_device->permanentHardwareAddress().compare(settings->macAddress().toHex(':'), Qt::CaseInsensitive) != 0))
         return;
 
     QList<WiredConnection *>::iterator itItem = std::find_if(m_wiredConnections.begin(), m_wiredConnections.end(), [ connection ](WiredConnection *item) {
@@ -651,7 +646,7 @@ NetworkManager::WirelessSecuritySetting::KeyMgmt WirelessDeviceManagerRealize::g
     }
 
     if (wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE)) {
-        keyMgmt = NetworkManager::WirelessSecuritySetting::KeyMgmt::SAE;
+        keyMgmt = NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaSae;
     }
 
     if (wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtPsk) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtPsk)) {
@@ -681,7 +676,7 @@ bool WirelessDeviceManagerRealize::checkKeyMgmt(const NetworkManager::AccessPoin
     }
 
     if ((wpaFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE) || rsnFlags.testFlag(NetworkManager::AccessPoint::WpaFlag::KeyMgmtSAE))
-        && keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::SAE) {
+        && keyMgmt == NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaSae) {
         return true;
     }
 
@@ -892,7 +887,11 @@ AccessPoints *WirelessDeviceManagerRealize::activeAccessPoints() const
 
 void WirelessDeviceManagerRealize::addConnection(const NetworkManager::Connection::Ptr &connection)
 {
-    if (connection->settings()->connectionType() != NetworkManager::ConnectionSettings::ConnectionType::Wireless)
+    QString interfaceName = connection->settings()->interfaceName();
+    if (!interfaceName.isEmpty() && interfaceName != m_device->interfaceName())
+        return;
+
+    if (connection->uuid().isEmpty() || connection->settings()->connectionType() != NetworkManager::ConnectionSettings::ConnectionType::Wireless)
         return;
 
     // 获取无线连接的设置
@@ -1215,54 +1214,4 @@ void WirelessDeviceManagerRealize::onInterfaceFlagsChanged()
     m_available = available;
     setDeviceStatus(deviceStatus());
     emit availableChanged(m_available);
-}
-
-// IP配置
-IpConfig::IpConfig(NetworkManager::IpConfig config, const QString &uni, QObject *parent)
-    : QObject (parent)
-{
-    qRegisterMetaType<QList<QVariantMap>>("QList<QVariantMap>");
-    qDBusRegisterMetaType<QList<QVariantMap>>();
-    if (!uni.isEmpty() && uni != "/") {
-        QDBusConnection::systemBus().connect("org.freedesktop.NetworkManager", uni, "org.freedesktop.DBus.Properties",
-                                              "PropertiesChanged", this, SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
-        NetworkManager::IpAddresses addresses = config.addresses();
-        for (NetworkManager::IpAddress addr: addresses) {
-            m_addresses << addr.ip().toString();
-        }
-    }
-}
-
-void IpConfig::onPropertiesChanged(const QString &interfaceName, const QVariantMap &changedProperties, const QStringList &invalidatedProperties)
-{
-    Q_UNUSED(invalidatedProperties);
-
-    if (interfaceName != "org.freedesktop.NetworkManager.IP4Config")
-        return;
-
-    if (changedProperties.contains("AddressData")) {
-        QStringList addresses;
-        QList<QVariantMap> addressDatas = qdbus_cast<QList<QVariantMap>>(changedProperties.value("AddressData").value<QDBusArgument>());
-        for (QVariantMap addressData : addressDatas) {
-            addresses << addressData.value("address").toString();
-        }
-        if (addresses.size() != m_addresses.size()) {
-            emit ipChanged();
-        } else {
-            bool changed = false;
-            for (const QString &address : addresses) {
-                if (m_addresses.contains(address))
-                    continue;
-
-                changed = true;
-                break;
-            }
-
-            if (changed) {
-                // 如果有IP不一致，则认为IP发生了变化，发送IP变化的信号
-                m_addresses = addresses;
-                emit ipChanged();
-            }
-        }
-    }
 }

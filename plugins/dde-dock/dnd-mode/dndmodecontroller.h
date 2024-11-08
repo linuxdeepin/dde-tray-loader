@@ -6,16 +6,16 @@
 #define DNDMODECONTROLLER_H
 
 #include <QObject>
-#include <QGSettings>
 #include <QVariant>
 
 #include <DSingleton>
+#include <DConfig>
 
-#include <com_deepin_dde_notification.h>
+#include "notification1interface.h"
 
 #define KEY_DNDMODE         0
 
-using NotifyInter = com::deepin::dde::Notification;
+using NotifyInter = org::deepin::dde::Notification1;
 
 class DndModeController : public QObject, public Dtk::Core::DSingleton<DndModeController>
 {
@@ -40,25 +40,21 @@ Q_SIGNALS:
 
 private:
     DndModeController()
-        : m_gsetting(nullptr)
-        , m_notifyInter(new NotifyInter("com.deepin.dde.Notification", "/com/deepin/dde/Notification", QDBusConnection::sessionBus(), this))
+        : m_dConfig(Dtk::Core::DConfig::create("org.deepin.dde.shell", "org.deepin.dde.shell.notification", QString(), this))
+        , m_notifyInter(new NotifyInter("org.deepin.dde.Notification1", "/org/deepin/dde/Notification1", QDBusConnection::sessionBus(), this))
         , m_dndModeEnabled(false)
     {
-        if (!QGSettings::isSchemaInstalled("com.deepin.dde.notifications")) {
-            return;
-        }
-        m_gsetting = new QGSettings("com.deepin.dde.notifications", QByteArray(), this);
-
-        if (!m_gsetting) {
+        if (!m_dConfig) {
+            qWarning() << "DndModeController: dConfig is null";
             return;
         }
 
         // 使用NotifyInter获取水dnd mode的值是异步方式,用gsetting获取和监听比较方便
-        m_dndModeEnabled = m_gsetting->keys().contains("dndmode", Qt::CaseSensitivity::CaseInsensitive) ? m_gsetting->get("dndmode").toBool() : false;
+        m_dndModeEnabled = m_dConfig->value("dndMode", false).toBool();
 
-        connect(m_gsetting, &QGSettings::changed, this, [this] (const QString &key) {
-            if (key == "dndmode") {
-                m_dndModeEnabled =  m_gsetting->get("dndmode").toBool();
+        connect(m_dConfig, &Dtk::Core::DConfig::valueChanged, this, [this] (const QString &key) {
+            if (key == "dndMode") {
+                m_dndModeEnabled =  m_dConfig->value("dndMode").toBool();
                 Q_EMIT dndModeChanged(m_dndModeEnabled);
             }
         });
@@ -67,7 +63,7 @@ private:
     ~DndModeController() {}
 
 private:
-    QGSettings *m_gsetting;
+    Dtk::Core::DConfig *m_dConfig = nullptr;
     NotifyInter *m_notifyInter;
     bool m_dndModeEnabled;
 };

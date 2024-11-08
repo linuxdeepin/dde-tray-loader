@@ -7,8 +7,8 @@
 
 #include <QObject>
 #include <QDBusMessage>
+#include <QDBusObjectPath>
 
-class QDBusObjectPath;
 class QDBusVariant;
 namespace Dtk {
 namespace Core {

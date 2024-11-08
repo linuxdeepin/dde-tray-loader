@@ -5,7 +5,8 @@
 #ifndef BLUETOOTHAPPLET_H
 #define BLUETOOTHAPPLET_H
 
-#include <com_deepin_daemon_airplanemode.h>
+#include "airplanemode1interface.h"
+
 #include <dtkwidget_global.h>
 
 #include <QScrollArea>
@@ -30,7 +31,7 @@ DWIDGET_END_NAMESPACE
 
 DWIDGET_USE_NAMESPACE
 
-using DBusAirplaneMode = com::deepin::daemon::AirplaneMode;
+using DBusAirplaneMode = org::deepin::dde::AirplaneMode1;
 
 class SettingLabel : public QWidget
 {

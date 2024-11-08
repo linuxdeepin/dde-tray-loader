@@ -257,7 +257,7 @@ public:
     }
 
 protected:
-    void enterEvent(QEvent *event) override
+    void enterEvent(QEnterEvent *event) override
     {
         QPushButton::enterEvent(event);
         m_enter = true;

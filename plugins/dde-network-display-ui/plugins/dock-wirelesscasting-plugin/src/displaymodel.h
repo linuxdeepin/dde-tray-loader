@@ -5,11 +5,11 @@
 #ifndef DISPLAYMODEL_H
 #define DISPLAYMODEL_H
 
-#include <com_deepin_daemon_display.h>
+#include "display1interface.h"
 
 #include <QObject>
 
-using namespace com::deepin::daemon;
+using DisplayInter = org::deepin::dde::Display1;
 
 class DisplayModel : public QObject
 {
@@ -40,7 +40,7 @@ Q_SIGNALS:
 protected:
 
 private:
-    Display *m_displayInter;
+    DisplayInter *m_displayInter;
     uchar m_displayMode;
     QString m_primaryScreen;
     QStringList m_monitors;

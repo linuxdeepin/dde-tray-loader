@@ -10,13 +10,13 @@
 #include <DSingleton>
 #include <DConfig>
 
-#include <com_deepin_daemon_audio.h>
-#include <com_deepin_daemon_audio_sink.h>
+#include "audio1interface.h"
+#include "audio1sinkinterface.h"
 
 DCORE_USE_NAMESPACE
 
-using DBusAudio = com::deepin::daemon::Audio;
-using DBusSink = com::deepin::daemon::audio::Sink;
+using DBusAudio = org::deepin::dde::Audio1;
+using DBusSink = org::deepin::dde::audio1::Sink;
 
 class SoundController final : public QObject, public Dtk::Core::DSingleton<SoundController>
 {

@@ -5,8 +5,8 @@
 #include "airplanemodecontroller.h"
 
 AirplaneModeController::AirplaneModeController()
-    :m_airplaneModeInter(new DBusAirplaneMode("com.deepin.daemon.AirplaneMode",
-                                               "/com/deepin/daemon/AirplaneMode",
+    :m_airplaneModeInter(new DBusAirplaneMode("org.deepin.dde.AirplaneMode1",
+                                               "/org/deepin/dde/AirplaneMode1",
                                                QDBusConnection::systemBus(),
                                                this))
     , m_login1Manager(new Login1Manager("org.freedesktop.login1",

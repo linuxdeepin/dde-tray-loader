@@ -19,34 +19,51 @@ file(GLOB_RECURSE SRCS
 )
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5Svg REQUIRED)
-find_package(Qt5DBus REQUIRED)
-find_package(DtkWidget REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Core Widgets Svg DBus)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget Tools)
 
 pkg_check_modules(XCB_EWMH REQUIRED xcb-ewmh x11 xcursor)
-pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
-pkg_check_modules(QGSettings REQUIRED gsettings-qt)
+
+dtk_add_dbus_interface(
+    DBUS_INTERFACES
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dbus/xml/org.deepin.dde.Bluetooth1.xml
+    bluetooth1interface
+)
+
+dtk_add_dbus_interface(
+    DBUS_INTERFACES
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dbus/xml/org.deepin.dde.Network1.xml
+    network1interface
+)
+
+dtk_add_dbus_interface(
+    DBUS_INTERFACES
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dbus/xml/org.deepin.dde.AirplaneMode1.xml
+    airplanemode1interface
+)
+
+dtk_add_dbus_interface(
+    DBUS_INTERFACES
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dbus/xml/org.freedesktop.Login1.xml
+    login1interface
+)
 
 add_definitions("${QT_DEFINITIONS} -DQT_PLUGIN")
-add_library(${PLUGIN_NAME} SHARED ${SRCS} resources/airplane_mode.qrc)
+add_library(${PLUGIN_NAME} SHARED ${SRCS} ${DBUS_INTERFACES} resources/airplane_mode.qrc)
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../)
-target_include_directories(${PLUGIN_NAME} PUBLIC ${DtkWidget_INCLUDE_DIRS}
-  ${DFrameworkDBus_INCLUDE_DIRS}
-  ${QGSettings_INCLUDE_DIRS}
-  ../../../interfaces
-  ../widgets
-  ../util
-  ../common
+target_include_directories(${PLUGIN_NAME} PUBLIC
+    ../../../interfaces
+    ../widgets
+    ../util
+    ../common
 )
 target_link_libraries(${PLUGIN_NAME} PRIVATE
-  ${XCB_EWMH_LIBRARIES}
-  ${DtkWidget_LIBRARIES}
-  ${DFrameworkDBus_LIBRARIES}
-  ${QGSettings_LIBRARIES}
-  ${Qt5DBus_LIBRARIES}
-  ${Qt5Widgets_LIBRARIES}
-  ${Qt5Svg_LIBRARIES}
+    ${XCB_EWMH_LIBRARIES}
+    Dtk${DTK_VERSION_MAJOR}::Widget
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::DBus
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Svg
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-trays)

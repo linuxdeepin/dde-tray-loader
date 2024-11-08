@@ -10,15 +10,14 @@
 #include <QMenu>
 #include <QtDBus/QtDBus>
 
-#include <com_deepin_daemon_inputdevice_keyboard.h>
+#include "inputdevice1keyboardinterface.h"
 
-using Keyboard = com::deepin::daemon::inputdevice::Keyboard;
-class QGSettings;
+using Keyboard = org::deepin::dde::inputdevice1::Keyboard;
 
 class DBusAdaptors : public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "com.deepin.dde.Keyboard")
+    Q_CLASSINFO("D-Bus Interface", "org.deepin.dde.Keyboard1")
 //    Q_CLASSINFO("D-Bus Introspection", ""
 //                "  <interface name=\"com.deepin.dde.Keyboard\">\n"
 //                "    <property access=\"read\" type=\"s\" name=\"layout\"/>\n"
@@ -72,8 +71,6 @@ private:
     bool m_fcitxRunning;
     FcitxInputMethodProxy *m_inputmethod;
     QDBusServiceWatcher *m_fcitxWatcher;
-    QGSettings *m_keybingEnabled;
-    QGSettings *m_dccSettings;
     QMenu *m_menu;
     QAction *m_addLayoutAction;
 
@@ -81,7 +78,6 @@ private:
     QString m_currentLayout;
     QStringList m_userLayoutList;
     KeyboardLayoutList m_allLayoutList;
-    const QGSettings *m_gsettings;
 };
 
 #endif

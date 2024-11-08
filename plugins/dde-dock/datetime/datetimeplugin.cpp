@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "datetimeplugin.h"
-#include "tipswidget.h"
 #include "utils.h"
 #include "plugins-logging-category.h"
 #include "regionFormat.h"
@@ -12,9 +11,6 @@
 #include <DConfig>
 
 #include <QDebug>
-#include <QDBusConnectionInterface>
-
-#include <unistd.h>
 
 Q_LOGGING_CATEGORY(DOCK_DATETIME, "org.deepin.dde.dock.datetime")
 Q_DECLARE_METATYPE(QMargins)
@@ -212,9 +208,9 @@ void DatetimePlugin::invokedMenuItem(const QString &itemKey, const QString &menu
 
     if (menuId == "open") {
         DDBusSender()
-                .service("com.deepin.dde.ControlCenter")
-                .interface("com.deepin.dde.ControlCenter")
-                .path("/com/deepin/dde/ControlCenter")
+                .service("org.deepin.dde.ControlCenter1")
+                .interface("org.deepin.dde.ControlCenter1")
+                .path("/org/deepin/dde/ControlCenter1")
                 .method(QString("ShowModule"))
                 .arg(QString("datetime"))
                 .call();

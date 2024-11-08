@@ -123,11 +123,6 @@ const QStringList DeviceInterRealize::ipv6()
     return { objIpv6.value("Address").toString() };
 }
 
-QJsonObject DeviceInterRealize::activeConnectionInfo() const
-{
-    return m_activeInfoData;
-}
-
 QStringList DeviceInterRealize::getValidIPV4(const QStringList &ipv4s)
 {
     if (ipv4s.size() > 1 || ipv4s.size() == 0)
@@ -186,8 +181,8 @@ bool DeviceInterRealize::isIpv4Address(const QString &ip) const
         return false;
     }
 
-    QRegExp regExpIP("((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])[\\.]){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])");
-    return regExpIP.exactMatch(ip);
+    QRegularExpression regExpIP("^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])[\\.]){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$");
+    return regExpIP.match(ip).hasMatch();
 }
 
 bool DeviceInterRealize::isConnected() const

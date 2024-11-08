@@ -12,11 +12,11 @@
 
 #include "dtkcore_global.h"
 
-#include "com_deepin_daemon_network.h"
-#include "com_deepin_daemon_bluetooth.h"
+#include "network1interface.h"
+#include "bluetooth1interface.h"
 
-using NetworkInter = com::deepin::daemon::Network;
-using BluetoothInter = com::deepin::daemon::Bluetooth;
+using NetworkInter = org::deepin::dde::Network1;
+using BluetoothInter = org::deepin::dde::Bluetooth1;
 DCORE_BEGIN_NAMESPACE
 class DConfig;
 DCORE_END_NAMESPACE

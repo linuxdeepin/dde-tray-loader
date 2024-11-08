@@ -9,7 +9,7 @@
 
 const QString CalendarServiceName = "com.deepin.dataserver.Calendar";
 const QString CalendarPath = "/com/deepin/dataserver/Calendar";
-const QString DateTimeServiceName = "com.deepin.daemon.Timedate";
-const QString DateTimePath = "/com/deepin/daemon/Timedate";
+const QString DateTimeServiceName = "org.deepin.dde.Timedate1";
+const QString DateTimePath = "/org/deepin/dde/Timedate1";
 
 #endif // COMMONDEF_H

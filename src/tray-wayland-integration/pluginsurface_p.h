@@ -11,13 +11,13 @@
 
 namespace Plugin {
 
-class PluginManager;
+class PluginManagerIntegration;
 class PluginSurface : public QtWaylandClient::QWaylandShellSurface, public QtWayland::plugin
 {
     Q_OBJECT
 
 public:
-    PluginSurface(PluginManager *manager, QtWaylandClient::QWaylandWindow *window);
+    PluginSurface(PluginManagerIntegration *manager, QtWaylandClient::QWaylandWindow *window);
     ~PluginSurface() override;
 
 protected:
@@ -36,7 +36,7 @@ class PluginPopupSurface : public QtWaylandClient::QWaylandShellSurface, public 
     Q_OBJECT
 
 public:
-    PluginPopupSurface(PluginManager *manager, QtWaylandClient::QWaylandWindow *window);
+    PluginPopupSurface(PluginManagerIntegration *manager, QtWaylandClient::QWaylandWindow *window);
     ~PluginPopupSurface() override;
 
 protected:

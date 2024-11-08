@@ -113,6 +113,9 @@ public:
     QString activeConnection() const;
     QDateTime timeStamp() const;
 
+Q_SIGNALS:
+    void connectionChanged();
+
 protected:
     ControllItems();
     virtual ~ControllItems();
