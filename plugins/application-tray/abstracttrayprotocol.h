@@ -11,6 +11,13 @@
 
 class TrayWidget;
 namespace tray {
+
+enum Protocol {
+    UNKNOWN = 0,
+    XEMBED,
+    SNI
+};
+
 class AbstractTrayProtocolHandler;
 class AbstractTrayProtocol : public QObject
 {
@@ -21,6 +28,9 @@ public:
 
 Q_SIGNALS:
     void trayCreated(QPointer<AbstractTrayProtocolHandler> handler);
+
+protected:
+    inline static QHash<uint, enum Protocol> registeredMap;
 };
 
 class AbstractTrayProtocolHandler : public QObject

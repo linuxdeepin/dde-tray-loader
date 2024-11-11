@@ -78,6 +78,11 @@ void SniTrayProtocol::registedItemChanged()
     for (auto currentRegistedItem : currentRegistedItems) {
         if (!m_registedItem.contains(currentRegistedItem)) {
             auto trayHandler = QSharedPointer<SniTrayProtocolHandler>(new SniTrayProtocolHandler(currentRegistedItem));
+            uint pid = QDBusConnection::sessionBus().interface()->servicePid(SniTrayProtocolHandler::serviceAndPath(currentRegistedItem).first).value();
+            m_item2Pid[currentRegistedItem] = pid;
+            if (registeredMap[pid] != SNI)
+                emit removeXEmbedItemByPid(pid);
+            registeredMap[pid] = SNI;
             m_registedItem.insert(currentRegistedItem, trayHandler);
             Q_EMIT AbstractTrayProtocol::trayCreated(trayHandler.get());
         }
@@ -86,6 +91,9 @@ void SniTrayProtocol::registedItemChanged()
     for (auto alreadyRegistedItem : m_registedItem.keys()) {
         if (!currentRegistedItems.contains(alreadyRegistedItem)) {
             if (auto value = m_registedItem.value(alreadyRegistedItem, nullptr)) {
+                uint pid = m_item2Pid[alreadyRegistedItem];
+                m_item2Pid.remove(alreadyRegistedItem);
+                registeredMap.remove(pid);
                 m_registedItem.remove(alreadyRegistedItem);
             }
         }
