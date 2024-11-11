@@ -88,6 +88,11 @@ void XembedProtocol::onTrayIconsChanged()
         for (auto currentRegistedItem : currentRegistedItems) {
             if (!m_registedItem.contains(currentRegistedItem)) {
                 auto trayHandler = QSharedPointer<XembedProtocolHandler>(new XembedProtocolHandler(currentRegistedItem));
+                uint pid = UTIL->getWindowPid(trayHandler->windowId());
+                if (registeredMap[pid] == SNI)
+                    continue;
+                registeredMap[pid] = XEMBED;
+                m_item2Pid[currentRegistedItem] = pid;
                 connect(m_trayManager, &TrayManager::Changed, trayHandler.get(), &XembedProtocolHandler::xembedTrayIconChanged);
                 m_registedItem.insert(currentRegistedItem, trayHandler);
                 Q_EMIT AbstractTrayProtocol::trayCreated(trayHandler.get());
@@ -97,12 +102,24 @@ void XembedProtocol::onTrayIconsChanged()
         for (auto alreadyRegistedItem : m_registedItem.keys()) {
             if (!currentRegistedItems.contains(alreadyRegistedItem)) {
                 if (auto value = m_registedItem.value(alreadyRegistedItem, nullptr)) {
+                    uint pid = m_item2Pid[alreadyRegistedItem];
+                    registeredMap.remove(pid);
+                    m_item2Pid.remove(alreadyRegistedItem);
                     m_registedItem.remove(alreadyRegistedItem);
                 }
             }
         }
     });
 
+}
+
+void XembedProtocol::onRemoveItemByPid(uint pid)
+{
+    auto it = std::find_if(m_registedItem.keys().begin(), m_registedItem.keys().end(), [this, pid] (uint id) { return pid == m_item2Pid[id]; });
+    if (it != m_registedItem.keys().end()) {
+        m_item2Pid.remove(*it);
+        m_registedItem.remove(*it);
+    }
 }
 
 XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent)

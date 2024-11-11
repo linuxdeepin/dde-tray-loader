@@ -26,6 +26,9 @@ public:
     XembedProtocol(QObject *parent = nullptr);
     ~XembedProtocol();
 
+public Q_SLOTS:
+    void onRemoveItemByPid(uint pid);
+
 protected:
     bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override;
 
@@ -36,6 +39,7 @@ private:
     TrayManager* m_trayManager;
     FdoSelectionManager *m_selectionManager = nullptr;
     QHash<uint32_t, QSharedPointer<AbstractTrayProtocolHandler>> m_registedItem;
+    QHash<uint, uint> m_item2Pid;
 };
 
 class XembedProtocolHandler : public AbstractTrayProtocolHandler
