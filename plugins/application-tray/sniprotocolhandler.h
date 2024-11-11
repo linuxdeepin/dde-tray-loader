@@ -27,6 +27,9 @@ public:
     explicit SniTrayProtocol(QObject *parent = nullptr);
     ~SniTrayProtocol();
 
+Q_SIGNALS:
+    void removeXEmbedItemByPid(uint pid);
+
 private Q_SLOTS:
     void registedItemChanged();
 
@@ -34,6 +37,7 @@ private:
     OrgKdeStatusNotifierWatcherInterface* m_trayManager;
 
     QHash<QString, QSharedPointer<SniTrayProtocolHandler>> m_registedItem;
+    QHash<QString, uint> m_item2Pid;
 };
 
 class SniTrayProtocolHandler : public AbstractTrayProtocolHandler
