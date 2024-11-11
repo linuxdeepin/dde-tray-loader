@@ -52,6 +52,7 @@ void TrayPlugin::init(PluginProxyInterface *proxyInter)
 
     connect(sniProtocol, &SniTrayProtocol::trayCreated, this, &TrayPlugin::onTrayhandlerCreatd);
     connect(indicatorProtocol, &SniTrayProtocol::trayCreated, this, &TrayPlugin::onTrayhandlerCreatd);
+    connect(sniProtocol, &SniTrayProtocol::removeXEmbedItemByPid, xembedProtocol, &XembedProtocol::onRemoveItemByPid);
     if (UTIL->isXAvaliable()) {
         connect(xembedProtocol, &SniTrayProtocol::trayCreated, this, &TrayPlugin::onTrayhandlerCreatd);
     } else {

@@ -25,12 +25,16 @@ public:
     XembedProtocol(QObject *parent = nullptr);
     ~XembedProtocol();
 
+public Q_SLOTS:
+    void onRemoveItemByPid(uint pid);
+
 private Q_SLOTS:
     void onTrayIconsChanged();
 
 private:
     TrayManager* m_trayManager;
     QHash<uint32_t, QSharedPointer<AbstractTrayProtocolHandler>> m_registedItem;
+    QHash<uint, uint> m_item2Pid;
 };
 
 class XembedProtocolHandler : public AbstractTrayProtocolHandler
