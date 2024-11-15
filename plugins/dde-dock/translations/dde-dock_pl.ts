@@ -23,7 +23,7 @@
     </message>
     <message>
         <source>Airplane mode settings</source>
-        <translation>Ustawienia trybu samolotowego</translation>
+        <translation>Ustawienia Trybu samolotowego</translation>
     </message>
 </context>
 <context>
@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Wyłącz Tryb Samolotowy, aby połączyć się z Bluetooth</translation>
+        <translation>Najpierw wyłącz Tryb Samolotowy, aby połączyć się z Bluetooth</translation>
     </message>
 </context>
 <context>
