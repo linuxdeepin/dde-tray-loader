@@ -494,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation>Zrównoważona wydajność</translation>
+        <translation>Wydajność zbalansowana</translation>
     </message>
 </context>
 <context>
