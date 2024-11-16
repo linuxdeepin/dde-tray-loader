@@ -10,9 +10,6 @@
 
 #define PLUGIN_STATE_KEY    "enable"
 
-using DBusDock = com::deepin::dde::daemon::Dock;
-using DockEntryInter = com::deepin::dde::daemon::dock::Entry;
-
 using namespace Dock;
 OnboardPlugin::OnboardPlugin(QObject *parent)
     : QObject(parent)
@@ -132,6 +129,7 @@ void OnboardPlugin::invokedMenuItem(const QString &itemKey, const QString &menuI
         process->start("onboard-settings");
     }
 
+#if 0 // TODO 适配新的dock的taskManager
     DBusDock DockInter("com.deepin.dde.daemon.Dock",
                        "/com/deepin/dde/daemon/Dock",
                        QDBusConnection::sessionBus(), this);
@@ -145,6 +143,7 @@ void OnboardPlugin::invokedMenuItem(const QString &itemKey, const QString &menuI
             break;
         }
     }
+#endif
 }
 
 void OnboardPlugin::displayModeChanged(const Dock::DisplayMode displayMode)

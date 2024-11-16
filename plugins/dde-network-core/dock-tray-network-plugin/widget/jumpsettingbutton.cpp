@@ -6,7 +6,6 @@
 
 #include <QHBoxLayout>
 
-#include <DApplicationHelper>
 #include <DFontSizeManager>
 #include <DGuiApplicationHelper>
 #include <DPlatformTheme>
@@ -117,9 +116,9 @@ void JumpSettingButton::mouseReleaseEvent(QMouseEvent* event)
         Q_EMIT clicked();
         if (m_autoShowPage && !m_fistPage.isEmpty()) {
             DDBusSender()
-                .service("com.deepin.dde.ControlCenter")
-                .path("/com/deepin/dde/ControlCenter")
-                .interface("com.deepin.dde.ControlCenter")
+                .service("org.deepin.dde.ControlCenter1")
+                .path("/org/deepin/dde/ControlCenter1")
+                .interface("org.deepin.dde.ControlCenter1")
                 .method(QString("ShowPage"))
                 .arg(QString(m_fistPage))
                 .arg(QString(m_secondPage))

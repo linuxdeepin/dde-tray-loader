@@ -312,7 +312,7 @@ void MonitorItemWidget::initUI()
     m_nameBox->setFixedHeight(STANDARD_WIDGET);
 
     QHBoxLayout *nameLayout = new QHBoxLayout();
-    nameLayout->setMargin(0);
+    nameLayout->setContentsMargins(0, 0, 0, 0);
     nameLayout->setSpacing(0);
 
     m_icon = new CommonIconButton(this);
@@ -448,7 +448,7 @@ void MultiscreenOptionItemWidget::initUI()
     m_nameBox->setFixedHeight(STANDARD_WIDGET);
 
     QHBoxLayout *nameLayout = new QHBoxLayout();
-    nameLayout->setMargin(0);
+    nameLayout->setContentsMargins(0, 0, 0, 0);
     nameLayout->setSpacing(0);
 
     m_icon = new CommonIconButton(this);
@@ -502,4 +502,9 @@ bool MultiscreenOptionItemWidget::event(QEvent *e)
         break;
     }
     return QWidget::event(e);
+}
+
+void MultiscreenOptionItemWidget::updateItemState(const MonitorItemState state)
+{
+    Q_UNUSED(state)
 }

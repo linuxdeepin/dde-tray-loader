@@ -28,7 +28,7 @@ class DBusAccount: public QDBusAbstractInterface
             return;
         }
         QString interfaceName = msg.arguments().at(0).toString();
-        if (interfaceName != "com.deepin.daemon.Accounts") {
+        if (interfaceName != "org.deepin.dde.Accounts1") {
             return;
         }
         QVariantMap changedProps = qdbus_cast<QVariantMap>(arguments.at(1).value<QDBusArgument>());
@@ -45,11 +45,11 @@ class DBusAccount: public QDBusAbstractInterface
     }
 public:
     static inline const char *staticService()
-    { return "com.deepin.daemon.Accounts"; }
+    { return "org.deepin.dde.Accounts1"; }
     static inline const char *staticInterfacePath()
-    { return "/com/deepin/daemon/Accounts"; }
+    { return "/org/deepin/dde/Accounts1"; }
     static inline const char *staticInterfaceName()
-    { return "com.deepin.daemon.Accounts"; }
+    { return "org.deepin.dde.Accounts"; }
 
 public:
     explicit DBusAccount(QObject *parent = 0);

@@ -74,7 +74,6 @@ public:
     QString usingHwAdr() const;                                                                  // 正在使用的mac地址
     QStringList ipv4() const;                                                                    // IPV4地址
     QStringList ipv6() const;                                                                    // IPV6地址
-    QJsonObject activeConnectionInfo() const;                                                    // 获取当前活动连接的信息
     void setEnabled(bool enabled);                                                               // 开启或禁用网卡
     void disconnectNetwork();                                                                    // 断开网络连接，该方法是一个虚方法，具体在子类
     bool ipConflicted();

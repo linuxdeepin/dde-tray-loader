@@ -17,33 +17,29 @@ file(GLOB_RECURSE SRCS
 )
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5Svg REQUIRED)
-find_package(Qt5DBus REQUIRED)
-find_package(DtkWidget REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Widgets Svg DBus)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget)
 
-pkg_check_modules(QGSettings REQUIRED gsettings-qt)
-pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
+qt_add_dbus_interface(
+    DBUS_INTERFACES
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dbus/xml/org.deepin.dde.Notification1.xml
+    notification1interface
+)
 
 add_definitions("${QT_DEFINITIONS} -DQT_PLUGIN")
-add_library(${PLUGIN_NAME} SHARED ${SRCS} resources/dnd_mode.qrc)
+add_library(${PLUGIN_NAME} SHARED ${DBUS_INTERFACES} ${SRCS} resources/dnd_mode.qrc)
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../)
 target_include_directories(${PLUGIN_NAME} PUBLIC
-    ${DtkWidget_INCLUDE_DIRS}
-    ${QGSettings_INCLUDE_DIRS}
-    ${DFrameworkDBus_INCLUDE_DIRS}
     ../../../interfaces
     ../widgets
     ../util
     ../common
 )
 target_link_libraries(${PLUGIN_NAME} PRIVATE
-    ${DtkWidget_LIBRARIES}
-    ${QGSettings_LIBRARIES}
-    ${DFrameworkDBus_LIBRARIES}
-    ${Qt5DBus_LIBRARIES}
-    ${Qt5Widgets_LIBRARIES}
-    ${Qt5Svg_LIBRARIES}
+    Dtk${DTK_VERSION_MAJOR}::Widget
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Svg
+    Qt${QT_VERSION_MAJOR}::DBus
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)

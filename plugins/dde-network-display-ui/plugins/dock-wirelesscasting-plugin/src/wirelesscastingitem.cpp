@@ -86,7 +86,7 @@ QLabel *WirelessCastingItem::tips()
         m_tips = new QLabel;
         m_tips->setForegroundRole(QPalette::BrightText);
         m_tips->setContentsMargins(0, 0, 0, 0);
-        connect(qApp, &QGuiApplication::fontChanged, this, &WirelessCastingItem::tips);
+        //connect(qApp, &QGuiApplication::fontChanged, this, &WirelessCastingItem::tips);
     }
 
     if (m_model->state() == WirelessCastingModel::Connected && m_displayMode->screens().size() > 1) {
@@ -213,9 +213,9 @@ void WirelessCastingItem::invokeMenuItem(const QString menuId, const bool checke
     Q_UNUSED(checked);
     if (menuId == SETTINGS) {
         DDBusSender()
-            .service("com.deepin.dde.ControlCenter")
-            .interface("com.deepin.dde.ControlCenter")
-            .path("/com/deepin/dde/ControlCenter")
+            .service("org.deepin.dde.ControlCenter1")
+            .interface("org.deepin.dde.ControlCenter1")
+            .path("/org/deepin/dde/ControlCenter1")
             .method(QString("ShowModule"))
             .arg(QString("display"))
             .call();

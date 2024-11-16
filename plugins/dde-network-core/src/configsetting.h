@@ -34,6 +34,7 @@ public:
     bool dontSetIpIfConflict() const;       // 如果返回true，在手动设置IP之前检测当前IP是否冲突（浙商银行定制）
     bool showBrowserLink() const;           // 显示打开浏览器的文字链接
     QString browserUrl() const;             // 文字链接打开浏览器时默认网址
+    bool nobindEthernetMacDefault() const;  // 控制中心添加有线连接默认选择不绑定网卡
 
 signals:
     void checkUrlsChanged(const QStringList &);
@@ -74,6 +75,7 @@ private:
     bool m_dontSetIpIfConflict;
     bool m_showBrowserLink;
     QString m_browserUrl;
+    bool m_nobindEthernetMacDefault;
 };
 
 } // namespace network

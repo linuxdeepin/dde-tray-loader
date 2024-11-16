@@ -8,7 +8,8 @@
 #include "jumpcalendarbutton.h"
 #include "regionFormat.h"
 
-#include <DApplicationHelper>
+#include <DPaletteHelper>
+#include <DGuiApplicationHelper>
 #include <DFontSizeManager>
 #include <DRegionMonitor>
 #include <DToolTip>
@@ -64,10 +65,6 @@ void SidebarCalendarWidget::initView()
     m_jumpCalendarButton->setDescription(tr("Open the calendar"));
     m_jumpCalendarButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     m_jumpCalendarButton->setFixedWidth(m_jumpCalendarButton->sizeHint().width());
-    connect(qApp, &QApplication::fontChanged, this, [this]() {
-        m_jumpCalendarButton->setFixedWidth(m_jumpCalendarButton->sizeHint().width());
-        update();
-    });
 
     m_lunarDetailLabel->setElideMode(Qt::TextElideMode::ElideRight);
     DToolTip::setToolTipShowMode(m_lunarDetailLabel, DToolTip::ShowWhenElided);
@@ -118,7 +115,7 @@ void SidebarCalendarWidget::initView()
     m_weekWidget->setMinimumHeight(20);
     DFontSizeManager::instance()->bind(m_weekWidget, DFontSizeManager::T6, 60);
 
-    m_keyLayout->setMargin(0);
+    m_keyLayout->setContentsMargins(0, 0, 0, 0);
     m_keyLayout->setSpacing(0);
     m_keyWidget->setLayout(m_keyLayout);
     //循坏实例化6*7个日期按键
@@ -131,7 +128,7 @@ void SidebarCalendarWidget::initView()
     }
 
     QHBoxLayout* mainLayout = new QHBoxLayout;
-    mainLayout->setMargin(0);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
 
     rightLayout->addSpacing(6);
     rightLayout->addWidget(m_headWidget);
@@ -375,7 +372,7 @@ void SidebarCalendarWidget::showEvent(QShowEvent *event)
 
 void SidebarCalendarWidget::wheelEvent(QWheelEvent *event)
 {
-    m_deltaSum += event->delta();
+    m_deltaSum += event->angleDelta().y();
     if (m_deltaSum >= TURNPAGE_DELTA) {
         Q_EMIT m_previousPage->clicked();
         m_deltaSum = 0;
@@ -384,6 +381,16 @@ void SidebarCalendarWidget::wheelEvent(QWheelEvent *event)
         m_deltaSum = 0;
     }
     QWidget::wheelEvent(event);
+}
+
+bool SidebarCalendarWidget::event(QEvent *event)
+{
+    if (event->type() == QEvent::ApplicationFontChange) {
+        m_jumpCalendarButton->setFixedWidth(m_jumpCalendarButton->sizeHint().width());
+        update();
+    }
+
+    return QWidget::event(event);
 }
 
 QString SidebarCalendarWidget::formatedWeekDay(WeekDay weekDay, CalendarManager::WeekDayFormat format)
@@ -508,7 +515,7 @@ void SidebarCalendarKeyButton::paintEvent(QPaintEvent* event)
 
     QStyleOption opt;
     opt.initFrom(this);
-    auto pa = DApplicationHelper::instance()->palette(this);
+    auto pa = DPaletteHelper::instance()->palette(this);
 
     if (opt.state & QStyle::StateFlag::State_MouseOver) {
         painter.setPen(Qt::NoPen);

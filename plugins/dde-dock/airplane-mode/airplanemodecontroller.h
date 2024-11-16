@@ -9,10 +9,10 @@
 
 #include <DSingleton>
 
-#include <com_deepin_daemon_airplanemode.h>
-#include <org_freedesktop_login1.h>
+#include "airplanemode1interface.h"
+#include "login1interface.h"
 
-using DBusAirplaneMode = com::deepin::daemon::AirplaneMode;
+using DBusAirplaneMode = org::deepin::dde::AirplaneMode1;
 using Login1Manager = org::freedesktop::login1::Manager;
 
 class AirplaneModeController : public QObject, public Dtk::Core::DSingleton<AirplaneModeController>

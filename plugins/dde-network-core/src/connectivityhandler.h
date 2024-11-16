@@ -22,14 +22,15 @@ class ConnectivityHandler : public QObject
 public:
     explicit ConnectivityHandler(QObject *parent = nullptr);
     ~ConnectivityHandler();
+    void init();
     Connectivity connectivity() const;
 
 signals:
     void connectivityChanged(const Connectivity &);
 
 private:
-    void initConnectivity();
     void initConnection();
+    int getConnectivity();
 
 private slots:
     void onConnectivityChanged(int connectivity);

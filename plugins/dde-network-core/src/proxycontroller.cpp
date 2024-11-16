@@ -7,9 +7,9 @@
 #include <QDBusConnection>
 #include <QDBusInterface>
 
-const static QString networkService     = "com.deepin.daemon.Network";
-const static QString networkPath        = "/com/deepin/daemon/Network";
-const static QString networkInterface   = "com.deepin.daemon.Network";
+const static QString networkService     = "org.deepin.dde.Network1";
+const static QString networkPath        = "/org/deepin/dde/Network1";
+const static QString networkInterface   = "org.deepin.dde.Network1";
 
 using namespace dde::network;
 
@@ -23,6 +23,13 @@ ProxyController::ProxyController(QObject *parent)
     // 判断是否存在proxychains4来决定是否存在应用代理
     m_appProxyExist = !QStandardPaths::findExecutable("proxychains4").isEmpty();
     QDBusConnection::sessionBus().connect(networkService, networkPath, networkInterface, "ProxyMethodChanged", this, SLOT(onProxyMethodChanged(const QString&)));
+
+    connect(m_networkInter, &NetworkInter::serviceValidChanged, this, [this](bool valid) {
+        // 设置快速登录，重启后，锁屏的网络插件进行初始化，但是dbus服务无效,导致系统代理等设置异常，等dbus有效后，重新同步数据
+        if (valid) {
+            querySysProxyData();
+        }
+    });
 }
 
 ProxyController::~ProxyController() = default;
@@ -212,6 +219,11 @@ void ProxyController::queryProxyDataByType(const QString &type)
     connect(w, &QDBusPendingCallWatcher::finished, this, [ = ](QDBusPendingCallWatcher * self) {
         Q_UNUSED(self);
         QDBusPendingReply<QString, QString> reply = w->reply();
+        if (!reply.isValid()) {
+            qCWarning(DNC) << "Dbus path:" << m_networkInter->path() << ". Method GetProxy return value error !" << reply.error();
+            return;
+        }
+
         bool finded = false;
         // 先查找原来是否存在响应的代理，如果存在，就直接更新最新的数据
         for (SysProxyConfig &conf : m_sysProxyConfig) {
@@ -248,7 +260,10 @@ void ProxyController::queryProxyAuthByType(const QString &type)
         Q_UNUSED(self);
 
         QDBusPendingReply<QString, QString> reply = w->reply();
-        if (reply.isError()) return ;
+        if (!reply.isValid()) {
+            qCWarning(DNC) << "Dbus path:" << m_networkInter->path() << ". Method GetProxyAuthentication return value error !" << reply.error();
+            return;
+        }
 
         // 先查找原来是否存在响应的代理，如果存在，就直接更新最新的数据
         auto iterator = std::find_if(m_sysProxyConfig.begin(), m_sysProxyConfig.end(), [ = ](SysProxyConfig conf) {
@@ -301,6 +316,10 @@ void ProxyController::queryProxyMethod()
     connect(w, &QDBusPendingCallWatcher::finished, w, &QDBusPendingCallWatcher::deleteLater);
     connect(w, &QDBusPendingCallWatcher::finished, this, [ = ] {
         QDBusPendingReply<QString> reply = w->reply();
+        if (!reply.isValid()) {
+            qCWarning(DNC) << "Dbus path:" << m_networkInter->path() << ". Method GetProxyMethod return value error !" << reply.error();
+            return;
+        }
         onProxyMethodChanged(reply.value());
     });
 }

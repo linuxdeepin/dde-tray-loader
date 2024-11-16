@@ -6,7 +6,7 @@
 #define CSCHEDULEMANAGE_H
 
 #include "lunarmanager.h"
-#include <com_deepin_daemon_timedate.h>
+#include "timedate1interface.h"
 
 #include <QObject>
 
@@ -16,7 +16,7 @@ struct ShowDateRange {
     QDate stopDate;
 };
 
-using DaemonTimeDate = com::deepin::daemon::Timedate ;
+using DaemonTimeDate = org::deepin::dde::Timedate1 ;
 
 class CScheduleBaseWidget;
 /**

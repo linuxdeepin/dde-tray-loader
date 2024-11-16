@@ -78,6 +78,7 @@ protected:
     void hideEvent(QHideEvent *event) override;
     void showEvent(QShowEvent *event) override;
     void wheelEvent(QWheelEvent *event) override;
+    bool event(QEvent *event) override;
 
 private:
     void initView();

@@ -92,11 +92,6 @@ QStringList NetworkDeviceBase::ipv6() const
     return deviceRealize()->ipv6();
 }
 
-QJsonObject NetworkDeviceBase::activeConnectionInfo() const
-{
-    return deviceRealize()->activeConnectionInfo();
-}
-
 void NetworkDeviceBase::setEnabled(bool enabled)
 {
     deviceRealize()->setEnabled(enabled);

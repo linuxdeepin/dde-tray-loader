@@ -22,7 +22,7 @@ endif ()
 
 ## qm files
 file(GLOB TS_FILES "translations/*.ts")
-qt5_add_translation(QM_FILES ${TS_FILES})
+qt_add_translation(QM_FILES ${TS_FILES})
 add_custom_target(dde-dock_language ALL DEPENDS ${QM_FILES})
 
 install(FILES ${QM_FILES}

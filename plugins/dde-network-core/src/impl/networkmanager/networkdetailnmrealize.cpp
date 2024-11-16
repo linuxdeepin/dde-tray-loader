@@ -10,7 +10,7 @@
 #include <NetworkManagerQt/Security8021xSetting>
 #include <NetworkManagerQt/VpnSetting>
 #include <NetworkManagerQt/Utils>
-
+#define WpaSae SAE
 using namespace dde::network;
 
 NetworkDetailNMRealize::NetworkDetailNMRealize(NetworkManager::Device::Ptr device, NetworkManager::ActiveConnection::Ptr activeConnection, QObject *parent)
@@ -186,7 +186,7 @@ QString NetworkDetailNMRealize::getSecurity(const NetworkManager::Device::Ptr &d
     case NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaPsk:
         security = QObject::tr("WPA/WPA2 Personal");
         break;
-    case NetworkManager::WirelessSecuritySetting::KeyMgmt::SAE:
+    case NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaSae:
         security = QObject::tr("WPA3 Personal");
         break;
     case NetworkManager::WirelessSecuritySetting::KeyMgmt::WpaEap: {

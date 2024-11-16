@@ -9,16 +9,14 @@
 #include "device.h"
 #include "bluetoothapplet.h"
 #include "pluginlistview.h"
-
-#include <com_deepin_daemon_bluetooth.h>
+#include "bluetooth1interface.h"
 
 #include <DListView>
 #include <DStyleHelper>
-#include <DApplicationHelper>
 
 #include <QPushButton>
 
-using  DBusBluetooth = com::deepin::daemon::Bluetooth;
+using  DBusBluetooth = org::deepin::dde::Bluetooth1;
 
 DWIDGET_USE_NAMESPACE
 

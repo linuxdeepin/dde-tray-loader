@@ -8,9 +8,9 @@
 #include <QObject>
 #include <QScreen>
 
-#include <com_deepin_daemon_display_monitor.h>
+#include "display1monitorinterface.h"
 
-using MonitorInter = com::deepin::daemon::display::Monitor;
+using MonitorInter = org::deepin::dde::display1::Monitor;
 
 
 class BrightnessController;

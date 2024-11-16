@@ -72,7 +72,7 @@ void EyeComfortModeItem::init()
 
     auto vLayout = new QVBoxLayout(this);
     vLayout->setSpacing(0);
-    vLayout->setMargin(0);
+    vLayout->setContentsMargins(0, 0, 0, 0);
     vLayout->addWidget(m_icon, 0, Qt::AlignCenter);
 
     m_applet->setEnabled(EyeComfortModeController::ref().isEyeComfortModeEnabled());
@@ -186,9 +186,9 @@ void EyeComfortModeItem::invokeMenuItem(const QString menuId, const bool checked
         EyeComfortModeController::ref().toggle();
     } else if (menuId == SETTINGS) {
         DDBusSender()
-            .service("com.deepin.dde.ControlCenter")
-            .interface("com.deepin.dde.ControlCenter")
-            .path("/com/deepin/dde/ControlCenter")
+            .service("org.deepin.dde.ControlCenter1")
+            .interface("org.deepin.dde.ControlCenter1")
+            .path("/org/deepin/dde/ControlCenter1")
             .method(QString("ShowPage"))
             .arg(QString("display"))
             .call();

@@ -68,15 +68,15 @@ void AirplaneModePlugin::init(PluginProxyInterface *proxyInter)
     m_proxyInter = proxyInter;
 
     if (getAirplaneDconfig()) {
-        m_networkInter = new NetworkInter("com.deepin.daemon.Network", "/com/deepin/daemon/Network", QDBusConnection::sessionBus(), this);
+        m_networkInter = new NetworkInter("org.deepin.dde.Network1", "/org/deepin/dde/Network1", QDBusConnection::sessionBus(), this);
         connect(m_networkInter, &NetworkInter::WirelessAccessPointsChanged, this, &AirplaneModePlugin::updatePluginVisible);
 
-        m_bluetoothInter = new BluetoothInter("com.deepin.daemon.Bluetooth", "/com/deepin/daemon/Bluetooth", QDBusConnection::sessionBus(), this);
+        m_bluetoothInter = new BluetoothInter("org.deepin.dde.Bluetooth1", "/org/deepin/dde/Bluetooth1", QDBusConnection::sessionBus(), this);
         connect(m_bluetoothInter, &BluetoothInter::AdapterAdded, this, &AirplaneModePlugin::updatePluginVisible);
         connect(m_bluetoothInter, &BluetoothInter::AdapterRemoved, this, &AirplaneModePlugin::updatePluginVisible);
 
-        QDBusConnection::systemBus().connect("com.deepin.daemon.AirplaneMode",
-                                             "/com/deepin/daemon/AirplaneMode",
+        QDBusConnection::systemBus().connect("org.deepin.dde.AirplaneMode1",
+                                             "/org/deepin/dde/AirplaneMode1",
                                              "org.freedesktop.DBus.Properties",
                                              "PropertiesChanged",
                                              this,
@@ -216,9 +216,9 @@ bool AirplaneModePlugin::supportAirplaneMode() const
     }
 
     // 蓝牙和无线网络,只要有其中一个就允许显示飞行模式
-    QDBusInterface inter("com.deepin.system.Bluetooth",
-                    "/com/deepin/system/Bluetooth",
-                    "com.deepin.system.Bluetooth",
+    QDBusInterface inter("org.deepin.dde.Bluetooth1",
+                    "/org/deepin/dde/Bluetooth1",
+                    "org.deepin.dde.Bluetooth1",
                     QDBusConnection::systemBus());
     if (inter.isValid()) {
         QDBusReply<QString> reply = inter.call("GetAdapters");

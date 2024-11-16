@@ -10,7 +10,7 @@
 #include <QHBoxLayout>
 
 #include <DStyleOption>
-#include <DHiDPIHelper>
+#include <DIcon>
 
 QuickPanelWidget::QuickPanelWidget(MediaController *controller, QWidget* parent)
     : QWidget(parent)
@@ -46,7 +46,7 @@ void QuickPanelWidget::init()
     DFontSizeManager::instance()->bind(m_artistLab, DFontSizeManager::T10);
 
     vLayout->setSpacing(0);
-    vLayout->setMargin(0);
+    vLayout->setContentsMargins(0, 0, 0, 0);
     vLayout->addStretch();
     vLayout->addWidget(m_titleLab, 0, Qt::AlignVCenter | Qt::AlignLeft);
     vLayout->addSpacing(2);
@@ -67,7 +67,7 @@ void QuickPanelWidget::init()
     m_nextButton->setIcon(QIcon::fromTheme("play-next"), Qt::black, Qt::white);
 
     hLayout->setSpacing(0);
-    hLayout->setMargin(0);
+    hLayout->setContentsMargins(0, 0, 0, 0);
     hLayout->addWidget(m_playButton);
     hLayout->addSpacing(26);
     hLayout->addWidget(m_nextButton);
@@ -98,7 +98,7 @@ void QuickPanelWidget::updateUI()
     MediaModel::MediaInfo info = MediaModel::ref().mediaInfo();
     const bool pixmapExist = !info.pixmap.isNull();
     if (!pixmapExist) {
-        info.pixmap = DHiDPIHelper::loadNxPixmap(":/deepin-music.svg").scaled(QSize(32 * qApp->devicePixelRatio(), 32 * qApp->devicePixelRatio()), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        info.pixmap = Dtk::Gui::DIcon::loadNxPixmap(":/deepin-music.svg").scaled(QSize(32 * qApp->devicePixelRatio(), 32 * qApp->devicePixelRatio()), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     }
     const bool textInfoExist = !info.artist.isEmpty() || !info.title.isEmpty();
     if (!textInfoExist) {

@@ -14,7 +14,6 @@
 #include "constants.h"
 #include "plugins-logging-category.h"
 
-#include <DApplicationHelper>
 #include <DDBusSender>
 #include <DIconButton>
 #include <DLabel>
@@ -37,7 +36,6 @@ SettingLabel::SettingLabel(QString text, QWidget *parent)
 {
     setAccessibleName("BluetoothSettingLabel");
     setContentsMargins(0, 0, 0, 0);
-    m_layout->setMargin(0);
     m_layout->setSpacing(0);
     m_layout->setContentsMargins(10, 0, 0, 0);
     m_layout->addWidget(m_label, 0, Qt::AlignLeft | Qt::AlignHCenter);
@@ -45,7 +43,7 @@ SettingLabel::SettingLabel(QString text, QWidget *parent)
 
     setAutoFillBackground(true);
     QPalette p = this->palette();
-    p.setColor(QPalette::Background, Qt::transparent);
+    p.setColor(QPalette::Window, Qt::transparent);
     this->setPalette(p);
 
     m_label->setForegroundRole(QPalette::BrightText);
@@ -89,7 +87,7 @@ BluetoothApplet::BluetoothApplet(AdaptersManager *adapterManager, QWidget *paren
     , m_settingBtn(new JumpSettingButton(QIcon::fromTheme("bluetooth-open"), tr("Bluetooth settings"), this))
     , m_mainLayout(new QVBoxLayout(this))
     , m_contentLayout(new QVBoxLayout(m_contentWidget))
-    , m_airPlaneModeInter(new DBusAirplaneMode("com.deepin.daemon.AirplaneMode", "/com/deepin/daemon/AirplaneMode", QDBusConnection::systemBus(), this))
+    , m_airPlaneModeInter(new DBusAirplaneMode("org.deepin.dde.AirplaneMode1", "/org/deepin/dde/AirplaneMode1", QDBusConnection::systemBus(), this))
     , m_airplaneModeEnable(false)
     , m_minHeight(0)
 {
@@ -211,7 +209,6 @@ void BluetoothApplet::initUi()
     setAccessibleName("BluetoothApplet");
     setContentsMargins(0, 0, 0, 0);
 
-    m_contentLayout->setMargin(0);
     m_contentLayout->setSpacing(0);
     m_contentLayout->setContentsMargins(10, 0, 10, 0);
     m_contentLayout->addStretch();
@@ -228,7 +225,7 @@ void BluetoothApplet::initUi()
     m_scrollArea->setAutoFillBackground(true);
     m_scrollArea->viewport()->setAutoFillBackground(true);
     QPalette scrollAreaBackground = this->palette();
-    scrollAreaBackground.setColor(QPalette::ColorRole::Background, Qt::transparent);
+    scrollAreaBackground.setColor(QPalette::ColorRole::Window, Qt::transparent);
     m_scrollArea->setPalette(scrollAreaBackground);
 
     QScroller::grabGesture(m_scrollArea->viewport(), QScroller::LeftMouseButtonGesture);
@@ -237,7 +234,6 @@ void BluetoothApplet::initUi()
     sp.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, QScrollerProperties::OvershootAlwaysOff);
     scroller->setScrollerProperties(sp);
 
-    m_mainLayout->setMargin(0);
     m_mainLayout->setSpacing(0);
     m_mainLayout->setContentsMargins(0, 10, 0, 0);
     m_mainLayout->addWidget(m_scrollArea);
@@ -267,7 +263,6 @@ void BluetoothApplet::initUi()
     DFontSizeManager::instance()->bind(disableText, DFontSizeManager::T8);
 
     QVBoxLayout *lay = new QVBoxLayout(m_disableWidget);
-    lay->setMargin(0);
     lay->setSpacing(0);
     lay->setContentsMargins(0, 0, 0, 20);
     lay->addStretch();
@@ -311,12 +306,12 @@ void BluetoothApplet::initConnect()
 
     connect(m_airplaneModeLabel, &DTipLabel::linkActivated, this, [=] {
         DDBusSender()
-                .service("com.deepin.dde.ControlCenter")
-                .path("/com/deepin/dde/ControlCenter")
-                .interface("com.deepin.dde.ControlCenter")
+                .service("org.deepin.dde.ControlCenter1")
+                .path("/org/deepin/dde/ControlCenter1")
+                .interface("org.deepin.dde.ControlCenter1")
                 .method(QString("ShowPage"))
                 .arg(QString("network"))
-                .arg(QString("Airplane Mode"))
+                //.arg(QString("Airplane Mode"))
                 .call();
         Q_EMIT requestHideApplet();
     });

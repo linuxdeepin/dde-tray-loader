@@ -23,35 +23,41 @@ file(GLOB_RECURSE SRCS
 )
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5Svg REQUIRED)
-find_package(Qt5DBus REQUIRED)
-find_package(DtkWidget REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Widgets Svg DBus)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget Core Gui Tools)
 
 pkg_check_modules(XCB_EWMH REQUIRED xcb-ewmh x11 xcursor)
-pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
-pkg_check_modules(QGSettings REQUIRED gsettings-qt)
+
+dtk_add_dbus_interface(
+    DBUS_INTERFACES
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dbus/xml/org.deepin.dde.Bluetooth1.xml
+    bluetooth1interface
+)
+
+dtk_add_dbus_interface(
+    DBUS_INTERFACES
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dbus/xml/org.deepin.dde.AirplaneMode1.xml
+    airplanemode1interface
+)
 
 add_definitions("${QT_DEFINITIONS} -DQT_PLUGIN")
-add_library(${PLUGIN_NAME} SHARED ${SRCS} resources/bluetooth.qrc)
+add_library(${PLUGIN_NAME} SHARED ${DBUS_INTERFACES} ${SRCS} resources/bluetooth.qrc)
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../)
-target_include_directories(${PLUGIN_NAME} PUBLIC ${DtkWidget_INCLUDE_DIRS}
-  ${DFrameworkDBus_INCLUDE_DIRS}
-  ${QGSettings_INCLUDE_DIRS}
-  ../../../interfaces
-  ../common
-  ../util
-  ../widgets
-  componments)
+target_include_directories(${PLUGIN_NAME} PUBLIC
+    ../../../interfaces
+    ../common
+    ../util
+    ../widgets
+    componments)
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE
-  ${XCB_EWMH_LIBRARIES}
-  ${DtkWidget_LIBRARIES}
-  ${DFrameworkDBus_LIBRARIES}
-  ${QGSettings_LIBRARIES}
-  ${Qt5DBus_LIBRARIES}
-  ${Qt5Widgets_LIBRARIES}
-  ${Qt5Svg_LIBRARIES}
+    ${XCB_EWMH_LIBRARIES}
+    Dtk${DTK_VERSION_MAJOR}::Widget
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Gui
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Svg
+    Qt${QT_VERSION_MAJOR}::DBus
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-trays)

@@ -136,11 +136,11 @@ void NetManagerThreadPrivate::getNetCheckAvailableFromDBus()
 
 void NetManagerThreadPrivate::getAirplaneModeEnabled()
 {
-    QDBusMessage message = QDBusMessage::createMethodCall("com.deepin.daemon.AirplaneMode",
-                                                          "/com/deepin/daemon/AirplaneMode",
+    QDBusMessage message = QDBusMessage::createMethodCall("org.deepin.dde.AirplaneMode1",
+                                                          "/org/deepin/dde/AirplaneMode1",
                                                           "org.freedesktop.DBus.Properties",
                                                           "Get");
-    message << "com.deepin.daemon.AirplaneMode"
+    message << "org.deepin.dde.AirplaneMode1"
             << "Enabled";
     QDBusConnection::systemBus().callWithCallback(message, this, SLOT(updateAirplaneModeEnabled(QDBusVariant)));
 }
@@ -417,8 +417,8 @@ void NetManagerThreadPrivate::doInit()
 
     m_airplaneModeEnabled = true;
     getAirplaneModeEnabled();
-    QDBusConnection::systemBus().connect("com.deepin.daemon.AirplaneMode",
-                                         "/com/deepin/daemon/AirplaneMode",
+    QDBusConnection::systemBus().connect("org.deepin.dde.AirplaneMode1",
+                                         "/org/deepin/dde/AirplaneMode1",
                                          "org.freedesktop.DBus.Properties",
                                          "PropertiesChanged",
                                          this,
@@ -596,7 +596,7 @@ void NetManagerThreadPrivate::doGotoControlCenter(const QString &page)
 {
     if (!m_enabled)
         return;
-    QDBusMessage message = QDBusMessage::createMethodCall("com.deepin.dde.ControlCenter", "/com/deepin/dde/ControlCenter", "com.deepin.dde.ControlCenter", "ShowPage");
+    QDBusMessage message = QDBusMessage::createMethodCall("org.deepin.dde.ControlCenter1", "/org/deepin/dde/ControlCenter1", "org.deepin.dde.ControlCenter1", "ShowPage");
     message << "network" << page;
     QDBusConnection::sessionBus().asyncCall(message);
     Q_EMIT toControlCenter();

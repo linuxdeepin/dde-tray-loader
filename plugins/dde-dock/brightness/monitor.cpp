@@ -5,7 +5,6 @@
 #include "monitor.h"
 #include "brightnesscontroller.h"
 
-#include <QGSettings>
 #include <QGuiApplication>
 
 const double DoubleZero = 0.000001;

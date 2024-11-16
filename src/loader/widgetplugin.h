@@ -39,6 +39,7 @@ public:
     static void updateDockContainerState(PluginsItemInterface *itemInter, bool onDock);
     static QString activeStateMessage(bool isActive);
 public Q_SLOTS:
+    void onDockColorThemeChanged(uint32_t type);
     void onDockPositionChanged(uint32_t position);
     void onDockDisplayModeChanged(uint32_t displayMode);
     void onDockEventMessageArrived(const QString &message);

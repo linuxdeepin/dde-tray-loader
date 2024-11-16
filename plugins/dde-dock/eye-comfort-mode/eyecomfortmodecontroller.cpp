@@ -11,8 +11,8 @@
 #define SUPPORT_COLOR_TEMPERATURE "SupportColorTemperature"
 
 EyeComfortModeController::EyeComfortModeController()
-        : m_displayInter(new QDBusInterface("com.deepin.daemon.Display", "/com/deepin/daemon/Display", "com.deepin.daemon.Display", QDBusConnection::sessionBus(), this))
-        , m_themeInter(new DBusTheme("com.deepin.daemon.Appearance", "/com/deepin/daemon/Appearance", QDBusConnection::sessionBus(), this))
+        : m_displayInter(new QDBusInterface("org.deepin.dde.Display1", "/org/deepin/dde/Display1", "org.deepin.dde.Display1", QDBusConnection::sessionBus(), this))
+        , m_themeInter(new DBusTheme("org.deepin.dde.Appearance1", "/org/deepin/dde/Appearance1", QDBusConnection::sessionBus(), this))
         , m_eyeComfortModeEnabled(false)
         , m_supportColorTemperature(false)
 {
@@ -20,7 +20,7 @@ EyeComfortModeController::EyeComfortModeController()
         return;
     }
 
-    QDBusConnection::sessionBus().connect("com.deepin.daemon.Display", "/com/deepin/daemon/Display", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
+    QDBusConnection::sessionBus().connect("org.deepin.dde.Display1", "/org/deepin/dde/Display1", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
     connect(m_themeInter, &DBusTheme::GlobalThemeChanged, this, &EyeComfortModeController::globalThemeChanged);
 
     m_eyeComfortModeEnabled = m_displayInter->property(COLOR_TEMPERATURE_ENABLED).toBool();

@@ -7,17 +7,14 @@ set(PLUGIN_NAME "keyboard-layout")
 project(${PLUGIN_NAME})
 
 # Sources files
-file(GLOB_RECURSE SRCS "*.h" "*.cpp")
+file(GLOB_RECURSE SRCS "*.h" "*.cpp"
+    "../dbus/types/keyboardlayoutlist.h"
+    "../dbus/types/keyboardlayoutlist.cpp"
+)
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5Svg REQUIRED)
-find_package(DtkWidget REQUIRED)
-find_package(Qt5DBus REQUIRED)
-find_package(DFrameworkdbus REQUIRED)
-
-pkg_check_modules(DFrameworkDBus REQUIRED dframeworkdbus)
-pkg_check_modules(QGSettings REQUIRED gsettings-qt)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Widgets Svg DBus)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget Tools)
 
 set_source_files_properties(
     org.fcitx.Fcitx.xml
@@ -25,28 +22,30 @@ set_source_files_properties(
     CLASSNAME FcitxInputMethodProxy
 )
 
-qt5_add_dbus_interfaces(DBUS_INTERFACES
+qt_add_dbus_interfaces(DBUS_INTERFACES
     org.fcitx.Fcitx.xml
+)
+
+dtk_add_dbus_interface(
+    DBUS_INTERFACES
+    ${CMAKE_CURRENT_SOURCE_DIR}/../dbus/xml/org.deepin.dde.InputDevice1.Keyboard.xml
+    inputdevice1keyboardinterface
 )
 
 add_definitions("${QT_DEFINITIONS} -DQT_PLUGIN")
 add_library(${PLUGIN_NAME} SHARED ${SRCS} ${DBUS_INTERFACES})
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../)
 target_include_directories(${PLUGIN_NAME} PUBLIC
-    ${DtkWidget_INCLUDE_DIRS}
-    ${DFrameworkDBus_INCLUDE_DIRS}
-    ${QGSettings_INCLUDE_DIRS}
+    ../dbus
     ../../../interfaces
     ../common
     ../util
 )
 target_link_libraries(${PLUGIN_NAME} PRIVATE
-    ${DtkWidget_LIBRARIES}
-    ${DFrameworkDBus_LIBRARIES}
-    ${QGSettings_LIBRARIES}
-    ${Qt5Widgets_LIBRARIES}
-    ${Qt5Svg_LIBRARIES}
-    ${Qt5DBus_LIBRARIES}
+    Dtk${DTK_VERSION_MAJOR}::Widget
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Svg
+    Qt${QT_VERSION_MAJOR}::DBus
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-trays/)

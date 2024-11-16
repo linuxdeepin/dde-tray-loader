@@ -9,7 +9,7 @@
 #include "util.h"
 #include "plugin.h"
 
-#include <dbusmenu-qt5/dbusmenuimporter.h>
+#include "dbusmenuimporter.h"
 
 #include <QMouseEvent>
 #include <QWindow>
@@ -21,8 +21,8 @@ static QString sniPfrefix = QStringLiteral("SNI:");
 
 class DBusMenu : public DBusMenuImporter {
 public:
-    DBusMenu(const QString &service, const QString &path, DBusMenuImporterType type, QObject *parent = 0)
-        : DBusMenuImporter(service, path, type, parent)
+    DBusMenu(const QString &service, const QString &path, QObject *parent = 0)
+        : DBusMenuImporter(service, path, parent)
     {
     }
     virtual QMenu *createMenu(QWidget *parent) override
@@ -87,7 +87,7 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     // will get a unique dbus name (number like x.xxxx) and dbus path
     m_dbusUniqueName = pair.first.mid(1);
     m_sniInter = new StatusNotifierItem(pair.first, pair.second, QDBusConnection::sessionBus(), this);
-    m_dbusMenuImporter = new DBusMenu(pair.first, m_sniInter->menu().path(), ASYNCHRONOUS, this);
+    m_dbusMenuImporter = new DBusMenu(pair.first, m_sniInter->menu().path(), this);
     m_tooltip->setForegroundRole(QPalette::BrightText);
     generateId();
 

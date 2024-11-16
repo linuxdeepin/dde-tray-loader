@@ -42,7 +42,7 @@ class DBusPower: public QDBusAbstractInterface
         if (3 != arguments.count())
             return;
         QString interfaceName = msg.arguments().at(0).toString();
-        if (interfaceName !="com.deepin.daemon.Power")
+        if (interfaceName !="org.deepin.dde.Power1")
             return;
         QVariantMap changedProps = qdbus_cast<QVariantMap>(arguments.at(1).value<QDBusArgument>());
         foreach(const QString &prop, changedProps.keys()) {
@@ -57,7 +57,7 @@ class DBusPower: public QDBusAbstractInterface
    }
 public:
     static inline const char *staticInterfaceName()
-    { return "com.deepin.daemon.Power"; }
+    { return "org.deepin.dde.Power1"; }
 
 public:
     explicit DBusPower(QObject *parent = 0);

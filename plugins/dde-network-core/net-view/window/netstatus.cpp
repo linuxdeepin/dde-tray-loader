@@ -222,7 +222,7 @@ QWidget *NetStatus::createItemTips() const
     QLabel *label = new QLabel(m_networkTips);
     connect(this, &NetStatus::networkTipsChanged, label, &QLabel::setText);
     connect(this, &NetStatus::networkTipsChanged, label, &QLabel::adjustSize, Qt::QueuedConnection);
-    connect(qApp, &QGuiApplication::fontChanged, label, &QLabel::adjustSize, Qt::QueuedConnection);
+    //connect(qApp, &QGuiApplication::fontChanged, label, &QLabel::adjustSize, Qt::QueuedConnection);
     label->setContentsMargins(10, 0, 10, 0);
     label->setForegroundRole(QPalette::BrightText);
     return label;
@@ -239,7 +239,7 @@ QWidget *NetStatus::createDockItemTips()
         if (m_hoverType == HoverType::vpnAndProxy)
             setHoverTips(HoverType::vpnAndProxy);
     });
-    connect(qApp, &QGuiApplication::fontChanged, m_tipsLabel, &QLabel::adjustSize, Qt::QueuedConnection);
+    //connect(qApp, &QGuiApplication::fontChanged, m_tipsLabel, &QLabel::adjustSize, Qt::QueuedConnection);
     m_tipsLabel->setContentsMargins(0, 0, 0, 0);
     m_tipsLabel->setForegroundRole(QPalette::BrightText);
     setHoverTips(m_hoverType);
@@ -261,7 +261,7 @@ QWidget *NetStatus::createDockIconWidget()
     QWidget *contentWidget = new QWidget;
     contentWidget->setMouseTracking(true);
     m_dockIconWidgetlayout = new QBoxLayout(QBoxLayout::LeftToRight, contentWidget);
-    m_dockIconWidgetlayout->setMargin(0);
+    m_dockIconWidgetlayout->setContentsMargins(0, 0, 0, 0);
     m_dockIconWidgetlayout->setSpacing(10);
     m_networkBut = new NetIconButton(contentWidget);
     m_networkBut->setForegroundRole(QPalette::BrightText);
@@ -1076,10 +1076,10 @@ QVector<NetItem *> NetStatus::getDeviceConnections(unsigned type, unsigned conne
     }
     // 排序
     auto sortFun = [](const NetItem *item1, const NetItem *item2) {
-        return item1->sortValue() < item2->sortValue();
+        return item1->sortValue().toString() < item2->sortValue().toString();
     };
     for (int i = 0; i < 5; i++) {
-        qSort(activeItems[i].begin(), activeItems[i].end(), sortFun);
+        std::sort(activeItems[i].begin(), activeItems[i].end(), sortFun);
     }
     return activeItems[static_cast<unsigned>(NetConnectionStatus::Connecting)] + activeItems[static_cast<unsigned>(NetConnectionStatus::Connected)]
             + activeItems[static_cast<unsigned>(NetConnectionStatus::UnConnected)];
@@ -1093,6 +1093,15 @@ void NetStatus::updateItemWidgetSize()
     if (auto itemWidget = m_dockIconWidgetlayout->parentWidget()) {
         itemWidget->setFixedSize(itemWidget->sizeHint());
     }
+}
+
+bool NetStatus::event(QEvent *event)
+{
+    if (event->type() == QEvent::ApplicationFontChange) {
+        m_tipsLabel->adjustSize();
+    }
+
+    return QObject::event(event);
 }
 
 } // namespace network

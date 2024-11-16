@@ -4,14 +4,15 @@
 
 #include "plugin.h"
 #include "pluginsurface_p.h"
-#include "pluginmanager_p.h"
+#include "pluginmanagerintegration_p.h"
 
 #include "qwayland-plugin-manager-v1.h"
 
 #include <QTimer>
+#include <QtWaylandClient/private/qwaylandwindow_p.h>
 
 namespace Plugin {
-PluginSurface::PluginSurface(PluginManager *manager, QtWaylandClient::QWaylandWindow *window)
+PluginSurface::PluginSurface(PluginManagerIntegration *manager, QtWaylandClient::QWaylandWindow *window)
     : QtWaylandClient::QWaylandShellSurface(window)
     , QtWayland::plugin()
     , m_plugin(EmbedPlugin::get(window->window()))
@@ -19,9 +20,9 @@ PluginSurface::PluginSurface(PluginManager *manager, QtWaylandClient::QWaylandWi
 {
     init(manager->create_plugin(m_plugin->pluginId(), m_plugin->itemKey(), m_plugin->displayName(), m_plugin->pluginFlags(), m_plugin->pluginType(), m_plugin->pluginSizePolicy(), window->wlSurface()));
     dcc_icon(m_plugin->dccIcon());
-    connect(manager, &PluginManager::dockPositionChanged, m_plugin, &EmbedPlugin::dockPositionChanged);
-    connect(manager, &PluginManager::dockColorThemeChanged, m_plugin, &EmbedPlugin::dockColorThemeChanged);
-    connect(manager, &PluginManager::eventMessage, m_plugin, &EmbedPlugin::eventMessage);
+    connect(manager, &PluginManagerIntegration::dockPositionChanged, m_plugin, &EmbedPlugin::dockPositionChanged);
+    connect(manager, &PluginManagerIntegration::dockColorThemeChanged, m_plugin, &EmbedPlugin::dockColorThemeChanged);
+    connect(manager, &PluginManagerIntegration::eventMessage, m_plugin, &EmbedPlugin::eventMessage);
 
     connect(m_plugin, &EmbedPlugin::requestMessage, manager, [manager, this](const QString &msg) {
         manager->requestMessage(m_plugin->pluginId(), m_plugin->itemKey(), msg);
@@ -67,7 +68,7 @@ void PluginSurface::plugin_raw_global_pos(int32_t x, int32_t y)
     m_plugin->setRawGlobalPos(QPoint(x, y));
 }
 
-PluginPopupSurface::PluginPopupSurface(PluginManager *manager, QtWaylandClient::QWaylandWindow *window)
+PluginPopupSurface::PluginPopupSurface(PluginManagerIntegration *manager, QtWaylandClient::QWaylandWindow *window)
     : QtWaylandClient::QWaylandShellSurface(window)
     , QtWayland::plugin_popup()
     , m_popup(PluginPopup::get(window->window()))

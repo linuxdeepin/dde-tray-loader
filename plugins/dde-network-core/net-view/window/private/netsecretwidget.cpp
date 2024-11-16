@@ -115,7 +115,6 @@ void NetSecretWidget::setFocusToEdit()
     QWidget *tlw = m_passwordWidget->window();
     const QWindow *w = tlw ? tlw->windowHandle() : 0;
     if (qApp->focusWindow() == w && qApp->activeWindow() != m_passwordWidget->window()) {
-        qApp->setActiveWindow(m_passwordWidget);
         m_passwordWidget->activateWindow();
     }
 

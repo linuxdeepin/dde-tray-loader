@@ -8,14 +8,16 @@
 #include "brightnessmodel.h"
 
 #include <QObject>
-#include <QGSettings>
 #include <QVariant>
 
 #include <DSingleton>
+#include <DConfig>
 
-#include <com_deepin_daemon_display.h>
+#include "display1interface.h"
+#include "display1monitorinterface.h"
 
-using DisplayInter = com::deepin::daemon::Display;
+using DisplayInter = org::deepin::dde::Display1;
+DCORE_USE_NAMESPACE
 
 class BrightnessController : public QObject, public Dtk::Core::DSingleton<BrightnessController>
 {
@@ -48,7 +50,7 @@ private:
 private:
     DisplayInter m_displayInter;
     QDBusInterface *m_displayDBusInter;
-    QGSettings *m_gSettings;
+    DConfig *m_dConfig = nullptr;
     QMap<Monitor *, MonitorInter *> m_monitors;
     bool m_supportBrightness;
 

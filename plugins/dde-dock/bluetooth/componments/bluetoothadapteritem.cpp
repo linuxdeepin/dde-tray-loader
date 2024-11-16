@@ -16,7 +16,6 @@
 #include <DSwitchButton>
 #include <DListView>
 #include <DSpinner>
-#include <DApplicationHelper>
 
 #include <QBoxLayout>
 #include <QStandardItemModel>
@@ -75,7 +74,7 @@ BluetoothAdapterItem::BluetoothAdapterItem(Adapter *adapter, QWidget *parent)
     , m_otherDeviceListView(new PluginListView(this))
     , m_otherDeviceModel(new QStandardItemModel(m_otherDeviceListView))
     , m_refreshBtn(new CommonIconButton(this))
-    , m_bluetoothInter(new DBusBluetooth("com.deepin.daemon.Bluetooth", "/com/deepin/daemon/Bluetooth", QDBusConnection::sessionBus(), this))
+    , m_bluetoothInter(new DBusBluetooth("org.deepin.dde.Bluetooth1", "/org/deepin/dde/Bluetooth1", QDBusConnection::sessionBus(), this))
     , m_showUnnamedDevices(false)
     , m_stateBtnEnabled(true)
     , m_adapterSwitchEnabled(true)
@@ -347,7 +346,6 @@ void BluetoothAdapterItem::initUi()
     DFontSizeManager::instance()->bind(m_adapterLabel->label(), DFontSizeManager::T4);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
-    mainLayout->setMargin(0);
     mainLayout->setSpacing(0);
     mainLayout->setContentsMargins(0, 0, 0, 0);
 
@@ -358,7 +356,6 @@ void BluetoothAdapterItem::initUi()
     m_myDeviceListView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_myDeviceListView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     QVBoxLayout *myDeviceLayout = new QVBoxLayout(m_myDeviceWidget);
-    myDeviceLayout->setMargin(0);
     myDeviceLayout->setSpacing(0);
     m_myDeviceLabel->setContentsMargins(10, 0, 0, 2);
     DFontSizeManager::instance()->bind(m_myDeviceLabel, DFontSizeManager::T10);

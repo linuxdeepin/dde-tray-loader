@@ -13,14 +13,19 @@
 #include <NetworkManagerQt/Settings>
 #include <NetworkManagerQt/WiredSetting>
 
-#include <com_deepin_daemon_accounts_user.h>
+#include <QDBusInterface>
+#include <QDBusServiceWatcher>
+#include <QDBusConnectionInterface>
+#include <QTranslator>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 using namespace network::systemservice;
 
 // the interface is enabled from the administrative point of view. Corresponds to kernel IFF_UP.
 #define DEVICE_INTERFACE_FLAG_UP 0x1
 
-Q_LOGGING_CATEGORY(DNC, "org.deepin.service.SystemNetwork");
+//Q_LOGGING_CATEGORY(DNC, "org.deepin.service.SystemNetwork");
 
 #define NETWORKMANAGER_SERVICE "org.freedesktop.NetworkManager"
 
@@ -55,9 +60,9 @@ void NetworkInitialization::initDeviceInfo()
 
 void NetworkInitialization::initConnection()
 {
-    QDBusMessage lock = QDBusMessage::createMethodCall("com.deepin.dde.LockService", "/com/deepin/dde/LockService", "com.deepin.dde.LockService", "CurrentUser");
+    QDBusMessage lock = QDBusMessage::createMethodCall("org.deepin.dde.LockService1", "/org/deepin/dde/LockService1", "org.deepin.dde.LockService1", "CurrentUser");
     QDBusConnection::systemBus().callWithCallback(lock, this, SLOT(onUserChanged(QString)));
-    QDBusConnection::systemBus().connect("com.deepin.dde.LockService", "/com/deepin/dde/LockService", "com.deepin.dde.LockService", "UserChanged", this, SLOT(onUserChanged(QString)));
+    QDBusConnection::systemBus().connect("org.deepin.dde.LockService1", "/org/deepin/dde/LockService1", "org.deepin.dde.LockService1", "UserChanged", this, SLOT(onUserChanged(QString)));
 }
 
 void NetworkInitialization::addFirstConnection(const QSharedPointer<NetworkManager::WiredDevice> &device)
@@ -177,8 +182,9 @@ void NetworkInitialization::installTranslator(const QString &locale)
     localTmp = locale;
     QApplication::removeTranslator(&translator);
     const QString qmFile = QString("%1/network-service-plugin_%2.qm").arg(QM_FILES_DIR).arg(locale);
-    translator.load(qmFile);
-    QApplication::installTranslator(&translator);
+    if (translator.load(qmFile)) {
+        QApplication::installTranslator(&translator);
+    }
 }
 
 void NetworkInitialization::hideWirelessDevice(const QSharedPointer<NetworkManager::Device> &device, bool disableNetwork)

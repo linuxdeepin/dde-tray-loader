@@ -32,7 +32,7 @@ class DBusPowerManager: public QDBusAbstractInterface
     Q_OBJECT
 public:
     static inline const char *staticInterfaceName()
-    { return "com.deepin.daemon.PowerManager"; }
+    { return "org.deepin.dde.PowerManager1"; }
 
 public:
     DBusPowerManager(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = nullptr);

@@ -7,9 +7,7 @@
 #include <QProcess>
 #include <QMouseEvent>
 
-#include <DApplicationHelper>
 #include <DFontSizeManager>
-#include <DGuiApplicationHelper>
 #include <DPlatformTheme>
 #include <DDBusSender>
 #include <DPaletteHelper>

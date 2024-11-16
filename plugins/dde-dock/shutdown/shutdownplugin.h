@@ -98,8 +98,6 @@ private:
     QScopedPointer<CommonIconButton> m_dockIcon;
     QScopedPointer<Dock::TipsWidget> m_tipsLabel;
     DBusPowerManager* m_powerManagerInter;
-    const QGSettings *m_gsettings;
-    const QGSettings *m_sessionShellGsettings;
     QSharedPointer<DConfig> m_dconfig;
     DConfig *m_lastoreDConfig;
 };

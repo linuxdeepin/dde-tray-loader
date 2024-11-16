@@ -30,7 +30,7 @@ DCORE_USE_NAMESPACE
 
 static QString pluginDisplayName;
 
-[[noreturn]] void sig_crash(int signum)
+void sig_crash(int signum)
 {
     DDBusSender()
         .service("org.deepin.dde.Notification1")
@@ -54,6 +54,21 @@ static QString pluginDisplayName;
 #endif
 }
 
+class LoaderApplication : public Dtk::Widget::DApplication
+{
+public:
+    LoaderApplication(int &argc, char **argv) : Dtk::Widget::DApplication(argc, argv) {}
+
+    bool notify(QObject *obj, QEvent *event) Q_DECL_OVERRIDE {
+        // fix plugin menu cannot show
+        if (event->type() == QEvent::OrientationChange) {
+            return true;
+        }
+
+        return Dtk::Widget::DApplication::notify(obj, event);
+    }
+};
+
 int main(int argc, char *argv[], char *envp[])
 {
 #ifndef QT_DEBUG
@@ -71,17 +86,15 @@ int main(int argc, char *argv[], char *envp[])
 #endif
 
     DGuiApplicationHelper::setAttribute(DGuiApplicationHelper::UseInactiveColorGroup, false);
-    Dtk::Widget::DApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     init_setproctitle(argv, envp);
     qputenv("DSG_APP_ID", "org.deepin.dde-tray-loader");
     qputenv("WAYLAND_DISPLAY", "dockplugin");
     qputenv("QT_WAYLAND_SHELL_INTEGRATION", "plugin-shell");
     qputenv("QT_WAYLAND_RECONNECT", "1");
 
-    Dtk::Widget::DApplication app(argc, argv);
+    LoaderApplication app(argc, argv);
     app.setOrganizationName("deepin");
     app.setApplicationName("org.deepin.dde-tray-loader");
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setQuitOnLastWindowClosed(false);
 
     QList<QString> translateDirs;
@@ -92,6 +105,7 @@ int main(int argc, char *argv[], char *envp[])
         translateDirs << (DPathBuf / "trayplugin-loader/translations").toString();
     }
     DGuiApplicationHelper::loadTranslator("dde-dock", translateDirs, QList<QLocale>() << QLocale::system());
+    DGuiApplicationHelper::loadTranslator("trayplugin-loader", translateDirs, QList<QLocale>() << QLocale::system());
 
     QCommandLineParser parser;
     parser.addHelpOption();

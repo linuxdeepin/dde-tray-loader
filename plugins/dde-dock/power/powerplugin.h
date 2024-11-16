@@ -10,11 +10,11 @@
 #include "powerstatuswidget.h"
 #include "tipswidget.h"
 
-#include <com_deepin_system_systempower.h>
+#include "power1interface.h"
 
 #include <QLabel>
 
-using SystemPowerInter = com::deepin::system::Power;
+using SystemPowerInter = org::deepin::dde::Power1;
 
 DCORE_BEGIN_NAMESPACE
 class DConfig;

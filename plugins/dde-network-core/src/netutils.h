@@ -6,13 +6,14 @@
 #define NETUTILS_H
 
 #include "networkconst.h"
+#include "networkinter.h"
 
 #include <NetworkManagerQt/ActiveConnection>
 
 #include <QDebug>
 #include <QJsonObject>
 
-#include "com_deepin_daemon_network.h"
+// #include "com_deepin_daemon_network.h"
 
 namespace dde {
 namespace network {
@@ -29,7 +30,7 @@ namespace network {
 // wifi6的标记
 #define AP_FLAGS_HE 0x10
 
-using NetworkInter = com::deepin::daemon::Network;
+// using NetworkInter = com::deepin::daemon::Network;
 
 Connectivity connectivityValue(uint sourceConnectivity);
 DeviceStatus convertDeviceStatus(int sourceDeviceStatus);

@@ -20,7 +20,7 @@ const QString sinkInterface = "com.deepin.Cooperation.NetworkDisplay.Sink";
 DCORE_USE_NAMESPACE
 
 WirelessCastingModel::WirelessCastingModel(QObject *parent)
-    : QObject{ parent }
+    : QObject(parent)
     , m_dbus(new DDBusInterface(dbusService, dbusPath, dbusInterface, QDBusConnection::sessionBus(), this))
     , m_dbusNM(nullptr)
     , m_state(NoMonitor)

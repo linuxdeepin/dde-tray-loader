@@ -12,10 +12,9 @@
 #include "soundcontroller.h"
 #include "pluginlistview.h"
 
-#include <com_deepin_daemon_audio.h>
-#include <com_deepin_daemon_audio_sink.h>
+#include "audio1interface.h"
+#include "audio1sinkinterface.h"
 
-#include <DApplicationHelper>
 #include <DIconButton>
 
 #include <QLabel>
@@ -26,20 +25,25 @@
 
 DWIDGET_USE_NAMESPACE
 
-using DBusAudio = com::deepin::daemon::Audio;
-using DBusSink = com::deepin::daemon::audio::Sink;
+using DBusAudio = org::deepin::dde::Audio1;
+using DBusSink = org::deepin::dde::audio1::Sink;
 
 class HorizontalSeparator;
-class QGSettings;
 
 namespace Dock {
 class TipsWidget;
 }
 
-class SoundApplet : public QWidget {
+class SoundApplet : public QWidget
+{
     Q_OBJECT
-
 public:
+    enum volumeSliderStatus {
+        Enabled = 0,
+        Disabled,
+        Hidden
+    };
+
     explicit SoundApplet(QWidget* parent = 0);
 
     DockSlider* mainSlider();
@@ -63,7 +67,7 @@ private:
     void refreshIcon();
     void enableDevice(bool flag);
     void removeDisabledDevice(QString portId, unsigned int cardId);
-    void updateVolumeSliderStatus(const QString& status);
+    void updateVolumeSliderStatus(int status);
     void resizeApplet();
     PluginItem* findItem(const QString &uniqueKey) const;
     void selectItem(PluginItem *targetItem);
@@ -84,7 +88,7 @@ private:
     PluginListView* m_listView;
     JumpSettingButton* m_settingButton;
     QStandardItemModel* m_itemModel;
-    const QGSettings* m_gsettings;
+    Dtk::Core::DConfig *m_dConfig;
     int m_minHeight;
     QSpacerItem *m_spacerItem;
 };

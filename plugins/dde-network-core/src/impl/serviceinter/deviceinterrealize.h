@@ -48,7 +48,6 @@ public:
     inline QString usingHwAdr() const override { return m_data.value("ClonedAddress").toString(); }          // 正在使用的mac地址
     const QStringList ipv4() override;                                                                       // IPV4地址
     const QStringList ipv6() override;                                                                       // IPV6地址
-    QJsonObject activeConnectionInfo() const override;                                                       // 获取当前活动连接的信息
     void setEnabled(bool enabled) override;                                                                  // 开启或禁用网卡
     Connectivity connectivity();
     DeviceStatus deviceStatus() const override;

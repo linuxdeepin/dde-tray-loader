@@ -65,6 +65,13 @@ protected:
     ~NetworkController() override;
 
 private:
+    void initNetworkStatus();
+    void checkIpConflicted(const QList<NetworkDeviceBase *> &devices);
+
+private slots:
+    void onDeviceAdded(QList<NetworkDeviceBase*> device);
+
+private:
     NetworkProcesser *m_processer;
     ProxyController *m_proxyController;
     VPNController *m_vpnController;

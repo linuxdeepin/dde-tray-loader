@@ -27,13 +27,10 @@ Q_LOGGING_CATEGORY(KEYBOARD_LAYOUT, "org.deepin.dde.dock.keyboardLayout")
 
 DBusAdaptors::DBusAdaptors(QObject *parent)
     : QDBusAbstractAdaptor(parent),
-      m_keyboard(new Keyboard("com.deepin.daemon.InputDevices",
-                              "/com/deepin/daemon/InputDevice/Keyboard",
+      m_keyboard(new Keyboard("org.deepin.dde.InputDevices1",
+                              "/org/deepin/dde/InputDevice1/Keyboard",
                               QDBusConnection::sessionBus(), this)),
     m_menu(new QMenu()),
-    m_gsettings(Utils::ModuleSettingsPtr("keyboard", QByteArray(), this)),
-    m_keybingEnabled(Utils::SettingsPtr("com.deepin.dde.keybinding.system.enable", QByteArray(), this)),
-    m_dccSettings(Utils::SettingsPtr("com.deepin.dde.control-center", QByteArray(), this)),
     m_fcitxRunning(false),
     m_inputmethod(nullptr)
 {
@@ -48,9 +45,6 @@ DBusAdaptors::DBusAdaptors(QObject *parent)
     onCurrentLayoutChanged(m_keyboard->currentLayout());
     onUserLayoutListChanged(m_keyboard->userLayoutList());
 
-    if (m_gsettings)
-        connect(m_gsettings, &QGSettings::changed, this, &DBusAdaptors::onGSettingsChanged);
-
     // deepin show fcitx lang code,while fcitx is running
     if (Dtk::Core::DSysInfo::isCommunityEdition()) {
         initFcitxWatcher();
@@ -64,9 +58,6 @@ DBusAdaptors::~DBusAdaptors()
 
 QString DBusAdaptors::layout() const
 {
-    if (m_gsettings && m_gsettings->keys().contains("enable") && !m_gsettings->get("enable").toBool())
-        return QString();
-
     if (m_userLayoutList.size() < 2) {
         // do NOT show keyboard indicator
         return QString();
@@ -185,9 +176,9 @@ void DBusAdaptors::handleActionTriggered(QAction *action)
 {
     if (action == m_addLayoutAction) {
         DDBusSender()
-                .service("com.deepin.dde.ControlCenter")
-                .interface("com.deepin.dde.ControlCenter")
-                .path("/com/deepin/dde/ControlCenter")
+                .service("org.deepin.dde.ControlCenter1")
+                .interface("org.deepin.dde.ControlCenter1")
+                .path("/org/deepin/dde/ControlCenter1")
                 .method("ShowPage")
                 .arg(QString("keyboard"))
                 .arg(QString("Keyboard Layout/Add Keyboard Layout"))
@@ -204,12 +195,14 @@ void DBusAdaptors::onGSettingsChanged(const QString &key)
 {
     Q_UNUSED(key);
 
+#if 0 // TODO origin gsettings: "com.deepin.dde.dock.module.keyboard"
     // 键盘布局插件处显示的内容就是QLabel中的内容，有文字了就显示，没有文字就不显示了
     if (m_gsettings && m_gsettings->keys().contains("enable")) {
         const bool enable = m_gsettings->get("enable").toBool();
         QString layoutStr = getCurrentKeyboard()->currentLayout().split(';').first();
         setLayout(enable ? layoutStr : "");
     }
+#endif
 }
 
 QString DBusAdaptors::duplicateCheck(const QString &kb)
@@ -326,15 +319,19 @@ void DBusAdaptors::onPropertyChanged(QString name, QVariantMap map, QStringList 
 
 void DBusAdaptors::setKeyboardLayoutGsettings()
 {
+    // TODO origin gsettings: "com.deepin.dde.keybinding.system.enable"
+#if 0
     // while fcitx is running, disable keyboard switch shortcut, enable it after fcitx stopped
     if (m_keybingEnabled && m_keybingEnabled->keys().contains(KDB_LAYOUT_KEYBINDING_KEY)) {
         m_keybingEnabled->set(KDB_LAYOUT_KEYBINDING_KEY, QVariant(!m_fcitxRunning));
     }
 
+    // TODO origin gsettings: "com.deepin.dde.control-center"
     // hide keyboard layout setttings in dde-control-center, resume it after fcitx stopped
     if (m_dccSettings && m_dccSettings->keys().contains(KDB_LAYOUT_DCC_NAME)) {
         m_dccSettings->set(KDB_LAYOUT_DCC_NAME, QVariant(!m_fcitxRunning));
     }
+#endif
 }
 
 bool DBusAdaptors::isFcitxRunning() const

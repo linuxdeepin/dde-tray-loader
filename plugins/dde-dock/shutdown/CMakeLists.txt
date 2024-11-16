@@ -19,34 +19,32 @@ file(GLOB_RECURSE SRCS
 )
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5Svg REQUIRED)
-find_package(Qt5DBus REQUIRED)
-find_package(DtkWidget REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Widgets Svg DBus)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget)
 
 #if (${CMAKE_SYSTEM_PROCESSOR}  STREQUAL "aarch64")
 #    add_definitions("-DDISABLE_POWER_OPTIONS")
 #endif()
-pkg_check_modules(QGSettings REQUIRED gsettings-qt)
 
 add_definitions("${QT_DEFINITIONS} -DQT_PLUGIN")
 add_library(${PLUGIN_NAME} SHARED ${SRCS})
 set_target_properties(${PLUGIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ../)
-target_include_directories(${PLUGIN_NAME} PUBLIC ${DtkWidget_INCLUDE_DIRS}
-                                                 ${Qt5DBus_INCLUDE_DIRS}
-                                                 ${QGSettings_INCLUDE_DIRS}
-                                                 ../../../interfaces
-                                                 ../common
-                                                 ../util
-                                                 ../widgets)
+target_include_directories(${PLUGIN_NAME} PUBLIC
+    ../../../interfaces
+    ../common
+    ../util
+    ../widgets
+)
 target_link_libraries(${PLUGIN_NAME} PRIVATE
-    ${DtkWidget_LIBRARIES}
+    Dtk${DTK_VERSION_MAJOR}::Widget
     ${XCB_EWMH_LIBRARIES}
-    ${Qt5Widgets_LIBRARIES}
-    ${Qt5Svg_LIBRARIES}
-    ${Qt5DBus_LIBRARIES}
-    ${QGSettings_LIBRARIES}
+    Qt${QT_VERSION_MAJOR}::DBus
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::Svg
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
 install(FILES "resources/shutdown.svg" DESTINATION share/dde-dock/icons/dcc-setting)
+
+dtk_add_config_meta_files(APPID org.deepin.dde.dock FILES ../configs/org.deepin.dde.dock.plugin.shutdown.json) # compat
+dtk_add_config_meta_files(APPID org.deepin.dde.tray-loader FILES ../configs/org.deepin.dde.dock.plugin.shutdown.json)

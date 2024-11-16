@@ -2,16 +2,12 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-find_package(Qt5 REQUIRED COMPONENTS Gui WaylandClient XkbCommonSupport)
-find_package(Dtk REQUIRED COMPONENTS Gui Widget)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Core Gui WaylandClient)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Gui Widget)
 
 find_package(ECM REQUIRED MO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${ECM_MODULE_PATH}")
-find_package(QtWaylandScanner)
 find_package(PkgConfig REQUIRED)
-
-pkg_check_modules(XKBCOMMON REQUIRED IMPORTED_TARGET xkbcommon)
-pkg_check_modules(WaylandClient REQUIRED IMPORTED_TARGET wayland-client)
 
 include(KDEInstallDirs)
 
@@ -26,15 +22,12 @@ target_include_directories(dockpluginmanager-interface PUBLIC
 
 target_link_libraries(dockpluginmanager-interface
 PUBLIC
-    Qt5::Gui
-    Qt5::Widgets
-    Dtk::Widget
-    PkgConfig::XKBCOMMON
+    Qt${QT_VERSION_MAJOR}::Gui
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Dtk${DTK_VERSION_MAJOR}::Widget
 )
 
 add_library(dockpluginmanager SHARED
-    pluginmanager_p.h
-    pluginmanager.cpp
     pluginmanagerintegration_p.h
     pluginmanagerintegration.cpp
     pluginsurface_p.h
@@ -42,21 +35,21 @@ add_library(dockpluginmanager SHARED
     main.cpp
 )
 
-ecm_add_qtwayland_client_protocol(dockpluginmanager
-PROTOCOL
+qt_generate_wayland_protocol_client_sources(dockpluginmanager
+    FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/../protocol/plugin-manager-v1.xml
-BASENAME
-    plugin-manager-v1
 )
 
 target_link_libraries(dockpluginmanager
 PUBLIC
     dockpluginmanager-interface
 PRIVATE
-    PkgConfig::WaylandClient
-    PkgConfig::XKBCOMMON
-    Qt5::WaylandClientPrivate
-    Qt5::XkbCommonSupportPrivate
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Gui
+    Qt${QT_VERSION_MAJOR}::GuiPrivate
+    Qt${QT_VERSION_MAJOR}::WaylandClient
+    Qt${QT_VERSION_MAJOR}::WaylandClientPrivate
+    Wayland::Client
 )
 
 set_target_properties(dockpluginmanager PROPERTIES

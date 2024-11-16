@@ -64,7 +64,7 @@ void BrightnessModel::monitorAdded(Monitor* mon)
     connect(mon, &Monitor::enableChanged, this, &BrightnessModel::enabledMonitorListChanged);
     connect(mon, &Monitor::brightnessChanged, this, &BrightnessModel::monitorBrightnessChanged);
     // 按照名称排序
-    qSort(m_monitors.begin(), m_monitors.end(), [=](const Monitor* m1, const Monitor* m2) {
+    std::sort(m_monitors.begin(), m_monitors.end(), [=](const Monitor* m1, const Monitor* m2) {
         return m1->name() < m2->name();
     });
     Q_EMIT enabledMonitorListChanged();

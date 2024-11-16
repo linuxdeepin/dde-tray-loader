@@ -93,7 +93,6 @@ HotspotItem *HotspotController_NM::addConnection(WirelessDevice *device, Network
         itemInfo[device] << hotspotItem;
         Q_EMIT itemChanged(itemInfo);
     });
-
     hotspotItem->setConnection(createJson(connection));
     hotspotItem->m_devicePath = device->path();
     hotspotItem->m_device = device;

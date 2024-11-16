@@ -5,8 +5,6 @@
 #include "listviewdelegate.h"
 #include <dguiapplicationhelper.h>
 
-#include <DGuiApplicationHelper>
-
 #include <QPainter>
 
 ListViewDelegate::ListViewDelegate(QAbstractItemView *parent)

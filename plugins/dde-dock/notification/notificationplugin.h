@@ -11,7 +11,7 @@
 class NotificationPlugin : public QObject, public PluginsItemInterfaceV2
 {
     Q_OBJECT
-    Q_INTERFACES(PluginsItemInterface)
+    Q_INTERFACES(PluginsItemInterfaceV2)
     Q_PLUGIN_METADATA(IID "com.deepin.dock.PluginsItemInterface" FILE "notification.json")
 
 public:

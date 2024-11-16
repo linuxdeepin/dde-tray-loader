@@ -4,6 +4,7 @@
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.16)
 
+cmake_policy(SET CMP0160 OLD)
 set(DTL_VERSION "0.0.1" CACHE STRING "Define project version")
 set(DOCK_VERSION "6.0.37" CACHE STRING "Dock compatible version")
 
@@ -24,6 +25,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
 
 set(DTL_BUILD_WITH_QT6 ON CACHE BOOL "Build dde-tray-loader with Qt6")
 
@@ -46,8 +48,7 @@ install(FILES ${CMAKE_BINARY_DIR}/dde-dock.pc
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
 ## dev files
-file(GLOB INTERFACES "interfaces/*.h"
-                     "src/tray-wayland-intergration/plugin.h")
+file(GLOB INTERFACES "interfaces/*.h")
 install(FILES ${INTERFACES}
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dde-dock)
 

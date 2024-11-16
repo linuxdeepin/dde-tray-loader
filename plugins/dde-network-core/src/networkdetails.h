@@ -15,7 +15,7 @@ namespace network {
 
 class NetworkDetailRealize;
 
-class NetworkDetails : QObject
+class NetworkDetails : public QObject
 {
     Q_OBJECT
 
@@ -24,6 +24,9 @@ class NetworkDetails : QObject
 public:
     QString name();
     QList<QPair<QString, QString>> items();
+
+signals:
+    void infoChanged();
 
 protected:
     NetworkDetails(NetworkDetailRealize *realize, QObject *parent = Q_NULLPTR);

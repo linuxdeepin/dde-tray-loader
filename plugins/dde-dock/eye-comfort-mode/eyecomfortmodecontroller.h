@@ -5,14 +5,14 @@
 #ifndef EYE_COMFORT_MODE_CONTROLLER_H
 #define EYE_COMFORT_MODE_CONTROLLER_H
 
-#include <com_deepin_daemon_appearance.h>
+#include "appearance1interface.h"
 
 #include <DSingleton>
 
 #include <QObject>
 #include <QDBusInterface>
 
-using DBusTheme = com::deepin::daemon::Appearance;
+using DBusTheme = org::deepin::dde::Appearance1;
 
 class EyeComfortModeController : public QObject, public Dtk::Core::DSingleton<EyeComfortModeController>
 {

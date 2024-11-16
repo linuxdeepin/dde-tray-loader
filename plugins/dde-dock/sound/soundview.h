@@ -9,14 +9,14 @@
 #include "soundcontroller.h"
 #include "commoniconbutton.h"
 
+#include "audio1sinkinterface.h"
+
 #include <QWidget>
 #include <QIcon>
 
-#include <com_deepin_daemon_audio_sink.h>
-
 #define SOUND_KEY "sound-item-key"
 
-using DBusSink = com::deepin::daemon::audio::Sink;
+using DBusSink = org::deepin::dde::audio1::Sink;
 
 namespace Dock {
 class TipsWidget;

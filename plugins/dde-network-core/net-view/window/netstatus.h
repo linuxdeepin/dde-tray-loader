@@ -102,6 +102,9 @@ public:
 public Q_SLOTS:
     void toggleNetworkActive();
 
+protected:
+    bool event(QEvent *event) override;
+
 protected Q_SLOTS:
     void onChildAdded(const NetItem *child);
     void onChildRemoved(const NetItem *child);

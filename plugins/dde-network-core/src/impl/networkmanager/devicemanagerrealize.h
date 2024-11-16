@@ -24,7 +24,7 @@ namespace dde {
 namespace network {
 
 class ProcesserInterface;
-class IpConfig;
+class IpManager;
 
 class DeviceManagerRealize : public NetworkDeviceRealize
 {
@@ -48,7 +48,6 @@ protected:
     QString usingHwAdr() const override;                                                  // 正在使用的mac地址
     const QStringList ipv4() override;                                                    // IPV4地址
     const QStringList ipv6() override;                                                    // IPV6地址
-    QJsonObject activeConnectionInfo() const override;                                    // 获取当前活动连接的信息
     void setEnabled(bool enabled) override;                                               // 开启或禁用网卡
     void disconnectNetwork() override;                                                    // 断开网络连接，该方法是一个虚方法，具体在子类
     DeviceStatus deviceStatus() const override;                                           // 返回设备的状态
@@ -64,7 +63,6 @@ private:
     void initConnection();
     void initUsbInfo();
     void initEnabeld();
-    void resetConfig(const QDBusObjectPath &ipv4ConfigPath);
 
 protected:
     void updateWiredConnections();
@@ -73,11 +71,10 @@ private slots:
     void onDeviceEnabledChanged(QDBusObjectPath path, bool enabled);
     void onConnectionAdded(const QString &connectionUni);
     void onDeviceStateChanged();
-    void onDevicePropertiesChanged(const QString &interfaceName, const QVariantMap &changedProperties, const QStringList &invalidatedProperties);
 
 private:
     QSharedPointer<NetworkManager::Device> m_device;
-    QSharedPointer<IpConfig> m_ipv4Config;
+    QSharedPointer<IpManager> m_ipv4Config;
     bool m_isUsbDevice;
     bool m_isEnabeld;
 };
@@ -156,24 +153,6 @@ private:
     bool m_hotspotEnabled;
     ProcesserInterface *m_netProcesser;
     bool m_available;
-};
-
-class IpConfig : public QObject
-{
-    Q_OBJECT
-
-public:
-    explicit IpConfig(NetworkManager::IpConfig config, const QString &uni, QObject *parent = nullptr);
-    ~IpConfig() = default;
-
-signals:
-    void ipChanged();
-
-private slots:
-    void onPropertiesChanged(const QString &interfaceName, const QVariantMap &changedProperties, const QStringList &invalidatedProperties);
-
-private:
-    QStringList m_addresses;
 };
 
 }

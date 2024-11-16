@@ -33,7 +33,7 @@ using namespace accountnetwork::sessionservice;
 
 #define NETWORKMANAGERINTERFACE "org.freedesktop.NetworkManager"
 
-#define DEAMON_NETWORK_SERVICE "com.deepin.daemon.Network"
+#define DEAMON_NETWORK_SERVICE "org.deepin.dde.Network1"
 #define SECRET_SERVICE "org.freedesktop.secrets"
 
 #define MANULCONNECTION 1
@@ -161,6 +161,7 @@ QVariantMap ActiveAccountNetwork::authenInfo() const
 
 bool ActiveAccountNetwork::canResetCurrentNetwork(const QSharedPointer<NetworkManager::Device> &device, const QMap<QString, QString> &network, const QSharedPointer<NetworkManager::ActiveConnection> &activeConnection) const
 {
+#if 0
     // 如果当前用户没有指定连接网络，则无需重连
     if (!network.contains(device->interfaceName()))
         return false;
@@ -183,6 +184,8 @@ bool ActiveAccountNetwork::canResetCurrentNetwork(const QSharedPointer<NetworkMa
 
     // 如果标记为手动，则无需自动连接(手动连接的时候，这个flags值为1)
     return activeConnection->flags() != MANULCONNECTION;
+#endif
+    return true;
 }
 
 void ActiveAccountNetwork::onConnectionStateChanged(const QSharedPointer<NetworkManager::Device> &device, const QSharedPointer<NetworkManager::ActiveConnection> &activeConnection)
@@ -283,7 +286,7 @@ void ActiveAccountNetwork::activeNetwork(const QMap<QString, QString> &network, 
         QDBusServiceWatcher *serviceWatcher = new QDBusServiceWatcher(this);
         serviceWatcher->setConnection(QDBusConnection::sessionBus());
         if (!m_networkregisted) {
-            qWarning() << "com.deepin.daemon.Network not start,wait to it start";
+            qWarning() << "org.deepin.dde.Network1 not start,wait to it start";
             serviceWatcher->addWatchedService(DEAMON_NETWORK_SERVICE);
         }
         if (!m_secretregisted) {

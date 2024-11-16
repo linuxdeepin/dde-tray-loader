@@ -8,11 +8,11 @@
 
 #include <QCoreApplication>
 #include <QDebug>
-#include <QGSettings>
+// #include <QGSettings>
 
 static Dtk::Core::DConfig *dConfig = nullptr;
-static QGSettings *gSettingsConfig = nullptr;
-static QGSettings *gAirplaneConfig = nullptr;
+// static QGSettings *gSettingsConfig = nullptr;
+// static QGSettings *gAirplaneConfig = nullptr;
 
 ConfigWatcher::ConfigWatcher(QObject *parent)
     : QObject(parent)
@@ -23,13 +23,13 @@ ConfigWatcher::ConfigWatcher(QObject *parent)
     , m_enableAccountNetwork(false)
 {
     if (!dConfig)
-        dConfig = Dtk::Core::DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.network");
+        dConfig = Dtk::Core::DConfig::create("org.deepin.dde.network", "org.deepin.dde.network");
 
-    if (!gSettingsConfig && QGSettings::isSchemaInstalled("com.deepin.dde.control-center"))
-        gSettingsConfig = new QGSettings("com.deepin.dde.control-center", QByteArray(), this);
+    // if (!gSettingsConfig && QGSettings::isSchemaInstalled("com.deepin.dde.control-center"))
+    //     gSettingsConfig = new QGSettings("com.deepin.dde.control-center", QByteArray(), this);
 
-    if (!gAirplaneConfig && QGSettings::isSchemaInstalled("com.deepin.dde.dock.module.airplane-mode"))
-        gAirplaneConfig = new QGSettings("com.deepin.dde.dock.module.airplane-mode", QByteArray(), this);
+    // if (!gAirplaneConfig && QGSettings::isSchemaInstalled("com.deepin.dde.dock.module.airplane-mode"))
+    //     gAirplaneConfig = new QGSettings("com.deepin.dde.dock.module.airplane-mode", QByteArray(), this);
 
     if (dConfig && dConfig->isValid()) {
         connect(dConfig, &Dtk::Core::DConfig::valueChanged, this, &ConfigWatcher::onValueChanged);
@@ -52,19 +52,19 @@ ConfigWatcher::ConfigWatcher(QObject *parent)
         }
     }
 
-    if (gSettingsConfig) {
-        connect(gSettingsConfig, &QGSettings::changed, this, &ConfigWatcher::onDccConfigChanged);
-        const QStringList keys = gSettingsConfig->keys();
-        if (keys.contains("wireless"))
-            m_wirelessState = gSettingsConfig->get("wireless").toString();
-    }
+    // if (gSettingsConfig) {
+    //     connect(gSettingsConfig, &QGSettings::changed, this, &ConfigWatcher::onDccConfigChanged);
+    //     const QStringList keys = gSettingsConfig->keys();
+    //     if (keys.contains("wireless"))
+    //         m_wirelessState = gSettingsConfig->get("wireless").toString();
+    // }
 
-    if (gAirplaneConfig) {
-        connect(gAirplaneConfig, &QGSettings::changed, this, &ConfigWatcher::onAirplaneModeChanged);
-        if (gAirplaneConfig->keys().contains("enable")) {
-            m_airplaneModeEnabled = gAirplaneConfig->get("enable").toBool();
-        }
-    }
+    // if (gAirplaneConfig) {
+    //     connect(gAirplaneConfig, &QGSettings::changed, this, &ConfigWatcher::onAirplaneModeChanged);
+    //     if (gAirplaneConfig->keys().contains("enable")) {
+    //         m_airplaneModeEnabled = gAirplaneConfig->get("enable").toBool();
+    //     }
+    // }
 }
 
 ConfigWatcher::~ConfigWatcher()
@@ -91,22 +91,22 @@ void ConfigWatcher::onValueChanged(const QString &key)
 void ConfigWatcher::onDccConfigChanged(const QString &key)
 {
     if (key == "wireless") {
-        ModuleState oldState = wirelessState();
-        m_wirelessState = gSettingsConfig->get(key).toString();
-        ModuleState newState = wirelessState();
-        if (oldState != newState)
-            emit wirelessStateChanged(newState);
+        // ModuleState oldState = wirelessState();
+        // m_wirelessState = gSettingsConfig->get(key).toString();
+        // ModuleState newState = wirelessState();
+        // if (oldState != newState)
+        //     emit wirelessStateChanged(newState);
     }
 }
 
 void ConfigWatcher::onAirplaneModeChanged(const QString &key)
 {
     if (key == "enable") {
-        bool enabled = gAirplaneConfig->get(key).toBool();
-        if (enabled == m_airplaneModeEnabled)
-            return;
+        // bool enabled = gAirplaneConfig->get(key).toBool();
+        // if (enabled == m_airplaneModeEnabled)
+        //     return;
 
-        m_airplaneModeEnabled = enabled;
+        // m_airplaneModeEnabled = enabled;
         emit airplaneModeEnabledChanged(m_airplaneModeEnabled);
     }
 }
@@ -163,11 +163,11 @@ bool ConfigWatcher::airplaneModeEnabled() const
 
 void ConfigWatcher::setAirplaneModeEnabled(bool enabled)
 {
-    m_airplaneModeEnabled = enabled;
-    if (!gAirplaneConfig)
-        return;
+    // m_airplaneModeEnabled = enabled;
+    // if (!gAirplaneConfig)
+    //     return;
 
-    gAirplaneConfig->set("enable", enabled);
+    // gAirplaneConfig->set("enable", enabled);
 }
 
 int ConfigWatcher::wirelessScanInterval() const

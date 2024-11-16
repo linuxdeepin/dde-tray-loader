@@ -4,19 +4,19 @@
 
 #include "displaymodel.h"
 
-const QString DisplayDBusServer = "com.deepin.daemon.Display";
-const QString DisplayDBusPath = "/com/deepin/daemon/Display";
+const QString DisplayDBusServer = "org.deepin.dde.Display1";
+const QString DisplayDBusPath = "/org/deepin/dde/Display1";
 
 DisplayModel::DisplayModel(QObject *parent)
     : QObject(parent)
-    , m_displayInter(new Display(DisplayDBusServer,
+    , m_displayInter(new DisplayInter(DisplayDBusServer,
                                  DisplayDBusPath,
                                  QDBusConnection::sessionBus(), this))
 {
     m_displayInter->setSync(false, false);
-    connect(m_displayInter, &__Display::DisplayModeChanged, this, &DisplayModel::setDisplayMode);
-    connect(m_displayInter, &__Display::MonitorsChanged, this, &DisplayModel::setMonitors);
-    connect(m_displayInter, &__Display::PrimaryChanged, this, &DisplayModel::setPrimaryScreen);
+    connect(m_displayInter, &DisplayInter::DisplayModeChanged, this, &DisplayModel::setDisplayMode);
+    connect(m_displayInter, &DisplayInter::MonitorsChanged, this, &DisplayModel::setMonitors);
+    connect(m_displayInter, &DisplayInter::PrimaryChanged, this, &DisplayModel::setPrimaryScreen);
 
     setPrimaryScreen(m_displayInter->primary());
     setDisplayMode(m_displayInter->displayMode());

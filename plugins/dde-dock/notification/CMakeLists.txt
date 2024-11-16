@@ -3,8 +3,9 @@
 # SPDX-License-Identifier: CC0-1.0
 
 set(PLUGIN_NAME "notification")
-find_package(Qt5 REQUIRED COMPONENTS DBus)
-find_package(Dtk REQUIRED COMPONENTS Widget Gui)
+
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS DBus)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget Gui)
 
 add_library(${PLUGIN_NAME} SHARED
     notification.h
@@ -24,10 +25,9 @@ target_include_directories(${PLUGIN_NAME} PRIVATE
 )
 
 target_link_libraries(${PLUGIN_NAME} PRIVATE
-    Dtk::Widget
-    Qt5::DBus
-    # Dtk6::Widget
-    Dtk::Gui
+    Dtk${DTK_VERSION_MAJOR}::Widget
+    Qt${QT_VERSION_MAJOR}::DBus
+    Dtk${DTK_VERSION_MAJOR}::Gui
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)

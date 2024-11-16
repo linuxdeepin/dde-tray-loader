@@ -13,9 +13,6 @@
 #include <QLabel>
 #include <QScopedPointer>
 
-#include <com_deepin_dde_daemon_dock.h>
-#include <com_deepin_dde_daemon_dock_entry.h>
-
 class OnboardPlugin : public QObject, public PluginsItemInterfaceV2
 {
     Q_OBJECT

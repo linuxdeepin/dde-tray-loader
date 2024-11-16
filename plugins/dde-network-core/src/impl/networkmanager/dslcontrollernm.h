@@ -42,6 +42,7 @@ private Q_SLOTS:
     void onActiveConnectionChanged();
     void onDeviceAdded(const QString &uni);
     void onDeviceRemoved(const QString &uni);
+    void onRemoveConnection(const QString &connection);
 
 private:
     NetworkManager::WiredDevice::List m_devices;

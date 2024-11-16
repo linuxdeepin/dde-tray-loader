@@ -76,7 +76,7 @@ bool PluginListView::viewportEvent(QEvent *event)
     case QEvent::HoverEnter:
     case QEvent::HoverMove: {
         QHoverEvent *he = dynamic_cast<QHoverEvent *>(event);
-        QModelIndex newIndex = indexAt(he->pos());
+        QModelIndex newIndex = indexAt(QPoint(he->position().x(), he->position().y()));
         setCurrentIndex(newIndex);
         break;
     }

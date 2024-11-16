@@ -7,7 +7,7 @@
 
 SoundController::SoundController(QObject *parent)
     : QObject(parent)
-    , m_audioInter(new DBusAudio("com.deepin.daemon.Audio", "/com/deepin/daemon/Audio", QDBusConnection::sessionBus(), this))
+    , m_audioInter(new DBusAudio("org.deepin.dde.Audio1", "/org/deepin/dde/Audio1", QDBusConnection::sessionBus(), this))
     , m_defaultSinkInter(nullptr)
     , m_dconfig(DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.sound", QString(), this))
 {
@@ -79,7 +79,7 @@ void SoundController::onDefaultSinkChanged(const QDBusObjectPath &path)
     if (m_defaultSinkInter)
         m_defaultSinkInter->deleteLater();
 
-    m_defaultSinkInter = new DBusSink("com.deepin.daemon.Audio", path.path(), QDBusConnection::sessionBus(), this);
+    m_defaultSinkInter = new DBusSink("org.deepin.dde.Audio1", path.path(), QDBusConnection::sessionBus(), this);
 
     SoundModel::ref().setActivePort(m_defaultSinkInter->card(), m_defaultSinkInter->activePort().name);
     SoundModel::ref().setMute(m_defaultSinkInter->mute());
