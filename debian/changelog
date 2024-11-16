@@ -1,3 +1,9 @@
+dde-tray-loader (1.0.6) unstable; urgency=medium
+
+  * fix: Avoid showing XEMBED and SNI plugins together
+
+ -- Yutao Meng <mengyutao@deepin.org>  Wed, 13 Nov 2024 11:35:22 +0800
+
 dde-tray-loader (1.0.5) unstable; urgency=medium
 
   * feat: Allow plugins sending close quick panel requests
