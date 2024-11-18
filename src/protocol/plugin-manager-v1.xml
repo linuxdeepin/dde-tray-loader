@@ -125,5 +125,6 @@
     <request name="dcc_icon" >
         <arg name="type" type="string"/>
     </request>
+    <request name="request_shutdown"/>
   </interface>
 </protocol>

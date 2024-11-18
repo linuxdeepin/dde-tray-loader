@@ -329,6 +329,12 @@ bool PluginItem::executeCommand()
     const QString command = m_pluginsItemInterface->itemCommand(m_itemKey);
     if (!command.isEmpty()) {
         qInfo() << "command: " << command;
+
+        if (command == Dock::REQUEST_SHUTDOWN) {
+            emit sigRequestshutdown();
+            return true;
+        }
+
         QStringList commandList = command.split(" ");
         QString program = commandList.takeFirst(); // 剩下是参数
 

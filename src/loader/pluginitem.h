@@ -36,6 +36,7 @@ public:
 
 signals:
     void recvMouseEvent(int type);
+    void sigRequestshutdown();
 
 protected:
     void mousePressEvent(QMouseEvent *e) override;

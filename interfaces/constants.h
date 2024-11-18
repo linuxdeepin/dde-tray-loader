@@ -251,6 +251,9 @@ const QString PLUGIN_PROP_CHAMELEON_MARGIN = QStringLiteral("chameleonMargin");
 const QString dockMenuItemId = QStringLiteral("dock-item-id");
 const QString unDockMenuItemId = QStringLiteral("undock-item-id");
 
+// 电源插件左键点击请求调出电源管理
+const QString REQUEST_SHUTDOWN = QStringLiteral("requestShutdown");
+
 }
 
 Q_DECLARE_METATYPE(Dock::DisplayMode)

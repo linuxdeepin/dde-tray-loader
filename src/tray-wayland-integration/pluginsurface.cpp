@@ -31,6 +31,10 @@ PluginSurface::PluginSurface(PluginManagerIntegration *manager, QtWaylandClient:
     connect(m_plugin, &EmbedPlugin::pluginRecvMouseEvent, this, [this] (int type){
         mouse_event(type);
     });
+
+    connect(m_plugin, &EmbedPlugin::pluginRequestShutdown, this, [this] {
+        request_shutdown();
+    });
 }
 
 PluginSurface::~PluginSurface()
