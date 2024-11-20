@@ -1,3 +1,9 @@
+dde-tray-loader (1.99.5) unstable; urgency=medium
+
+  * feat: support for requeset shutdown
+
+ -- xionglinlin <xionglinlin@uniontech.com>  Wed, 20 Nov 2024 16:12:11 +0800
+
 dde-tray-loader (1.99.4) unstable; urgency=medium
 
   * chore: adapt to qt6
