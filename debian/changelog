@@ -1,3 +1,9 @@
+dde-tray-loader (1.99.4) unstable; urgency=medium
+
+  * chore: adapt to qt6
+
+ -- zhaoyingzhen <zhaoyingzhen@uniontech.com>  Wed, 20 Nov 2024 10:49:55 +0800
+
 dde-tray-loader (1.99.3) UNRELEASED; urgency=medium
 
   * fix: normalize the naming of the deb package
