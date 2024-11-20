@@ -335,6 +335,7 @@ void WidgetPlugin::initConnections(Plugin::EmbedPlugin *plugin, PluginItem *plug
     connect(plugin, &Plugin::EmbedPlugin::contentMarginChanged, pluginItem, &PluginItem::updatePluginContentMargin);
 
     connect(pluginItem, &PluginItem::recvMouseEvent, plugin, &Plugin::EmbedPlugin::pluginRecvMouseEvent);
+    connect(pluginItem, &PluginItem::sigRequestshutdown, plugin, &Plugin::EmbedPlugin::pluginRequestShutdown);
 }
 
 int WidgetPlugin::getPluginFlags()

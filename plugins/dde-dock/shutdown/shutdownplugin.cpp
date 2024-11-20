@@ -116,7 +116,7 @@ const QString ShutdownPlugin::itemCommand(const QString &itemKey)
 {
     Q_UNUSED(itemKey);
 
-    return QString("dbus-send --print-reply --dest=org.deepin.dde.ShutdownFront1 /org/deepin/dde/ShutdownFront1 org.deepin.dde.ShutdownFront1.Show");
+    return REQUEST_SHUTDOWN;
 }
 
 const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
