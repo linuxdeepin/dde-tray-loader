@@ -11,7 +11,7 @@
 namespace Plugin {
 class EmbedPluginPrivate;
 
-class Q_DECL_EXPORT EmbedPlugin : public QObject
+class EmbedPlugin : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString itemKey READ itemKey WRITE setItemKey NOTIFY itemKeyChanged)
@@ -94,7 +94,7 @@ private:
 
 class PluginPopupPrivate;
 
-class Q_DECL_EXPORT PluginPopup : public QObject
+class PluginPopup : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString itemKey READ itemKey WRITE setItemKey NOTIFY itemKeyChanged)
