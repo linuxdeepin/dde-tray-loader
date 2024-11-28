@@ -1,3 +1,9 @@
+dde-tray-loader (1.0.7) unstable; urgency=medium
+
+  * fix: dde-dock plugins crash on RISC-V platform
+
+ -- Yutao Meng <mengyutao@deepin.org>  Thu, 28 Nov 2024 10:40:52 +0800
+
 dde-tray-loader (1.0.6) unstable; urgency=medium
 
   * fix: Avoid showing XEMBED and SNI plugins together
