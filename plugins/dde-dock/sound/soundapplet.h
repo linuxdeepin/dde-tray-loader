@@ -66,8 +66,8 @@ private:
     void removeDisabledDevice(QString portId, unsigned int cardId);
     void updateVolumeSliderStatus(const QString& status);
     void resizeApplet();
-    PluginItem* findItem(const QString &uniqueKey) const;
-    void selectItem(PluginItem *targetItem);
+    PluginStandardItem* findItem(const QString &uniqueKey) const;
+    void selectItem(PluginStandardItem *targetItem);
 
 protected:
     bool eventFilter(QObject *watcher, QEvent *event);

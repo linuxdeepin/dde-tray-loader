@@ -23,9 +23,9 @@ EyeComfortmodeApplet::EyeComfortmodeApplet(QWidget *parent)
     , m_settingButton(new JumpSettingButton(this))
     , m_themeView(new PluginListView(this))
     , m_themeItemModel(new QStandardItemModel(m_themeView))
-    , m_lightTheme(new PluginItem(QIcon::fromTheme("theme-light"), tr("Light")))
-    , m_darkTheme(new PluginItem(QIcon::fromTheme("theme-dark"), tr("Dark")))
-    , m_autoTheme(new PluginItem(QIcon::fromTheme("theme-auto"), tr("Auto")))
+    , m_lightTheme(new PluginStandardItem(QIcon::fromTheme("theme-light"), tr("Light")))
+    , m_darkTheme(new PluginStandardItem(QIcon::fromTheme("theme-dark"), tr("Dark")))
+    , m_autoTheme(new PluginStandardItem(QIcon::fromTheme("theme-auto"), tr("Auto")))
 {
     initUi();
     initConnect();
