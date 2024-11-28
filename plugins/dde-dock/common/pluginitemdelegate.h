@@ -33,7 +33,7 @@ struct ItemSpacing
     QStyleOptionViewItem::ViewItemPosition viewItemPosition;
 };
 
-class PluginItem;
+class PluginStandardItem;
 class PluginItemWidget;
 class PluginItemDelegate : public QStyledItemDelegate
 {
@@ -72,14 +72,14 @@ private:
     QStyleOptionViewItem::ViewItemPosition m_endItemStyle;
 };
 
-class PluginItem : public QObject, public QStandardItem
+class PluginStandardItem : public QObject, public QStandardItem
 {
     Q_OBJECT
 
 public:
-    explicit PluginItem(const QIcon &icon, const QString &name, const PluginItemState state = PluginItemState::NoState);
-    explicit PluginItem();
-    ~PluginItem() override;
+    explicit PluginStandardItem(const QIcon &icon, const QString &name, const PluginItemState state = PluginItemState::NoState);
+    explicit PluginStandardItem();
+    ~PluginStandardItem() override;
 
     void updateIcon(const QIcon &icon);
     QIcon icon() const { return m_icon; }
@@ -106,7 +106,7 @@ class PluginItemWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit PluginItemWidget(PluginItem *item, QWidget *parent = nullptr);
+    explicit PluginItemWidget(PluginStandardItem *item, QWidget *parent = nullptr);
     ~PluginItemWidget() override;
 
 public Q_SLOTS:
@@ -118,7 +118,7 @@ protected:
     bool event(QEvent *e) override;
 
 private:
-    PluginItem *m_item;
+    PluginStandardItem *m_item;
 
     QHBoxLayout *m_mainLayout;
     CommonIconButton *m_iconBtn;

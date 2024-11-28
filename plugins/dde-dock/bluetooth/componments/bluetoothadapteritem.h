@@ -39,7 +39,7 @@ public:
     explicit BluetoothDeviceItem(QStyle *style = nullptr, const Device *device = nullptr, PluginListView *parent = nullptr);
     virtual ~BluetoothDeviceItem();
 
-    PluginItem *standardItem() { return m_standardItem; }
+    PluginStandardItem *standardItem() { return m_standardItem; }
     const Device *device() { return m_device; }
 
 public slots:
@@ -47,7 +47,7 @@ public slots:
     void updateDeviceState(Device::State state);
 
 signals:
-    void requestTopDeviceItem(PluginItem *item);
+    void requestTopDeviceItem(PluginStandardItem *item);
     void deviceStateChanged(const Device *device);
     void disconnectDevice();
 
@@ -57,7 +57,7 @@ private:
     DStyleHelper m_style;
 
     const Device *m_device;
-    PluginItem *m_standardItem;
+    PluginStandardItem *m_standardItem;
 };
 
 class DeviceControlWidget : public QPushButton
@@ -156,7 +156,7 @@ public slots:
     // 连接蓝牙设备
     void onConnectDevice(const QModelIndex &index);
     // 将已连接的蓝牙设备放到列表第一个
-    void onTopDeviceItem(PluginItem *item);
+    void onTopDeviceItem(PluginStandardItem *item);
     // 设置蓝牙适配器名称
     void onAdapterNameChanged(const QString name);
 

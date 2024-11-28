@@ -53,9 +53,9 @@ private:
     JumpSettingButton *m_settingButton;
     PluginListView *m_themeView;
     QStandardItemModel *m_themeItemModel;
-    PluginItem *m_lightTheme;
-    PluginItem *m_darkTheme;
-    PluginItem *m_autoTheme;
+    PluginStandardItem *m_lightTheme;
+    PluginStandardItem *m_darkTheme;
+    PluginStandardItem *m_autoTheme;
     QString m_themeTypeName;
 };
 

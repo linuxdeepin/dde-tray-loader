@@ -24,7 +24,7 @@ BluetoothDeviceItem::BluetoothDeviceItem(QStyle *style, const Device *device, Pl
     : m_style(style)
     , m_device(device)
 {
-    m_standardItem = new PluginItem();
+    m_standardItem = new PluginStandardItem();
 
     m_standardItem->updateIcon(m_device->deviceType().isEmpty() ? QIcon::fromTheme("bluetooth_other")
                                                                 : QIcon::fromTheme(QString("bluetooth_%1").arg(m_device->deviceType())));
@@ -41,7 +41,7 @@ BluetoothDeviceItem::~BluetoothDeviceItem()
 void BluetoothDeviceItem::initConnect()
 {
     connect(m_device, &Device::stateChanged, this, &BluetoothDeviceItem::updateDeviceState);
-    connect(m_standardItem, &PluginItem::connectBtnClicked, this, &BluetoothDeviceItem::disconnectDevice);
+    connect(m_standardItem, &PluginStandardItem::connectBtnClicked, this, &BluetoothDeviceItem::disconnectDevice);
 }
 
 void BluetoothDeviceItem::updateDeviceState(Device::State state)
@@ -96,7 +96,7 @@ void BluetoothAdapterItem::onConnectDevice(const QModelIndex &index)
     const QStandardItemModel *deviceModel = dynamic_cast<const QStandardItemModel *>(index.model());
     if (!deviceModel)
         return;
-    PluginItem *deviceitem = dynamic_cast<PluginItem *>(deviceModel->item(index.row()));
+    PluginStandardItem *deviceitem = dynamic_cast<PluginStandardItem *>(deviceModel->item(index.row()));
 
     foreach (const auto item, m_deviceItems) {
         // 只有非连接状态才发送connectDevice信号（connectDevice信号连接的槽为取反操作，而非仅仅连接）
@@ -109,14 +109,14 @@ void BluetoothAdapterItem::onConnectDevice(const QModelIndex &index)
     }
 }
 
-void BluetoothAdapterItem::onTopDeviceItem(PluginItem *item)
+void BluetoothAdapterItem::onTopDeviceItem(PluginStandardItem *item)
 {
     if (!item || item->row() == -1 || item->row() == 0)
         return;
 
     int row = item->row();
     // 先获取，再移除，后插入
-    PluginItem *sItem = dynamic_cast<PluginItem *>(m_myDeviceModel->takeItem(row, 0));
+    PluginStandardItem *sItem = dynamic_cast<PluginStandardItem *>(m_myDeviceModel->takeItem(row, 0));
     if (sItem) {
         m_myDeviceModel->removeRow(row);
         m_myDeviceModel->insertRow(0, sItem);
@@ -196,11 +196,11 @@ void BluetoothAdapterItem::onDeviceAdded(const Device *device)
         Q_EMIT deviceStateChanged(device);
         if (!(device->state() == Device::StateUnavailable))
             return;
-        PluginItem *item = deviceItem->standardItem();
+        PluginStandardItem *item = deviceItem->standardItem();
         if (item && deviceItem->device()->paired()) {
             QModelIndex myDeviceIndex = m_myDeviceModel->indexFromItem(item);
             if(myDeviceIndex.isValid()) {
-                PluginItem *sItem = dynamic_cast<PluginItem *>(m_myDeviceModel->takeItem(myDeviceIndex.row(), 0));
+                PluginStandardItem *sItem = dynamic_cast<PluginStandardItem *>(m_myDeviceModel->takeItem(myDeviceIndex.row(), 0));
                 if (sItem) {
                     QMap<const Device *, BluetoothDeviceItem *>::iterator i;
                     // 计算已连接蓝牙设备数
@@ -227,12 +227,12 @@ void BluetoothAdapterItem::onDeviceAdded(const Device *device)
     });
     connect(device, &Device::pairedChanged, this, [this, deviceItem](const bool paired) {
         if (deviceItem && deviceItem->device()) {
-            PluginItem *item = deviceItem->standardItem();
+            PluginStandardItem *item = deviceItem->standardItem();
             if (item) {
                 if (paired) {
                     QModelIndex otherDeviceIndex = m_otherDeviceModel->indexFromItem(item);
                     if(otherDeviceIndex.isValid()) {
-                        PluginItem *sItem = dynamic_cast<PluginItem *>(m_otherDeviceModel->takeItem(otherDeviceIndex.row(), 0));
+                        PluginStandardItem *sItem = dynamic_cast<PluginStandardItem *>(m_otherDeviceModel->takeItem(otherDeviceIndex.row(), 0));
                         if (sItem) {
                             m_otherDeviceModel->removeRow(otherDeviceIndex.row());
                             m_myDeviceModel->appendRow(sItem);
@@ -241,7 +241,7 @@ void BluetoothAdapterItem::onDeviceAdded(const Device *device)
                 } else {
                     QModelIndex myDeviceIndex = m_myDeviceModel->indexFromItem(item);
                     if (myDeviceIndex.isValid()) {
-                        PluginItem *sItem = dynamic_cast<PluginItem *>(m_myDeviceModel->takeItem(myDeviceIndex.row(), 0));
+                        PluginStandardItem *sItem = dynamic_cast<PluginStandardItem *>(m_myDeviceModel->takeItem(myDeviceIndex.row(), 0));
                         if (sItem) {
                             m_myDeviceModel->removeRow(myDeviceIndex.row());
                             m_otherDeviceModel->appendRow(sItem);
@@ -297,7 +297,7 @@ void BluetoothAdapterItem::onDeviceRemoved(const Device *device)
     QStandardItemModel *sourceModel = m_deviceItems.value(device)->standardItem()->model();
     for (int rowIndex = 0; rowIndex < sourceModel->rowCount(); ++rowIndex) {
         QModelIndex index = sourceModel->index(rowIndex, 0);
-        auto item = dynamic_cast<PluginItem *>(sourceModel->itemFromIndex(index));
+        auto item = dynamic_cast<PluginStandardItem *>(sourceModel->itemFromIndex(index));
         if (item == m_deviceItems.value(device)->standardItem()) {
             sourceModel->removeRow(rowIndex);
             break;
@@ -480,7 +480,7 @@ void BluetoothAdapterItem::setUnnamedDevicesVisible(bool isShow)
             BluetoothDeviceItem *deviceItem = i.value();
 
             if (deviceItem && deviceItem->device() && deviceItem->device()->name().isEmpty()) {
-                PluginItem *dListItem = deviceItem->standardItem();
+                PluginStandardItem *dListItem = deviceItem->standardItem();
                 QStandardItemModel *model = i.value()->standardItem()->model();
                 QModelIndex index = model->indexFromItem(dListItem);
                 if (!index.isValid()) {
@@ -498,7 +498,7 @@ void BluetoothAdapterItem::setUnnamedDevicesVisible(bool isShow)
         // 将名称为空的蓝牙设备过滤,如果蓝牙正在连接或者已连接不过滤
         if (deviceItem && deviceItem->device() && deviceItem->device()->name().isEmpty()
                 && (Device::StateConnected != deviceItem->device()->state() || !deviceItem->device()->connecting())) {
-            PluginItem *dListItem = deviceItem->standardItem();
+            PluginStandardItem *dListItem = deviceItem->standardItem();
             QStandardItemModel *model = i.value()->standardItem()->model();
             QModelIndex index = model->indexFromItem(dListItem);
             if (index.isValid()) {
