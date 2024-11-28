@@ -134,7 +134,7 @@ void PowerApplet::initData()
         } else if (pair.first == BALANCEPERFORMANCE) {
             icon = QIcon::fromTheme("status-performance-mode");
         }
-        PluginItem *item = new PluginItem(icon, pair.second);
+        PluginStandardItem *item = new PluginStandardItem(icon, pair.second);
         item->setData(pair.first, MODE_DATA_ROLE);
         m_model->appendRow(item);
     }
@@ -179,7 +179,7 @@ void PowerApplet::onCurPowerModeChanged(const QString &curPowerMode)
 {
     int row_count = m_model->rowCount();
     for (int i = 0; i < row_count; ++i) {
-        auto item = dynamic_cast<PluginItem *>(m_model->item(i, 0));
+        auto item = dynamic_cast<PluginStandardItem *>(m_model->item(i, 0));
         if (!item) {
             continue;
         }
@@ -220,7 +220,7 @@ void PowerApplet::onHighPerformanceSupportChanged(const bool isSupport)
             QList<QPair<QString, QString>> modeList = PerformanceModeController::ref().modeList();
             for (const auto &pair : modeList) {
                 if (pair.first == PERFORMANCE) {
-                    PluginItem *item = new PluginItem(QIcon::fromTheme("performance"), pair.second);
+                    PluginStandardItem *item = new PluginStandardItem(QIcon::fromTheme("performance"), pair.second);
                     item->setData(PERFORMANCE, MODE_DATA_ROLE);
                     m_model->insertRow(0, item);
                     break;

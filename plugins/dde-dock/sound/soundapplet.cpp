@@ -218,26 +218,26 @@ void SoundApplet::refreshIcon()
     m_sliderContainer->setIcon(SliderContainer::RightIcon, "audio-volume-high-symbolic", 0);
 }
 
-PluginItem* SoundApplet::findItem(const QString &uniqueKey) const
+PluginStandardItem* SoundApplet::findItem(const QString &uniqueKey) const
 {
     for (int i = 0; i < m_itemModel->rowCount(); i++) {
         auto item = m_itemModel->item(i);
         if (uniqueKey == item->data(Qt::WhatsThisPropertyRole).value<QString>()) {
-            return dynamic_cast<PluginItem*>(item);
+            return dynamic_cast<PluginStandardItem*>(item);
         }
     }
 
     return nullptr;
 }
 
-void SoundApplet::selectItem(PluginItem *targetItem)
+void SoundApplet::selectItem(PluginStandardItem *targetItem)
 {
     if (!targetItem) {
         return;
     }
 
     for (int i = 0; i < m_itemModel->rowCount(); ++i) {
-        auto item = dynamic_cast<PluginItem *>(m_itemModel->item(i, 0));
+        auto item = dynamic_cast<PluginStandardItem *>(m_itemModel->item(i, 0));
         if (!item) {
             continue;
         }
@@ -250,7 +250,7 @@ void SoundApplet::addPort(const SoundCardPort* port)
     if (!port->isEnabled())
         return;
 
-    PluginItem* pi = new PluginItem(QIcon::fromTheme(SoundCardPort::icon(port->portType())), 
+    PluginStandardItem* pi = new PluginStandardItem(QIcon::fromTheme(SoundCardPort::icon(port->portType())), 
                                     port->description() + "(" + port->cardName() + ")");
     pi->setData(port->uniqueKey(), Qt::WhatsThisPropertyRole);
 

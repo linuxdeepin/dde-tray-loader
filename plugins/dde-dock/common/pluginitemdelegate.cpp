@@ -83,7 +83,7 @@ QWidget *PluginItemDelegate::createEditor(QWidget *parent, const QStyleOptionVie
     QStandardItem* item = qobject_cast<QStandardItemModel*>(m_view->model())->itemFromIndex(index);
     PluginItemWidget *widget = nullptr;
     if (item) {
-        widget = new PluginItemWidget(dynamic_cast<PluginItem *>(item), parent);
+        widget = new PluginItemWidget(dynamic_cast<PluginStandardItem *>(item), parent);
     }
     return widget;
 }
@@ -134,7 +134,7 @@ ItemSpacing PluginItemDelegate::getItemSpacing(const QModelIndex &index) const
     return spacing;
 }
 
-PluginItem::PluginItem(const QIcon &icon, const QString &name, const PluginItemState state)
+PluginStandardItem::PluginStandardItem(const QIcon &icon, const QString &name, const PluginItemState state)
     : QStandardItem()
     , m_icon(icon)
     , m_name(name)
@@ -142,7 +142,7 @@ PluginItem::PluginItem(const QIcon &icon, const QString &name, const PluginItemS
 {
 }
 
-PluginItem::PluginItem()
+PluginStandardItem::PluginStandardItem()
     : QStandardItem()
     , m_icon(QIcon())
     , m_name(QString())
@@ -150,11 +150,11 @@ PluginItem::PluginItem()
 {
 }
 
-PluginItem::~PluginItem()
+PluginStandardItem::~PluginStandardItem()
 {
 }
 
-void PluginItem::updateIcon(const QIcon &icon)
+void PluginStandardItem::updateIcon(const QIcon &icon)
 {
     if (m_icon.cacheKey() != icon.cacheKey()) {
         m_icon = icon;
@@ -162,7 +162,7 @@ void PluginItem::updateIcon(const QIcon &icon)
     }
 }
 
-void PluginItem::updateName(const QString &name)
+void PluginStandardItem::updateName(const QString &name)
 {
     if (m_name != name) {
         m_name = name;
@@ -170,7 +170,7 @@ void PluginItem::updateName(const QString &name)
     }
 }
 
-void PluginItem::updateState(const PluginItemState state)
+void PluginStandardItem::updateState(const PluginItemState state)
 {
     if (m_state != state) {
         m_state = state;
@@ -178,7 +178,7 @@ void PluginItem::updateState(const PluginItemState state)
     }
 }
 
-PluginItemWidget::PluginItemWidget(PluginItem *item, QWidget *parent)
+PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     : QWidget(parent)
     , m_item(item)
     , m_mainLayout(new QHBoxLayout(this))
@@ -233,11 +233,11 @@ PluginItemWidget::PluginItemWidget(PluginItem *item, QWidget *parent)
     if (parent)
         setForegroundRole(parent->foregroundRole());
 
-    connect(m_item, &PluginItem::iconChanged, this, &PluginItemWidget::updateIcon);
-    connect(m_item, &PluginItem::nameChanged, this, &PluginItemWidget::updateName);
-    connect(m_item, &PluginItem::stateChanged, this, &PluginItemWidget::updateState);
+    connect(m_item, &PluginStandardItem::iconChanged, this, &PluginItemWidget::updateIcon);
+    connect(m_item, &PluginStandardItem::nameChanged, this, &PluginItemWidget::updateName);
+    connect(m_item, &PluginStandardItem::stateChanged, this, &PluginItemWidget::updateState);
 
-    connect(m_connBtn, &CommonIconButton::clicked, m_item, &PluginItem::connectBtnClicked);
+    connect(m_connBtn, &CommonIconButton::clicked, m_item, &PluginStandardItem::connectBtnClicked);
 }
 
 PluginItemWidget::~PluginItemWidget()
