@@ -228,7 +228,7 @@ void BluetoothApplet::initUi()
     scrollAreaBackground.setColor(QPalette::ColorRole::Window, Qt::transparent);
     m_scrollArea->setPalette(scrollAreaBackground);
 
-    QScroller::grabGesture(m_scrollArea->viewport(), QScroller::LeftMouseButtonGesture);
+    // QScroller::grabGesture(m_scrollArea->viewport(), QScroller::LeftMouseButtonGesture);
     QScroller *scroller = QScroller::scroller(m_scrollArea);
     QScrollerProperties sp;
     sp.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, QScrollerProperties::OvershootAlwaysOff);
