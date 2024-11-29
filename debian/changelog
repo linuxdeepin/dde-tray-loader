@@ -1,3 +1,10 @@
+dde-tray-loader (1.99.6) UNRELEASED; urgency=medium
+
+  * fix: Bluetooth list mouse left click does not work (#204)(Bug: 284405)
+  * fix: can not open calendar(Bug: 266927)
+
+ -- Deepin Packages Builder <packages@deepin.org>  Fri, 29 Nov 2024 11:23:16 +0800
+
 dde-tray-loader (1.99.5) unstable; urgency=medium
 
   * feat: support for requeset shutdown
