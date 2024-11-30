@@ -122,8 +122,8 @@ void BluetoothItem::invokeMenuItem(const QString menuId, const bool checked)
                 .service("org.deepin.dde.ControlCenter1")
                 .interface("org.deepin.dde.ControlCenter1")
                 .path("/org/deepin/dde/ControlCenter1")
-                .method(QString("ShowModule"))
-                .arg(QString("bluetooth"))
+                .method(QString("ShowPage"))
+                .arg(QString("device/bluetooth"))
                 .call();
         Q_EMIT requestHideApplet();
     }
