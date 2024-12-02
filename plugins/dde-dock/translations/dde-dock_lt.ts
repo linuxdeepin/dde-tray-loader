@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>Liko %1 val., %2 min.</translation>
     </message>
     <message>
         <source>Not charging</source>
