@@ -833,7 +833,7 @@
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"/>
+        <translation>Nėra išvesties įrenginių</translation>
     </message>
     <message>
         <source>Volume %1</source>
