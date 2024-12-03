@@ -63,8 +63,8 @@ private:
 }
 
 namespace dock {
-WidgetPlugin::WidgetPlugin(PluginsItemInterface* pluginsItemInterface)
-    : QObject()
+WidgetPlugin::WidgetPlugin(PluginsItemInterface* pluginsItemInterface, QObject *parent)
+    : QObject(parent)
     , m_pluginsItemInterface(pluginsItemInterface)
 {
     QMetaObject::invokeMethod(this, [this](){

@@ -22,7 +22,7 @@ class WidgetPlugin : public QObject, public PluginProxyInterface
     Q_OBJECT
 
 public:
-    WidgetPlugin(PluginsItemInterface* pluginItem);
+    WidgetPlugin(PluginsItemInterface* pluginItem, QObject *parent = nullptr);
     ~WidgetPlugin();
 
     // proxy interface

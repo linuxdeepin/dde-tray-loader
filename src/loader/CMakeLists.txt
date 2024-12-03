@@ -23,6 +23,8 @@ add_executable(trayplugin-loader
     quickpluginitem.cpp
     utils/setproctitle.h
     utils/setproctitle.cpp
+    pluginmanager.h
+    pluginmanager.cpp
     loader.qrc
 )
 
