@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "setproctitle.h"
-#include "widgetplugin.h"
 #include "pluginsiteminterface_v2.h"
+#include "pluginmanager.h"
 
 #include <DDBusSender>
 #include <DApplication>
@@ -12,8 +12,6 @@
 #include <QCommandLineOption>
 #include <QCommandLineParser>
 
-#include <QWidget>
-#include <QPluginLoader>
 #include <QStringLiteral>
 
 #include <DGuiApplicationHelper>
@@ -111,50 +109,60 @@ int main(int argc, char *argv[], char *envp[])
     parser.addHelpOption();
     parser.addVersionOption();
 
-    QCommandLineOption pluginOption("p", "special plugin path.", "path to plugin", QString());
-    parser.addOption(pluginOption);
+    QCommandLineOption pluginPathsOption(
+        "p",
+        "plugin path (single path or multiple paths separated by ';').",
+        "plugin path(s)"
+    );
+    QCommandLineOption pluginGroupNameOption(
+        "g",
+        "Group name for the specified plugin path(s).",
+        "group name"
+    );
+
+    parser.addOption(pluginPathsOption);
+    parser.addOption(pluginGroupNameOption);
     parser.process(app);
 
-    if (!parser.isSet(pluginOption)) {
+    if (!parser.isSet(pluginPathsOption)) {
+        qCritical() << "Error: -p is required.";
         parser.showHelp(0);
     }
 
-    QString plugin = parser.value(pluginOption);
+    auto paths = parser.value(pluginPathsOption);
+    auto pluginPaths = paths.split(';', Qt::SkipEmptyParts);
 
- #ifdef QT_DEBUG
+#ifdef QT_DEBUG
     const QDir shellDir(QString("%1/../../plugins/").arg(QCoreApplication::applicationDirPath()));
     if (shellDir.exists()) {
         QCoreApplication::addLibraryPath(shellDir.absolutePath());
     }
 #endif
-    QPluginLoader* pluginLoader = new QPluginLoader(plugin, &app);
-    const QJsonObject &meta = pluginLoader->metaData().value("MetaData").toObject();
-    const QString &pluginApi = meta.value("api").toString();
 
-    if (!pluginLoader->load()) {
-        qDebug() << pluginLoader->errorString();
-        return 0;
-    }
-
-    PluginsItemInterface *interface = qobject_cast<PluginsItemInterfaceV2 *>(pluginLoader->instance());
-    if (!interface) {
-        interface = qobject_cast<PluginsItemInterface*>(pluginLoader->instance());
-    }
-    if (!interface) {
-        qWarning() << "get interface failed!" << pluginLoader->instance() << qobject_cast<PluginsItemInterfaceV2*>(pluginLoader->instance());;
+    PluginManager pluginManager;
+    pluginManager.setPluginPaths(pluginPaths);
+    if (!pluginManager.loadPlugins()) {
+        qWarning() << "No valid plugins were loaded.";
         return -1;
     }
-    pluginDisplayName = interface->pluginDisplayName();
-    dock::WidgetPlugin dockPlugin(interface);
+
+    QString pluginGroupName;
+    if (parser.isSet(pluginPathsOption)) {
+        pluginGroupName = parser.value(pluginGroupNameOption);
+    }
+
+    if (pluginGroupName.isEmpty()) {
+        pluginGroupName = pluginManager.loadedPlugins()[0]->pluginName();
+    }
 
     DLogManager::setLogFormat("%{time}{yy-MM-ddTHH:mm:ss.zzz} [%{type}] [%{category}] <%{function}> %{message}");
 
     DLogManager::registerConsoleAppender();
     DLogManager::registerFileAppender();
 
-    app.setApplicationName(interface->pluginName());
-    app.setApplicationDisplayName(interface->pluginDisplayName());
-    setproctitle((QStringLiteral("tray plugin: ") + interface->pluginName()).toStdString().c_str());
+    app.setApplicationName(pluginGroupName);
+    app.setApplicationDisplayName(pluginGroupName);
+    setproctitle((QStringLiteral("tray plugin: ") + pluginGroupName).toStdString().c_str());
     qunsetenv("QT_SCALE_FACTOR");
     return app.exec();
 }
