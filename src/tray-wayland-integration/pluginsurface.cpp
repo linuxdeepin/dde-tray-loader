@@ -20,6 +20,16 @@ PluginSurface::PluginSurface(PluginManagerIntegration *manager, QtWaylandClient:
 {
     init(manager->create_plugin(m_plugin->pluginId(), m_plugin->itemKey(), m_plugin->displayName(), m_plugin->pluginFlags(), m_plugin->pluginType(), m_plugin->pluginSizePolicy(), window->wlSurface()));
     dcc_icon(m_plugin->dccIcon());
+
+    source_size(m_window->width(), m_window->height());
+    connect(m_window, &QWindow::widthChanged, this, [this] (int width) {
+        source_size(width, m_window->height());
+    });
+
+    connect(m_window, &QWindow::heightChanged, this, [this] (int height) {
+        source_size(m_window->width(), height);
+    });
+
     connect(manager, &PluginManagerIntegration::dockPositionChanged, m_plugin, &EmbedPlugin::dockPositionChanged);
     connect(manager, &PluginManagerIntegration::dockColorThemeChanged, m_plugin, &EmbedPlugin::dockColorThemeChanged);
     connect(manager, &PluginManagerIntegration::eventMessage, m_plugin, &EmbedPlugin::eventMessage);
@@ -84,6 +94,16 @@ PluginPopupSurface::PluginPopupSurface(PluginManagerIntegration *manager, QtWayl
     // merge multi signal of position changed to one.
     m_dirtyTimer->setInterval(0);
     m_dirtyTimer->setSingleShot(true);
+
+    source_size(m_window->width(), m_window->height());
+    connect(m_window, &QWindow::widthChanged, this, [this] (int width) {
+        source_size(width, m_window->height());
+    });
+
+    connect(m_window, &QWindow::heightChanged, this, [this] (int height) {
+        source_size(m_window->width(), height);
+    });
+
     connect(m_popup, &PluginPopup::xChanged, this, &PluginPopupSurface::dirtyPosition);
     connect(m_popup, &PluginPopup::yChanged, this, &PluginPopupSurface::dirtyPosition);
     connect(m_dirtyTimer, &QTimer::timeout, this, [this]{
