@@ -597,7 +597,7 @@ void NetManagerThreadPrivate::doGotoControlCenter(const QString &page)
     if (!m_enabled)
         return;
     QDBusMessage message = QDBusMessage::createMethodCall("org.deepin.dde.ControlCenter1", "/org/deepin/dde/ControlCenter1", "org.deepin.dde.ControlCenter1", "ShowPage");
-    message << "network" << page;
+    message << "network/" + page;
     QDBusConnection::sessionBus().asyncCall(message);
     Q_EMIT toControlCenter();
 }
@@ -1343,7 +1343,7 @@ void NetManagerThreadPrivate::handle8021xAccessPoint(AccessPoints *ap)
 
     switch (m_network8021XMode) {
     case NetManager::ToControlCenter:
-        gotoControlCenter(ap->devicePath() + "," + ap->ssid());
+        gotoControlCenter("device=" + ap->devicePath() + "&ssid=" + ap->ssid());
         break;
     case NetManager::SendNotify:
         sendNetworkNotify(NetworkNotifyType::Wireless8021X, ap->ssid());
@@ -1427,9 +1427,10 @@ NetDeviceStatus NetManagerThreadPrivate::deviceStatus(NetworkDeviceBase *device)
         return NetDeviceStatus::IpConflicted;
 
     // 网络是已连接，但是当前的连接状态不是Full，则认为网络连接成功，但是无法上网
-    if (device->deviceStatus() == DeviceStatus::Activated && NetworkController::instance()->connectivity() != Connectivity::Full) {
-        return NetDeviceStatus::ConnectNoInternet;
-    }
+    // TODO: 网络检测结果不对，暂时不显示无网络状态
+    // if (device->deviceStatus() == DeviceStatus::Activated && NetworkController::instance()->connectivity() != Connectivity::Full) {
+    //     return NetDeviceStatus::ConnectNoInternet;
+    // }
 
     // 获取IP地址失败
     if (!device->IPValid())
