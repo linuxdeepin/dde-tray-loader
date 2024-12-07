@@ -21,6 +21,7 @@ public:
 
 protected:
     void paintEvent(QPaintEvent* event) override;
+    void showEvent(QShowEvent* event) override;
 
 private:
     QPointer<AbstractTrayProtocolHandler> m_handler;
