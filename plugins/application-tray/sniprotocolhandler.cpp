@@ -226,7 +226,7 @@ bool SniTrayProtocolHandler::enabled() const
 
 bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
 {
-    if (watched == parent()) {
+    if (watched == window()) {
         if (event->type() == QEvent::MouseButtonRelease) {
             QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
             if (mouseEvent->button() == Qt::LeftButton) {
