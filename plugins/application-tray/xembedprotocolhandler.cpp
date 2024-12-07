@@ -172,7 +172,7 @@ void XembedProtocolHandler::xembedTrayIconChanged(uint32_t windowId)
 
 bool XembedProtocolHandler::eventFilter(QObject *watched, QEvent *event)
 {
-    if (watched == parent()) {
+    if (watched == window()) {
         // 有透明通道时，可以做到container一直透明隐藏，就走Enter触发
         // 没有透明通道时，走旧dock的方式 QEvent::Move防止在 dock/container 之前一直切换
         if ((event->type() == QEvent::Enter)) {
