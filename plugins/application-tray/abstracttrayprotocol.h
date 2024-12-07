@@ -7,8 +7,7 @@
 #include <QIcon>
 #include <QWidget>
 #include <QObject>
-#include <cstddef>
-#include <qwidget.h>
+#include <QWidget>
 
 class TrayWidget;
 namespace tray {
@@ -61,6 +60,8 @@ public:
     virtual QWidget *tooltip() const {return nullptr;}
 
     virtual bool enabled() const {return false;}
+    void setWindow(QWidget *window) {m_window = window;}
+    QWidget *window() const {return m_window;}
 
 protected:
     virtual bool eventFilter(QObject *watched, QEvent *event) {return false;};
@@ -76,5 +77,8 @@ Q_SIGNALS:
     void attentionIconChanged();
 
     void enabledChanged();
+
+private:
+    QWidget* m_window;
 };
 }
