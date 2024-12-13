@@ -135,6 +135,10 @@ void CommonIconButton::setIcon(const QString &icon, const QString &fallback, con
         addDarkMark(tmpFallback);
     }
     m_icon = QIcon::fromTheme(tmp, QIcon::fromTheme(tmpFallback));
+    if (m_icon.isNull()) {
+        QString defaultIcon = m_fileMapping[State::Default].first;
+        m_icon = QIcon::fromTheme(defaultIcon);
+    }
     update();
 }
 
