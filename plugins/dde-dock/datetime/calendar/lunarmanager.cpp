@@ -6,7 +6,6 @@
 
 LunarManager::LunarManager(QObject* parent)
     : QObject(parent)
-    , m_dbusInter(new LunarDBusInterface(this))
 {
 }
 
@@ -16,24 +15,40 @@ LunarManager* LunarManager::instace()
     return &lunarManager;
 }
 
-bool LunarManager::huangLiDay(quint32 year, quint32 month, quint32 day, CaHuangLiDayInfo& info)
+void LunarManager::asyncRequestLunar(const QDate& date)
 {
-    return m_dbusInter->huangLiDay(year, month, day, info);
-}
+    // 创建 D-Bus 方法调用消息
+    QDBusMessage message = QDBusMessage::createMethodCall(
+        "com.deepin.dataserver.Calendar",
+        "/com/deepin/dataserver/Calendar/HuangLi",
+        "com.deepin.dataserver.Calendar.HuangLi",
+        "getHuangLiDay"
+    );
 
-bool LunarManager::huangLiDay(const QDate& date, CaHuangLiDayInfo& info)
-{
-    return huangLiDay(quint32(date.year()), quint32(date.month()), quint32(date.day()), info);
-}
+    // 设置参数
+    message << quint32(date.year()) << quint32(date.month()) << quint32(date.day());
 
-CaHuangLiDayInfo LunarManager::huangLiDay(const QDate& date)
-{
-    // 首先在缓存中查找是否存在该日期的农历信息，没有则通过dbus获取
-    CaHuangLiDayInfo info;
-    if (m_lunarInfoMap.contains(date)) {
-        info = m_lunarInfoMap[date];
-    } else {
-        huangLiDay(date, info);
-    }
-    return info;
+    // 异步调用并创建一个 Watcher
+    QDBusPendingCall asyncCall = QDBusConnection::sessionBus().asyncCall(message);
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(asyncCall, this);
+
+    // 连接 Watcher 的信号以处理结果
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher]() {
+        QDBusPendingReply<QString> reply = *watcher;
+        if (reply.isError()) {
+            qWarning() << "Failed to call getHuangLiDay:" << reply.error().message();
+        } else {
+            QString replyStr = reply.value();
+            bool isVaild;
+            CaHuangLiDayInfo info;
+            info.strJsonToInfo(replyStr, isVaild);
+            if (isVaild) {
+                emit lunarInfoReady(info);
+            } else {
+                qWarning()<< "parse huangli json error:" << replyStr;
+            }
+        }
+
+        watcher->deleteLater();
+    });
 }
