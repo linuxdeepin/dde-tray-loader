@@ -173,6 +173,13 @@ void SidebarCalendarWidget::initConnection()
 
         backToday();
     });
+    connect(LunarManager::instace(), &LunarManager::lunarInfoReady, [this](const CaHuangLiDayInfo &info) {
+        m_lunarLabel->setText(tr("Lunar") + info.mLunarMonthName + info.mLunarDayName);
+        m_lunarDetailLabel->setText(info.mGanZhiYear + tr("y") + "【"
+                                    + info.mZodiac + tr("y") + "】"
+                                    + info.mGanZhiMonth + tr("m") + " "
+                                    + info.mGanZhiDay + tr("d"));
+    });
 }
 
 /**
@@ -214,16 +221,11 @@ void SidebarCalendarWidget::setDate(const QDate &date)
 
     m_bakTodayBtn->setVisible(date.month() != QDate::currentDate().month() || date.year() != QDate::currentDate().year());
 
-    auto instance = LunarManager::instace()->huangLiDay(date);
     m_dateTitleWidget->setDateLabelText("/ " + formatedMonth(static_cast<Month>(date.month())), date.day());
     m_weekLabel->setText(formatedWeekDay(static_cast<WeekDay>(date.dayOfWeek()), m_weekdayFormat));
     m_leftdateLabel->setText(date.toString(m_regionFormat->originShortDateFormat()));
-    m_lunarLabel->setText(tr("Lunar") + instance.mLunarMonthName + instance.mLunarDayName);
-    m_lunarDetailLabel->setText(instance.mGanZhiYear + tr("y") + "【"
-                                + instance.mZodiac + tr("y") + "】"
-                                + instance.mGanZhiMonth + tr("m") + " "
-                                + instance.mGanZhiDay + tr("d"));
     m_dateLabel->setText(formatedMonth(static_cast<Month>(date.month())));
+    LunarManager::instace()->asyncRequestLunar(date);
 
     if (m_displayedMonth != date) {
         m_displayedMonth = date;

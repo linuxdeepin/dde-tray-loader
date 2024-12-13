@@ -139,6 +139,11 @@ int main(int argc, char *argv[], char *envp[])
     }
 #endif
 
+    DLogManager::setLogFormat("%{time}{yy-MM-ddTHH:mm:ss.zzz} [%{type}] [%{category}] <%{function}> %{message}");
+
+    DLogManager::registerConsoleAppender();
+    DLogManager::registerFileAppender();
+
     PluginManager pluginManager;
     pluginManager.setPluginPaths(pluginPaths);
     if (!pluginManager.loadPlugins()) {
@@ -154,11 +159,6 @@ int main(int argc, char *argv[], char *envp[])
     if (pluginGroupName.isEmpty()) {
         pluginGroupName = pluginManager.loadedPlugins()[0]->pluginName();
     }
-
-    DLogManager::setLogFormat("%{time}{yy-MM-ddTHH:mm:ss.zzz} [%{type}] [%{category}] <%{function}> %{message}");
-
-    DLogManager::registerConsoleAppender();
-    DLogManager::registerFileAppender();
 
     app.setApplicationName(pluginGroupName);
     app.setApplicationDisplayName(pluginGroupName);
