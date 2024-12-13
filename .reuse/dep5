@@ -24,7 +24,7 @@ Copyright: UnionTech Software Technology Co., Ltd.
 License: CC-BY-4.0
 
 # images
-Files: */resources/*.png */icons/*.svg */resources/*.svg */texts/*.svg */dark/*.svg */light/*.svg */actions/*.svg */images/*.png */icon/*.svg */res/*.svg */icons/*.dci
+Files: */resources/*.png */icons/*.svg */resources/*.svg */texts/*.svg */dark/*.svg */light/*.svg */actions/*.svg */images/*.png */icon/*.svg */res/*.svg */icons/*.dci */resources/*.dci */icon/*.dci
 Copyright: UnionTech Software Technology Co., Ltd.
 License: GPL-3.0-or-later
 

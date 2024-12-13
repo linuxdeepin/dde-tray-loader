@@ -44,4 +44,4 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
-install(FILES "resources/eye-comfort-mode.svg" DESTINATION share/dde-dock/icons/dcc-setting)
+install(FILES "resources/dcc-eye-comfort-mode.dci" DESTINATION share/dde-dock/icons/dcc-setting)

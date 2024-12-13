@@ -43,4 +43,4 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
-install(FILES "resources/dnd-mode.svg" DESTINATION share/dde-dock/icons/dcc-setting)
+install(FILES "resources/dcc-dnd-mode.dci" DESTINATION share/dde-dock/icons/dcc-setting)

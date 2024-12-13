@@ -46,7 +46,7 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-trays)
-install(FILES "resources/battery.svg" DESTINATION share/dde-dock/icons/dcc-setting)
+install(FILES "resources/dcc-battery.dci" DESTINATION share/dde-dock/icons/dcc-setting)
 
 dtk_add_config_meta_files(APPID org.deepin.dde.dock FILES ../configs/org.deepin.dde.dock.plugin.power.json) # compat
 dtk_add_config_meta_files(APPID org.deepin.dde.tray-loader FILES ../configs/org.deepin.dde.dock.plugin.power.json)

@@ -78,4 +78,4 @@ install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-t
 # 安装 .qm 文件
 install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/${PLUGIN_NAME}/translations)
 # 安装显示在控制中心-个性化-任务栏-插件区域的图标
-install(FILES "resources/network.svg" DESTINATION share/dde-dock/icons/dcc-setting)
+install(FILES "resources/dcc-network.dci" DESTINATION share/dde-dock/icons/dcc-setting)
