@@ -61,4 +61,4 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins/system-trays)
-install(FILES "resources/bluetooth.svg" DESTINATION share/dde-dock/icons/dcc-setting)
+install(FILES "resources/dcc-bluetooth.dci" DESTINATION share/dde-dock/icons/dcc-setting)
