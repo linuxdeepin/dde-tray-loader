@@ -106,6 +106,8 @@ signals:
     void multiscreensFlagChanged(const bool flag);
     void stateChangeFinished(int state);
 
+    void serviceAvailableChanged(bool available);
+
 protected:
     void timerEvent(QTimerEvent *event) override;
 private:
@@ -116,6 +118,7 @@ private:
     void prepareDbus();
     void resetNetworkDisplayData();
     void setConnectState(bool connecting);
+    void checkServiceAvailable();
 
     Dtk::Core::DDBusInterface *m_dbus;
     Dtk::Core::DDBusInterface *m_dbusNM;
@@ -128,6 +131,7 @@ private:
     bool m_needRefresh;
     bool m_connecting;
     bool m_hasMultiscreens;
+    bool m_serviceAvailable = false;
 };
 Q_DECLARE_METATYPE(WirelessCastingModel::CastingState)
 #endif // WIRELESSCASTINGMODEL_H
