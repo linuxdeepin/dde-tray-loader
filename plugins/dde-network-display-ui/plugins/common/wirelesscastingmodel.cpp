@@ -31,9 +31,15 @@ WirelessCastingModel::WirelessCastingModel(QObject *parent)
     , m_connecting(false)
     , m_hasMultiscreens(false)
 {
-    prepareDbus();
-    initData();
-    startTimer(std::chrono::seconds (30));
+    checkServiceAvailable();
+    connect(this, &WirelessCastingModel::serviceAvailableChanged, this, [this](bool available) {
+        if (!available)
+            return;
+
+        prepareDbus();
+        initData();
+        startTimer(std::chrono::seconds (30));
+    });
 }
 
 WirelessCastingModel::~WirelessCastingModel()
@@ -43,7 +49,7 @@ WirelessCastingModel::~WirelessCastingModel()
 
 void WirelessCastingModel::refresh()
 {
-    if (!m_needRefresh) {
+    if (!m_needRefresh || !m_serviceAvailable) {
         return;
     }
     QDBusMessage const reply = m_dbus->call("Refresh");
@@ -145,7 +151,7 @@ void WirelessCastingModel::setState(CastingState state)
 void WirelessCastingModel::checkState()
 {
     // 判断无线设备是否存在
-    if (!m_wirelessDevCheck) {
+    if (!m_wirelessDevCheck || !m_serviceAvailable) {
         setState(NoWirelessDevice);
         return;
     }
@@ -262,7 +268,11 @@ void WirelessCastingModel::resetNetworkDisplayData()
         it = m_monitors.erase(it);
     }
     m_dbus = new DDBusInterface(dbusService, dbusPath, dbusInterface, QDBusConnection::sessionBus(), this);
-    initData();
+    if (!m_serviceAvailable) {
+        checkServiceAvailable();
+    } else {
+        initData();
+    }
 }
 
 void WirelessCastingModel::handleMonitorStateChanged(const Monitor::NdSinkState state)
@@ -296,6 +306,9 @@ void WirelessCastingModel::timerEvent(QTimerEvent *event)
 
 void WirelessCastingModel::enableRefresh(bool enable)
 {
+    if (!m_serviceAvailable)
+        return;
+
     m_needRefresh = enable;
     refresh();
     if (enable) {
@@ -312,6 +325,29 @@ void WirelessCastingModel::setConnectState(bool connecting)
         m_connecting = connecting;
         Q_EMIT connectStateChanged(m_connecting);
     }
+}
+
+void WirelessCastingModel::checkServiceAvailable()
+{
+    QDBusMessage message = QDBusMessage::createMethodCall(dbusService, dbusPath, dbusInterface, "Refresh");
+
+    // 3s timeout
+    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message, 3000);
+    auto *watcher = new QDBusPendingCallWatcher(pendingCall);
+    connect(watcher, &QDBusPendingCallWatcher::finished, [watcher, this](const QDBusPendingCallWatcher *call) {
+        bool available = true;
+        if (call->isError()) {
+            available = false;
+            qWarning() << "DBus call timeout or has error. Service may not be available:" << dbusService << " error:" << call->error().message();
+        }
+
+        if (m_serviceAvailable != available) {
+            m_serviceAvailable = available;
+            Q_EMIT serviceAvailableChanged(m_serviceAvailable);
+        }
+
+        watcher->deleteLater();
+    });
 }
 
 void WirelessCastingModel::setMultiscreensFlag(bool hasMultiscreens)
