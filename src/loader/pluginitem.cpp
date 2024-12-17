@@ -29,6 +29,11 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
 
     connect(m_menu, &QMenu::triggered, this, [this](QAction *action){
         QString actionStr = action->data().toString();
+        if (actionStr.startsWith(Dock::SHUTDOWN_MENU_FLAG)) {
+            handleShutDownMenu(actionStr);
+            return;
+        }
+
         if (actionStr == Dock::dockMenuItemId || actionStr == Dock::unDockMenuItemId) {
             m_dbusProxy->setItemOnDock(DockQuickPlugins, m_itemKey, actionStr == Dock::dockMenuItemId);
         } else {
@@ -239,6 +244,15 @@ void PluginItem::updatePopupSize(const QRect &rect)
     }
 }
 
+void PluginItem::handleShutDownMenu(const QString &menuId)
+{
+    if (menuId.size() <= Dock::SHUTDOWN_MENU_FLAG.size())
+        return;
+
+    QString type = menuId.right(menuId.size() - Dock::SHUTDOWN_MENU_FLAG.size());
+    Q_EMIT sigRequestShutdown(type);
+}
+
 void PluginItem::init()
 {
     winId();
@@ -331,7 +345,7 @@ bool PluginItem::executeCommand()
         qInfo() << "command: " << command;
 
         if (command == Dock::REQUEST_SHUTDOWN) {
-            emit sigRequestshutdown();
+            emit sigRequestShutdown(QString());
             return true;
         }
 

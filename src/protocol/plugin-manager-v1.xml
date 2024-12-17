@@ -129,7 +129,9 @@
     <request name="dcc_icon" >
         <arg name="type" type="string"/>
     </request>
-    <request name="request_shutdown"/>
+    <request name="request_shutdown">
+        <arg name="type" type="string"/>
+    </request>
     <request name="source_size" >
         <arg name="width" type="int"/>
         <arg name="height" type="int"/>

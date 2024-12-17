@@ -42,8 +42,8 @@ PluginSurface::PluginSurface(PluginManagerIntegration *manager, QtWaylandClient:
         mouse_event(type);
     });
 
-    connect(m_plugin, &EmbedPlugin::pluginRequestShutdown, this, [this] {
-        request_shutdown();
+    connect(m_plugin, &EmbedPlugin::pluginRequestShutdown, this, [this](const QString &type){
+        request_shutdown(type);
     });
 }
 

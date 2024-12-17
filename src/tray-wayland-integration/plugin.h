@@ -84,7 +84,7 @@ Q_SIGNALS:
     void requestMessage(const QString &msg);
     void pluginRecvMouseEvent(int type);
     void rawGlobalPosChanged();
-    void pluginRequestShutdown();
+    void pluginRequestShutdown(const QString &type);
 
 private:
     explicit EmbedPlugin(QWindow* window);
