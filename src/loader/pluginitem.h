@@ -36,7 +36,7 @@ public:
 
 signals:
     void recvMouseEvent(int type);
-    void sigRequestshutdown();
+    void sigRequestShutdown(const QString &type);
 
 protected:
     void mousePressEvent(QMouseEvent *e) override;
@@ -62,6 +62,7 @@ private:
 
 private:
     void updatePopupSize(const QRect &rect);
+    void handleShutDownMenu(const QString &menuId);
 
 protected:
     QString m_itemKey;

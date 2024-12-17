@@ -167,7 +167,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
 
     QMap<QString, QVariant> shutdown;
     if (contextMenu.contains(MENU_SHUTDOWN)) {
-        shutdown["itemId"] = "Shutdown";
+        shutdown["itemId"] = SHUTDOWN_MENU_FLAG + "Shutdown";
         shutdown["itemText"] = tr("Shut down");
         shutdown["isActive"] = true;
         items.push_back(shutdown);
@@ -175,7 +175,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
 
     if (contextMenu.contains(MENU_UPDATE_SHUTDOWN)) {
         QMap<QString, QVariant> map;
-        map["itemId"] = "UpdateAndShutdown";
+        map["itemId"] = SHUTDOWN_MENU_FLAG + "UpdateAndShutdown";
         map["itemText"] = tr("Update and Shut Down");
         map["isActive"] = true;
         map["showReminder"] = true;
@@ -184,7 +184,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
 
     if (contextMenu.contains(MENU_REBOOT)) {
         QMap<QString, QVariant> reboot;
-        reboot["itemId"] = "Restart";
+        reboot["itemId"] = SHUTDOWN_MENU_FLAG + "Restart";
         reboot["itemText"] = tr("Reboot");
         reboot["isActive"] = true;
         items.push_back(reboot);
@@ -192,7 +192,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
 
     if (contextMenu.contains(MENU_UPDATE_REBOOT)) {
         QMap<QString, QVariant> map;
-        map["itemId"] = "UpdateAndReboot";
+        map["itemId"] = SHUTDOWN_MENU_FLAG + "UpdateAndReboot";
         map["itemText"] = tr("Update and Reboot");
         map["isActive"] = true;
         map["showReminder"] = true;
@@ -209,7 +209,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
     if (can_sleep) {
         QMap<QString, QVariant> suspend;
         if (contextMenu.contains(MENU_SUSPEND)) {
-            suspend["itemId"] = "Suspend";
+            suspend["itemId"] = SHUTDOWN_MENU_FLAG + "Suspend";
             suspend["itemText"] = tr("Suspend");
             suspend["isActive"] = true;
             items.push_back(suspend);
@@ -222,7 +222,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
     if (can_hibernate) {
         QMap<QString, QVariant> hibernate;
         if (contextMenu.contains(MENU_HIBERNATE)) {
-            hibernate["itemId"] = "Hibernate";
+            hibernate["itemId"] = SHUTDOWN_MENU_FLAG + "Hibernate";
             hibernate["itemText"] = tr("Hibernate");
             hibernate["isActive"] = true;
             items.push_back(hibernate);
@@ -233,7 +233,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
 
     QMap<QString, QVariant> lock;
     if (contextMenu.contains(MENU_LOCK)) {
-        lock["itemId"] = "Lock";
+        lock["itemId"] = SHUTDOWN_MENU_FLAG + "Lock";
         lock["itemText"] = tr("Lock");
         lock["isActive"] = true;
         items.push_back(lock);
@@ -241,7 +241,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
 
     if (contextMenu.contains(MENU_LOGOUT)) {
         QMap<QString, QVariant> logout;
-        logout["itemId"] = "Logout";
+        logout["itemId"] = SHUTDOWN_MENU_FLAG + "Logout";
         logout["itemText"] = tr("Log out");
         logout["isActive"] = true;
         items.push_back(logout);
@@ -265,7 +265,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
                  (DBusAccount().userList().count() > 1 || DSysInfo::uosType() == DSysInfo::UosType::UosServer)))
                  && contextMenu.contains(MENU_SWITCH_USER)) {
             QMap<QString, QVariant> switchUser;
-            switchUser["itemId"] = "SwitchUser";
+            switchUser["itemId"] = SHUTDOWN_MENU_FLAG + "SwitchUser";
             switchUser["itemText"] = tr("Switch user");
             switchUser["isActive"] = true;
             items.push_back(switchUser);
