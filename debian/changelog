@@ -1,3 +1,10 @@
+dde-tray-loader (1.99.9) UNRELEASED; urgency=medium
+
+  * fix: cooperation-networkDisPlay service is not available(Bug: 294901)
+  * fix: Shutdown plugin miss menu function(Bug: 294875)
+
+ -- Deepin Packages Builder <packages@deepin.org>  Thu, 19 Dec 2024 10:40:05 +0800
+
 dde-tray-loader (1.99.8) UNRELEASED; urgency=medium
 
   * UNRELEASED
