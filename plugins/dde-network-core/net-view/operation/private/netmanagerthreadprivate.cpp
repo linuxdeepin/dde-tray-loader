@@ -1343,7 +1343,7 @@ void NetManagerThreadPrivate::handle8021xAccessPoint(AccessPoints *ap)
 
     switch (m_network8021XMode) {
     case NetManager::ToControlCenter:
-        gotoControlCenter("device=" + ap->devicePath() + "&ssid=" + ap->ssid());
+        gotoControlCenter("?device=" + ap->devicePath() + "&ssid=" + ap->ssid());
         break;
     case NetManager::SendNotify:
         sendNetworkNotify(NetworkNotifyType::Wireless8021X, ap->ssid());
