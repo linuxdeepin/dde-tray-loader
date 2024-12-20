@@ -5,6 +5,7 @@
 #include <QDebug>
 
 #include "util.h"
+#include "xcbthread.h"
 
 #include <QSize>
 #include <QPixmap>
@@ -49,6 +50,8 @@ Util::Util()
     m_rootWindow = screen->root;
 
     xcb_ewmh_init_atoms_replies(&m_ewmh, xcb_ewmh_init_atoms(m_x11connection, &m_ewmh), nullptr);
+    m_xcbThread = new XcbThread(m_x11connection);
+    m_xcbThread->start();
 }
 
 Util::~Util()
