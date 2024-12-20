@@ -382,7 +382,10 @@ QString WidgetPlugin::messageCallback(PluginsItemInterfaceV2 *pluginItem, const 
         }
     } else {
         foreach (auto plugin, Plugin::EmbedPlugin::all()) {
-            Q_EMIT plugin->requestMessage(msg);
+            if (plugin->pluginId() == pluginItem->pluginName()) {
+                Q_EMIT plugin->requestMessage(msg);
+                break;
+            }
         }
     }
 
