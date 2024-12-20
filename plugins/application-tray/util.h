@@ -10,7 +10,6 @@
 #include <QSet>
 
 #include <cstdint>
-#include <mutex>
 #include <sys/types.h>
 #include <xcb/xcb.h>
 #include <xcb/xproto.h>
@@ -21,7 +20,7 @@
 
 namespace tray {
 #define UTIL Util::instance()
-
+class XcbThread;
 class Util
 {
 
@@ -51,6 +50,8 @@ public:
     QString generateUniqueId(const QString &id);
     void removeUniqueId(const QString &id);
 
+    QPoint getMousePos() const;
+
 private:
     Util();
     ~Util();
@@ -68,6 +69,8 @@ private:
     _XDisplay *m_display;
 
     QSet<QString> m_currentIds;
+
+    XcbThread *m_xcbThread;
 };
 
 }
