@@ -486,11 +486,11 @@
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>Equilibrado</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>Poupança Energia</translation>
     </message>
     <message>
         <source>Balance Performance</source>
