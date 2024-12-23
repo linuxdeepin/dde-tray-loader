@@ -544,7 +544,7 @@
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"/>
+        <translation>Capacidade %1,  não está a carregar</translation>
     </message>
     <message>
         <source>Battery</source>
@@ -568,7 +568,7 @@
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>Não está a carregar</translation>
     </message>
     <message>
         <source>Fully charged</source>
