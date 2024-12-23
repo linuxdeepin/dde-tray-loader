@@ -788,11 +788,11 @@
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation>Sábado</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
+        <translation>Domingo</translation>
     </message>
 </context>
 <context>
