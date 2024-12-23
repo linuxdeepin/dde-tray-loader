@@ -552,7 +552,7 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation>A carregar, a calcular tempo restante de carga</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
