@@ -482,7 +482,7 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"/>
+        <translation>Alto Desempenho</translation>
     </message>
     <message>
         <source>Balanced</source>
