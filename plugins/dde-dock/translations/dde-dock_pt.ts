@@ -688,11 +688,11 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>Segunda-Feira</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Terça-Feira</translation>
     </message>
     <message>
         <source>Wednesday</source>
