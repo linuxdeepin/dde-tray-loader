@@ -696,11 +696,11 @@
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation>Quarta-Feira</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>Quinta-Feira</translation>
     </message>
     <message>
         <source>Friday</source>
