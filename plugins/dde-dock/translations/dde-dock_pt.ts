@@ -564,7 +564,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>%1 hora %2 min restantes</translation>
     </message>
     <message>
         <source>Not charging</source>
