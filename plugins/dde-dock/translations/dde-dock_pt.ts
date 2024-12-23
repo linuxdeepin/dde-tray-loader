@@ -744,7 +744,7 @@
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation>Ago</translation>
     </message>
     <message>
         <source>Sept</source>
