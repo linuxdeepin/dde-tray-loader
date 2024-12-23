@@ -501,7 +501,7 @@
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation>Energia</translation>
     </message>
 </context>
 <context>
