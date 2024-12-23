@@ -584,7 +584,7 @@
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>Capacidade %1, restam %2 horas</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
