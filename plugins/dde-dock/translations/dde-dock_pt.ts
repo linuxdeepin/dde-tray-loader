@@ -728,19 +728,19 @@
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation>Abr</translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation>Mai</translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation>Jun</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation>Jul</translation>
     </message>
     <message>
         <source>Aug</source>
