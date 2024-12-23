@@ -760,7 +760,7 @@
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation>Dez</translation>
     </message>
     <message>
         <source>Open the calendar</source>
@@ -803,11 +803,11 @@
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"/>
+        <translation>Saída</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"/>
+        <translation>Definições de som</translation>
     </message>
 </context>
 <context>
