@@ -768,7 +768,7 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation>Segunda-Feira</translation>
     </message>
     <message>
         <source>tuesday</source>
