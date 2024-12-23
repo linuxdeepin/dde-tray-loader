@@ -265,15 +265,15 @@
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"/>
+        <translation>Definições Modo Não-Perturbar</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"/>
+        <translation>Desativar</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Ativar</translation>
     </message>
     <message>
         <source>DND mode enabled</source>
