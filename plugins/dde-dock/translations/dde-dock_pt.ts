@@ -299,7 +299,7 @@
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation type="unfinished"/>
+        <translation>Conforto Ocular Ligado</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
