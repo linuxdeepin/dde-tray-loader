@@ -303,7 +303,7 @@
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation type="unfinished"/>
+        <translation>Conforto Ocular Desligado</translation>
     </message>
     <message>
         <source>Display settings</source>
