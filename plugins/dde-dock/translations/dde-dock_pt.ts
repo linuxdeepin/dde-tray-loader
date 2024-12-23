@@ -708,11 +708,11 @@
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation>Sábado</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>Domingo</translation>
     </message>
     <message>
         <source>Jan</source>
