@@ -359,11 +359,11 @@
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Auto</translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"/>
+        <translation>Efeito Visual</translation>
     </message>
 </context>
 <context>
