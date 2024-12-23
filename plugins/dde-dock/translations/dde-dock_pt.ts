@@ -684,7 +684,7 @@
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation>d</translation>
     </message>
     <message>
         <source>Monday</source>
