@@ -704,7 +704,7 @@
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation>Sexta-Feira</translation>
     </message>
     <message>
         <source>Saturday</source>
