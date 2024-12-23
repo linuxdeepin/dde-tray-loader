@@ -580,7 +580,7 @@
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation>A carregar, %1 hora %2 min até completar</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
@@ -603,7 +603,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>Definições de Energia</translation>
     </message>
 </context>
 <context>
