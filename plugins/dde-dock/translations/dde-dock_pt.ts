@@ -672,15 +672,15 @@
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation>Lunar</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation>a</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation>m</translation>
     </message>
     <message>
         <source>d</source>
@@ -764,7 +764,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>Abrir o Calendário</translation>
     </message>
     <message>
         <source>monday</source>
