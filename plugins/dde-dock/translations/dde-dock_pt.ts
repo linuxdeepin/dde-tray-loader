@@ -833,11 +833,11 @@
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"/>
+        <translation>Sem dispositivos de saída</translation>
     </message>
     <message>
         <source>Volume %1</source>
-        <translation type="unfinished"/>
+        <translation>Volume %1</translation>
     </message>
 </context>
 </TS>
