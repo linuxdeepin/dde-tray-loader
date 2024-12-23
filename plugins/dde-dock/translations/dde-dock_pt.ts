@@ -772,19 +772,19 @@
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Terça-Feira</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation>Quarta-Feira</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation>Quinta-Feira</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"/>
+        <translation>Sexta-Feira</translation>
     </message>
     <message>
         <source>saturday</source>
