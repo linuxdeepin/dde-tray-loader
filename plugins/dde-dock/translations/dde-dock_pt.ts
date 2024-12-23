@@ -748,15 +748,15 @@
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation>Set</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation>Out</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation>Nov</translation>
     </message>
     <message>
         <source>Dec</source>
