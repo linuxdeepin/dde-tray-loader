@@ -1,3 +1,9 @@
+dde-tray-loader (1.99.10) UNRELEASED; urgency=medium
+
+  * UNRELEASED
+
+ -- Deepin Packages Builder <packages@deepin.org>  Tue, 24 Dec 2024 20:23:04 +0800
+
 dde-tray-loader (1.99.9) UNRELEASED; urgency=medium
 
   * fix: cooperation-networkDisPlay service is not available(Bug: 294901)
