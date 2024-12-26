@@ -392,7 +392,18 @@ void PluginItem::closeToolTip()
 void PluginItem::updatePluginContentMargin(int spacing)
 {
     if (spacing > 0) {
-        setContentsMargins(spacing, spacing, spacing, spacing);
+        m_spacing = spacing;
+        // 时间日期插件的margin需要特殊处理，保证hover时和任务栏边框有一定间隔
+        if (pluginId() == "datetime") {
+            const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
+            if (position == Dock::Left || position == Dock::Right) {
+                setContentsMargins(1, spacing, 1, spacing);
+            } else {
+                setContentsMargins(spacing, 2, spacing, 2);
+            }
+        } else {
+            setContentsMargins(spacing, spacing, spacing, spacing);
+        }
         setFixedSize(sizeHint());
     }
 }
