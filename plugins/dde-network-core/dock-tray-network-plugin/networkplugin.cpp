@@ -173,7 +173,7 @@ const QString NetworkPlugin::itemCommand(const QString &itemKey)
                        "--dest=org.deepin.dde.ControlCenter1 "
                        "/org/deepin/dde/ControlCenter1 "
                        "org.deepin.dde.ControlCenter1.ShowModule "
-                       "\"string:network\"");
+                       "string:network");
     }
 
     return QString();
