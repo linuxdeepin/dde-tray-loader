@@ -47,7 +47,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  startdde (>=5.8.9),
  lastore-daemon (>=5.2.9),
  qtxdg-dev-tools,
- deepin-service-plugin-network,
 Conflicts:
  dde-dock,
  dde-dock-onboard-plugin
@@ -68,12 +67,6 @@ Provides:
  dde-dock-dev (=6.1.0)
 Description: deepin desktop-environment - tray plugins module development files
  Tray plugins module development files of deepin desktop-environment
-
-Package: deepin-service-plugin-network
-Architecture: any
-Depends: ${misc:Depends},${shlibs:Depends},curl
-Description: the plugin of network service for deepin-service-manager
- deepin-service-plugin-network module
 
 Package: dde-wirelesscasting-plugin
 Architecture: any
