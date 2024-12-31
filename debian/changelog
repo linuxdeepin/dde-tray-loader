@@ -1,3 +1,10 @@
+dde-tray-loader (1.0.9) unstable; urgency=medium
+
+  * fix: submenu position not right
+  * fix: small black block when there is no compositor
+
+ -- xionglinlin <xionglinlin@uniontech.com>  Tue, 31 Dec 2024 11:47:27 +0800
+
 dde-tray-loader (1.0.8) unstable; urgency=medium
 
   * fix: unable to click application tray border
