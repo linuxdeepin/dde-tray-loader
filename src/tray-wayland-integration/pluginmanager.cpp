@@ -53,8 +53,9 @@ bool PluginManager::tryCreatePopupForSubWindow(QWindow *window)
         pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeTooltip);
         pluginPopup->setPluginId(plugin->pluginId());
         pluginPopup->setItemKey(plugin->itemKey());
-        pluginPopup->setX(parentWindow->x() + window->x());
-        pluginPopup->setY(parentWindow->y() + window->y());
+        auto pluginPos = plugin->pluginPos();
+        pluginPopup->setX(pluginPos.x() + window->x());
+        pluginPopup->setY(pluginPos.y() + window->y());
         return true;
     }
 
@@ -63,10 +64,10 @@ bool PluginManager::tryCreatePopupForSubWindow(QWindow *window)
         pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeSubPopup);
         pluginPopup->setPluginId(plugin->pluginId());
         pluginPopup->setItemKey(plugin->itemKey());
-        auto geometry = parentWindow->geometry();
+        auto parentPos = plugin->pluginPos();
         // TODO move to parentWindow's right position.
-        pluginPopup->setX(geometry.right());
-        pluginPopup->setY(window->y());
+        pluginPopup->setX(parentPos.x() + parentWindow->width());
+        pluginPopup->setY(parentPos.y() + window->y());
         return true;
     }
 
