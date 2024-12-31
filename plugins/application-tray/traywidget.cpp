@@ -29,7 +29,6 @@ TrayWidget::TrayWidget(QPointer<AbstractTrayProtocolHandler> handler)
     setFixedSize(trayIconSize, trayIconSize);
 
     m_handler->setParent(this);
-    setMouseTracking(true);
 
     connect(m_handler, &AbstractTrayProtocolHandler::iconChanged, this, [this](){update();});
     connect(m_handler, &AbstractTrayProtocolHandler::overlayIconChanged, this, [this](){update();});
@@ -49,6 +48,7 @@ void TrayWidget::showEvent(QShowEvent* event)
 {
     m_handler->setWindow(window());
     window()->installEventFilter(m_handler);
+    window()->setMouseTracking(true);
 }
 
 void TrayWidget::paintEvent(QPaintEvent* event)

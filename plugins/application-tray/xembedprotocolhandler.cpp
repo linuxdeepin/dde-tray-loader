@@ -2,7 +2,6 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-#include "plugin.h"
 #include "abstracttrayprotocol.h"
 #include "traymanager1interface.h"
 #include "xembedprotocolhandler.h"
@@ -84,7 +83,7 @@ XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent
     generateId();
 
     m_hoverTimer->setSingleShot(true);
-    m_hoverTimer->setInterval(100);
+    m_hoverTimer->setInterval(500);
 
     m_attentionTimer->setSingleShot(true);
     m_attentionTimer->setInterval(100);
@@ -175,7 +174,7 @@ bool XembedProtocolHandler::eventFilter(QObject *watched, QEvent *event)
     if (watched == window()) {
         // 有透明通道时，可以做到container一直透明隐藏，就走Enter触发
         // 没有透明通道时，走旧dock的方式 QEvent::Move防止在 dock/container 之前一直切换
-        if ((event->type() == QEvent::Enter)) {
+        if ((event->type() == QEvent::MouseMove)) {
             m_hoverTimer->start();
         } else if (event->type() == QEvent::Leave && m_hoverTimer->isActive()) {
             m_hoverTimer->stop();
@@ -184,7 +183,7 @@ bool XembedProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                 m_hoverTimer->stop();
             }
 
-            auto p = getGlobalPos();
+            auto p = UTIL->getMousePos();
             auto mouseEvent = static_cast<QMouseEvent*>(event);
             sendClick(mouseEvent->button(), p.x(), p.y());
         }
@@ -201,7 +200,7 @@ void XembedProtocolHandler::initX11resources()
     uint32_t mask = XCB_CW_BACK_PIXEL | XCB_CW_OVERRIDE_REDIRECT | XCB_CW_EVENT_MASK;
     values[0] = screen->black_pixel; // draw a solid background so the embedded icon doesn't get garbage in it
     values[1] = true; // bypass wM
-    values[2] = XCB_EVENT_MASK_STRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT;
+    values[2] = XCB_EVENT_MASK_STRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT | XCB_EVENT_MASK_LEAVE_WINDOW | XCB_EVENT_MASK_ENTER_WINDOW;
     const auto ratio = qApp->devicePixelRatio();
     xcb_create_window(c,
                       XCB_COPY_FROM_PARENT,
@@ -209,7 +208,7 @@ void XembedProtocolHandler::initX11resources()
                       screen->root,
                       0,
                       0,
-                      trayIconSize * ratio, trayIconSize * ratio,
+                      1, 1,
                       0,
                       XCB_WINDOW_CLASS_INPUT_OUTPUT,
                       screen->root_visual,
@@ -226,10 +225,8 @@ void XembedProtocolHandler::initX11resources()
     xcb_change_save_set(c, XCB_SET_MODE_INSERT, m_windowId);
     UTIL->sendXembedMessage(m_windowId, 0, 0, m_containerWid, 0);
 
-    QSize clientWindowSize = calculateClientWindowSize();
-
     xcb_map_window(c, m_windowId);
-    xcb_clear_area(c, 0, m_windowId, 0, 0, clientWindowSize.width(), clientWindowSize.height());
+    xcb_clear_area(c, 0, m_windowId, 0, 0, 1, 1);
     xcb_flush(c);
 
     auto waCookie = xcb_get_window_attributes(c, m_windowId);
@@ -248,12 +245,6 @@ void XembedProtocolHandler::initX11resources()
             Q_EMIT AbstractTrayProtocolHandler::enabledChanged();
         }
     });
-}
-
-QSize XembedProtocolHandler::calculateClientWindowSize() const
-{
-    auto size = UTIL->getX11WindowSize(m_containerWid);
-    return (size.isEmpty() || size.width() > trayIconSize || size.height() > trayIconSize) ? QSize(trayIconSize, trayIconSize) : size;
 }
 
 QPixmap XembedProtocolHandler::getPixmapFromWidnow()
@@ -275,30 +266,14 @@ QPixmap XembedProtocolHandler::getPixmapFromWidnow()
     return res;
 }
 
-QPoint XembedProtocolHandler::getGlobalPos()
-{
-    int x = 0, y = 0;
-    auto widget = static_cast<QWidget*>(parent());
-    if (!widget) return QPoint();
-
-    auto plugin = Plugin::EmbedPlugin::get(widget->window()->windowHandle());
-    if (!plugin) return QPoint();
-
-    return plugin->rawGlobalPos();
-}
-
 void XembedProtocolHandler::updateEmbedWindowPosForGetInputEvent()
 {
     // update pos
-    QPoint p = getGlobalPos();
-    const QPoint clickPoint = calculateClickPoint();
-    uint32_t configVals[2] = {0, 0};
-    configVals[0] = static_cast<uint32_t>(p.x() + clickPoint.x());
-    configVals[1] = static_cast<uint32_t>(p.y() + clickPoint.y());
-    UTIL->moveX11Window(m_containerWid, configVals[0], configVals[1]);
+    QPoint p = UTIL->getMousePos();
+    UTIL->moveX11Window(m_containerWid, p.x(), p.y());
 
     // make window normal and above for get input
-    UTIL->setX11WindowInputShape(m_containerWid, QSize(trayIconSize, trayIconSize));
+    UTIL->setX11WindowInputShape(m_containerWid, QSize(1, 1));
 }
 
 void XembedProtocolHandler::sendHover()
@@ -306,12 +281,11 @@ void XembedProtocolHandler::sendHover()
     updateEmbedWindowPosForGetInputEvent();
 
     Display *display = UTIL->getDisplay();
-    QPoint p = getGlobalPos();
-    const QPoint clickPoint = calculateClickPoint();
+    QPoint p = UTIL->getMousePos();
 
     if (m_injectMode == XTest) {
         // fake enter event
-        XTestFakeRelativeMotionEvent(display, 0, 0, CurrentTime);
+        XTestFakeMotionEvent(display, 0, p.x(), p.y(), CurrentTime);
         XFlush(display);
     } else {
         // 发送 montion notify event到client，实现hover事件
@@ -324,18 +298,14 @@ void XembedProtocolHandler::sendHover()
         event->time = 0;
         event->root_x = p.x();
         event->root_y = p.y();
-        event->event_x = clickPoint.x();
-        event->event_y = clickPoint.y();
+        event->event_x = 0;
+        event->event_y = 0;
         event->child = 0;
         event->state = 0;
         xcb_send_event(UTIL->getX11Connection(), false, m_windowId, XCB_EVENT_MASK_POINTER_MOTION, (char*)event);
         delete event;
         xcb_flush(UTIL->getX11Connection());
     }
-
-    QTimer::singleShot(100,[this](){
-        UTIL->setX11WindowInputShape(m_containerWid, QSize(0, 0));
-    });
 }
 
 void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const int& y)
@@ -361,9 +331,7 @@ void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const 
     }
 
     updateEmbedWindowPosForGetInputEvent();
-    UTIL->setX11WindowInputShape(m_containerWid, QSize(trayIconSize, trayIconSize));
-    QPoint p = getGlobalPos();
-    const QPoint clickPoint = calculateClickPoint();
+    UTIL->setX11WindowInputShape(m_containerWid, QSize(1, 1));
 
     if (m_injectMode == Direct) {
         QSharedPointer<xcb_button_press_event_t> pressEvent =QSharedPointer<xcb_button_press_event_t>(new xcb_button_press_event_t);
@@ -375,8 +343,8 @@ void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const 
         pressEvent->root = Util::instance()->getRootWindow();
         pressEvent->root_x = x;
         pressEvent->root_y = y;
-        pressEvent->event_x = static_cast<int16_t>(clickPoint.x());
-        pressEvent->event_y = static_cast<int16_t>(clickPoint.y());
+        pressEvent->event_x = static_cast<int16_t>(0);
+        pressEvent->event_y = static_cast<int16_t>(0);
         pressEvent->child = 0;
         pressEvent->state = 0;
         pressEvent->detail = mouseButton;
@@ -391,14 +359,14 @@ void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const 
         releaseEvent->root = Util::instance()->getRootWindow();
         releaseEvent->root_x = x;
         releaseEvent->root_y = y;
-        releaseEvent->event_x = static_cast<int16_t>(clickPoint.x());
-        releaseEvent->event_y = static_cast<int16_t>(clickPoint.y());
+        releaseEvent->event_x = static_cast<int16_t>(0);
+        releaseEvent->event_y = static_cast<int16_t>(0);
         releaseEvent->child = 0;
         releaseEvent->state = 0;
         releaseEvent->detail = mouseButton;
         xcb_send_event(c, false, m_windowId, XCB_EVENT_MASK_BUTTON_RELEASE, (char *)releaseEvent.get());
     } else {
-        XTestFakeRelativeMotionEvent(dis, 0, 0, 0);
+        XTestFakeMotionEvent(dis, 0, x, y, CurrentTime);
         XFlush(dis);
         XTestFakeButtonEvent(dis, mouseButton, true, 0);
         XFlush(dis);
@@ -411,43 +379,4 @@ void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const 
         UTIL->setX11WindowInputShape(m_containerWid, QSize(0, 0));
     });
 }
-
-// from kde/plasma-workspace/xembed-sni-proxy
-QPoint XembedProtocolHandler::calculateClickPoint() const
-{
-    QSize clientSize = calculateClientWindowSize();
-    QPoint clickPoint = QPoint(clientSize.width() / 2, clientSize.height() / 2);
-
-    auto c = Util::instance()->getX11Connection();
-
-    xcb_shape_query_extents_cookie_t extentsCookie = xcb_shape_query_extents(c, m_windowId);
-    xcb_shape_get_rectangles_cookie_t rectaglesCookie = xcb_shape_get_rectangles(c, m_windowId, XCB_SHAPE_SK_BOUNDING);
-
-    QSharedPointer<xcb_shape_query_extents_reply_t> extentsReply(xcb_shape_query_extents_reply(c, extentsCookie, nullptr));
-    QSharedPointer<xcb_shape_get_rectangles_reply_t> rectanglesReply(xcb_shape_get_rectangles_reply(c, rectaglesCookie, nullptr));
-
-    if (!extentsReply || !rectanglesReply || !extentsReply->bounding_shaped) {
-        return clickPoint;
-    }
-
-    xcb_rectangle_t *rectangles = xcb_shape_get_rectangles_rectangles(rectanglesReply.get());
-    if (!rectangles) {
-        return clickPoint;
-    }
-
-    const QImage image = UTIL->getX11WidnowImageNonComposite(m_windowId);
-
-    double minLength = sqrt(pow(image.height(), 2) + pow(image.width(), 2));
-    const int nRectangles = xcb_shape_get_rectangles_rectangles_length(rectanglesReply.get());
-    for (int i = 0; i < nRectangles; ++i) {
-        double length = sqrt(pow(rectangles[i].x, 2) + pow(rectangles[i].y, 2));
-        if (length < minLength) {
-            minLength = length;
-            clickPoint = QPoint(rectangles[i].x, rectangles[i].y);
-        }
-    }
-
-    return clickPoint;
-}
-
 }
