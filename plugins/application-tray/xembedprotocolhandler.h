@@ -71,10 +71,6 @@ private:
     void sendHover();
     void sendClick(uint8_t mouseButton, const int& x, const int& y);
 
-    QPoint calculateClickPoint() const;
-    QSize calculateClientWindowSize() const;
-
-    inline QPoint getGlobalPos();
     inline void updateEmbedWindowPosForGetInputEvent();
 
 protected:

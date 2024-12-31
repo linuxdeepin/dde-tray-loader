@@ -5,6 +5,7 @@
 #include <QDebug>
 
 #include "util.h"
+#include "xcbthread.h"
 
 #include <QSize>
 #include <QPixmap>
@@ -49,6 +50,8 @@ Util::Util()
     m_rootWindow = screen->root;
 
     xcb_ewmh_init_atoms_replies(&m_ewmh, xcb_ewmh_init_atoms(m_x11connection, &m_ewmh), nullptr);
+    m_xcbThread = new XcbThread(m_x11connection);
+    m_xcbThread->start();
 }
 
 Util::~Util()
@@ -358,5 +361,17 @@ QImage Util::convertFromNative(xcb_image_t *xcbImage)
     }
 
     return image;
+}
+
+QPoint Util::getMousePos() const
+{
+    QPoint pos;
+    xcb_query_pointer_cookie_t cookie = xcb_query_pointer(m_x11connection, m_rootWindow);
+    QScopedPointer<xcb_query_pointer_reply_t> reply(xcb_query_pointer_reply(m_x11connection, cookie, NULL));
+    if (reply) {
+        pos = QPoint(reply->root_x, reply->root_y);
+    }
+
+    return pos;
 }
 }
