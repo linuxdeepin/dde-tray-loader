@@ -1,3 +1,9 @@
+dde-tray-loader (1.99.11) UNRELEASED; urgency=medium
+
+  * fix: Datetime plugin display problem (#230)(Bug: 276275)
+
+ -- Deepin Packages Builder <packages@deepin.org>  Fri, 03 Jan 2025 13:35:05 +0800
+
 dde-tray-loader (1.99.10) UNRELEASED; urgency=medium
 
   * UNRELEASED
