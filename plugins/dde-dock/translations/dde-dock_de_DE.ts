@@ -625,7 +625,7 @@
     </message>
     <message>
         <source>Suspend</source>
-        <translation>Bereitschaftszustand</translation>
+        <translation>Bereitschaft</translation>
     </message>
     <message>
         <source>Hibernate</source>
