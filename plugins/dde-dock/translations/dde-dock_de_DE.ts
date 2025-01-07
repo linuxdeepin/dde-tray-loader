@@ -629,7 +629,7 @@
     </message>
     <message>
         <source>Hibernate</source>
-        <translation>Sichern und abschalten</translation>
+        <translation>Ruhezustand</translation>
     </message>
     <message>
         <source>Lock</source>
