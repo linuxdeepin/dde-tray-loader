@@ -74,4 +74,4 @@ qt_add_translation(QM_FILES_DOCK ${TS_FILES_DOCK})
 add_custom_target(dock_translations ALL DEPENDS ${QM_FILES_DOCK})
 install(FILES ${QM_FILES_DOCK} DESTINATION share/dock-wirelesscasting-plugin/translations)
 # 安装显示在控制中心-个性化-任务栏-插件区域的图标
-install(FILES "dock-wirelesscasting-plugin/res/wireless-casting.svg" DESTINATION share/dde-dock/icons/dcc-setting)
+install(FILES "dock-wirelesscasting-plugin/res/dcc-wireless-casting.dci" DESTINATION share/dde-dock/icons/dcc-setting)
