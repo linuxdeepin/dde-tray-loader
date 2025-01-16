@@ -48,6 +48,23 @@ QVector<PluginsItemInterface *> PluginManager::loadedPlugins() const
 
 void PluginManager::loadPlugin(const QString &pluginFilePath)
 {
+    QStringList blacklistedPluginPaths;
+    // TODO: use dconfig for this purpose.
+    if (qgetenv("XDG_SESSION_TYPE") == "wayland") {
+        blacklistedPluginPaths.append(QStringList{
+            "libshot-start-record-plugin.so",
+            "libshot-start-plugin.so",
+            "libdeepin-screen-recorder-plugin.so",
+            "libeye-comfort-mode.so",
+        });
+    }
+    for (const QString &path : blacklistedPluginPaths) {
+        if (pluginFilePath.endsWith(path)) {
+            qDebug() << "Skipping blacklisted plugin:" << pluginFilePath;
+            return;
+        }
+    }
+
     auto *pluginLoader = new QPluginLoader(pluginFilePath, this);
     const QJsonObject &meta = pluginLoader->metaData().value("MetaData").toObject();
     const QString &pluginApi = meta.value("api").toString();
