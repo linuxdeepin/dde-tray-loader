@@ -307,7 +307,7 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Anzeige-Einstellungen</translation>
     </message>
     <message>
         <source>Eye comfort</source>
@@ -347,7 +347,7 @@
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"/>
+        <translation>Anzeige-Einstellungen</translation>
     </message>
     <message>
         <source>Theme: Light</source>
@@ -625,7 +625,7 @@
     </message>
     <message>
         <source>Suspend</source>
-        <translation>Bereitschaftszustand</translation>
+        <translation>Bereitschaft</translation>
     </message>
     <message>
         <source>Hibernate</source>
