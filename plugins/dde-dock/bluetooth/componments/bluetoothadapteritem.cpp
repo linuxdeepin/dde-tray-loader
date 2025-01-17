@@ -295,12 +295,14 @@ void BluetoothAdapterItem::onDeviceRemoved(const Device *device)
     }
 
     QStandardItemModel *sourceModel = m_deviceItems.value(device)->standardItem()->model();
-    for (int rowIndex = 0; rowIndex < sourceModel->rowCount(); ++rowIndex) {
-        QModelIndex index = sourceModel->index(rowIndex, 0);
-        auto item = dynamic_cast<PluginStandardItem *>(sourceModel->itemFromIndex(index));
-        if (item == m_deviceItems.value(device)->standardItem()) {
-            sourceModel->removeRow(rowIndex);
-            break;
+    if (sourceModel) {
+        for (int rowIndex = 0; rowIndex < sourceModel->rowCount(); ++rowIndex) {
+            QModelIndex index = sourceModel->index(rowIndex, 0);
+            auto item = dynamic_cast<PluginStandardItem *>(sourceModel->itemFromIndex(index));
+            if (item == m_deviceItems.value(device)->standardItem()) {
+                sourceModel->removeRow(rowIndex);
+                break;
+            }
         }
     }
 
@@ -482,6 +484,8 @@ void BluetoothAdapterItem::setUnnamedDevicesVisible(bool isShow)
             if (deviceItem && deviceItem->device() && deviceItem->device()->name().isEmpty()) {
                 PluginStandardItem *dListItem = deviceItem->standardItem();
                 QStandardItemModel *model = i.value()->standardItem()->model();
+                if (!model)
+                    continue;
                 QModelIndex index = model->indexFromItem(dListItem);
                 if (!index.isValid()) {
                     model->insertRow(((connectCount > -1 && connectCount < m_deviceItems.count()) ? connectCount : 0), dListItem);
@@ -500,6 +504,8 @@ void BluetoothAdapterItem::setUnnamedDevicesVisible(bool isShow)
                 && (Device::StateConnected != deviceItem->device()->state() || !deviceItem->device()->connecting())) {
             PluginStandardItem *dListItem = deviceItem->standardItem();
             QStandardItemModel *model = i.value()->standardItem()->model();
+            if (!model)
+                continue;
             QModelIndex index = model->indexFromItem(dListItem);
             if (index.isValid()) {
                 model->takeRow(index.row());
