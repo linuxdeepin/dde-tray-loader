@@ -11,9 +11,9 @@
 #include <NetworkManagerQt/ConnectionSettings>
 #include <NetworkManagerQt/VpnSetting>
 
-#define NETWORKSERVICE "com.deepin.system.Network"
-#define NETWORKPATH "/com/deepin/system/Network"
-#define NETWORKINTERFACE "com.deepin.system.Network"
+#define NETWORKSERVICE "org.deepin.dde.Network1"
+#define NETWORKPATH "/org/deepin/dde/Network1"
+#define NETWORKINTERFACE "org.deepin.dde.Network1"
 #define NETWORKPROPERTIESINTERFACE "org.freedesktop.DBus.Properties"
 #define VPNENABLED "VpnEnabled"
 
@@ -292,7 +292,7 @@ void VPNController_NM::onPropertiesChanged(const QString &interfaceName, const Q
 
 void VPNController_NM::setEnabled(const bool enabled)
 {
-    // 调用com.deepin.system.Network的相关接口来设置VPN
+    // 调用org.deepin.dde.Network1的相关接口来设置VPN
     QDBusInterface dbusInter(NETWORKSERVICE, NETWORKPATH, NETWORKINTERFACE, QDBusConnection::systemBus());
     dbusInter.setProperty(VPNENABLED, enabled);
     // 如果开启VPN，则让其自动连接

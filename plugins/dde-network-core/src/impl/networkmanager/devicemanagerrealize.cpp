@@ -80,8 +80,8 @@ private:
     AccessPoints *m_accessPoint;
 };
 
-#define SYS_NETWORK_INTER "com.deepin.system.Network"
-#define SYS_NETWORK_PATH "/com/deepin/system/Network"
+#define SYS_NETWORK_INTER "org.deepin.dde.Network1"
+#define SYS_NETWORK_PATH "/org/deepin/dde/Network1"
 
 DeviceManagerRealize::DeviceManagerRealize(NetworkManager::Device::Ptr device, QObject *parent)
     : NetworkDeviceRealize(parent)
