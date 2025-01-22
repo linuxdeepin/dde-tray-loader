@@ -85,6 +85,12 @@ int main(int argc, char *argv[], char *envp[])
 
     DGuiApplicationHelper::setAttribute(DGuiApplicationHelper::UseInactiveColorGroup, false);
     init_setproctitle(argv, envp);
+    QMap<QByteArray, QByteArray> oldEnvs;
+    oldEnvs["DSG_APP_ID"] = qgetenv("DSG_APP_ID");
+    oldEnvs["WAYLAND_DISPLAY"] = qgetenv("WAYLAND_DISPLAY");
+    oldEnvs["QT_WAYLAND_SHELL_INTEGRATION"] = qgetenv("QT_WAYLAND_SHELL_INTEGRATION");
+    oldEnvs["QT_WAYLAND_RECONNECT"] = qgetenv("QT_WAYLAND_RECONNECT");
+
     qputenv("DSG_APP_ID", "org.deepin.dde-tray-loader");
     qputenv("WAYLAND_DISPLAY", "dockplugin");
     qputenv("QT_WAYLAND_SHELL_INTEGRATION", "plugin-shell");
@@ -164,5 +170,13 @@ int main(int argc, char *argv[], char *envp[])
     app.setApplicationDisplayName(pluginGroupName);
     setproctitle((QStringLiteral("tray plugin: ") + pluginGroupName).toStdString().c_str());
     qunsetenv("QT_SCALE_FACTOR");
+    for (auto iter = oldEnvs.begin(); iter != oldEnvs.end(); iter++) {
+        const QByteArray env(iter.key());
+        if (env.isEmpty()) {
+            qunsetenv(env);
+        } else {
+            qputenv(env, iter.value());
+        }
+    }
     return app.exec();
 }
