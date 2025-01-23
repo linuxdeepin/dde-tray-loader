@@ -1,3 +1,11 @@
+dde-tray-loader (1.99.14) UNRELEASED; urgency=medium
+
+  * fix: can't reset oldEnv.
+  * fix: wrong environment for children process
+  * fix: small black block when there is no compositor
+
+ -- Deepin Packages Builder <packages@deepin.org>  Thu, 23 Jan 2025 18:09:19 +0800
+
 dde-tray-loader (1.99.13) UNRELEASED; urgency=medium
 
   * fix: small black block when there is no compositor
