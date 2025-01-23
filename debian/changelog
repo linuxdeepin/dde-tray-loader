@@ -1,3 +1,9 @@
+dde-tray-loader (1.0.10) UNRELEASED; urgency=medium
+
+  * fix: Pop up authentication box
+
+ -- Robertkill <lvpeilong@uniontech.com>  Thu, 23 Jan 2025 15:28:42 +0800
+
 dde-tray-loader (1.0.9) unstable; urgency=medium
 
   * fix: submenu position not right
