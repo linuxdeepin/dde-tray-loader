@@ -171,11 +171,10 @@ int main(int argc, char *argv[], char *envp[])
     setproctitle((QStringLiteral("tray plugin: ") + pluginGroupName).toStdString().c_str());
     qunsetenv("QT_SCALE_FACTOR");
     for (auto iter = oldEnvs.begin(); iter != oldEnvs.end(); iter++) {
-        const QByteArray env(iter.key());
-        if (env.isEmpty()) {
-            qunsetenv(env);
+        if (iter.value().isEmpty()) {
+            qunsetenv(iter.key());
         } else {
-            qputenv(env, iter.value());
+            qputenv(iter.key(), iter.value());
         }
     }
     return app.exec();
