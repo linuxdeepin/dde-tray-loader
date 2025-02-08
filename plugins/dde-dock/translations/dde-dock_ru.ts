@@ -604,7 +604,7 @@
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Зарядка, %1 час. до полного заряда</translation>
     </message>
 </context>
 <context>
