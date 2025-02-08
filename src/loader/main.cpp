@@ -23,6 +23,8 @@
 #include <signal.h>
 #endif
 
+#include "dqwaylandplatform.h"
+
 DGUI_USE_NAMESPACE
 DCORE_USE_NAMESPACE
 
@@ -95,6 +97,15 @@ int main(int argc, char *argv[], char *envp[])
     qputenv("WAYLAND_DISPLAY", "dockplugin");
     qputenv("QT_WAYLAND_SHELL_INTEGRATION", "plugin-shell");
     qputenv("QT_WAYLAND_RECONNECT", "1");
+
+    qAddPreRoutine([] () {
+        if (!DGuiApplicationHelper::testAttribute(DGuiApplicationHelper::IsXWindowPlatform)) {
+            qDebug() << "Register platformInterface.";
+            DPlatformInterfaceFactory::registerInterface([] (DPlatformTheme* theme) -> DPlatformInterface *{
+                return new DQWaylandPlatformInterface(theme);
+            });
+        }
+    });
 
     LoaderApplication app(argc, argv);
     app.setOrganizationName("deepin");

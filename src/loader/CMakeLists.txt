@@ -26,6 +26,8 @@ add_executable(trayplugin-loader
     pluginmanager.h
     pluginmanager.cpp
     loader.qrc
+    dqwaylandplatform.h
+    dqwaylandplatform.cpp
 )
 
 target_include_directories(trayplugin-loader PUBLIC
