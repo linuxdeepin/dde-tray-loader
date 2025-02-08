@@ -15,7 +15,7 @@
 #include <QtDBus/QtDBus>
 
 /*
- * Proxy class for interface com.deepin.daemon.Accounts
+ * Proxy class for interface org.deepin.dde.Accounts1
  */
 class DBusAccount: public QDBusAbstractInterface
 {
@@ -61,9 +61,9 @@ public:
     { return qvariant_cast< QStringList >(property("UserList")); }
 };
 
-//namespace com {
+//namespace org {
 //  namespace deepin {
-//    namespace daemon {
+//    namespace dde {
 //      typedef ::DBusAccount Accounts;
 //    }
 //  }
