@@ -592,7 +592,7 @@
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>Емкость батареи %1, %2 Осталось часов</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
