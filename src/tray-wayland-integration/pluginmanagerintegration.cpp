@@ -69,6 +69,24 @@ void PluginManagerIntegration::plugin_manager_v1_event_message(const QString &ms
     Q_EMIT eventMessage(msg);
 }
 
+void PluginManagerIntegration::plugin_manager_v1_active_color_changed(const QString &active_color, const QString &dark_active_color)
+{
+    PlatformInterfaceProxy::instance()->setActiveColor(QColor(active_color));
+    PlatformInterfaceProxy::instance()->setDarkActiveColor(QColor(dark_active_color));
+}
+
+void PluginManagerIntegration::plugin_manager_v1_font_changed(const QString &font_name, int32_t font_point_size)
+{
+    PlatformInterfaceProxy::instance()->setFontName(font_name.toLocal8Bit());
+    PlatformInterfaceProxy::instance()->setFontPointSize(font_point_size);
+}
+
+void PluginManagerIntegration::plugin_manager_v1_theme_changed(const QString &theme_name, const QString &icon_theme_name)
+{
+    PlatformInterfaceProxy::instance()->setThemeName(theme_name.toLocal8Bit());
+    PlatformInterfaceProxy::instance()->setIconThemeName(icon_theme_name.toLocal8Bit());
+}
+
 bool PluginManagerIntegration::tryCreatePopupForSubWindow(QWindow *window)
 {
     auto parentWindow = window->transientParent();

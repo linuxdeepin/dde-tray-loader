@@ -30,6 +30,9 @@ protected:
     void plugin_manager_v1_position_changed(uint32_t dock_position) override;
     void plugin_manager_v1_color_theme_changed(uint32_t dock_color_theme) override;
     void plugin_manager_v1_event_message(const QString &msg) override;
+    void plugin_manager_v1_active_color_changed(const QString &active_color, const QString &dark_active_color) override;
+    void plugin_manager_v1_font_changed(const QString &font_name, int32_t font_point_size) override;
+    void plugin_manager_v1_theme_changed(const QString &theme_name, const QString &icon_theme_name) override;
 
 private:
     bool tryCreatePopupForSubWindow(QWindow *window);

@@ -42,6 +42,30 @@
         <arg name="dock_color_theme" type="uint"/>
     </event>
 
+    <event name="active_color_changed">
+        <description summary="active color">
+          sync active color from server.
+        </description>
+        <arg name="active_color" type="string"/>
+        <arg name="dark_active_color" type="string"/>
+    </event>
+
+    <event name="font_changed">
+        <description summary="font information">
+          sync font information from server.
+        </description>
+        <arg name="font_name" type="string"/>
+        <arg name="font_point_size" type="int"/>
+    </event>
+
+    <event name="theme_changed">
+        <description summary="theme information">
+          sync theme information from server.
+        </description>
+        <arg name="theme_name" type="string"/>
+        <arg name="icon_theme_name" type="string"/>
+    </event>
+
     <event name="event_message">
       <description summary="a message sent from server (dock)">
         This event will emitted when server(dock) send message to plugin.

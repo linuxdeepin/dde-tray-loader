@@ -382,4 +382,91 @@ bool PluginPopup::contains(QWindow *window)
 {
     return s_popupMap.keys().contains(window);
 }
+
+PlatformInterfaceProxy *PlatformInterfaceProxy::instance()
+{
+    static PlatformInterfaceProxy *gInstance = nullptr;
+    if (!gInstance) {
+        gInstance = new PlatformInterfaceProxy();
+    }
+    return gInstance;
+}
+
+QByteArray PlatformInterfaceProxy::fontName() const
+{
+    return m_fontName;
+}
+
+void PlatformInterfaceProxy::setFontName(const QByteArray &newFontName)
+{
+    if (m_fontName == newFontName)
+        return;
+    m_fontName = newFontName;
+    emit fontNameChanged(newFontName);
+}
+
+qreal PlatformInterfaceProxy::fontPointSize() const
+{
+    return m_fontPointSize;
+}
+
+void PlatformInterfaceProxy::setFontPointSize(qreal newFontPointSize)
+{
+    if (qFuzzyCompare(m_fontPointSize, newFontPointSize))
+        return;
+    m_fontPointSize = newFontPointSize;
+    emit fontPointSizeChanged(newFontPointSize);
+}
+
+QColor PlatformInterfaceProxy::activeColor() const
+{
+    return m_activeColor;
+}
+
+void PlatformInterfaceProxy::setActiveColor(const QColor &newActiveColor)
+{
+    if (m_activeColor == newActiveColor)
+        return;
+    m_activeColor = newActiveColor;
+    emit activeColorChanged(newActiveColor);
+}
+
+QColor PlatformInterfaceProxy::darkActiveColor() const
+{
+    return m_darkActiveColor;
+}
+
+void PlatformInterfaceProxy::setDarkActiveColor(const QColor &newDarkActiveColor)
+{
+    if (m_darkActiveColor == newDarkActiveColor)
+        return;
+    m_darkActiveColor = newDarkActiveColor;
+    emit darkActiveColorChanged(newDarkActiveColor);
+}
+
+QByteArray PlatformInterfaceProxy::themeName() const
+{
+    return m_themeName;
+}
+
+void PlatformInterfaceProxy::setThemeName(const QByteArray &newThemeName)
+{
+    if (m_themeName == newThemeName)
+        return;
+    m_themeName = newThemeName;
+    emit themeNameChanged(newThemeName);
+}
+
+QByteArray PlatformInterfaceProxy::iconThemeName() const
+{
+    return m_iconThemeName;
+}
+
+void PlatformInterfaceProxy::setIconThemeName(const QByteArray &newIconThemeName)
+{
+    if (m_iconThemeName == newIconThemeName)
+        return;
+    m_iconThemeName = newIconThemeName;
+    emit iconThemeNameChanged(newIconThemeName);
+}
 }

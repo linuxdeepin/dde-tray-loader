@@ -155,4 +155,45 @@ private:
     explicit PluginPopup(QWindow* window);
     QScopedPointer<PluginPopupPrivate> d;
 };
+
+class PlatformInterfaceProxy : public QObject
+{
+    Q_OBJECT
+public:
+    static PlatformInterfaceProxy *instance();
+
+    QByteArray fontName() const;
+    void setFontName(const QByteArray &newFontName);
+
+    qreal fontPointSize() const;
+    void setFontPointSize(qreal newFontPointSize);
+
+    QColor activeColor() const;
+    void setActiveColor(const QColor &newActiveColor);
+
+    QColor darkActiveColor() const;
+    void setDarkActiveColor(const QColor &newDarkActiveColor);
+
+    QByteArray themeName() const;
+    void setThemeName(const QByteArray &newThemeName);
+
+    QByteArray iconThemeName() const;
+    void setIconThemeName(const QByteArray &newIconThemeName);
+
+Q_SIGNALS:
+    void fontNameChanged(QByteArray fontName);
+    void fontPointSizeChanged(qreal fontPointSize);
+    void activeColorChanged(QColor activeColor);
+    void darkActiveColorChanged(QColor activeColor);
+    void themeNameChanged(QByteArray themeName);
+    void iconThemeNameChanged(QByteArray iconThemeName);
+
+private:
+    QByteArray m_fontName;
+    qreal m_fontPointSize;
+    QColor m_activeColor;
+    QColor m_darkActiveColor;
+    QByteArray m_themeName;
+    QByteArray m_iconThemeName;
+};
 }
