@@ -596,7 +596,7 @@
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>Осталось %1 час.</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
