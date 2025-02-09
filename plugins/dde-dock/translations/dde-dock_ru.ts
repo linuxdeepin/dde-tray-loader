@@ -71,7 +71,7 @@
     </message>
     <message>
         <source>%1 connected</source>
-        <translation>%1 подключено</translation>
+        <translation>%1 соединено</translation>
     </message>
     <message>
         <source>Connecting...</source>
