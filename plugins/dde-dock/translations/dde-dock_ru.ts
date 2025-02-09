@@ -566,7 +566,7 @@
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>Осталось %1 мин.</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
