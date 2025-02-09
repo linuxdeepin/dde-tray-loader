@@ -71,7 +71,7 @@
     </message>
     <message>
         <source>%1 connected</source>
-        <translation>%1 подключено</translation>
+        <translation>%1 соединено</translation>
     </message>
     <message>
         <source>Connecting...</source>
@@ -444,27 +444,29 @@
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"/>
+        <translation>Сообщений нет</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"/>
+        <translation>Настройки уведомлений
+</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>Уведомления</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"/>
+        <translation>Выключить режим &quot;Не беспокоить&quot;
+</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"/>
+        <translation>Включить режим &quot;Не беспокоить&quot;</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"/>
+        <translation>Уведомление</translation>
     </message>
 </context>
 <context>
@@ -482,26 +484,28 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"/>
+        <translation>Высокая Производительность
+</translation>
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>Сбалансированный</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>Энергосбережение</translation>
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Сбалансированная Производительность
+</translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation>Питание</translation>
     </message>
 </context>
 <context>
@@ -552,58 +556,62 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation>Зарядка, расчет расчетного времени зарядки
+</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation>Расчет оставшегося времени использования
+</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>Осталось %1 мин.</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>Осталось %1 час. %2 мин.</translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>Не заряжается
+</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation>Полностью заряжен
+</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Зарядка, %1 мин до полного заряда</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Зарядка, %1 ч. %2 мин. до полного заряда</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>Емкость батареи %1, %2 Осталось час.</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>Осталось %1 час.</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Зарядка %1, %2 ч. до полного заряда</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Зарядка, %1 час. до полного заряда</translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>Параметры питания</translation>
     </message>
 </context>
 <context>
@@ -614,7 +622,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Неизвестный</translation>
     </message>
 </context>
 <context>
@@ -657,142 +665,142 @@
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>Выключить</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation>Переключить пользователя</translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"/>
+        <translation>Сегодня</translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation>Лунный</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation>г</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation>м</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation>д</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>Понедельник</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Вторник</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation>Среда</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>Четверг</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation>Пятница</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation>Суббота</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>Воскресенье</translation>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"/>
+        <translation>Янв</translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"/>
+        <translation>Фев</translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"/>
+        <translation>Мар</translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation>Апр</translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation>Май</translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation>Июн</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation>Июл</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation>Авг</translation>
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation>Сент</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation>Окт</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation>Ноя</translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation>Дек</translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>Открыть календарь</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation>понедельник</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation>вторник</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation>среда</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation>четверг</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"/>
+        <translation>пятница</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation>суббота</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
+        <translation>воскресенье</translation>
     </message>
 </context>
 <context>
