@@ -88,7 +88,7 @@ void SoundController::onDefaultSinkChanged(const QDBusObjectPath &path)
     // 音量和静音状态变化时手动获取下另外一个的状态，有时候收不到 changed 信号
     connect(m_defaultSinkInter, &DBusSink::MuteChanged, &SoundModel::ref(), [this] (bool value) {
         SoundModel::ref().setVolume(m_defaultSinkInter->volume());
-        SoundModel::ref().setMute(value);
+        SoundModel::ref().setMute(m_defaultSinkInter->mute());
     });
     connect(m_defaultSinkInter, &DBusSink::VolumeChanged, &SoundModel::ref(), [this] (double value) {
         SoundModel::ref().setVolume(value);
