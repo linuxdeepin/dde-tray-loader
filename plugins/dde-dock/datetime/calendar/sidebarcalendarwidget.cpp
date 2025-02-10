@@ -27,8 +27,8 @@ SidebarCalendarWidget::SidebarCalendarWidget(RegionFormat *regionFormat, QWidget
     , m_keyWidget(new QWidget(this))
     , m_keyLayout(new QGridLayout)
     , m_dateLabel(new QLabel(this))
-    , m_nextPage(new DPushButton(this))
-    , m_previousPage(new DPushButton(this))
+    , m_nextPage(new DIconButton(this))
+    , m_previousPage(new DIconButton(this))
     , m_firstday(Qt::Sunday)
     , m_dateTitleWidget(new DateTitleWidget(this))
     , m_weekLabel(new DLabel(this))
@@ -85,12 +85,10 @@ void SidebarCalendarWidget::initView()
     DFontSizeManager::instance()->bind(m_dateLabel, DFontSizeManager::T5, 65);
     m_nextPage->setIcon(DStyle().standardIcon(QStyle::SP_ArrowRight));
     m_previousPage->setIcon(DStyle().standardIcon(QStyle::SP_ArrowLeft));
-    m_nextPage->setIconSize(QSize(15, 15));
-    m_previousPage->setIconSize(QSize(15, 15));
-    m_nextPage->setMinimumSize(30, 30);
-    m_previousPage->setMinimumSize(30, 30);
-    m_nextPage->setFlat(true);
-    m_previousPage->setFlat(true);
+    m_nextPage->setIconSize(QSize(12, 12));
+    m_previousPage->setIconSize(QSize(12, 12));
+    m_nextPage->setFixedSize(30, 30);
+    m_previousPage->setFixedSize(30, 30);
 
     m_nextPage->setFocusPolicy(Qt::NoFocus);
     m_previousPage->setFocusPolicy(Qt::NoFocus);
