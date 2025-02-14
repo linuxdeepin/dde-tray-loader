@@ -1,3 +1,9 @@
+dde-tray-loader (1.99.15) UNRELEASED; urgency=medium
+
+  * fix: Have an audio output device, but the volume display is muted(Bug: 298251)
+
+ -- Deepin Packages Builder <packages@deepin.org>  Fri, 14 Feb 2025 10:42:27 +0800
+
 dde-tray-loader (1.99.14) UNRELEASED; urgency=medium
 
   * fix: can't reset oldEnv.
