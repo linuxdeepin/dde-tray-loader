@@ -23,7 +23,7 @@
     </message>
     <message>
         <source>Airplane mode settings</source>
-        <translation>Ustawienia trybu samolotowego</translation>
+        <translation>Ustawienia Trybu samolotowego</translation>
     </message>
 </context>
 <context>
@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Wyłącz Tryb Samolotowy, aby połączyć się z Bluetooth</translation>
+        <translation>Najpierw wyłącz Tryb Samolotowy, aby połączyć się z Bluetooth</translation>
     </message>
 </context>
 <context>
@@ -494,7 +494,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation>Zrównoważona wydajność</translation>
+        <translation>Wydajność zbalansowana</translation>
     </message>
 </context>
 <context>
@@ -512,11 +512,11 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>Poziom: %1, pozostało: %2min</translation>
+        <translation>Pojemność %1, pozostało: %2min</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>Poziom: %1, pozostało: %2:%3</translation>
+        <translation>Pojemność %1, pozostało: %2:%3</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
