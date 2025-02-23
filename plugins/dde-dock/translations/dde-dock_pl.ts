@@ -516,7 +516,7 @@
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>Poziom: %1, pozostało: %2:%3</translation>
+        <translation>Pojemność %1, pozostało: %2:%3</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
