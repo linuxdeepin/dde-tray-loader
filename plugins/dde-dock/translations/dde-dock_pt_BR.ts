@@ -37,7 +37,7 @@
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation>Dispositivos pareados</translation>
+        <translation>Meus Dispositivos </translation>
     </message>
 </context>
 <context>
@@ -825,7 +825,7 @@
     </message>
     <message>
         <source>Mute</source>
-        <translation>Mudo</translation>
+        <translation>Ativar mudo</translation>
     </message>
     <message>
         <source>Sound settings</source>
