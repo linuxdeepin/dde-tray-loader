@@ -19,6 +19,7 @@
 DGUI_USE_NAMESPACE
 
 #define SHIFT "shift"
+#define SETTINGS "settings"
 
 AirplaneModeItem::AirplaneModeItem(QWidget* parent)
     : QWidget(parent)
@@ -31,10 +32,9 @@ AirplaneModeItem::AirplaneModeItem(QWidget* parent)
     m_applet->setVisible(false);
 
     m_applet->setTitle(tr("Airplane Mode"));
-    m_applet->setDccPage("network", "Airplane Mode");
+    m_applet->setDccPage("network/airplaneMode", QString());
     m_applet->setDescription(tr("Airplane mode settings"));
     m_applet->setIcon(QIcon::fromTheme("open-arrow"));
-    m_applet->hideSettingButton();
 
     auto vLayout = new QVBoxLayout(this);
     vLayout->setSpacing(0);
@@ -95,6 +95,12 @@ const QString AirplaneModeItem::contextMenu() const
     shift["isActive"] = true;
     items.push_back(shift);
 
+    QMap<QString, QVariant> settings;
+    settings["itemId"] = SETTINGS;
+    settings["itemText"] = tr("Airplane mode settings");
+    settings["isActive"] = true;
+    items.push_back(settings);
+
     QMap<QString, QVariant> menu;
     menu["items"] = items;
     menu["checkableMenu"] = false;
@@ -110,6 +116,16 @@ void AirplaneModeItem::invokeMenuItem(const QString menuId, const bool checked)
 
     if (menuId == SHIFT) {
         AMC_PTR->toggle();
+    } else if (menuId == SETTINGS) {
+        DDBusSender()
+            .service("org.deepin.dde.ControlCenter1")
+            .interface("org.deepin.dde.ControlCenter1")
+            .path("/org/deepin/dde/ControlCenter1")
+            .method(QString("ShowPage"))
+            .arg(QString("network/airplaneMode"))
+            .call();
+
+        Q_EMIT requestHideApplet();
     }
 }
 
