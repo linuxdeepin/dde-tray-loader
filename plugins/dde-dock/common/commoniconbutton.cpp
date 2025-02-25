@@ -85,12 +85,12 @@ void CommonIconButton::updatePalette()
 {
     if (isEnabled()) {
         if (m_lightThemeColor.isValid() && m_darkThemeColor.isValid()) {
-            QColor color = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType ? m_lightThemeColor : m_darkThemeColor;
-            if (m_activeState)
-                color = palette().color(QPalette::Highlight);
-            auto pa = palette();
-            pa.setColor(QPalette::WindowText, color);
-            setPalette(pa);
+            if (!m_activeState) {
+                QColor color = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType ? m_lightThemeColor : m_darkThemeColor;
+                auto pa = palette();
+                pa.setColor(QPalette::WindowText, color);
+                setPalette(pa);
+            }
         }
     } else {
         setPalette(m_defaultPalette);
@@ -104,9 +104,8 @@ void CommonIconButton::setActiveState(bool state)
     m_activeState = state;
     if (m_lightThemeColor.isValid() && m_darkThemeColor.isValid()) {
         updatePalette();
-    } else {
-        setForegroundRole(state ? QPalette::Highlight : QPalette::NoRole);
     }
+    setForegroundRole(state ? QPalette::Highlight : QPalette::NoRole);
 }
 
 void CommonIconButton::setHoverEnable(bool enable)
