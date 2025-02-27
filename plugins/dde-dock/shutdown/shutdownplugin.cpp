@@ -43,7 +43,7 @@ ShutdownPlugin::ShutdownPlugin(QObject *parent)
     , m_pluginLoaded(false)
     , m_dockIcon(nullptr)
     , m_tipsLabel(new TipsWidget)
-    , m_powerManagerInter(new DBusPowerManager("org.deepin.daemon.PowerManager1", "/org/deepin/daemon/PowerManager1", QDBusConnection::systemBus(), this))
+    , m_powerManagerInter(new DBusPowerManager("org.deepin.dde.PowerManager1", "/org/deepin/dde/PowerManager1", QDBusConnection::systemBus(), this))
     , m_dconfig(DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.shutdown", QString(), this))
     , m_lastoreDConfig(DConfig::create("org.deepin.lastore", "org.deepin.lastore", "", this))
 {
@@ -216,8 +216,13 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
         }
     }
 
-    bool can_hibernate = enviromentVar.contains("POWER_CAN_HIBERNATE") ?
-        QVariant(enviromentVar.value("POWER_CAN_HIBERNATE")).toBool() : m_powerManagerInter->CanHibernate();
+    bool can_hibernate = true;
+    if (enviromentVar.contains("POWER_CAN_HIBERNATE")) {
+        can_hibernate = QVariant(enviromentVar.value("POWER_CAN_HIBERNATE")).toBool();
+    } else {
+        auto dConfig = DConfig::create("org.deepin.dde.session-shell", "org.deepin.dde.session-shell", QString(), this);
+        can_hibernate = dConfig->value("hibernate", true).toBool() && m_powerManagerInter->CanHibernate();
+    }
 
     if (can_hibernate) {
         QMap<QString, QVariant> hibernate;
