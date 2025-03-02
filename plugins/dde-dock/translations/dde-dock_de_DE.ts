@@ -661,7 +661,7 @@
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation>Benutzer wechseln</translation>
     </message>
 </context>
 <context>
