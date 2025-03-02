@@ -378,11 +378,11 @@
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Auto</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Design</translation>
     </message>
 </context>
 <context>
