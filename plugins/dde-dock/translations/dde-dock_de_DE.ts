@@ -464,7 +464,7 @@
     </message>
     <message>
         <source>Notification</source>
-        <translation>Mitteilung</translation>
+        <translation>Benachrichtigung</translation>
     </message>
 </context>
 <context>
