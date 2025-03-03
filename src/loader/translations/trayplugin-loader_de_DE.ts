@@ -17,7 +17,7 @@
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
         <source>Pin to dock</source>
-        <translation>Andocken</translation>
+        <translation>Ans Dock anpinnen</translation>
     </message>
 </context>
 </TS>
