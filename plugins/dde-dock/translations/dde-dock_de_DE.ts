@@ -452,7 +452,7 @@
     </message>
     <message>
         <source>Notifications</source>
-        <translation>Mitteilungen</translation>
+        <translation>Benachrichtigungen</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
@@ -464,7 +464,7 @@
     </message>
     <message>
         <source>Notification</source>
-        <translation>Mitteilung</translation>
+        <translation>Benachrichtigung</translation>
     </message>
 </context>
 <context>

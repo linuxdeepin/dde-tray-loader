@@ -4,7 +4,7 @@
     <message>
         <location filename="../pluginitem.cpp" line="89"/>
         <source>Remove from dock</source>
-        <translation type="unfinished"/>
+        <translation>Aus dem Dock entfernen</translation>
     </message>
 </context>
 <context>
@@ -17,7 +17,7 @@
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
         <source>Pin to dock</source>
-        <translation>Andocken</translation>
+        <translation>Ans Dock anpinnen</translation>
     </message>
 </context>
 </TS>
