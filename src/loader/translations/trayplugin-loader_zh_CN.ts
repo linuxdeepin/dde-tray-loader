@@ -6,7 +6,7 @@
     <message>
         <location filename="../pluginitem.cpp" line="89"/>
         <source>Remove from dock</source>
-        <translation>从任务栏移除</translation>
+        <translation>移除驻留</translation>
     </message>
 </context>
 <context>
