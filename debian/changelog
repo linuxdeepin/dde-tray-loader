@@ -1,3 +1,9 @@
+dde-tray-loader (1.99.17) UNRELEASED; urgency=medium
+
+  * chore: bump version to 1.99.17
+
+ -- Deepin Packages Builder <packages@deepin.org>  Thu, 06 Mar 2025 19:55:27 +0800
+
 dde-tray-loader (1.99.16) UNRELEASED; urgency=medium
 
   * chore: bump version to 1.99.16
