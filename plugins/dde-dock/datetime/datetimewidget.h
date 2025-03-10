@@ -25,6 +25,7 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent *event);
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
 signals:
     void requestUpdateGeometry() const;
