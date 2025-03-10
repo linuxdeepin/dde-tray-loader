@@ -35,6 +35,7 @@ DatetimeWidget::DatetimeWidget(RegionFormat* regionFormat, QWidget *parent)
     m_24HourFormat = m_regionFormat->is24HourFormat();
     adjustFontSize();
     updateDateTimeString();
+    installEventFilter(this);
 
     connect(m_regionFormat, &RegionFormat::longDateFormatChanged, this, &DatetimeWidget::updateDateTime);
     connect(m_regionFormat, &RegionFormat::shortTimeFormatChanged, this, &DatetimeWidget::updateDateTime);
@@ -235,9 +236,9 @@ void DatetimeWidget::updateDateTime()
 void DatetimeWidget::adjustFontSize()
 {
     const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
-    int validDistance = m_dockSize.height() / qApp->devicePixelRatio();
+    int validDistance = m_dockSize.height() / devicePixelRatioF();
     if (position == Dock::Left || position == Dock::Right) {
-        validDistance = m_dockSize.width() / qApp->devicePixelRatio();
+        validDistance = m_dockSize.width() / devicePixelRatioF();
     }
 
     // 根据时间和日期字体大小的跨度，将dock栏大小分为不同的区间，每个区域对应不同的字体大小，然后通过判断dock栏大小所在的区间来设置字体大小
@@ -287,6 +288,15 @@ void DatetimeWidget::resizeEvent(QResizeEvent *event)
     QWidget::resizeEvent(event);
 }
 
+bool DatetimeWidget::eventFilter(QObject *watched, QEvent *event)
+{
+    if (event->type() == QEvent::DevicePixelRatioChange && watched == this) {
+        adjustFontSize();
+    }
+
+    return QWidget::eventFilter(watched, event);
+}
+
 void DatetimeWidget::setDockPanelSize(const QSize &dockSize)
 {
     // 任务栏高度最小是37，小于37说明在隐藏和显示动画中
@@ -314,6 +324,7 @@ void DatetimeWidget::dockPositionChanged()
     });
 
     adjustUI();
+    adjustFontSize();
 }
 
 void DatetimeWidget::initUI()
