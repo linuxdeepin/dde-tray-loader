@@ -219,7 +219,12 @@ void DatetimePlugin::invokedMenuItem(const QString &itemKey, const QString &menu
         const bool is24HourFormat = m_centralWidget->is24HourFormat();
         m_centralWidget->set24HourFormat(!is24HourFormat);
     } else {
-        QProcess::startDetached("dbus-send --print-reply --dest=com.deepin.Calendar /com/deepin/Calendar com.deepin.Calendar.RaiseWindow");
+        DDBusSender()
+                .service("com.deepin.Calendar")
+                .interface("com.deepin.Calendar")
+                .path("/com/deepin/Calendar")
+                .method(QString("RaiseWindow"))
+                .call();
     }
 }
 
