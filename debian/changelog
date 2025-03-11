@@ -1,3 +1,10 @@
+dde-tray-loader (1.99.18) UNRELEASED; urgency=medium
+
+  * fix: dateTime plugin's hover background height is too high
+  * fix: dateTime plugin menu function invalid
+
+ -- Deepin Packages Builder <packages@deepin.org>  Tue, 11 Mar 2025 15:11:20 +0800
+
 dde-tray-loader (1.99.17) UNRELEASED; urgency=medium
 
   * chore: bump version to 1.99.17
