@@ -15,7 +15,7 @@
 
 #include <QLabel>
 #include <QHBoxLayout>
-#include <QVBoxLayout>
+#include <QSvgRenderer>
 
 #define MODE_DATA_ROLE (Dtk::UserRole+1)
 
@@ -30,7 +30,7 @@ PowerApplet::PowerApplet(QWidget *parent)
     , m_model(new QStandardItemModel(m_view))
     , m_settingButton(new JumpSettingButton(this))
     , m_batteryWidget(new QWidget(this))
-    , m_batteryIcon(new CommonIconButton(m_batteryWidget))
+    , m_batteryIcon(new QLabel(m_batteryWidget))
     , m_batteryPercentage(new DLabel(QString(), m_batteryWidget))
     , m_batteryTips(new DLabel(QString(), m_batteryWidget))
     , m_minHeight(400)
@@ -232,7 +232,26 @@ void PowerApplet::onHighPerformanceSupportChanged(const bool isSupport)
 
 void PowerApplet::refreshBatteryIcon(const QString &icon)
 {
-    m_batteryIcon->setIcon(icon, ":/batteryicons/resources/batteryicons/" + icon + ".svg");
+    QString path = ":/batteryicons/batteryicons/" + icon;
+    if (DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType) {
+        path.append("-dark");
+    }
+    path += ".svg";
+
+    QSvgRenderer renderer(path);
+
+    QSize size = m_batteryIcon->size();
+    QImage image(QSize(size * devicePixelRatioF()), QImage::Format_ARGB32_Premultiplied);
+    image.fill(Qt::transparent);
+
+    QPainter painter(&image);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
+    renderer.render(&painter);
+
+    QPixmap pixmap = QPixmap::fromImage(image);
+    pixmap.setDevicePixelRatio(devicePixelRatioF());
+
+    m_batteryIcon->setPixmap(pixmap);
 }
 
 void PowerApplet::refreshBatteryPercentage(const QString &percentage, const QString &tips)

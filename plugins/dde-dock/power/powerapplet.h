@@ -56,7 +56,7 @@ private:
     QStandardItemModel *m_model;
     JumpSettingButton *m_settingButton;
     QWidget *m_batteryWidget;
-    CommonIconButton *m_batteryIcon;
+    QLabel *m_batteryIcon;
     DLabel *m_batteryPercentage;
     DLabel *m_batteryTips;
 
