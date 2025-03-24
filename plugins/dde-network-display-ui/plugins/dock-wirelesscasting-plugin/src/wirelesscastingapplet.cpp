@@ -31,13 +31,15 @@ WirelessCastingApplet::WirelessCastingApplet(WirelessCastingModel *model, Displa
     , m_model(model)
     , m_displayModel(displayMode)
     , m_contentWidget(new QWidget(this))
-    , m_refresh(new CommonIconButton(this))
     , m_scrollArea(new QScrollArea(this))
+#ifdef WIRELESS_CASTING_ENABLED
+    , m_refresh(new CommonIconButton(this))
     , m_wirelesscastingWidget(new QWidget(this))
     , m_wirelesscastingTitle(new QWidget(this))
     , m_monitorsListView(new MonitorListView(this))
     , m_monitorsModel(new QStandardItemModel(m_monitorsListView))
     , m_statePanel(new StatePanel(m_model, this))
+#endif
     , m_multiscreenOptionsWidget(new QWidget(this))
     , m_multiscreenOptionsTitle(new QWidget(this))
     , m_multiscreenOptionsListView(new MonitorListView(this))
@@ -51,6 +53,7 @@ WirelessCastingApplet::WirelessCastingApplet(WirelessCastingModel *model, Displa
 {
     initUI();
     initMonitors();
+#ifdef WIRELESS_CASTING_ENABLED
     qRegisterMetaType<WirelessCastingModel::CastingState>("WirelessCastingModel::CastingState");
     connect(m_model, &WirelessCastingModel::stateChanged, this, &WirelessCastingApplet::onStateChanged);
     connect(m_model, &WirelessCastingModel::stateChangeFinished, this, &WirelessCastingApplet::resizeApplet);
@@ -63,6 +66,7 @@ WirelessCastingApplet::WirelessCastingApplet(WirelessCastingModel *model, Displa
         resizeApplet();
     });
     onStateChanged(m_model->state());
+#endif
 }
 
 void WirelessCastingApplet::initUI()
@@ -72,6 +76,7 @@ void WirelessCastingApplet::initUI()
     centralLayout->setContentsMargins(0, 10, 0, 10);
     centralLayout->setSpacing(0);
 
+#ifdef WIRELESS_CASTING_ENABLED
     // 无线投屏
     m_wirelesscastingTitle->setFixedHeight(24);
     QLabel *wirelesscastingTitle = new QLabel(tr("Wireless Casting"), this);
@@ -105,7 +110,12 @@ void WirelessCastingApplet::initUI()
     contentLayout->setSpacing(10);
     contentLayout->addWidget(m_wirelesscastingWidget);
     m_wirelesscastingWidget->setVisible(false);
-
+#else
+    QVBoxLayout *contentLayout = new QVBoxLayout(m_contentWidget);
+    contentLayout->setContentsMargins(10, 0, 10, 0);
+    contentLayout->setSpacing(10);
+    m_multiscreenOptionsTitle->setFixedHeight(24);
+#endif
     // 多屏选项
     QLabel *multiscreenOptionsTitle = new QLabel(tr("Multiple Display options"), this);
     DFontSizeManager::instance()->bind(multiscreenOptionsTitle, DFontSizeManager::T9);
@@ -156,6 +166,7 @@ void WirelessCastingApplet::initUI()
     setFixedWidth(Dock::DOCK_POPUP_WIDGET_WIDTH);
 
     connect(m_displaySetting, &JumpSettingButton::showPageRequestWasSended, this, &WirelessCastingApplet::requestHideApplet);
+#ifdef WIRELESS_CASTING
     connect(m_refresh, &CommonIconButton::clicked, m_model, &WirelessCastingModel::refresh);
     connect(m_monitorsListView, &MonitorListView::clicked, this, [this](const QModelIndex &idx) {
         auto item = dynamic_cast<MonitorItem *>(m_monitorsModel->itemFromIndex(idx));
@@ -170,7 +181,7 @@ void WirelessCastingApplet::initUI()
             resizeApplet();
         }
     });
-
+#endif
     connect(m_multiscreenOptionsListView, &MonitorListView::clicked, this, [this](const QModelIndex &idx) {
         auto item = dynamic_cast<MultiscreenOptionItem *>(m_multiscreenOptionsModel->itemFromIndex(idx));
         if (item) {
@@ -183,6 +194,7 @@ void WirelessCastingApplet::initUI()
 
 void WirelessCastingApplet::initMonitors()
 {
+#ifdef WIRELESS_CASTING_ENABLED
     auto monitors = m_model->monitors();
     // 遍历所有设备
     for (auto it = monitors.begin(); it != monitors.end(); ++it) {
@@ -193,7 +205,7 @@ void WirelessCastingApplet::initMonitors()
     }
     connect(m_model, &WirelessCastingModel::addMonitor, this, &WirelessCastingApplet::onAddMonitor);
     connect(m_model, &WirelessCastingModel::removeMonitor, this, &WirelessCastingApplet::onRemoveMonitor);
-
+#endif
     auto updateScreens = [this] {
         m_displayModel->setCurrentMode(QString());
         m_multiscreenOptionsModel->clear();
@@ -254,6 +266,7 @@ void WirelessCastingApplet::initMonitors()
 
 void WirelessCastingApplet::onStateChanged(WirelessCastingModel::CastingState state)
 {
+#ifdef WIRELESS_CASTING_ENABLED
     setEnabled(m_cfgEnabled);
     if ((WirelessCastingModel::NoWirelessDevice == state || WirelessCastingModel::NotSupportP2P == state) && !m_model->multiscreensFlag()) {
         m_wirelesscastingWidget->setVisible(false);
@@ -277,23 +290,30 @@ void WirelessCastingApplet::onStateChanged(WirelessCastingModel::CastingState st
     }
 
     resizeApplet();
+#else
+    Q_UNUSED(state)
+#endif
 }
 
 void WirelessCastingApplet::onAddMonitor(const QString &path, Monitor *monitor)
 {
+#ifdef WIRELESS_CASTING_ENABLED
     MonitorItem *item = new MonitorItem(monitor);
     m_monitorsModel->appendRow(item);
     m_monitors[path] = MonitorMapItem{ item, monitor };
     resizeApplet();
+#endif
 }
 
 void WirelessCastingApplet::onRemoveMonitor(const QString &path)
 {
+#ifdef WIRELESS_CASTING_ENABLED
     m_monitorsModel->removeRow(m_monitorsModel->indexFromItem(m_monitors[path].item).row());
     if (m_lastConnMonitor == m_monitors.value(path).monitor)
         m_lastConnMonitor = nullptr;
     m_monitors.remove(path);
     resizeApplet();
+#endif
 }
 
 bool WirelessCastingApplet::casting() const
@@ -317,7 +337,7 @@ void WirelessCastingApplet::onContainerChanged(int container)
 void WirelessCastingApplet::resizeApplet()
 {
     int height = 0;
-
+#ifdef WIRELESS_CASTING_ENABLED
     // 列表高度
     if (m_monitorsListView->isVisibleTo(m_contentWidget)) {
         for (int row = 0; row < m_monitorsModel->rowCount(); ++row) {
@@ -330,6 +350,7 @@ void WirelessCastingApplet::resizeApplet()
         height -= m_monitorsListView->getItemSpacing();
         m_monitorsListView->setFixedHeight(height);
     }
+#endif
     if (m_multiscreenOptionsListView->isVisibleTo(m_contentWidget)) {
         int multiscreenOptionsHeight = m_multiscreenOptionsModel->rowCount() * (m_multiscreenOptionsListView->getStandardItemHeight() + m_multiscreenOptionsListView->getItemSpacing()) - m_multiscreenOptionsListView->getItemSpacing();
         m_multiscreenOptionsListView->setMinimumHeight(multiscreenOptionsHeight);
@@ -339,7 +360,7 @@ void WirelessCastingApplet::resizeApplet()
     // 标题栏 + 跳转按键 + 4个间距
     const int fixHeight = m_displaySetting->height() + (10 * (m_showOnDock ? 3 : 2));
     height += fixHeight;
-
+#ifdef WIRELESS_CASTING_ENABLED
     // 状态面板高度
     const int statePanelHeight = m_statePanel->isVisibleTo(m_contentWidget) ?
                         ((m_model->multiscreensFlag() && (m_model->state() == WirelessCastingModel::NoMonitor
@@ -348,10 +369,10 @@ void WirelessCastingApplet::resizeApplet()
 
     m_statePanel->setFixedHeight(statePanelHeight);
     height += m_statePanel->isVisibleTo(m_contentWidget) ? statePanelHeight : 0;
-
+#endif
     // 如果比允许的最小高度还小，则以最小高度为准
     height = qMax(m_minHeight, height);
-
+#ifdef WIRELESS_CASTING_ENABLED
     // 自定义最大高度为显示10个item的高度
     const int maxHeight = fixHeight + (m_wirelesscastingWidget->isVisibleTo(this) ? m_wirelesscastingWidget->height() : 0)
                         + (10 * (m_monitorsListView->getStandardItemHeight() + m_monitorsListView->getItemSpacing())
@@ -359,7 +380,7 @@ void WirelessCastingApplet::resizeApplet()
 
     // 如果比自定义最大高度还大，则以自定义最大高度为准
     height = qMin(maxHeight, height);
-
+#endif
     // 如果比允许的最大高度还大，则以最大高度为准
     height = qMin(Dock::DOCK_POPUP_WIDGET_MAX_HEIGHT, height);
 

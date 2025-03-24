@@ -56,7 +56,7 @@ private:
     WirelessCastingApplet *m_appletWidget;
     QIcon *m_trayIcon;
     QLabel *m_tips;
-    bool m_canCasting;
+    bool m_canCasting = false;
 };
 
 } // namespace wirelesscasting

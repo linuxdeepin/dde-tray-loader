@@ -36,7 +36,9 @@ public:
     void resizeApplet();
     void setMinHeight(int minHeight);
     void onContainerChanged(int container);
+#ifdef WIRLESS_CASTING_ENABLED
     QWidget *refreshButton() { return m_refresh; };
+#endif
 
 public slots:
     void onStateChanged(WirelessCastingModel::CastingState status);
@@ -57,16 +59,15 @@ private:
     DisplayModel *m_displayModel;
 
     QWidget *m_contentWidget;
-
-    CommonIconButton *m_refresh;
     QScrollArea *m_scrollArea;
-
+#ifdef WIRELESS_CASTING_ENABLED
+    CommonIconButton *m_refresh;
     QWidget *m_wirelesscastingWidget;
     QWidget *m_wirelesscastingTitle;
     MonitorListView *m_monitorsListView;
     QStandardItemModel *m_monitorsModel;
     StatePanel *m_statePanel;
-
+#endif
     QWidget *m_multiscreenOptionsWidget;
     QWidget *m_multiscreenOptionsTitle;
     MonitorListView *m_multiscreenOptionsListView;
