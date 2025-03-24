@@ -24,6 +24,12 @@ set(Dock_Plugin_Name dock-wirelesscasting-plugin)
 set(SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dock-wirelesscasting-plugin/src")
 set(TYPES_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dock-wirelesscasting-plugin/dbus/types")
 
+# default off
+option(ENABLE_WIRELESS_CASTING "Enable wireless casting" OFF)
+if(ENABLE_WIRELESS_CASTING)
+    add_compile_definitions(WIRELESS_CASTING_ENABLED)
+endif()
+
 # 使用 file() 命令和 GLOB 参数获取目录下的所有文件
 file(GLOB DOCK_PLUGIN_SOURCE_FILES
     "${SOURCE_DIR}/*.cpp"

@@ -31,6 +31,7 @@ WirelessCastingModel::WirelessCastingModel(QObject *parent)
     , m_connecting(false)
     , m_hasMultiscreens(false)
 {
+#ifdef WIRELESS_CASTING_ENABLED
     checkServiceAvailable();
     connect(this, &WirelessCastingModel::serviceAvailableChanged, this, [this](bool available) {
         if (!available)
@@ -40,6 +41,7 @@ WirelessCastingModel::WirelessCastingModel(QObject *parent)
         initData();
         startTimer(std::chrono::seconds (30));
     });
+#endif
 }
 
 WirelessCastingModel::~WirelessCastingModel()

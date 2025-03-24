@@ -32,9 +32,13 @@ WirelessCastingItem::WirelessCastingItem(QWidget *parent)
 {
     init();
     auto syncState = [this] {
-        WirelessCastingModel::CastingState const state = m_model->state();
         bool const canCasting = m_canCasting;
+#ifdef WIRELESS_CASTING_ENABLED
+        WirelessCastingModel::CastingState const state = m_model->state();
         m_canCasting = (WirelessCastingModel::NoWirelessDevice != state && WirelessCastingModel::NotSupportP2P != state) || m_model->multiscreensFlag();
+#else
+        m_canCasting = m_model->multiscreensFlag();
+#endif
         if (canCasting != m_canCasting)
             Q_EMIT canCastingChanged(m_canCasting);
 
@@ -133,8 +137,10 @@ QWidget *WirelessCastingItem::appletWidget() const
 
 QWidget *WirelessCastingItem::refreshButton() const
 {
+#ifdef WIRELESS_CASTING_ENABLED
     if (m_appletWidget)
         return m_appletWidget->refreshButton();
+#endif
     return nullptr;
 }
 
