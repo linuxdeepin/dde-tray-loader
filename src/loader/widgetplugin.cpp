@@ -221,9 +221,9 @@ void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInte
 
     if (!visible) {
         if (appletWidget == nullptr || !appletWidget->isVisible()) {
-            auto window = itemInter->itemWidget(itemKey)->window();
-            if (window != nullptr) {
-                Plugin::EmbedPlugin *plugin = Plugin::EmbedPlugin::get(window->windowHandle());
+            auto widget = itemInter->itemWidget(itemKey);
+            if (widget && widget->window()) {
+                Plugin::EmbedPlugin *plugin = Plugin::EmbedPlugin::get(widget->window()->windowHandle());
                 if (plugin) {
                     qDebug() << "send hide quick panel message";
                     emit plugin->closeQuickPanel();
