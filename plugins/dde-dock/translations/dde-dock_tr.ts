@@ -732,15 +732,15 @@
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation>May</translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation>Haz</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation>Tem</translation>
     </message>
     <message>
         <source>Aug</source>
