@@ -772,15 +772,15 @@
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Salı</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation>Çarşamba</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation>Perşembe</translation>
     </message>
     <message>
         <source>friday</source>
