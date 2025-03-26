@@ -825,11 +825,11 @@
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"/>
+        <translation>Sesi kapat</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"/>
+        <translation>Ses ayarları</translation>
     </message>
     <message>
         <source>No output devices</source>
