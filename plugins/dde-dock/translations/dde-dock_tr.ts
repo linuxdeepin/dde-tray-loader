@@ -692,11 +692,11 @@
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Salı</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation>Çarşamba</translation>
     </message>
     <message>
         <source>Thursday</source>
