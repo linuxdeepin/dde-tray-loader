@@ -335,7 +335,7 @@
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Otomatik</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
@@ -370,19 +370,19 @@
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>Açık</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Koyu</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Otomatik</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Tema</translation>
     </message>
 </context>
 <context>
@@ -486,11 +486,11 @@
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>Dengeli</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>Güç Tasarrufu</translation>
     </message>
     <message>
         <source>Balance Performance</source>
@@ -501,7 +501,7 @@
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation>Güç</translation>
     </message>
 </context>
 <context>
@@ -610,11 +610,11 @@
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"/>
+        <translation>Müzik</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Bilinmeyen</translation>
     </message>
 </context>
 <context>
@@ -668,7 +668,7 @@
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"/>
+        <translation>Bugün</translation>
     </message>
     <message>
         <source>Lunar</source>
@@ -676,15 +676,15 @@
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation>y</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation>a</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation>d</translation>
     </message>
     <message>
         <source>Monday</source>
