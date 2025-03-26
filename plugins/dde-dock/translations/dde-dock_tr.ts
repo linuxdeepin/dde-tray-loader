@@ -748,11 +748,11 @@
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation>Eyl</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation>Eki</translation>
     </message>
     <message>
         <source>Nov</source>
