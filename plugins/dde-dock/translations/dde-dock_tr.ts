@@ -821,7 +821,7 @@
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation type="unfinished"/>
+        <translation>Sesi aç</translation>
     </message>
     <message>
         <source>Mute</source>
