@@ -803,11 +803,11 @@
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"/>
+        <translation>Çıkış</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"/>
+        <translation>Ses ayarları</translation>
     </message>
 </context>
 <context>
