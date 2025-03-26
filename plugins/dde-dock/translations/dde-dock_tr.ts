@@ -700,11 +700,11 @@
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>Perşembe</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation>Cuma</translation>
     </message>
     <message>
         <source>Saturday</source>
