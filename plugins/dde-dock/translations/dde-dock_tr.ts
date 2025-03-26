@@ -688,7 +688,7 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>Pazartesi</translation>
     </message>
     <message>
         <source>Tuesday</source>
