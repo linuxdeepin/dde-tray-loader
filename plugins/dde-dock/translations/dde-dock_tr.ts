@@ -708,11 +708,11 @@
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation>Cumartesi</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>Pazar</translation>
     </message>
     <message>
         <source>Jan</source>
@@ -768,7 +768,7 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation>pazartesi</translation>
     </message>
     <message>
         <source>tuesday</source>
