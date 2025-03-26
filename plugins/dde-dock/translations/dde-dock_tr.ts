@@ -716,19 +716,19 @@
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"/>
+        <translation>Oca</translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"/>
+        <translation>Şub</translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"/>
+        <translation>Mar</translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation>Nis</translation>
     </message>
     <message>
         <source>May</source>
@@ -792,7 +792,7 @@
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
+        <translation>pazar</translation>
     </message>
 </context>
 <context>
