@@ -756,11 +756,11 @@
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation>Kas</translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation>Ara</translation>
     </message>
     <message>
         <source>Open the calendar</source>
