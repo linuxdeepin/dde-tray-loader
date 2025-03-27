@@ -277,11 +277,11 @@
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation type="unfinished"/>
+        <translation>DND kipi etkinleştirildi</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation type="unfinished"/>
+        <translation>DND kipi devre dışı bırakıldı</translation>
     </message>
 </context>
 <context>
