@@ -764,7 +764,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>Takvimi aç</translation>
     </message>
     <message>
         <source>monday</source>
@@ -837,7 +837,7 @@
     </message>
     <message>
         <source>Volume %1</source>
-        <translation type="unfinished"/>
+        <translation>Ses %1</translation>
     </message>
 </context>
 </TS>
