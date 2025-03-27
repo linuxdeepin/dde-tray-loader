@@ -456,7 +456,7 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>DND kipini kapat</translation>
+        <translation>RHT kipini kapat</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
