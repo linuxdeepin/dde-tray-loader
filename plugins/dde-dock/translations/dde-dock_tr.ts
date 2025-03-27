@@ -351,15 +351,15 @@
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Açık</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Koyu</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Otomatik</translation>
     </message>
     <message>
         <source>Visual effect</source>
@@ -482,7 +482,7 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"/>
+        <translation>Yüksek Performans</translation>
     </message>
     <message>
         <source>Balanced</source>
@@ -568,7 +568,7 @@
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>Şarj Etmiyor</translation>
     </message>
     <message>
         <source>Fully charged</source>
