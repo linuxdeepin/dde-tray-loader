@@ -265,7 +265,7 @@
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"/>
+        <translation>DND kipi ayarları</translation>
     </message>
     <message>
         <source>Disable</source>
