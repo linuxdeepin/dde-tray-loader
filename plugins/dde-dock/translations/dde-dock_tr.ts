@@ -87,7 +87,7 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"/>
+        <translation>Bağlandı %1</translation>
     </message>
     <message>
         <source>Not connected</source>
@@ -254,7 +254,7 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"/>
+        <translation>Diğer Aygıtlar</translation>
     </message>
 </context>
 <context>
@@ -299,11 +299,11 @@
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation type="unfinished"/>
+        <translation>Göz rahatlığı etkinleştirildi</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation type="unfinished"/>
+        <translation>Göz rahatlığı devre dışı bırakıldı</translation>
     </message>
     <message>
         <source>Display settings</source>
@@ -339,15 +339,15 @@
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Göz rahatlığı devre dışı bırak</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Göz rahatlığını enkileştir</translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ekran Ayarları</translation>
     </message>
     <message>
         <source>Theme: Light</source>
