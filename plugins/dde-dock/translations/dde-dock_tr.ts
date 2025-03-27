@@ -288,7 +288,7 @@
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"/>
+        <translation>DND Modu</translation>
     </message>
 </context>
 <context>
