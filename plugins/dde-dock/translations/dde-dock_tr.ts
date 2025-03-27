@@ -603,7 +603,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>Güç ayarları</translation>
     </message>
 </context>
 <context>
@@ -649,19 +649,19 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>Güncelleştir ve Kapat</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation type="unfinished"/>
+        <translation>Güncelleştir ve Yeniden Başlat</translation>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>Kapat</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation>Kullanıcı değiştir</translation>
     </message>
 </context>
 <context>
@@ -672,7 +672,7 @@
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation>Ay</translation>
     </message>
     <message>
         <source>y</source>
