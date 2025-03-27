@@ -363,7 +363,7 @@
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"/>
+        <translation>Görsel efekt</translation>
     </message>
 </context>
 <context>
