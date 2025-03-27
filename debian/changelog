@@ -1,3 +1,11 @@
+dde-tray-loader (1.99.20) UNRELEASED; urgency=medium
+  
+  * [skip CI] Translate dde-dock.ts in tr
+  * fix: missing null pointer judgment
+  * chore: remove wireless casting module
+
+ -- YeShanShan <yeshanshan@deepin.org>  Fri, 14 Mar 2025 13:18:20 +0800
+
 dde-tray-loader (1.99.19) UNRELEASED; urgency=medium
 
   * fix: power popup icon size is too small
