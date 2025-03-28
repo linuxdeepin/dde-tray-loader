@@ -3,11 +3,11 @@
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation>Uçak modu etkin</translation>
+        <translation>Uçak kipi etkin</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation>Uçak modu devre dışı</translation>
+        <translation>Uçak kipi devre dışı bırakıldı</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -261,11 +261,11 @@
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation>DND Modu</translation>
+        <translation>RHT Kipi</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"/>
+        <translation>RHT kipi ayarları</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -277,18 +277,18 @@
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation type="unfinished"/>
+        <translation>RHT kipi etkinleştirildi</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation type="unfinished"/>
+        <translation>RHT kipi devre dışı bırakıldı</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation>DND Modu</translation>
+        <translation>RHT Kipi</translation>
     </message>
 </context>
 <context>
@@ -456,11 +456,11 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"/>
+        <translation>RHT kipini kapat</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"/>
+        <translation>RHT kipini aç</translation>
     </message>
     <message>
         <source>Notification</source>
@@ -572,7 +572,7 @@
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation>Tam dolu</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
