@@ -1,3 +1,9 @@
+dde-tray-loader (1.99.21) UNRELEASED; urgency=medium
+
+  * chore: remove startdde dependency
+
+ -- fuleyi <fuleyi@uniontech.com>  Wed, 02 Apr 2025 11:33:41 +0800
+
 dde-tray-loader (1.99.20) UNRELEASED; urgency=medium
   
   * [skip CI] Translate dde-dock.ts in tr
