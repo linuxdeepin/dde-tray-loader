@@ -109,6 +109,8 @@ bool PluginManagerIntegration::tryCreatePopupForSubWindow(QWindow *window)
         pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeSubPopup);
         pluginPopup->setPluginId(plugin->pluginId());
         pluginPopup->setItemKey(plugin->itemKey());
+        // TODO submenu window's x is changed to zero from parent menu's with when it repeated open.
+        window->setX(parentWindow->width());
         auto parentPos = plugin->pluginPos();
         // TODO move to parentWindow's right position.
         pluginPopup->setX(parentPos.x() + parentWindow->width());
