@@ -28,6 +28,9 @@ public:
     DBusMenu(const QString &service, const QString &path, QObject *parent = 0)
         : DBusMenuImporter(service, path, parent)
     {
+        QObject::connect(this, &DBusMenuImporter::menuUpdated, this, [this] (QMenu *menu) {
+            menu->setFixedSize(menu->sizeHint());
+        }, Qt::QueuedConnection);
     }
     virtual QMenu *createMenu(QWidget *parent) override
     {
@@ -36,9 +39,6 @@ public:
         auto pa = menu->palette();
         pa.setColor(QPalette::ColorRole::Window, Qt::transparent);
         menu->setPalette(pa);
-        QObject::connect(menu, &QMenu::aboutToShow, menu, [this, menu] () {
-            menu->setFixedSize(menu->sizeHint());
-        });
         return menu;
     }
 
