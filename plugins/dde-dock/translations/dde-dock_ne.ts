@@ -1,83 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ne">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ne">
 <context>
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>आयरनीन मोड सक्रिय</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>आयरनीन मोड असक्रिय</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>अक्रिय गर्न</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>क्रिय गर्न</translation>
     </message>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>आयरनीन मोड</translation>
     </message>
     <message>
         <source>Airplane mode settings</source>
-        <translation type="unfinished"></translation>
+        <translation>आयरनीन मोड सेटिङहरू</translation>
     </message>
 </context>
 <context>
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>आयरनीन मोड</translation>
     </message>
 </context>
 <context>
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>माई डेविस्न</translation>
     </message>
 </context>
 <context>
     <name>BluetoothApplet</name>
     <message>
         <source>Bluetooth settings</source>
-        <translation type="unfinished"></translation>
+        <translation>ब्लूटूथ सेटिङहरू</translation>
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished"></translation>
+        <translation>कुनैही बाहिर छ</translation>
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>ब्लूटूथसँग जोड्न चाहने तर आयरनीन मोडलाई पहिले अक्रिय गर्न</translation>
     </message>
 </context>
 <context>
     <name>BluetoothItem</name>
     <message>
         <source>Turn off</source>
-        <translation type="unfinished"></translation>
+        <translation>कुनैही बाहिर गर्न</translation>
     </message>
     <message>
         <source>Turn on</source>
-        <translation type="unfinished"></translation>
+        <translation>कुनैही भएको गर्न</translation>
     </message>
     <message>
         <source>Bluetooth settings</source>
-        <translation type="unfinished"></translation>
+        <translation>ब्लूटूथ सेटिङहरू</translation>
     </message>
     <message>
         <source>%1 connected</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 संयुक्त छ</translation>
     </message>
     <message>
         <source>Connecting...</source>
-        <translation type="unfinished"></translation>
+        <translation>संयुक्त गर्दैको...</translation>
     </message>
     <message>
         <source>Bluetooth</source>
@@ -85,19 +83,19 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished"></translation>
+        <translation>कुनैही बाहिर छ</translation>
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 संयुक्त छ</translation>
     </message>
     <message>
         <source>Not connected</source>
-        <translation type="unfinished"></translation>
+        <translation>संयुक्त छैन</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>बाहिर</translation>
     </message>
 </context>
 <context>
@@ -111,56 +109,56 @@
     <name>BrightnessApplet</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>लाम्बीता</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रदर्शन सेटिङहरू</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रदर्शन सेटिङहरू</translation>
     </message>
 </context>
 <context>
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>लाम्बीता</translation>
     </message>
 </context>
 <context>
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation type="unfinished"></translation>
+        <translation>सूर्य</translation>
     </message>
     <message>
         <source>Mon</source>
-        <translation type="unfinished"></translation>
+        <translation>मङ्दावस</translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation type="unfinished"></translation>
+        <translation>बुधवास</translation>
     </message>
     <message>
         <source>Wed</source>
-        <translation type="unfinished"></translation>
+        <translation>बीविषावस</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation type="unfinished"></translation>
+        <translation>गुरुवास</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation type="unfinished"></translation>
+        <translation>शुक्रवास</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation type="unfinished"></translation>
+        <translation>शनिवास</translation>
     </message>
 </context>
 <context>
@@ -178,19 +176,19 @@
     </message>
     <message>
         <source>12-hour time</source>
-        <translation type="unfinished"></translation>
+        <translation>दशमिक वेळ</translation>
     </message>
     <message>
         <source>24-hour time</source>
-        <translation type="unfinished"></translation>
+        <translation>बीसमिक वेळ</translation>
     </message>
     <message>
         <source>Time settings</source>
-        <translation type="unfinished"></translation>
+        <translation>समय सेटिङहरू</translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>कैलेंडर खोल्नुहोस्</translation>
     </message>
 </context>
 <context>
@@ -225,166 +223,166 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"></translation>
+        <translation>मङ्दावस</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"></translation>
+        <translation>बुधवास</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"></translation>
+        <translation>बीविषावस</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"></translation>
+        <translation>गुरुवास</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"></translation>
+        <translation>शुक्रवास</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"></translation>
+        <translation>शनिवास</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>रविवास</translation>
     </message>
 </context>
 <context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>अन्य यस्ताहरू</translation>
     </message>
 </context>
 <context>
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>DND वर्णन</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"></translation>
+        <translation>DND वर्णन सेटिङहरू</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>काम गर्नुहोस्</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>काम गर्नुहोस्</translation>
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>DND वर्णन खुलिएको</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>DND वर्णन बनाउँदैको</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>DND वर्णन</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>कुराकानी सुरक्षा</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>कुराकानी सुरक्षा खोलिएको</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>कुराकानी सुरक्षा बन्द गरिएको</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रदर्शन सेटिङहरू</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>कुराकानी सुरक्षा</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>थीम</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>कोडलाई खोल्नुहोस्</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>कोडलाई बन्द गर्नुहोस्</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>सफाई</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>सूनी</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>अटोमेटिक</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>कुराकानी सुरक्षाको बन्द</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>कुराकानी सुरक्षाको खोल</translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रदर्शन सेटिङहरू</translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"></translation>
+        <translation>थीम: सफाई</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>थीम: सूनी</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>थीम: अटोमेटिक</translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"></translation>
+        <translation>भावको प्रभाव</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>सफाई</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>सूनी</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>अटोमेटिक</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>थीम</translation>
     </message>
 </context>
 <context>
@@ -439,34 +437,34 @@
     </message>
     <message>
         <source>Dock settings</source>
-        <translation type="unfinished"></translation>
+        <translation>डॉक सेटिङहरू</translation>
     </message>
 </context>
 <context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>न कुनै संदेश</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>संदेश सेटिङहरू</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>नोटिफिकेशन</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>DND राउंड बाउट बाट्नेको बनाउनुहोस्</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>DND राउंड बाउट बाट्नेको खोल्नुहोस्</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>नोटिफिकेशन</translation>
     </message>
 </context>
 <context>
@@ -484,26 +482,26 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>उच्च प्रदर्शन</translation>
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"></translation>
+        <translation>समान्तराल</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"></translation>
+        <translation>शक्ति संकरका</translation>
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रदर्शन समान्तराल</translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>शक्ति</translation>
     </message>
 </context>
 <context>
@@ -530,7 +528,7 @@
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 क्यापासिटी</translation>
     </message>
     <message>
         <source>Charging %1</source>
@@ -538,85 +536,85 @@
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 क्यापासिटी ... राख्नुहोस्</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 क्यापासिटी, पूर्ण बाटिएको</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 क्यापासिटी, बाटिनभएको छैन</translation>
     </message>
     <message>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>बैटरी</translation>
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"></translation>
+        <translation>बाटिन्थ्याबाट आकलन गर्ने अवधि गणना गर्दै चल्दैछ</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"></translation>
+        <translation>प्रयोग थपी विटको अवधि गणना गर्दै चल्दैछ</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 मिनिट थपी छ</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 घण्टा %2 मिनिट थपी छ</translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"></translation>
+        <translation>बाटिनभएको छैन</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"></translation>
+        <translation>पूर्ण बाटिएको</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>बाटिन्थ्याबाट %1 मिनिट तक बाटिएको</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>बाटिन्थ्याबाट %1 घण्टा %2 मिनिट तक बाटिएको</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 क्यापासिटी, %2 घण्टा थपी छ</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 घण्टा थपी छ</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 बाटिन्थ्याबाट %2 घण्टा तक बाटिएको</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>चालन, %1 गण्ड तक सम्पूर्ण</translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished">पावर सेटिङहरू</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"></translation>
+        <translation>गान</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>जानकारिहीन</translation>
     </message>
 </context>
 <context>
@@ -651,165 +649,165 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation type="unfinished"></translation>
+        <translation>अद्यापित गर्नुहोस् र बंद गर्नुहोस्</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>अद्यापित गर्नुहोस् र रीस्टार्ट गर्नुहोस्</translation>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"></translation>
+        <translation>बंद गर्नुहोस्</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"></translation>
+        <translation>सदस्ता बदल्नुहोस्</translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"></translation>
+        <translation>आज</translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"></translation>
+        <translation>लूनार</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"></translation>
+        <translation>साल</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"></translation>
+        <translation>महिना</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"></translation>
+        <translation>दिन</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished">सोमबार</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished">मंगलबार</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished">बुधबार</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished">बिहिबार</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished">शुक्रबार</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished">शनिबार</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished">आइतबार</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"></translation>
+        <translation>जनवरी</translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"></translation>
+        <translation>फेब्रुवारी</translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"></translation>
+        <translation>मार्च</translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"></translation>
+        <translation>एप्रिल</translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"></translation>
+        <translation>मई</translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"></translation>
+        <translation>जुन</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"></translation>
+        <translation>जुलाई</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"></translation>
+        <translation>अगस्त</translation>
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"></translation>
+        <translation>सितम्बर</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>अक्टोबर</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"></translation>
+        <translation>नवम्बर</translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>दिसम्बर</translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>कालेंदर खोल्नुहोस्</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"></translation>
+        <translation>मुंदेरो</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"></translation>
+        <translation>तिहरो</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"></translation>
+        <translation>बेछरो</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"></translation>
+        <translation>बिहरो</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"></translation>
+        <translation>पगुहरो</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"></translation>
+        <translation>शुक्रवार</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>वैन्दै</translation>
     </message>
 </context>
 <context>
     <name>SoundApplet</name>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>वॉक्योम</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>आउटपुट</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"></translation>
+        <translation>सोन्ड सेटिङस</translation>
     </message>
 </context>
 <context>
@@ -823,23 +821,23 @@
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation type="unfinished"></translation>
+        <translation>म्युट बाँको</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>म्युट</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"></translation>
+        <translation>सोन्ड सेटिङस</translation>
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"></translation>
+        <translation>आउटपुट डाइवाइस छैन</translation>
     </message>
     <message>
         <source>Volume %1</source>
-        <translation type="unfinished"></translation>
+        <translation>वॉक्योम %1</translation>
     </message>
 </context>
 </TS>
