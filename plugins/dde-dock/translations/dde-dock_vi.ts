@@ -1,45 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="vi">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="vi">
 <context>
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Đã kích hoạt chế độ máy bay</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Đã tắt chế độ máy bay</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Kích hoạt</translation>
     </message>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ máy bay</translation>
     </message>
     <message>
         <source>Airplane mode settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt chế độ máy bay</translation>
     </message>
 </context>
 <context>
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ máy bay</translation>
     </message>
 </context>
 <context>
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Điết bị của tôi</translation>
     </message>
 </context>
 <context>
@@ -50,11 +48,11 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished">Đã tắt</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt chế độ máy bay trước nếu bạn muốn kết nối với Bluetooth</translation>
     </message>
 </context>
 <context>
@@ -89,15 +87,15 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kết nối %1</translation>
     </message>
     <message>
         <source>Not connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Chưa kết nối</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt</translation>
     </message>
 </context>
 <context>
@@ -111,56 +109,56 @@
     <name>BrightnessApplet</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ sáng</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt màn hình</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt màn hình</translation>
     </message>
 </context>
 <context>
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ sáng</translation>
     </message>
 </context>
 <context>
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation type="unfinished"></translation>
+        <translation>CN</translation>
     </message>
     <message>
         <source>Mon</source>
-        <translation type="unfinished"></translation>
+        <translation>TH</translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation type="unfinished"></translation>
+        <translation>TU</translation>
     </message>
     <message>
         <source>Wed</source>
-        <translation type="unfinished"></translation>
+        <translation>WE</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation type="unfinished"></translation>
+        <translation>TH</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation type="unfinished"></translation>
+        <translation>CN</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation type="unfinished"></translation>
+        <translation>CU</translation>
     </message>
 </context>
 <context>
@@ -190,7 +188,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở lịch</translation>
     </message>
 </context>
 <context>
@@ -225,166 +223,166 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"></translation>
+        <translation>thứ hai</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"></translation>
+        <translation>thứ hai</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"></translation>
+        <translation>thứ ba</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"></translation>
+        <translation>thứ tư</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"></translation>
+        <translation>thứ năm</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"></translation>
+        <translation>thứ sáu</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>chủ nhật</translation>
     </message>
 </context>
 <context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Các thiết bị khác</translation>
     </message>
 </context>
 <context>
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ KH</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt chế độ KH</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Bật</translation>
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ KH đã bật</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ KH đã tắt</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ KH</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ thoải mắt</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ thoải mắt đã bật</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ thoải mắt đã tắt</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt màn hình</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ thoải mắt</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>Bật</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Sáng</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Đêm</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Tự động</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt chế độ bảo vệ mắt</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Kích hoạt chế độ bảo vệ mắt</translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt hiển thị</translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema: Sáng</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema: Đen</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema: Tự động</translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiệu ứng thị giác</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Sáng</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Đen</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Tự động</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema</translation>
     </message>
 </context>
 <context>
@@ -439,34 +437,34 @@
     </message>
     <message>
         <source>Dock settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt thanh đế</translation>
     </message>
 </context>
 <context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Không có thông báo</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt thông báo</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Thông báo</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt chế độ Không làm phiền</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Kích hoạt chế độ Không làm phiền</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Thông báo</translation>
     </message>
 </context>
 <context>
@@ -484,26 +482,26 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ hiệu năng cao</translation>
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Đa năng suất</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"></translation>
+        <translation>Lưu điện</translation>
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Đa hiệu năng</translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Năng lượng</translation>
     </message>
 </context>
 <context>
@@ -546,7 +544,7 @@
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Dung lượng %1, không sạc</translation>
     </message>
     <message>
         <source>Battery</source>
@@ -554,69 +552,69 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"></translation>
+        <translation>Sạc, tính toán thời gian sạc ước lượng</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"></translation>
+        <translation>Đang tính thời gian sử dụng còn lại</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 phút còn lại</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 giờ %2 phút còn lại</translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Không đang sạc</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"></translation>
+        <translation>Đã sạc đầy</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Đang sạc, %1 phút nữa đầy</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Đang sạc, %1 giờ %2 phút nữa đầy</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>Dung lượng %1, %2 giờ còn lại</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 giờ còn lại</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Đang sạc %1, %2 giờ nữa đầy</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Đang sạc, %1 giờ nữa đầy</translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished">Thiết lập năng lượng</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"></translation>
+        <translation>Âm nhạc</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Không rõ</translation>
     </message>
 </context>
 <context>
@@ -651,150 +649,150 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Cập nhật và tắt máy</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Cập nhật và khởi động lại</translation>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt máy</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi người dùng</translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"></translation>
+        <translation>Hôm nay</translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"></translation>
+        <translation>Lunar</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"></translation>
+        <translation>Năm</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"></translation>
+        <translation>Ngày</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished">Thứ hai</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished">Thứ ba</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished">Thứ tư</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished">Thứ năm</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished">Thứ sáu</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished">Thứ bảy</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished">Chủ nhật</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 1</translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 2</translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 3</translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 4</translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 5</translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 6</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 7</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 8</translation>
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 9</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 10</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 11</translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Tháng 12</translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở lịch</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"></translation>
+        <translation>Thứ Hai</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"></translation>
+        <translation>Thứ Ba</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"></translation>
+        <translation>Thứ Tư</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"></translation>
+        <translation>Thứ Năm</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"></translation>
+        <translation>Thứ Sáu</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"></translation>
+        <translation>Thứ Bảy</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>Chủ Nhật</translation>
     </message>
 </context>
 <context>
@@ -805,11 +803,11 @@
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Thiết lập ra</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt âm thanh</translation>
     </message>
 </context>
 <context>
@@ -823,23 +821,23 @@
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt tiếng</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Kích tiếng</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt âm thanh</translation>
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Không có thiết bị ra</translation>
     </message>
     <message>
         <source>Volume %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Tăng âm lượng %1</translation>
     </message>
 </context>
 </TS>
