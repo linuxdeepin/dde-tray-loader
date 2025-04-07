@@ -1,83 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="et">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="et">
 <context>
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Leet põhjusel</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Leet põhjusel välja lülitatud</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Katsete</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülitage aktiivsuse</translation>
     </message>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Leet põhjusel</translation>
     </message>
     <message>
         <source>Airplane mode settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Leet põhjusel seadistused</translation>
     </message>
 </context>
 <context>
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Leet põhjusel</translation>
     </message>
 </context>
 <context>
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Minu pered</translation>
     </message>
 </context>
 <context>
     <name>BluetoothApplet</name>
     <message>
         <source>Bluetooth settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth seadistused</translation>
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülitatud välja</translation>
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülitage enne Bluetooth&apos;i ühendamist leet põhjusel välja</translation>
     </message>
 </context>
 <context>
     <name>BluetoothItem</name>
     <message>
         <source>Turn off</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülitage välja</translation>
     </message>
     <message>
         <source>Turn on</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülitage käes</translation>
     </message>
     <message>
         <source>Bluetooth settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth seadistused</translation>
     </message>
     <message>
         <source>%1 connected</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ühendatud</translation>
     </message>
     <message>
         <source>Connecting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ühendamine...</translation>
     </message>
     <message>
         <source>Bluetooth</source>
@@ -85,19 +83,19 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülitatud välja</translation>
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ühendatud</translation>
     </message>
     <message>
         <source>Not connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Ühendamata</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Välja</translation>
     </message>
 </context>
 <context>
@@ -111,63 +109,63 @@
     <name>BrightnessApplet</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Värskendamine</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Näidet seadistused</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Näidet seadistused</translation>
     </message>
 </context>
 <context>
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Värskendamine</translation>
     </message>
 </context>
 <context>
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation type="unfinished"></translation>
+        <translation>Päikese</translation>
     </message>
     <message>
         <source>Mon</source>
-        <translation type="unfinished"></translation>
+        <translation>Pühapäev</translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation type="unfinished"></translation>
+        <translation>Esmaspäev</translation>
     </message>
     <message>
         <source>Wed</source>
-        <translation type="unfinished"></translation>
+        <translation>Teisipaev</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuupaev</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation type="unfinished"></translation>
+        <translation>Reede</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation type="unfinished"></translation>
+        <translation>Laupäev</translation>
     </message>
 </context>
 <context>
     <name>DBusAdaptors</name>
     <message>
         <source>Add keyboard layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisa klahviplaan</translation>
     </message>
 </context>
 <context>
@@ -178,11 +176,11 @@
     </message>
     <message>
         <source>12-hour time</source>
-        <translation type="unfinished"></translation>
+        <translation>12-tundeline aeg</translation>
     </message>
     <message>
         <source>24-hour time</source>
-        <translation type="unfinished"></translation>
+        <translation>24-tundeline aeg</translation>
     </message>
     <message>
         <source>Time settings</source>
@@ -190,7 +188,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>Ava kalender</translation>
     </message>
 </context>
 <context>
@@ -221,170 +219,170 @@
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>Pühapäev</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"></translation>
+        <translation>Esmaspäev</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"></translation>
+        <translation>Teisipaev</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuupaev</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"></translation>
+        <translation>Reede</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"></translation>
+        <translation>Laupäev</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"></translation>
+        <translation>Pühapäev</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>Esmaspäev</translation>
     </message>
 </context>
 <context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Muid seadmeid</translation>
     </message>
 </context>
 <context>
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>DND režiim</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"></translation>
+        <translation>DND režiimi sätted</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Põhjesta</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Luba</translation>
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>DND režiim on lubatud</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>DND režiim on põhjestatud</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>DND režim</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Püha kõvamuse</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Püha kõvamuse on lubatud</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Püha kõvamuse on keelatud</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuva seaded</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Püha kõvamuse</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Teemা</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>Luba</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Keela</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Varm</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Tumed</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Keela püha kõvamuse</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Luba püha kõvamuse</translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuva seaded</translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Teemা: Varm</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Teemা: Tumed</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Teemা: Auto</translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaiksem mõju</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Varm</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Tumed</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Teemা</translation>
     </message>
 </context>
 <context>
@@ -439,41 +437,41 @@
     </message>
     <message>
         <source>Dock settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Tahveli seaded</translation>
     </message>
 </context>
 <context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Ühendusi ei ole</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Teavikudavat</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Teavikud</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülita DND režiim välja</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülita DND režiim lõpule</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Teavik</translation>
     </message>
 </context>
 <context>
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Onboard</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -484,139 +482,139 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Kõrge täpne</translation>
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Keskmine</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"></translation>
+        <translation>Tõenäosusenergiahoiutaja</translation>
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Tasakaalustatud täpne</translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Tõenäosus</translation>
     </message>
 </context>
 <context>
     <name>PowerPlugin</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Tõenäosusteavikud</translation>
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapaktsiilus %1, jääb %2 minutit</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapaktsiilus %1, jääb %2 tundit ja %3 minutit</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Läbivõim %1, täis on %2 minutit pärast</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Läbivõim %1, täis on %2 tundit ja %3 minutit pärast</translation>
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapaktsiilus %1</translation>
     </message>
     <message>
         <source>Charging %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Läbivõim %1</translation>
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapaktsiilus %1 ...</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapaktsiilus %1, täis</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapaktsiilus %1, mitte läbivõim</translation>
     </message>
     <message>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Bateri</translation>
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"></translation>
+        <translation>Läbivõim, arvutatakse vajalikku läbivõimajõudu</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"></translation>
+        <translation>Arvutatakse jäävast kasutamisajast</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 minutit jääb</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 tund %2 minut jääb</translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Ületöötamata</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"></translation>
+        <translation>Põhjustatud</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Ületöötamisel, %1 minut jääb põhjustamiseks</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Ületöötamisel, %1 tund %2 minut jääb põhjustamiseks</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>Capaktsi %1, %2 tund jääb</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 tund jääb</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Ületöötamisel %1, %2 tund jääb põhjustamiseks</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Ületöötamisel, %1 tund jääb põhjustamiseks</translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Müükse sätted</translation>
     </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"></translation>
+        <translation>Müsiik</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Tundmatu</translation>
     </message>
 </context>
 <context>
@@ -627,11 +625,11 @@
     </message>
     <message>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>Pöörduda</translation>
     </message>
     <message>
         <source>Hibernate</source>
-        <translation type="unfinished"></translation>
+        <translation>Hibrieteneerimine</translation>
     </message>
     <message>
         <source>Lock</source>
@@ -643,7 +641,7 @@
     </message>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Müükse sätted</translation>
     </message>
     <message>
         <source>Reboot</source>
@@ -651,165 +649,165 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Värskendage ja lülituge välja</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Värskendage ja käivitage uuesti</translation>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülituge välja</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaheta kasutaja</translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"></translation>
+        <translation>Täna</translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"></translation>
+        <translation>Lunaaline</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"></translation>
+        <translation>a</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"></translation>
+        <translation>k</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"></translation>
+        <translation>p</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished">Esmaspäev</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished">Teisipäev</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished">Kolmapäev</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished">Neljapäev</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished">Reede</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished">Laupäev</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>Pühapäev</translation>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"></translation>
+        <translation>Jan</translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"></translation>
+        <translation>Veeb</translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"></translation>
+        <translation>Märts</translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"></translation>
+        <translation>Aprill</translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"></translation>
+        <translation>Mai</translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"></translation>
+        <translation>Juuni</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"></translation>
+        <translation>Juuli</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"></translation>
+        <translation>August</translation>
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"></translation>
+        <translation>Septembr</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Oktobr</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"></translation>
+        <translation>November</translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Detsembr</translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>Ava kalendri</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"></translation>
+        <translation>esmaspäev</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"></translation>
+        <translation>teisipäev</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"></translation>
+        <translation>kolmapäev</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"></translation>
+        <translation>neljapäev</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"></translation>
+        <translation>reede</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"></translation>
+        <translation>laupäev</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>pühapäev</translation>
     </message>
 </context>
 <context>
     <name>SoundApplet</name>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Lauluväli</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Väljamine</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Soovitised</translation>
     </message>
 </context>
 <context>
@@ -823,23 +821,23 @@
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation type="unfinished"></translation>
+        <translation>Lülita äärmä</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Põhjeraha</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Soome seadistused</translation>
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Väljastamise seade puudub</translation>
     </message>
     <message>
         <source>Volume %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ääne %1</translation>
     </message>
 </context>
 </TS>

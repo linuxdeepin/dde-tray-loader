@@ -603,7 +603,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>إعدادات الطاقة</translation>
     </message>
 </context>
 <context>
@@ -688,31 +688,31 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>الإثنين</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>الثلاثاء</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation>الأربعاء</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>الخميس</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation>الجمعة</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation>السبت</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>الإحدى</translation>
     </message>
     <message>
         <source>Jan</source>
