@@ -17,7 +17,7 @@
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
         <source>Pin to dock</source>
-        <translation>Anclar al panel</translation>
+        <translation>Anclar al muelle</translation>
     </message>
 </context>
 </TS>
