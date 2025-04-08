@@ -11,6 +11,10 @@
 #include <QDBusVariant>
 #include <QDBusInterface>
 
+DCORE_BEGIN_NAMESPACE
+class DConfig;
+DCORE_END_NAMESPACE
+
 class Notification : public QWidget
 {
     Q_OBJECT
@@ -40,9 +44,9 @@ public Q_SLOTS:
     void refreshIcon();
 
 private Q_SLOTS:
-    void onSystemInfoChanged(quint32 info, QDBusVariant value);
     void setNotificationCount(uint count);
     void onNotificationStateChanged(qint64 id, int processedType);
+    void updateDndModeState();
 
 protected:
     void paintEvent(QPaintEvent *e) override;
@@ -52,6 +56,7 @@ private:
     uint m_notificationCount;
     QScopedPointer<QDBusInterface> m_dbus;
     bool m_dndMode;
+    Dtk::Core::DConfig *m_dndModeConfig = nullptr;
     bool m_hasNewNotification = false;
 };
 
