@@ -45,7 +45,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  dde-qt6xcb-plugin,
  dde-daemon (>=6.1.26),
  lastore-daemon (>=5.2.9),
- qtxdg-dev-tools,
 Conflicts:
  dde-dock,
  dde-dock-onboard-plugin
