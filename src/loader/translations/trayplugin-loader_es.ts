@@ -12,7 +12,7 @@
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
         <source>Remove from dock</source>
-        <translation>Quitar del panel</translation>
+        <translation>Quitar del muelle</translation>
     </message>
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
