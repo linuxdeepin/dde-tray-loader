@@ -4,7 +4,7 @@
     <message>
         <location filename="../pluginitem.cpp" line="89"/>
         <source>Remove from dock</source>
-        <translation>Quitar del panel</translation>
+        <translation>Quitar del muelle</translation>
     </message>
 </context>
 <context>
