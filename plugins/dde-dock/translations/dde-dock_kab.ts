@@ -3,40 +3,40 @@
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation type="unfinished"/>
+        <translation>Apli mode aktid</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation type="unfinished"/>
+        <translation>Apli mode ddisaktid</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"/>
+        <translation>Ddisakti</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>Akti</translation>
     </message>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"/>
+        <translation>Apli mode</translation>
     </message>
     <message>
         <source>Airplane mode settings</source>
-        <translation type="unfinished"/>
+        <translation>Ajusti apli mode</translation>
     </message>
 </context>
 <context>
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"/>
+        <translation>Apli mode</translation>
     </message>
 </context>
 <context>
-    <name>AppDragWidget</name>
+    <name>BluetoothAdapterItem</name>
     <message>
-        <source>Remove</source>
+        <source>My Devices</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -47,11 +47,11 @@
         <translation>Iɣewwaren n Bluetooth </translation>
     </message>
     <message>
-        <source>Disable &lt;a style=&quot;text-decoration: none;&quot; href=&quot;Airplane Mode&quot;&gt;Airplane Mode&lt;/a&gt; first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <source>Turned off</source>
+        <translation>Ddissud</translation>
     </message>
     <message>
-        <source>Turned off</source>
+        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -87,15 +87,15 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"/>
+        <translation>Wassud %1</translation>
     </message>
     <message>
         <source>Not connected</source>
-        <translation type="unfinished"/>
+        <translation>N wassud</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>Dissud</translation>
     </message>
 </context>
 <context>
@@ -109,56 +109,56 @@
     <name>BrightnessApplet</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation>Tliss</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Ajusti ecran</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Ajusti ecran</translation>
     </message>
 </context>
 <context>
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation>Tliss</translation>
     </message>
 </context>
 <context>
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation type="unfinished"/>
+        <translation>Sennat</translation>
     </message>
     <message>
         <source>Mon</source>
-        <translation type="unfinished"/>
+        <translation>Mounat</translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation type="unfinished"/>
+        <translation>Tutut</translation>
     </message>
     <message>
         <source>Wed</source>
-        <translation type="unfinished"/>
+        <translation>Wedut</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation type="unfinished"/>
+        <translation>Tutut</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation type="unfinished"/>
+        <translation>Fritut</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation type="unfinished"/>
+        <translation>Sattut</translation>
     </message>
 </context>
 <context>
@@ -172,15 +172,15 @@
     <name>DatetimePlugin</name>
     <message>
         <source>Datetime</source>
-        <translation type="unfinished"/>
+        <translation>Dat et temps</translation>
     </message>
     <message>
         <source>12-hour time</source>
-        <translation type="unfinished"/>
+        <translation>tarqen ddiwass 12</translation>
     </message>
     <message>
         <source>24-hour time</source>
-        <translation type="unfinished"/>
+        <translation>tarqen ddiwass 24</translation>
     </message>
     <message>
         <source>Time settings</source>
@@ -188,7 +188,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>mzaztut l-kalendär</translation>
     </message>
 </context>
 <context>
@@ -227,240 +227,162 @@
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation>tuesday</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation>wednesday</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation>thursday</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"/>
+        <translation>friday</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation>saturday</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>%1year%2month%3day</source>
-        <translation type="unfinished"/>
+        <translation>sunday</translation>
     </message>
 </context>
 <context>
-    <name>DesktopWidget</name>
+    <name>DeviceControlWidget</name>
     <message>
-        <source>Show Desktop</source>
+        <source>Other Devices</source>
         <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>DialogManager</name>
-    <message>
-        <source>Are you sure you want to empty %1 items?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Sefsex</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Kkes</translation>
-    </message>
-    <message>
-        <source>This action cannot be restored</source>
-        <translation>Tigawt-agi ulamek ara d-ttwarr</translation>
-    </message>
-</context>
-<context>
-    <name>DiskControlItem</name>
-    <message>
-        <source>Unknown device</source>
-        <translation>Ibenk arussin</translation>
-    </message>
-    <message>
-        <source>Unknown volume</source>
-        <translation>Ableɣ arussin</translation>
-    </message>
-</context>
-<context>
-    <name>DiskMountPlugin</name>
-    <message>
-        <source>Disk</source>
-        <translation>Aḍebsi</translation>
-    </message>
-    <message>
-        <source>Open</source>
-        <translation>Ldi</translation>
-    </message>
-    <message>
-        <source>Unmount all</source>
-        <translation>Kkes akk</translation>
     </message>
 </context>
 <context>
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"/>
+        <translation>Mode DND</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"/>
+        <translation>t-sifarin DND</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"/>
+        <translation>d-ksfis</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"/>
+        <translation>d-ksba</translation>
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation type="unfinished"/>
+        <translation>Mode DND d-ksba</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation type="unfinished"/>
+        <translation>Mode DND d-ksfis</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>DockPluginsController</name>
-    <message>
-        <source>The plugin %1 is not compatible with the system.</source>
-        <translation type="unfinished"/>
+        <translation>Mode DND</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation type="unfinished"/>
+        <translation>T-sifarin t-komfort</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation type="unfinished"/>
+        <translation>T-sifarin t-komfort d-ksba</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation type="unfinished"/>
+        <translation>T-sifarin t-komfort d-ksfis</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>t-sifarin t-disk</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>T-komfort</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Tema</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"/>
+        <translation>Aan</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>Fas</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>Agligh</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Adark</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Aautu</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Dinseb lqalit lqalit</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Wassil lqalit lqalit</translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"/>
+        <translation>Sittim lqalit</translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Agligh</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Adark</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Aautu</translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"/>
+        <translation>Efftakat vizual</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>Agligh</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Adark</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Aautu</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>LauncherItem</name>
-    <message>
-        <source>Launcher</source>
-        <translation>Amsekker</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindow</name>
-    <message>
-        <source>Exit Safe Mode</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Dock - Safe Mode</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The Dock is in safe mode, please exit to show it properly</source>
-        <translation type="unfinished"/>
+        <translation>Tema</translation>
     </message>
 </context>
 <context>
@@ -499,7 +421,7 @@
     </message>
     <message>
         <source>Smart Hide</source>
-        <translation type="unfinished"/>
+        <translation>Sittim tajb</translation>
     </message>
     <message>
         <source>Mode</source>
@@ -515,112 +437,33 @@
     </message>
     <message>
         <source>Dock settings</source>
-        <translation type="unfinished"/>
+        <translation>Sittim dock</translation>
     </message>
 </context>
 <context>
-    <name>ModuleWidget</name>
+    <name>NotificationPlugin</name>
     <message>
-        <source>Size</source>
-        <translation>Teɣzi</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Multiple Displays</source>
-        <translation type="unfinished"/>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation type="unfinished"/>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Select which icons appear in the Dock</source>
+        <source>No messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Fashion mode</source>
+        <source>Notification settings</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Efficient mode</source>
+        <source>Notifications</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Mode</source>
-        <translation>Askar</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Afella</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Adda</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Azelmaḍ</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Ayeffus</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Adig</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Keep shown</source>
+        <source>Turn off DND mode</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Keep hidden</source>
+        <source>Turn on DND mode</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Smart hide</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Addad</translation>
-        <extra-child_page>Dock</extra-child_page>
-        <extra-contents_path>/personalization/Dock</extra-contents_path>
-    </message>
-    <message>
-        <source>Small</source>
-        <translation>Mecṭuḥ</translation>
-    </message>
-    <message>
-        <source>Large</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>On screen where the cursor is</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Only on main screen</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>MultitaskingPlugin</name>
-    <message>
-        <source>Multitasking View</source>
+        <source>Notification</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -628,7 +471,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation type="unfinished"/>
+        <translation>Onboard</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -636,38 +479,21 @@
     </message>
 </context>
 <context>
-    <name>OverflowItem</name>
-    <message>
-        <source>Show hidden icons</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"/>
+        <translation>Performans hig</translation>
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>Balanced</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>Saver wass</translation>
     </message>
-</context>
-<context>
-    <name>PluginsItem</name>
     <message>
-        <source>Undock</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>PopupIndicator</name>
-    <message>
-        <source>Application tray</source>
+        <source>Balance Performance</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -675,176 +501,120 @@
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation>Wass</translation>
     </message>
 </context>
 <context>
     <name>PowerPlugin</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>Tetsekkar wass</translation>
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>Capaciti %1, %2 min gudug</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>Capaciti %1, %2 hr %3 min gudug</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Charging %1, %2 min gudug tilli full</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Charging %1, %2 hr %3 min gudug tilli full</translation>
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation type="unfinished"/>
+        <translation>Capaciti %1</translation>
     </message>
     <message>
         <source>Charging %1</source>
-        <translation type="unfinished"/>
+        <translation>Charging %1</translation>
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation type="unfinished"/>
+        <translation>Capasité %1 ...</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation type="unfinished"/>
+        <translation>Capasité %1, complètement chargé</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"/>
+        <translation>Capasité %1, ne charge pas</translation>
     </message>
     <message>
         <source>Battery</source>
-        <translation type="unfinished"/>
+        <translation>Batteri</translation>
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation>Charge, calculant le temps de charge estimé</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation>Calculant le temps de fonctionnement restant</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>&apos;%1 min restantes&apos;, </translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>&apos;%1 hr %2 min restantes&apos;, </translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>Ne charge pas</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation>Complètement chargé</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Charge, %1 min restantes pour être pleine</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Charge, %1 hr %2 min restantes pour être pleine</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>Capasité %1, %2 hr restantes</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>&apos;%1 hr restantes&apos;, </translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Charge %1, %2 hr restantes pour être pleine</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Charge, %1 hr restantes pour être pleine</translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>QuickPanelItem</name>
-    <message>
-        <source>Quick actions</source>
-        <translation type="unfinished"/>
+        <translation>Paramètres d&apos;énergie</translation>
     </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"/>
+        <translation>Muzik</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>QuickPlugin</name>
-    <message>
-        <source>Remove from dock</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Pin to dock</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>SettingsModule</name>
-    <message>
-        <source>Dock</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Askar</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Adig</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Addad</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation>Teɣzi</translation>
-    </message>
-    <message>
-        <source>Show Dock</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Plugin Area</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>ShowDesktopPlugin</name>
-    <message>
-        <source>Show Desktop</source>
-        <translation>Sken tanarit</translation>
+        <translation>Inconnu</translation>
     </message>
 </context>
 <context>
@@ -859,7 +629,7 @@
     </message>
     <message>
         <source>Hibernate</source>
-        <translation type="unfinished"/>
+        <translation>Ibber</translation>
     </message>
     <message>
         <source>Lock</source>
@@ -871,7 +641,7 @@
     </message>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>Aitamalat awal</translation>
     </message>
     <message>
         <source>Reboot</source>
@@ -879,165 +649,165 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>Tawersan iwlus iwer awal</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation type="unfinished"/>
+        <translation>Tawersan iwlus iwer awal</translation>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>Awal</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation>Tawersan uset</translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"/>
+        <translation>Iyaz</translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation>Lunar</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation>y</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation>m</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation>d</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>Iwaz</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Itaz</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation>Itraz</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>Itraz</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation>Ifriz</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation>Imsaz</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>Isaz</translation>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"/>
+        <translation>Yan</translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"/>
+        <translation>Fev</translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"/>
+        <translation>Mars</translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation>April</translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation>Mai</translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation>Jun</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation>Jul</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation>Auw</translation>
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation>Sipt</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation>Tut</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation>Nuv</translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation>Dek</translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>Ammazghu tefeddan</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation>mouad</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation>tutad</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation>wedd</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation>touad</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"/>
+        <translation>frad</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation>sautad</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
+        <translation>soud</translation>
     </message>
 </context>
 <context>
     <name>SoundApplet</name>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"/>
+        <translation>Amuz</translation>
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"/>
+        <translation>Sifad</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"/>
+        <translation>Gnawass amuz</translation>
     </message>
 </context>
 <context>
@@ -1051,53 +821,23 @@
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation type="unfinished"/>
+        <translation>Amuz</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"/>
+        <translation>Sifad</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"/>
+        <translation>Gnawass amuz</translation>
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"/>
+        <translation>Chwi n sifad</translation>
     </message>
     <message>
         <source>Volume %1</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>TrashPlugin</name>
-    <message>
-        <source>Trash</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Trash - %1 file</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Trash - %1 files</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Move to Trash</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>TrashWidget</name>
-    <message>
-        <source>Open</source>
-        <translation>Ldi</translation>
-    </message>
-    <message>
-        <source>Empty</source>
-        <translation type="unfinished"/>
+        <translation>Amuz %1</translation>
     </message>
 </context>
 </TS>
