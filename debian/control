@@ -30,8 +30,7 @@ Build-Depends: debhelper-compat ( =12),
  libgtest-dev,
  libgmock-dev,
  libxcursor-dev,
- dde-api-dev (>>5.6.3),
- libkf6networkmanagerqt-dev
+ dde-api-dev (>>5.6.3)
 Standards-Version: 3.9.8
 Homepage: http://www.deepin.org/
 

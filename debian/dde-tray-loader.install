@@ -1,9 +1,7 @@
 usr/libexec/trayplugin-loader
 usr/lib/*/libdde-trayplugin-interface.so.*
-usr/share/dock-tray-network-plugin/translations
 usr/share/dde-dock/translations
 usr/share/trayplugin-loader/translations
-usr/share/dde-tray-network-core/translations
 usr/share/dsg/configs/*/*.json
 usr/lib/*/qt6/plugins/wayland-shell-integration/libplugin-shell.so
 usr/lib/dde-dock/plugins/libapplication-tray.so
@@ -18,7 +16,6 @@ usr/lib/dde-dock/plugins/libshutdown.so
 usr/lib/dde-dock/plugins/system-trays/
 usr/lib/dde-dock/plugins/system-trays/libairplane-mode.so
 usr/lib/dde-dock/plugins/system-trays/libbluetooth.so
-usr/lib/dde-dock/plugins/system-trays/libdock-tray-network-plugin.so
 usr/lib/dde-dock/plugins/system-trays/libkeyboard-layout.so
 usr/lib/dde-dock/plugins/system-trays/libpower.so
 usr/lib/dde-dock/plugins/system-trays/libsound.so
@@ -29,7 +26,6 @@ usr/share/dde-dock/icons/dcc-setting/dcc-datetime.dci
 usr/share/dde-dock/icons/dcc-setting/dcc-dde-brightness.dci
 usr/share/dde-dock/icons/dcc-setting/dcc-dnd-mode.dci
 usr/share/dde-dock/icons/dcc-setting/dcc-eye-comfort-mode.dci
-usr/share/dde-dock/icons/dcc-setting/dcc-network.dci
 usr/share/dde-dock/icons/dcc-setting/dcc-notification.dci
 usr/share/dde-dock/icons/dcc-setting/dcc-onboard.dci
 usr/share/dde-dock/icons/dcc-setting/dcc-shutdown.dci
