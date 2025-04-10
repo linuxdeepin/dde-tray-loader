@@ -67,7 +67,6 @@ Description: deepin desktop-environment - tray plugins module development files
 
 Package: dde-wirelesscasting-plugin
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends},
- deepin-network-displays (>=0.90.6-deepin2)
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: deepin desktop-environment - wireless casting plugin for dde-dock
  wireless casting plugin module
