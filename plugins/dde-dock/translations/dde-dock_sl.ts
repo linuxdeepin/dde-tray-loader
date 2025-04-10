@@ -1,45 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sl">
 <context>
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Vključen režim letalne ploščice</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Vključen režim letalne ploščice je zapuščen</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Onemogoči</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Omogoči</translation>
     </message>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Režim letalne ploščice</translation>
     </message>
     <message>
         <source>Airplane mode settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve režima letalne ploščice</translation>
     </message>
 </context>
 <context>
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Režim letalne ploščice</translation>
     </message>
 </context>
 <context>
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Moji urejali</translation>
     </message>
 </context>
 <context>
@@ -50,11 +48,11 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished">Izklopljen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Najprej onemogočite režim letalne ploščice, če želite povezati z Bluetooth</translation>
     </message>
 </context>
 <context>
@@ -89,15 +87,15 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Povezan %1</translation>
     </message>
     <message>
         <source>Not connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Ni povezan</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Iskalnik</translation>
     </message>
 </context>
 <context>
@@ -111,25 +109,25 @@
     <name>BrightnessApplet</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Jasenost</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve zaslonja</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve zaslonja</translation>
     </message>
 </context>
 <context>
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Jasenost</translation>
     </message>
 </context>
 <context>
@@ -190,7 +188,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpri kalendar</translation>
     </message>
 </context>
 <context>
@@ -229,162 +227,162 @@
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"></translation>
+        <translation>ponedeljek</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"></translation>
+        <translation>toreg</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"></translation>
+        <translation>sreda</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"></translation>
+        <translation>četrtek</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"></translation>
+        <translation>petek</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>sobota</translation>
     </message>
 </context>
 <context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Drugi urejali</translation>
     </message>
 </context>
 <context>
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Režim DND</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve DND načina</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezaktiveni</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Omogoči</translation>
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>DND način omogočen</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>DND način dezaktiven</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Način DND</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Ugodnost oči</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Ugodnost oči omogočena</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Ugodnost oči dezaktivena</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve zaslove</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Ugodnost oči</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tematika</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>Vključeno</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation> izključeno</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Svetlo</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Temno</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Samodejno</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezaktiveni upravljanje zgodnosti oči</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"></translation>
+        <translation>Omogoči upravljanje zgodnosti oči</translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve zaslove</translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Tematika: Svetlo</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Tematika: Temno</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Tematika: Samodejno</translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"></translation>
+        <translation>Zračna učinka</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Svetlo</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation>Temno</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Samodejno</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Temat</translation>
     </message>
 </context>
 <context>
@@ -439,34 +437,34 @@
     </message>
     <message>
         <source>Dock settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve podloge</translation>
     </message>
 </context>
 <context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Ni sporočil</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve opoznavanj</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Opoznavanja</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Izključi način NEDELJ</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Vključi način NEDELJ</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Opoznavanje</translation>
     </message>
 </context>
 <context>
@@ -484,26 +482,26 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Visoka vire</translation>
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Prilagodljivo</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"></translation>
+        <translation>Vire za učenje</translation>
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Prilagodljiva vire</translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Vire</translation>
     </message>
 </context>
 <context>
@@ -546,7 +544,7 @@
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Vire %1, ne naredi</translation>
     </message>
     <message>
         <source>Battery</source>
@@ -554,69 +552,69 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"></translation>
+        <translation>Naredi, izračunaj ocenjen čas nareditve</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"></translation>
+        <translation>Izračunaj preostal čas uporabe</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>Preostal %1 min</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ur %2 min preostal</translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne naredi</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"></translation>
+        <translation>Potovan</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Naredi, %1 min do konca</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ur %2 min do konca nareditve</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>Vire %1, %2 ur preostalih</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ur preostega</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzdrževanje %1, %2 ur preostalo do celotnega vzdrževanja</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzdrževanje, %1 ur preostalo do celotnega vzdrževanja</translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished">Nastavitve energijske porabe</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"></translation>
+        <translation>Muzika</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Neznano</translation>
     </message>
 </context>
 <context>
@@ -651,150 +649,150 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Posodobitev in izklopi</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Posodobitev in ponovno zagon</translation>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Izklopi</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"></translation>
+        <translation>Premakni uporabnika</translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"></translation>
+        <translation>Danes</translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"></translation>
+        <translation>Miesiški</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"></translation>
+        <translation>leto</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"></translation>
+        <translation>mesec</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"></translation>
+        <translation>dan</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished">Ponedeljek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished">Torek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished">Sreda</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished">Četrtek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished">Petek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished">Sobota</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished">Nedelja</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"></translation>
+        <translation>Jan</translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"></translation>
+        <translation>Feb</translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mar</translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"></translation>
+        <translation>Apr</translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"></translation>
+        <translation>Maj</translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"></translation>
+        <translation>Jun</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"></translation>
+        <translation>Jul</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"></translation>
+        <translation>Avg</translation>
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"></translation>
+        <translation>Sep</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Okt</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"></translation>
+        <translation>Nov</translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Dec</translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"></translation>
+        <translation>Odpri kalkulator</translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished">ponedeljek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"></translation>
+        <translation>tore</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"></translation>
+        <translation>sreda</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"></translation>
+        <translation>čtvrtek</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"></translation>
+        <translation>petek</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"></translation>
+        <translation>sobota</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>nedelja</translation>
     </message>
 </context>
 <context>
@@ -805,11 +803,11 @@
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>Izhod</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve zvočnega uređaja</translation>
     </message>
 </context>
 <context>
@@ -823,23 +821,23 @@
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation type="unfinished"></translation>
+        <translation>Prekliči zapiranje</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapri</translation>
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavitve zvočnega uređaja</translation>
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Ni uređajev za izhod</translation>
     </message>
     <message>
         <source>Volume %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvok %1</translation>
     </message>
 </context>
 </TS>

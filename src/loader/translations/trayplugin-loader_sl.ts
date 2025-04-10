@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sl">
 <context>
     <name>PluginItem</name>
     <message>
         <location filename="../pluginitem.cpp" line="89"/>
         <source>Remove from dock</source>
-        <translation>Quitar del muelle</translation>
+        <translation>Odstrani iz dodatka</translation>
     </message>
 </context>
 <context>
@@ -12,12 +12,12 @@
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
         <source>Remove from dock</source>
-        <translation>Quitar del muelle</translation>
+        <translation>Odstrani iz dodatka</translation>
     </message>
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
         <source>Pin to dock</source>
-        <translation>Anclar al muelle</translation>
+        <translation>Pripni na dodatki</translation>
     </message>
 </context>
 </TS>

@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Pirmiausia išjungkite laivinio režimą, jei norite prisijungti prie Bluetooth</translation>
     </message>
 </context>
 <context>
@@ -71,7 +71,7 @@
     </message>
     <message>
         <source>%1 connected</source>
-        <translation type="unfinished"/>
+        <translation>%1 prisijungęs</translation>
     </message>
     <message>
         <source>Connecting...</source>
@@ -87,15 +87,15 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation type="unfinished"/>
+        <translation>Prisijungęs %1</translation>
     </message>
     <message>
         <source>Not connected</source>
-        <translation type="unfinished"/>
+        <translation>Neprisijungęs</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>Išjungta</translation>
     </message>
 </context>
 <context>
@@ -261,11 +261,11 @@
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"/>
+        <translation>DND režimas</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation type="unfinished"/>
+        <translation>Naudotojo režimo nustatymai</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -277,112 +277,112 @@
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation type="unfinished"/>
+        <translation>DND režimas įjungtas</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation type="unfinished"/>
+        <translation>DND režimas išjungtas</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation type="unfinished"/>
+        <translation>DND režimas</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation type="unfinished"/>
+        <translation>Vidinės tarmybė</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation type="unfinished"/>
+        <translation>Vidinė tarmybė įjungta</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation type="unfinished"/>
+        <translation>Vidinė tarmybė išjungta</translation>
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Vidutinio nustatymai</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Vidinė tarmybė</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Tema</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"/>
+        <translation> Įjungta</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>Išjungta</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>Lielė</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Tamsus</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Automatiškai</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Išjunkite vidinės tarmybės funkciją</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Įjunkite vidinės tarmybės funkciją</translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"/>
+        <translation>Vidutinio nustatymai</translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Lielė</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Tamsi</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation>Tema: Automatiškai</translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"/>
+        <translation>Žiūrovos efektas</translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>Viltis</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Tamsi</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>Automatiškai</translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Tema</translation>
     </message>
 </context>
 <context>
@@ -444,27 +444,27 @@
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
-        <translation type="unfinished"/>
+        <translation>Nėra žinučių</translation>
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"/>
+        <translation>Nofikacijų nustatymai</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>Nofikacijos</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"/>
+        <translation>Išjungti DND režimą</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"/>
+        <translation>Perjungti DND režimą</translation>
     </message>
     <message>
         <source>Notification</source>
-        <translation type="unfinished"/>
+        <translation>Nofikacija</translation>
     </message>
 </context>
 <context>
@@ -482,26 +482,26 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation type="unfinished"/>
+        <translation>Aukštesnio efekto</translation>
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>Lygiavertis</translation>
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>Galios žiūra</translation>
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Lygiavertis efektas</translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation>Galios</translation>
     </message>
 </context>
 <context>
@@ -528,7 +528,7 @@
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation type="unfinished"/>
+        <translation>Galios dažnis %1</translation>
     </message>
     <message>
         <source>Charging %1</source>
@@ -536,27 +536,27 @@
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation type="unfinished"/>
+        <translation>Galios dažnis %1 ...</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation type="unfinished"/>
+        <translation>Galios dažnis %1, pilnai užplaukta</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"/>
+        <translation>Galios dažnis %1, neplauksta</translation>
     </message>
     <message>
         <source>Battery</source>
-        <translation type="unfinished"/>
+        <translation>Baterija</translation>
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation>Plaukimas, skaičiuojama tikimybės plaukimos laiko</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation>Skaičiuojama likusio naudojimo laiko</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
@@ -568,42 +568,42 @@
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>Ne nukšomi</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation>Pilnai nukšomi</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Nukšomi, iki pildymo yra %1 min</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Nukšomi, iki pildymo yra %1 val %2 min</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>Galutinės nukšymo galios %1, liko %2 val</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>&apos;Iki pildymo liko %1 val&apos;.</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Nukšomi %1, iki pildymo yra %2 val</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Nukšomi, iki pildymo yra %1 val</translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>Energetinių nustatymų parinktys</translation>
     </message>
 </context>
 <context>
@@ -661,30 +661,30 @@
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation>Pakeisti vartotoją</translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"/>
+        <translation>Šiandien</translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation>Lūninos</translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation>metai</translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation>mėnesiai</translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation>dienos</translation>
     </message>
     <message>
         <source>Monday</source>
