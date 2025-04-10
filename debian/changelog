@@ -1,3 +1,16 @@
+dde-tray-loader (1.99.22) UNRELEASED; urgency=medium
+
+  * i18n: Updates for project Deepin Desktop Environment (#279)
+  * fix: remove dependency of deepin-network-display to migrate qt6
+  * feat: Remove network module
+  * fix: DndMode state doesn't follow change with dde-control-center
+  * fix: remove qt5 dependencies
+  * fix: prevent submenu item hover event propagation from main menu
+  * fix: submenu can't display
+  * i18n: Updates for project Deepin Desktop Environment (#275)
+
+ -- YeShanShan <yeshanshan@uniontech.com>  Thu, 10 Apr 2025 19:27:54 +0800
+
 dde-tray-loader (1.99.21) UNRELEASED; urgency=medium
 
   * chore: remove startdde dependency
