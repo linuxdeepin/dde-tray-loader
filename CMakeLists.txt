@@ -5,7 +5,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.16)
 
 cmake_policy(SET CMP0160 OLD)
-set(DTL_VERSION "0.0.1" CACHE STRING "Define project version")
+set(DTL_VERSION "1.99.0" CACHE STRING "Define project version")
 set(DOCK_VERSION "6.0.37" CACHE STRING "Dock compatible version")
 
 project(dde-tray-loader
