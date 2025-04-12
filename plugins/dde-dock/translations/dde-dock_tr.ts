@@ -560,7 +560,7 @@
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>%1 dakika kaldı</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
