@@ -134,11 +134,11 @@
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation>dom.</translation>
+        <translation>dom</translation>
     </message>
     <message>
         <source>Mon</source>
-        <translation>lun.</translation>
+        <translation>lun</translation>
     </message>
     <message>
         <source>Tue</source>
