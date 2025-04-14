@@ -158,7 +158,7 @@
     </message>
     <message>
         <source>Sat</source>
-        <translation>sáb</translation>
+        <translation>Sáb</translation>
     </message>
 </context>
 <context>
