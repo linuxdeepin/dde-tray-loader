@@ -359,7 +359,7 @@
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation>Tema: Automatico</translation>
+        <translation>Tema: Automático</translation>
     </message>
     <message>
         <source>Visual effect</source>
