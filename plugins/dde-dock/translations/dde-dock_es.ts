@@ -150,11 +150,11 @@
     </message>
     <message>
         <source>Thu</source>
-        <translation>jue</translation>
+        <translation>Jue</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation>vie</translation>
+        <translation>Vie</translation>
     </message>
     <message>
         <source>Sat</source>
