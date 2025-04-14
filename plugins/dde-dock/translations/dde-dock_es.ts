@@ -195,7 +195,7 @@
     <name>DatetimeWidget</name>
     <message>
         <source>Monday</source>
-        <translation>lunes</translation>
+        <translation>Lunes</translation>
     </message>
     <message>
         <source>Tuesday</source>
