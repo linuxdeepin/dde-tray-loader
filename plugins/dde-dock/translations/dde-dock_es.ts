@@ -142,7 +142,7 @@
     </message>
     <message>
         <source>Tue</source>
-        <translation>mar.</translation>
+        <translation>mar</translation>
     </message>
     <message>
         <source>Wed</source>
