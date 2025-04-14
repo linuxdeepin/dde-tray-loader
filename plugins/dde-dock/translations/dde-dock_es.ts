@@ -138,7 +138,7 @@
     </message>
     <message>
         <source>Mon</source>
-        <translation>lun</translation>
+        <translation>Lun</translation>
     </message>
     <message>
         <source>Tue</source>
