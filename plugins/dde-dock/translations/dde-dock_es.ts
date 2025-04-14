@@ -134,7 +134,7 @@
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation>dom</translation>
+        <translation>Dom</translation>
     </message>
     <message>
         <source>Mon</source>
