@@ -154,11 +154,11 @@
     </message>
     <message>
         <source>Fri</source>
-        <translation>vier.</translation>
+        <translation>vie</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation>sáb.</translation>
+        <translation>sáb</translation>
     </message>
 </context>
 <context>
