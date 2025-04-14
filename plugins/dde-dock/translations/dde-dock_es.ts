@@ -211,11 +211,11 @@
     </message>
     <message>
         <source>Friday</source>
-        <translation>viernes</translation>
+        <translation>Viernes</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation>sábado</translation>
+        <translation>Sábado</translation>
     </message>
     <message>
         <source>Sunday</source>
