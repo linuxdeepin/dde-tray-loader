@@ -146,11 +146,11 @@
     </message>
     <message>
         <source>Wed</source>
-        <translation>miérc.</translation>
+        <translation>mié</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation>juev.</translation>
+        <translation>jue</translation>
     </message>
     <message>
         <source>Fri</source>
