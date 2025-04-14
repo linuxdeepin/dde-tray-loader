@@ -199,7 +199,7 @@
     </message>
     <message>
         <source>Tuesday</source>
-        <translation>martes</translation>
+        <translation>Martes</translation>
     </message>
     <message>
         <source>Wednesday</source>
