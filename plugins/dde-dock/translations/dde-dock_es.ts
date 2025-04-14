@@ -146,7 +146,7 @@
     </message>
     <message>
         <source>Wed</source>
-        <translation>mié</translation>
+        <translation>Mié</translation>
     </message>
     <message>
         <source>Thu</source>
