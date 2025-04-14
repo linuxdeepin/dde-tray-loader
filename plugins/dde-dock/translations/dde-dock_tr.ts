@@ -560,7 +560,7 @@
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>%1 dakika kaldı</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
@@ -588,7 +588,7 @@
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>%1 saat kaldı</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
@@ -833,7 +833,7 @@
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"/>
+        <translation>Çıkış cihazı yok</translation>
     </message>
     <message>
         <source>Volume %1</source>
