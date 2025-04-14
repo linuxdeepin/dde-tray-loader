@@ -649,7 +649,7 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation>Actualizar y Apagar</translation>
+        <translation>Actualizar y apagar</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
