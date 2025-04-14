@@ -113,14 +113,14 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation>Ajustes de Pantalla</translation>
+        <translation>Ajustes de pantalla</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation>Ajustes de Pantalla</translation>
+        <translation>Ajustes de pantalla</translation>
     </message>
 </context>
 <context>
