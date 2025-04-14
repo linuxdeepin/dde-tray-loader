@@ -203,7 +203,7 @@
     </message>
     <message>
         <source>Wednesday</source>
-        <translation>miércoles</translation>
+        <translation>Miércoles</translation>
     </message>
     <message>
         <source>Thursday</source>
