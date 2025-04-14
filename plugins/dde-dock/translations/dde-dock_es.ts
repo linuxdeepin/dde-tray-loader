@@ -653,7 +653,7 @@
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation>Actualizar y Reiniciar</translation>
+        <translation>Actualizar y reiniciar</translation>
     </message>
     <message>
         <source>Shut Down</source>
