@@ -219,7 +219,7 @@
     </message>
     <message>
         <source>Sunday</source>
-        <translation>domingo</translation>
+        <translation>Domingo</translation>
     </message>
     <message>
         <source>monday</source>
