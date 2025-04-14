@@ -71,6 +71,7 @@ Q_SIGNALS:
     void iconClicked(IconPosition pos);
     void sliderValueChanged(int value);
     void panelClicked();
+    void sliderReleased(int value);
 
 public slots:
     void updateSliderValue(int value);
