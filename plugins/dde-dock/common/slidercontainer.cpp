@@ -69,6 +69,9 @@ SliderContainer::SliderContainer(QWidget *parent)
     installEventFilter(this);
 
     connect(m_slider, &QSlider::valueChanged, this, &SliderContainer::sliderValueChanged);
+    connect(m_slider, &QSlider::sliderReleased, this, [this] {
+        Q_EMIT sliderReleased(m_slider->value());
+    });
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [this]{
         QColor tipColor;
@@ -97,6 +100,9 @@ void SliderContainer::setSlider(QSlider *slider)
     m_slider->installEventFilter(this);
 
     connect(m_slider, &QSlider::valueChanged, this, &SliderContainer::sliderValueChanged);
+    connect(m_slider, &QSlider::sliderReleased, this, [this] {
+        Q_EMIT sliderReleased(m_slider->value());
+    });
 }
 
 void SliderContainer::setSlider(Dtk::Widget::DSlider *slider)
@@ -107,6 +113,9 @@ void SliderContainer::setSlider(Dtk::Widget::DSlider *slider)
     slider->installEventFilter(this);
 
     connect(m_slider, &QSlider::valueChanged, this, &SliderContainer::sliderValueChanged);
+    connect(m_slider, &QSlider::sliderReleased, this, [this] {
+        Q_EMIT sliderReleased(m_slider->value());
+    });
 }
 
 void SliderContainer::setTip(const QString &text, TitlePosition pos)
