@@ -113,14 +113,14 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation>Ajustes de Pantalla</translation>
+        <translation>Ajustes de pantalla</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation>Ajustes de Pantalla</translation>
+        <translation>Ajustes de pantalla</translation>
     </message>
 </context>
 <context>
@@ -134,31 +134,31 @@
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation>dom.</translation>
+        <translation>Dom</translation>
     </message>
     <message>
         <source>Mon</source>
-        <translation>lun.</translation>
+        <translation>Lun</translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation>mar.</translation>
+        <translation>Mar</translation>
     </message>
     <message>
         <source>Wed</source>
-        <translation>miérc.</translation>
+        <translation>Mié</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation>juev.</translation>
+        <translation>Jue</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation>vier.</translation>
+        <translation>Vie</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation>sáb.</translation>
+        <translation>Sáb</translation>
     </message>
 </context>
 <context>
@@ -195,31 +195,31 @@
     <name>DatetimeWidget</name>
     <message>
         <source>Monday</source>
-        <translation>lunes</translation>
+        <translation>Lunes</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation>martes</translation>
+        <translation>Martes</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation>miércoles</translation>
+        <translation>Miércoles</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation>jueves</translation>
+        <translation>Jueves</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation>viernes</translation>
+        <translation>Viernes</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation>sábado</translation>
+        <translation>Sábado</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation>domingo</translation>
+        <translation>Domingo</translation>
     </message>
     <message>
         <source>monday</source>
@@ -307,7 +307,7 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation>Ajustes de Pantalla</translation>
+        <translation>Ajustes de pantalla</translation>
     </message>
     <message>
         <source>Eye comfort</source>
@@ -359,7 +359,7 @@
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation>Tema: Automatico</translation>
+        <translation>Tema: Automático</translation>
     </message>
     <message>
         <source>Visual effect</source>
@@ -649,11 +649,11 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation>Actualizar y Apagar</translation>
+        <translation>Actualizar y apagar</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation>Actualizar y Reiniciar</translation>
+        <translation>Actualizar y reiniciar</translation>
     </message>
     <message>
         <source>Shut Down</source>
