@@ -47,6 +47,7 @@ private Q_SLOTS:
     void setNotificationCount(uint count);
     void onNotificationStateChanged(qint64 id, int processedType);
     void updateDndModeState();
+    void onNotificationCenterVisibleChanged(bool visible);
 
 protected:
     void paintEvent(QPaintEvent *e) override;
@@ -58,6 +59,7 @@ private:
     bool m_dndMode;
     Dtk::Core::DConfig *m_dndModeConfig = nullptr;
     bool m_hasNewNotification = false;
+    bool m_notificationCenterVisible = false;
 };
 
 #endif  // NOTIFICATION_H

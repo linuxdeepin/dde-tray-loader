@@ -127,6 +127,17 @@ void Notification::watchNotification(bool newNotification)
                                                   this,
                                                   SLOT(onNotificationStateChanged(qint64, int))
                                                   );
+            auto ret = QDBusConnection::sessionBus().connect("org.deepin.dde.Widgets1",
+                                                  "/org/deepin/dde/Widgets1",
+                                                  "org.deepin.dde.Widgets1",
+                                                  "VisibleChanged",
+                                                  this,
+                                                  SLOT(onNotificationCenterVisibleChanged(bool))
+                                                  );
+            if (!ret) {
+                qWarning(qLcPluginNotification) << "The indicator of notification state changing with"
+                                                   "notificationcenter's visibility doesn't work.";
+            }
         } else {
             qDebug(qLcPluginNotification) << "The indicator of notification state doesn't work.";
         }
@@ -136,7 +147,7 @@ void Notification::watchNotification(bool newNotification)
 
 void Notification::resetNotificationStatus()
 {
-    if (m_hasNewNotification == false)
+    if (m_hasNewNotification == false && !m_notificationCenterVisible)
         return;
 
     m_hasNewNotification = false;
@@ -168,7 +179,7 @@ void Notification::onNotificationStateChanged(qint64 id, int processedType)
 {
     static const int Processed = 2;
     if (processedType == Processed) {
-        if (!m_hasNewNotification) {
+        if (!m_hasNewNotification && !m_notificationCenterVisible) {
             m_hasNewNotification = true;
             Q_EMIT notificationStatusChanged();
         }
@@ -179,4 +190,10 @@ void Notification::updateDndModeState()
 {
     m_dndMode = m_dndModeConfig->value("dndMode", false).toBool();
     Q_EMIT dndModeChanged(m_dndMode);
+}
+
+void Notification::onNotificationCenterVisibleChanged(bool visible)
+{
+    m_notificationCenterVisible = visible;
+    resetNotificationStatus();
 }
