@@ -1,3 +1,13 @@
+dde-tray-loader (1.99.23) UNRELEASED; urgency=medium
+
+  * fix: notification status does not changed by shortcut
+  * i18n: Updates for project Deepin Desktop Environment (#287)
+  * fix: playing sound when sound slider released (#286)
+  * i18n: Updates for project Deepin Desktop Environment (#284)
+  * chore: adjust cmake base version to 1.99.0
+
+ -- YeShanShan <yeshanshan@uniontech.com>  Thu, 17 Apr 2025 19:19:55 +0800
+
 dde-tray-loader (1.99.22) UNRELEASED; urgency=medium
 
   * i18n: Updates for project Deepin Desktop Environment (#279)
