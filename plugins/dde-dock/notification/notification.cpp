@@ -31,6 +31,7 @@ Notification::Notification(QWidget *parent)
     setMinimumSize(PLUGIN_BACKGROUND_MIN_SIZE, PLUGIN_BACKGROUND_MIN_SIZE);
     connect(this, &Notification::dndModeChanged, this, &Notification::refreshIcon);
     connect(this, &Notification::notificationStatusChanged, this, &Notification::refreshIcon);
+    connect(this, &Notification::notificationStatusChanged, this, &Notification::updateUnreadNotificationState);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &Notification::refreshIcon);
 }
 
@@ -100,6 +101,10 @@ void Notification::watchNotification(bool newNotification)
         // we should not call org.deepin.dde.Notification1 in the main thread before dock's dbus is initialized.
         // Just refresh icon in the other thread.
         updateDndModeState();
+
+        Dtk::Core::DConfig config("org.deepin.dde.dock.plugin.notification");
+        m_hasNewNotification = config.value("hasUnreadNotification", false).toBool();
+        refreshIcon();
 
         auto recordCountVariant = m_dbus->property("recordCount");
         if (!recordCountVariant.isValid()) {
@@ -196,4 +201,12 @@ void Notification::onNotificationCenterVisibleChanged(bool visible)
 {
     m_notificationCenterVisible = visible;
     resetNotificationStatus();
+}
+
+void Notification::updateUnreadNotificationState()
+{
+    Dtk::Core::DConfig config("org.deepin.dde.dock.plugin.notification");
+    if (config.isValid()) {
+        config.setValue("hasUnreadNotification", m_hasNewNotification);
+    }
 }

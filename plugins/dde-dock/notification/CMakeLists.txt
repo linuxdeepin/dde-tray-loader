@@ -32,3 +32,5 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)
 install(FILES "icons/dcc-notification.dci" DESTINATION share/dde-dock/icons/dcc-setting)
+
+dtk_add_config_meta_files(APPID org.deepin.dde.tray-loader FILES ../configs/org.deepin.dde.dock.plugin.notification.json)

@@ -48,6 +48,7 @@ private Q_SLOTS:
     void onNotificationStateChanged(qint64 id, int processedType);
     void updateDndModeState();
     void onNotificationCenterVisibleChanged(bool visible);
+    void updateUnreadNotificationState();
 
 protected:
     void paintEvent(QPaintEvent *e) override;

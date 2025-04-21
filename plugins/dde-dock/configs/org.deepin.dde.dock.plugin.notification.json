@@ -1,0 +1,17 @@
+{
+    "magic":"dsg.config.meta",
+    "version":"1.0",
+    "contents":{
+        "hasUnreadNotification": {
+          "value": false,
+          "serial": 0,
+          "flags": [],
+          "name": "has unread notifications",
+          "name[zh_CN]": "是否有未读通知",
+          "description": "has unread notifications for notification-center",
+          "description[zh_CN]": "是否有未读通知",
+          "permissions": "readwrite",
+          "visibility": "private"
+        }
+    }
+}
