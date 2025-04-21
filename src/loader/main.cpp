@@ -93,7 +93,7 @@ int main(int argc, char *argv[], char *envp[])
     oldEnvs["QT_WAYLAND_SHELL_INTEGRATION"] = qgetenv("QT_WAYLAND_SHELL_INTEGRATION");
     oldEnvs["QT_WAYLAND_RECONNECT"] = qgetenv("QT_WAYLAND_RECONNECT");
 
-    qputenv("DSG_APP_ID", "org.deepin.dde-tray-loader");
+    qputenv("DSG_APP_ID", "org.deepin.dde.tray-loader");
     qputenv("WAYLAND_DISPLAY", "dockplugin");
     qputenv("QT_WAYLAND_SHELL_INTEGRATION", "plugin-shell");
     qputenv("QT_WAYLAND_RECONNECT", "1");
@@ -109,7 +109,7 @@ int main(int argc, char *argv[], char *envp[])
 
     LoaderApplication app(argc, argv);
     app.setOrganizationName("deepin");
-    app.setApplicationName("org.deepin.dde-tray-loader");
+    app.setApplicationName("org.deepin.dde.tray-loader");
     app.setQuitOnLastWindowClosed(false);
 
     QList<QString> translateDirs;
