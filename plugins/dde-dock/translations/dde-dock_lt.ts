@@ -351,11 +351,11 @@
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation>Tema: Lielė</translation>
+        <translation>Apipavidalinimas: Šviesus</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation>Tema: Tamsi</translation>
+        <translation>Apipavidalinimas: Tamsus</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
