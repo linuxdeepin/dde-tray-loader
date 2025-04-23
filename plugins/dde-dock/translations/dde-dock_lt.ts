@@ -315,7 +315,7 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation>Tema</translation>
+        <translation>Apipavidalinimas</translation>
     </message>
     <message>
         <source>On</source>
