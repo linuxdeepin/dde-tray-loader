@@ -382,7 +382,7 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation>Tema</translation>
+        <translation>Apipavidalinimas</translation>
     </message>
 </context>
 <context>
