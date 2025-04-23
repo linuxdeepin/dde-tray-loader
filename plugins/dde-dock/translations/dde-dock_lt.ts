@@ -359,7 +359,7 @@
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation>Tema: Automatiškai</translation>
+        <translation>Apipavidalinimas: Automatinis</translation>
     </message>
     <message>
         <source>Visual effect</source>
