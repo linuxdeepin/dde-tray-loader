@@ -21,7 +21,7 @@ OnboardItem::OnboardItem(QWidget *parent)
     , m_pressed(false)
 {
     setMouseTracking(true);
-    setMinimumSize(PLUGIN_BACKGROUND_MIN_SIZE, PLUGIN_BACKGROUND_MIN_SIZE);
+    setFixedSize(Dock::DOCK_PLUGIN_ITEM_FIXED_SIZE);
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [ = ] {
         update();
@@ -35,7 +35,7 @@ void OnboardItem::paintEvent(QPaintEvent *e)
 
     QPixmap pixmap;
     QString iconName = "keyboard-symbolic";
-    int iconSize = PLUGIN_ICON_MAX_SIZE;
+    const int iconSize = Dock::DOCK_PLUGIN_ITEM_FIXED_WIDTH;
 
     QPainter painter(this);
     if (std::min(width(), height()) > PLUGIN_BACKGROUND_MIN_SIZE) {
@@ -85,9 +85,7 @@ void OnboardItem::paintEvent(QPaintEvent *e)
     pixmap = loadSvg(iconName, QSize(iconSize, iconSize));
 
     painter.setOpacity(1);
-    const QRectF &rf = QRectF(rect());
-    const QRectF &rfp = QRectF(pixmap.rect());
-    painter.drawPixmap(rf.center() - rfp.center() / devicePixelRatioF(), pixmap);
+    painter.drawPixmap(rect(), pixmap);
 }
 
 const QPixmap OnboardItem::loadSvg(const QString &fileName, const QSize &size) const
