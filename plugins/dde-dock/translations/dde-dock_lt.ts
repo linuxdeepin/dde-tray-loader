@@ -315,7 +315,7 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation>Tema</translation>
+        <translation>Apipavidalinimas</translation>
     </message>
     <message>
         <source>On</source>
@@ -351,15 +351,15 @@
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation>Tema: Lielė</translation>
+        <translation>Apipavidalinimas: Šviesus</translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation>Tema: Tamsi</translation>
+        <translation>Apipavidalinimas: Tamsus</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation>Tema: Automatiškai</translation>
+        <translation>Apipavidalinimas: Automatinis</translation>
     </message>
     <message>
         <source>Visual effect</source>
@@ -382,7 +382,7 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation>Tema</translation>
+        <translation>Apipavidalinimas</translation>
     </message>
 </context>
 <context>
