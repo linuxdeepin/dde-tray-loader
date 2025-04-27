@@ -416,7 +416,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>Onboard</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings</source>
@@ -427,7 +427,7 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation>Performancia Hideo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Balanced</source>
@@ -439,7 +439,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation>Performancia Kombinuar</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -748,7 +748,7 @@
     </message>
     <message>
         <source>Output</source>
-        <translation>Vazhuan</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sound settings</source>
