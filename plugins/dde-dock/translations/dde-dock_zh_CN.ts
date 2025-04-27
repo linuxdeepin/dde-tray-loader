@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -54,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation>如果要连接蓝牙，请先禁用[飞行模式](#)</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
