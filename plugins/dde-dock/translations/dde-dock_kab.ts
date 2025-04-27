@@ -51,7 +51,7 @@
         <translation>Ddissud</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -383,61 +383,6 @@
     <message>
         <source>Theme</source>
         <translation>Tema</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Askar atrar</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Askar amellil</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Afella</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Adda</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Azelmaḍ</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Ayeffus</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Eǧǧ-it yettban</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Eǧǧ-it yeffer</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Sittim tajb</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Askar</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Adig</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Addad</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Sittim dock</translation>
     </message>
 </context>
 <context>
