@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="bn">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="bn">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -54,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -550,7 +548,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished">পাওয়ার সেটিংস</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
