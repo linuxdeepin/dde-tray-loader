@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sl">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -50,11 +48,11 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished">Izklopljen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -550,7 +548,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished">Nastavitve energijske porabe</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -635,31 +633,31 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished">Ponedeljek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished">Torek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished">Sreda</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished">Četrtek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished">Petek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished">Sobota</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished">Nedelja</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Jan</source>
@@ -715,7 +713,7 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished">ponedeljek</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>tuesday</source>
