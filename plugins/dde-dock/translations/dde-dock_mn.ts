@@ -53,7 +53,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,61 +384,6 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Загварлаг горим</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Ашигтай горим</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Дээр</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Доор</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Зүүн</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Баруун</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Үргэлж харах</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Үргэлж нуух</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Ухаалгаар нуух</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Горим</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Байршил</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Төлөв</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

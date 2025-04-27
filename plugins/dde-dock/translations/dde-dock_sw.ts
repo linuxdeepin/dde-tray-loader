@@ -53,7 +53,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,61 +384,6 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Hali urembo</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Hali uhifadhi</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Juu</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Chini</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Kushoto</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Kulia</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Tunza ionekane</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Tunza ifiche</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Ficha maizi</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Hali</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Pahali</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Hadhi</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

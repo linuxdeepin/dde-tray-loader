@@ -53,7 +53,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,61 +384,6 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Fashion Mode</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Efficient Mode</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Toppen</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Bunn</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Venstre</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Høyre</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Hold Vist</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Hold Skjult</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Smart Skjuling</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Modus</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Lokasjon</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Status</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

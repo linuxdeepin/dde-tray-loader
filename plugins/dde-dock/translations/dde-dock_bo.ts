@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="bo">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="bo">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>སོ་སྔོན་ཁ་རྒྱོབ།</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>དར་སྲོལ་དཔེ་རྣམ།</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>ལས་ཆོད་ཆེ་བའི་དཔེ་རྣམ།</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>གོང་།</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>འོག</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>གཡོན།</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>གཡས།</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>རྟག་ཏུ་མངོན་སྟོན་བྱེད།</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>རྟག་ཏུ་ཡིབ་པ།</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>རིག་ནུས་གབ་ཡིབ།</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>དཔེ་རྣམ།</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>གནས་ས།</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>རྣམ་པ།</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>ལས་འགན་ཚན་བྱང་སྒྲིག་འགོད།</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -494,7 +441,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

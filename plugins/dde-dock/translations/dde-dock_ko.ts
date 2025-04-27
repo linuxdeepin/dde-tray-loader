@@ -53,7 +53,7 @@
         <translation type="unfinished">꺼짐</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,61 +384,6 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>시각 모드</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>효율 모드</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>상단</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>하단</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>왼쪽</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>오른쪽</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>표시된 상태로 유지</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>숨겨진 상태로 유지</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>스마트 숨기기</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>모드</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>위치</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>상태</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

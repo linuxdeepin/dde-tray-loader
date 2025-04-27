@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sl">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sl">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -48,11 +50,11 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Izklopljen</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Najprej onemogočite režim letalne ploščice, če želite povezati z Bluetooth</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Modni način</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Učinkovit način</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Vrh</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Dno</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Levo</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Desno</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Ohrani prikazano</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Ohrani skrito</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Pametno skrivanje</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Način</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Položaj</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Status</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Nastavitve podloge</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -603,7 +550,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Nastavitve energijske porabe</translation>
     </message>
 </context>
 <context>
@@ -688,31 +635,31 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Ponedeljek</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Torek</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Sreda</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Četrtek</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Petek</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Sobota</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Nedelja</translation>
     </message>
     <message>
         <source>Jan</source>
@@ -768,7 +715,7 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">ponedeljek</translation>
     </message>
     <message>
         <source>tuesday</source>

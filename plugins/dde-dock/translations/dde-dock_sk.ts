@@ -53,7 +53,7 @@
         <translation>Vypnuté</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -385,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Módny režim</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Efektívny režim</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Hore</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Dolu</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Vľavo</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Vpravo</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Ponechať zobrazené</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Ponechať skryté</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Inteligentné skrývanie</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Režim</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Umiestnenie</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Stav</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Nastavenia panela</translation>
     </message>
 </context>
 <context>

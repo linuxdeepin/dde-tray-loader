@@ -53,7 +53,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,61 +384,6 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Модерен режим</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Ефективен режим</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Отгоре</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Отдолу</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Ляво</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Дясно</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Показвай</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Скрий</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Интелигентно скриване</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Режим</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Местоположение</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Статус</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

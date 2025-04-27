@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="hu">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="hu">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Kikapcsolva</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Először tiltsa le a Repülőgép üzemmódot, ha Bluetooth eszközt szeretne csatlakoztatni</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Téma</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Stílusos mód</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Hatékony mód</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Fent</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Lent</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Bal oldalt</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Jobb oldalt</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Folyamatosan látható</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Rejtett</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Intelligens elrejtés</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Mód</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Hely</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Állapot</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Dokkoló beállításai</translation>
     </message>
 </context>
 <context>

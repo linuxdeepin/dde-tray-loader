@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="gl_ES">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="gl_ES">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -48,11 +50,11 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Desactivado</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Desactiva o modo de avión primeiro se queres conectarte a un Bluetooth</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Modo moderno</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Modo eficiente</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Arriba</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Abaixo</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Esquerda</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Dereita</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Manter visible</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Manter oculto</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Ocultar automaticamente</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Modo</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Localización</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Estado</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Configuración do cinto</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -603,7 +550,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Axustes de enerxía</translation>
     </message>
 </context>
 <context>
@@ -688,31 +635,31 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Luns</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Martes</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Mércores</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Xoves</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Venres</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Sábado</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Domingo</translation>
     </message>
     <message>
         <source>Jan</source>
@@ -768,7 +715,7 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">luns</translation>
     </message>
     <message>
         <source>tuesday</source>

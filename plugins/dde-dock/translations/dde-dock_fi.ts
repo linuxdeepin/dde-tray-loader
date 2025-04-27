@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fi">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fi">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Pois päältä</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Poista ensin &quot;Lentotila&quot; käytöstä, jos haluat muodostaa bluetooth yhteyden</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Teema</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Keskitetty</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Alavalikko</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Ylös</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Alas</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Vasen</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Oikea</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Näytä aina</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Piilotta paneeli</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Piilota automaattisesti</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Tila</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Sijainti</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Näytä</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Paneeli asetukset</translation>
     </message>
 </context>
 <context>

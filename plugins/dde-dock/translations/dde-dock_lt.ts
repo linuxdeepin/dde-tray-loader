@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="lt">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="lt">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Išjungta</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Pirmiausia išjungkite laivinio režimą, jei norite prisijungti prie Bluetooth</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Apipavidalinimas</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Madinga veiksena</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Efektyvi veiksena</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Viršus</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Apačia</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Kairė</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Dešinė</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Laikyti rodomą</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Laikyti paslėptą</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Išmaniai slėpti</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Veiksena</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Vieta</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Būsena</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Doko nustatymai</translation>
     </message>
 </context>
 <context>

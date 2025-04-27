@@ -243,7 +243,8 @@ void BluetoothApplet::initUi()
     airplaneLayout->setContentsMargins(20, 0, 10, 0);
     airplaneLayout->setSpacing(0);
     m_airplaneModeLabel->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-    m_airplaneModeLabel->setText(tr("Disable Airplane Mode first if you want to connect to a Bluetooth"));
+    m_airplaneModeLabel->setText(tr("Disable [Airplane Mode](#) first if you want to connect to a Bluetooth"));
+    m_airplaneModeLabel->setTextFormat(Qt::MarkdownText);
     m_airplaneModeLabel->setWordWrap(true);
     DFontSizeManager::instance()->bind(m_airplaneModeLabel, DFontSizeManager::T8);
     airplaneLayout->addWidget(m_airplaneModeLabel, 0, Qt::AlignTop);
@@ -311,7 +312,7 @@ void BluetoothApplet::initConnect()
                 .interface("org.deepin.dde.ControlCenter1")
                 .method(QString("ShowPage"))
                 .arg(QString("network"))
-                //.arg(QString("Airplane Mode"))
+                .arg(QString("airplaneMode"))
                 .call();
         Q_EMIT requestHideApplet();
     });

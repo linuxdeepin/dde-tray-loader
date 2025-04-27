@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Uitgeschakeld</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Schakel de vliegtuigstand uit als je verbinding wilt maken via bluetooth</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Thema</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Moderne modus</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Efficiënte modus</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Bovenaan</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Onderaan</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Links</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Rechts</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Altijd tonen</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Altijd verbergen</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Slim verbergen</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Modus</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Locatie</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Status</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Dockinstellingen</translation>
     </message>
 </context>
 <context>

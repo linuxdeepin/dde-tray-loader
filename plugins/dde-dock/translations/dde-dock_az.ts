@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="az">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="az">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Söndürülüb</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Bluetooth-a qatıla bilərsiz Airplane Modunu ilk olaraq söndürün</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Görünüş mövzusu</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Müasir rejim</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Səmərəli rejim</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Yuxarı</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Aşağı</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Sol</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Sağ</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Görünsün</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Gizlədilsin</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Ağıllı gizlətmə</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Rejim</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Yerləşmə</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Vəziyyəti</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Dok panel ayarları</translation>
     </message>
 </context>
 <context>

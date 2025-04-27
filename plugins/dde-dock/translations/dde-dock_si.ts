@@ -53,7 +53,7 @@
         <translation type="unfinished">වසා දමා ඇත</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,61 +384,6 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>විචිත්‍ර ආකාරය</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>කාර්යක්ෂම ආකාරය</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>ඉහළ</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>පහළ</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>වම</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>දකුණ</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>පෙනීමට සලස්වා තබන්න</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>සඟවා තබන්න</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>ගැලපෙන ආකාරයට සඟවන්න</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>ප්‍රකාරය</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>පිහිටුම</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>තත්ත්වය</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
