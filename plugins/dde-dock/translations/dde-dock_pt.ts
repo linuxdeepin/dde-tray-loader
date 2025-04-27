@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Desligado</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Modo Elegante</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Modo Eficiente</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Superior</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Inferior</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Esquerda</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Direita</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Manter visível</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Manter oculta</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Ocultar inteligente</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Modo</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Localização</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Estado</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Definições da doca</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -494,7 +441,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

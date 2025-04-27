@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sq">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sq">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Çaktivizuar</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Nëse doni të lidheni me Bluetooth, së pari çaktivizoni Mënyrën Aeroplan</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Temë</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Mënyra Modë</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Mënyra Efikasitet</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Në krye</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Në fund</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Majtas</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Djathtas</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Mbaje të Shfaqur</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Mbaje të Fshehur</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Fshehje e Mençur</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Mënyrë</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Vendndodhje</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Gjendje</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Rregullime paneli</translation>
     </message>
 </context>
 <context>

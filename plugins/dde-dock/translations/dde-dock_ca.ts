@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ca">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ca">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Apagat</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Desactiveu primer el mode d&apos;avió si voleu fer una connexió per bluetooth.</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Tema</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Mode de moda</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Mode eficient</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>A dalt</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>A baix</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>A l&apos;esquerra</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>A la dreta</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Mantén-ho visible</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Mantén ocult</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Ocultació intel·ligent</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Mode</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Ubicació</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Estat</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Paràmetres de l&apos;acoblador</translation>
     </message>
 </context>
 <context>

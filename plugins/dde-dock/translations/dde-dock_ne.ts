@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ne">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ne">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>कुनैही बाहिर छ</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>ब्लूटूथसँग जोड्न चाहने तर आयरनीन मोडलाई पहिले अक्रिय गर्न</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>आधुनिक शैली</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>परम्परागत शैली</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>माथी</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>तल</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>बाँया</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>दाँया</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>देखाउनुहोस्</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>लुकाउनुहोस्</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>स्वचालित लुकाउने</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>मोड</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>स्थान</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>स्थिती</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>डॉक सेटिङहरू</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -603,7 +550,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">पावर सेटिङहरू</translation>
     </message>
 </context>
 <context>
@@ -688,31 +635,31 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">सोमबार</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">मंगलबार</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">बुधबार</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">बिहिबार</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">शुक्रबार</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">शनिबार</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">आइतबार</translation>
     </message>
     <message>
         <source>Jan</source>

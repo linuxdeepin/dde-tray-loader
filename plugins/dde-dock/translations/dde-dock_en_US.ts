@@ -53,7 +53,7 @@
         <translation type="unfinished">Turned off</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -385,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Fashion Mode</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Efficient Mode</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Top</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Bottom</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Left</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Right</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Keep Shown</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Keep Hidden</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Smart Hide</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Mode</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Location</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Status</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Dock settings</translation>
     </message>
 </context>
 <context>

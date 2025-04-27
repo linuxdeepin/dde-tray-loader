@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="bn">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="bn">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>অ্যাক্টিভ হয়নি</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>ব্লুটুথে সংযোগ করতে প্রথমে অ্যায়েন্ডার মোড দেক্টি করুন</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>ফ্যাশন মোড</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>দক্ষ মোড</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>শীর্ষ</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>তলা</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>বাম</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>ডান</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>দেখিয়ে রাখুন</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>লুকিয়ে রাখুন</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>স্মার্টভাবে লুকান</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>মোড</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>অবস্থান</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>অবস্থা</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>ডক সেটিংস</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -603,7 +550,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">পাওয়ার সেটিংস</translation>
     </message>
 </context>
 <context>

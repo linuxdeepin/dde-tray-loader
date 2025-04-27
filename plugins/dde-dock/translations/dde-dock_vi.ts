@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="vi">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="vi">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -48,11 +50,11 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Đã tắt</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Tắt chế độ máy bay trước nếu bạn muốn kết nối với Bluetooth</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Chế độ Thời trang</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Chế độ Hiệu quả</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Trên đỉnh</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Dưới đáy</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Trái</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Phải</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Tiếp tục Hiển thị</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Tiếp tục Ẩn</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Ẩn Thông minh</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Chế độ</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Nơi chốn</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Tình trạng</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Cài đặt thanh đế</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -603,7 +550,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thiết lập năng lượng</translation>
     </message>
 </context>
 <context>
@@ -688,31 +635,31 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ hai</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ ba</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ tư</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ năm</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ sáu</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ bảy</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Chủ nhật</translation>
     </message>
     <message>
         <source>Jan</source>

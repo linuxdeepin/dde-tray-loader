@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="kk">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="kk">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Отты</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Bluetooth-ға байланыс істейсіңіз, біріншілік хабарлама режимін деактивді</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Тема</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Жаңылыктык режим</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Эффективдік режим</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Жоғары</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Төмөнкү</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Коңырақ</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Сулу</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Көрсөтілгенін сақтау</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Сакталып калу</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Сәліктік сакталу</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Режим</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Расположение</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Статус</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Булоқ айланасындын алагы</translation>
     </message>
 </context>
 <context>

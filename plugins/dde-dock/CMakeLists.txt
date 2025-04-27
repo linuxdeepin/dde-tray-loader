@@ -21,9 +21,19 @@ if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
 endif ()
 
 ## qm files
-file(GLOB TS_FILES "translations/*.ts")
-qt_add_translation(QM_FILES ${TS_FILES})
-add_custom_target(dde-dock_language ALL DEPENDS ${QM_FILES})
+file(GLOB DOCK_TS_FILES "translations/*.ts")
+file(GLOB_RECURSE CPP_SOURCE_FILES "*.cpp" "*.h")
+
+qt_add_lupdate(
+    TS_FILES ${DOCK_TS_FILES}
+    SOURCES ${CPP_SOURCE_FILES}
+    OPTIONS -no-obsolete -no-ui-lines -locations none
+)
+
+qt_add_lrelease(
+    TS_FILES ${DOCK_TS_FILES}
+    QM_FILES_OUTPUT_VARIABLE QM_FILES
+)
 
 install(FILES ${QM_FILES}
     DESTINATION ${CMAKE_INSTALL_DATADIR}/dde-dock/translations)

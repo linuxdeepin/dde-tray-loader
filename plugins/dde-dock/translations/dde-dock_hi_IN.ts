@@ -53,7 +53,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,61 +384,6 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>फैशन मोड</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>दक्षता मोड</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>ऊपर</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>नीचे</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>बाएँ</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>दाएँ</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>दृश्यमान रखें</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>छिपाएँ रखें</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>उपयोग अनुरूप छिपाएँ</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>मोड </translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>स्थान</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>स्थिति</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -53,7 +53,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,61 +384,6 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Mode läge</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Effektivt läge</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Toppen</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Botten</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Vänster</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Höger</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Behåll visad</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Behåll gömd</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Smart gömd</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Läge</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Plats</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Status</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

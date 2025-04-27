@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt_BR">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt_BR">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Desligado</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Primeiro, desative o Modo Avião para conectar-se a um dispositivo Bluetooth</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Tema</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Fashion</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Eficiente</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Superior</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Inferior</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Esquerda</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Direita</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Sempre exibir</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Sempre ocultar</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Ocultar automaticamente</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Modo</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Posição</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Exibição</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Configurações do dock</translation>
     </message>
 </context>
 <context>

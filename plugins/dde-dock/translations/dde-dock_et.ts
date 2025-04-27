@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="et">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="et">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Lülitatud välja</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Lülitage enne Bluetooth&apos;i ühendamist leet põhjusel välja</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Moodne režiim</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Efektiivne režiim</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Üleval</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>All</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Vasakul</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Paremal</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Hoia nähtavana</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Hoia peidetuna</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Nutikas peitmine</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Režiim</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Aukoht</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Staatus</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Tahveli seaded</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -688,27 +635,27 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Esmaspäev</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Teisipäev</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Kolmapäev</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Neljapäev</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Reede</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Laupäev</translation>
     </message>
     <message>
         <source>Sunday</source>

@@ -53,7 +53,7 @@
         <translation type="unfinished">Απενεργοποιήθηκε</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -384,61 +384,6 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Μοντέρνα λειτουργία</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Αποτελεσματική λειτουργία</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Πάνω μέρος</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Κάτω μέρος</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Αριστερά</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Δεξιά</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Εμφάνιση  </translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Απόκρυψη </translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Έξυπνη απόκρυψη </translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Λειτουργία</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Τοποθεσία</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Κατάσταση</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

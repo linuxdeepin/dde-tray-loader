@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>蓝牙关闭</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>如果要连接蓝牙，请先禁用飞行模式</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation>如果要连接蓝牙，请先禁用[飞行模式](#)</translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>主题</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>时尚模式</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>高效模式</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>上</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>下</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>左</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>右</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>一直显示</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>一直隐藏</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>智能隐藏</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>模式</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>位置</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>状态</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>任务栏设置</translation>
     </message>
 </context>
 <context>

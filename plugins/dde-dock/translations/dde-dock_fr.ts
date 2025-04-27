@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fr">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Éteint</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Désactivez d&apos;abord le mode avion si vous souhaitez vous connecter à un périphérique Bluetooth </translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Mode dock</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Mode étendu</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Haut</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Bas</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Gauche</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Droite</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Maintenir affiché</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Maintenir caché</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Masquage intelligemment</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Mode</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Emplacement</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Statut</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Paramètres du dock</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -564,7 +511,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation>%1 h %2 restant</translation>
+        <translation>%1&#xa0;h&#xa0;%2 restant</translation>
     </message>
     <message>
         <source>Not charging</source>
@@ -580,7 +527,7 @@
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation>En charge, %1 h %2 avant la charge complète</translation>
+        <translation>En charge, %1&#xa0;h&#xa0;%2 avant la charge complète</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>

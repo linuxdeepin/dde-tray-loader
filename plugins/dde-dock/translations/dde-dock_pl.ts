@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pl">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pl">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Wyłączony</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Najpierw wyłącz Tryb Samolotowy, aby połączyć się z Bluetooth</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Motyw</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Tryb modny</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Tryb wydajny</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Góra</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Dół</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Lewo</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Prawo</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Zawsze wyświetlaj</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Zawsze ukrywaj</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Inteligentne ukrywanie</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Tryb</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Położenie</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Status</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Ustawienia doku</translation>
     </message>
 </context>
 <context>

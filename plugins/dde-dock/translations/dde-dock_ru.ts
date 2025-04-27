@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Выключено</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Сначала отключите режим полета, если вы хотите подключиться к Bluetooth.</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Тема</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Современный режим</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Эффективный режим</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Сверху</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Снизу</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Слева</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Справа</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Отображать Всегда</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Держать Скрытым</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Умное скрытие</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Режим</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Расположение</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Состояние</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Настройки Dock</translation>
     </message>
 </context>
 <context>

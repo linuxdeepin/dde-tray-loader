@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="tr">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="tr">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Kapatıldı</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Bluetooth&apos;a bağlanmak istiyorsanız önce Uçak Kipi&apos;ni devre dışı bırakın</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -386,61 +388,6 @@
     </message>
 </context>
 <context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Moda Kipi</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Verimli Kip</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Üst</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Alt</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Sol</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Sağ</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Sürekli Göster</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Sürekli Gizle</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Akıllı Gizle</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Kip</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Konum</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Durum</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Rıhtım ayarları</translation>
-    </message>
-</context>
-<context>
     <name>NotificationPlugin</name>
     <message>
         <source>No messages</source>
@@ -494,7 +441,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -544,7 +491,7 @@
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Battery</source>
@@ -564,7 +511,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Not charging</source>
@@ -576,15 +523,15 @@
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
@@ -592,11 +539,11 @@
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

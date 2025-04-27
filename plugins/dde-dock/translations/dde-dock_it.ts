@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="it">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="it">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -37,7 +39,7 @@
     <name>BluetoothAdapterItem</name>
     <message>
         <source>My Devices</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -51,8 +53,8 @@
         <translation>Disattivato</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -188,7 +190,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -254,7 +256,7 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -307,137 +309,82 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Impostazioni schermo</translation>
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Spento</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Display Settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme: Light</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Fashion</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Efficient</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Sopra</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Sotto</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Sinistra</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Destra</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Mostra sempre</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Lascia nascosta</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Nascondi automaticamente</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Modalità</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Posizione</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Comportamento</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Impostazioni Dock</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -494,14 +441,14 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -552,58 +499,58 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Impostazioni Alimentazione</translation>
     </message>
 </context>
 <context>
@@ -614,7 +561,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -657,142 +604,142 @@
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Lunedì</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Martedì</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Mercoledì</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Giovedì</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Venerdì</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Sabato</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Domenica</translation>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">lunedì</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">martedì</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">mercoledì</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">giovedì</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">venerdì</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">sabato</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">domenica</translation>
     </message>
 </context>
 <context>

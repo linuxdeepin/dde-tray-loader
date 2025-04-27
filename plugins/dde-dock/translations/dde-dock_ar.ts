@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ar">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ar">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>أطفئ</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>قم بقفل وضع الطائرة أولاً إذا كنت ترغب في الاتصال بلوحة بلوتوث</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>المظهر</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>النمط الحداثي</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>النمط الفعال</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>أعلى</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>أسفل</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>يسار</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>يمين</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>اﻹبقاء ظاهراً</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>الإبقاء مخفياً</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>إخفاء ذكي</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>النمط</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>الموقع</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>الحالة</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>إعدادات الرصيف</translation>
     </message>
 </context>
 <context>

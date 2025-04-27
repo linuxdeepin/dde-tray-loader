@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="uk">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="uk">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -51,8 +53,8 @@
         <translation>Вимкнено</translation>
     </message>
     <message>
-        <source>Disable Airplane Mode first if you want to connect to a Bluetooth</source>
-        <translation>Якщо ви хочете встановити з&apos;єднання з Bluetooth, спочатку вимкніть «Режим польоту»</translation>
+        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -383,61 +385,6 @@
     <message>
         <source>Theme</source>
         <translation>Тема</translation>
-    </message>
-</context>
-<context>
-    <name>MenuWorker</name>
-    <message>
-        <source>Fashion Mode</source>
-        <translation>Модний режим</translation>
-    </message>
-    <message>
-        <source>Efficient Mode</source>
-        <translation>Практичний режим</translation>
-    </message>
-    <message>
-        <source>Top</source>
-        <translation>Вгорі</translation>
-    </message>
-    <message>
-        <source>Bottom</source>
-        <translation>Внизу</translation>
-    </message>
-    <message>
-        <source>Left</source>
-        <translation>Ліворуч</translation>
-    </message>
-    <message>
-        <source>Right</source>
-        <translation>Праворуч</translation>
-    </message>
-    <message>
-        <source>Keep Shown</source>
-        <translation>Показувати постійно</translation>
-    </message>
-    <message>
-        <source>Keep Hidden</source>
-        <translation>Приховувати</translation>
-    </message>
-    <message>
-        <source>Smart Hide</source>
-        <translation>Розумне приховування</translation>
-    </message>
-    <message>
-        <source>Mode</source>
-        <translation>Режим</translation>
-    </message>
-    <message>
-        <source>Location</source>
-        <translation>Розташування</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>Статус</translation>
-    </message>
-    <message>
-        <source>Dock settings</source>
-        <translation>Параметри бічної панелі</translation>
     </message>
 </context>
 <context>
