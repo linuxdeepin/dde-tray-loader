@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Schakel de [vliegtuigstand](#) uit als je verbinding wilt maken via bluetooth</translation>
     </message>
 </context>
 <context>
