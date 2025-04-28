@@ -439,7 +439,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Ausgeglichene Leistung</translation>
     </message>
 </context>
 <context>
