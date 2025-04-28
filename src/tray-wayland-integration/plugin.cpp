@@ -4,8 +4,11 @@
 
 #include "plugin.h"
 
+#include <DGuiApplicationHelper>
 #include <QMap>
 #include <cstdint>
+
+DGUI_USE_NAMESPACE
 
 namespace Plugin {
 class EmbedPluginPrivate
@@ -420,6 +423,10 @@ void PlatformInterfaceProxy::setFontPointSize(qreal newFontPointSize)
 
 QColor PlatformInterfaceProxy::activeColor() const
 {
+    if (!m_activeColor.isValid()) {
+        const auto palette = DGuiApplicationHelper::instance()->standardPalette(DGuiApplicationHelper::instance()->themeType());
+        return palette.color(QPalette::Highlight);
+    }
     return m_activeColor;
 }
 
@@ -468,5 +475,10 @@ void PlatformInterfaceProxy::setIconThemeName(const QByteArray &newIconThemeName
         return;
     m_iconThemeName = newIconThemeName;
     emit iconThemeNameChanged(newIconThemeName);
+}
+
+PlatformInterfaceProxy::PlatformInterfaceProxy(QObject *parent)
+    : QObject(parent)
+{
 }
 }
