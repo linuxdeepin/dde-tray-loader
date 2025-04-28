@@ -397,9 +397,9 @@ void BluetoothAdapterItem::initUi()
 
 void BluetoothAdapterItem::initConnect()
 {
-    m_scanTimer->setInterval(DConfigHelper::instance()->getConfig("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.bluetooth", "", "scanInterval", 10).toInt() * 1000);
+    m_scanTimer->setInterval(DConfigHelper::instance()->getConfig("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.bluetooth", "", "scanInterval", 5).toInt() * 1000);
     DConfigHelper::instance()->bind("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.bluetooth", "", this, "scanInterval", [this] (const QString&, const QVariant&, QObject*) {
-        m_scanTimer->setInterval(DConfigHelper::instance()->getConfig("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.bluetooth", "", "scanInterval", 10).toInt() * 1000);
+        m_scanTimer->setInterval(DConfigHelper::instance()->getConfig("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.bluetooth", "", "scanInterval", 5).toInt() * 1000);
     });
     connect(m_scanTimer, &QTimer::timeout, this, [this] {
         if (isVisible())
