@@ -190,8 +190,10 @@ Q_SIGNALS:
     void iconThemeNameChanged(QByteArray iconThemeName);
 
 private:
+    explicit PlatformInterfaceProxy(QObject *parent = nullptr);
+
     QByteArray m_fontName;
-    qreal m_fontPointSize;
+    qreal m_fontPointSize {0};
     QColor m_activeColor;
     QColor m_darkActiveColor;
     QByteArray m_themeName;

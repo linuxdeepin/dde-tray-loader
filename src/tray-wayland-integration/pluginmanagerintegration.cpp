@@ -12,6 +12,8 @@
 namespace Plugin {
 PluginManagerIntegration::PluginManagerIntegration()
     : QWaylandShellIntegrationTemplate<PluginManagerIntegration>(1)
+    , m_dockPosition(0)
+    , m_dockColorType(0)
 {
     qInfo() << "PluginManagerIntegration22";
 }
