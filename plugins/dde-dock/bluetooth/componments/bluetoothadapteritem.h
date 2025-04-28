@@ -158,7 +158,7 @@ public slots:
     // 将已连接的蓝牙设备放到列表第一个
     void onTopDeviceItem(PluginStandardItem *item);
     // 设置蓝牙适配器名称
-    void onAdapterNameChanged(const QString name);
+    void onAdapterNameChanged(const QString &name);
 
     QSize sizeHint() const override;
 

@@ -57,6 +57,14 @@ void SettingLabel::addButton(QWidget *button, int space)
     m_layout->addSpacing(space);
 }
 
+void SettingLabel::setText(const QString &text)
+{
+    const QFontMetrics fm(m_label->fontMetrics());
+    QString elidedText = fm.elidedText(text, m_label->elideMode(), m_label->width());
+
+    m_label->setText(elidedText);
+}
+
 void SettingLabel::mousePressEvent(QMouseEvent *ev)
 {
     if (ev->button() == Qt::LeftButton) {

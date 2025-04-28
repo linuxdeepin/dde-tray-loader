@@ -123,9 +123,9 @@ void BluetoothAdapterItem::onTopDeviceItem(PluginStandardItem *item)
     }
 }
 
-void BluetoothAdapterItem::onAdapterNameChanged(const QString name)
+void BluetoothAdapterItem::onAdapterNameChanged(const QString &name)
 {
-    m_adapterLabel->label()->setText(name);
+    m_adapterLabel->setText(name);
 }
 
 QSize BluetoothAdapterItem::sizeHint() const

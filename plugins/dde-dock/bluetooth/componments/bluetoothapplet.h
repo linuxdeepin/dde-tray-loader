@@ -41,6 +41,7 @@ public:
     void addButton(QWidget *button, int space);
 
     DLabel *label() { return m_label; }
+    void setText(const QString &text);
 
 signals:
     void clicked();
