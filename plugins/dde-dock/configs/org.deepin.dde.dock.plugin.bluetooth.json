@@ -3,7 +3,7 @@
     "version":"1.0",
     "contents":{
         "scanInterval":{
-            "value": 10,
+            "value":5,
             "serial": 0,
             "flags":[],
             "name":"scanInterval",
