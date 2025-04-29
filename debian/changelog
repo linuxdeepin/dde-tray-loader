@@ -1,3 +1,14 @@
+dde-tray-loader (2.0.0) unstable; urgency=medium
+
+  * fix: improve tray plugin color handling and initialization
+  * fix: close applet popup after bluetooth adaptor was removed
+  * fix: airplane mode not clickable in bluetooth applet
+  * i18n: Updates for project Deepin Desktop Environment (#291)
+  * fix: update onboard display to show completely when zoomed in.
+  * fix: loss unread status for notification
+
+ -- YeShanShan <yeshanshan@uniontech.com>  Tue, 29 Apr 2025 14:50:33 +0800
+ 
 dde-tray-loader (1.99.23) UNRELEASED; urgency=medium
 
   * fix: notification status does not changed by shortcut
