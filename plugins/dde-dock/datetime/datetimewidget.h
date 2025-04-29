@@ -24,7 +24,7 @@ public:
     void setRegionFormat(RegionFormat *newRegionFormat);
 
 protected:
-    void resizeEvent(QResizeEvent *event);
+    void resizeEvent(QResizeEvent *event) override;
     bool eventFilter(QObject *watched, QEvent *event) override;
 
 signals:
