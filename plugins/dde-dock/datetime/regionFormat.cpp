@@ -5,15 +5,11 @@
 #include "regionFormat.h"
 #include "constants.h"
 
-#include <qguiapplication.h>
 #include <QLocale>
+#include <QGuiApplication>
 
 RegionFormat::RegionFormat(QObject *parent)
     : QObject(parent)
-    , shortDateFormat("")
-    , longDateFormat("")
-    , shortTimeFormat("")
-    , longTimeFormat("")
     , m_config(DTK_CORE_NAMESPACE::DConfig::createGeneric("org.deepin.region-format", QString(), this))
 {
     initData();
@@ -23,16 +19,16 @@ RegionFormat::RegionFormat(QObject *parent)
 void RegionFormat::initConnect()
 {
     connect(m_config, &DTK_CORE_NAMESPACE::DConfig::valueChanged, this, [this] (const QString &key) {
-    if (key == shortDateFormat_key) {
-        setShortDateFormat(m_config->value(key).toString());
-    } else if (key == longDateFormat_key) {
-        setLongDateFormat(m_config->value(key).toString());
-    } else if (key == shortTimeFormat_key) {
-        setShortTimeFormat(m_config->value(key).toString());
-    } else if (key == longTimeFormat_key) {
-        setLongTimeFormat(transformLongHourFormat(m_config->value(key).toString()));
-    }
-});
+        if (key == shortDateFormat_key) {
+            setShortDateFormat(m_config->value(key).toString());
+        } else if (key == longDateFormat_key) {
+            setLongDateFormat(m_config->value(key).toString());
+        } else if (key == shortTimeFormat_key) {
+            setShortTimeFormat(m_config->value(key).toString());
+        } else if (key == longTimeFormat_key) {
+            setLongTimeFormat(m_config->value(key).toString());
+        }
+    });
 }
 
 void RegionFormat::initData()
@@ -65,11 +61,10 @@ void RegionFormat::initData()
     }
     if (m_config->isDefaultValue(longTimeFormat_key)) {
         QLocale locale(QLocale::system().name());
-        setLongTimeFormat(transformLongHourFormat(locale.timeFormat(QLocale::LongFormat)));
+        setLongTimeFormat(locale.timeFormat(QLocale::LongFormat));
     } else {
-        setLongTimeFormat(transformLongHourFormat(m_config->value(longTimeFormat_key).toString()));
+        setLongTimeFormat(m_config->value(longTimeFormat_key).toString());
     }
-
 }
 
 QString RegionFormat::getShortDateFormat() const
@@ -132,8 +127,6 @@ void RegionFormat::setShortTimeFormat(const QString &newShortTimeFormat)
 
     shortTimeFormat = newShortTimeFormat;
     emit shortTimeFormatChanged();
-    // 由于tip，长时间也需要更改，而且长时间不能通过ap判断是否是12小时制
-    setLongTimeFormat(transformLongHourFormat(QString()));
 }
 
 QString RegionFormat::getLongTimeFormat() const
@@ -175,7 +168,8 @@ void RegionFormat::onDockPositionChanged(int position)
 
 // 长时间不需要保存dconfig，它跟短时间格式和dconfig进行调整
 // 由于dconfig不需要变化，因此可以恢复显示
-QString RegionFormat::transformLongHourFormat(QString longTimeFormat){
+QString RegionFormat::transformLongHourFormat(QString longTimeFormat)
+ {
     QLocale locale(QLocale::system().name());
     bool is24Horur = is24HourFormat();
     if (longTimeFormat.isEmpty()) {
