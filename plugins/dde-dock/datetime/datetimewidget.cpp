@@ -189,18 +189,15 @@ void DatetimeWidget::updateDateTimeString()
     const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
     QString timeStr, dateString;
     if (position == Dock::Bottom || position == Dock::Top) {
-        if (!m_24HourFormat) {
-            timeStr = current.toString(m_regionFormat->getShortTimeFormat());
-        } else {
-            timeStr = current.toString("hh:mm");
-        }
+        QString timeFormat = m_24HourFormat ? "hh:mm" : m_regionFormat->getShortTimeFormat();
+        timeStr = locale.toString(current, timeFormat);
         dateString = current.toString(m_regionFormat->getShortDateFormat());
 
         m_timeLabel->setText(timeStr);
         m_dateLabel->setText(dateString);
     } else {
         if (!m_24HourFormat) {
-            QString apText = current.toString("AP");
+            QString apText = locale.toString(current, "AP");
             m_apLabel->setText(apText);
 
             timeStr = current.toString("h:mm");
