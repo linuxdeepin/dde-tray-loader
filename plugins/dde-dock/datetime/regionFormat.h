@@ -45,7 +45,6 @@ public:
 
     bool is24HourFormat() const;
     void sync24HourFormatConfig(bool is24HourFormat);
-    QString transformLongHourFormat(QString longTimeFormat);
 
     QString originShortDateFormat() const { return m_originShortDateFormat; }
 
