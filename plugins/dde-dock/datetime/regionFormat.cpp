@@ -166,33 +166,6 @@ void RegionFormat::onDockPositionChanged(int position)
     }
 }
 
-// 长时间不需要保存dconfig，它跟短时间格式和dconfig进行调整
-// 由于dconfig不需要变化，因此可以恢复显示
-QString RegionFormat::transformLongHourFormat(QString longTimeFormat)
- {
-    QLocale locale(QLocale::system().name());
-    bool is24Horur = is24HourFormat();
-    if (longTimeFormat.isEmpty()) {
-        longTimeFormat = m_config->value(longTimeFormat_key).toString();
-        if (longTimeFormat.isEmpty()) {
-            longTimeFormat = locale.timeFormat(QLocale::LongFormat);
-        }
-    }
-    if(is24Horur && longTimeFormat == locale.timeFormat(QLocale::LongFormat)) {
-        longTimeFormat = "H:mm:ss";
-    } else {
-        QPair<QString,QString> format = is24Horur ? QPair<QString,QString>("h","H") : QPair<QString,QString>("H","h");
-        if (longTimeFormat.contains(format.first)) {
-            longTimeFormat.replace(format.first,format.second);
-        }
-        if (! is24Horur && !(longTimeFormat.contains("ap",Qt::CaseInsensitive))) {
-            longTimeFormat = "ap " + longTimeFormat;
-        }
-    }
-    qDebug() << "long time transform to " << longTimeFormat;
-    return longTimeFormat;
-}
-
 void RegionFormat::sync24HourFormatConfig(bool is24HourFormat)
 {
     QString hour12Format = m_12HourFormat.isEmpty() ? "AP h:mm" : m_12HourFormat;

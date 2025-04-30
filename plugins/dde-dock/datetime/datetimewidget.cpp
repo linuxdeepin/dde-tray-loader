@@ -60,39 +60,6 @@ void DatetimeWidget::set24HourFormat(const bool value)
 }
 
 /**
- * @brief DatetimeWidget::setShortDateFormat 根据类型设置时间显示格式
- * @param type 自定义类型
- */
-void DatetimeWidget::setShortDateFormat(int type)
-{
-    const Dock::Position position = qApp->property(PROP_POSITION).value<Dock::Position>();
-
-    // 任务栏在左/右的时候不显示年份
-    const bool removeY = (position == Dock::Top || position == Dock::Bottom) ? false : true;
-    switch (type) {
-    case 0: removeY ? m_shortDateFormat = "M/d" : m_shortDateFormat = "yyyy/M/d"; break;
-    case 1: removeY ? m_shortDateFormat = "M-d" : m_shortDateFormat = "yyyy-M-d"; break;
-    case 2: removeY ? m_shortDateFormat = "M.d" : m_shortDateFormat = "yyyy.M.d"; break;
-    case 3: removeY ? m_shortDateFormat = "MM/dd" : m_shortDateFormat = "yyyy/MM/dd"; break;
-    case 4: removeY ? m_shortDateFormat = "MM-dd" : m_shortDateFormat = "yyyy-MM-dd"; break;
-    case 5: removeY ? m_shortDateFormat = "MM.dd" : m_shortDateFormat = "yyyy.MM.dd"; break;
-    case 6: removeY ? m_shortDateFormat = "MM.dd" : m_shortDateFormat = "MM.dd.yyyy"; break;
-    case 7: removeY ? m_shortDateFormat = "dd.MM" : m_shortDateFormat = "dd.MM.yyyy"; break;
-    case 8: removeY ? m_shortDateFormat = "M/d" : m_shortDateFormat = "yy/M/d"; break;
-    case 9: removeY ? m_shortDateFormat = "M-d" : m_shortDateFormat = "yy-M-d"; break;
-    case 10: removeY ? m_shortDateFormat = "M.d" : m_shortDateFormat = "yy.M.d"; break;
-    default: removeY ? m_shortDateFormat = "MM-dd" : m_shortDateFormat = "yyyy-MM-dd"; break;
-    }
-
-    update();
-
-    if (isVisible()) {
-        emit requestUpdateGeometry();
-    }
-}
-
-
-/**
  * @brief DatetimeWidget::setWeekdayFormat 根据类型设置周显示格式
  * @param type 自定义类型
  */
@@ -209,13 +176,6 @@ void DatetimeWidget::updateDateTimeString()
         dateString = current.toString(m_regionFormat->getShortDateFormat());
         m_dateLabel->setText(dateString);
     }
-
-#if 0 // for debug
-    m_timeLabel->setStyleSheet("background-color: red;");
-    m_dateLabel->setStyleSheet("background-color: blue;");
-    QFontMetrics fontMetrics(m_timeLabel->font());
-    qInfo() << "timeLabel font height:" << fontMetrics.height() << " sizeHint:" << m_timeLabel->sizeHint();;
-#endif
 }
 
 void DatetimeWidget::updateDateTime()

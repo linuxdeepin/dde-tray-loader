@@ -35,7 +35,6 @@ public slots:
     void updateDateTimeString();
 
 private Q_SLOTS:
-    void setShortDateFormat(int type);
     void setWeekdayFormat(int type);
 
 private:
