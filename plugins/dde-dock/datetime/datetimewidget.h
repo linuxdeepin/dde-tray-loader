@@ -7,6 +7,10 @@
 
 #include <QWidget>
 
+#include "timedate1interface.h"
+
+using Timedate1Inter = org::deepin::dde::Timedate1;
+
 class QLabel;
 class RegionFormat;
 class DatetimeWidget : public QWidget
@@ -58,6 +62,7 @@ private:
     QString m_weekFormat;
     QSize m_dockSize;
 
+    Timedate1Inter *m_timedateInter;
     RegionFormat *m_regionFormat;
 };
 

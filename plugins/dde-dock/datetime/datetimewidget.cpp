@@ -15,6 +15,8 @@
 #include <DFontSizeManager>
 
 #define PLUGIN_STATE_KEY    "enable"
+#define DEFAULT_WEEK_FORMAT "dddd"
+#define SIMPLE_WEEK_FORMAT "ddd"
 
 DWIDGET_USE_NAMESPACE
 
@@ -27,10 +29,15 @@ DatetimeWidget::DatetimeWidget(RegionFormat* regionFormat, QWidget *parent)
     , m_24HourFormat(false)
     , m_weekdayFormatType(0)
     , m_shortDateFormat("yyyy-MM-dd")
+    , m_weekFormat(DEFAULT_WEEK_FORMAT)
     , m_dockSize(QSize(1920, 37))
+    , m_timedateInter(new Timedate1Inter("org.deepin.dde.Timedate1", "/org/deepin/dde/Timedate1", QDBusConnection::sessionBus(), this))
     , m_regionFormat(regionFormat)
 {
     initUI();
+
+    setWeekdayFormat(m_timedateInter->weekdayFormat());
+    connect(m_timedateInter, &Timedate1Inter::WeekdayFormatChanged, this, &DatetimeWidget::setWeekdayFormat);
 
     m_24HourFormat = m_regionFormat->is24HourFormat();
     adjustFontSize();
@@ -78,63 +85,10 @@ void DatetimeWidget::setWeekdayFormat(int type)
  */
 void DatetimeWidget::updateWeekdayFormat()
 {
-    const QDateTime currentDateTime = QDateTime::currentDateTime();
-    auto dayOfWeek = currentDateTime.date().dayOfWeek();
-
-    if (0 == m_weekdayFormatType) {
-        switch (dayOfWeek) {
-        case 1:
-            m_weekFormat = tr("Monday"); //星期一
-            break;
-        case 2:
-            m_weekFormat = tr("Tuesday"); //星期二
-            break;
-        case 3:
-            m_weekFormat = tr("Wednesday"); //星期三
-            break;
-        case 4:
-            m_weekFormat = tr("Thursday"); //星期四
-            break;
-        case 5:
-            m_weekFormat = tr("Friday"); //星期五
-            break;
-        case 6:
-            m_weekFormat = tr("Saturday"); //星期六
-            break;
-        case 7:
-            m_weekFormat = tr("Sunday"); //星期天
-            break;
-        default:
-            m_weekFormat = tr("Monday"); //星期一
-            break;
-        }
+    if (1 == m_weekdayFormatType) {
+        m_weekFormat = SIMPLE_WEEK_FORMAT;
     } else {
-        switch (dayOfWeek) {
-        case 1:
-            m_weekFormat = tr("monday"); //周一
-            break;
-        case 2:
-            m_weekFormat = tr("tuesday"); //周二
-            break;
-        case 3:
-            m_weekFormat = tr("wednesday"); //周三
-            break;
-        case 4:
-            m_weekFormat = tr("thursday"); //周四
-            break;
-        case 5:
-            m_weekFormat = tr("friday"); //周五
-            break;
-        case 6:
-            m_weekFormat = tr("saturday"); //周六
-            break;
-        case 7:
-            m_weekFormat = tr("sunday"); //周天
-            break;
-        default:
-            m_weekFormat = tr("monday"); //周一
-            break;
-        }
+        m_weekFormat = DEFAULT_WEEK_FORMAT;
     }
 }
 
@@ -149,7 +103,10 @@ void DatetimeWidget::setRegionFormat(RegionFormat *newRegionFormat)
 void DatetimeWidget::updateDateTimeString()
 {
     QLocale locale(m_regionFormat->getLocaleName());
-    m_dateTime = locale.toString(QDateTime::currentDateTime(), m_regionFormat->getLongDateFormat() + " " + m_regionFormat->getLongTimeFormat());
+
+    QString longDateFormat = m_regionFormat->getLongDateFormat();
+    longDateFormat.replace(DEFAULT_WEEK_FORMAT, m_weekFormat, Qt::CaseInsensitive);
+    m_dateTime = locale.toString(QDateTime::currentDateTime(), longDateFormat + " " + m_regionFormat->getLongTimeFormat());
 
     QDateTime current = QDateTime::currentDateTime();
 
