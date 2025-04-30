@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Poista ensin [Lentotila](#) käytöstä, jos haluat yhdistää Bluetooth:lla.</translation>
     </message>
 </context>
 <context>
