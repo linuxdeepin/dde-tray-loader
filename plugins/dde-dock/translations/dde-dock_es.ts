@@ -401,11 +401,11 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>Desactivar el modo DND</translation>
+        <translation>Desactivar el modo no molestar</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation>Activar el modo DND</translation>
+        <translation>Activar el modo no molestar</translation>
     </message>
     <message>
         <source>Notification</source>
