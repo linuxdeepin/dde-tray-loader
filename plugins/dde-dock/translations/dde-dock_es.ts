@@ -265,7 +265,7 @@
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation>Ajustes de modo DND</translation>
+        <translation>Ajustes de modo no molestar</translation>
     </message>
     <message>
         <source>Disable</source>
