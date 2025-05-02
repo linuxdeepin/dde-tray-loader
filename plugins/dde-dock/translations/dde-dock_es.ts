@@ -277,11 +277,11 @@
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation>Modo DND activado</translation>
+        <translation>Modo no molestar activado</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation>Modo DND desactivado</translation>
+        <translation>Modo no molestar desactivado</translation>
     </message>
 </context>
 <context>
