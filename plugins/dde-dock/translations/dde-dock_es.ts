@@ -517,7 +517,7 @@
     </message>
     <message>
         <source>Fully charged</source>
-        <translation>Carga llena</translation>
+        <translation>Carga completa</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
