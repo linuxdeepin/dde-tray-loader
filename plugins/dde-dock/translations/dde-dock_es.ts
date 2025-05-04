@@ -15,7 +15,7 @@
     </message>
     <message>
         <source>Enable</source>
-        <translation>Permitir</translation>
+        <translation>Activar</translation>
     </message>
     <message>
         <source>Airplane Mode</source>
