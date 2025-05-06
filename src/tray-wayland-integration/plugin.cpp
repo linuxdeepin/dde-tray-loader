@@ -423,10 +423,6 @@ void PlatformInterfaceProxy::setFontPointSize(qreal newFontPointSize)
 
 QColor PlatformInterfaceProxy::activeColor() const
 {
-    if (!m_activeColor.isValid()) {
-        const auto palette = DGuiApplicationHelper::instance()->standardPalette(DGuiApplicationHelper::instance()->themeType());
-        return palette.color(QPalette::Highlight);
-    }
     return m_activeColor;
 }
 
