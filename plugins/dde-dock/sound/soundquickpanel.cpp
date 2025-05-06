@@ -75,7 +75,7 @@ void SoundQuickPanel::initConnection()
         refreshWidget();
     });
 
-    connect(m_sliderContainer, &SliderContainer::sliderReleased, this, [this](int value) {
+    connect(m_sliderContainer, &SliderContainer::sliderValueChanged, this, [this](int value) {
         SoundController::ref().SetVolume(value * 0.01, true);
     });
     connect(&SoundModel::ref(), &SoundModel::activePortChanged, this, &SoundQuickPanel::refreshWidget);
