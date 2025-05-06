@@ -68,6 +68,7 @@ void SoundApplet::initUi()
     m_volumeSlider->setFixedHeight(36);
     m_volumeSlider->setMinimum(0);
     m_volumeSlider->setMaximum(SoundModel::ref().maxVolumeUI());
+    m_volumeSlider->slider()->setTracking(false);
     m_sliderContainer->setSlider(m_volumeSlider);
     m_sliderContainer->addBackground();
     m_sliderContainer->setButtonsSize(QSize(16, 16));
