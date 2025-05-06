@@ -44,6 +44,7 @@ SoundQuickPanel::~SoundQuickPanel()
 
 void SoundQuickPanel::initUi()
 {
+    m_sliderContainer->slider()->setTracking(false);
     m_sliderContainer->updateSliderValue(soundVolume());
     m_sliderContainer->setRange(0, SoundModel::ref().maxVolumeUI());
     m_sliderContainer->setPageStep(2);
