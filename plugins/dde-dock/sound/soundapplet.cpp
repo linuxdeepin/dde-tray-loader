@@ -122,7 +122,7 @@ void SoundApplet::initConnections()
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &SoundApplet::refreshIcon);
     connect(qApp, &DApplication::iconThemeChanged, this, &SoundApplet::refreshIcon);
 
-    connect(m_volumeSlider, &DockSlider::sliderReleased, this, &SoundApplet::volumeSliderValueChanged);
+    connect(m_volumeSlider, &DockSlider::valueChanged, this, &SoundApplet::volumeSliderValueChanged);
     connect(m_sliderContainer, &SliderContainer::iconClicked, this, [this](SliderContainer::IconPosition icon) {
         if (icon == SliderContainer::LeftIcon && SoundController::ref().existActiveOutputDevice() && m_defSinkInter) {
             m_defSinkInter->SetMuteQueued(!m_defSinkInter->mute());
