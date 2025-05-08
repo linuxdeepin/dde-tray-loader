@@ -15,7 +15,7 @@
     </message>
     <message>
         <source>Enable</source>
-        <translation>Permitir</translation>
+        <translation>Activar</translation>
     </message>
     <message>
         <source>Airplane Mode</source>
@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Desactive el [Modo avión](#) si desea conectarse a un dispositivo Bluetooth.</translation>
     </message>
 </context>
 <context>
@@ -261,11 +261,11 @@
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation>Modo DND</translation>
+        <translation>Modo no molestar</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation>Ajustes de modo DND</translation>
+        <translation>Ajustes de modo no molestar</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -277,18 +277,18 @@
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation>Modo DND activado</translation>
+        <translation>Modo no molestar activado</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation>Modo DND desactivado</translation>
+        <translation>Modo no molestar desactivado</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation>Modo DND</translation>
+        <translation>Modo no molestar</translation>
     </message>
 </context>
 <context>
@@ -401,11 +401,11 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>Desactivar el modo DND</translation>
+        <translation>Desactivar el modo no molestar</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation>Activar el modo DND</translation>
+        <translation>Activar el modo no molestar</translation>
     </message>
     <message>
         <source>Notification</source>
@@ -517,7 +517,7 @@
     </message>
     <message>
         <source>Fully charged</source>
-        <translation>Carga llena</translation>
+        <translation>Completamente cargada</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
