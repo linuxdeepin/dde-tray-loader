@@ -160,13 +160,9 @@ void BluetoothPlugin::refreshPluginItemsVisible()
     if(!m_proxyInter)
         return;
 
-    if (pluginIsDisable() || !m_enableState) {
+    if (pluginIsDisable() || !m_enableState)
         m_proxyInter->itemRemoved(this, BLUETOOTH_KEY);
-        auto popupWidget = m_bluetoothItem->popupApplet();
-        if (popupWidget && popupWidget->isVisible()) {
-            popupWidget->setVisible(false);
-        }
-    } else
+    else
         m_proxyInter->itemAdded(this, BLUETOOTH_KEY);
 }
 
