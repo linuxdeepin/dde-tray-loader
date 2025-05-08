@@ -1,3 +1,19 @@
+dde-tray-loader (1.99.25) unstable; urgency=medium
+
+  * Revert "fix: close applet popup after bluetooth adaptor was removed"
+  * fix: close applet popup after bluetooth adaptor was removed
+  * i18n: Updates for project Deepin Desktop Environment (#304)
+  * fix: airplane plugin does not show in tray area
+  * fix: playing sound when dragging sound slider released
+  * Revert "fix: playing sound when sound slider released (#286)"
+  * fix: app crashed by recursive called for theme palette
+  * fix: datetime plugin display incorrect week fromat
+  * chore: remove no used code
+  * fix: datetime plugin tips display Incorrect time format
+  * fix: datetime plugin show incorrect time format
+
+ -- YeShanShan <yeshanshan@uniontech.com>  Thu, 08 May 2025 17:44:32 +0800
+
 dde-tray-loader (1.99.24) unstable; urgency=medium
 
   * fix: improve tray plugin color handling and initialization
