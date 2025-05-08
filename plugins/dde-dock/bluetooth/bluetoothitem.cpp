@@ -54,7 +54,12 @@ BluetoothItem::BluetoothItem(AdaptersManager *adapterManager, QWidget *parent)
         refreshTips();
     });
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &BluetoothItem::refreshIcon);
-    connect(m_applet, &BluetoothApplet::noAdapter, this, &BluetoothItem::noAdapter);
+    connect(m_applet, &BluetoothApplet::noAdapter, this, [this] {
+        if (m_applet->isVisible()) {
+            m_applet->setVisible(false);
+        }
+        Q_EMIT noAdapter();
+    });
     connect(m_applet, &BluetoothApplet::justHasAdapter, this, &BluetoothItem::justHasAdapter);
     connect(m_applet, &BluetoothApplet::requestHideApplet, this, &BluetoothItem::requestHideApplet);
     connect(m_quickPanel, &QuickPanelWidget::panelClicked, this, &BluetoothItem::requestExpand);
