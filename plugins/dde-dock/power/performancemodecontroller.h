@@ -51,15 +51,15 @@ private:
     {
         m_sysPowerInter->setSync(false);
         const QList<QPair<QString, QString>> powerModeList = {
-            QPair<QString, QString>(BALANCE, tr("Balanced")),
-            QPair<QString, QString>(BALANCEPERFORMANCE, tr("Balance Performance")),
             QPair<QString, QString>(PERFORMANCE, tr("High Performance")),
+            QPair<QString, QString>(BALANCEPERFORMANCE, tr("Balance Performance")),
+            QPair<QString, QString>(BALANCE, tr("Balanced")),
             QPair<QString, QString>(POWERSAVE, tr("Power Saver"))
         };
         const QMap<QString, QString>powerModeProperty = {
-            {BALANCE, "IsBalanceSupported"},
-            {BALANCEPERFORMANCE, "IsBalancePerformanceSupported"},
             {PERFORMANCE, "IsHighPerformanceSupported"},
+            {BALANCEPERFORMANCE, "IsBalancePerformanceSupported"},
+            {BALANCE, "IsBalanceSupported"},
             {POWERSAVE, "IsPowerSaveSupported"}
         };
 
