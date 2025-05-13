@@ -1,3 +1,9 @@
+dde-tray-loader (1.99.26) unstable; urgency=medium
+
+  * refactor: reorder power mode options in performance controller
+
+ -- YeShanShan <yeshanshan@uniontech.com>  Tue, 13 May 2025 20:56:53 +0800
+
 dde-tray-loader (1.99.25) unstable; urgency=medium
 
   * Revert "fix: close applet popup after bluetooth adaptor was removed"
