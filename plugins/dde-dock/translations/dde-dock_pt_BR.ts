@@ -370,7 +370,7 @@
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation>Claro</translation>
+        <translation>Tema claro</translation>
     </message>
     <message>
         <source>Dark</source>
