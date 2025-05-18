@@ -331,7 +331,7 @@
     </message>
     <message>
         <source>Dark</source>
-        <translation>Escuro</translation>
+        <translation>Tema escuro</translation>
     </message>
     <message>
         <source>Auto</source>
@@ -374,7 +374,7 @@
     </message>
     <message>
         <source>Dark</source>
-        <translation>Escuro</translation>
+        <translation>Tema escuro</translation>
     </message>
     <message>
         <source>Auto</source>
