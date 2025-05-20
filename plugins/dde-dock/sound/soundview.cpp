@@ -47,12 +47,12 @@ SoundView::SoundView(QWidget *parent)
     });
     connect(m_applet.data(), &SoundApplet::requestHideApplet, this, &SoundView::requestHideApplet);
 
-    refresh(SoundModel::ref().volume());
+    refresh();
 }
 
 QWidget *SoundView::tipsWidget()
 {
-    refreshTips(std::min(150, SoundModel::ref().volume()), true);
+    refreshTips(true);
     m_tipsLabel->resize(m_tipsLabel->sizeHint().width() + 10,
                         m_tipsLabel->sizeHint().height());
 
@@ -147,10 +147,10 @@ bool SoundView::eventFilter(QObject *watched, QEvent *event)
     return QWidget::eventFilter(watched, event);
 }
 
-void SoundView::refresh(const int volume)
+void SoundView::refresh()
 {
     refreshIcon();
-    refreshTips(volume, false);
+    refreshTips(false);
 }
 
 void SoundView::refreshIcon()
@@ -176,7 +176,7 @@ void SoundView::refreshIcon()
     m_iconWidget->setIcon(QIcon::fromTheme(iconString));
 }
 
-void SoundView::refreshTips(const int volume, const bool force)
+void SoundView::refreshTips(const bool force)
 {
     if (!force && !m_tipsLabel->isVisible())
         return;
@@ -187,6 +187,7 @@ void SoundView::refreshTips(const int volume, const bool force)
         if (SoundModel::ref().isMute()) {
             m_tipsLabel->setText(QString(tr("Mute")));
         } else {
+            auto volume = std::min(150, SoundModel::ref().volume());
             m_tipsLabel->setText(QString(tr("Volume %1").arg(QString::number(volume) + '%')));
         }
     }
