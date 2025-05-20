@@ -35,7 +35,7 @@ public:
     const QString contextMenu();
     void invokeMenuItem(const QString menuId, const bool checked);
     void refreshIcon();
-    void refreshTips(const int volume, const bool force = false);
+    void refreshTips(const bool force = false);
     void setAppletMinHeight(int minHeight);
 
 signals:
@@ -47,7 +47,7 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
 private slots:
-    void refresh(const int volume);
+    void refresh();
 
 private:
     Dock::TipsWidget *m_tipsLabel;
