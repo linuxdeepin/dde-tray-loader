@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Desative o [Modo Avião](#) antes de conectar ao Bluetooth</translation>
     </message>
 </context>
 <context>
@@ -327,11 +327,11 @@
     </message>
     <message>
         <source>Light</source>
-        <translation>Claro</translation>
+        <translation>Tema claro</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>Escuro</translation>
+        <translation>Tema escuro</translation>
     </message>
     <message>
         <source>Auto</source>
@@ -370,11 +370,11 @@
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation>Claro</translation>
+        <translation>Tema claro</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation>Escuro</translation>
+        <translation>Tema escuro</translation>
     </message>
     <message>
         <source>Auto</source>
