@@ -12,7 +12,7 @@
 
 const int Attribute_ForceUnDock = 0x800000;
 
-class QMenu;
+class DockContextMenu;
 class PluginItem : public QWidget
 {
     Q_OBJECT
