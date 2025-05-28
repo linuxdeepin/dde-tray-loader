@@ -28,6 +28,8 @@ add_executable(trayplugin-loader
     loader.qrc
     dqwaylandplatform.h
     dqwaylandplatform.cpp
+    dockcontextmenu.h
+    dockcontextmenu.cpp
 )
 
 target_include_directories(trayplugin-loader PUBLIC

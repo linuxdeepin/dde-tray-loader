@@ -6,6 +6,7 @@
 #include "pluginitem.h"
 #include "plugin.h"
 #include "widgetplugin.h"
+#include "dockcontextmenu.h"
 
 #include <QHBoxLayout>
 #include <QMouseEvent>
@@ -17,7 +18,7 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
     : QWidget(parent)
     , m_pluginsItemInterface(pluginItemInterface)
     , m_itemKey(itemKey)
-    , m_menu(new QMenu)
+    , m_menu(new DockContextMenu(this))
     , m_tooltipTimer(new QTimer(this))
     , m_tipsWidget(nullptr)
 {
@@ -291,6 +292,8 @@ void PluginItem::initPluginMenu()
         action->setChecked(itemObj.value("checked").toBool());
         action->setData(itemObj.value("itemId").toString());
         action->setEnabled(itemObj.value("isActive").toBool());
+        auto showReminder = itemObj.value("showReminder").toBool();
+        action->setProperty("showReminder", showReminder);
         m_menu->addAction(action);
     }
 }
