@@ -45,7 +45,7 @@ ShutdownPlugin::ShutdownPlugin(QObject *parent)
     , m_tipsLabel(new TipsWidget)
     , m_powerManagerInter(new DBusPowerManager("org.deepin.dde.PowerManager1", "/org/deepin/dde/PowerManager1", QDBusConnection::systemBus(), this))
     , m_dconfig(DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.shutdown", QString(), this))
-    , m_lastoreDConfig(DConfig::create("org.deepin.lastore", "org.deepin.lastore", "", this))
+    , m_lastoreDConfig(DConfig::create("org.deepin.dde.lastore", "org.deepin.dde.lastore", "", this))
 {
     m_tipsLabel->setVisible(false);
     m_tipsLabel->setAccessibleName("shutdown");
@@ -140,7 +140,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
     QList<QVariant> items;
     items.reserve(6);
 
-#if 0 // v25逻辑已变，还未确定，暂时注释掉
+
     // 从配置文件中读取安装状态，第一位表示安装状态，1： 安装已就绪，0：安装未就绪
     if (m_lastoreDConfig && m_lastoreDConfig->isValid()) {
         bool ok;
@@ -163,7 +163,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
             }
         }
     }
-#endif
+
 
     QMap<QString, QVariant> shutdown;
     if (contextMenu.contains(MENU_SHUTDOWN)) {
