@@ -1,3 +1,13 @@
+dde-tray-loader (1.99.27) unstable; urgency=medium
+
+  * refactor: move dock context menu implementation to loader module
+  * fix: update appid of lastore daemon
+  * i18n: Updates for project Deepin Desktop Environment (#314)
+  * fix: sound plugin display incorrect volume tips
+  * fix: when hide plugin,setting button sholud be hided.
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 29 May 2025 19:10:45 +0800
+
 dde-tray-loader (1.99.26) unstable; urgency=medium
 
   * refactor: reorder power mode options in performance controller
