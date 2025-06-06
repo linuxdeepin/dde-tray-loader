@@ -172,6 +172,7 @@ const QString DatetimePlugin::itemContextMenu(const QString &itemKey)
     QList<QVariant> items;
 
     QMap<QString, QVariant> settings;
+#if 0 // 隐藏时间设置:BUG-303071
     settings["itemId"] = "settings";
     if (m_centralWidget->is24HourFormat())
         settings["itemText"] = tr("12-hour time");
@@ -179,7 +180,7 @@ const QString DatetimePlugin::itemContextMenu(const QString &itemKey)
         settings["itemText"] = tr("24-hour time");
     settings["isActive"] = true;
     items.push_back(settings);
-
+#endif
     if (!QFile::exists(ICBC_CONF_FILE)) {
         QMap<QString, QVariant> open;
         open["itemId"] = "open";
