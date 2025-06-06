@@ -152,10 +152,17 @@ void DatetimeWidget::updateDateTime()
 
 void DatetimeWidget::adjustFontSize()
 {
+    const int MAX_DISTANCE = 999;
     const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
     int validDistance = m_dockSize.height() / devicePixelRatioF();
     if (position == Dock::Left || position == Dock::Right) {
         validDistance = m_dockSize.width() / devicePixelRatioF();
+    }
+
+    // dock position changed(from bottom to left), new dock size is not update, use bottom width to adjust font size,
+    // then assert in timeFontSize != 0 && dateFontSize != 0
+    if (validDistance > MAX_DISTANCE) {
+        return;
     }
 
     // 根据时间和日期字体大小的跨度，将dock栏大小分为不同的区间，每个区域对应不同的字体大小，然后通过判断dock栏大小所在的区间来设置字体大小
@@ -171,7 +178,7 @@ void DatetimeWidget::adjustFontSize()
         {55, {18, 12}},
         {58, {19, 13}},
         {61, {20, 14}},
-        {999, {20, 14}}
+        {MAX_DISTANCE, {20, 14}}
     };
 
     int timeFontSize = 0;
@@ -238,10 +245,10 @@ void DatetimeWidget::dockPositionChanged()
     // 等待位置变换完成后再更新
     QTimer::singleShot(300, this, [this]{
         updateDateTime();
+        adjustFontSize();
     });
 
     adjustUI();
-    adjustFontSize();
 }
 
 void DatetimeWidget::initUI()
