@@ -1,3 +1,11 @@
+dde-tray-loader (1.99.28) unstable; urgency=medium
+
+  * fix: timeDate plugin crash
+  * fix: dateTime plugin only responds to short format changes from dde-control-center
+  * [skip CI] Translate dde-dock.ts in es (#319)
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 12 Jun 2025 19:48:15 +0800
+
 dde-tray-loader (1.99.27) unstable; urgency=medium
 
   * refactor: move dock context menu implementation to loader module
