@@ -525,7 +525,7 @@
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Şarj oluyor, dolmaya kalan %1 sa %2 dk</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
