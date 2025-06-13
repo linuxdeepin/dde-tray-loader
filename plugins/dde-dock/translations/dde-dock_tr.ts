@@ -509,7 +509,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>%1 sa %2 dk kaldı</translation>
     </message>
     <message>
         <source>Not charging</source>
