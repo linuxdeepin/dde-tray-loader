@@ -158,7 +158,7 @@
     </message>
     <message>
         <source>Sat</source>
-        <translation>Cumartesi</translation>
+        <translation>Cmt</translation>
     </message>
 </context>
 <context>
