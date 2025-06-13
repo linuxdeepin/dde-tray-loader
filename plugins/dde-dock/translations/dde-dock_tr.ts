@@ -541,7 +541,7 @@
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Şarj oluyor, dolmaya %1 sa kaldı</translation>
     </message>
 </context>
 <context>
