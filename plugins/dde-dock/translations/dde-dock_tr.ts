@@ -150,11 +150,11 @@
     </message>
     <message>
         <source>Thu</source>
-        <translation>Perşembe</translation>
+        <translation>Per</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation>Cuma</translation>
+        <translation>Cum</translation>
     </message>
     <message>
         <source>Sat</source>
