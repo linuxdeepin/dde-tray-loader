@@ -138,11 +138,11 @@
     </message>
     <message>
         <source>Mon</source>
-        <translation>Pazartesi</translation>
+        <translation>Pzt</translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation>Salı</translation>
+        <translation>Sal</translation>
     </message>
     <message>
         <source>Wed</source>
