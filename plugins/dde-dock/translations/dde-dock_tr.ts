@@ -146,7 +146,7 @@
     </message>
     <message>
         <source>Wed</source>
-        <translation>Çarşamba</translation>
+        <translation>Çar</translation>
     </message>
     <message>
         <source>Thu</source>
