@@ -489,7 +489,7 @@
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"/>
+        <translation>Kapasite %1, şarj olmuyor</translation>
     </message>
     <message>
         <source>Battery</source>
