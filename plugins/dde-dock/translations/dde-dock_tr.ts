@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Bluetooth&apos;a bağlanmak istiyorsanız önce [Uçak Modu](#)&apos;nu devre dışı bırakın</translation>
     </message>
 </context>
 <context>
@@ -134,31 +134,31 @@
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation>Pazar</translation>
+        <translation>Paz</translation>
     </message>
     <message>
         <source>Mon</source>
-        <translation>Pazartesi</translation>
+        <translation>Pzt</translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation>Salı</translation>
+        <translation>Sal</translation>
     </message>
     <message>
         <source>Wed</source>
-        <translation>Çarşamba</translation>
+        <translation>Çar</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation>Perşembe</translation>
+        <translation>Per</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation>Cuma</translation>
+        <translation>Cum</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation>Cumartesi</translation>
+        <translation>Cmt</translation>
     </message>
 </context>
 <context>
@@ -439,7 +439,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Performans Dengesi</translation>
     </message>
 </context>
 <context>
@@ -489,7 +489,7 @@
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"/>
+        <translation>Kapasite %1, şarj olmuyor</translation>
     </message>
     <message>
         <source>Battery</source>
@@ -509,7 +509,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>%1 sa %2 dk kaldı</translation>
     </message>
     <message>
         <source>Not charging</source>
@@ -521,15 +521,15 @@
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Şarj oluyor, dolmaya kalan %1 dk</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Şarj oluyor, dolmaya kalan %1 sa %2 dk</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>Kapasite %1, %2 sa kaldı</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
@@ -537,11 +537,11 @@
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Şarj oluyor %1, dolmaya %2 sa kaldı</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>Şarj oluyor, dolmaya %1 sa kaldı</translation>
     </message>
 </context>
 <context>
