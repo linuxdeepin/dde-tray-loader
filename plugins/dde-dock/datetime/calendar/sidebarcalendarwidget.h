@@ -10,7 +10,7 @@
 #include "calendarmanager.h"
 
 #include <DLabel>
-#include <DIconButton>
+#include <DToolButton>
 #include <DFontSizeManager>
 #include <DCommandLinkButton>
 
@@ -99,8 +99,8 @@ private:
     QWidget* m_keyWidget;                               //日期按钮区域控件
     QGridLayout* m_keyLayout;                           //按钮布局
     QLabel* m_dateLabel;                                //头部日期显示label
-    DIconButton* m_nextPage;                            //下一页切换按键
-    DIconButton* m_previousPage;                        //上一页切换按键
+    DToolButton* m_nextPage;                            //下一页切换按键
+    DToolButton* m_previousPage;                        //上一页切换按键
     QList<SidebarCalendarKeyButton*> m_keyButtonList;   //所有的日期按钮控件
     int m_firstday;
     DateTitleWidget *m_dateTitleWidget;
