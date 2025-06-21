@@ -705,11 +705,11 @@
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation>12月</translation>
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>カレンダーを開く</translation>
     </message>
     <message>
         <source>monday</source>
