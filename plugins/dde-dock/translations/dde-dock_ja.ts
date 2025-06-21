@@ -737,7 +737,7 @@
     </message>
     <message>
         <source>sunday</source>
-        <translation type="unfinished"/>
+        <translation>日曜日</translation>
     </message>
 </context>
 <context>
