@@ -497,7 +497,7 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation type="unfinished"/>
+        <translation>充電中、完了までの時間を計算しています</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
