@@ -725,15 +725,15 @@
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation>木曜日</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"/>
+        <translation>金曜日</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation>土曜日</translation>
     </message>
     <message>
         <source>sunday</source>
