@@ -748,7 +748,7 @@
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"/>
+        <translation>出力</translation>
     </message>
     <message>
         <source>Sound settings</source>
