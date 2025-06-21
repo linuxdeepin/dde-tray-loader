@@ -693,15 +693,15 @@
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation>9月</translation>
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation>10月</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation>11月</translation>
     </message>
     <message>
         <source>Dec</source>
