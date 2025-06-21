@@ -513,11 +513,11 @@
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>充電していません</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation type="unfinished"/>
+        <translation>充電完了</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
