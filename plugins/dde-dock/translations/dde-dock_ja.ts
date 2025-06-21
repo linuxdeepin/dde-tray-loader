@@ -766,11 +766,11 @@
     <name>SoundView</name>
     <message>
         <source>Unmute</source>
-        <translation type="unfinished"/>
+        <translation>ミュート解除</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"/>
+        <translation>ミュート</translation>
     </message>
     <message>
         <source>Sound settings</source>
