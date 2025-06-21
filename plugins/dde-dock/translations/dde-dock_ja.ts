@@ -533,7 +533,7 @@
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>残り%1時間</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
