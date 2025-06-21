@@ -405,7 +405,7 @@
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation type="unfinished"/>
+        <translation>おやすみモードをオンにする</translation>
     </message>
     <message>
         <source>Notification</source>
