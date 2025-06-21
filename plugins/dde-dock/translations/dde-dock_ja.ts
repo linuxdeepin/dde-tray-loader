@@ -774,7 +774,7 @@
     </message>
     <message>
         <source>Sound settings</source>
-        <translation type="unfinished"/>
+        <translation>サウンドの設定</translation>
     </message>
     <message>
         <source>No output devices</source>
