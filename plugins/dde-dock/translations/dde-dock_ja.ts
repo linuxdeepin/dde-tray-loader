@@ -677,19 +677,19 @@
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation>5月</translation>
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation>6月</translation>
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation>7月</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation>8月</translation>
     </message>
     <message>
         <source>Sept</source>
