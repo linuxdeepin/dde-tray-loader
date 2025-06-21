@@ -397,11 +397,11 @@
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"/>
+        <translation>通知</translation>
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation type="unfinished"/>
+        <translation>おやすみモードをオフにする</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
