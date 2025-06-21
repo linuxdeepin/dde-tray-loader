@@ -529,7 +529,7 @@
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>バッテリー残量 %1、残り %2時間</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
