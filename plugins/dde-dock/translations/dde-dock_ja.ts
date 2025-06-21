@@ -465,11 +465,11 @@
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation>充電中 %1、充電完了まで %2 分</translation>
+        <translation>充電中 %1、完了まで %2 分</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>充電中 %1、充電完了まで %2 時間 %3 分</translation>
+        <translation>充電中 %1、完了まで %2 時間 %3 分</translation>
     </message>
     <message>
         <source>Capacity %1</source>
