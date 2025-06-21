@@ -489,7 +489,7 @@
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation type="unfinished"/>
+        <translation>バッテリー残量 %1、充電していません</translation>
     </message>
     <message>
         <source>Battery</source>
