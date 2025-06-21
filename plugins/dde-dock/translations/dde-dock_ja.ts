@@ -363,7 +363,7 @@
     </message>
     <message>
         <source>Visual effect</source>
-        <translation type="unfinished"/>
+        <translation>ビジュアル効果</translation>
     </message>
 </context>
 <context>
