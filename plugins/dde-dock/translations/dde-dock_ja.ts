@@ -343,7 +343,7 @@
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>目の保護モードを有効にする</translation>
     </message>
     <message>
         <source>Display Settings</source>
