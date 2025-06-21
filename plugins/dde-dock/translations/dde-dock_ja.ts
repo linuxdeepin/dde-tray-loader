@@ -501,7 +501,7 @@
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation>残り使用可能時間を計算しています</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
