@@ -537,7 +537,7 @@
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation type="unfinished"/>
+        <translation>充電中 %1、完了まで %2時間</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
