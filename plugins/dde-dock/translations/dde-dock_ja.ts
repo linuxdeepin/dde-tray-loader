@@ -435,7 +435,7 @@
     </message>
     <message>
         <source>Power Saver</source>
-        <translation>省電力モード</translation>
+        <translation>エコモード</translation>
     </message>
     <message>
         <source>Balance Performance</source>
