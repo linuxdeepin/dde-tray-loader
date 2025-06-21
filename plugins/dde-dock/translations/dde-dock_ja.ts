@@ -665,15 +665,15 @@
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"/>
+        <translation>2月</translation>
     </message>
     <message>
         <source>Mar</source>
-        <translation type="unfinished"/>
+        <translation>3月</translation>
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation>4月</translation>
     </message>
     <message>
         <source>May</source>
