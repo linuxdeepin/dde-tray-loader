@@ -393,7 +393,7 @@
     </message>
     <message>
         <source>Notification settings</source>
-        <translation type="unfinished"/>
+        <translation>通知の設定</translation>
     </message>
     <message>
         <source>Notifications</source>
