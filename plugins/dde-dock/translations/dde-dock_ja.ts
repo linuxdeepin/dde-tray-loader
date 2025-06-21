@@ -594,7 +594,7 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>アップデートしてシャットダウン</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
