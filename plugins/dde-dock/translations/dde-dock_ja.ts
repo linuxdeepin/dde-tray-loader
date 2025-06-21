@@ -713,15 +713,15 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation>月曜日</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation>火曜日</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation>水曜日</translation>
     </message>
     <message>
         <source>thursday</source>
