@@ -323,11 +323,11 @@
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>OFF</translation>
     </message>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>ライト</translation>
     </message>
     <message>
         <source>Dark</source>
