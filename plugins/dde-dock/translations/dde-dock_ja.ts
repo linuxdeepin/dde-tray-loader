@@ -657,11 +657,11 @@
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>日曜日</translation>
     </message>
     <message>
         <source>Jan</source>
-        <translation type="unfinished"/>
+        <translation>1月</translation>
     </message>
     <message>
         <source>Feb</source>
