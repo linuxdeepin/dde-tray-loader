@@ -359,7 +359,7 @@
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation>テーマ: 自動</translation>
     </message>
     <message>
         <source>Visual effect</source>
