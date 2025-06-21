@@ -339,7 +339,7 @@
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>目の保護モードを無効にする</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
