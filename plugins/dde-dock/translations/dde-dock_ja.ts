@@ -331,11 +331,11 @@
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>ダーク</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"/>
+        <translation>自動</translation>
     </message>
     <message>
         <source>Disable eye comfort</source>
