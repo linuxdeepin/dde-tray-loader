@@ -355,7 +355,7 @@
     </message>
     <message>
         <source>Theme: Dark</source>
-        <translation type="unfinished"/>
+        <translation>テーマ: ダーク</translation>
     </message>
     <message>
         <source>Theme: Auto</source>
