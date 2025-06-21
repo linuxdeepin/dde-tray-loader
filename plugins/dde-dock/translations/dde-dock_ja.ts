@@ -598,15 +598,15 @@
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation type="unfinished"/>
+        <translation>アップデートして再起動</translation>
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>シャットダウン</translation>
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation>ユーザーを切り替え</translation>
     </message>
 </context>
 <context>
