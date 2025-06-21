@@ -778,11 +778,11 @@
     </message>
     <message>
         <source>No output devices</source>
-        <translation type="unfinished"/>
+        <translation>出力デバイスがありません</translation>
     </message>
     <message>
         <source>Volume %1</source>
-        <translation type="unfinished"/>
+        <translation>音量 %1</translation>
     </message>
 </context>
 </TS>
