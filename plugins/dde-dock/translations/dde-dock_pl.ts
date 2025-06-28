@@ -409,7 +409,7 @@
     </message>
     <message>
         <source>Notification</source>
-        <translation>Powiadomienie</translation>
+        <translation>Powiadomienia</translation>
     </message>
 </context>
 <context>
