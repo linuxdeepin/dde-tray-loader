@@ -1,3 +1,11 @@
+dde-tray-loader (2.0.3) unstable; urgency=medium
+
+  * fix: add hardening build flags to debian/rules
+  * i18n: Updates for project Deepin Desktop Environment (#331)
+  * i18n: Updates for project Deepin Desktop Environment (#328)
+
+ -- WuJiangYu <wujiangyu@uniontech.com>  Thu, 03 Jul 2025 19:59:38 +0800
+
 dde-tray-loader (2.0.2) unstable; urgency=medium
 
   * chore: remove unused Spanish translation files
