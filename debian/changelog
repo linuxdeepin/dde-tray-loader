@@ -1,3 +1,10 @@
+dde-tray-loader (2.0.4) unstable; urgency=medium
+
+  * i18n: Translate dde-dock.ts in fr (#335)
+  * feat: add Traditional Chinese translations for tray plugin
+
+ -- WuJiangYu <wujiangyu@uniontech.com>  Thu, 10 Jul 2025 20:15:53 +0800
+
 dde-tray-loader (2.0.3) unstable; urgency=medium
 
   * fix: add hardening build flags to debian/rules
