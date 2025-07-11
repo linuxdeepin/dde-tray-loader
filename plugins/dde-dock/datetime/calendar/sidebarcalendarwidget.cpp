@@ -6,6 +6,7 @@
 #include "constants.h"
 #include "units.h"
 #include "jumpcalendarbutton.h"
+#include "pagebutton.h"
 #include "regionFormat.h"
 
 #include <DPaletteHelper>
@@ -27,8 +28,8 @@ SidebarCalendarWidget::SidebarCalendarWidget(RegionFormat *regionFormat, QWidget
     , m_keyWidget(new QWidget(this))
     , m_keyLayout(new QGridLayout)
     , m_dateLabel(new QLabel(this))
-    , m_nextPage(new DToolButton(this))
-    , m_previousPage(new DToolButton(this))
+    , m_nextPage(new PageButton(this))
+    , m_previousPage(new PageButton(this))
     , m_firstday(Qt::Sunday)
     , m_dateTitleWidget(new DateTitleWidget(this))
     , m_weekLabel(new DLabel(this))
@@ -85,10 +86,6 @@ void SidebarCalendarWidget::initView()
     DFontSizeManager::instance()->bind(m_dateLabel, DFontSizeManager::T5, 65);
     m_nextPage->setIcon(DStyle().standardIcon(QStyle::SP_ArrowRight));
     m_previousPage->setIcon(DStyle().standardIcon(QStyle::SP_ArrowLeft));
-    m_nextPage->setIconSize(QSize(12, 12));
-    m_previousPage->setIconSize(QSize(12, 12));
-    m_nextPage->setFixedSize(30, 30);
-    m_previousPage->setFixedSize(30, 30);
 
     m_nextPage->setFocusPolicy(Qt::NoFocus);
     m_previousPage->setFocusPolicy(Qt::NoFocus);
@@ -154,8 +151,8 @@ void SidebarCalendarWidget::initView()
  */
 void SidebarCalendarWidget::initConnection()
 {
-    connect(m_nextPage, &QPushButton::clicked, this, &SidebarCalendarWidget::onNextPageClicked);
-    connect(m_previousPage, &QPushButton::clicked, this, &SidebarCalendarWidget::onPreviousPageClicked);
+    connect(m_nextPage, &PageButton::clicked, this, &SidebarCalendarWidget::onNextPageClicked);
+    connect(m_previousPage, &PageButton::clicked, this, &SidebarCalendarWidget::onPreviousPageClicked);
     connect(m_manager, &CalendarManager::sidebarFirstDayChanged, this, &SidebarCalendarWidget::onFirstDayChanged);
     // connect(m_manager, &CalendarManager::dateFormatChanged, this, &SidebarCalendarWidget::onDateFormatChanged);
     connect(m_regionFormat, &RegionFormat::shortDateFormatChanged, this, &SidebarCalendarWidget::onShortDateFormatChanged);
