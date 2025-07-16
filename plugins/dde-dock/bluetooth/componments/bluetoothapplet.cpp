@@ -340,15 +340,15 @@ void BluetoothApplet::updateSize()
     static const int settingHeight = DeviceItemHeight + 10 + 10;
     height += settingHeight;
 
-    // 如果比快捷面板允许的最小高度还小，则以快捷面板允许的最小高度为准
-    const int hMargins = m_mainLayout->contentsMargins().top() + m_mainLayout->contentsMargins().bottom();
-    height = qMax(m_minHeight - hMargins, height);
-
     // 最大的高度为显示8个设备的高度
     static const int maxHeight = (TitleHeight + TitleSpace) + (MaxDeviceCount * DeviceItemHeight) + ((MaxDeviceCount-1) * 10) + settingHeight;
 
     // 如果比允许的最大高度还大，则以最大高度为准
     height = qMin(maxHeight, height);
+
+    // 如果比快捷面板允许的最小高度还小，则以快捷面板允许的最小高度为准
+    const int hMargins = m_mainLayout->contentsMargins().top() + m_mainLayout->contentsMargins().bottom();
+    height = qMax(m_minHeight - hMargins, height);
 
     // 加上飞行模式提示控件高度
     m_airplaneModeWidget->isVisibleTo(this) ? m_airplaneModeWidget->setFixedHeight(height - settingHeight - adapterHeight) : m_airplaneModeWidget->setFixedHeight(0);
