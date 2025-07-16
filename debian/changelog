@@ -1,3 +1,10 @@
+dde-tray-loader (2.0.5) unstable; urgency=medium
+
+  * fix: adjust height calculation order in BluetoothApplet
+  * feat: implement custom PageButton for calendar navigation
+
+ -- WuJiangYu <wujiangyu@uniontech.com>  Wed, 16 Jul 2025 10:47:44 +0800
+
 dde-tray-loader (2.0.4) unstable; urgency=medium
 
   * i18n: Translate dde-dock.ts in fr (#335)
