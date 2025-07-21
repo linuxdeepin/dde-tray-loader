@@ -113,7 +113,9 @@ void BrightnessApplet::addMonitor(Monitor *monitor)
     auto container = new SliderContainer(this);
     container->setFixedHeight(SLIDER_ITEM_HEIGHT);
     container->addBackground();
-    container->setSlider(new Dtk::Widget::DSlider);
+    auto dSlider = new Dtk::Widget::DSlider();
+    dSlider->setMouseWheelEnabled(true);
+    container->setSlider(dSlider);
     container->setRange(BrightnessModel::ref().minBrightness(), BrightnessModel::ref().maxBrightness());
     container->setTip(monitor->name(), SliderContainer::LeftTip);
     container->setTip(QString::number(monitor->brightness() * 100) + "%", SliderContainer::RightTip);

@@ -15,7 +15,7 @@ DockSlider::DockSlider(QWidget *parent)
 {
     setPageStep(50);
     m_timer->setInterval(100);
-
+    setMouseWheelEnabled(true);
     connect(m_timer, &QTimer::timeout, this, &DockSlider::onTimeout);
 }
 
