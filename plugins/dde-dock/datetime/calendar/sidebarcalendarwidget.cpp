@@ -553,18 +553,6 @@ void SidebarCalendarKeyButton::paintEvent(QPaintEvent* event)
                                                -RECT_PENWIDTH,
                                                -RECT_PENWIDTH)
                                 , ROUND_CORNER, ROUND_CORNER);
-        //绘制选中框内圈白色高光
-        pen.setColor(Qt::white);
-        pen.setWidth(1);
-        painter.setPen(pen);
-        painter.drawRoundedRect(rectf.adjusted(RECT_PENWIDTH + RECT_MARGINS + 1,
-                                               RECT_PENWIDTH + RECT_MARGINS + 1,
-                                               -RECT_PENWIDTH - RECT_MARGINS - 1,
-                                               -RECT_PENWIDTH - RECT_MARGINS - 1)
-                                , ROUND_CORNER - RECT_PENWIDTH, ROUND_CORNER - RECT_PENWIDTH);
-
-        pen.setColor(pa.windowText().color());
-        painter.setPen(pen);
     } else if (!m_isThisMonth) {
         //设置正常显示状态下的字体颜色
         painter.setOpacity(0.3);
