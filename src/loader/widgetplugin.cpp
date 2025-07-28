@@ -55,8 +55,15 @@ private:
 
         const auto toolTipWindow = *iter;
         if (auto pluginPopup = Plugin::PluginPopup::getWithoutCreating(toolTipWindow)) {
-            pluginPopup->setX(toolTipWindow->transientParent()->x() + pos.x());
-            pluginPopup->setY(toolTipWindow->transientParent()->y() + pos.y());
+            auto parentWindow = toolTipWindow->transientParent();
+            if (parentWindow) {
+                // 通过EmbedPlugin获取正确的插件位置
+                if (auto plugin = Plugin::EmbedPlugin::getWithoutCreating(parentWindow)) {
+                    auto pluginPos = plugin->pluginPos();
+                    pluginPopup->setX(pluginPos.x() + pos.x());
+                    pluginPopup->setY(pluginPos.y() + pos.y());
+                } 
+            }
         }
     }
 };
