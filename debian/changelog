@@ -1,5 +1,16 @@
 dde-tray-loader (2.0.5) unstable; urgency=medium
 
+  * fix: correct popup position calculation in widget plugin
+  * fix: remove inner highlight from calendar selection box
+  * feat: add wheel event support for brightness and volume controls
+  * chore: bump version to 2.0.5
+  * fix: adjust height calculation order in BluetoothApplet
+  * feat: implement custom PageButton for calendar navigation
+
+ -- Wang Zichong <wangzichong@deepin.org>  Thu, 31 Jul 2025 20:25:24 +0800
+
+dde-tray-loader (2.0.5) unstable; urgency=medium
+
   * fix: adjust height calculation order in BluetoothApplet
   * feat: implement custom PageButton for calendar navigation
 
