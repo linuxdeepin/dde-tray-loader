@@ -15,7 +15,7 @@ OnboardPlugin::OnboardPlugin(QObject *parent)
     : QObject(parent)
     , m_pluginLoaded(false)
     , m_startupState(false)
-    , m_onboardItem(nullptr)
+    , m_onboardIcon(nullptr)
     , m_tipsLabel(new TipsWidget)
     , m_quickPanel(new QuickPanel)
 {
@@ -47,7 +47,7 @@ QWidget *OnboardPlugin::itemWidget(const QString &itemKey)
         return m_quickPanel.data();
     }
 
-    return m_onboardItem.data();
+    return m_onboardIcon.data();
 }
 
 QWidget *OnboardPlugin::itemTipsWidget(const QString &itemKey)
@@ -151,7 +151,7 @@ void OnboardPlugin::displayModeChanged(const Dock::DisplayMode displayMode)
     Q_UNUSED(displayMode);
 
     if (!pluginIsDisable()) {
-        m_onboardItem->update();
+        m_onboardIcon->update();
     }
 }
 
@@ -180,7 +180,9 @@ void OnboardPlugin::loadPlugin()
 
     m_pluginLoaded = true;
 
-    m_onboardItem.reset(new OnboardItem);
+    m_onboardIcon.reset(new CommonIconButton);
+    m_onboardIcon->setFixedSize(Dock::DOCK_PLUGIN_ITEM_FIXED_SIZE);
+    m_onboardIcon->setIcon(":/icons/icon/keyboard-symbolic.svg");
 
     m_proxyInter->itemAdded(this, pluginName());
     displayModeChanged(displayMode());

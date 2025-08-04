@@ -6,7 +6,6 @@
 #define ONBOARDPLUGIN_H
 
 #include "pluginsiteminterface_v2.h"
-#include "onboarditem.h"
 #include "quickpanel.h"
 #include "tipswidget.h"
 
@@ -52,7 +51,7 @@ private:
     bool m_pluginLoaded;
     bool m_startupState;
 
-    QScopedPointer<OnboardItem> m_onboardItem;
+    QScopedPointer<CommonIconButton> m_onboardIcon;
     QScopedPointer<Dock::TipsWidget> m_tipsLabel;
     QScopedPointer<QuickPanel> m_quickPanel;
 };
