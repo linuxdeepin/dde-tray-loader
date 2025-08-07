@@ -82,7 +82,7 @@ void PowerStatusWidget::refreshIcon()
                   .arg(percentageStr, plugged ? "plugged-symbolic" : "symbolic");
     }
 
-    m_iconWidget->setIcon(iconStr, ":/batteryicons/resources/batteryicons/" + iconStr + ".svg");
+    m_iconWidget->setIcon(iconStr, ":/batteryicons/batteryicons/" + iconStr + ".svg");
     m_applet->refreshBatteryIcon(iconStr);
 }
 
