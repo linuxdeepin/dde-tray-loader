@@ -232,13 +232,29 @@ void PowerApplet::onHighPerformanceSupportChanged(const bool isSupport)
 
 void PowerApplet::refreshBatteryIcon(const QString &icon)
 {
-    QString path = ":/batteryicons/batteryicons/" + icon;
+    QString iconName = icon;
+    QString fallbackPath = ":/batteryicons/batteryicons/" + icon + ".svg";
+    
     if (DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType) {
-        path.append("-dark");
+        iconName.append("-dark");
+        fallbackPath = ":/batteryicons/batteryicons/" + icon + "-dark.svg";
     }
-    path += ".svg";
-
-    QSvgRenderer renderer(path);
+    
+    // 首先尝试从主题加载图标
+    QIcon themeIcon = QIcon::fromTheme(iconName);
+    if (!themeIcon.isNull()) {
+        // 如果主题图标存在，使用主题图标
+        QPixmap pixmap = themeIcon.pixmap(m_batteryIcon->size());
+        m_batteryIcon->setPixmap(pixmap);
+        return;
+    }
+    
+    // fallback使用资源文件
+    QSvgRenderer renderer(fallbackPath);
+    if (!renderer.isValid()) {
+        QString normalPath = ":/batteryicons/batteryicons/" + icon + ".svg";
+        renderer.load(normalPath);
+    }
 
     QSize size = m_batteryIcon->size();
     QImage image(QSize(size * devicePixelRatioF()), QImage::Format_ARGB32_Premultiplied);
