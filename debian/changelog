@@ -1,3 +1,12 @@
+dde-tray-loader (2.0.7) unstable; urgency=medium
+
+  * feat: improve battery icon loading strategy
+  * i18n: Updates for project Deepin Desktop Environment (#347)
+  * fix: set page step for volume slider
+  * fix: improve onboard plugin icon handling
+
+ -- YeShanShan <yeshanshan@uniontech.com>  Thu, 07 Aug 2025 20:01:00 +0800
+
 dde-tray-loader (2.0.6) unstable; urgency=medium
 
   * fix: correct popup position calculation in widget plugin
