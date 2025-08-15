@@ -22,7 +22,7 @@ DWIDGET_USE_NAMESPACE
 BrightnessApplet::BrightnessApplet(QWidget* parent)
     : QWidget(parent)
     , m_titleWidget(new QWidget(this))
-    , m_scrollArea(new RoundScrollArea(this))
+    , m_scrollArea(new QScrollArea(this))
     , m_monitorsLayout(nullptr)
     , m_jumpSettingButton(new JumpSettingButton(this))
     , m_minHeight(-1)
@@ -58,7 +58,6 @@ void BrightnessApplet::initUI()
     widget->setAttribute(Qt::WA_TranslucentBackground);
     widget->setLayout(m_monitorsLayout);
     m_scrollArea->setWidget(widget);
-    m_scrollArea->setRadius(0);
     m_scrollArea->setWidgetResizable(true);
     m_scrollArea->setFrameStyle(QFrame::NoFrame);
     m_scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

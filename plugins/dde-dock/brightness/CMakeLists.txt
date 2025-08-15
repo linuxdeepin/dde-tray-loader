@@ -14,8 +14,6 @@ file(GLOB_RECURSE SRCS
     "../widgets/*.cpp"
     "../common/*.h"
     "../common/*.cpp"
-    "../util/roundscrollarea.h"
-    "../util/roundscrollarea.cpp"
     "../dbus/types/*.h"
     "../dbus/types/*.cpp"
 )
