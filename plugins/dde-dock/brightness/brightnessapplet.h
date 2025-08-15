@@ -8,7 +8,6 @@
 #include "jumpsettingbutton.h"
 #include "monitor.h"
 #include "slidercontainer.h"
-#include "roundscrollarea.h"
 
 #include <QWidget>
 #include <QScrollArea>
@@ -39,7 +38,7 @@ private:
 
 private:
     QWidget *m_titleWidget;
-    RoundScrollArea *m_scrollArea;
+    QScrollArea *m_scrollArea;
     QVBoxLayout *m_monitorsLayout;
     JumpSettingButton *m_jumpSettingButton;
     int m_minHeight;
