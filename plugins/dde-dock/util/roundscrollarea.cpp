@@ -16,9 +16,6 @@ RoundScrollArea::RoundScrollArea(QWidget *parent)
     : QScrollArea(parent)
     , m_radius(18)
 {
-    DPalette pa = DPaletteHelper::instance()->palette(this);
-    pa.setBrush(DPalette::Window, Qt::transparent);
-    DPaletteHelper::instance()->setPalette(this, pa);
 }
 
 void RoundScrollArea::setRadius(int radius)
@@ -35,5 +32,5 @@ void RoundScrollArea::paintEvent(QPaintEvent *e)
     QPainterPath path;
     path.addRoundedRect(viewport()->rect(), m_radius, m_radius);
     painter.setClipPath(path);
-    painter.fillPath(path, palette().window());
+    painter.fillPath(path, Qt::transparent);
 }
