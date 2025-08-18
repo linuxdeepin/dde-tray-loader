@@ -201,7 +201,6 @@ void XembedProtocolHandler::initX11resources()
     values[0] = screen->black_pixel; // draw a solid background so the embedded icon doesn't get garbage in it
     values[1] = true; // bypass wM
     values[2] = XCB_EVENT_MASK_STRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT | XCB_EVENT_MASK_LEAVE_WINDOW | XCB_EVENT_MASK_ENTER_WINDOW;
-    const auto ratio = qApp->devicePixelRatio();
     xcb_create_window(c,
                       XCB_COPY_FROM_PARENT,
                       m_containerWid,

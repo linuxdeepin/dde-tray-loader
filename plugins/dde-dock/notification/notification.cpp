@@ -182,6 +182,7 @@ void Notification::setNotificationCount(uint count)
 
 void Notification::onNotificationStateChanged(qint64 id, int processedType)
 {
+    Q_UNUSED(id)
     static const int Processed = 2;
     if (processedType == Processed) {
         if (!m_hasNewNotification && !m_notificationCenterVisible) {

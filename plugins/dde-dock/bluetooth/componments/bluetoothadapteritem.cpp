@@ -24,6 +24,7 @@ BluetoothDeviceItem::BluetoothDeviceItem(QStyle *style, const Device *device, Pl
     : m_style(style)
     , m_device(device)
 {
+    Q_UNUSED(parent)
     m_standardItem = new PluginStandardItem();
 
     m_standardItem->updateIcon(m_device->deviceType().isEmpty() ? QIcon::fromTheme("bluetooth_other")

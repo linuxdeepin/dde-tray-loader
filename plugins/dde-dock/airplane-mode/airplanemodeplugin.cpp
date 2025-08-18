@@ -185,6 +185,7 @@ void AirplaneModePlugin::refreshAirplaneEnableState()
 
 void AirplaneModePlugin::onAirplaneEnableChanged(bool enable)
 {
+    Q_UNUSED(enable)
     if (!m_proxyInter)
         return;
 
@@ -266,6 +267,8 @@ bool AirplaneModePlugin::getAirplaneDconfig() const
 
 void AirplaneModePlugin::onAirplaneModePropertiesChanged(const QString &interfaceName, const QVariantMap &changedProperties, const QStringList &invalidatedProperties)
 {
+    Q_UNUSED(interfaceName)
+    Q_UNUSED(invalidatedProperties)
     if (changedProperties.contains("HasAirplaneMode")) {
         updatePluginVisible();
     }

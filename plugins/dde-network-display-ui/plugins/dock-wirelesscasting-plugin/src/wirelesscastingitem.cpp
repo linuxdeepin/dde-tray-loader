@@ -67,6 +67,7 @@ WirelessCastingItem::WirelessCastingItem(QWidget *parent)
     connect(m_displayMode, &DisplayModel::primaryScreenChanged, this, syncState);
     connect(m_displayMode, &DisplayModel::currentModeChanged, this, syncState);
     connect(m_model, &WirelessCastingModel::stateChanged, this, [=](WirelessCastingModel::CastingState state) {
+        Q_UNUSED(state)
         syncState();
     });
     connect(m_model, &WirelessCastingModel::connectStateChanged, this, syncState);

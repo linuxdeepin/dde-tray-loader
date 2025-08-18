@@ -61,8 +61,8 @@ private:
         Q_EMIT m_target->recvMouseEvent(m_accepedEvent);
         m_accepedEvent = QEvent::None;
     }
-    QTimer *m_timer = nullptr;
     PluginItem *m_target = nullptr;
+    QTimer *m_timer = nullptr;
     QEvent::Type m_accepedEvent = {QEvent::None};
 };
 

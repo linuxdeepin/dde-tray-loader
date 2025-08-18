@@ -16,8 +16,8 @@ const static QString DockQuickPlugins = "Dock_Quick_Plugins";
 
 PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString &itemKey, QWidget *parent)
     : QWidget(parent)
-    , m_pluginsItemInterface(pluginItemInterface)
     , m_itemKey(itemKey)
+    , m_pluginsItemInterface(pluginItemInterface)
     , m_menu(new DockContextMenu(this))
     , m_tooltipTimer(new QTimer(this))
     , m_tipsWidget(nullptr)
@@ -194,6 +194,7 @@ void PluginItem::moveEvent(QMoveEvent *e)
 
 void PluginItem::leaveEvent(QEvent *event)
 {
+    Q_UNUSED(event)
     closeToolTip();
 }
 

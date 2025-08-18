@@ -120,6 +120,7 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     connect(m_sniInter, &StatusNotifierItem::NewStatus, this, &SniTrayProtocolHandler::statusChanged);
     connect(m_sniInter, &StatusNotifierItem::NewToolTip, this, &SniTrayProtocolHandler::tooltiChanged);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [this](DGuiApplicationHelper::ColorType themeType) {
+        Q_UNUSED(themeType)
         m_dbusMenuImporter->updateMenu(true);
     });
 }

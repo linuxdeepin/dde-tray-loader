@@ -77,27 +77,32 @@ QWidget *MediaPlugin::itemWidget(const QString &itemKey)
 
 QWidget *MediaPlugin::itemTipsWidget(const QString &itemKey)
 {
+    Q_UNUSED(itemKey)
     return nullptr;
 }
 
 QWidget *MediaPlugin::itemPopupApplet(const QString &itemKey)
 {
+    Q_UNUSED(itemKey)
     return nullptr;
 }
 
 void MediaPlugin::refreshIcon(const QString &itemKey)
 {
-
+    Q_UNUSED(itemKey)
 }
 
 const QString MediaPlugin::itemContextMenu(const QString &itemKey)
 {
+    Q_UNUSED(itemKey)
     return QString();
 }
 
 void MediaPlugin::invokedMenuItem(const QString &itemKey, const QString &menuId, const bool checked)
 {
-
+    Q_UNUSED(itemKey)
+    Q_UNUSED(menuId)
+    Q_UNUSED(checked)
 }
 
 int MediaPlugin::itemSortKey(const QString &itemKey)

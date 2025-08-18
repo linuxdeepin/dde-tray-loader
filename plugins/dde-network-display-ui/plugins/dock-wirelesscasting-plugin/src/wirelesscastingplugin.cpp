@@ -67,11 +67,13 @@ QWidget *WirelessCastingPlugin::itemWidget(const QString &itemKey)
 
 QWidget *WirelessCastingPlugin::itemTipsWidget(const QString &itemKey)
 {
+    Q_UNUSED(itemKey)
     return m_wirelessCastingItem->tips();
 }
 
 QWidget *WirelessCastingPlugin::itemPopupApplet(const QString &itemKey)
 {
+    Q_UNUSED(itemKey)
     return m_wirelessCastingItem->appletWidget();
 }
 
@@ -104,7 +106,7 @@ void WirelessCastingPlugin::setSortKey(const QString &itemKey, const int order)
     m_proxyInter->saveValue(this, key, order);
 }
 
-void WirelessCastingPlugin::refreshIcon(const QString &itemKey) { }
+void WirelessCastingPlugin::refreshIcon(const QString &itemKey) { Q_UNUSED(itemKey) }
 
 void WirelessCastingPlugin::pluginSettingsChanged() { }
 

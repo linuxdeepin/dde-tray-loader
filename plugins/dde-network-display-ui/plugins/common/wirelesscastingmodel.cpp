@@ -139,6 +139,7 @@ void WirelessCastingModel::updateSinkList(const QVariant &sinkList)
 
 void WirelessCastingModel::updateWarningInfo(const QVariant &var)
 {
+    Q_UNUSED(var)
     checkState();
 }
 
@@ -239,6 +240,7 @@ void WirelessCastingModel::prepareDbus()
         checkWirelessDev();
     });
     connect(this, &WirelessCastingModel::AllDevicesChanged, this, [=](const QList<QDBusObjectPath> &devList) {
+        Q_UNUSED(devList)
         checkWirelessDev();
     });
     connect(this, &WirelessCastingModel::WirelessEnabledChanged, this, [=](bool) {
@@ -248,6 +250,7 @@ void WirelessCastingModel::prepareDbus()
 
 void WirelessCastingModel::onDBusNameOwnerChanged(const QString &name, const QString &oldOwner, const QString &newOwner)
 {
+    Q_UNUSED(oldOwner)
     if ("com.deepin.Cooperation.NetworkDisplay" == name && !newOwner.isEmpty()) {
         resetNetworkDisplayData();
         checkState();
@@ -303,6 +306,7 @@ void WirelessCastingModel::handleMonitorStateChanged(const Monitor::NdSinkState 
 
 void WirelessCastingModel::timerEvent(QTimerEvent *event)
 {
+    Q_UNUSED(event)
     refresh();
 }
 
