@@ -88,7 +88,7 @@ public:
         }
     }
 
-    const bool isExpand() { return m_isExpand; }
+    bool isExpand() { return m_isExpand; }
 
 Q_SIGNALS:
     void expandStateChanged(bool state);
@@ -97,6 +97,7 @@ Q_SIGNALS:
 protected:
     void paintEvent(QPaintEvent *paint) override
     {
+        Q_UNUSED(paint)
         QPainter painter(this);
         painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
         // 绘制背景

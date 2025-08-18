@@ -16,6 +16,7 @@
 namespace tray {
 TrayPlugin::TrayPlugin(QObject *parent)
 {
+    Q_UNUSED(parent)
     qRegisterMetaType<TrayList>("TrayList");
     qDBusRegisterMetaType<TrayList>();
 

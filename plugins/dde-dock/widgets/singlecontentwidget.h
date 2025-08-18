@@ -23,6 +23,7 @@ public:
     explicit SingleContentWidget(QWidget* parent = nullptr)
         : m_mainLayout(new QHBoxLayout(this))
     {
+        Q_UNUSED(parent)
         m_mainLayout->setContentsMargins(0, 0, 0, 0);
         m_mainLayout->setSpacing(0);
     }

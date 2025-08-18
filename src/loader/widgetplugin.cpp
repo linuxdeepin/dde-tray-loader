@@ -34,6 +34,7 @@ public:
 public:
     bool eventFilter(QObject *watched, QEvent *event)
     {
+        Q_UNUSED(watched)
         if (event->type() == QEvent::ToolTip) {
             const auto pos = static_cast<QHelpEvent*>(event)->globalPos();
             QMetaObject::invokeMethod(this, [this, pos] () {
@@ -179,6 +180,7 @@ void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QStri
 
 void WidgetPlugin::itemUpdate(PluginsItemInterface * const itemInter, const QString &itemKey)
 {
+    Q_UNUSED(itemInter)
     if(m_pluginItem) m_pluginItem->update();
 
     auto widget = m_pluginsItemInterface->itemWidget(itemKey);
@@ -197,6 +199,7 @@ void WidgetPlugin::itemUpdate(PluginsItemInterface * const itemInter, const QStr
 
 void WidgetPlugin::itemRemoved(PluginsItemInterface * const itemInter, const QString &itemKey)
 {
+    Q_UNUSED(itemInter)
     auto widget = m_pluginsItemInterface->itemWidget(itemKey);
     if(widget && widget->window() && widget->window()->windowHandle()) {
         widget->window()->windowHandle()->hide();
@@ -216,10 +219,15 @@ void WidgetPlugin::itemRemoved(PluginsItemInterface * const itemInter, const QSt
 
 void WidgetPlugin::requestWindowAutoHide(PluginsItemInterface * const itemInter, const QString &itemKey, const bool autoHide)
 {
+    Q_UNUSED(itemInter)
+    Q_UNUSED(itemKey)
+    Q_UNUSED(autoHide)
 }
 
 void WidgetPlugin::requestRefreshWindowVisible(PluginsItemInterface * const itemInter, const QString &itemKey)
 {
+    Q_UNUSED(itemInter)
+    Q_UNUSED(itemKey)
 }
 
 void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInter, const QString &itemKey, const bool visible)
@@ -274,15 +282,22 @@ void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInte
 
 void WidgetPlugin::saveValue(PluginsItemInterface * const itemInter, const QString &key, const QVariant &value)
 {
+    Q_UNUSED(itemInter)
+    Q_UNUSED(key)
+    Q_UNUSED(value)
 }
 
 const QVariant WidgetPlugin::getValue(PluginsItemInterface *const itemInter, const QString &key, const QVariant& fallback)
 {
+    Q_UNUSED(itemInter)
+    Q_UNUSED(key)
     return fallback;
 }
 
 void WidgetPlugin::removeValue(PluginsItemInterface *const itemInter, const QStringList &keyList)
 {
+    Q_UNUSED(itemInter)
+    Q_UNUSED(keyList)
 }
 
 void WidgetPlugin::updateDockContainerState(PluginsItemInterface *itemInter, bool onDock)

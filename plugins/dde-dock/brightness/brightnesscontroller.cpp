@@ -38,6 +38,7 @@ void BrightnessController::init()
     connect(&m_displayInter, &DisplayInter::BrightnessChanged, this, &BrightnessController::onMonitorsBrightnessChanged);
     connect(&m_displayInter, &DisplayInter::BrightnessChanged, &BrightnessModel::ref(), &BrightnessModel::setBrightnessMap);
     connect(&m_displayInter, &DisplayInter::DisplayModeChanged, this, [this](uchar value) {
+        Q_UNUSED(value)
         // 显示模式以m_displayInter.GetRealDisplayMode()为准
         BrightnessModel::ref().setDisplayMode(m_displayInter.GetRealDisplayMode());
     });

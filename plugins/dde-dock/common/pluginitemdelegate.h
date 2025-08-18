@@ -42,8 +42,8 @@ class PluginItemDelegate : public QStyledItemDelegate
 public:
     explicit PluginItemDelegate(QAbstractItemView* parent = nullptr);
 
-    inline const int itemHeight() const { return m_widgetHeight; }
-    inline const int itemSpacing() const { return m_bottomSpacing; }
+    inline int itemHeight() const { return m_widgetHeight; }
+    inline int itemSpacing() const { return m_bottomSpacing; }
 
     inline void setItemHeight(int height) { m_widgetHeight = height; }
     inline void setItemSpacing(int spacing) { m_bottomSpacing = spacing; }

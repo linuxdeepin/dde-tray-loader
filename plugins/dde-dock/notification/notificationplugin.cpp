@@ -104,6 +104,7 @@ const QString NotificationPlugin::itemCommand(const QString &itemKey)
 
 const QString NotificationPlugin::itemContextMenu(const QString &itemKey)
 {
+    Q_UNUSED(itemKey)
     QList<QVariant> items;
     QMap<QString, QVariant> toggleDnd;
     toggleDnd["itemId"] = TOGGLE_DND;
@@ -158,6 +159,7 @@ void NotificationPlugin::pluginSettingsChanged()
 
 QIcon NotificationPlugin::icon(Dock::IconType dockPart, Dock::ThemeType themeType) const
 {
+    Q_UNUSED(dockPart)
     Q_UNUSED(themeType)
     /*if (dockPart == DockPart::DCCSetting) {*/
         if (themeType == Dock::ThemeType_Dark) {

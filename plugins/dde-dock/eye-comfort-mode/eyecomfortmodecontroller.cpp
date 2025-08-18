@@ -29,6 +29,8 @@ EyeComfortModeController::EyeComfortModeController()
 
 void EyeComfortModeController::onPropertiesChanged(const QString &interfaceName, const QVariantMap &changedProperties, const QStringList &invalidatedProperties)
 {
+    Q_UNUSED(interfaceName)
+    Q_UNUSED(invalidatedProperties)
     if (changedProperties.contains(COLOR_TEMPERATURE_ENABLED)) {
         m_eyeComfortModeEnabled = changedProperties.value(COLOR_TEMPERATURE_ENABLED, false).toBool();
         Q_EMIT eyeComfortModeChanged(m_eyeComfortModeEnabled);
@@ -60,6 +62,7 @@ QString EyeComfortModeController::globalTheme() const
 
 void EyeComfortModeController::enable(bool enable)
 {
+    Q_UNUSED(enable)
     m_displayInter->setProperty(COLOR_TEMPERATURE_ENABLED, !isEyeComfortModeEnabled());
 }
 

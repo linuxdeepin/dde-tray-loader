@@ -56,9 +56,9 @@ class MonitorItemDelegate : public QStyledItemDelegate
 public:
     explicit MonitorItemDelegate(QAbstractItemView* parent = nullptr);
 
-    inline const int expandItemHeight() const { return m_expandHeight; }
-    inline const int standardItemHeight() const { return m_standardHeight; }
-    inline const int itemSpacing() const { return m_bottomSpacing; }
+    inline int expandItemHeight() const { return m_expandHeight; }
+    inline int standardItemHeight() const { return m_standardHeight; }
+    inline int itemSpacing() const { return m_bottomSpacing; }
 
     ItemSpacing getItemSpacing(const QModelIndex &index) const;
 
@@ -231,6 +231,7 @@ public:
 protected:
     void paintEvent(QPaintEvent *event) override
     {
+        Q_UNUSED(event)
         QPainter painter(this);
 
         QColor textColor = DPaletteHelper::instance()->palette(this).brush(QPalette::BrightText).color();
@@ -273,6 +274,7 @@ protected:
 
     void paintEvent(QPaintEvent *event) override
     {
+        Q_UNUSED(event)
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing, true);
 

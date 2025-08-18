@@ -45,6 +45,7 @@ void DisplayModel::setDisplayMode(const uchar &mode)
 
 void DisplayModel::setMonitors(const QList<QDBusObjectPath> &monitors)
 {
+    Q_UNUSED(monitors)
     QDBusPendingCall call = m_displayInter->ListOutputNames();
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher] {

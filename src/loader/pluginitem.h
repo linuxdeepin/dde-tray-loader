@@ -68,11 +68,11 @@ private:
 
 protected:
     QString m_itemKey;
+    PluginsItemInterface *m_pluginsItemInterface;
     QMenu *m_menu;
     QScopedPointer<DockDBusProxy> m_dbusProxy;
 
 private:
-    PluginsItemInterface *m_pluginsItemInterface;
     QTimer* m_tooltipTimer;
     QPointer<QWidget> m_tipsWidget;
 

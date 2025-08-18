@@ -32,6 +32,7 @@ static QString pluginDisplayName;
 
 void sig_crash(int signum)
 {
+    Q_UNUSED(signum)
     DDBusSender()
         .service("org.deepin.dde.Notification1")
         .path("/org/deepin/dde/Notification1")

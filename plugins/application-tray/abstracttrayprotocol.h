@@ -42,7 +42,7 @@ class AbstractTrayProtocolHandler : public QObject
     Q_PROPERTY(bool enabled READ enabled NOTIFY enabledChanged FINAL)
 
 public:
-    AbstractTrayProtocolHandler(QObject *parent = nullptr) {};
+    AbstractTrayProtocolHandler(QObject *parent = nullptr) { Q_UNUSED(parent) };
     ~AbstractTrayProtocolHandler() {};
 
     virtual uint32_t windowId() const = 0;
@@ -64,7 +64,7 @@ public:
     QWidget *window() const {return m_window;}
 
 protected:
-    virtual bool eventFilter(QObject *watched, QEvent *event) {return false;};
+    virtual bool eventFilter(QObject *watched, QEvent *event) { Q_UNUSED(watched) Q_UNUSED(event) return false; };
 
 Q_SIGNALS:
     void titleChanged();

@@ -32,7 +32,7 @@ public:
     inline bool isPrimary() const { return m_primary == m_name; }
     inline double brightness() const { return m_brightness; }
     inline const QString name() const { return m_name; }
-    inline const bool canBrightness() const { return m_canBrightness; }
+    inline bool canBrightness() const { return m_canBrightness; }
     inline const QString path() const { return m_path; }
     inline bool isEnabled() const { return m_enable; }
     inline bool isBuildin() const { return m_buildin; };

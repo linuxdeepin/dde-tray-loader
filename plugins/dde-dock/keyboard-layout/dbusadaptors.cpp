@@ -30,9 +30,9 @@ DBusAdaptors::DBusAdaptors(QObject *parent)
       m_keyboard(new Keyboard("org.deepin.dde.InputDevices1",
                               "/org/deepin/dde/InputDevice1/Keyboard",
                               QDBusConnection::sessionBus(), this)),
-    m_menu(new QMenu()),
     m_fcitxRunning(false),
-    m_inputmethod(nullptr)
+    m_inputmethod(nullptr),
+    m_menu(new QMenu())
 {
     m_keyboard->setSync(false);
 
@@ -275,6 +275,7 @@ void DBusAdaptors::onFcitxDisconnected(const QString &service)
 
 void DBusAdaptors::onPropertyChanged(QString name, QVariantMap map, QStringList list)
 {
+    Q_UNUSED(map)
     // fcitx uniquename start with fcitx-keyboard- which contains keyboard layout.
     QString fcitxUniqueName("fcitx-keyboard-");
     qCDebug(KEYBOARD_LAYOUT) << QString("Properties of interface %1 changed").arg(name);

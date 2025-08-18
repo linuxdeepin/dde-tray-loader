@@ -67,6 +67,7 @@ void SoundQuickPanel::initConnection()
         m_sliderContainer->updateSliderValue(soundVolume());
     });
     connect(&SoundModel::ref(), &SoundModel::volumeChanged, this, [this](int value) {
+        Q_UNUSED(value)
         m_sliderContainer->updateSliderValue(soundVolume());
         refreshWidget();
     });

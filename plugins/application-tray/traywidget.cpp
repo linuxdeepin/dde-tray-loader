@@ -46,6 +46,7 @@ TrayWidget::~TrayWidget()
 
 void TrayWidget::showEvent(QShowEvent* event)
 {
+    Q_UNUSED(event)
     m_handler->setWindow(window());
     window()->installEventFilter(m_handler);
     window()->setMouseTracking(true);

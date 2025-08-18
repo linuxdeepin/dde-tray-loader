@@ -297,6 +297,8 @@ void WirelessCastingApplet::onStateChanged(WirelessCastingModel::CastingState st
 
 void WirelessCastingApplet::onAddMonitor(const QString &path, Monitor *monitor)
 {
+    Q_UNUSED(path)
+    Q_UNUSED(monitor)
 #ifdef WIRELESS_CASTING_ENABLED
     MonitorItem *item = new MonitorItem(monitor);
     m_monitorsModel->appendRow(item);
@@ -307,6 +309,7 @@ void WirelessCastingApplet::onAddMonitor(const QString &path, Monitor *monitor)
 
 void WirelessCastingApplet::onRemoveMonitor(const QString &path)
 {
+    Q_UNUSED(path)
 #ifdef WIRELESS_CASTING_ENABLED
     m_monitorsModel->removeRow(m_monitorsModel->indexFromItem(m_monitors[path].item).row());
     if (m_lastConnMonitor == m_monitors.value(path).monitor)
