@@ -184,7 +184,7 @@
     </message>
     <message>
         <source>Time settings</source>
-        <translation>時間設定</translation>
+        <translation>時刻の設定</translation>
     </message>
     <message>
         <source>Open the calendar</source>
