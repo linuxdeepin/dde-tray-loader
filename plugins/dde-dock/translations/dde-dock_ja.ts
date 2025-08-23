@@ -134,7 +134,7 @@
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation>日曜日</translation>
+        <translation>日</translation>
     </message>
     <message>
         <source>Mon</source>
@@ -146,7 +146,7 @@
     </message>
     <message>
         <source>Wed</source>
-        <translation>水曜日</translation>
+        <translation>水</translation>
     </message>
     <message>
         <source>Thu</source>
