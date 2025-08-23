@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Bluetooth接続を利用するには、 [機内モード](#) を無効化してください</translation>
     </message>
 </context>
 <context>
