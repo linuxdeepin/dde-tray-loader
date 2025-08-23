@@ -158,7 +158,7 @@
     </message>
     <message>
         <source>Sat</source>
-        <translation>土曜日</translation>
+        <translation>土</translation>
     </message>
 </context>
 <context>
