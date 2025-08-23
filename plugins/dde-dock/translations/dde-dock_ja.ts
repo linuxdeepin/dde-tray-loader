@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Bluetooth接続を利用するには、 [機内モード](#) を無効化してください</translation>
     </message>
 </context>
 <context>
@@ -134,7 +134,7 @@
     <name>CWeekWidget</name>
     <message>
         <source>Sun</source>
-        <translation>日曜日</translation>
+        <translation>日</translation>
     </message>
     <message>
         <source>Mon</source>
@@ -146,7 +146,7 @@
     </message>
     <message>
         <source>Wed</source>
-        <translation>水曜日</translation>
+        <translation>水</translation>
     </message>
     <message>
         <source>Thu</source>
@@ -158,7 +158,7 @@
     </message>
     <message>
         <source>Sat</source>
-        <translation>土曜日</translation>
+        <translation>土</translation>
     </message>
 </context>
 <context>
@@ -184,7 +184,7 @@
     </message>
     <message>
         <source>Time settings</source>
-        <translation>時間設定</translation>
+        <translation>時刻の設定</translation>
     </message>
     <message>
         <source>Open the calendar</source>
