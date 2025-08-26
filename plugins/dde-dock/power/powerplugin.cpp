@@ -278,8 +278,7 @@ void PowerPlugin::refreshTipsData()
     const int batteryState = m_systemPowerInter->batteryStatus();
 
     if (m_batteryStateChangedTimer->isActive()) {
-        if ((batteryState == BatteryState::CHARGING && m_showTimeToFull)
-        || (batteryState == BatteryState::DIS_CHARGING)) {
+        if (m_showTimeToFull && (batteryState == BatteryState::CHARGING || batteryState == BatteryState::DIS_CHARGING)) {
             // 计算期间
             QString tips = tr("Capacity %1 ...").arg(value);
             m_tipsLabel->setText(tips);
