@@ -88,8 +88,12 @@ void DatetimePlugin::loadPlugin()
     m_refershTimer = new QTimer(this);
     m_dateTipsLabel->setObjectName("datetime");
 
-    m_refershTimer->setInterval(1000);
-    m_refershTimer->start();
+    // 整秒启动定时器，并增加更新频率，避免秒显示与控制中心显示不一致（控制中心500ms更新一次）
+    m_refershTimer->setInterval(500);
+    QTimer::singleShot(1000 - QTime::currentTime().msec(), [this]() {
+        updateCurrentTimeString();
+        m_refershTimer->start();
+    });
 
     m_centralWidget.reset(new DatetimeWidget(m_RegionFormatModel));
 
