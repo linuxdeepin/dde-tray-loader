@@ -24,7 +24,12 @@ void TipsWidget::setText(const QString &text)
     QTextDocument document;
     document.setHtml(text);
     // 同时去掉两边的空白信息，例如qBittorrent的提示
-    m_text = document.toPlainText().simplified();
+    QString newText = document.toPlainText().simplified();
+    if (m_text == newText) {
+        return;
+    }
+
+    m_text = newText;
 
 #if 0 //测试时可以使用下面的语句
     // FIXME:藏语字体绘制会有异常，设置高度时需要使用fontMetrics().boundingRect()去获取整体的边界矩形的高度，
@@ -33,6 +38,9 @@ void TipsWidget::setText(const QString &text)
 #endif
 
     setFixedSize(fontMetrics().horizontalAdvance(m_text), fontMetrics().boundingRect(m_text).height());
+    if (parentWidget()) {
+        parentWidget()->adjustSize();
+    }
 
     update();
 
@@ -47,6 +55,9 @@ void TipsWidget::setText(const QString &text)
 void TipsWidget::setTextList(const QStringList &textList)
 {
     m_type = TipsWidget::MultiLine;
+    if (textList == m_textList) {
+        return;
+    }
     m_textList = textList;
 
     int width = 0;
@@ -57,6 +68,9 @@ void TipsWidget::setTextList(const QStringList &textList)
     }
 
     setFixedSize(width, height);
+    if (parentWidget()) {
+        parentWidget()->adjustSize();
+    }
 
     update();
 }
