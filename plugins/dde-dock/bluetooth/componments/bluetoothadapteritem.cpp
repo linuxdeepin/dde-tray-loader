@@ -360,6 +360,7 @@ void BluetoothAdapterItem::initUi()
     m_myDeviceListView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     QVBoxLayout *myDeviceLayout = new QVBoxLayout(m_myDeviceWidget);
     myDeviceLayout->setSpacing(0);
+    myDeviceLayout->setContentsMargins(0, 0, 0, 0);
     m_myDeviceLabel->setContentsMargins(10, 0, 0, 2);
     DFontSizeManager::instance()->bind(m_myDeviceLabel, DFontSizeManager::T10);
     myDeviceLayout->addWidget(m_myDeviceLabel);
@@ -381,7 +382,7 @@ void BluetoothAdapterItem::initUi()
 
     mainLayout->addLayout(m_adapterLayout);
     mainLayout->addWidget(m_myDeviceWidget);
-    mainLayout->addSpacing(5);
+    mainLayout->addSpacing(4);
     mainLayout->addWidget(m_otherDeviceListView);
     mainLayout->addStretch();
 
