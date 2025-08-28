@@ -1,3 +1,20 @@
+dde-tray-loader (2.0.9) unstable; urgency=medium
+
+  * fix: plugin tooltip window size can adapt to content changes
+  * style: adjust bluetooth adapter item layout margins
+  * fix: Avoid datetime plugin seconds displayed not same with dcc's
+    datetime
+  * [skip CI] Translate trayplugin-loader.ts in zh_TW
+  * [skip CI] Translate trayplugin-loader.ts in zh_CN
+  * [skip CI] Translate trayplugin-loader.ts in zh_HK
+  * [skip CI] Translate dde-dock.ts in ja
+  * [skip CI] Translate dde-dock.ts in ja
+  * [skip CI] Translate dde-dock.ts in ja
+  * [skip CI] Translate dde-dock.ts in ja
+  * fix: power applet tips need not display when dconfig item was closed
+
+ -- wujiangyu <wujiangyu@uniontech.com>  Thu, 28 Aug 2025 17:52:46 +0800
+
 dde-tray-loader (2.0.8) unstable; urgency=medium
 
   * fix: fix building warnings.
