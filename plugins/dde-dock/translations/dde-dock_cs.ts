@@ -315,7 +315,7 @@
     </message>
     <message>
         <source>Theme</source>
-        <translation type="unfinished"/>
+        <translation>Motiv</translation>
     </message>
     <message>
         <source>On</source>
