@@ -370,11 +370,11 @@
     <name>EyeComfortmodeApplet</name>
     <message>
         <source>Light</source>
-        <translation type="unfinished"/>
+        <translation>Světlý režim</translation>
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Tmavý režim</translation>
     </message>
     <message>
         <source>Auto</source>
