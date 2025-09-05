@@ -319,7 +319,7 @@
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"/>
+        <translation>Zapnuto</translation>
     </message>
     <message>
         <source>Off</source>
