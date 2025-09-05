@@ -120,14 +120,14 @@
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastavení displeje</translation>
     </message>
 </context>
 <context>
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation>Jas</translation>
     </message>
 </context>
 <context>
