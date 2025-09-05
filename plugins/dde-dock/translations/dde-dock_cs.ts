@@ -673,11 +673,11 @@
     </message>
     <message>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation>Dub</translation>
     </message>
     <message>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation>Kvě</translation>
     </message>
     <message>
         <source>Jun</source>
