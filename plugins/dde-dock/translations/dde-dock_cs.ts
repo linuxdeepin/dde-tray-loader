@@ -559,7 +559,7 @@
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"/>
+        <translation>Neznámý</translation>
     </message>
 </context>
 <context>
