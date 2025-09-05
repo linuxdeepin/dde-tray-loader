@@ -637,11 +637,11 @@
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Úterý</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation>Středa</translation>
     </message>
     <message>
         <source>Thursday</source>
