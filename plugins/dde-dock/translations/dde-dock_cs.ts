@@ -645,7 +645,7 @@
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>Čtvrtek</translation>
     </message>
     <message>
         <source>Friday</source>
