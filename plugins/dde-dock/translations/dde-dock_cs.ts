@@ -548,7 +548,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation>Nastavení napájení</translation>
     </message>
 </context>
 <context>
