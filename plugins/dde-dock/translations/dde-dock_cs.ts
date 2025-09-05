@@ -501,7 +501,7 @@
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation type="unfinished"/>
+        <translation>Počítám zbývající dobu používání</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
