@@ -446,7 +446,7 @@
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation>Napájení</translation>
     </message>
 </context>
 <context>
