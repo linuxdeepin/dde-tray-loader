@@ -110,7 +110,7 @@ protected:
         // 绘制文字
         QRect textRect = rect().marginsRemoved(QMargins(10, 0, 0, 0));
         QColor textNomal = palette().brightText().color();
-        textNomal.setAlphaF(0.75);
+        textNomal.setAlphaF(0.6);
         QColor textColor = underMouse() ? palette().color(QPalette::HighlightedText) : textNomal;
         painter.setPen(textColor);
         auto pFont = painter.font();
@@ -180,13 +180,14 @@ private:
     void initUi();
     void initConnect();
     void setUnnamedDevicesVisible(bool isShow);
+    void updateMyDeviceLabelTheme();
 
     Adapter *m_adapter;
     SettingLabel *m_adapterLabel;
     QVBoxLayout *m_adapterLayout;
     DSwitchButton *m_adapterStateBtn;
     QWidget *m_myDeviceWidget;
-    QLabel *m_myDeviceLabel;
+    DLabel *m_myDeviceLabel;
     PluginListView *m_myDeviceListView;
     QStandardItemModel *m_myDeviceModel;
 

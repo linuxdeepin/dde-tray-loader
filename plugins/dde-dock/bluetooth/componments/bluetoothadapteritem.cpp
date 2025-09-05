@@ -16,6 +16,8 @@
 #include <DSwitchButton>
 #include <DListView>
 #include <DSpinner>
+#include <DPaletteHelper>
+#include <DGuiApplicationHelper>
 
 #include <QBoxLayout>
 #include <QStandardItemModel>
@@ -68,7 +70,7 @@ BluetoothAdapterItem::BluetoothAdapterItem(Adapter *adapter, QWidget *parent)
     , m_adapterLayout(new QVBoxLayout)
     , m_adapterStateBtn(new DSwitchButton(this))
     , m_myDeviceWidget(new QWidget(this))
-    , m_myDeviceLabel(new QLabel(tr("My Devices"), this))
+    , m_myDeviceLabel(new DLabel(tr("My Devices"), this))
     , m_myDeviceListView(new PluginListView(this))
     , m_myDeviceModel(new QStandardItemModel(m_myDeviceListView))
     , m_otherDeviceControlWidget(new DeviceControlWidget(this))
@@ -361,8 +363,9 @@ void BluetoothAdapterItem::initUi()
     QVBoxLayout *myDeviceLayout = new QVBoxLayout(m_myDeviceWidget);
     myDeviceLayout->setSpacing(0);
     myDeviceLayout->setContentsMargins(0, 0, 0, 0);
-    m_myDeviceLabel->setContentsMargins(10, 0, 0, 2);
+    m_myDeviceLabel->setContentsMargins(10, 0, 0, 6);
     DFontSizeManager::instance()->bind(m_myDeviceLabel, DFontSizeManager::T10);
+    updateMyDeviceLabelTheme();
     myDeviceLayout->addWidget(m_myDeviceLabel);
     myDeviceLayout->addWidget(m_myDeviceListView);
 
@@ -462,6 +465,10 @@ void BluetoothAdapterItem::initConnect()
     connect(m_otherDeviceControlWidget, &DeviceControlWidget::clicked, this, [this] {
         m_autoFold = false;
     });
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [this]{
+        updateMyDeviceLabelTheme();
+        update();
+    });
 }
 
 void BluetoothAdapterItem::setUnnamedDevicesVisible(bool isShow)
@@ -535,4 +542,18 @@ void BluetoothAdapterItem::hideEvent(QHideEvent *event)
     if (m_adapterSwitchEnabled && m_myDeviceModel->rowCount() > 0)
         m_otherDeviceControlWidget->setExpandState(false);
     QWidget::hideEvent(event);
+}
+
+void BluetoothAdapterItem::updateMyDeviceLabelTheme()
+{
+    DPalette palette = DPaletteHelper::instance()->palette(m_myDeviceLabel);
+    QColor textColor;
+    if (DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType) {
+        textColor = Qt::black;
+    } else {
+        textColor = Qt::white;
+    }
+    textColor.setAlphaF(0.60);
+    palette.setColor(QPalette::WindowText, textColor);
+    DPaletteHelper::instance()->setPalette(m_myDeviceLabel, palette);
 }
