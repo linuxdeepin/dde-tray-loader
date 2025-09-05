@@ -343,7 +343,7 @@
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Zapnout pohodlí pro oči</translation>
     </message>
     <message>
         <source>Display Settings</source>
