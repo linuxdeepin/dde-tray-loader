@@ -681,7 +681,7 @@
     </message>
     <message>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation>Čer</translation>
     </message>
     <message>
         <source>Jul</source>
