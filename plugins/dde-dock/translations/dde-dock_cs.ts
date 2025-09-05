@@ -685,11 +685,11 @@
     </message>
     <message>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation>Čec</translation>
     </message>
     <message>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation>Srp</translation>
     </message>
     <message>
         <source>Sept</source>
