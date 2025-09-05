@@ -697,11 +697,11 @@
     </message>
     <message>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation>Říj</translation>
     </message>
     <message>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation>Lis</translation>
     </message>
     <message>
         <source>Dec</source>
