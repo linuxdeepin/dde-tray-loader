@@ -431,7 +431,7 @@
     </message>
     <message>
         <source>Balanced</source>
-        <translation type="unfinished"/>
+        <translation>Vyvážený režim</translation>
     </message>
     <message>
         <source>Power Saver</source>
