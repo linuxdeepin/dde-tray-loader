@@ -606,14 +606,14 @@
     </message>
     <message>
         <source>Switch user</source>
-        <translation type="unfinished"/>
+        <translation>Přepnout uživatele</translation>
     </message>
 </context>
 <context>
     <name>SidebarCalendarWidget</name>
     <message>
         <source>Today</source>
-        <translation type="unfinished"/>
+        <translation>Dnes</translation>
     </message>
     <message>
         <source>Lunar</source>
