@@ -109,7 +109,7 @@
     <name>BrightnessApplet</name>
     <message>
         <source>Brightness</source>
-        <translation type="unfinished"/>
+        <translation>Jas</translation>
     </message>
     <message>
         <source>Display settings</source>
