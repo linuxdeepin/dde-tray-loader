@@ -709,7 +709,7 @@
     </message>
     <message>
         <source>Open the calendar</source>
-        <translation type="unfinished"/>
+        <translation>Otevřít kalendář</translation>
     </message>
     <message>
         <source>monday</source>
