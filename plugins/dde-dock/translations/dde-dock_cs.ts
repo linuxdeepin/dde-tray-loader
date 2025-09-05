@@ -713,11 +713,11 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation>pondělí</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation type="unfinished"/>
+        <translation>úterý</translation>
     </message>
     <message>
         <source>wednesday</source>
