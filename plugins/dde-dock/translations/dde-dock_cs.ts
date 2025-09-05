@@ -521,7 +521,7 @@
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation type="unfinished"/>
+        <translation>Nabíjení %1 minut do plného nabití</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
