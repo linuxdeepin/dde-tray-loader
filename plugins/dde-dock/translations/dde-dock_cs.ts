@@ -602,7 +602,7 @@
     </message>
     <message>
         <source>Shut Down</source>
-        <translation type="unfinished"/>
+        <translation>Vypnout</translation>
     </message>
     <message>
         <source>Switch user</source>
