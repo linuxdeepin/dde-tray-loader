@@ -529,7 +529,7 @@
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation type="unfinished"/>
+        <translation>Kapacita %1, %2 hodin zbývá</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
