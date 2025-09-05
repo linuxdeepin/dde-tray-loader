@@ -357,8 +357,10 @@ void BluetoothApplet::updateSize()
     m_disableWidget->isVisibleTo(this) ? m_disableWidget->setFixedHeight(height - settingHeight - adapterHeight) : m_disableWidget->setFixedHeight(0);
 
     // 设置滚动区高度
-    m_scrollArea->setFixedHeight(height - settingHeight - m_disableWidget->height() - m_airplaneModeWidget->height());
-    m_contentWidget->setMinimumHeight(adapterHeight);
+    const int scrollAreaHeight = height - settingHeight - m_disableWidget->height() - m_airplaneModeWidget->height();
+    m_scrollArea->setFixedHeight(scrollAreaHeight);
+    // 确保内容控件高度至少等于适配器高度，并且不会超过滚动区域的高度太多
+    m_contentWidget->setMinimumHeight(qMax(adapterHeight, scrollAreaHeight));
 
     // top and bottom margin
     height += hMargins;
