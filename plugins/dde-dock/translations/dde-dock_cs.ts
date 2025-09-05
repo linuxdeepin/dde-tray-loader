@@ -505,7 +505,7 @@
     </message>
     <message>
         <source>%1 min remaining</source>
-        <translation type="unfinished"/>
+        <translation>Zbývající čas:</translation>
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
