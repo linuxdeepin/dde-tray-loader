@@ -733,7 +733,7 @@
     </message>
     <message>
         <source>saturday</source>
-        <translation type="unfinished"/>
+        <translation>sobota</translation>
     </message>
     <message>
         <source>sunday</source>
