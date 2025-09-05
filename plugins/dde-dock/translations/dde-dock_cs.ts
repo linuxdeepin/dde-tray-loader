@@ -693,7 +693,7 @@
     </message>
     <message>
         <source>Sept</source>
-        <translation type="unfinished"/>
+        <translation>Zář</translation>
     </message>
     <message>
         <source>Oct</source>
