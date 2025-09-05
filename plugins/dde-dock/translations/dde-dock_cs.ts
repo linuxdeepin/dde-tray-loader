@@ -649,11 +649,11 @@
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation>Pátek</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation>Sobota</translation>
     </message>
     <message>
         <source>Sunday</source>
