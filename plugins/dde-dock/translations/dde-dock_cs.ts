@@ -323,7 +323,7 @@
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"/>
+        <translation>Vypnuto</translation>
     </message>
     <message>
         <source>Light</source>
