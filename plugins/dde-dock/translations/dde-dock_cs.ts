@@ -665,7 +665,7 @@
     </message>
     <message>
         <source>Feb</source>
-        <translation type="unfinished"/>
+        <translation>Únr</translation>
     </message>
     <message>
         <source>Mar</source>
