@@ -725,11 +725,11 @@
     </message>
     <message>
         <source>thursday</source>
-        <translation type="unfinished"/>
+        <translation>čtvrtek</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation type="unfinished"/>
+        <translation>pátek</translation>
     </message>
     <message>
         <source>saturday</source>
