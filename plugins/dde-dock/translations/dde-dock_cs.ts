@@ -254,7 +254,7 @@
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
-        <translation type="unfinished"/>
+        <translation>Ostatní zařízení</translation>
     </message>
 </context>
 <context>
