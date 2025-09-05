@@ -339,7 +339,7 @@
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation type="unfinished"/>
+        <translation>Vypnout pohodlí pro oči</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
