@@ -435,7 +435,7 @@
     </message>
     <message>
         <source>Power Saver</source>
-        <translation type="unfinished"/>
+        <translation>Režim úspory energie</translation>
     </message>
     <message>
         <source>Balance Performance</source>
