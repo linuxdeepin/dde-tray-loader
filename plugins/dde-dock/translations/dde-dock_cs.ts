@@ -657,7 +657,7 @@
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>Něděle</translation>
     </message>
     <message>
         <source>Jan</source>
