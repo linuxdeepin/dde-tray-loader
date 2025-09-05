@@ -331,7 +331,7 @@
     </message>
     <message>
         <source>Dark</source>
-        <translation type="unfinished"/>
+        <translation>Tmavý režim</translation>
     </message>
     <message>
         <source>Auto</source>
