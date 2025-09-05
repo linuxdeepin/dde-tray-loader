@@ -513,7 +513,7 @@
     </message>
     <message>
         <source>Not charging</source>
-        <translation type="unfinished"/>
+        <translation>Nenabíjí se</translation>
     </message>
     <message>
         <source>Fully charged</source>
