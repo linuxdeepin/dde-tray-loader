@@ -617,7 +617,7 @@
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation>Lunární</translation>
     </message>
     <message>
         <source>y</source>
