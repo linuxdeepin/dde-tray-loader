@@ -705,7 +705,7 @@
     </message>
     <message>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation>Pro</translation>
     </message>
     <message>
         <source>Open the calendar</source>
