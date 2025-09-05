@@ -633,7 +633,7 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>Pondělí</translation>
     </message>
     <message>
         <source>Tuesday</source>
