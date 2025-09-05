@@ -359,7 +359,7 @@
     </message>
     <message>
         <source>Theme: Auto</source>
-        <translation type="unfinished"/>
+        <translation>Motiv: Automatický</translation>
     </message>
     <message>
         <source>Visual effect</source>
