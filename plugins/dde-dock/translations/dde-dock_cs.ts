@@ -721,7 +721,7 @@
     </message>
     <message>
         <source>wednesday</source>
-        <translation type="unfinished"/>
+        <translation>středa</translation>
     </message>
     <message>
         <source>thursday</source>
