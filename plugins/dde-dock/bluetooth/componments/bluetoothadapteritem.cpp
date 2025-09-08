@@ -525,6 +525,13 @@ void BluetoothAdapterItem::setUnnamedDevicesVisible(bool isShow)
 
 void BluetoothAdapterItem::showEvent(QShowEvent *event)
 {
+    // 设置默认展开状态：只有在没有已配对设备时才展开其他设备列表
+    if (m_adapterSwitchEnabled) {
+        bool shouldExpand = m_myDeviceModel->rowCount() < 1;
+        m_otherDeviceControlWidget->setExpandState(shouldExpand);
+        m_otherDeviceListView->setVisible(shouldExpand);
+    }
+    
     emit deviceCountChanged();
     if (m_adapter->discover()) {
         return;
@@ -538,9 +545,9 @@ void BluetoothAdapterItem::showEvent(QShowEvent *event)
 
 void BluetoothAdapterItem::hideEvent(QHideEvent *event)
 {
+    // 面板隐藏时，重置为自动折叠模式，下次显示时使用默认行为
     m_autoFold = true;
-    if (m_adapterSwitchEnabled && m_myDeviceModel->rowCount() > 0)
-        m_otherDeviceControlWidget->setExpandState(false);
+    
     QWidget::hideEvent(event);
 }
 
