@@ -1,3 +1,12 @@
+dde-tray-loader (2.0.10) unstable; urgency=medium
+
+  * fix: bluetooth applet widget layout display abnormality
+  * i18n: Updates for project Deepin Desktop Environment (#363)
+  * fix:  Bluetooth item listView can display full items
+  * fix: improve theme compatibility for bluetooth label
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 11 Sep 2025 20:59:55 +0800
+
 dde-tray-loader (2.0.9) unstable; urgency=medium
 
   * fix: plugin tooltip window size can adapt to content changes
