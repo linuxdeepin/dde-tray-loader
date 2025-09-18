@@ -81,7 +81,6 @@ BluetoothAdapterItem::BluetoothAdapterItem(Adapter *adapter, QWidget *parent)
     , m_showUnnamedDevices(false)
     , m_stateBtnEnabled(true)
     , m_adapterSwitchEnabled(true)
-    , m_autoFold(true)
     , m_scanTimer(new QTimer(this))
 {
     initUi();
@@ -254,8 +253,7 @@ void BluetoothAdapterItem::onDeviceAdded(const Device *device)
             }
         }
         m_myDeviceWidget->setVisible(m_myDeviceModel->rowCount() > 0 && m_adapterStateBtn->isChecked());
-        if(m_autoFold)
-            m_otherDeviceControlWidget->setExpandState(m_myDeviceModel->rowCount() < 1 && m_adapterStateBtn->isChecked());
+
         if (m_adapterSwitchEnabled) {
             emit deviceCountChanged();
         }
@@ -277,8 +275,6 @@ void BluetoothAdapterItem::onDeviceAdded(const Device *device)
         emit deviceCountChanged();
     }
     m_myDeviceWidget->setVisible(m_myDeviceModel->rowCount() > 0 && m_adapterStateBtn->isChecked());
-    if(m_autoFold)
-        m_otherDeviceControlWidget->setExpandState(m_myDeviceModel->rowCount() < 1 && m_adapterStateBtn->isChecked());
 }
 
 void BluetoothAdapterItem::onDeviceRemoved(const Device *device)
@@ -462,9 +458,7 @@ void BluetoothAdapterItem::initConnect()
             emit deviceCountChanged();
         }
     });
-    connect(m_otherDeviceControlWidget, &DeviceControlWidget::clicked, this, [this] {
-        m_autoFold = false;
-    });
+
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [this]{
         updateMyDeviceLabelTheme();
         update();
@@ -541,14 +535,6 @@ void BluetoothAdapterItem::showEvent(QShowEvent *event)
     }
 
     QWidget::showEvent(event);
-}
-
-void BluetoothAdapterItem::hideEvent(QHideEvent *event)
-{
-    // 面板隐藏时，重置为自动折叠模式，下次显示时使用默认行为
-    m_autoFold = true;
-    
-    QWidget::hideEvent(event);
 }
 
 void BluetoothAdapterItem::updateMyDeviceLabelTheme()

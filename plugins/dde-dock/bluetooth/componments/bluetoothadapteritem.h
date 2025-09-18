@@ -165,7 +165,6 @@ public slots:
 
 protected:
     void showEvent(QShowEvent *event) override;
-    void hideEvent(QHideEvent *event) override;
 
 signals:
     void adapterPowerChanged();
@@ -199,7 +198,6 @@ private:
     bool m_showUnnamedDevices;
     bool m_stateBtnEnabled;
     bool m_adapterSwitchEnabled;
-    bool m_autoFold;
 
     QTimer *m_scanTimer;
 
