@@ -12,12 +12,12 @@
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
         <source>Remove from dock</source>
-        <translation>Удалить из док-панели</translation>
+        <translation>Удалить из дока</translation>
     </message>
     <message>
         <location filename="../quickpluginitem.cpp" line="160"/>
         <source>Pin to dock</source>
-        <translation>Прикрепить к док-панели</translation>
+        <translation>Прикрепить к доку</translation>
     </message>
 </context>
 </TS>
