@@ -113,14 +113,14 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation>Настройки отображения</translation>
+        <translation>Настройки экрана</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation>Настройки отображения</translation>
+        <translation>Настройки экрана</translation>
     </message>
 </context>
 <context>
@@ -307,7 +307,7 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation>Настройки отображения</translation>
+        <translation>Настройки экрана</translation>
     </message>
     <message>
         <source>Eye comfort</source>
@@ -347,7 +347,7 @@
     </message>
     <message>
         <source>Display Settings</source>
-        <translation>Настройки отображения</translation>
+        <translation>Настройки экрана</translation>
     </message>
     <message>
         <source>Theme: Light</source>
