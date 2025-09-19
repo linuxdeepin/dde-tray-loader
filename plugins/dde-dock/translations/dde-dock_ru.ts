@@ -393,8 +393,7 @@
     </message>
     <message>
         <source>Notification settings</source>
-        <translation>Настройки уведомлений
-</translation>
+        <translation>Настройки уведомлений</translation>
     </message>
     <message>
         <source>Notifications</source>
@@ -402,8 +401,7 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>Выключить режим &quot;Не беспокоить&quot;
-</translation>
+        <translation>Выключить режим &quot;Не беспокоить&quot;</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
@@ -429,8 +427,7 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation>Высокая Производительность
-</translation>
+        <translation>Высокая производительность</translation>
     </message>
     <message>
         <source>Balanced</source>
@@ -442,8 +439,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation>Сбалансированная Производительность
-</translation>
+        <translation>Сбалансированная производительность</translation>
     </message>
 </context>
 <context>
@@ -501,13 +497,11 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation>Зарядка, расчет расчетного времени зарядки
-</translation>
+        <translation>Зарядка, расчет времени до полной зарядки</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation>Расчет оставшегося времени использования
-</translation>
+        <translation>Расчет оставшегося времени использования</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
@@ -519,13 +513,11 @@
     </message>
     <message>
         <source>Not charging</source>
-        <translation>Не заряжается
-</translation>
+        <translation>Не заряжается</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation>Полностью заряжен
-</translation>
+        <translation>Полностью заряжен</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
@@ -556,7 +548,7 @@
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation>Параметры питания</translation>
+        <translation>Настройки питания</translation>
     </message>
 </context>
 <context>
@@ -614,7 +606,7 @@
     </message>
     <message>
         <source>Switch user</source>
-        <translation>Переключить пользователя</translation>
+        <translation>Сменить пользователя</translation>
     </message>
 </context>
 <context>
