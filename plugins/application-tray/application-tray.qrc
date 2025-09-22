@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/dsg/built-in-icons">
+    <qresource prefix="/dsg-icon/override">
         <file alias="fcitx-anthy.dci">icons/fcitx-anthy.dci</file>
         <file alias="fcitx-bopomofo.dci">icons/fcitx-bopomofo.dci</file>
         <file alias="fcitx-cangjie.dci">icons/fcitx-cangjie.dci</file>
