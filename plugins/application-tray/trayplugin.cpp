@@ -11,6 +11,7 @@
 #include "ddeindicatortrayprotocol.h"
 #include "pluginproxyinterface.h"
 
+#include <DIconTheme>
 #include <QDebug>
 
 namespace tray {
@@ -46,6 +47,10 @@ QWidget *TrayPlugin::itemTipsWidget(const QString &itemKey)
 void TrayPlugin::init(PluginProxyInterface *proxyInter)
 {
     m_proyInter = proxyInter;
+
+    auto dciPaths = Dtk::Gui::DIconTheme::dciThemeSearchPaths();
+    dciPaths.prepend(":/dsg-icon/override");
+    Dtk::Gui::DIconTheme::setDciThemeSearchPaths(dciPaths);
 
     auto sniProtocol = new SniTrayProtocol();
     auto xembedProtocol = new XembedProtocol();
