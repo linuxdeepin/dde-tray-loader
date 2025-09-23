@@ -598,7 +598,7 @@
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation>Обновить и Перезагрузить</translation>
+        <translation>Обновить и перезагрузить</translation>
     </message>
     <message>
         <source>Shut Down</source>
