@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Если вы хотите подключиться к Bluetooth, сначала отключите [Режим полёта](#)</translation>
     </message>
 </context>
 <context>
@@ -71,7 +71,7 @@
     </message>
     <message>
         <source>%1 connected</source>
-        <translation>%1 соединено</translation>
+        <translation>%1 подключен</translation>
     </message>
     <message>
         <source>Connecting...</source>
