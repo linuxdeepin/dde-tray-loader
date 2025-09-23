@@ -541,7 +541,7 @@
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation>Зарядка, %1 час. до полного заряда</translation>
+        <translation>Заряжается, %1 ч. до полной зарядки</translation>
     </message>
 </context>
 <context>
