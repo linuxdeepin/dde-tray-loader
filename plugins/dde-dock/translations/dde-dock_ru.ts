@@ -416,7 +416,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>Экранная Клавиатура</translation>
+        <translation>Экранная клавиатура</translation>
     </message>
     <message>
         <source>Settings</source>
