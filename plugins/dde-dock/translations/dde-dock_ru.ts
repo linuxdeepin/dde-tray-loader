@@ -509,7 +509,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation>Осталось %1 час. %2 мин.</translation>
+        <translation>Осталось %1 ч. %2 мин.</translation>
     </message>
     <message>
         <source>Not charging</source>
