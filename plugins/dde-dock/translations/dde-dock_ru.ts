@@ -533,11 +533,11 @@
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation>Осталось %1 час.</translation>
+        <translation>Осталось %1 ч.</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation>Зарядка %1, %2 ч. до полного заряда</translation>
+        <translation>Заряжается %1, %2 ч. до полной зарядки</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
