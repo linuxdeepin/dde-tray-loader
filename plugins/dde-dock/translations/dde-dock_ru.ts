@@ -586,7 +586,7 @@
     </message>
     <message>
         <source>Power settings</source>
-        <translation>Параметры питания</translation>
+        <translation>Настройки питания</translation>
     </message>
     <message>
         <source>Reboot</source>
@@ -594,7 +594,7 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation>Обновить и Выключить</translation>
+        <translation>Обновить и выключить</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
