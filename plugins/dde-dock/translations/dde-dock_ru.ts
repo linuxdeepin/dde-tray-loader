@@ -485,11 +485,11 @@
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>Емкость %1, полностью заряжен</translation>
+        <translation>%1, полностью заряжен</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation>Емкость %1, не заряжается</translation>
+        <translation>%1, не заряжается</translation>
     </message>
     <message>
         <source>Battery</source>
