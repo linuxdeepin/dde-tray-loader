@@ -1,0 +1,14 @@
+[main]
+host = https://www.transifex.com
+
+[o:linuxdeepin:p:deepin-desktop-environment:r:2321107e4b08f0506c8297afda4de87c]
+file_filter = src/loader/translations/trayplugin-loader_<lang>.ts
+source_file = src/loader/translations/trayplugin-loader.ts
+source_lang = en_US
+type = QT
+
+[o:linuxdeepin:p:deepin-desktop-environment:r:20c1dc1226a55f677a28716ada78a043]
+file_filter = plugins/dde-dock/translations/dde-dock_<lang>.ts
+source_file = plugins/dde-dock/translations/dde-dock.ts
+source_lang = en_US
+type = QT
