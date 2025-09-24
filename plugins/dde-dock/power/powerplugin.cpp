@@ -216,6 +216,7 @@ void PowerPlugin::loadPlugin()
         }
         refreshTipsData();
     });
+
     connect(m_systemPowerInter, &SystemPowerInter::BatteryTimeToEmptyChanged, this, &PowerPlugin::refreshTipsData);
     connect(m_systemPowerInter, &SystemPowerInter::BatteryTimeToFullChanged, this, &PowerPlugin::refreshTipsData);
     connect(m_systemPowerInter, &SystemPowerInter::BatteryPercentageChanged, this, &PowerPlugin::refreshTipsData);
@@ -226,6 +227,7 @@ void PowerPlugin::loadPlugin()
 
     onDConfigValueChanged("showTimeToFull");
     m_powerStatusWidget->refreshIcon();
+
 }
 
 void PowerPlugin::refreshPluginItemsVisible()
@@ -347,7 +349,10 @@ void PowerPlugin::refreshTipsData()
         }
     }
 
-    m_tipsLabel->setText(tips);
+    m_tipsLabel->setText(tips); 
+    QFontMetrics metrics(m_tipsLabel->font());
+    int textWidth = metrics.boundingRect(m_tipsLabel->text()).width();
+    m_tipsLabel->setMinimumWidth(textWidth);
     m_powerStatusWidget->refreshBatteryPercentage(value, appletTips);
 }
 
