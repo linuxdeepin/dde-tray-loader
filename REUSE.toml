@@ -1,0 +1,88 @@
+version = 1
+SPDX-PackageName = "dde-launchpad"
+SPDX-PackageSupplier = "UnionTech Software Technology Co., Ltd.  <>"
+SPDX-PackageDownloadLocation = "https://github.com/linuxdeepin/dde-launchpad"
+
+[[annotations]]
+path = ["debian/**", "rpm/**", "archlinux/**", ".packit.yaml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "None"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["misc/**.in", "cmake/**.cmake", "cmake/DdeDock/**.in", "cmake/DdeTrayLoader/**.in", "**.in"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "None"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = [".github/**", ".obs/**", ".tx/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "None"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["README.md", "README.**.md", "docs/**.md", "**guide.md", "**/libdbusmenuqt/README", "**/libdbusmenuqt/test/README"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "UnionTech Software Technology Co., Ltd."
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = ["**/resources/**.png", "**/icons/**.svg", "**/resources/**.svg", "**/texts/**.svg", "**/texts/**.svg.background", "**/dark/**.svg", "**/light/**.svg", "**/actions/**.svg", "**/images/**.png", "**/icon/**.svg", "**/res/**.svg", "**/icons/**.dci", "**/resources/**.dci", "**/icon/**.dci", "**/res/**.dci"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "UnionTech Software Technology Co., Ltd."
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = ["**.qrc", "**/qmldir"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "None"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "**/translations/**.ts"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "UnionTech Software Technology Co., Ltd."
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = ["**.deepin.dde.**.xml", "**/org.desktopspec.**.xml", "**/dbus/**.xml", "**.Fcitx.xml", "**/libdbusmenuqt/**.xml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "UnionTech Software Technology Co., Ltd."
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = ["src/loader/configs/**.xml", "src/protocol/**.xml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "UnionTech Software Technology Co., Ltd."
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = ["**/session/**.conf", "**/system/**.conf"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "UnionTech Software Technology Co., Ltd."
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = "**.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "None"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "**.sh"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "None"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "misc/**.service"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "None"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "toolGenerate/**/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "None"
+SPDX-License-Identifier = "CC0-1.0"
