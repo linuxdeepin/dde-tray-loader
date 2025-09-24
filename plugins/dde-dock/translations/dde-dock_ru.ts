@@ -473,7 +473,7 @@
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation>Емкость %1</translation>
+        <translation>%1</translation>
     </message>
     <message>
         <source>Charging %1</source>
@@ -481,7 +481,7 @@
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation>Емкость %1 ...</translation>
+        <translation>%1 ...</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
