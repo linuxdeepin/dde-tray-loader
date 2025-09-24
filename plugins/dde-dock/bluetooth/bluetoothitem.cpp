@@ -189,6 +189,9 @@ void BluetoothItem::refreshTips()
     }
 
     m_tipsLabel->setText(tipsText);
+    QFontMetrics metrics(m_tipsLabel->font());
+    int textWidth = metrics.boundingRect(m_tipsLabel->text()).width();
+    m_tipsLabel->setMinimumWidth(textWidth);
     m_quickPanel->setDescription(description);
 }
 
