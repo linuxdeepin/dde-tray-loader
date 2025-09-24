@@ -127,7 +127,7 @@
     <name>BrightnessPlugin</name>
     <message>
         <source>Brightness</source>
-        <translation>brightness</translation>
+        <translation>ຄວາມສະຫວ່າງ</translation>
     </message>
 </context>
 <context>
@@ -416,7 +416,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>Onboard</translation>
+        <translation>ແປ້ນພິມໜ້າຈໍ</translation>
     </message>
     <message>
         <source>Settings</source>

@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Если вы хотите подключиться к Bluetooth, сначала отключите [Режим полёта](#)</translation>
     </message>
 </context>
 <context>
@@ -71,7 +71,7 @@
     </message>
     <message>
         <source>%1 connected</source>
-        <translation>%1 соединено</translation>
+        <translation>%1 подключен</translation>
     </message>
     <message>
         <source>Connecting...</source>
@@ -87,7 +87,7 @@
     </message>
     <message>
         <source>Connected %1</source>
-        <translation>Подключено %1</translation>
+        <translation>Подключен %1</translation>
     </message>
     <message>
         <source>Not connected</source>
@@ -113,14 +113,14 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation>Настройки отображения</translation>
+        <translation>Настройки экрана</translation>
     </message>
 </context>
 <context>
     <name>BrightnessItem</name>
     <message>
         <source>Display settings</source>
-        <translation>Настройки отображения</translation>
+        <translation>Настройки экрана</translation>
     </message>
 </context>
 <context>
@@ -307,7 +307,7 @@
     </message>
     <message>
         <source>Display settings</source>
-        <translation>Настройки отображения</translation>
+        <translation>Настройки экрана</translation>
     </message>
     <message>
         <source>Eye comfort</source>
@@ -347,7 +347,7 @@
     </message>
     <message>
         <source>Display Settings</source>
-        <translation>Настройки отображения</translation>
+        <translation>Настройки экрана</translation>
     </message>
     <message>
         <source>Theme: Light</source>
@@ -393,8 +393,7 @@
     </message>
     <message>
         <source>Notification settings</source>
-        <translation>Настройки уведомлений
-</translation>
+        <translation>Настройки уведомлений</translation>
     </message>
     <message>
         <source>Notifications</source>
@@ -402,8 +401,7 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>Выключить режим &quot;Не беспокоить&quot;
-</translation>
+        <translation>Выключить режим &quot;Не беспокоить&quot;</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
@@ -418,7 +416,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>Экранная Клавиатура</translation>
+        <translation>Экранная клавиатура</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -429,8 +427,7 @@
     <name>PerformanceModeController</name>
     <message>
         <source>High Performance</source>
-        <translation>Высокая Производительность
-</translation>
+        <translation>Высокая производительность</translation>
     </message>
     <message>
         <source>Balanced</source>
@@ -442,8 +439,7 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation>Сбалансированная Производительность
-</translation>
+        <translation>Сбалансированная производительность</translation>
     </message>
 </context>
 <context>
@@ -461,23 +457,23 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>Емкость %1, %2 мин. осталось</translation>
+        <translation>Емкость %1, осталось %2 мин.</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>Емкость %1, %2 час. %3 мин. осталось</translation>
+        <translation>Емкость %1, осталось %2 ч. %3 мин.</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation>Зарядка %1, %2 мин. до полной зарядки</translation>
+        <translation>Заряжается %1, %2 мин. до полной зарядки</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>Зарядка %1, %2 час. %3 мин. до полной зарядки</translation>
+        <translation>Заряжается %1, %2 ч. %3 мин. до полной зарядки</translation>
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation>Объем %1</translation>
+        <translation>Емкость %1</translation>
     </message>
     <message>
         <source>Charging %1</source>
@@ -485,15 +481,15 @@
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation>Заряд %1 ...</translation>
+        <translation>Емкость %1 ...</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>Заряд %1, полностью заряжен</translation>
+        <translation>Емкость %1, полностью заряжен</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation>Емкость% 1, не заряжается</translation>
+        <translation>Емкость %1, не заряжается</translation>
     </message>
     <message>
         <source>Battery</source>
@@ -501,13 +497,11 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation>Зарядка, расчет расчетного времени зарядки
-</translation>
+        <translation>Зарядка, расчет времени до полной зарядки</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
-        <translation>Расчет оставшегося времени использования
-</translation>
+        <translation>Расчет оставшегося времени использования</translation>
     </message>
     <message>
         <source>%1 min remaining</source>
@@ -515,48 +509,46 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation>Осталось %1 час. %2 мин.</translation>
+        <translation>Осталось %1 ч. %2 мин.</translation>
     </message>
     <message>
         <source>Not charging</source>
-        <translation>Не заряжается
-</translation>
+        <translation>Не заряжается</translation>
     </message>
     <message>
         <source>Fully charged</source>
-        <translation>Полностью заряжен
-</translation>
+        <translation>Полностью заряжен</translation>
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation>Зарядка, %1 мин до полного заряда</translation>
+        <translation>Заряжается, %1 мин. до полной зарядки</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation>Зарядка, %1 ч. %2 мин. до полного заряда</translation>
+        <translation>Заряжается, %1 ч. %2 мин. до полной зарядки</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation>Емкость батареи %1, %2 Осталось час.</translation>
+        <translation>Емкость %1, осталось %2 ч.</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
-        <translation>Осталось %1 час.</translation>
+        <translation>Осталось %1 ч.</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation>Зарядка %1, %2 ч. до полного заряда</translation>
+        <translation>Заряжается %1, %2 ч. до полной зарядки</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation>Зарядка, %1 час. до полного заряда</translation>
+        <translation>Заряжается, %1 ч. до полной зарядки</translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation>Параметры питания</translation>
+        <translation>Настройки питания</translation>
     </message>
 </context>
 <context>
@@ -594,7 +586,7 @@
     </message>
     <message>
         <source>Power settings</source>
-        <translation>Параметры питания</translation>
+        <translation>Настройки питания</translation>
     </message>
     <message>
         <source>Reboot</source>
@@ -602,11 +594,11 @@
     </message>
     <message>
         <source>Update and Shut Down</source>
-        <translation>Обновить и Выключить</translation>
+        <translation>Обновить и выключить</translation>
     </message>
     <message>
         <source>Update and Reboot</source>
-        <translation>Обновить и Перезагрузить</translation>
+        <translation>Обновить и перезагрузить</translation>
     </message>
     <message>
         <source>Shut Down</source>
@@ -614,7 +606,7 @@
     </message>
     <message>
         <source>Switch user</source>
-        <translation>Переключить пользователя</translation>
+        <translation>Сменить пользователя</translation>
     </message>
 </context>
 <context>
