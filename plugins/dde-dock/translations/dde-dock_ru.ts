@@ -457,11 +457,11 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>Емкость %1, осталось %2 мин.</translation>
+        <translation>%1, осталось %2 мин.</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>Емкость %1, осталось %2 ч. %3 мин.</translation>
+        <translation>%1, осталось %2 ч. %3 мин.</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
@@ -473,7 +473,7 @@
     </message>
     <message>
         <source>Capacity %1</source>
-        <translation>Емкость %1</translation>
+        <translation>%1</translation>
     </message>
     <message>
         <source>Charging %1</source>
@@ -481,15 +481,15 @@
     </message>
     <message>
         <source>Capacity %1 ...</source>
-        <translation>Емкость %1 ...</translation>
+        <translation>%1 ...</translation>
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>Емкость %1, полностью заряжен</translation>
+        <translation>%1, полностью заряжен</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation>Емкость %1, не заряжается</translation>
+        <translation>%1, не заряжается</translation>
     </message>
     <message>
         <source>Battery</source>
@@ -529,7 +529,7 @@
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation>Емкость %1, осталось %2 ч.</translation>
+        <translation>%1, осталось %2 ч.</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
