@@ -1,3 +1,13 @@
+dde-tray-loader (2.0.12) unstable; urgency=medium
+
+  * i18n: Updates for project Deepin Desktop Environment (#370)
+  * feat: add override icon search path for system tray
+  * chore: convert REUSE config to REUSE.toml
+  * chore: add .tx/config for tx-cli
+  * i18n: Updates for project Deepin Desktop Environment (#368)
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 25 Sep 2025 20:50:20 +0800
+
 dde-tray-loader (2.0.11) unstable; urgency=medium
 
   * fix: When a Bluetooth device is connected, the list of other devices
