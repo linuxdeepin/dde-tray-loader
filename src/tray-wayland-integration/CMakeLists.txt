@@ -3,6 +3,9 @@
 # SPDX-License-Identifier: CC0-1.0
 
 find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Core Gui WaylandClient)
+if(Qt${QT_VERSION_MAJOR}_VERSION VERSION_GREATER_EQUAL 6.10)
+  find_package(Qt${QT_VERSION_MAJOR} COMPONENTS GuiPrivate WaylandClientPrivate REQUIRED)
+endif()
 find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Gui Widget)
 
 find_package(ECM REQUIRED MO_MODULE)
