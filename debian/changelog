@@ -1,3 +1,10 @@
+dde-tray-loader (2.0.13) unstable; urgency=medium
+
+  * fix: compatibility with Qt 6.10
+  * fix: power and bluetooth text cut in russian (#371)
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 16 Oct 2025 21:14:13 +0800
+
 dde-tray-loader (2.0.12) unstable; urgency=medium
 
   * i18n: Updates for project Deepin Desktop Environment (#370)
