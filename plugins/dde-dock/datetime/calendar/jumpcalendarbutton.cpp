@@ -134,13 +134,12 @@ void JumpCalendarButton::mouseReleaseEvent(QMouseEvent* event)
 
     if (underMouse() && this->rect().contains(event->pos())) {
         Q_EMIT clicked();
-
-        QProcess process;
-        process.setProgram("dbus-send");
-        process.setArguments( {"--print-reply", "--dest=com.deepin.Calendar", "/com/deepin/Calendar", "com.deepin.Calendar.RaiseWindow"});
-        process.start();
-        process.waitForFinished();
+        
+        QProcess::startDetached("dbus-send", QStringList()
+        << "--print-reply"
+        << "--dest=com.deepin.Calendar"
+        << "/com/deepin/Calendar"
+        << "com.deepin.Calendar.RaiseWindow");
     }
-
     QWidget::mouseReleaseEvent(event);
 }
