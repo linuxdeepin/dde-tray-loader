@@ -1,3 +1,9 @@
+dde-tray-loader (2.0.14) unstable; urgency=medium
+
+  * fix: replace QProcess with startDetached for calendar DBus call
+
+ -- wujiangyu <wujiangyu@uniontech.com>  Thu, 23 Oct 2025 16:00:26 +0800
+
 dde-tray-loader (2.0.13) unstable; urgency=medium
 
   * fix: compatibility with Qt 6.10
