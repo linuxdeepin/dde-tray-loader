@@ -161,7 +161,7 @@ void Notification::resetNotificationStatus()
 
 bool Notification::hasNewNotification() const
 {
-    return m_hasNewNotification;
+    return m_hasNewNotification && m_notificationCount > 0;
 }
 
 void Notification::paintEvent(QPaintEvent *e)
