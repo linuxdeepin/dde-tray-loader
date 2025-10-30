@@ -6,7 +6,7 @@
 #include "dbus/dbusaccount.h"
 #include "utils.h"
 #include "tipswidget.h"
-#include "./dbus/dbuspowermanager.h"
+#include "./dbus/org_deepin_dde_sessionmanager.h"
 #include "plugins-logging-category.h"
 
 #include <DSysInfo>
@@ -43,7 +43,7 @@ ShutdownPlugin::ShutdownPlugin(QObject *parent)
     , m_pluginLoaded(false)
     , m_dockIcon(nullptr)
     , m_tipsLabel(new TipsWidget)
-    , m_powerManagerInter(new DBusPowerManager("org.deepin.dde.PowerManager1", "/org/deepin/dde/PowerManager1", QDBusConnection::systemBus(), this))
+    , m_sessionManagerInter(new SessionManager("org.deepin.dde.SessionManager1", "/org/deepin/dde/SessionManager1", QDBusConnection::sessionBus(), this))
     , m_dconfig(DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.shutdown", QString(), this))
     , m_lastoreDConfig(DConfig::create("org.deepin.dde.lastore", "org.deepin.dde.lastore", "", this))
 {
@@ -204,7 +204,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
     QProcessEnvironment enviromentVar = QProcessEnvironment::systemEnvironment();
     bool can_sleep = enviromentVar.contains("POWER_CAN_SLEEP") ? QVariant(enviromentVar.value("POWER_CAN_SLEEP")).toBool()
                      : valueByQSettings<bool>("Power", "sleep", true) &&
-                     m_powerManagerInter->CanSuspend();
+                     m_sessionManagerInter->CanSuspend();
     ;
     if (can_sleep) {
         QMap<QString, QVariant> suspend;
@@ -221,7 +221,7 @@ const QString ShutdownPlugin::itemContextMenu(const QString &itemKey)
         can_hibernate = QVariant(enviromentVar.value("POWER_CAN_HIBERNATE")).toBool();
     } else {
         auto dConfig = DConfig::create("org.deepin.dde.session-shell", "org.deepin.dde.session-shell", QString(), this);
-        can_hibernate = dConfig->value("hibernate", true).toBool() && m_powerManagerInter->CanHibernate();
+        can_hibernate = dConfig->value("hibernate", true).toBool() && m_sessionManagerInter->CanHibernate();
     }
 
     if (can_hibernate) {
