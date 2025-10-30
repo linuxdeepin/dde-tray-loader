@@ -1,3 +1,9 @@
+dde-tray-loader (2.0.15) unstable; urgency=medium
+
+  * refactor: remove PowerManager dependency and use SessionManager
+
+ -- Robertkill <lvpeilong@uniontech.com>  Thu, 30 Oct 2025 20:07:06 +0800
+
 dde-tray-loader (2.0.14) unstable; urgency=medium
 
   * fix: replace QProcess with startDetached for calendar DBus call
