@@ -16,7 +16,7 @@
 
 DCORE_USE_NAMESPACE
 
-class DBusPowerManager;
+class SessionManager;
 
 class QGSettings;
 class ShutdownPlugin : public QObject, PluginsItemInterface
@@ -97,7 +97,7 @@ private:
     bool m_pluginLoaded;
     QScopedPointer<CommonIconButton> m_dockIcon;
     QScopedPointer<Dock::TipsWidget> m_tipsLabel;
-    DBusPowerManager* m_powerManagerInter;
+    SessionManager* m_sessionManagerInter;
     QSharedPointer<DConfig> m_dconfig;
     DConfig *m_lastoreDConfig;
 };
