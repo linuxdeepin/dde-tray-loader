@@ -48,6 +48,28 @@
         <file>batteryicons/battery-full-charged-symbolic.svg</file>
         <file>batteryicons/battery-unknow-symbolic-dark.svg</file>
         <file>batteryicons/battery-unknow-symbolic.svg</file>
+        <file>batteryicons/battery-000-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-000-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-010-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-010-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-020-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-020-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-030-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-030-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-040-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-040-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-050-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-050-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-060-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-060-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-070-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-070-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-080-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-080-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-090-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-090-plugged-uncharged-symbolic-dark.svg</file>
+        <file>batteryicons/battery-100-plugged-uncharged-symbolic.svg</file>
+        <file>batteryicons/battery-100-plugged-uncharged-symbolic-dark.svg</file>
     </qresource>
     <qresource prefix="/icons/deepin/builtin">
         <file>texts/status-efficient-mode_24px.svg</file>
