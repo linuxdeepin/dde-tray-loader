@@ -76,7 +76,7 @@ void PowerStatusWidget::refreshIcon()
     if ((batteryState == BatteryState::FULLY_CHARGED || percentage == 100) && plugged) {
         iconStr = QString("battery-full-charged-symbolic");
     } else if (batteryState == BatteryState::NOT_CHARGED && plugged) {
-        iconStr = QString("battery-%1-plugged-symbolic").arg(percentageStr);
+        iconStr = QString("battery-%1-plugged-uncharged-symbolic").arg(percentageStr);
     } else {
         iconStr = QString("battery-%1-%2")
                   .arg(percentageStr, plugged ? "plugged-symbolic" : "symbolic");
