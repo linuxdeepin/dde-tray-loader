@@ -85,14 +85,19 @@ QMenu *PluginItem::pluginContextMenu()
 
     initPluginMenu();
     if (m_pluginFlags & Dock::Attribute_CanSetting) {
-        if (!m_unDockAction) {
-            m_unDockAction = new QAction();
-        }
-        m_unDockAction->setEnabled(true);
-        m_menu->addAction(m_unDockAction);
+        // 如果插件名称为plugin-update，则不显示移除驻留选项
+        if (m_pluginsItemInterface->pluginName() == "plugin-update") {
+            qDebug() << "Skip undock action for plugin-update";
+        } else {
+            if (!m_unDockAction) {
+                m_unDockAction = new QAction();
+            }
+            m_unDockAction->setEnabled(true);
+            m_menu->addAction(m_unDockAction);
 
-        m_unDockAction->setText(tr("Remove from dock"));
-        m_unDockAction->setData(Dock::unDockMenuItemId);
+            m_unDockAction->setText(tr("Remove from dock"));
+            m_unDockAction->setData(Dock::unDockMenuItemId);
+        }
     }
 
     qDebug() << "mouseRightButtonClicked:" << m_itemKey << m_menu->actions().size();
