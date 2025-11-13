@@ -11,6 +11,7 @@
 #include <QHBoxLayout>
 #include <QMouseEvent>
 #include <QMenu>
+#include <QPainter>
 
 const static QString DockQuickPlugins = "Dock_Quick_Plugins";
 
@@ -196,6 +197,18 @@ void PluginItem::leaveEvent(QEvent *event)
 {
     Q_UNUSED(event)
     closeToolTip();
+}
+
+// TODO: The reason we add this is because on openSUSE we can see render residue for those
+//       dock plugins. This might also happen on later Qt releases (i.e. larger than the
+//       version that deepin 25 currently uses, which is Qt 6.8.0) See the following PR
+//       for related screenshot: https://github.com/linuxdeepin/dde-tray-loader/pull/383
+void PluginItem::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.setCompositionMode(QPainter::CompositionMode_Source);
+    painter.fillRect(rect(), Qt::transparent);
+    QWidget::paintEvent(event);
 }
 
 QWidget* PluginItem::centralWidget()
