@@ -1,3 +1,10 @@
+dde-tray-loader (2.0.16) unstable; urgency=medium
+
+  * fix: render residue on openSUSE
+  * fix: 任务栏支持插上电源未充电的显示
+
+ -- xionglinlin <xionglinlin@uniontech.com>  Thu, 13 Nov 2025 19:46:13 +0800
+
 dde-tray-loader (2.0.15) unstable; urgency=medium
 
   * refactor: remove PowerManager dependency and use SessionManager
