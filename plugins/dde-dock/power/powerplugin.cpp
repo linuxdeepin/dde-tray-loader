@@ -349,10 +349,7 @@ void PowerPlugin::refreshTipsData()
         }
     }
 
-    m_tipsLabel->setText(tips); 
-    QFontMetrics metrics(m_tipsLabel->font());
-    int textWidth = metrics.boundingRect(m_tipsLabel->text()).width();
-    m_tipsLabel->setMinimumWidth(textWidth);
+    m_tipsLabel->setText(tips);
     m_powerStatusWidget->refreshBatteryPercentage(value, appletTips);
 }
 
