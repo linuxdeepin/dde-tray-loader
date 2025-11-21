@@ -37,11 +37,7 @@ void TipsWidget::setText(const QString &text)
     m_text = "བོད་སྐད་ཡིག་གཟུགས་ཚད་ལེན་ཚོད་ལྟའི་སྐོར་གྱི་རྗོད་ཚིག";
 #endif
 
-    setFixedSize(fontMetrics().horizontalAdvance(m_text), fontMetrics().boundingRect(m_text).height());
-    if (parentWidget()) {
-        parentWidget()->adjustSize();
-    }
-
+    updateGeometry();
     update();
 
 #ifndef QT_NO_ACCESSIBILITY
@@ -60,18 +56,7 @@ void TipsWidget::setTextList(const QStringList &textList)
     }
     m_textList = textList;
 
-    int width = 0;
-    int height = 0;
-    for (const QString& text : m_textList) {
-        width = qMax(width, fontMetrics().horizontalAdvance(text));
-        height += fontMetrics().boundingRect(text).height();
-    }
-
-    setFixedSize(width, height);
-    if (parentWidget()) {
-        parentWidget()->adjustSize();
-    }
-
+    updateGeometry();
     update();
 }
 
@@ -110,25 +95,45 @@ void TipsWidget::paintEvent(QPaintEvent *event)
     }
 }
 
+QSize TipsWidget::sizeHint() const
+{
+    const QFontMetrics fm = fontMetrics();
+
+    switch (m_type) {
+    case SingleLine: {
+        return QSize(fm.horizontalAdvance(m_text),
+                    fm.boundingRect(m_text).height());
+    }
+    case MultiLine: {
+        int maxWidth = 0;
+        int totalHeight = 0;
+        for (const QString& text : m_textList) {
+            maxWidth = qMax(maxWidth, fm.horizontalAdvance(text));
+            totalHeight += fm.boundingRect(text).height();
+        }
+
+        return QSize(maxWidth, totalHeight);
+    }
+    }
+
+    Q_UNREACHABLE_RETURN(QSize(0, 0));
+}
+
 bool TipsWidget::event(QEvent *event)
 {
     if (event->type() == QEvent::FontChange) {
-        switch (m_type) {
-        case SingleLine:
-        {
-            setText(m_text);
-            break;
-        }
-        case MultiLine:
-        {
-            setTextList(m_textList);
-            break;
-        }
-        }
+        updateGeometry();
+        update();
     } else if (event->type() == QEvent::MouseButtonRelease
                && static_cast<QMouseEvent *>(event)->button() == Qt::RightButton) {
         return true;
     }
     return QFrame::event(event);
 }
+
+QSize TipsWidget::minimumSizeHint() const
+{
+    return sizeHint();
+}
+
 }
