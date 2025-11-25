@@ -541,7 +541,7 @@
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation>充電中、完了まで%1時間</translation>
+        <translation>充電中　完了まで%1時間</translation>
     </message>
 </context>
 <context>
