@@ -485,7 +485,7 @@
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>バッテリー残量 %1、フル充電済み</translation>
+        <translation>バッテリー残量 %1　充電完了</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
