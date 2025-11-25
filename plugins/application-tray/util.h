@@ -55,6 +55,8 @@ public:
 private:
     Util();
     ~Util();
+    Util(const Util&) = delete;
+    Util& operator=(const Util&) = delete;
 
     bool isTransparentImage(const QImage &image);
 
