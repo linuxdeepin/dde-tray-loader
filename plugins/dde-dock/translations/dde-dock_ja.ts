@@ -457,7 +457,7 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>バッテリー残量 %1、残り %2 分</translation>
+        <translation>バッテリー残量 %1　残り %2 分</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
