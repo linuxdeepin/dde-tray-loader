@@ -525,11 +525,11 @@
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation>充電中、完了まで%1時間%2分</translation>
+        <translation>充電中　完了まで%1時間%2分</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation>バッテリー残量 %1、残り %2時間</translation>
+        <translation>バッテリー残量 %1　残り %2時間</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
