@@ -240,16 +240,7 @@ void PowerApplet::refreshBatteryIcon(const QString &icon)
         fallbackPath = ":/batteryicons/batteryicons/" + icon + "-dark.svg";
     }
     
-    // 首先尝试从主题加载图标
-    QIcon themeIcon = QIcon::fromTheme(iconName);
-    if (!themeIcon.isNull()) {
-        // 如果主题图标存在，使用主题图标
-        QPixmap pixmap = themeIcon.pixmap(m_batteryIcon->size());
-        m_batteryIcon->setPixmap(pixmap);
-        return;
-    }
-    
-    // fallback使用资源文件
+    // 由于插件目前不跟随主题变化， 默认使用内置svg图标
     QSvgRenderer renderer(fallbackPath);
     if (!renderer.isValid()) {
         QString normalPath = ":/batteryicons/batteryicons/" + icon + ".svg";
