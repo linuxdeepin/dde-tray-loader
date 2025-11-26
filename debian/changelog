@@ -1,3 +1,15 @@
+dde-tray-loader (2.0.17) unstable; urgency=medium
+
+  * fix: disable theme icon loading for battery display
+  * i18n: Updates for project Deepin Desktop Environment (#389)
+  * fix: update battery icon colors and API call
+  * refactor: disable Util class copy operations
+  * fix: tooltip size might not updated when font size changed
+  * i18n: remove de_DE translation resources
+  * fix: add reproducible build flags to CMake configuration
+
+ -- wjyrich <wujiangyu@uniontech.com>  Wed, 26 Nov 2025 15:52:43 +0800
+
 dde-tray-loader (2.0.16) unstable; urgency=medium
 
   * fix: render residue on openSUSE
