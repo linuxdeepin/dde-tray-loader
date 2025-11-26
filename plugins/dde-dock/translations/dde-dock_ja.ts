@@ -457,19 +457,19 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>バッテリー残量 %1、残り %2 分</translation>
+        <translation>バッテリー残量 %1　残り %2 分</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>バッテリー残量 %1、残り %2 時間 %3 分</translation>
+        <translation>バッテリー残量 %1　残り %2 時間 %3 分</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation>充電中 %1、完了まで %2 分</translation>
+        <translation>充電中 %1　完了まで %2 分</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>充電中 %1、完了まで %2 時間 %3 分</translation>
+        <translation>充電中 %1　完了まで %2 時間 %3 分</translation>
     </message>
     <message>
         <source>Capacity %1</source>
@@ -485,11 +485,11 @@
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>バッテリー残量 %1、フル充電済み</translation>
+        <translation>バッテリー残量 %1　充電完了</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation>バッテリー残量 %1、充電していません</translation>
+        <translation>バッテリー残量 %1　充電していません</translation>
     </message>
     <message>
         <source>Battery</source>
@@ -497,7 +497,7 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation>充電中、完了までの時間を計算しています</translation>
+        <translation>充電中　完了までの時間を計算しています</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
@@ -521,15 +521,15 @@
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation>充電中、完了まで%1分</translation>
+        <translation>充電中　完了まで%1分</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation>充電中、完了まで%1時間%2分</translation>
+        <translation>充電中　完了まで%1時間%2分</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation>バッテリー残量 %1、残り %2時間</translation>
+        <translation>バッテリー残量 %1　残り %2時間</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
@@ -537,11 +537,11 @@
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation>充電中 %1、完了まで %2時間</translation>
+        <translation>充電中 %1　完了まで %2時間</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation>充電中、完了まで%1時間</translation>
+        <translation>充電中　完了まで%1時間</translation>
     </message>
 </context>
 <context>
