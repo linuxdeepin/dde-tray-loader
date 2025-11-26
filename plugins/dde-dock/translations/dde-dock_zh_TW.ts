@@ -582,7 +582,7 @@
     </message>
     <message>
         <source>Log out</source>
-        <translation>註銷</translation>
+        <translation>登出</translation>
     </message>
     <message>
         <source>Power settings</source>
