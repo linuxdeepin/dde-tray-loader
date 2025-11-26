@@ -19,6 +19,7 @@ TipsWidget::TipsWidget(QWidget *parent)
 
 void TipsWidget::setText(const QString &text)
 {
+    bool typeChanged = m_type != TipsWidget::SingleLine;
     m_type = TipsWidget::SingleLine;
     // 如果传递的是富文本，获取富文本中的纯文本内容进行显示
     QTextDocument document;
@@ -26,6 +27,10 @@ void TipsWidget::setText(const QString &text)
     // 同时去掉两边的空白信息，例如qBittorrent的提示
     QString newText = document.toPlainText().simplified();
     if (m_text == newText) {
+        if (typeChanged) {
+            updateGeometry();
+            update();
+        }
         return;
     }
 
@@ -50,8 +55,13 @@ void TipsWidget::setText(const QString &text)
 
 void TipsWidget::setTextList(const QStringList &textList)
 {
+    bool typeChanged = m_type != TipsWidget::MultiLine;
     m_type = TipsWidget::MultiLine;
     if (textList == m_textList) {
+        if (typeChanged) {
+            updateGeometry();
+            update();
+        }
         return;
     }
     m_textList = textList;
