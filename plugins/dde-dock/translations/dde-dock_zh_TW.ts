@@ -3,11 +3,11 @@
     <name>AirplaneModeItem</name>
     <message>
         <source>Airplane mode enabled</source>
-        <translation>飛行模式開啟</translation>
+        <translation>飛航模式開啟</translation>
     </message>
     <message>
         <source>Airplane mode disabled</source>
-        <translation>飛行模式關閉</translation>
+        <translation>飛航模式關閉</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -23,14 +23,14 @@
     </message>
     <message>
         <source>Airplane mode settings</source>
-        <translation>飛行模式設定</translation>
+        <translation>飛航模式設定</translation>
     </message>
 </context>
 <context>
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation>飛行模式</translation>
+        <translation>飛航模式</translation>
     </message>
 </context>
 <context>
@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>若要使用藍牙功能，請先關閉[飛航模式](#)</translation>
     </message>
 </context>
 <context>
