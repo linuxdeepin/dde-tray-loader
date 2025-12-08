@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>若要使用藍牙功能，請先關閉[飛行模式](#)</translation>
     </message>
 </context>
 <context>
