@@ -160,7 +160,7 @@ void BluetoothApplet::onAdapterAdded(Adapter *adapter)
         item->setStateBtnEnabled(!m_airPlaneModeInter->enabled());
     }
 
-    m_contentLayout->insertWidget(0, adapterItem, 0, Qt::AlignTop);
+    m_contentLayout->insertWidget(m_contentLayout->count() - 1, adapterItem, 0, Qt::AlignTop);
     updateBluetoothPowerState();
     updateSize();
 
