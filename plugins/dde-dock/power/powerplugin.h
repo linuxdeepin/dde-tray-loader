@@ -59,6 +59,7 @@ private:
 private:
     bool m_pluginLoaded;
     bool m_showTimeToFull;
+    int  m_chargingProtectThreshold;
 
     QScopedPointer<PowerStatusWidget> m_powerStatusWidget;
     QScopedPointer<Dock::TipsWidget> m_tipsLabel;
