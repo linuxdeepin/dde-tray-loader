@@ -12,6 +12,17 @@
             "description":"",
             "permissions":"readwrite",
             "visibility":"public"
+        },
+        "chargingProtectThreshold":{
+            "value": 80,
+            "serial": 0,
+            "flags": ["global"],
+            "name": "chargingProtectThreshold",
+            "name[zh_CN]": "充电保护电量阀值，范围[80-99]",
+            "description[zh_CN]": "充电保护状态触发的电量区间",
+            "description":"",
+            "permissions":"readwrite",
+            "visibility":"public"
         }
     }
 }

@@ -15,6 +15,8 @@
 #include <QIcon>
 
 #define PLUGIN_STATE_KEY "enable"
+#define CHARGING_PROTECT_THRESHOLD_MIN 80
+#define CHARGING_PROTECT_THRESHOLD_MAX 100
 
 Q_LOGGING_CATEGORY(DOCK_POWER, "org.deepin.dde.dock.power")
 
@@ -24,6 +26,7 @@ PowerPlugin::PowerPlugin(QObject *parent)
     : QObject(parent)
     , m_pluginLoaded(false)
     , m_showTimeToFull(true)
+    , m_chargingProtectThreshold(CHARGING_PROTECT_THRESHOLD_MIN)
     , m_powerStatusWidget(nullptr)
     , m_tipsLabel(new TipsWidget)
     , m_systemPowerInter(nullptr)
@@ -226,6 +229,7 @@ void PowerPlugin::loadPlugin()
     updateBatteryVisible();
 
     onDConfigValueChanged("showTimeToFull");
+    onDConfigValueChanged("chargingProtectThreshold");
     m_powerStatusWidget->refreshIcon();
 
 }
@@ -245,12 +249,19 @@ void PowerPlugin::refreshPluginItemsVisible()
 
 void PowerPlugin::onDConfigValueChanged(const QString &key)
 {
-    if (key != "showTimeToFull") {
+
+    if (!m_config->isValid()) {
         return;
     }
-
-    if (m_config->isValid()) {
+    if (key == "showTimeToFull") {
         m_showTimeToFull = m_config->value("showTimeToFull").toBool();
+    } else if (key == "chargingProtectThreshold") {
+        m_chargingProtectThreshold = m_config->value("chargingProtectThreshold").toInt();
+        if (m_chargingProtectThreshold < CHARGING_PROTECT_THRESHOLD_MIN || m_chargingProtectThreshold >= CHARGING_PROTECT_THRESHOLD_MAX) {
+            m_chargingProtectThreshold = CHARGING_PROTECT_THRESHOLD_MIN;
+        }
+    } else {
+        return;
     }
 
     refreshTipsData();
@@ -316,8 +327,13 @@ void PowerPlugin::refreshTipsData()
             }
         }
     } else if (batteryState == BatteryState::NOT_CHARGED) {
-        tips = tr("Capacity %1, not charging").arg(value);
-        appletTips = tr("Not charging");
+        if (percentage < CHARGING_PROTECT_THRESHOLD_MAX && percentage >= m_chargingProtectThreshold) {
+            tips = tr("Capacity %1, charging protection active").arg(value);
+            appletTips = tr("Charging protection active");
+        } else {
+            tips = tr("Capacity %1, not charging").arg(value);
+            appletTips = tr("Not charging");
+        }
     } else if (batteryState == BatteryState::FULLY_CHARGED || percentage == 100) {
         tips = tr("Capacity %1, fully charged").arg(value);
         appletTips = tr("Fully charged");
