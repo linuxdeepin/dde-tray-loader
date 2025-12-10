@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>Töltés, %1 óra van hátra a teljes feltöltésig</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation>Akkumulátor töltöttsége %1, töltésvédelem aktív</translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
