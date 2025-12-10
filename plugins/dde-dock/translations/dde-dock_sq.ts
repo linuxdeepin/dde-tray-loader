@@ -549,7 +549,7 @@
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation>Mbrojtje ngarkimi aktive</translation>
     </message>
 </context>
 <context>
