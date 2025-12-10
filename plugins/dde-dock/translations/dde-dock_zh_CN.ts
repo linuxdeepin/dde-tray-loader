@@ -545,11 +545,11 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation>当前电量%1，充电保护已启用</translation>
+        <translation>电量%1，充电保护中</translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation>充电保护中</translation>
     </message>
 </context>
 <context>
