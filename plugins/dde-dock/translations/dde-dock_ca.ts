@@ -549,7 +549,7 @@
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation>Protecció de càrrega activa</translation>
     </message>
 </context>
 <context>
