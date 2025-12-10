@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>Ladataan, %1 h täyteen</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation>Akku %1, lataussuojaus aktiivinen</translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
