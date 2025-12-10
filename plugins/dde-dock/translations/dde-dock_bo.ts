@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>གློག་གསོག་བཞིན་ཡོད། ད་དུང་ཆུ་ཚོད་%1དགོས།</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
