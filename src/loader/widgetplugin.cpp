@@ -277,6 +277,7 @@ void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInte
         pluginPopup->setItemKey(itemKey);
         pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeEmbed);
         appletWidget->show();
+        appletWidget->setFocus();
     }
 }
 
