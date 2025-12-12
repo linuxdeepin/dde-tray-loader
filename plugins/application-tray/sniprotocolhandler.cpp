@@ -230,7 +230,12 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                 m_sniInter->Activate(0, 0);
             } else if (mouseEvent->button() == Qt::RightButton) {
                 auto menu = m_dbusMenuImporter->menu();
-                if (!menu) return false;
+                Q_CHECK_PTR(menu);
+                if (menu->isEmpty()) {
+                    m_sniInter->ContextMenu(0, 0);
+                    return false;
+                }
+
                 menu->setFixedSize(menu->sizeHint());
                 menu->winId();
 
