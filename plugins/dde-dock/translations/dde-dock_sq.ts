@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>Po ngarkohet, %1h, deri sa të jetë plot</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation>Kapacitet %1, mbrojtje ngarkimi aktive</translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation>Mbrojtje ngarkimi aktive</translation>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>

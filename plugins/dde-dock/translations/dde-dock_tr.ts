@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>Şarj oluyor, dolmaya %1 sa kaldı</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation>Kapasite %1, şarj koruması etkin</translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>

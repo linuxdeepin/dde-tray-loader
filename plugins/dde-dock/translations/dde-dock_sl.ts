@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>Vzdrževanje, %1 ur preostalo do celotnega vzdrževanja</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>

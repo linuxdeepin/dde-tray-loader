@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>Заряджання, %1 год. до повної</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation>Місткість %1, активним є захист від перезаряджання</translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>

@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>Bezig met opladen - klaar over %1 uur</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation>Accuniveau: %1 - accubescherming is ingeschakeld</translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation>Accubescherming ingeschakeld</translation>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>

@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>التوصيل %1، %1 ساعة حتى الشحن الكامل</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>

@@ -543,6 +543,14 @@
         <source>Charging, %1 hr until full</source>
         <translation>正在充电，还需%1小时</translation>
     </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation>电量%1，充电保护中</translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
+        <translation>充电保护中</translation>
+    </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
