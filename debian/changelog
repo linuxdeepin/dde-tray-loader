@@ -1,3 +1,11 @@
+dde-tray-loader (2.0.19) unstable; urgency=medium
+
+  * i18n: Updates for project Deepin Desktop Environment (#400)
+  * i18n: Updates for project Deepin Desktop Environment (#396)
+  * chore: call SNI ContextMenu() if dbus menu is empty
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 18 Dec 2025 19:50:17 +0800
+
 dde-tray-loader (2.0.18) unstable; urgency=medium
 
   * fix: Fix issue where focus is not reset when re-entering
