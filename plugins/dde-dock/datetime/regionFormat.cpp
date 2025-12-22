@@ -27,6 +27,8 @@ void RegionFormat::initConnect()
             setShortTimeFormat(m_config->value(key).toString());
         } else if (key == longTimeFormat_key) {
             setLongTimeFormat(m_config->value(key).toString());
+        } else if (key == localeName_key) {
+            setLocaleName(m_config->value(key).toString());
         }
     });
 }

@@ -115,7 +115,7 @@ void DatetimeWidget::updateDateTimeString()
     if (position == Dock::Bottom || position == Dock::Top) {
         QString timeFormat = m_regionFormat->getShortTimeFormat();
         timeStr = locale.toString(current, timeFormat);
-        dateString = current.toString(m_regionFormat->getShortDateFormat());
+        dateString = locale.toString(current.date(), m_regionFormat->getShortDateFormat());
 
         m_timeLabel->setText(timeStr);
         m_dateLabel->setText(dateString);
@@ -127,13 +127,13 @@ void DatetimeWidget::updateDateTimeString()
             QString timeFormat = m_regionFormat->getShortTimeFormat();
             timeFormat.replace("AP", "");
             timeFormat.replace(" ", "");
-            timeStr = current.toString(timeFormat);
+            timeStr = locale.toString(current.time(), timeFormat);
         } else {
-            timeStr = current.toString(m_regionFormat->getShortTimeFormat());
+            timeStr = locale.toString(current.time(), m_regionFormat->getShortTimeFormat());
         }
 
         m_timeLabel->setText(timeStr);
-        dateString = current.toString(m_regionFormat->getShortDateFormat());
+        dateString = locale.toString(current.date(), m_regionFormat->getShortDateFormat());
         m_dateLabel->setText(dateString);
     }
 }
