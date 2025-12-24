@@ -320,6 +320,7 @@ void WidgetPlugin::updateDockContainerState(PluginsItemInterface *itemInter, boo
 
 void WidgetPlugin::onDockColorThemeChanged(uint32_t type)
 {
+    qDebug() << "onDockColorThemeChanged:" << type;
     DGuiApplicationHelper::instance()->setPaletteType(static_cast<DGuiApplicationHelper::ColorType>(type));
 }
 
