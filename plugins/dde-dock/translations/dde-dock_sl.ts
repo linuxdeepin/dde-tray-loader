@@ -641,11 +641,11 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation>Ponedeljek</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation>Torek</translation>
     </message>
     <message>
         <source>Wednesday</source>
