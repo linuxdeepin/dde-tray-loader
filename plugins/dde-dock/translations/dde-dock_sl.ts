@@ -653,19 +653,19 @@
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation>četrek</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation>petek</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation>sobota</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation>nedelja</translation>
     </message>
     <message>
         <source>Jan</source>
