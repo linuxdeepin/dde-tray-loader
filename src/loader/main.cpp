@@ -87,6 +87,7 @@ int main(int argc, char *argv[], char *envp[])
 #endif
 
     DGuiApplicationHelper::setAttribute(DGuiApplicationHelper::UseInactiveColorGroup, false);
+    DGuiApplicationHelper::setAttribute(DGuiApplicationHelper::DontSaveApplicationTheme, true);
     init_setproctitle(argv, envp);
     QMap<QByteArray, QByteArray> oldEnvs;
     oldEnvs["DSG_APP_ID"] = qgetenv("DSG_APP_ID");
