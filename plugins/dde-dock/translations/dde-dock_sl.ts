@@ -649,7 +649,7 @@
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation>sreda</translation>
     </message>
     <message>
         <source>Thursday</source>
