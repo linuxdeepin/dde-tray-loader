@@ -545,7 +545,7 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation>Kapaciteta %1, vklopljena je zaščita za polnjenje</translation>
     </message>
     <message>
         <source>Charging protection active</source>
