@@ -16,6 +16,7 @@
 
 #include <xcb/xcb.h>
 #include <xcb/xtest.h>
+#include <xcb/xcb_event.h>
 
 #include <X11/Xlib.h>
 #include <X11/extensions/XTest.h>
@@ -31,6 +32,8 @@ XembedProtocol::XembedProtocol(QObject *parent)
     : AbstractTrayProtocol(parent)
     , m_trayManager(new TrayManager("org.deepin.dde.TrayManager1", "/org/deepin/dde/TrayManager1", QDBusConnection::sessionBus(), this))
 {
+    qApp->installNativeEventFilter(this);
+
     m_trayManager->Manage();
     connect(m_trayManager, &TrayManager::Added, this, &XembedProtocol::onTrayIconsChanged);
     connect(m_trayManager, &TrayManager::Removed, this, &XembedProtocol::onTrayIconsChanged);
@@ -41,6 +44,26 @@ XembedProtocol::XembedProtocol(QObject *parent)
 XembedProtocol::~XembedProtocol()
 {
     m_registedItem.clear();
+}
+
+bool XembedProtocol::nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result)
+{
+    Q_UNUSED(result)
+
+    if (eventType != "xcb_generic_event_t") {
+        return false;
+    }
+
+    auto *ev = static_cast<xcb_generic_event_t *>(message);
+
+    const auto responseType = XCB_EVENT_RESPONSE_TYPE(ev);
+    if (responseType == XCB_LEAVE_NOTIFY) {
+        xcb_leave_notify_event_t *lE = (xcb_leave_notify_event_t *)ev;
+        UTIL->setX11WindowInputShape(lE->event, QSize(0, 0));
+        return true;
+    }
+
+    return false;
 }
 
 void XembedProtocol::onTrayIconsChanged()
