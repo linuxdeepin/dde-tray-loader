@@ -16,6 +16,7 @@
 #include <xcb/composite.h>
 #include <xcb/xcb_image.h>
 
+class FdoSelectionManager;
 namespace tray {
 class XembedProtocol : public AbstractTrayProtocol, public QAbstractNativeEventFilter
 {
@@ -33,6 +34,7 @@ private Q_SLOTS:
 
 private:
     TrayManager* m_trayManager;
+    FdoSelectionManager *m_selectionManager = nullptr;
     QHash<uint32_t, QSharedPointer<AbstractTrayProtocolHandler>> m_registedItem;
 };
 

@@ -5,6 +5,7 @@
 #include "abstracttrayprotocol.h"
 #include "traymanager1interface.h"
 #include "xembedprotocolhandler.h"
+#include "fdoselectionmanager.h"
 
 #include "util.h"
 
@@ -34,11 +35,19 @@ XembedProtocol::XembedProtocol(QObject *parent)
 {
     qApp->installNativeEventFilter(this);
 
-    m_trayManager->Manage();
     connect(m_trayManager, &TrayManager::Added, this, &XembedProtocol::onTrayIconsChanged);
     connect(m_trayManager, &TrayManager::Removed, this, &XembedProtocol::onTrayIconsChanged);
 
     QMetaObject::invokeMethod(this, &XembedProtocol::onTrayIconsChanged, Qt::QueuedConnection);
+
+    if ((qgetenv("XDG_SESSION_TYPE") == "wayland") && UTIL->isXAvaliable()) {
+        qWarning() << "Not running on X11, registering FDO selection manager";
+        m_selectionManager = new FdoSelectionManager(this);
+    }
+
+    QTimer::singleShot(0, this, [this](){
+        m_trayManager->Manage();
+    });
 }
 
 XembedProtocol::~XembedProtocol()

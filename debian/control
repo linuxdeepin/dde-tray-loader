@@ -30,6 +30,7 @@ Build-Depends: debhelper-compat ( =12),
  libgtest-dev,
  libgmock-dev,
  libxcursor-dev,
+ libkf6windowsystem-dev,
  dde-api-dev (>>5.6.3)
 Standards-Version: 3.9.8
 Homepage: http://www.deepin.org/
@@ -42,6 +43,7 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  libdtk6core,
  libdtk6gui,
  dde-qt6xcb-plugin,
+ libkf6windowsystem6,
  dde-daemon (>=6.1.26),
  lastore-daemon (>=5.2.9),
 Conflicts:
