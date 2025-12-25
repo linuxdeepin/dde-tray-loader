@@ -2,25 +2,30 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-#include <QDebug>
+#include <QLoggingCategory>
 
 #include "util.h"
-#include "xcbthread.h"
 
 #include <QSize>
 #include <QPixmap>
 #include <QBitmap>
 #include <QFileInfo>
 #include <QtGlobal>
+#include <QSocketNotifier>
+#include <QCoreApplication>
+#include <QAbstractEventDispatcher>
 
 #include <X11/Xlib.h>
 
 #include <mutex>
 #include <xcb/res.h>
 #include <xcb/xcb.h>
+#include <xcb/xcb_atom.h>
 #include <xcb/xtest.h>
 #include <xcb/xproto.h>
 #include <xcb/composite.h>
+
+Q_LOGGING_CATEGORY(TRAYUTIL, "org.deepin.dde.trayloader.util")
 
 namespace tray {
 void clean_xcb_image(void *data)
@@ -36,7 +41,29 @@ Util* Util::instance()
     return _instance;
 }
 
+void Util::dispatchEvents(DispatchEventsMode mode)
+{
+    xcb_connection_t *connection = m_x11connection;
+    if (!connection) {
+        qCWarning(TRAYUTIL, "Attempting to dispatch X11 events with no connection");
+        return;
+    }
+
+    auto pollEventFunc = mode == DispatchEventsMode::Poll ? xcb_poll_for_event : xcb_poll_for_queued_event;
+
+    while (xcb_generic_event_t *event = pollEventFunc(connection)) {
+        qintptr result = 0;
+
+        QAbstractEventDispatcher *dispatcher = QCoreApplication::eventDispatcher();
+        dispatcher->filterNativeEvent(QByteArrayLiteral("xcb_generic_event_t"), event, &result);
+        free(event);
+    }
+
+    xcb_flush(connection);
+}
+
 Util::Util()
+    : QObject()
 {
     m_x11connection = xcb_connect(nullptr, nullptr);
     m_display = XOpenDisplay("");
@@ -50,8 +77,20 @@ Util::Util()
     m_rootWindow = screen->root;
 
     xcb_ewmh_init_atoms_replies(&m_ewmh, xcb_ewmh_init_atoms(m_x11connection, &m_ewmh), nullptr);
-    m_xcbThread = new XcbThread(m_x11connection);
-    m_xcbThread->start();
+
+    const int fd = xcb_get_file_descriptor(m_x11connection);
+    QSocketNotifier * qfd = new QSocketNotifier(fd, QSocketNotifier::Read, this);
+    connect(qfd, &QSocketNotifier::activated, this, [this](){
+        dispatchEvents(DispatchEventsMode::Poll);
+    });
+
+    QAbstractEventDispatcher *dispatcher = QCoreApplication::eventDispatcher();
+    connect(dispatcher, &QAbstractEventDispatcher::aboutToBlock, this, [this]() {
+        dispatchEvents(DispatchEventsMode::EventQueue);
+    });
+    connect(dispatcher, &QAbstractEventDispatcher::awake, this, [this]() {
+        dispatchEvents(DispatchEventsMode::EventQueue);
+    });
 }
 
 Util::~Util()
@@ -141,6 +180,11 @@ QString Util::getNameByAtom(const xcb_atom_t& atom)
         }
     }
     return name;
+}
+
+xcb_atom_t Util::getAtomFromDisplay(const char * name)
+{
+    return getAtomByName(xcb_atom_name_by_screen(name, DefaultScreen(getDisplay())));
 }
 
 void Util::moveX11Window(const xcb_window_t& window, const uint32_t& x, const uint32_t& y)

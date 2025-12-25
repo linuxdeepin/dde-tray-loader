@@ -8,6 +8,7 @@
 #include <QImage>
 #include <QSharedPointer>
 #include <QSet>
+#include <QObject>
 
 #include <cstdint>
 #include <sys/types.h>
@@ -20,8 +21,7 @@ struct _XDisplay;
 
 namespace tray {
 #define UTIL Util::instance()
-class XcbThread;
-class Util
+class Util : public QObject
 {
 
 public:
@@ -34,6 +34,7 @@ public:
 
     xcb_atom_t getAtomByName(const QString& name);
     QString getNameByAtom(const xcb_atom_t& atom);
+    xcb_atom_t getAtomFromDisplay(const char * name);
 
     void moveX11Window(const xcb_window_t& window, const uint32_t& x, const uint32_t& y);
     void setX11WindowSize(const xcb_window_t& window, const QSize& size);
@@ -58,6 +59,12 @@ private:
     Util(const Util&) = delete;
     Util& operator=(const Util&) = delete;
 
+    enum class DispatchEventsMode {
+        Poll,
+        EventQueue
+    };
+    void dispatchEvents(DispatchEventsMode mode);
+
     bool isTransparentImage(const QImage &image);
 
     QImage convertFromNative(xcb_image_t* image);
@@ -71,8 +78,6 @@ private:
     _XDisplay *m_display;
 
     QSet<QString> m_currentIds;
-
-    XcbThread *m_xcbThread;
 };
 
 }

@@ -17,13 +17,16 @@
 #include <xcb/xcb_image.h>
 
 namespace tray {
-class XembedProtocol : public AbstractTrayProtocol
+class XembedProtocol : public AbstractTrayProtocol, public QAbstractNativeEventFilter
 {
     Q_OBJECT
 
 public:
     XembedProtocol(QObject *parent = nullptr);
     ~XembedProtocol();
+
+protected:
+    bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override;
 
 private Q_SLOTS:
     void onTrayIconsChanged();
