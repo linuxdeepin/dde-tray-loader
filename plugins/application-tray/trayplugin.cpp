@@ -13,6 +13,7 @@
 
 #include <DIconTheme>
 #include <QDebug>
+#include <KWindowSystem>
 
 namespace tray {
 TrayPlugin::TrayPlugin(QObject *parent)
