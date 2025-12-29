@@ -35,7 +35,7 @@ FdoSelectionManager::FdoSelectionManager(QObject *parent)
     : QObject(parent)
     , m_selectionOwner(new KSelectionOwner(UTIL->getAtomFromDisplay("_NET_SYSTEM_TRAY"), UTIL->getX11Connection(), UTIL->getRootWindow(), this))
 {
-    qDebug(SELECTIONMGR) << "starting";
+    qCDebug(SELECTIONMGR) << "starting";
 
     // we may end up calling QCoreApplication::quit() in this method, at which point we need the event loop running
     QTimer::singleShot(0, this, &FdoSelectionManager::init);
@@ -175,10 +175,11 @@ void FdoSelectionManager::undock(xcb_window_t winId)
     Q_CHECK_PTR(m_trayManager);
     qCDebug(SELECTIONMGR) << "trying to undock window " << winId;
 
-    if (m_trayManager->haveIcon(winId)) {
+    if (!m_trayManager->haveIcon(winId)) {
+        qCDebug(SELECTIONMGR) << "failed to find winId to undock:" << winId;
         return;
     }
-    
+
     // Unregister from TrayManager1 if available
     m_trayManager->unregisterIcon(winId);
     
