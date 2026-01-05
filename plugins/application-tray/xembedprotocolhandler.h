@@ -70,9 +70,9 @@ private:
     void initX11resources();
 
     void sendHover();
-    void sendClick(uint8_t mouseButton, const int& x, const int& y);
+    void sendClick(uint8_t mouseButton);
 
-    inline void updateEmbedWindowPosForGetInputEvent();
+    [[nodiscard]] inline QPoint updateEmbedWindowPosForGetInputEvent();
 
 protected:
     virtual bool eventFilter(QObject *watched, QEvent *event) override;

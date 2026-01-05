@@ -38,10 +38,10 @@ public:
 
     void moveX11Window(const xcb_window_t& window, const uint32_t& x, const uint32_t& y);
     void setX11WindowSize(const xcb_window_t& window, const QSize& size);
-    QSize getX11WindowSize(const xcb_window_t& window);
+    [[nodiscard]] QRect getX11WindowGeometry(const xcb_window_t& window) const;
     QString getX11WindowName(const xcb_window_t& window);
     void setX11WindowInputShape(const xcb_window_t& widnow, const QSize& size);
-    QImage getX11WidnowImageNonComposite(const xcb_window_t& window);
+    QImage getX11WindowImageNonComposite(const xcb_window_t& window);
     void setX11WindowOpacity(const xcb_window_t& window, const double& opacity);
     pid_t getWindowPid(const xcb_window_t& window);
     QString getProcExe(const pid_t& pid);

@@ -217,7 +217,7 @@ bool XembedProtocolHandler::eventFilter(QObject *watched, QEvent *event)
 
             auto p = UTIL->getMousePos();
             auto mouseEvent = static_cast<QMouseEvent*>(event);
-            sendClick(mouseEvent->button(), p.x(), p.y());
+            sendClick(mouseEvent->button());
         }
     }
     return false;
@@ -281,7 +281,7 @@ void XembedProtocolHandler::initX11resources()
 QPixmap XembedProtocolHandler::getPixmapFromWidnow()
 {
     QPixmap res;
-    QImage image = UTIL->getX11WidnowImageNonComposite(m_windowId);
+    QImage image = UTIL->getX11WindowImageNonComposite(m_windowId);
     if (image.isNull()) {
         return res;
     }
@@ -297,7 +297,7 @@ QPixmap XembedProtocolHandler::getPixmapFromWidnow()
     return res;
 }
 
-void XembedProtocolHandler::updateEmbedWindowPosForGetInputEvent()
+QPoint XembedProtocolHandler::updateEmbedWindowPosForGetInputEvent()
 {
     // update pos
     QPoint p = UTIL->getMousePos();
@@ -305,14 +305,15 @@ void XembedProtocolHandler::updateEmbedWindowPosForGetInputEvent()
 
     // make window normal and above for get input
     UTIL->setX11WindowInputShape(m_containerWid, QSize(1, 1));
+
+    return UTIL->getX11WindowGeometry(m_containerWid).topLeft();
 }
 
 void XembedProtocolHandler::sendHover()
 {
-    updateEmbedWindowPosForGetInputEvent();
+    QPoint p = updateEmbedWindowPosForGetInputEvent();
 
     Display *display = UTIL->getDisplay();
-    QPoint p = UTIL->getMousePos();
 
     if (m_injectMode == XTest) {
         // fake enter event
@@ -339,7 +340,7 @@ void XembedProtocolHandler::sendHover()
     }
 }
 
-void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const int& y)
+void XembedProtocolHandler::sendClick(uint8_t qMouseButton)
 {
     uint8_t mouseButton = XCB_BUTTON_INDEX_1;
     switch (qMouseButton) {
@@ -361,7 +362,7 @@ void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const 
         return;
     }
 
-    updateEmbedWindowPosForGetInputEvent();
+    QPoint p = updateEmbedWindowPosForGetInputEvent();
     UTIL->setX11WindowInputShape(m_containerWid, QSize(1, 1));
 
     if (m_injectMode == Direct) {
@@ -372,8 +373,8 @@ void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const 
         pressEvent->time = XCB_CURRENT_TIME;
         pressEvent->same_screen = 1;
         pressEvent->root = Util::instance()->getRootWindow();
-        pressEvent->root_x = x;
-        pressEvent->root_y = y;
+        pressEvent->root_x = p.x();
+        pressEvent->root_y = p.y();
         pressEvent->event_x = static_cast<int16_t>(0);
         pressEvent->event_y = static_cast<int16_t>(0);
         pressEvent->child = 0;
@@ -388,8 +389,8 @@ void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const 
         releaseEvent->time = XCB_CURRENT_TIME;
         releaseEvent->same_screen = 1;
         releaseEvent->root = Util::instance()->getRootWindow();
-        releaseEvent->root_x = x;
-        releaseEvent->root_y = y;
+        releaseEvent->root_x = p.x();
+        releaseEvent->root_y = p.y();
         releaseEvent->event_x = static_cast<int16_t>(0);
         releaseEvent->event_y = static_cast<int16_t>(0);
         releaseEvent->child = 0;
@@ -397,7 +398,7 @@ void XembedProtocolHandler::sendClick(uint8_t qMouseButton, const int& x, const 
         releaseEvent->detail = mouseButton;
         xcb_send_event(c, false, m_windowId, XCB_EVENT_MASK_BUTTON_RELEASE, (char *)releaseEvent.get());
     } else {
-        XTestFakeMotionEvent(dis, 0, x, y, CurrentTime);
+        XTestFakeMotionEvent(dis, 0, p.x(), p.y(), CurrentTime);
         XFlush(dis);
         XTestFakeButtonEvent(dis, mouseButton, true, 0);
         XFlush(dis);
