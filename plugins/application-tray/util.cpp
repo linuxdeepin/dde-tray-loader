@@ -201,12 +201,12 @@ void Util::setX11WindowSize(const xcb_window_t& window, const QSize& size)
     xcb_flush(m_x11connection);
 }
 
-QSize Util::getX11WindowSize(const xcb_window_t& window)
+QRect Util::getX11WindowGeometry(const xcb_window_t& window) const
 {
     auto cookie = xcb_get_geometry(m_x11connection, window);
     QSharedPointer<xcb_get_geometry_reply_t> clientGeom(xcb_get_geometry_reply(m_x11connection, cookie, nullptr));
 
-    return clientGeom ? QSize(clientGeom->width, clientGeom->height) : QSize(0, 0);
+    return clientGeom ? QRect(clientGeom->x, clientGeom->y, clientGeom->width, clientGeom->height) : QRect();
 }
 
 QString Util::getX11WindowName(const xcb_window_t& window)
@@ -236,9 +236,9 @@ void Util::setX11WindowInputShape(const xcb_window_t& window, const QSize& size)
     xcb_flush(m_x11connection);
 }
 
-QImage Util::getX11WidnowImageNonComposite(const xcb_window_t& window)
+QImage Util::getX11WindowImageNonComposite(const xcb_window_t& window)
 {
-    QSize size = getX11WindowSize(window);
+    QSize size = getX11WindowGeometry(window).size();
     xcb_image_t *image = xcb_image_get(m_x11connection, window, 0, 0, size.width(), size.height(), 0xFFFFFFFF, XCB_IMAGE_FORMAT_Z_PIXMAP);
 
     QImage naiveConversion;
