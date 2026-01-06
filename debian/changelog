@@ -1,3 +1,12 @@
+dde-tray-loader (2.0.21) unstable; urgency=medium
+
+  * fix: fix active output device detection logic
+  * fix: not be able to undock xembed tray
+  * feat: register tray selectionmanager on wayland
+  * i18n: Updates for project Deepin Desktop Environment (#402)
+
+ -- zhangkun <zhangkun2@uniontech.com>  Tue, 06 Jan 2026 19:39:54 +0800
+
 dde-tray-loader (2.0.20) unstable; urgency=medium
 
   * chore: switch to use nativeEventFilter
