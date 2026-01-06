@@ -79,6 +79,11 @@ void SoundController::onDefaultSinkChanged(const QDBusObjectPath &path)
     if (m_defaultSinkInter)
         m_defaultSinkInter->deleteLater();
 
+    if (path.path() == "/" || path.path().isEmpty()) {
+        qWarning() << "default sink path is invalid, skip setting default sink interface.";
+        return;
+    }
+
     m_defaultSinkInter = new DBusSink("org.deepin.dde.Audio1", path.path(), QDBusConnection::sessionBus(), this);
 
     SoundModel::ref().setActivePort(m_defaultSinkInter->card(), m_defaultSinkInter->activePort().name);
@@ -121,5 +126,6 @@ bool SoundController::existActiveOutputDevice() const
        }
     }
     // 兼容云平台无端口的情况
-    return SoundModel::ref().ports().isEmpty() && m_defaultSinkInter && !m_defaultSinkInter->name().startsWith("auto_null") && !m_defaultSinkInter->name().contains("bluez");
+    const QString &sinkName = m_defaultSinkInter ? m_defaultSinkInter->name() : QString();
+    return SoundModel::ref().ports().isEmpty() && !sinkName.isEmpty() && !sinkName.startsWith("auto_null") && !sinkName.contains("bluez");
 }
