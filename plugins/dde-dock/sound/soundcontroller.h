@@ -47,7 +47,7 @@ private:
 
 private:
     DBusAudio *m_audioInter;
-    DBusSink *m_defaultSinkInter;
+    QPointer<DBusSink> m_defaultSinkInter;
     QSharedPointer<DConfig> m_dconfig;
 };
 
