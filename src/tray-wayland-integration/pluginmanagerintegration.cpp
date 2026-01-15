@@ -48,6 +48,12 @@ void PluginManagerIntegration::requestMessage(const QString &plugin_id, const QS
     request_message(plugin_id, item_key, msg);
 }
 
+struct ::wl_callback *PluginManagerIntegration::moveXembedWindow(uint32_t xembedWinId, const QString &pluginId, const QString &itemKey)
+{
+    auto callback = move_xembed_window(xembedWinId, pluginId, itemKey);
+    return callback;
+}
+
 void PluginManagerIntegration::plugin_manager_v1_position_changed(uint32_t dock_position)
 {
     if (dock_position != m_dockPosition) {
@@ -122,4 +128,5 @@ bool PluginManagerIntegration::tryCreatePopupForSubWindow(QWindow *window)
 
     return false;
 }
+
 }
