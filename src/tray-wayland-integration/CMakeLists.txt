@@ -39,7 +39,8 @@ add_library(dockpluginmanager SHARED
 )
 
 qt_generate_wayland_protocol_client_sources(dockpluginmanager
-    FILES
+NO_INCLUDE_CORE_ONLY
+FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/../protocol/plugin-manager-v1.xml
 )
 
