@@ -8,6 +8,7 @@
 
 #include <qwayland-plugin-manager-v1.h>
 #include <QtWaylandClient/private/qwaylandwindow_p.h>
+#include <wayland-client-protocol.h>
 
 namespace Plugin {
 PluginManagerIntegration::PluginManagerIntegration()
@@ -48,9 +49,18 @@ void PluginManagerIntegration::requestMessage(const QString &plugin_id, const QS
     request_message(plugin_id, item_key, msg);
 }
 
+static const wl_callback_listener xembedWindowMovedListener = {
+    [](void *data, struct wl_callback *callback, uint32_t time) {
+        Q_UNUSED(time);
+        wl_callback_destroy(callback);
+        static_cast<PluginManagerIntegration*>(data)->xembedWindowMovedCallback();
+    }
+};
+
 struct ::wl_callback *PluginManagerIntegration::moveXembedWindow(uint32_t xembedWinId, const QString &pluginId, const QString &itemKey)
 {
     auto callback = move_xembed_window(xembedWinId, pluginId, itemKey);
+    wl_callback_add_listener(callback, &xembedWindowMovedListener, this);
     return callback;
 }
 
@@ -93,6 +103,11 @@ void PluginManagerIntegration::plugin_manager_v1_theme_changed(const QString &th
 {
     PlatformInterfaceProxy::instance()->setThemeName(theme_name.toLocal8Bit());
     PlatformInterfaceProxy::instance()->setIconThemeName(icon_theme_name.toLocal8Bit());
+}
+
+void PluginManagerIntegration::xembedWindowMovedCallback()
+{
+    emit xembedWindowMoved();
 }
 
 bool PluginManagerIntegration::tryCreatePopupForSubWindow(QWindow *window)

@@ -22,10 +22,12 @@ public:
 public:
     void requestMessage(const QString &plugin_id, const QString &item_key, const QString &msg);
     struct ::wl_callback *moveXembedWindow(uint32_t xembedWinId, const QString &pluginId, const QString &itemKey);
+    void xembedWindowMovedCallback();
 
 Q_SIGNALS:
     void eventMessage(const QString &msg);
     void dockPositionChanged(uint32_t position);
+    void xembedWindowMoved();
     void dockColorThemeChanged(uint32_t colorType);
 
 protected:

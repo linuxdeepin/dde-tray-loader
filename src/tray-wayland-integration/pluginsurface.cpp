@@ -33,6 +33,11 @@ PluginSurface::PluginSurface(PluginManagerIntegration *manager, QtWaylandClient:
     connect(manager, &PluginManagerIntegration::dockPositionChanged, m_plugin, &EmbedPlugin::dockPositionChanged);
     connect(manager, &PluginManagerIntegration::dockColorThemeChanged, m_plugin, &EmbedPlugin::dockColorThemeChanged);
     connect(manager, &PluginManagerIntegration::eventMessage, m_plugin, &EmbedPlugin::eventMessage);
+    connect(manager, &PluginManagerIntegration::xembedWindowMoved, m_plugin, &EmbedPlugin::xembedWindowMoved);
+
+    connect(m_plugin, &EmbedPlugin::requestMoveXembedWindow, this, [manager, this](uint32_t xembedWinId) {
+        manager->moveXembedWindow(xembedWinId, m_plugin->pluginId(), m_plugin->itemKey());
+    });
 
     connect(m_plugin, &EmbedPlugin::requestMessage, manager, [manager, this](const QString &msg) {
         manager->requestMessage(m_plugin->pluginId(), m_plugin->itemKey(), msg);

@@ -302,10 +302,23 @@ QPoint XembedProtocolHandler::updateEmbedWindowPosForGetInputEvent()
 {
     // update pos
     if (qgetenv("XDG_SESSION_TYPE") == "wayland") {
-        // Get `plugin_id` and `item_key` from EmbedPlugin.
         auto plugin = Plugin::EmbedPlugin::get(window()->windowHandle());
-        // use move_xembed_window to move m_containerWid to plugin_id.
-        // TODO: ...?
+
+        QEventLoop loop;
+        connect(plugin, &Plugin::EmbedPlugin::xembedWindowMoved, &loop, &QEventLoop::quit);
+        QTimer timer;
+        timer.setSingleShot(true);
+        connect(&timer, &QTimer::timeout, &loop, &QEventLoop::quit);
+        timer.start(3000);
+
+        plugin->requestMoveXembedWindow(m_containerWid);
+        loop.exec();
+
+        if (timer.isActive()) {
+            timer.stop();
+        } else {
+            qDebug() << "requestMoveXembedWindow() timeout";
+        }
     } else {
         QPoint p = UTIL->getMousePos();
         UTIL->moveX11Window(m_containerWid, p.x(), p.y());
