@@ -319,7 +319,7 @@ void SoundApplet::enableDevice(bool flag)
 void SoundApplet::removeDisabledDevice(QString portName, unsigned int cardId)
 {
     removePort(SoundCardPort::compositeKey(cardId, portName));
-    if (m_defSinkInter->activePort().name == portName && m_defSinkInter->card() == cardId) {
+    if (m_defSinkInter && m_defSinkInter->activePort().name == portName && m_defSinkInter->card() == cardId) {
         enableDevice(false);
     }
 }
