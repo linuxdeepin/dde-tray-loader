@@ -8,6 +8,7 @@
 #include "fdoselectionmanager.h"
 
 #include "util.h"
+#include "plugin.h"
 
 #include <QBitmap>
 #include <QWindow>
@@ -300,8 +301,28 @@ QPixmap XembedProtocolHandler::getPixmapFromWidnow()
 QPoint XembedProtocolHandler::updateEmbedWindowPosForGetInputEvent()
 {
     // update pos
-    QPoint p = UTIL->getMousePos();
-    UTIL->moveX11Window(m_containerWid, p.x(), p.y());
+    if (qgetenv("XDG_SESSION_TYPE") == "wayland") {
+        auto plugin = Plugin::EmbedPlugin::get(window()->windowHandle());
+
+        QEventLoop loop;
+        connect(plugin, &Plugin::EmbedPlugin::xembedWindowMoved, &loop, &QEventLoop::quit);
+        QTimer timer;
+        timer.setSingleShot(true);
+        connect(&timer, &QTimer::timeout, &loop, &QEventLoop::quit);
+        timer.start(3000);
+
+        plugin->requestMoveXembedWindow(m_containerWid);
+        loop.exec();
+
+        if (timer.isActive()) {
+            timer.stop();
+        } else {
+            qDebug() << "requestMoveXembedWindow() timeout";
+        }
+    } else {
+        QPoint p = UTIL->getMousePos();
+        UTIL->moveX11Window(m_containerWid, p.x(), p.y());
+    }
 
     // make window normal and above for get input
     UTIL->setX11WindowInputShape(m_containerWid, QSize(1, 1));

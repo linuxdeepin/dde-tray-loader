@@ -109,6 +109,17 @@
       <arg name="surface" type="object" interface="wl_surface"/>
       <arg name="id"      type="new_id" interface="plugin"/>
     </request>
+
+    <request name="move_xembed_window">
+      <description summary="request move xembed window to position">
+        This requests dde-shell to forward a request to the compositor (treeland) to move a xembed window to position.
+        dde-shell knows the xembed window's relative position, and then can request treeland to move the window to an absolute position based on a relative position.
+      </description>
+      <arg name="xembed_winid"  type="uint"/>
+      <arg name="plugin_id"     type="string"/>
+      <arg name="item_key"      type="string"/>
+      <arg name="callback" type="new_id" interface="wl_callback"/>
+    </request>
   </interface>
   <interface name="plugin_popup" version="1">
     <request name="destroy" type="destructor">

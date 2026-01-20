@@ -5,6 +5,7 @@
 #pragma once
 
 #include "qwayland-plugin-manager-v1.h"
+#include <wayland-client-protocol.h>
 
 #include <QtWaylandClient/private/qwaylandshellintegration_p.h>
 
@@ -20,10 +21,13 @@ public:
 
 public:
     void requestMessage(const QString &plugin_id, const QString &item_key, const QString &msg);
+    struct ::wl_callback *moveXembedWindow(uint32_t xembedWinId, const QString &pluginId, const QString &itemKey);
+    void xembedWindowMovedCallback();
 
 Q_SIGNALS:
     void eventMessage(const QString &msg);
     void dockPositionChanged(uint32_t position);
+    void xembedWindowMoved();
     void dockColorThemeChanged(uint32_t colorType);
 
 protected:
@@ -40,5 +44,7 @@ private:
 private:
     uint32_t m_dockPosition;
     uint32_t m_dockColorType;
+    static PluginManagerIntegration *s_instance;
 };
+
 }

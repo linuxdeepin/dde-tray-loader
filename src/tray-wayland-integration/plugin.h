@@ -81,7 +81,9 @@ Q_SIGNALS:
     void pluginTypeChanged();
     void pluginFlagsChanged();
     void pluginSizePolicyChanged();
+    void xembedWindowMoved();
     void requestMessage(const QString &msg);
+    void requestMoveXembedWindow(uint32_t xembedWinId);
     void pluginRecvMouseEvent(int type);
     void rawGlobalPosChanged();
     void pluginRequestShutdown(const QString &type);
