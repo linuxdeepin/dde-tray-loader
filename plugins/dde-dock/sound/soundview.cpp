@@ -53,8 +53,6 @@ SoundView::SoundView(QWidget *parent)
 QWidget *SoundView::tipsWidget()
 {
     refreshTips(true);
-    m_tipsLabel->resize(m_tipsLabel->sizeHint().width() + 10,
-                        m_tipsLabel->sizeHint().height());
 
     return m_tipsLabel;
 }
