@@ -180,6 +180,7 @@ private:
     void initConnect();
     void setUnnamedDevicesVisible(bool isShow);
     void updateMyDeviceLabelTheme();
+    void clearDeviceList();
 
     Adapter *m_adapter;
     SettingLabel *m_adapterLabel;
