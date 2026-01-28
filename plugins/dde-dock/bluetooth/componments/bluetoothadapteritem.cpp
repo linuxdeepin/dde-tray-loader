@@ -428,7 +428,13 @@ void BluetoothAdapterItem::initConnect()
     });
 
     connect(m_adapter, &Adapter::poweredChanged, this, [ = ](bool state) {
-        initData();
+        if (state) {
+            // Initialize device list when bluetooth is powered on
+            initData();
+        } else {
+            // Clear device list when bluetooth is powered off
+            clearDeviceList();
+        }
         m_refreshBtn->setVisible(state);
         m_myDeviceWidget->setVisible(m_myDeviceModel->rowCount() > 0 && state);
         m_otherDeviceListView->setVisible(state && (m_otherDeviceControlWidget->isExpand() || m_myDeviceModel->rowCount() < 1));
@@ -438,11 +444,8 @@ void BluetoothAdapterItem::initConnect()
     });
     connect(m_adapterStateBtn, &DSwitchButton::clicked, this, [ = ](bool state) {
         m_adapterSwitchEnabled = state;
-        qDeleteAll(m_deviceItems);
-        m_deviceItems.clear();
-        m_myDeviceModel->clear();
+        clearDeviceList();
         m_myDeviceWidget->setVisible(false);
-        m_otherDeviceModel->clear();
         m_otherDeviceListView->setVisible(false);
         m_adapterStateBtn->setEnabled(false);
         m_refreshBtn->setVisible(state);
@@ -549,4 +552,12 @@ void BluetoothAdapterItem::updateMyDeviceLabelTheme()
     textColor.setAlphaF(0.60);
     palette.setColor(QPalette::WindowText, textColor);
     DPaletteHelper::instance()->setPalette(m_myDeviceLabel, palette);
+}
+
+void BluetoothAdapterItem::clearDeviceList()
+{
+    qDeleteAll(m_deviceItems);
+    m_deviceItems.clear();
+    m_myDeviceModel->clear();
+    m_otherDeviceModel->clear();
 }
