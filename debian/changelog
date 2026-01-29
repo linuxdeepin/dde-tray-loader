@@ -1,3 +1,12 @@
+dde-tray-loader (2.0.24) unstable; urgency=medium
+
+  * fix(plugins): Update sound tray icon when audio card info changes
+  * fix: clear bluetooth device list when adapter is powered off
+  * fix: sound tooltip might look incorrectly when gets hovered twice
+  * fix: Avoid showing XEMBED and SNI plugins together
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 29 Jan 2026 20:22:53 +0800
+
 dde-tray-loader (2.0.23) unstable; urgency=medium
 
   * fix: add null check for m_defSinkInter in sound applet
