@@ -42,6 +42,7 @@ SoundView::SoundView(QWidget *parent)
 
     connect(&SoundModel::ref(), &SoundModel::volumeChanged, this, &SoundView::refresh, Qt::QueuedConnection);
     connect(&SoundModel::ref(), &SoundModel::muteStateChanged, this, &SoundView::refresh, Qt::QueuedConnection);
+    connect(&SoundModel::ref(), &SoundModel::cardsInfoChanged, this, &SoundView::refresh);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [ = ] {
         refreshIcon();
     });
