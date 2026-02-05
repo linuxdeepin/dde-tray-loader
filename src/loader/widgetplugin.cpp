@@ -34,12 +34,16 @@ public:
 public:
     bool eventFilter(QObject *watched, QEvent *event)
     {
-        Q_UNUSED(watched)
         if (event->type() == QEvent::ToolTip) {
             const auto pos = static_cast<QHelpEvent*>(event)->globalPos();
             QMetaObject::invokeMethod(this, [this, pos] () {
                 updateToolTipPosition(pos);
             }, Qt::QueuedConnection);
+        } else if (event->type() == QEvent::CursorChange) {
+            auto widget = qobject_cast<QWidget*>(watched);
+            if (widget) {
+                handleCursorChange(widget);
+            }
         }
         return false;
     }
@@ -65,6 +69,18 @@ private:
                     pluginPopup->setY(pluginPos.y() + pos.y());
                 } 
             }
+        }
+    }
+
+    void handleCursorChange(QWidget *widget)
+    {
+        if (!widget || !widget->window() || !widget->window()->windowHandle())
+            return;
+
+        auto windowHandle = widget->window()->windowHandle();
+        if (auto pluginPopup = Plugin::PluginPopup::getWithoutCreating(windowHandle)) {
+            Qt::CursorShape cursorShape = widget->cursor().shape();
+            Q_EMIT pluginPopup->requestSetCursor(static_cast<int>(cursorShape));
         }
     }
 };

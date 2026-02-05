@@ -139,6 +139,13 @@
         <arg name="width" type="int"/>
         <arg name="height" type="int"/>
     </request>
+    <request name="set_cursor">
+        <description summary="request to change cursor shape">
+          This requests the compositor to change the cursor shape.
+          The cursor_shape follows Qt::CursorShape enum values.
+        </description>
+        <arg name="cursor_shape" type="int"/>
+    </request>
   </interface>
 
   <interface name="plugin" version="1">
