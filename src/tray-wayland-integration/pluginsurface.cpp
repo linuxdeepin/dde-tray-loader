@@ -119,6 +119,10 @@ PluginPopupSurface::PluginPopupSurface(PluginManagerIntegration *manager, QtWayl
     connect(m_dirtyTimer, &QTimer::timeout, this, [this]{
         set_position(m_popup->x(), m_popup->y());
     });
+
+    connect(m_popup, &PluginPopup::requestSetCursor, this, [this](int cursorShape) {
+        set_cursor(cursorShape);
+    });
 }
 
 PluginPopupSurface::~PluginPopupSurface()
