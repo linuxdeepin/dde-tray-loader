@@ -1,3 +1,9 @@
+dde-tray-loader (2.0.25) unstable; urgency=medium
+
+  * perf(sound): remove blocking delay in audio device switching
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 05 Feb 2026 19:25:02 +0800
+
 dde-tray-loader (2.0.24) unstable; urgency=medium
 
   * fix(plugins): Update sound tray icon when audio card info changes
