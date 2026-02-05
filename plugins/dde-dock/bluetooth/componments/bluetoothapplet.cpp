@@ -28,6 +28,8 @@
 #include <QScroller>
 #include <QString>
 #include <QToolButton>
+#include <QCursor>
+#include <QAbstractTextDocumentLayout>
 
 SettingLabel::SettingLabel(QString text, QWidget *parent)
     : QWidget(parent)
@@ -253,6 +255,9 @@ void BluetoothApplet::initUi()
     m_airplaneModeWidget->setFixedWidth(ItemWidth);
     m_mainLayout->addWidget(m_airplaneModeWidget);
 
+    // Install event filter to handle Enter event for link hover detection
+    m_airplaneModeLabel->installEventFilter(this);
+
     QToolButton *disableIcon = new QToolButton(m_disableWidget);
     disableIcon->setAttribute(Qt::WA_TransparentForMouseEvents);
     disableIcon->setIcon(QIcon::fromTheme("bluetooth_disable"));
@@ -372,4 +377,42 @@ void BluetoothApplet::updateMinHeight(int minHeight)
 {
     m_minHeight = minHeight;
     updateSize();
+}
+
+bool BluetoothApplet::eventFilter(QObject *watched, QEvent *event)
+{
+    // Use eventFilter because standard linkHovered signal is unreliable for vertical movement
+    if (watched == m_airplaneModeLabel) {
+        if (event->type() == QEvent::Leave) {
+            m_airplaneModeLabel->setCursor(Qt::ArrowCursor);
+        } else if (event->type() == QEvent::MouseMove) {
+            QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+            QLabel *label = qobject_cast<QLabel*>(watched);
+            if (label) {
+                // Manual hit test using a temporary QTextDocument
+                QTextDocument doc;
+                doc.setDefaultFont(label->font());
+                doc.setMarkdown(label->text());
+
+                // Adjust for alignment and margins if necessary.
+                // DTipLabel/DLabel might have specific internal layouts, but assuming standard QLabel behavior:
+                // Width must be set for word wrap to match
+                doc.setTextWidth(label->contentsRect().width());
+
+                // Map mouse position to document coordinates
+                // Assuming text starts at contentsRect().topLeft()
+                QPoint textPos = mouseEvent->pos() - label->contentsRect().topLeft();
+
+                const QString anchor = doc.documentLayout()->anchorAt(textPos);
+
+                if (!anchor.isEmpty()) {
+                    m_airplaneModeLabel->setCursor(Qt::PointingHandCursor);
+                } else {
+                    m_airplaneModeLabel->setCursor(Qt::ArrowCursor);
+                }
+            }
+        }
+    }
+
+    return QWidget::eventFilter(watched, event);
 }
