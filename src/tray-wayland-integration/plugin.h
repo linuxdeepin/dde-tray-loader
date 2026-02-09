@@ -153,6 +153,7 @@ Q_SIGNALS:
     void xChanged();
     void yChanged();
     void pluginPosChanged(const QPoint &point);
+    void requestSetCursor(int cursorShape);
 
 private:
     explicit PluginPopup(QWindow* window);
