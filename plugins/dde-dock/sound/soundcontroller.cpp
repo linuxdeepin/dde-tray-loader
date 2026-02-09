@@ -73,8 +73,6 @@ void SoundController::SetMute(bool in0)
 
 void SoundController::onDefaultSinkChanged(const QDBusObjectPath &path)
 {
-    // 防止手动切换设备，与后端交互时，获取到多个信号，设备切换多次，造成混乱
-
     if (m_defaultSinkInter)
         m_defaultSinkInter->deleteLater();
 
