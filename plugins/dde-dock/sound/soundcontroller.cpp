@@ -73,6 +73,8 @@ void SoundController::SetMute(bool in0)
 
 void SoundController::onDefaultSinkChanged(const QDBusObjectPath &path)
 {
+    if (m_defaultSinkInter)
+        m_defaultSinkInter->disconnect(this);
     // 防止手动切换设备，与后端交互时，获取到多个信号，设备切换多次，造成混乱
 
     if (m_defaultSinkInter)
@@ -84,23 +86,20 @@ void SoundController::onDefaultSinkChanged(const QDBusObjectPath &path)
     }
 
     m_defaultSinkInter = new DBusSink("org.deepin.dde.Audio1", path.path(), QDBusConnection::sessionBus(), this);
-
+    // 某些机型，如flmx，add和active先后时序有问题，active触发时，设备add还没执行，导致找不到需要active的设备项
+    // 这里手动刷新一下设备列表，再执行active操作
+    SoundModel::ref().setCardsInfo(m_audioInter->cardsWithoutUnavailable());
     SoundModel::ref().setActivePort(m_defaultSinkInter->card(), m_defaultSinkInter->activePort().name);
     SoundModel::ref().setMute(m_defaultSinkInter->mute());
     SoundModel::ref().setVolume(existActiveOutputDevice() ? m_defaultSinkInter->volume() : 0);
-
     // 音量和静音状态变化时手动获取下另外一个的状态，有时候收不到 changed 信号
     connect(m_defaultSinkInter, &DBusSink::MuteChanged, &SoundModel::ref(), [this] (bool value) {
         Q_UNUSED(value)
         SoundModel::ref().setMute(m_defaultSinkInter->mute());
         SoundModel::ref().setVolume(m_defaultSinkInter->volume());
     });
-    connect(m_defaultSinkInter, &DBusSink::VolumeChanged, &SoundModel::ref(), [this] (double value) {
+    connect(m_defaultSinkInter, &DBusSink::VolumeChanged, &SoundModel::ref(), [] (double value) {
         SoundModel::ref().setVolume(value);
-        // 收到音量变化 dbus 后再取消静音，避免时序问题
-        if (m_defaultSinkInter->mute()) {
-            m_defaultSinkInter->SetMuteQueued(false);
-        }
     });
     connect(m_defaultSinkInter, &DBusSink::ActivePortChanged, this, [this](AudioPort port) {
         SoundModel::ref().setActivePort(m_defaultSinkInter->card(), port.name);
