@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -227,7 +227,7 @@ void BluetoothAdapterItem::onDeviceAdded(const Device *device)
             emit connectDevice(deviceItem->device(), m_adapter);
         }
     });
-    connect(device, &Device::pairedChanged, this, [this, deviceItem](const bool paired) {
+    connect(device, &Device::pairedChanged, deviceItem, [this, deviceItem](const bool paired) {
         if (deviceItem && deviceItem->device()) {
             PluginStandardItem *item = deviceItem->standardItem();
             if (item) {
