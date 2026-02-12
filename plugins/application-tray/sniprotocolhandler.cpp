@@ -109,6 +109,7 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     // will get a unique dbus name (number like x.xxxx) and dbus path
     m_dbusUniqueName = pair.first.mid(1);
     m_sniInter = new StatusNotifierItem(pair.first, pair.second, QDBusConnection::sessionBus(), this);
+    m_sniInter->setSync(false);
     m_dbusMenuImporter = new DBusMenu(pair.first, m_sniInter->menu().path(), this);
     m_tooltip->setForegroundRole(QPalette::BrightText);
     generateId();
