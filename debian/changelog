@@ -1,3 +1,11 @@
+dde-tray-loader (2.0.26) unstable; urgency=medium
+
+  * fix: resolve DBUS deadlock in application tray
+  * fix: change signal context to prevent dangling pointer
+  * fix: fix audio device switching and mute synchronization issues
+
+ -- zhangkun <zhangkun2@uniontech.com>  Fri, 27 Feb 2026 17:02:59 +0800
+
 dde-tray-loader (2.0.25) unstable; urgency=medium
 
   * perf(sound): remove blocking delay in audio device switching
