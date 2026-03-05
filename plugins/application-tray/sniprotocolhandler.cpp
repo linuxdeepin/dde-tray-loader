@@ -104,15 +104,16 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     : AbstractTrayProtocolHandler(parent)
     , m_tooltip (new QLabel())
     , m_ignoreFirstAttention(true)
+    , m_dbusMenuImporter(nullptr)
 {
     auto pair = serviceAndPath(sniServicePath);
+    m_service = pair.first;
     // will get a unique dbus name (number like x.xxxx) and dbus path
     m_dbusUniqueName = pair.first.mid(1);
     m_sniInter = new StatusNotifierItem(pair.first, pair.second, QDBusConnection::sessionBus(), this);
+    init();
     m_sniInter->setSync(false);
-    m_dbusMenuImporter = new DBusMenu(pair.first, m_sniInter->menu().path(), this);
     m_tooltip->setForegroundRole(QPalette::BrightText);
-    generateId();
 
     connect(m_sniInter, &StatusNotifierItem::NewIcon, this, &SniTrayProtocolHandler::iconChanged);
     connect(m_sniInter, &StatusNotifierItem::NewOverlayIcon, this, &SniTrayProtocolHandler::overlayIconChanged);
@@ -130,7 +131,7 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     connect(m_sniInter, &StatusNotifierItem::NewToolTip, this, &SniTrayProtocolHandler::tooltiChanged);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [this](DGuiApplicationHelper::ColorType themeType) {
         Q_UNUSED(themeType)
-        m_dbusMenuImporter->updateMenu(true);
+        menuImporter()->updateMenu(true);
     });
 }
 
@@ -139,10 +140,25 @@ SniTrayProtocolHandler::~SniTrayProtocolHandler()
     UTIL->removeUniqueId(m_id);
 }
 
+void SniTrayProtocolHandler::init()
+{
+    generateId();
+    m_menuPath = m_sniInter->menu().path();
+}
+
 void SniTrayProtocolHandler::generateId()
 {
     auto id = sniPfrefix + m_sniInter->id();
     m_id = UTIL->generateUniqueId(id);
+}
+
+DBusMenuImporter *SniTrayProtocolHandler::menuImporter() const
+{
+    if (!m_dbusMenuImporter) {
+        auto that = const_cast<SniTrayProtocolHandler *>(this);
+        that->m_dbusMenuImporter = new DBusMenu(m_service, m_menuPath, that);
+    }
+    return m_dbusMenuImporter;
 }
 
 uint32_t SniTrayProtocolHandler::windowId() const
@@ -238,7 +254,7 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
             if (mouseEvent->button() == Qt::LeftButton) {
                 m_sniInter->Activate(0, 0);
             } else if (mouseEvent->button() == Qt::RightButton) {
-                auto menu = m_dbusMenuImporter->menu();
+                auto menu = menuImporter()->menu();
                 Q_CHECK_PTR(menu);
                 if (menu->isEmpty()) {
                     m_sniInter->ContextMenu(0, 0);
