@@ -74,6 +74,8 @@ protected:
 
 private:
     void generateId();
+    void init();
+    DBusMenuImporter *menuImporter() const;
 
 private:
     QString m_dbusUniqueName;
@@ -81,6 +83,8 @@ private:
     StatusNotifierItem *m_sniInter;
     DBusMenuImporter *m_dbusMenuImporter;
     QString m_id;
+    QString m_service;
+    QString m_menuPath;
     bool m_ignoreFirstAttention;
 };
 }
