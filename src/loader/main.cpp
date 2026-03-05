@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -94,11 +94,19 @@ int main(int argc, char *argv[], char *envp[])
     oldEnvs["WAYLAND_DISPLAY"] = qgetenv("WAYLAND_DISPLAY");
     oldEnvs["QT_WAYLAND_SHELL_INTEGRATION"] = qgetenv("QT_WAYLAND_SHELL_INTEGRATION");
     oldEnvs["QT_WAYLAND_RECONNECT"] = qgetenv("QT_WAYLAND_RECONNECT");
+    oldEnvs["QT_IM_MODULE"] = qgetenv("QT_IM_MODULE");
 
     qputenv("DSG_APP_ID", "org.deepin.dde.tray-loader");
     qputenv("WAYLAND_DISPLAY", "dockplugin");
     qputenv("QT_WAYLAND_SHELL_INTEGRATION", "plugin-shell");
     qputenv("QT_WAYLAND_RECONNECT", "1");
+    // Force native Wayland text_input protocol as the input method channel.
+    // The plugin process connects to the internal dockplugin compositor and cannot
+    // directly access the system fcitx/ibus DBus interfaces.
+    // The dockplugin compositor proxies IME requests to the outer real compositor
+    // via the zwp_text_input family of protocols.
+    qputenv("QT_IM_MODULE", "wayland");
+
 
     qAddPreRoutine([] () {
         if (!DGuiApplicationHelper::testAttribute(DGuiApplicationHelper::IsXWindowPlatform)) {
