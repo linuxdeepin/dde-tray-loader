@@ -1,3 +1,13 @@
+dde-tray-loader (2.0.27) unstable; urgency=medium
+
+  * feat: force QT_IM_MODULE=wayland for plugin process to enable
+    Chinese input
+  * fix: fix async access causing invalid properties in SNI tray
+  * feat: Add support for modifying the plugin popup cursor shape via
+    the protocol.
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 05 Mar 2026 20:44:11 +0800
+
 dde-tray-loader (2.0.26) unstable; urgency=medium
 
   * fix: resolve DBUS deadlock in application tray
