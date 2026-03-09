@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -121,6 +121,9 @@ void BluetoothItem::invokeMenuItem(const QString menuId, const bool checked)
     Q_UNUSED(checked);
 
     if (menuId == SHIFT) {
+        if (m_applet->airplaneModeEnable()) {
+            return;
+        }
         m_applet->setAdapterPowered(!m_adapterPowered);
     } else if (menuId == SETTINGS) {
         DDBusSender()
