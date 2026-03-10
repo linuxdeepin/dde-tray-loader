@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -13,6 +13,7 @@
 #include "jumpsettingbutton.h"
 #include "constants.h"
 #include "plugins-logging-category.h"
+#include "touchscrollfilter.h"
 
 #include <DDBusSender>
 #include <DIconButton>
@@ -229,10 +230,7 @@ void BluetoothApplet::initUi()
     m_scrollArea->setPalette(scrollAreaBackground);
 
     // QScroller::grabGesture(m_scrollArea->viewport(), QScroller::LeftMouseButtonGesture);
-    QScroller *scroller = QScroller::scroller(m_scrollArea);
-    QScrollerProperties sp;
-    sp.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, QScrollerProperties::OvershootAlwaysOff);
-    scroller->setScrollerProperties(sp);
+    new TouchScrollFilter(m_scrollArea);
 
     m_mainLayout->setSpacing(0);
     m_mainLayout->setContentsMargins(0, 10, 0, 0);
