@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -115,8 +115,9 @@ void XembedProtocol::onTrayIconsChanged()
 
 void XembedProtocol::onRemoveItemByPid(uint pid)
 {
-    auto it = std::find_if(m_registedItem.keys().begin(), m_registedItem.keys().end(), [this, pid] (uint id) { return pid == m_item2Pid[id]; });
-    if (it != m_registedItem.keys().end()) {
+    const auto keys = m_registedItem.keys();
+    auto it = std::find_if(keys.begin(), keys.end(), [this, pid] (uint id) { return pid == m_item2Pid[id]; });
+    if (it != keys.end()) {
         m_item2Pid.remove(*it);
         m_registedItem.remove(*it);
     }
