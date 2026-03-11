@@ -29,7 +29,16 @@ public:
         : DBusMenuImporter(service, path, parent)
     {
         QObject::connect(this, &DBusMenuImporter::menuUpdated, this, [this] (QMenu *menu) {
-            menu->setFixedSize(menu->sizeHint());
+            menu->adjustSize();
+            menu->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+            menu->setMinimumHeight(menu->sizeHint().height());
+
+            // hide arrow
+            menu->setStyleSheet(
+                "QMenu::scroller { width: 0px; height: 0px; }"
+                "QMenu::down-arrow { image: none; }"
+                "QMenu::up-arrow { image: none; }"
+            );
         }, Qt::QueuedConnection);
     }
     virtual QMenu *createMenu(QWidget *parent) override
@@ -272,7 +281,7 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                 pluginPopup->setItemKey(id());
                 pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeMenu);
                 const auto offset = mouseEvent->pos();
-                pluginPopup->setX(geometry.x() + offset.x());
+                pluginPopup->setX(geometry.x() + offset.x() + 2); // Add 2 offsets to avoid hovering to the menu
                 pluginPopup->setY(geometry.y() + offset.y());
                 menu->show();
             }
