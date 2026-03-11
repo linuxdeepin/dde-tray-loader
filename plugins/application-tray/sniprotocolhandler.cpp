@@ -146,6 +146,8 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     init();
 
     connect(m_sniInter, &StatusNotifierItem::NewIcon, this, &SniTrayProtocolHandler::iconChanged);
+    connect(m_sniInter, &StatusNotifierItem::IconNameChanged, this, &SniTrayProtocolHandler::iconChanged);
+    connect(m_sniInter, &StatusNotifierItem::IconPixmapChanged, this, &SniTrayProtocolHandler::iconChanged);
     connect(m_sniInter, &StatusNotifierItem::NewOverlayIcon, this, &SniTrayProtocolHandler::overlayIconChanged);
     connect(m_sniInter, &StatusNotifierItem::NewAttentionIcon, this, [this] {
         if (m_ignoreFirstAttention) {
