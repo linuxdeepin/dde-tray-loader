@@ -13,6 +13,8 @@
 
 #include <QMouseEvent>
 #include <QWindow>
+#include <QThreadPool>
+#include <QRunnable>
 
 #include <DGuiApplicationHelper>
 
@@ -75,20 +77,38 @@ void SniTrayProtocol::registedItemChanged()
         return;
     }
 
-    for (auto currentRegistedItem : currentRegistedItems) {
-        if (!m_registedItem.contains(currentRegistedItem)) {
-            auto trayHandler = QSharedPointer<SniTrayProtocolHandler>(new SniTrayProtocolHandler(currentRegistedItem));
-            uint pid = QDBusConnection::sessionBus().interface()->servicePid(SniTrayProtocolHandler::serviceAndPath(currentRegistedItem).first).value();
-            m_item2Pid[currentRegistedItem] = pid;
-            if (registeredMap[pid] != SNI)
-                emit removeXEmbedItemByPid(pid);
-            registeredMap[pid] = SNI;
-            m_registedItem.insert(currentRegistedItem, trayHandler);
-            Q_EMIT AbstractTrayProtocol::trayCreated(trayHandler.get());
+    // 处理新增的items：在子线程创建 Handler（init() 阻塞在此）
+    for (const auto &currentRegistedItem : currentRegistedItems) {
+        if (!m_registedItem.contains(currentRegistedItem) && !m_pendingItems.contains(currentRegistedItem)) {
+            m_pendingItems.insert(currentRegistedItem);
+
+            QThreadPool::globalInstance()->start([this, currentRegistedItem]() {
+                auto pair = SniTrayProtocolHandler::serviceAndPath(currentRegistedItem);
+                const uint pid = QDBusConnection::sessionBus().interface()->servicePid(pair.first).value();
+
+                auto trayHandler = QSharedPointer<SniTrayProtocolHandler>(
+                    new SniTrayProtocolHandler(currentRegistedItem));
+                trayHandler->moveToThread(this->thread());
+
+                QMetaObject::invokeMethod(this, [this, currentRegistedItem, pid, trayHandler]() {
+                    if (!m_pendingItems.contains(currentRegistedItem)) {
+                        return;  // item 已被取消，不添加
+                    }
+                    m_pendingItems.remove(currentRegistedItem);
+
+                    m_item2Pid[currentRegistedItem] = pid;
+                    if (registeredMap[pid] != SNI)
+                        emit removeXEmbedItemByPid(pid);
+                    registeredMap[pid] = SNI;
+                    m_registedItem.insert(currentRegistedItem, trayHandler);
+                    Q_EMIT AbstractTrayProtocol::trayCreated(trayHandler.get());
+                }, Qt::QueuedConnection);
+            });
         }
     }
 
-    for (auto alreadyRegistedItem : m_registedItem.keys()) {
+    // 处理移除的items
+    for (const auto &alreadyRegistedItem : m_registedItem.keys()) {
         if (!currentRegistedItems.contains(alreadyRegistedItem)) {
             if (auto value = m_registedItem.value(alreadyRegistedItem, nullptr)) {
                 uint pid = m_item2Pid[alreadyRegistedItem];
@@ -98,11 +118,22 @@ void SniTrayProtocol::registedItemChanged()
             }
         }
     }
+    
+    // 移除pending中但不在当前列表的items（取消异步创建）
+    QSet<QString> toRemoveFromPending;
+    for (const auto &pendingItem : m_pendingItems) {
+        if (!currentRegistedItems.contains(pendingItem)) {
+            toRemoveFromPending.insert(pendingItem);
+        }
+    }
+    for (const auto &item : toRemoveFromPending) {
+        m_pendingItems.remove(item);
+    }
 }
 
 SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QObject *parent)
     : AbstractTrayProtocolHandler(parent)
-    , m_tooltip (new QLabel())
+    , m_tooltip(nullptr)  // 延迟创建，在tooltip()方法中创建
     , m_ignoreFirstAttention(true)
     , m_dbusMenuImporter(nullptr)
 {
@@ -111,9 +142,8 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     // will get a unique dbus name (number like x.xxxx) and dbus path
     m_dbusUniqueName = pair.first.mid(1);
     m_sniInter = new StatusNotifierItem(pair.first, pair.second, QDBusConnection::sessionBus(), this);
+    m_sniInter->setTimeout(2000);
     init();
-    m_sniInter->setSync(false);
-    m_tooltip->setForegroundRole(QPalette::BrightText);
 
     connect(m_sniInter, &StatusNotifierItem::NewIcon, this, &SniTrayProtocolHandler::iconChanged);
     connect(m_sniInter, &StatusNotifierItem::NewOverlayIcon, this, &SniTrayProtocolHandler::overlayIconChanged);
@@ -183,6 +213,12 @@ QString SniTrayProtocolHandler::status() const
 
 QWidget* SniTrayProtocolHandler::tooltip() const
 {
+    // 延迟创建label，确保在主线程创建
+    if (!m_tooltip) {
+        const_cast<SniTrayProtocolHandler*>(this)->m_tooltip = new QLabel();
+        m_tooltip->setForegroundRole(QPalette::BrightText);
+    }
+    
     if (!m_sniInter->toolTip().title.isEmpty()) {
         m_tooltip->setText(m_sniInter->toolTip().title);
         return m_tooltip;
