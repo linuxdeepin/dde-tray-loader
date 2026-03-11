@@ -39,6 +39,7 @@ private:
 
     QHash<QString, QSharedPointer<SniTrayProtocolHandler>> m_registedItem;
     QHash<QString, uint> m_item2Pid;
+    QSet<QString> m_pendingItems;  // 跟踪正在异步创建的items
 };
 
 class SniTrayProtocolHandler : public AbstractTrayProtocolHandler
@@ -46,7 +47,7 @@ class SniTrayProtocolHandler : public AbstractTrayProtocolHandler
     Q_OBJECT
 
 public:
-    SniTrayProtocolHandler(const QString &sniServicePath, QObject *parent= nullptr);
+    SniTrayProtocolHandler(const QString &sniServicePath, QObject *parent = nullptr);
     ~SniTrayProtocolHandler();
 
     virtual uint32_t windowId() const override;
