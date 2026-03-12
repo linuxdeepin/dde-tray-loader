@@ -1,4 +1,5 @@
 /* This file is part of the dbusmenu-qt library
+    SPDX-FileCopyrightText: 2026 UnionTech Software Technology Co., Ltd.
     SPDX-FileCopyrightText: 2009 Canonical
     SPDX-FileContributor: Aurelien Gateau <aurelien.gateau@canonical.com>
 
@@ -119,6 +120,8 @@ public:
 
         if (map.take(QStringLiteral("children-display")).toString() == QLatin1String("submenu")) {
             QMenu *menu = createMenu(parent);
+            // Set the ID of the menuAction of the submenu so that aboutToShow can correctly obtain the menu ID and refresh it
+            menu->menuAction()->setProperty(DBUSMENU_PROPERTY_ID, id);
             action->setMenu(menu);
         }
 
@@ -522,6 +525,9 @@ void DBusMenuImporter::slotMenuAboutToHide()
 
     int id = action->property(DBUSMENU_PROPERTY_ID).toInt();
     d->sendEvent(id, QStringLiteral("closed"));
+    
+    // Clear id when the menu is closed to ensure that it can be refreshed normally next time hover
+    d->m_idsRefreshedByAboutToShow.remove(id);
 }
 
 void DBusMenuImporter::slotMenuAboutToShow()
