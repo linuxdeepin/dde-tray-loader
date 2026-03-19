@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -79,7 +79,7 @@ private:
 
         auto windowHandle = widget->window()->windowHandle();
         if (auto pluginPopup = Plugin::PluginPopup::getWithoutCreating(windowHandle)) {
-            Qt::CursorShape cursorShape = widget->cursor().shape();
+            Qt::CursorShape cursorShape = windowHandle->cursor().shape();
             Q_EMIT pluginPopup->requestSetCursor(static_cast<int>(cursorShape));
         }
     }
