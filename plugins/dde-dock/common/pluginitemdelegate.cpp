@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -68,7 +68,11 @@ void PluginItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &op
         boption.dpalette.setBrush(DPalette::ItemBackground, bgColor);
         boption.directions = Qt::Vertical;
         boption.position = DStyleOptionBackgroundGroup::ItemBackgroundPosition(itemSpacing.viewItemPosition);
+        // 限制绘制范围，防止高DPI下DStyle绘制ItemBackground边框溢出到gap区域
+        painter->save();
+        painter->setClipRect(boption.rect, Qt::IntersectClip);
         m_view->style()->drawPrimitive(static_cast<QStyle::PrimitiveElement>(DStyle::PE_ItemBackground), &boption, painter, option.widget);
+        painter->restore();
     }
 }
 
