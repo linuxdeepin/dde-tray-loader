@@ -563,7 +563,7 @@
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation>Player de música</translation>
+        <translation>Música</translation>
     </message>
     <message>
         <source>Unknown</source>
