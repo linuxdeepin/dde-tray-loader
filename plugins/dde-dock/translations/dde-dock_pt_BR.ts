@@ -405,7 +405,7 @@
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation>Ativar modo Não Perturbe</translation>
+        <translation>Ativar o modo Não Perturbe</translation>
     </message>
     <message>
         <source>Notification</source>
