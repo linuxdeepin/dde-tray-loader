@@ -416,7 +416,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>Teclado Virtual</translation>
+        <translation>Teclado virtual</translation>
     </message>
     <message>
         <source>Settings</source>
