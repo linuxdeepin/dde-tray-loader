@@ -1,3 +1,12 @@
+dde-tray-loader (2.0.29) unstable; urgency=medium
+
+  * fix: resolve popup cursor display incorrect as arrow when hovering
+    links
+  * fix: clip item background painting to prevent border overflow in
+    high DPI
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 26 Mar 2026 19:39:56 +0800
+
 dde-tray-loader (2.0.28) unstable; urgency=medium
 
   * i18n: Translate dde-dock.ts in es (#432)
