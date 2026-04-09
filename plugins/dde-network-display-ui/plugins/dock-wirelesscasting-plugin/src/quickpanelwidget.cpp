@@ -7,10 +7,12 @@
 #include <DFontSizeManager>
 #include <DStyle>
 #include <DToolTip>
+#include <DGuiApplicationHelper>
 
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QEnterEvent>
 #include <QPainter>
 #include <QPainterPath>
 
@@ -26,7 +28,15 @@ class QuickButton : public DFloatingButton
 public:
     explicit QuickButton(QWidget *parent = nullptr)
         : DFloatingButton(parent)
+        , m_parentHover(false)
     {
+    }
+
+    void setParentHover(bool hover) {
+        if (m_parentHover == hover)
+            return;
+        m_parentHover = hover;
+        update();
     }
 
 protected:
@@ -45,7 +55,7 @@ protected:
             }
         } else {
             bgColor.setAlphaF(0);
-            textColor.setAlphaF(1);
+            textColor.setAlphaF(m_parentHover ? 1.0 : 0.7);
         }
         option->palette.setBrush(QPalette::Button, bgColor);
         option->palette.setBrush(QPalette::ButtonText, textColor);
@@ -53,6 +63,9 @@ protected:
         option->state.setFlag(QStyle::State_Sunken, false);
         option->state.setFlag(QStyle::State_Raised, true);
     }
+
+private:
+    bool m_parentHover;
 };
 
 QuickPanelWidget::QuickPanelWidget(QWidget *parent)
@@ -61,6 +74,7 @@ QuickPanelWidget::QuickPanelWidget(QWidget *parent)
     , m_nameLabel(new DLabel(this))
     , m_stateLabel(new DLabel(this))
     , m_expandLabel(new DIconButton(this))
+    , m_hover(false)
 {
     initUi();
     initConnection();
@@ -164,6 +178,35 @@ void QuickPanelWidget::initUi()
 void QuickPanelWidget::initConnection()
 {
     connect(m_iconWidget, &DFloatingButton::clicked, this, &QuickPanelWidget::iconClicked);
+}
+
+void QuickPanelWidget::enterEvent(QEnterEvent *event)
+{
+    m_hover = true;
+    m_iconWidget->setParentHover(true);
+    updateTextColor(true);
+    QWidget::enterEvent(event);
+}
+
+void QuickPanelWidget::leaveEvent(QEvent *event)
+{
+    m_hover = false;
+    m_iconWidget->setParentHover(false);
+    updateTextColor(false);
+    QWidget::leaveEvent(event);
+}
+
+void QuickPanelWidget::updateTextColor(bool hover)
+{
+    bool isLight = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType;
+    QColor color = isLight ? QColor(0, 0, 0) : QColor(255, 255, 255);
+    color.setAlphaF(hover ? 1.0 : 0.7);
+
+    QPalette pa = m_nameLabel->palette();
+    pa.setColor(QPalette::BrightText, color);
+    pa.setColor(QPalette::WindowText, color);
+    m_nameLabel->setPalette(pa);
+    m_stateLabel->setPalette(pa);
 }
 
 } // namespace wirelesscasting
