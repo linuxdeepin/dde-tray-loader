@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -19,7 +19,7 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
     : QWidget(parent)
     , m_itemKey(itemKey)
     , m_pluginsItemInterface(pluginItemInterface)
-    , m_menu(new DockContextMenu(this))
+    , m_menu(new DockContextMenu(nullptr))
     , m_tooltipTimer(new QTimer(this))
     , m_tipsWidget(nullptr)
 {
@@ -44,7 +44,13 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
     });
 }
 
-PluginItem::~PluginItem() = default;
+PluginItem::~PluginItem()
+{
+    if (m_menu) {
+        delete m_menu;
+        m_menu = nullptr;
+    }
+}
 
 QWidget *PluginItem::itemPopupApplet()
 {
