@@ -35,10 +35,13 @@ Q_SIGNALS:
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     void initUi();
     void initConnection();
+    void updateTextColor(bool hover);
 
 private:
     QuickButton *m_iconWidget;
@@ -46,6 +49,7 @@ private:
     Dtk::Widget::DLabel *m_stateLabel;
     Dtk::Widget::DIconButton *m_expandLabel;
     QPoint m_clickPoint;
+    bool m_hover;
 };
 
 #endif // QUICKPANELWIDGET_H

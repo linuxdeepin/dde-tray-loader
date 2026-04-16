@@ -8,9 +8,11 @@
 #include "mediamodel.h"
 
 #include <QHBoxLayout>
+#include <QEnterEvent>
 
 #include <DStyleOption>
 #include <DIcon>
+#include <DGuiApplicationHelper>
 
 QuickPanelWidget::QuickPanelWidget(MediaController *controller, QWidget* parent)
     : QWidget(parent)
@@ -20,6 +22,7 @@ QuickPanelWidget::QuickPanelWidget(MediaController *controller, QWidget* parent)
     , m_artistLab(new DLabel(this))
     , m_playButton(new CommonIconButton(this))
     , m_nextButton(new CommonIconButton(this))
+    , m_hover(false)
 {
     init();
 }
@@ -62,9 +65,9 @@ void QuickPanelWidget::init()
     QHBoxLayout *hLayout = new QHBoxLayout(buttonWidget);
 
     m_playButton->setClickable(true);
-    m_playButton->setIcon(QIcon::fromTheme(MediaModel::ref().playState() ? "play-pause" : "play-start"), Qt::black, Qt::white);
+    m_playButton->setIcon(QIcon::fromTheme(MediaModel::ref().playState() ? "play-pause" : "play-start"), QColor(0, 0, 0, 178), QColor(255, 255, 255, 178));
     m_nextButton->setClickable(true);
-    m_nextButton->setIcon(QIcon::fromTheme("play-next"), Qt::black, Qt::white);
+    m_nextButton->setIcon(QIcon::fromTheme("play-next"), QColor(0, 0, 0, 178), QColor(255, 255, 255, 178));
 
     hLayout->setSpacing(0);
     hLayout->setContentsMargins(0, 0, 0, 0);
@@ -79,7 +82,7 @@ void QuickPanelWidget::init()
     connect(m_nextButton, &CommonIconButton::clicked, m_controller, &MediaController::next);
 
     connect(&MediaModel::ref(), &MediaModel::playStateChanged, this, [this] (bool state) {
-        m_playButton->setIcon(QIcon::fromTheme(state ? "play-pause" : "play-start"), Qt::black, Qt::white);
+        m_playButton->setIcon(QIcon::fromTheme(state ? "play-pause" : "play-start"), QColor(0, 0, 0, 178), QColor(255, 255, 255, 178));
     });
     connect(m_playButton, &CommonIconButton::clicked, this, [this] {
         MediaModel::ref().playState() ? m_controller->pause() : m_controller->play();
@@ -125,6 +128,35 @@ void QuickPanelWidget::mouseReleaseEvent(QMouseEvent *event)
         Q_EMIT clicked();
     }
     return QWidget::mouseReleaseEvent(event);
+}
+
+void QuickPanelWidget::enterEvent(QEnterEvent *event)
+{
+    m_hover = true;
+    m_playButton->setParentHover(true);
+    m_nextButton->setParentHover(true);
+    updateTextColor(true);
+    QWidget::enterEvent(event);
+}
+
+void QuickPanelWidget::leaveEvent(QEvent *event)
+{
+    m_hover = false;
+    m_playButton->setParentHover(false);
+    m_nextButton->setParentHover(false);
+    updateTextColor(false);
+    QWidget::leaveEvent(event);
+}
+
+void QuickPanelWidget::updateTextColor(bool hover)
+{
+    bool isLight = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType;
+    QColor color = isLight ? QColor(0, 0, 0) : QColor(255, 255, 255);
+    color.setAlphaF(hover ? 1.0 : 0.7);
+
+    QPalette pa = m_titleLab->palette();
+    pa.setColor(QPalette::BrightText, color);
+    m_titleLab->setPalette(pa);
 }
 
 QuickPanelWidget::~QuickPanelWidget()
