@@ -161,7 +161,9 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     connect(m_sniInter, &StatusNotifierItem::NewToolTip, this, &SniTrayProtocolHandler::tooltiChanged);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [this](DGuiApplicationHelper::ColorType themeType) {
         Q_UNUSED(themeType)
-        menuImporter()->updateMenu(true);
+        if (auto menu = menuImporter()) {
+            menu->updateMenu(true);
+        }
     });
 }
 
@@ -186,6 +188,9 @@ DBusMenuImporter *SniTrayProtocolHandler::menuImporter() const
 {
     if (!m_dbusMenuImporter) {
         auto that = const_cast<SniTrayProtocolHandler *>(this);
+        if (that->m_menuPath == QLatin1String("/NO_DBUSMENU")) {
+            return nullptr;
+        }
         that->m_dbusMenuImporter = new DBusMenu(m_service, m_menuPath, that);
     }
     return m_dbusMenuImporter;
@@ -290,13 +295,12 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
             if (mouseEvent->button() == Qt::LeftButton) {
                 m_sniInter->Activate(0, 0);
             } else if (mouseEvent->button() == Qt::RightButton) {
-                auto menu = menuImporter()->menu();
-                Q_CHECK_PTR(menu);
-                if (menu->isEmpty()) {
+                if (!menuImporter()) {
                     m_sniInter->ContextMenu(0, 0);
                     return false;
                 }
 
+                auto menu = menuImporter()->menu();
                 menu->setFixedSize(menu->sizeHint());
                 menu->winId();
 
