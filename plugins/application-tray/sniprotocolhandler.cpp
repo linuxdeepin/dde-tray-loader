@@ -17,6 +17,8 @@
 #include <QRunnable>
 
 #include <DGuiApplicationHelper>
+#include <private/qobject_p.h>
+#include <private/qmenu_p.h>
 
 DGUI_USE_NAMESPACE
 
@@ -32,6 +34,12 @@ public:
     {
         QObject::connect(this, &DBusMenuImporter::menuUpdated, this, [this] (QMenu *menu) {
             menu->setFixedSize(menu->sizeHint());
+            // TODO 删除 QMenu 的滚动功能，修复首次子菜单显示滚动指示器问题
+            if (auto dp = static_cast<QMenuPrivate*>(QObjectPrivate::get(menu))) {
+                if (auto scroll = dp->scroll) {
+                    scroll->scrollFlags = QMenuPrivate::QMenuScroller::ScrollNone;
+                }
+            }
         }, Qt::QueuedConnection);
     }
     virtual QMenu *createMenu(QWidget *parent) override
