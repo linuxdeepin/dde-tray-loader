@@ -72,6 +72,8 @@ target_link_libraries(${PLUGIN_NAME}
         Qt${QT_VERSION_MAJOR}::Core
         Qt${QT_VERSION_MAJOR}::Gui
         Qt${QT_VERSION_MAJOR}::Widgets
+        Qt${QT_VERSION_MAJOR}::CorePrivate
+        Qt${QT_VERSION_MAJOR}::WidgetsPrivate
         Dtk${DTK_VERSION_MAJOR}::Core
         Dtk${DTK_VERSION_MAJOR}::Gui
         Dtk${DTK_VERSION_MAJOR}::Widget
