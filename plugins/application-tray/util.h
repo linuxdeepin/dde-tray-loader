@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -9,6 +9,7 @@
 #include <QSharedPointer>
 #include <QSet>
 #include <QObject>
+#include <QMutex>
 
 #include <cstdint>
 #include <sys/types.h>
@@ -78,6 +79,7 @@ private:
     _XDisplay *m_display;
 
     QSet<QString> m_currentIds;
+    QMutex m_idMutex;
 };
 
 }

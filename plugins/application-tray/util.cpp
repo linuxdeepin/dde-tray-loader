@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -318,6 +318,7 @@ void Util::sendXembedMessage(const xcb_window_t& window, const long& message, co
 
 QString Util::generateUniqueId(const QString &id)
 {
+    QMutexLocker locker(&m_idMutex);
     for (int i = 0; i < 100; i++) {
         QString newId = id + "-" + QString::number(i);
         if (!m_currentIds.contains(newId)) {
@@ -331,6 +332,7 @@ QString Util::generateUniqueId(const QString &id)
 }
 
 void Util::removeUniqueId(const QString &id) {
+    QMutexLocker locker(&m_idMutex);
     m_currentIds.remove(id);
 }
 
