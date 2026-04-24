@@ -1,3 +1,9 @@
+dde-tray-loader (2.0.31) unstable; urgency=medium
+
+  * fix: prevent crash when closing wayland popup surfaces
+
+ -- zhangkun <zhangkun2@uniontech.com>  Fri, 24 Apr 2026 16:48:56 +0800
+
 dde-tray-loader (2.0.30) unstable; urgency=medium
 
   * fix: disable menu scroll indicator in application tray plugin
