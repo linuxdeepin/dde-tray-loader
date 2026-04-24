@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -9,9 +9,59 @@
 #include "qwayland-plugin-manager-v1.h"
 
 #include <QTimer>
+#include <QApplication>
+#include <QWidget>
+#include <QEvent>
 #include <QtWaylandClient/private/qwaylandwindow_p.h>
 
 namespace Plugin {
+
+class NullHandleGuard : public QObject {
+public:
+    static void install() {
+        static bool installed = false;
+        if (!installed && qApp) {
+            qApp->installEventFilter(new NullHandleGuard(qApp));
+            installed = true;
+        }
+    }
+
+    NullHandleGuard(QObject *parent = nullptr) : QObject(parent) {}
+
+protected:
+    bool eventFilter(QObject *watched, QEvent *event) override {
+        if (event->type() == QEvent::UpdateRequest) {
+            QWindow *win = nullptr;
+            QWidget *w = qobject_cast<QWidget *>(watched);
+            QWindow *wnd = qobject_cast<QWindow *>(watched);
+            
+            if (w) {
+                win = w->windowHandle();
+                if (!win && w->window()) {
+                    win = w->window()->windowHandle();
+                }
+            } else if (wnd) {
+                win = wnd;
+            }
+
+            // Drop UpdateRequest to prevent QWaylandShmBackingStore from crashing
+            // in beginPaint/decoration() when trying to paint a destroyed window.
+            if (win) {
+                // Case 1: The QWindow exists, but its underlying Wayland surface is destroyed.
+                if (!win->handle()) {
+                    qDebug() << "NullHandleGuard Dropped UpdateRequest for" << watched << "(null Wayland handle)";
+                    return true;
+                }
+            } else if (w) {
+                // Case 2: The QWidget has lost its QWindow entirely.
+                // A widget without a QWindow cannot be painted to the screen.
+                qDebug() << "NullHandleGuard Dropped UpdateRequest for" << watched << "(missing QWindow)";
+                return true;
+            }
+        }
+        return QObject::eventFilter(watched, event);
+    }
+};
 PluginSurface::PluginSurface(PluginManagerIntegration *manager, QtWaylandClient::QWaylandWindow *window)
     : QtWaylandClient::QWaylandShellSurface(window)
     , QtWayland::plugin()
@@ -132,8 +182,38 @@ PluginPopupSurface::~PluginPopupSurface()
 
 void PluginPopupSurface::plugin_popup_close()
 {
-    // it would be delete this object directly.
-    m_window->close();
+    // Install the global safeguard just in case
+    NullHandleGuard::install();
+
+    // Use QPointer to ensure m_window is still valid when the queued lambda executes
+    QPointer<QWindow> safeWindow(m_window);
+
+    // DEFER the destruction!
+    // Why: QWaylandShmBackingStore::beginPaint() can spin the Wayland event loop
+    // (e.g., waiting for buffers) which synchronously dispatches this Wayland event.
+    // If we destroy m_window here, beginPaint() resumes with a dangling pointer
+    // and crashes immediately. Deferring to the next event loop iteration ensures
+    // that the current paint frame completes before we destroy the Wayland surface.
+    QMetaObject::invokeMethod(qApp, [safeWindow]() {
+        if (!safeWindow) {
+            return;
+        }
+
+        QWidget *popupWidget = nullptr;
+        for (QWidget *w : QApplication::topLevelWidgets()) {
+            if (w && w->windowHandle() == safeWindow.data()) {
+                popupWidget = w;
+                break;
+            }
+        }
+
+        if (popupWidget) {
+            popupWidget->hide();
+        }
+
+        // Safely close the QWindow. This destroys the Wayland surface.
+        safeWindow->close();
+    }, Qt::QueuedConnection);
 }
 
 void PluginPopupSurface::plugin_popup_geometry(int32_t x, int32_t y, int32_t width, int32_t height)
