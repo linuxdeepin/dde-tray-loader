@@ -87,5 +87,6 @@ private:
     QString m_service;
     QString m_menuPath;
     bool m_ignoreFirstAttention;
+    QIcon m_cachedIcon;
 };
 }

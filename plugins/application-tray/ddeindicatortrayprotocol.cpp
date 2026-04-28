@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -22,7 +22,8 @@
 #include <QLoggingCategory>
 
 #include <cmath>
-#include <thread>
+#include <QThreadPool>
+#include <QRunnable>
 
 namespace tray {
 
@@ -150,25 +151,25 @@ void DDEindicatorProtocolHandlerPrivate::initDBus()
         }
 
         const QJsonObject action = config.value("action").toObject();
-        if (!action.isEmpty())
-            q->connect(q, &DDEindicatorProtocolHandler::clicked, q, [ = ](uint8_t button_index, int x, int y) {
-                std::thread t([ = ] ()-> void {
-                    auto triggerConfig = action.value("trigger").toObject();
-                    auto dbusService = triggerConfig.value("dbus_service").toString();
-                    auto dbusPath = triggerConfig.value("dbus_path").toString();
-                    auto dbusInterface = triggerConfig.value("dbus_interface").toString();
-                    auto methodName = triggerConfig.value("dbus_method").toString();
-                    auto isSystemBus = triggerConfig.value("system_dbus").toBool(false);
-                    auto bus = isSystemBus ? QDBusConnection::systemBus() : QDBusConnection::sessionBus();
+        if (!action.isEmpty()) {
+            const auto triggerConfig = action.value("trigger").toObject();
+            const auto dbusService = triggerConfig.value("dbus_service").toString();
+            const auto dbusPath = triggerConfig.value("dbus_path").toString();
+            const auto dbusInterface = triggerConfig.value("dbus_interface").toString();
+            const auto methodName = triggerConfig.value("dbus_method").toString();
+            const auto isSystemBus = triggerConfig.value("system_dbus").toBool(false);
 
+            q->connect(q, &DDEindicatorProtocolHandler::clicked, q, [=](uint8_t button_index, int x, int y) {
+                QThreadPool::globalInstance()->start([=] {
+                    auto bus = isSystemBus ? QDBusConnection::systemBus() : QDBusConnection::sessionBus();
                     QDBusInterface interface(dbusService, dbusPath, dbusInterface, bus);
                     QDBusReply<void> reply = interface.call(methodName, button_index, x, y);
                     if (!reply.isValid()) {
                         interface.call(methodName);
                     }
                 });
-                t.detach();
             });
+        }
     });
 }
 
