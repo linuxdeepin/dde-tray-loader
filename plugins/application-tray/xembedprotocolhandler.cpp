@@ -127,6 +127,7 @@ XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent
     : AbstractTrayProtocolHandler(parent)
     , m_enabled(false)
     , m_windowId(id)
+    , m_containerWid(0)
     , m_hoverTimer(new QTimer(this))
     , m_attentionTimer(new QTimer(this))
     , m_iconUpdateTimer(new QTimer(this))
@@ -159,6 +160,9 @@ XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent
 
 XembedProtocolHandler::~XembedProtocolHandler()
 {
+    if (m_containerWid) {
+        xcb_destroy_window(Util::instance()->getX11Connection(), m_containerWid);
+    }
     UTIL->removeUniqueId(m_id);
 }
 

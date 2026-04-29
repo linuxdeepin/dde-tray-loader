@@ -153,7 +153,10 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     m_sniInter->setTimeout(2000);
     init();
 
-    connect(m_sniInter, &StatusNotifierItem::NewIcon, this, &SniTrayProtocolHandler::iconChanged);
+    connect(m_sniInter, &StatusNotifierItem::NewIcon, this, [this] {
+        m_cachedIcon = dbusImageList2QIcon(m_sniInter->iconPixmap());
+        Q_EMIT iconChanged();
+    });
     connect(m_sniInter, &StatusNotifierItem::NewOverlayIcon, this, &SniTrayProtocolHandler::overlayIconChanged);
     connect(m_sniInter, &StatusNotifierItem::NewAttentionIcon, this, [this] {
         if (m_ignoreFirstAttention) {
@@ -177,6 +180,11 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
 
 SniTrayProtocolHandler::~SniTrayProtocolHandler()
 {
+    if (m_tooltip) {
+        delete m_tooltip;
+        m_tooltip = nullptr;
+    }
+
     UTIL->removeUniqueId(m_id);
 }
 
@@ -184,6 +192,7 @@ void SniTrayProtocolHandler::init()
 {
     generateId();
     m_menuPath = m_sniInter->menu().path();
+    m_cachedIcon = dbusImageList2QIcon(m_sniInter->iconPixmap());
 }
 
 void SniTrayProtocolHandler::generateId()
@@ -287,7 +296,7 @@ QIcon SniTrayProtocolHandler::icon() const
         }
     }
 
-    return dbusImageList2QIcon(m_sniInter->iconPixmap());
+    return m_cachedIcon;
 }
 
 bool SniTrayProtocolHandler::enabled() const
