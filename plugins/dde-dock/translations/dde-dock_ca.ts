@@ -48,7 +48,7 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation>Apagat</translation>
+        <translation>Aturat</translation>
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
@@ -83,7 +83,7 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation>Apagat</translation>
+        <translation>Aturat</translation>
     </message>
     <message>
         <source>Connected %1</source>
