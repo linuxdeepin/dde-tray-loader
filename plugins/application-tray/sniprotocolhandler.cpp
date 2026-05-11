@@ -154,16 +154,23 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     init();
 
     connect(m_sniInter, &StatusNotifierItem::NewIcon, this, [this] {
-        m_cachedIcon = dbusImageList2QIcon(m_sniInter->iconPixmap());
+        if (m_sniInter->iconName().isEmpty())
+            m_cachedIcon = dbusImageList2QIcon(m_sniInter->iconPixmap());
         Q_EMIT iconChanged();
     });
-    connect(m_sniInter, &StatusNotifierItem::NewOverlayIcon, this, &SniTrayProtocolHandler::overlayIconChanged);
+    connect(m_sniInter, &StatusNotifierItem::NewOverlayIcon, this, [this] {
+        if (m_sniInter->overlayIconName().isEmpty())
+            m_cachedOverlayIcon = dbusImageList2QIcon(m_sniInter->overlayIconPixmap());
+        Q_EMIT overlayIconChanged();
+    });
     connect(m_sniInter, &StatusNotifierItem::NewAttentionIcon, this, [this] {
         if (m_ignoreFirstAttention) {
             m_ignoreFirstAttention = false;
             return;
         }
 
+        if (m_sniInter->attentionIconName().isEmpty())
+            m_cachedAttentionIcon = dbusImageList2QIcon(m_sniInter->attentionIconPixmap());
         Q_EMIT attentionIconChanged();
     });
 
@@ -193,6 +200,8 @@ void SniTrayProtocolHandler::init()
     generateId();
     m_menuPath = m_sniInter->menu().path();
     m_cachedIcon = dbusImageList2QIcon(m_sniInter->iconPixmap());
+    m_cachedAttentionIcon = dbusImageList2QIcon(m_sniInter->attentionIconPixmap());
+    m_cachedOverlayIcon = dbusImageList2QIcon(m_sniInter->overlayIconPixmap());
 }
 
 void SniTrayProtocolHandler::generateId()
@@ -261,8 +270,7 @@ QIcon SniTrayProtocolHandler::overlayIcon() const
         return QIcon::fromTheme(iconName);
     }
 
-    auto icon = dbusImageList2QIcon(m_sniInter->overlayIconPixmap());
-    return icon;
+    return m_cachedOverlayIcon;
 }
 
 QIcon SniTrayProtocolHandler::attentionIcon() const
@@ -272,8 +280,7 @@ QIcon SniTrayProtocolHandler::attentionIcon() const
         return QIcon::fromTheme(iconName);
     }
 
-    auto icon = dbusImageList2QIcon(m_sniInter->attentionIconPixmap());
-    return icon;
+    return m_cachedAttentionIcon;
 }
 
 QIcon SniTrayProtocolHandler::icon() const
@@ -356,18 +363,19 @@ QPair<QString, QString> SniTrayProtocolHandler::serviceAndPath(const QString &se
 QIcon SniTrayProtocolHandler::dbusImageList2QIcon(const DBusImageList &dbusImageList)
 {
     QIcon res;
-    if (!dbusImageList.isEmpty() && !dbusImageList.first().pixels.isEmpty()) {
-        for (auto image = dbusImageList.begin(); image < dbusImageList.end(); image++) {
-            const char *image_data = image->pixels.data();
-            if (QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
-                for (int i = 0; i < image->pixels.size(); i += 4) {
-                    *(qint32 *)(image_data + i) = qFromBigEndian(*(qint32 *)(image_data + i));
-                }
-            }
+    if (dbusImageList.isEmpty() || dbusImageList.first().pixels.isEmpty())
+        return res;
 
-            QImage qimage((const uchar *)image->pixels.constData(), image->width, image->height, QImage::Format_ARGB32);
-            res.addPixmap(QPixmap::fromImage(qimage));
+    DBusImageList copy = dbusImageList;
+    for (auto &image : copy) {
+        if (QSysInfo::ByteOrder == QSysInfo::LittleEndian) {
+            quint32 *pixels = reinterpret_cast<quint32 *>(image.pixels.data());
+            for (int i = 0; i < image.pixels.size() / 4; i++)
+                pixels[i] = qFromBigEndian(pixels[i]);
         }
+
+        QImage qimage(reinterpret_cast<const uchar *>(image.pixels.constData()), image.width, image.height, QImage::Format_ARGB32);
+        res.addPixmap(QPixmap::fromImage(qimage));
     }
 
     return res;
