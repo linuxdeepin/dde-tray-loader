@@ -204,7 +204,7 @@ void Util::setX11WindowSize(const xcb_window_t& window, const QSize& size)
 QRect Util::getX11WindowGeometry(const xcb_window_t& window) const
 {
     auto cookie = xcb_get_geometry(m_x11connection, window);
-    QSharedPointer<xcb_get_geometry_reply_t> clientGeom(xcb_get_geometry_reply(m_x11connection, cookie, nullptr));
+    QSharedPointer<xcb_get_geometry_reply_t> clientGeom(xcb_get_geometry_reply(m_x11connection, cookie, nullptr), [](xcb_get_geometry_reply_t* ptr){ free(ptr); });
 
     return clientGeom ? QRect(clientGeom->x, clientGeom->y, clientGeom->width, clientGeom->height) : QRect();
 }
@@ -239,12 +239,19 @@ void Util::setX11WindowInputShape(const xcb_window_t& window, const QSize& size)
 QImage Util::getX11WindowImageNonComposite(const xcb_window_t& window)
 {
     QSize size = getX11WindowGeometry(window).size();
+    if (size.isEmpty()) {
+        return QImage();
+    }
+    
     xcb_image_t *image = xcb_image_get(m_x11connection, window, 0, 0, size.width(), size.height(), 0xFFFFFFFF, XCB_IMAGE_FORMAT_Z_PIXMAP);
 
-    QImage naiveConversion;
-    if (image) {
-        naiveConversion = QImage(image->data, image->width, image->height, QImage::Format_ARGB32);
-    } else {
+    if (!image) {
+        return QImage();
+    }
+
+    QImage naiveConversion(image->data, image->width, image->height, QImage::Format_ARGB32);
+    if (naiveConversion.isNull()) {
+        xcb_image_destroy(image);
         return QImage();
     }
 
@@ -252,10 +259,13 @@ QImage Util::getX11WindowImageNonComposite(const xcb_window_t& window)
         QImage elaborateConversion = QImage(convertFromNative(image));
         if (isTransparentImage(elaborateConversion)) {
             return QImage();
-        } else
+        } else {
             return elaborateConversion;
+        }
     } else {
-        return QImage(image->data, image->width, image->height, image->stride, QImage::Format_ARGB32, clean_xcb_image, image);
+        QImage res = naiveConversion.copy();
+        xcb_image_destroy(image);
+        return res;
     }
 }
 
@@ -384,36 +394,41 @@ QImage Util::convertFromNative(xcb_image_t *xcbImage)
         format = QImage::Format_ARGB32_Premultiplied;
         break;
     default:
+        xcb_image_destroy(xcbImage);
         return QImage();
     }
 
-    QImage image(xcbImage->data, xcbImage->width, xcbImage->height, xcbImage->stride, format, clean_xcb_image, xcbImage);
+    QImage image(xcbImage->data, xcbImage->width, xcbImage->height, xcbImage->stride, format);
 
     if (image.isNull()) {
+        xcb_image_destroy(xcbImage);
         return QImage();
     }
+    
+    QImage deepCopy = image.copy();
+    xcb_image_destroy(xcbImage);
 
-    if (format == QImage::Format_RGB32 && xcbImage->bpp == 32) {
-        QImage m = image.createHeuristicMask();
-        QPixmap p = QPixmap::fromImage(std::move(image));
+    if (format == QImage::Format_RGB32 && deepCopy.depth() == 32) {
+        QImage m = deepCopy.createHeuristicMask();
+        QPixmap p = QPixmap::fromImage(std::move(deepCopy));
         p.setMask(QBitmap::fromImage(std::move(m)));
-        image = p.toImage();
+        deepCopy = p.toImage();
     }
 
-    if (image.format() == QImage::Format_MonoLSB) {
-        image.setColorCount(2);
-        image.setColor(0, QColor(Qt::white).rgb());
-        image.setColor(1, QColor(Qt::black).rgb());
+    if (deepCopy.format() == QImage::Format_MonoLSB) {
+        deepCopy.setColorCount(2);
+        deepCopy.setColor(0, QColor(Qt::white).rgb());
+        deepCopy.setColor(1, QColor(Qt::black).rgb());
     }
 
-    return image;
+    return deepCopy;
 }
 
 QPoint Util::getMousePos() const
 {
     QPoint pos;
     xcb_query_pointer_cookie_t cookie = xcb_query_pointer(m_x11connection, m_rootWindow);
-    QScopedPointer<xcb_query_pointer_reply_t> reply(xcb_query_pointer_reply(m_x11connection, cookie, NULL));
+    QSharedPointer<xcb_query_pointer_reply_t> reply(xcb_query_pointer_reply(m_x11connection, cookie, NULL), [](xcb_query_pointer_reply_t* ptr){ free(ptr); });
     if (reply) {
         pos = QPoint(reply->root_x, reply->root_y);
     }
