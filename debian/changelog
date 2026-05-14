@@ -1,3 +1,11 @@
+dde-tray-loader (2.0.32) unstable; urgency=medium
+
+  * fix: remove shot-start-plugin from wayland blacklist
+  * fix(test): add missing LaunchType property to identifyService
+    expected result
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 14 May 2026 20:03:21 +0800
+
 dde-tray-loader (2.0.31) unstable; urgency=medium
 
   * fix: prevent crash when closing wayland popup surfaces
