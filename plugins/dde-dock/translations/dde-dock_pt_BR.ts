@@ -401,11 +401,11 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>Desativar modo Não Perturbe</translation>
+        <translation>Desativar o modo Não Perturbe</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation>Ativar modo Não Perturbe</translation>
+        <translation>Ativar o modo Não Perturbe</translation>
     </message>
     <message>
         <source>Notification</source>
@@ -416,7 +416,7 @@
     <name>OnboardPlugin</name>
     <message>
         <source>Onboard</source>
-        <translation>Teclado Virtual</translation>
+        <translation>Teclado virtual</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -549,7 +549,7 @@
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation>Proteção de carregamento ativa</translation>
     </message>
 </context>
 <context>
@@ -563,7 +563,7 @@
     <name>QuickPanelWidget</name>
     <message>
         <source>Music</source>
-        <translation>Player de música</translation>
+        <translation>Música</translation>
     </message>
     <message>
         <source>Unknown</source>
