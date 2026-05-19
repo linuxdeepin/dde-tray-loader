@@ -1,6 +1,6 @@
 // Deepin DDE TrayManager1 implementation
 //
-// SPDX-FileCopyrightText: 2025 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2025 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -14,6 +14,8 @@
 #include <QLoggingCategory>
 
 Q_LOGGING_CATEGORY(TRAYMGR, "org.deepin.dde.trayloader.traymgr")
+
+using Util = tray::Util;
 
 TrayManager1::TrayManager1(QObject *parent)
     : QObject(parent)
@@ -34,7 +36,9 @@ void TrayManager1::registerIcon(xcb_window_t win)
         return;
     }
 
-    m_icons[win] = true;
+    IconState state;
+    UTIL->getX11WindowPixmapData(win, &state.pixmapData);
+    m_icons[win] = state;
     qCDebug(TRAYMGR) << "Icon registered:" << win ;//<< "name:" << proxy->name();
 
     Q_EMIT Added(static_cast<uint32_t>(win));
@@ -55,14 +59,27 @@ void TrayManager1::unregisterIcon(xcb_window_t win)
 
 void TrayManager1::notifyIconChanged(xcb_window_t win)
 {
-    if (!m_icons.contains(win)) {
+    auto it = m_icons.find(win);
+    if (it == m_icons.end()) {
         return;
     }
 
-    if (!m_icons[win]) {
+    if (!it->enableNotify) {
         qCDebug(TRAYMGR) << "EnableNotification is false, not sending changed signal for:" << win;
         return;
     }
+
+    QByteArray newPixmapData;
+    if (!UTIL->getX11WindowPixmapData(win, &newPixmapData)) {
+        return;
+    }
+
+    if (it->pixmapData == newPixmapData) {
+        qCDebug(TRAYMGR) << "Icon changed ignored, pixmap unchanged:" << win;
+        return;
+    }
+
+    it->pixmapData = std::move(newPixmapData);
 
     qCDebug(TRAYMGR) << "Icon changed:" << win;
     Q_EMIT Changed(static_cast<uint32_t>(win));
@@ -81,6 +98,16 @@ TrayList TrayManager1::trayIcons() const
 bool TrayManager1::haveIcon(xcb_window_t win) const
 {
     return m_icons.contains(win);
+}
+
+void TrayManager1::notifyInited()
+{
+    if (m_inited) {
+        return;
+    }
+
+    m_inited = true;
+    Q_EMIT Inited();
 }
 
 // DBus method implementations
@@ -103,7 +130,7 @@ void TrayManager1::EnableNotification(uint32_t win, bool enabled)
         return;
     }
 
-    m_icons[win] = enabled;
+    m_icons[win].enableNotify = enabled;
 
     qCDebug(TRAYMGR) << "EnableNotification for" << win << "=" << enabled;
 }

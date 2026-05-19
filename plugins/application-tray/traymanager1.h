@@ -1,12 +1,13 @@
 // Deepin DDE TrayManager1 implementation
 //
-// SPDX-FileCopyrightText: 2025 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2025 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #pragma once
 
 #include <QObject>
+#include <QByteArray>
 #include <QHash>
 #include <QList>
 #include <QString>
@@ -36,6 +37,11 @@ public:
     explicit TrayManager1(QObject *parent = nullptr);
     ~TrayManager1() override;
 
+    struct IconState {
+        bool enableNotify = true;
+        QByteArray pixmapData;
+    };
+
     /**
      * @brief Register a new tray icon with the manager
      * @param win Window ID of the embedded tray icon
@@ -61,6 +67,7 @@ public:
     TrayList trayIcons() const;
 
     bool haveIcon(xcb_window_t win) const;
+    void notifyInited();
 
 public Q_SLOTS:
     // DBus methods
@@ -79,5 +86,6 @@ Q_SIGNALS:
 
 private:
     TrayManager1Adaptor * m_adaptor;
-    QHash<xcb_window_t, bool> m_icons; // <winid, enableNotify>
+    QHash<xcb_window_t, IconState> m_icons;
+    bool m_inited = false;
 };

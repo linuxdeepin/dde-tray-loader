@@ -36,10 +36,11 @@ private Q_SLOTS:
 
 private:
     void init();
+    void checkValid();
     bool addDamageWatch(xcb_window_t client);
     void dock(xcb_window_t embed_win);
     void undock(xcb_window_t client);
-    void setSystemTrayVisual();
+    void setSystemTrayProperties();
     void initTrayManager();
 
     TrayManager1 *m_trayManager = nullptr;
