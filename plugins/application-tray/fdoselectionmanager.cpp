@@ -68,10 +68,21 @@ void FdoSelectionManager::init()
     connect(m_selectionOwner, &KSelectionOwner::failedToClaimOwnership, this, &FdoSelectionManager::onFailedToClaimOwnership);
     connect(m_selectionOwner, &KSelectionOwner::lostOwnership, this, &FdoSelectionManager::onLostOwnership);
     m_selectionOwner->claim(true);
+}
 
-    connect(m_trayManager, &TrayManager1::reclainRequested, this, [this](){
-        m_selectionOwner->claim(true);
-    });
+void FdoSelectionManager::checkValid()
+{
+    if (!m_trayManager) {
+        return;
+    }
+
+    const TrayList trayIcons = m_trayManager->trayIcons();
+    for (uint id : trayIcons) {
+        const xcb_window_t window = static_cast<xcb_window_t>(id);
+        if (!UTIL->isValidX11Window(window)) {
+            undock(window);
+        }
+    }
 }
 
 bool FdoSelectionManager::addDamageWatch(xcb_window_t client)
@@ -82,7 +93,6 @@ bool FdoSelectionManager::addDamageWatch(xcb_window_t client)
     const auto attribsCookie = xcb_get_window_attributes_unchecked(c, client);
 
     const auto damageId = xcb_generate_id(c);
-    m_damageWatches[client] = damageId;
     xcb_damage_create(c, damageId, client, XCB_DAMAGE_REPORT_LEVEL_NON_EMPTY);
 
     xcb_generic_error_t *error = nullptr;
@@ -94,6 +104,7 @@ bool FdoSelectionManager::addDamageWatch(xcb_window_t client)
     }
     // if window is already gone, there is no need to handle it.
     if (getAttrError && getAttrError->error_code == XCB_WINDOW) {
+        xcb_damage_destroy(c, damageId);
         return false;
     }
     // the event mask will not be removed again. We cannot track whether another component also needs STRUCTURE_NOTIFY (e.g. KWindowSystem).
@@ -102,8 +113,11 @@ bool FdoSelectionManager::addDamageWatch(xcb_window_t client)
     UniqueCPointer<xcb_generic_error_t> changeAttrError(xcb_request_check(c, changeAttrCookie));
     // if window is gone by this point, it will be caught by eventFilter, so no need to check later errors.
     if (changeAttrError && changeAttrError->error_code == XCB_WINDOW) {
+        xcb_damage_destroy(c, damageId);
         return false;
     }
+
+    m_damageWatches[client] = damageId;
 
     return true;
 }
@@ -160,6 +174,8 @@ void FdoSelectionManager::dock(xcb_window_t winId)
     Q_CHECK_PTR(m_trayManager);
     qCDebug(SELECTIONMGR) << "trying to dock window " << winId;
 
+    checkValid();
+
     if (m_trayManager->haveIcon(winId)) {
         return;
     }
@@ -182,6 +198,12 @@ void FdoSelectionManager::undock(xcb_window_t winId)
 
     // Unregister from TrayManager1 if available
     m_trayManager->unregisterIcon(winId);
+
+    const auto damageId = m_damageWatches.take(winId);
+    if (damageId) {
+        xcb_damage_destroy(Util::instance()->getX11Connection(), damageId);
+        xcb_flush(Util::instance()->getX11Connection());
+    }
     
     // m_proxies[winId]->deleteLater();
     // m_proxies.remove(winId);
@@ -192,7 +214,8 @@ void FdoSelectionManager::onClaimedOwnership()
     qCDebug(SELECTIONMGR) << "Manager selection claimed";
 
     initTrayManager();
-    setSystemTrayVisual();
+    setSystemTrayProperties();
+    m_trayManager->notifyInited();
 }
 
 void FdoSelectionManager::onFailedToClaimOwnership()
@@ -205,7 +228,7 @@ void FdoSelectionManager::onLostOwnership()
     qCWarning(SELECTIONMGR) << "lost ownership of Systray Manager";
 }
 
-void FdoSelectionManager::setSystemTrayVisual()
+void FdoSelectionManager::setSystemTrayProperties()
 {
     xcb_connection_t *c = Util::instance()->getX11Connection();
     auto screen = xcb_setup_roots_iterator(xcb_get_setup(c)).data;
@@ -234,6 +257,11 @@ void FdoSelectionManager::setSystemTrayVisual()
     }
 
     xcb_change_property(c, XCB_PROP_MODE_REPLACE, m_selectionOwner->ownerWindow(), UTIL->getAtomByName("_NET_SYSTEM_TRAY_VISUAL"), XCB_ATOM_VISUALID, 32, 1, &trayVisual);
+
+    const uint32_t orientation = 0;
+    xcb_change_property(c, XCB_PROP_MODE_REPLACE, m_selectionOwner->ownerWindow(), UTIL->getAtomByName("_NET_SYSTEM_TRAY_ORIENTATION"), XCB_ATOM_CARDINAL, 32, 1, &orientation);
+    xcb_change_property(c, XCB_PROP_MODE_REPLACE, m_selectionOwner->ownerWindow(), UTIL->getAtomByName("NET_SYSTEM_TRAY_ORIENTAION"), XCB_ATOM_CARDINAL, 32, 1, &orientation);
+    xcb_flush(c);
 }
 
 void FdoSelectionManager::initTrayManager()
@@ -253,8 +281,11 @@ void FdoSelectionManager::initTrayManager()
         QDBusConnection::sessionBus().registerService(
             QStringLiteral("org.deepin.dde.TrayManager1")
         );
+
+        connect(m_trayManager, &TrayManager1::reclainRequested, this, [this](){
+            m_selectionOwner->claim(true);
+        });
         
         qCDebug(SELECTIONMGR) << "TrayManager1 DBus interface registered";
     }
 }
-

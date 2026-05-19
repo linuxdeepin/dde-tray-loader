@@ -16,6 +16,7 @@
 #include <QAbstractEventDispatcher>
 
 #include <X11/Xlib.h>
+#include <X11/Xutil.h>
 
 #include <mutex>
 #include <xcb/res.h>
@@ -218,7 +219,52 @@ QString Util::getX11WindowName(const xcb_window_t& window)
         ret.assign(reply.strings, reply.strings_len);
         xcb_ewmh_get_utf8_strings_reply_wipe(&reply);
     }
+
+    if (!ret.empty()) {
+        return QString::fromUtf8(ret.c_str(), static_cast<int>(ret.size()));
+    }
+
+    if (m_display) {
+        char *windowName = nullptr;
+        if (XFetchName(m_display, window, &windowName) > 0 && windowName) {
+            ret.assign(windowName);
+            XFree(windowName);
+        }
+    }
+
+    if (!ret.empty()) {
+        return QString::fromLocal8Bit(ret.c_str(), static_cast<int>(ret.size()));
+    }
+
+    if (m_display) {
+        XClassHint classHint;
+        if (XGetClassHint(m_display, window, &classHint)) {
+            const QString wmClass = QString::fromLocal8Bit(classHint.res_class ? classHint.res_class : "");
+            const QString wmInstance = QString::fromLocal8Bit(classHint.res_name ? classHint.res_name : "");
+            if (classHint.res_name) {
+                XFree(classHint.res_name);
+            }
+            if (classHint.res_class) {
+                XFree(classHint.res_class);
+            }
+            if (!wmClass.isEmpty() || !wmInstance.isEmpty()) {
+                return QStringLiteral("[%1|%2]").arg(wmClass, wmInstance);
+            }
+        }
+    }
+
     return ret.c_str();
+}
+
+bool Util::isValidX11Window(const xcb_window_t& window) const
+{
+    xcb_generic_error_t *error = nullptr;
+    QSharedPointer<xcb_get_window_attributes_reply_t> reply(
+        xcb_get_window_attributes_reply(m_x11connection, xcb_get_window_attributes(m_x11connection, window), &error),
+        [](xcb_get_window_attributes_reply_t *ptr) { free(ptr); });
+    QSharedPointer<xcb_generic_error_t> replyError(error, [](xcb_generic_error_t *ptr) { free(ptr); });
+
+    return reply && !replyError;
 }
 
 void Util::setX11WindowInputShape(const xcb_window_t& window, const QSize& size)
@@ -267,6 +313,50 @@ QImage Util::getX11WindowImageNonComposite(const xcb_window_t& window)
         xcb_image_destroy(image);
         return res;
     }
+}
+
+bool Util::getX11WindowPixmapData(const xcb_window_t& window, QByteArray *data)
+{
+    if (!data) {
+        return false;
+    }
+
+    data->clear();
+
+    const QRect geometry = getX11WindowGeometry(window);
+    if (geometry.isEmpty()) {
+        return false;
+    }
+
+    xcb_connection_t *connection = m_x11connection;
+    const xcb_pixmap_t pixmap = xcb_generate_id(connection);
+    const auto namePixmapCookie = xcb_composite_name_window_pixmap_checked(connection, window, pixmap);
+    QSharedPointer<xcb_generic_error_t> namePixmapError(xcb_request_check(connection, namePixmapCookie), [](xcb_generic_error_t *ptr) { free(ptr); });
+    if (namePixmapError) {
+        return false;
+    }
+
+    QSharedPointer<xcb_get_image_reply_t> imageReply(
+        xcb_get_image_reply(connection,
+                            xcb_get_image(connection,
+                                          XCB_IMAGE_FORMAT_Z_PIXMAP,
+                                          pixmap,
+                                          0,
+                                          0,
+                                          geometry.width(),
+                                          geometry.height(),
+                                          0xFFFFFFFF),
+                            nullptr),
+        [](xcb_get_image_reply_t *ptr) { free(ptr); });
+    xcb_free_pixmap(connection, pixmap);
+
+    if (!imageReply) {
+        return false;
+    }
+
+    *data = QByteArray(reinterpret_cast<const char *>(xcb_get_image_data(imageReply.get())),
+                       xcb_get_image_data_length(imageReply.get()));
+    return true;
 }
 
 void Util::setX11WindowOpacity(const xcb_window_t& window, const double& opacity)
