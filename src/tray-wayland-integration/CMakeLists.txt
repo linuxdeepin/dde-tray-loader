@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+# SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 #
 # SPDX-License-Identifier: CC0-1.0
 
@@ -35,6 +35,8 @@ add_library(dockpluginmanager SHARED
     pluginmanagerintegration.cpp
     pluginsurface_p.h
     pluginsurface.cpp
+    xdgactivationclient.h
+    xdgactivationclient.cpp
     main.cpp
 )
 
@@ -42,6 +44,7 @@ qt_generate_wayland_protocol_client_sources(dockpluginmanager
 NO_INCLUDE_CORE_ONLY
 FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/../protocol/plugin-manager-v1.xml
+    ${WAYLAND_PROTOCOLS_DATADIR}/staging/xdg-activation/xdg-activation-v1.xml
 )
 
 target_link_libraries(dockpluginmanager

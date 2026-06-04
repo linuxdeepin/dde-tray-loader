@@ -8,6 +8,7 @@
 
 #include "util.h"
 #include "plugin.h"
+#include "xdgactivationclient.h"
 
 #include "dbusmenuimporter.h"
 
@@ -317,7 +318,21 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
         if (event->type() == QEvent::MouseButtonRelease) {
             QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
             if (mouseEvent->button() == Qt::LeftButton) {
-                m_sniInter->Activate(0, 0);
+                auto *activationClient = XdgActivationClient::instance();
+                if (activationClient->isActive()) {
+                    auto widget = static_cast<QWidget*>(parent());
+                    auto *win = widget->window()->windowHandle();
+                    auto sniInter = m_sniInter;
+                    activationClient->requestToken(win, QString(), [sniInter](const QString &token) {
+                        if (!token.isEmpty()) {
+                            qputenv("XDG_ACTIVATION_TOKEN", token.toUtf8());
+                        }
+                        sniInter->Activate(0, 0);
+                        qunsetenv("XDG_ACTIVATION_TOKEN");
+                    });
+                } else {
+                    m_sniInter->Activate(0, 0);
+                }
             } else if (mouseEvent->button() == Qt::RightButton) {
                 if (!menuImporter()) {
                     m_sniInter->ContextMenu(0, 0);
