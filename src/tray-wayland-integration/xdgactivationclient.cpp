@@ -120,7 +120,7 @@ void XdgActivationClient::requestToken(QWindow *window, const QString &appId, To
     auto *provider = m_activation->createTokenProvider(effectiveWindow, appId);
     m_pendingProvider = provider;
 
-    connect(provider, &XdgActivationTokenV1::done, this, [this, callback](const QString &token) {
+    connect(provider, &XdgActivationTokenV1::done, this, [this, provider, callback](const QString &token) {
         m_pendingProvider = nullptr;
 
         if (token.isEmpty())
@@ -129,7 +129,7 @@ void XdgActivationClient::requestToken(QWindow *window, const QString &appId, To
             qCDebug(trayXdgActivation) << "Activation token received";
 
         if (callback) callback(token);
-        sender()->deleteLater();
+        provider->deleteLater();
     }, Qt::SingleShotConnection);
 }
 
