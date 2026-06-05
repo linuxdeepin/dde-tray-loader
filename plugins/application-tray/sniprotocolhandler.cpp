@@ -325,10 +325,9 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                     auto sniInter = m_sniInter;
                     activationClient->requestToken(win, QString(), [sniInter](const QString &token) {
                         if (!token.isEmpty()) {
-                            qputenv("XDG_ACTIVATION_TOKEN", token.toUtf8());
+                            sniInter->ProvideXdgActivationToken(token);
                         }
                         sniInter->Activate(0, 0);
-                        qunsetenv("XDG_ACTIVATION_TOKEN");
                     });
                 } else {
                     m_sniInter->Activate(0, 0);
