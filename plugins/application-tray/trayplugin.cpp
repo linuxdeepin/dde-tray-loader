@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024-2026 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -83,14 +83,18 @@ void TrayPlugin::onTrayhandlerCreatd(QPointer<AbstractTrayProtocolHandler> handl
     m_widget.insert(id, new TrayWidget(handler));
 
     auto remove = [this, id]() {
+        // 清理 tooltip 指针，因为 tooltip widget 是 handler 的成员变量，
+        // 当 handler 被销毁时会被删除，所以需要先从 map 中移除悬空指针
+        m_tooltip.remove(id);
+
         m_proyInter->itemRemoved(this, id);
+
         auto widget = m_widget.value(id);
         if (widget) {
             widget->deleteLater();
         }
 
         m_widget.remove(id);
-        m_tooltip.remove(id);
     };
 
     auto showWidget = [this, handler, id](){

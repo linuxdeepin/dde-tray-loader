@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -28,7 +28,8 @@ TrayWidget::TrayWidget(QPointer<AbstractTrayProtocolHandler> handler)
     setWindowTitle(m_handler->id());
     setFixedSize(trayIconSize, trayIconSize);
 
-    m_handler->setParent(this);
+    // Note: Do NOT set parent here - handler lifecycle is managed by QSharedPointer
+    // Setting parent would cause double-delete when QSharedPointer destroys the handler
 
     connect(m_handler, &AbstractTrayProtocolHandler::iconChanged, this, [this](){update();});
     connect(m_handler, &AbstractTrayProtocolHandler::overlayIconChanged, this, [this](){update();});
@@ -47,6 +48,9 @@ TrayWidget::~TrayWidget()
 void TrayWidget::showEvent(QShowEvent* event)
 {
     Q_UNUSED(event)
+    if (!m_handler)
+        return;
+
     m_handler->setWindow(window());
     window()->installEventFilter(m_handler);
     window()->setMouseTracking(true);
@@ -55,6 +59,9 @@ void TrayWidget::showEvent(QShowEvent* event)
 void TrayWidget::paintEvent(QPaintEvent* event)
 {
     Q_UNUSED(event)
+
+    if (!m_handler)
+        return;
 
     // TODO: support attentionIcon/overlayIcon
     QPalette palette;

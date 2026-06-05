@@ -320,8 +320,10 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
             if (mouseEvent->button() == Qt::LeftButton) {
                 auto *activationClient = XdgActivationClient::instance();
                 if (activationClient->isActive()) {
-                    auto widget = static_cast<QWidget*>(parent());
-                    auto *win = widget->window()->windowHandle();
+                    auto *win = window()->windowHandle();
+                    if (!win)
+                        return false;
+
                     auto sniInter = m_sniInter;
                     activationClient->requestToken(win, QString(), [sniInter](const QString &token) {
                         if (!token.isEmpty()) {
@@ -342,8 +344,11 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                 menu->setFixedSize(menu->sizeHint());
                 menu->winId();
 
-                auto widget = static_cast<QWidget*>(parent());
-                auto plugin = Plugin::EmbedPlugin::get(widget->window()->windowHandle());
+                auto *win = window()->windowHandle();
+                if (!win)
+                    return false;
+
+                auto plugin = Plugin::EmbedPlugin::get(win);
                 auto geometry = plugin->pluginPos();
                 auto pluginPopup = Plugin::PluginPopup::get(menu->windowHandle());
                 pluginPopup->setPluginId("application-tray");
