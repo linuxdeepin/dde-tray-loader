@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024-2026 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -178,7 +178,7 @@ void DDEindicatorProtocolHandlerPrivate::updateContent()
     Q_Q(DDEindicatorProtocolHandler);
     if (!enabled) return;
 
-    auto widget = static_cast<QWidget*>(q->parent());
+    auto widget = q->window();
 
     if (widget) {
         widget->update();
@@ -333,9 +333,12 @@ bool DDEindicatorProtocolHandler::eventFilter(QObject *watched, QEvent *event)
 {
     Q_D(DDEindicatorProtocolHandler);
 
-    if (watched == parent()) {
+    if (watched == window()) {
         if (event->type() == QEvent::Paint) {
-            auto widget = static_cast<QWidget*>(parent());
+            auto widget = window();
+            if (!widget)
+                return false;
+
             QPainter painter(widget);
             QFontMetrics qfm = QFontMetrics(widget->font());
             QRect tightTextRect = qfm.tightBoundingRect(d->m_text);
