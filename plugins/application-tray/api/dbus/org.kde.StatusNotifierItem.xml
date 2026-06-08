@@ -41,6 +41,9 @@
         <arg direction="in" type="i" name="x"/>
         <arg direction="in" type="i" name="y"/>
     </method>
+    <method name="ProvideXdgActivationToken">
+        <arg direction="in" type="s" name="token"/>
+    </method>
     <method name="SecondaryActivate">
         <arg direction="in" type="i" name="x"/>
         <arg direction="in" type="i" name="y"/>

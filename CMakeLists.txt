@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+# SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 #
 # SPDX-License-Identifier: CC0-1.0
 
@@ -39,6 +39,9 @@ endif()
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
+
+find_package(PkgConfig REQUIRED)
+pkg_get_variable(WAYLAND_PROTOCOLS_DATADIR wayland-protocols pkgdatadir)
 
 add_subdirectory(plugins)
 add_subdirectory(src)
