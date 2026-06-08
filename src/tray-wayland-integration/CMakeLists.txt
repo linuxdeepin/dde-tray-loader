@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+# SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 #
 # SPDX-License-Identifier: CC0-1.0
 
@@ -6,7 +6,7 @@ find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Co
 if(Qt${QT_VERSION_MAJOR}_VERSION VERSION_GREATER_EQUAL 6.10)
   find_package(Qt${QT_VERSION_MAJOR} COMPONENTS GuiPrivate WaylandClientPrivate REQUIRED)
 endif()
-find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Gui Widget)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Widget)
 
 find_package(ECM REQUIRED MO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${ECM_MODULE_PATH}")
@@ -17,6 +17,15 @@ include(KDEInstallDirs)
 add_library(dockpluginmanager-interface SHARED
     plugin.h
     plugin.cpp
+    xdgactivation.h
+    xdgactivation_p.h
+    xdgactivation.cpp
+)
+
+qt_generate_wayland_protocol_client_sources(dockpluginmanager-interface
+NO_INCLUDE_CORE_ONLY
+FILES
+    ${WAYLAND_PROTOCOLS_DATADIR}/staging/xdg-activation/xdg-activation-v1.xml
 )
 
 target_include_directories(dockpluginmanager-interface PUBLIC
@@ -28,6 +37,14 @@ PUBLIC
     Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Widgets
     Dtk${DTK_VERSION_MAJOR}::Widget
+PRIVATE
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::GuiPrivate
+    Qt${QT_VERSION_MAJOR}::WaylandClient
+    Qt${QT_VERSION_MAJOR}::WaylandClientPrivate
+    Dtk${DTK_VERSION_MAJOR}::Core
+    Dtk${DTK_VERSION_MAJOR}::Gui
+    Wayland::Client
 )
 
 add_library(dockpluginmanager SHARED
@@ -53,6 +70,8 @@ PRIVATE
     Qt${QT_VERSION_MAJOR}::GuiPrivate
     Qt${QT_VERSION_MAJOR}::WaylandClient
     Qt${QT_VERSION_MAJOR}::WaylandClientPrivate
+    Dtk${DTK_VERSION_MAJOR}::Core
+    Dtk${DTK_VERSION_MAJOR}::Gui
     Wayland::Client
 )
 
