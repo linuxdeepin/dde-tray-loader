@@ -144,11 +144,6 @@ void XdgActivation::requestToken(QWindow *window, const QString &appId)
         qCWarning(trayXdgActivation) << "XDG activation request has empty app id";
 
     auto effectiveWindow = window ? window : QGuiApplication::focusWindow();
-    if (!effectiveWindow) {
-        qCWarning(trayXdgActivation) << "XDG activation request has no target window";
-        Q_EMIT tokenReady({});
-        return;
-    }
 
     auto *provider = activationV1()->createTokenProvider(effectiveWindow, effectiveAppId);
     provider->setParent(this);
