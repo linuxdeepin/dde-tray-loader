@@ -30,6 +30,7 @@ FILES
 
 target_include_directories(dockpluginmanager-interface PUBLIC
     "interfaces/"
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 target_link_libraries(dockpluginmanager-interface

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -9,8 +9,9 @@
 #include "utils.h"
 #include "soundmodel.h"
 
+#include "xdgactivation.h"
+
 #include <DApplication>
-#include <DDBusSender>
 #include <DGuiApplicationHelper>
 
 #include <QPainter>
@@ -18,6 +19,7 @@
 #include <QMouseEvent>
 #include <QApplication>
 #include <QDBusInterface>
+#include <QProcess>
 
 DWIDGET_USE_NAMESPACE
 DGUI_USE_NAMESPACE
@@ -106,13 +108,16 @@ void SoundView::invokeMenuItem(const QString menuId, const bool checked)
     if (menuId == MUTE) {
         SoundController::ref().SetMuteQueued(!SoundModel::ref().isMute());
     } else if (menuId == SETTINGS) {
-        DDBusSender()
-        .service("org.deepin.dde.ControlCenter1")
-        .interface("org.deepin.dde.ControlCenter1")
-        .path("/org/deepin/dde/ControlCenter1")
-        .method(QString("ShowModule"))
-        .arg(QString("sound"))
-        .call();
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
+            QStringList args {"--by-user", "org.deepin.dde.control-center"};
+            if (!token.isEmpty())
+                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+            args << "--" << "-p" << "sound";
+            QProcess::startDetached("dde-am", args);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
         Q_EMIT requestHideApplet();
     }
 }

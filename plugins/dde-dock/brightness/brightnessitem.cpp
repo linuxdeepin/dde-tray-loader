@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -6,7 +6,8 @@
 #include "constants.h"
 #include "brightnessmodel.h"
 
-#include <DDBusSender>
+#include "xdgactivation.h"
+
 #include <DFontSizeManager>
 #include <DGuiApplicationHelper>
 
@@ -14,6 +15,7 @@
 #include <QIcon>
 #include <QJsonDocument>
 #include <QPainter>
+#include <QProcess>
 #include <QVBoxLayout>
 
 DGUI_USE_NAMESPACE
@@ -79,14 +81,16 @@ void BrightnessItem::invokeMenuItem(const QString menuId, const bool checked)
     Q_UNUSED(checked);
 
     if (menuId == SETTINGS) {
-        DDBusSender()
-            .service("org.deepin.dde.ControlCenter1")
-            .interface("org.deepin.dde.ControlCenter1")
-            .path("/org/deepin/dde/ControlCenter1")
-            .method(QString("ShowPage"))
-            .arg(QString("display"))
-            .arg(QString(""))
-            .call();
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
+            QStringList args {"--by-user", "org.deepin.dde.control-center"};
+            if (!token.isEmpty())
+                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+            args << "--" << "-p" << "display";
+            QProcess::startDetached("dde-am", args);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
 
         Q_EMIT requestHideApplet();
     }

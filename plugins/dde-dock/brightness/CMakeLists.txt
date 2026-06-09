@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+# SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 #
 # SPDX-License-Identifier: CC0-1.0
 
@@ -44,7 +44,6 @@ target_include_directories(${PLUGIN_NAME} PUBLIC
     ../util
     ../common
 )
-
 target_link_libraries(${PLUGIN_NAME} PRIVATE
     Dtk${DTK_VERSION_MAJOR}::Core
     Dtk${DTK_VERSION_MAJOR}::Widget
@@ -52,6 +51,7 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     Qt${QT_VERSION_MAJOR}::Svg
     Qt${QT_VERSION_MAJOR}::DBus
     Qt${QT_VERSION_MAJOR}::Concurrent
+    dockpluginmanager-interface
 )
 
 install(TARGETS ${PLUGIN_NAME} LIBRARY DESTINATION lib/dde-dock/plugins)

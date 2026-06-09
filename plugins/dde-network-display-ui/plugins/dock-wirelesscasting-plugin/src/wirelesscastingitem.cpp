@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -11,10 +11,12 @@
 
 #include <constants.h>
 
+#include "xdgactivation.h"
+
 #include <DGuiApplicationHelper>
-#include <DDBusSender>
 
 #include <QPixmap>
+#include <QProcess>
 
 namespace dde {
 namespace wirelesscasting {
@@ -219,13 +221,16 @@ void WirelessCastingItem::invokeMenuItem(const QString menuId, const bool checke
 {
     Q_UNUSED(checked);
     if (menuId == SETTINGS) {
-        DDBusSender()
-            .service("org.deepin.dde.ControlCenter1")
-            .interface("org.deepin.dde.ControlCenter1")
-            .path("/org/deepin/dde/ControlCenter1")
-            .method(QString("ShowModule"))
-            .arg(QString("display"))
-            .call();
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
+            QStringList args {"--by-user", "org.deepin.dde.control-center"};
+            if (!token.isEmpty())
+                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+            args << "--" << "-p" << "display";
+            QProcess::startDetached("dde-am", args);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
 
         Q_EMIT requestHideApplet();
     }
