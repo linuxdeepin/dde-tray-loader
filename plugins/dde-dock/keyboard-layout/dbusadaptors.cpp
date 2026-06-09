@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -7,10 +7,12 @@
 #include "fcitxinputmethoditem.h"
 #include "plugins-logging-category.h"
 
-#include <DDBusSender>
+#include "xdgactivation.h"
+
 #include <DSysInfo>
 
 #include <QDebug>
+#include <QProcess>
 #include <QtDBus/QDBusConnection>
 
 // switch kdb layout key in gsettings
@@ -175,14 +177,16 @@ void DBusAdaptors::refreshMenuSelection()
 void DBusAdaptors::handleActionTriggered(QAction *action)
 {
     if (action == m_addLayoutAction) {
-        DDBusSender()
-                .service("org.deepin.dde.ControlCenter1")
-                .interface("org.deepin.dde.ControlCenter1")
-                .path("/org/deepin/dde/ControlCenter1")
-                .method("ShowPage")
-                .arg(QString("keyboard"))
-                .arg(QString("Keyboard Layout/Add Keyboard Layout"))
-                .call();
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
+            QStringList args {"--by-user", "org.deepin.dde.control-center"};
+            if (!token.isEmpty())
+                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+            args << "--" << "-p" << "keyboard/Keyboard Layout/Add Keyboard Layout";
+            QProcess::startDetached("dde-am", args);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
     }
 
     const QString layout = action->objectName();

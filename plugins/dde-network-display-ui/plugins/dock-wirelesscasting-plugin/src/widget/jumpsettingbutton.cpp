@@ -1,15 +1,16 @@
-// SPDX-FileCopyrightText: 2019 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2019 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "jumpsettingbutton.h"
+#include "xdgactivation.h"
 
 #include <QHBoxLayout>
+#include <QProcess>
 
 #include <DFontSizeManager>
 #include <DGuiApplicationHelper>
 #include <DPlatformTheme>
-#include <DDBusSender>
 #include <DPaletteHelper>
 
 DWIDGET_USE_NAMESPACE
@@ -119,13 +120,16 @@ void JumpSettingButton::mouseReleaseEvent(QMouseEvent* event)
     if (underMouse()) {
         Q_EMIT clicked();
         if (m_autoShowPage && !m_dccModule.isEmpty()) {
-            DDBusSender()
-                .service("org.deepin.dde.ControlCenter1")
-                .path("/org/deepin/dde/ControlCenter1")
-                .interface("org.deepin.dde.ControlCenter1")
-                .method(QString("ShowModule"))
-                .arg(QString(m_dccModule))
-                .call();
+            auto *activation = new tray::XdgActivation(this);
+            connect(activation, &tray::XdgActivation::tokenReady, this, [this, activation](const QString &token) {
+                QStringList args {"--by-user", "org.deepin.dde.control-center"};
+                if (!token.isEmpty())
+                    args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+                args << "--" << "-p" << m_dccModule;
+                QProcess::startDetached("dde-am", args);
+                activation->deleteLater();
+            }, Qt::SingleShotConnection);
+            activation->requestToken();
             Q_EMIT showPageRequestWasSended();
         }
         return;

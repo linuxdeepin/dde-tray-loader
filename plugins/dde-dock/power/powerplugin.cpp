@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -9,10 +9,12 @@
 #include "dbus/dbusaccount.h"
 #include "plugins-logging-category.h"
 
-#include <DDBusSender>
+#include "xdgactivation.h"
+
 #include <DConfig>
 
 #include <QIcon>
+#include <QProcess>
 
 #define PLUGIN_STATE_KEY "enable"
 #define CHARGING_PROTECT_THRESHOLD_MIN 80
@@ -141,13 +143,16 @@ void PowerPlugin::invokedMenuItem(const QString &itemKey, const QString &menuId,
     Q_UNUSED(checked)
 
     if (menuId == "power") {
-        DDBusSender()
-                .service("org.deepin.dde.ControlCenter1")
-                .interface("org.deepin.dde.ControlCenter1")
-                .path("/org/deepin/dde/ControlCenter1")
-                .method(QString("ShowModule"))
-                .arg(QString("power"))
-                .call();
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
+            QStringList args {"--by-user", "org.deepin.dde.control-center"};
+            if (!token.isEmpty())
+                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+            args << "--" << "-p" << "power";
+            QProcess::startDetached("dde-am", args);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
     }
 }
 

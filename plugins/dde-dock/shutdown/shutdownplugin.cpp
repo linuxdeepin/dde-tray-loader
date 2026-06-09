@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -9,10 +9,13 @@
 #include "./dbus/org_deepin_dde_sessionmanager.h"
 #include "plugins-logging-category.h"
 
+#include "xdgactivation.h"
+
 #include <DSysInfo>
 #include <DDBusSender>
 
 #include <QIcon>
+#include <QProcess>
 #include <QSettings>
 
 #define PLUGIN_STATE_KEY "enable"
@@ -306,13 +309,16 @@ void ShutdownPlugin::invokedMenuItem(const QString &itemKey, const QString &menu
         QCoreApplication::processEvents(QEventLoop::AllEvents, 200);
 
     if (menuId == "power") {
-        DDBusSender()
-        .service("org.deepin.dde.ControlCenter1")
-        .interface("org.deepin.dde.ControlCenter1")
-        .path("/org/deepin/dde/ControlCenter1")
-        .method(QString("ShowModule"))
-        .arg(QString("power"))
-        .call();
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
+            QStringList args {"--by-user", "org.deepin.dde.control-center"};
+            if (!token.isEmpty())
+                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+            args << "--" << "-p" << "power";
+            QProcess::startDetached("dde-am", args);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
     } else if (menuId == "Lock") {
         if (QFile::exists(ICBC_CONF_FILE)) {
             QDBusMessage send = QDBusMessage::createMethodCall("org.deepin.dde.LockFront1", "/org/deepin/dde/LockFront1", "org.deepin.dde.LockFront1", "SwitchTTYAndShow");

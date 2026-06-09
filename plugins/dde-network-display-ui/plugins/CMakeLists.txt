@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+# SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 #
 # SPDX-License-Identifier: CC0-1.0
 
@@ -70,6 +70,7 @@ target_link_libraries(dock-wirelesscasting-plugin
     Dtk${DTK_VERSION_MAJOR}::Widget
     Dtk${DTK_VERSION_MAJOR}::Core
     Qt${QT_VERSION_MAJOR}::Widgets
+    dockpluginmanager-interface
 )
 
 # 设置执行 make install 时哪个目标应该被 install 到哪个位置

@@ -1,12 +1,14 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "notificationplugin.h"
 
+#include "xdgactivation.h"
+
 #include <DGuiApplicationHelper>
-#include <DDBusSender>
 
 #include <QIcon>
+#include <QProcess>
 #include <QSettings>
 #include <QPainter>
 
@@ -132,11 +134,16 @@ void NotificationPlugin::invokedMenuItem(const QString &itemKey, const QString &
     if (menuId == TOGGLE_DND) {
         m_notification->setDndMode(!m_notification->dndMode());
     } else if (menuId == NOTIFICATION_SETTINGS) {
-        DDBusSender().service("org.deepin.dde.ControlCenter1")
-            .path("/org/deepin/dde/ControlCenter1")
-            .interface("org.deepin.dde.ControlCenter1")
-            .method("ShowPage")
-            .arg(QString("notification")).call();
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
+            QStringList args {"--by-user", "org.deepin.dde.control-center"};
+            if (!token.isEmpty())
+                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+            args << "--" << "-p" << "notification";
+            QProcess::startDetached("dde-am", args);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
     }
 }
 

@@ -10,11 +10,13 @@
 #include "constants.h"
 #include "quickpanelwidget.h"
 
+#include "xdgactivation.h"
+
 #include <DApplication>
-#include <DDBusSender>
 #include <DGuiApplicationHelper>
 
 #include <QPainter>
+#include <QProcess>
 
 // menu actions
 #define SHIFT "shift"
@@ -126,13 +128,16 @@ void BluetoothItem::invokeMenuItem(const QString menuId, const bool checked)
         }
         m_applet->setAdapterPowered(!m_adapterPowered);
     } else if (menuId == SETTINGS) {
-        DDBusSender()
-                .service("org.deepin.dde.ControlCenter1")
-                .interface("org.deepin.dde.ControlCenter1")
-                .path("/org/deepin/dde/ControlCenter1")
-                .method(QString("ShowPage"))
-                .arg(QString("device/bluetooth"))
-                .call();
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
+            QStringList args {"--by-user", "org.deepin.dde.control-center"};
+            if (!token.isEmpty())
+                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+            args << "--" << "-p" << "device/bluetooth";
+            QProcess::startDetached("dde-am", args);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
         Q_EMIT requestHideApplet();
     }
 }

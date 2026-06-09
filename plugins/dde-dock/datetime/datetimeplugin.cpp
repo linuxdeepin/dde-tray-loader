@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -7,10 +7,13 @@
 #include "plugins-logging-category.h"
 #include "regionFormat.h"
 
-#include <DDBusSender>
+#include "xdgactivation.h"
+
 #include <DConfig>
+#include <DDBusSender>
 
 #include <QDebug>
+#include <QProcess>
 
 Q_LOGGING_CATEGORY(DOCK_DATETIME, "org.deepin.dde.dock.datetime")
 Q_DECLARE_METATYPE(QMargins)
@@ -213,13 +216,16 @@ void DatetimePlugin::invokedMenuItem(const QString &itemKey, const QString &menu
     Q_UNUSED(checked)
 
     if (menuId == "open") {
-        DDBusSender()
-                .service("org.deepin.dde.ControlCenter1")
-                .interface("org.deepin.dde.ControlCenter1")
-                .path("/org/deepin/dde/ControlCenter1")
-                .method(QString("ShowModule"))
-                .arg(QString("datetime"))
-                .call();
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
+            QStringList args {"--by-user", "org.deepin.dde.control-center"};
+            if (!token.isEmpty())
+                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
+            args << "--" << "-p" << "datetime";
+            QProcess::startDetached("dde-am", args);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
     } else if (menuId == "settings") {
         const bool is24HourFormat = m_centralWidget->is24HourFormat();
         m_centralWidget->set24HourFormat(!is24HourFormat);
