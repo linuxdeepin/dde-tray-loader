@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -15,6 +15,12 @@
 #include <xcb/xproto.h>
 #include <xcb/composite.h>
 #include <xcb/xcb_image.h>
+
+// dde-daemon handles tray selection-manager registeration so we don't (and shouldn't) need this.
+// Also, if we need to register the FDO selection manager, we also need to ensure tray context menu
+// position can be handled correctly. The whole FdoSelectionManager stuff might be worth to move to
+// dde-shell instead.
+#define _DDE_TRAY_LOADER_HANDLE_XEMBED_SELECTION_MANAGER 0
 
 class FdoSelectionManager;
 namespace tray {
