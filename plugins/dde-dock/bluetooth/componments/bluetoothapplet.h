@@ -96,6 +96,9 @@ private:
     // 更新蓝牙插件主界面大小
     void updateSize();
 
+protected:
+    bool eventFilter(QObject *watched, QEvent *event) override;
+
 private:
     QScrollArea *m_scrollArea;
     QWidget *m_contentWidget;
