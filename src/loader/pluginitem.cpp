@@ -8,10 +8,14 @@
 #include "widgetplugin.h"
 #include "dockcontextmenu.h"
 
+#include <xdgactivation.h>
+
 #include <QHBoxLayout>
 #include <QMouseEvent>
 #include <QMenu>
 #include <QPainter>
+#include <QProcess>
+#include <QProcessEnvironment>
 
 const static QString DockQuickPlugins = "Dock_Quick_Plugins";
 
@@ -39,7 +43,18 @@ PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString 
         if (actionStr == Dock::dockMenuItemId || actionStr == Dock::unDockMenuItemId) {
             m_dbusProxy->setItemOnDock(DockQuickPlugins, m_itemKey, actionStr == Dock::dockMenuItemId);
         } else {
-            m_pluginsItemInterface->invokedMenuItem(m_itemKey, action->data().toString(), action->isCheckable() ? action->isChecked() : true);
+            const QString menuId = action->data().toString();
+            const bool checked = action->isCheckable() ? action->isChecked() : true;
+            auto *activation = new tray::XdgActivation(this);
+            connect(activation, &tray::XdgActivation::tokenReady, this, [this, activation, menuId, checked](const QString &token) {
+                if (!token.isEmpty())
+                    qputenv("XDG_ACTIVATION_TOKEN", token.toUtf8());
+                m_pluginsItemInterface->invokedMenuItem(m_itemKey, menuId, checked);
+                if (!token.isEmpty())
+                    qunsetenv("XDG_ACTIVATION_TOKEN");
+                activation->deleteLater();
+            }, Qt::SingleShotConnection);
+            activation->requestToken();
         }
     });
 }
@@ -372,7 +387,17 @@ bool PluginItem::executeCommand()
         QStringList commandList = command.split(" ");
         QString program = commandList.takeFirst(); // 剩下是参数
 
-        QProcess::startDetached(program, commandList);
+        auto *activation = new tray::XdgActivation(this);
+        connect(activation, &tray::XdgActivation::tokenReady, this, [activation, program, commandList](const QString &token) {
+            QProcess process;
+            QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+            if (!token.isEmpty())
+                env.insert("XDG_ACTIVATION_TOKEN", token);
+            process.setProcessEnvironment(env);
+            process.startDetached(program, commandList);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken();
         return true;
     }
     return false;

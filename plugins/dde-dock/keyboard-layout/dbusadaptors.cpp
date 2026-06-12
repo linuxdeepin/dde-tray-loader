@@ -7,7 +7,6 @@
 #include "fcitxinputmethoditem.h"
 #include "plugins-logging-category.h"
 
-#include "xdgactivation.h"
 
 #include <DSysInfo>
 
@@ -177,16 +176,8 @@ void DBusAdaptors::refreshMenuSelection()
 void DBusAdaptors::handleActionTriggered(QAction *action)
 {
     if (action == m_addLayoutAction) {
-        auto *activation = new tray::XdgActivation(this);
-        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
-            QStringList args {"--by-user", "org.deepin.dde.control-center"};
-            if (!token.isEmpty())
-                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
-            args << "--" << "-p" << "keyboard/Keyboard Layout/Add Keyboard Layout";
-            QProcess::startDetached("dde-am", args);
-            activation->deleteLater();
-        }, Qt::SingleShotConnection);
-        activation->requestToken();
+        QStringList args {"--by-user", "org.deepin.dde.control-center", "--", "-p", "keyboard/Keyboard Layout/Add Keyboard Layout"};
+        QProcess::startDetached("dde-am", args);
     }
 
     const QString layout = action->objectName();
