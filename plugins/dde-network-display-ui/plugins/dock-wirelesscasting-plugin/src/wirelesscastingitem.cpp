@@ -11,7 +11,6 @@
 
 #include <constants.h>
 
-#include "xdgactivation.h"
 
 #include <DGuiApplicationHelper>
 
@@ -221,16 +220,8 @@ void WirelessCastingItem::invokeMenuItem(const QString menuId, const bool checke
 {
     Q_UNUSED(checked);
     if (menuId == SETTINGS) {
-        auto *activation = new tray::XdgActivation(this);
-        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
-            QStringList args {"--by-user", "org.deepin.dde.control-center"};
-            if (!token.isEmpty())
-                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
-            args << "--" << "-p" << "display";
-            QProcess::startDetached("dde-am", args);
-            activation->deleteLater();
-        }, Qt::SingleShotConnection);
-        activation->requestToken();
+        QStringList args {"--by-user", "org.deepin.dde.control-center", "--", "-p", "display"};
+        QProcess::startDetached("dde-am", args);
 
         Q_EMIT requestHideApplet();
     }

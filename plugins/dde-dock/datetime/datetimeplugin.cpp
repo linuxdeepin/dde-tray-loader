@@ -7,7 +7,6 @@
 #include "plugins-logging-category.h"
 #include "regionFormat.h"
 
-#include "xdgactivation.h"
 
 #include <DConfig>
 #include <DDBusSender>
@@ -216,16 +215,8 @@ void DatetimePlugin::invokedMenuItem(const QString &itemKey, const QString &menu
     Q_UNUSED(checked)
 
     if (menuId == "open") {
-        auto *activation = new tray::XdgActivation(this);
-        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
-            QStringList args {"--by-user", "org.deepin.dde.control-center"};
-            if (!token.isEmpty())
-                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
-            args << "--" << "-p" << "datetime";
-            QProcess::startDetached("dde-am", args);
-            activation->deleteLater();
-        }, Qt::SingleShotConnection);
-        activation->requestToken();
+        QStringList args {"--by-user", "org.deepin.dde.control-center", "--", "-p", "datetime"};
+        QProcess::startDetached("dde-am", args);
     } else if (menuId == "settings") {
         const bool is24HourFormat = m_centralWidget->is24HourFormat();
         m_centralWidget->set24HourFormat(!is24HourFormat);
