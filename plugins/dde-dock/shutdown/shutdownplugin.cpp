@@ -9,7 +9,6 @@
 #include "./dbus/org_deepin_dde_sessionmanager.h"
 #include "plugins-logging-category.h"
 
-#include "xdgactivation.h"
 
 #include <DSysInfo>
 #include <DDBusSender>
@@ -309,16 +308,8 @@ void ShutdownPlugin::invokedMenuItem(const QString &itemKey, const QString &menu
         QCoreApplication::processEvents(QEventLoop::AllEvents, 200);
 
     if (menuId == "power") {
-        auto *activation = new tray::XdgActivation(this);
-        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
-            QStringList args {"--by-user", "org.deepin.dde.control-center"};
-            if (!token.isEmpty())
-                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
-            args << "--" << "-p" << "power";
-            QProcess::startDetached("dde-am", args);
-            activation->deleteLater();
-        }, Qt::SingleShotConnection);
-        activation->requestToken();
+        QStringList args {"--by-user", "org.deepin.dde.control-center", "--", "-p", "power"};
+        QProcess::startDetached("dde-am", args);
     } else if (menuId == "Lock") {
         if (QFile::exists(ICBC_CONF_FILE)) {
             QDBusMessage send = QDBusMessage::createMethodCall("org.deepin.dde.LockFront1", "/org/deepin/dde/LockFront1", "org.deepin.dde.LockFront1", "SwitchTTYAndShow");

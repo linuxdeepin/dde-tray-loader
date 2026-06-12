@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "notificationplugin.h"
 
-#include "xdgactivation.h"
 
 #include <DGuiApplicationHelper>
 
@@ -134,16 +133,8 @@ void NotificationPlugin::invokedMenuItem(const QString &itemKey, const QString &
     if (menuId == TOGGLE_DND) {
         m_notification->setDndMode(!m_notification->dndMode());
     } else if (menuId == NOTIFICATION_SETTINGS) {
-        auto *activation = new tray::XdgActivation(this);
-        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
-            QStringList args {"--by-user", "org.deepin.dde.control-center"};
-            if (!token.isEmpty())
-                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
-            args << "--" << "-p" << "notification";
-            QProcess::startDetached("dde-am", args);
-            activation->deleteLater();
-        }, Qt::SingleShotConnection);
-        activation->requestToken();
+        QStringList args {"--by-user", "org.deepin.dde.control-center", "--", "-p", "notification"};
+        QProcess::startDetached("dde-am", args);
     }
 }
 

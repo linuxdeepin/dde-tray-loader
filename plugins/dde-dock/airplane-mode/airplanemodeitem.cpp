@@ -7,7 +7,6 @@
 #include "constants.h"
 #include "tipswidget.h"
 
-#include "xdgactivation.h"
 
 #include <DGuiApplicationHelper>
 
@@ -119,16 +118,8 @@ void AirplaneModeItem::invokeMenuItem(const QString menuId, const bool checked)
     if (menuId == SHIFT) {
         AMC_PTR->toggle();
     } else if (menuId == SETTINGS) {
-        auto *activation = new tray::XdgActivation(this);
-        connect(activation, &tray::XdgActivation::tokenReady, this, [activation](const QString &token) {
-            QStringList args {"--by-user", "org.deepin.dde.control-center"};
-            if (!token.isEmpty())
-                args << "-e" << "XDG_ACTIVATION_TOKEN=" + token;
-            args << "--" << "-p" << "network/airplaneMode";
-            QProcess::startDetached("dde-am", args);
-            activation->deleteLater();
-        }, Qt::SingleShotConnection);
-        activation->requestToken();
+        QStringList args {"--by-user", "org.deepin.dde.control-center", "--", "-p", "network/airplaneMode"};
+        QProcess::startDetached("dde-am", args);
 
         Q_EMIT requestHideApplet();
     }
