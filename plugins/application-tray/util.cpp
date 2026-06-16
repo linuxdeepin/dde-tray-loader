@@ -282,37 +282,91 @@ void Util::setX11WindowInputShape(const xcb_window_t& window, const QSize& size)
     xcb_flush(m_x11connection);
 }
 
+uint8_t Util::getWindowVisualDepth(const xcb_window_t& window) const
+{
+    auto attrCookie = xcb_get_window_attributes(m_x11connection, window);
+    QSharedPointer<xcb_get_window_attributes_reply_t> attr(
+        xcb_get_window_attributes_reply(m_x11connection, attrCookie, nullptr),
+        [](xcb_get_window_attributes_reply_t *ptr) { free(ptr); });
+    if (!attr) {
+        return 0;
+    }
+
+    xcb_visualid_t visualId = attr->visual;
+    auto screen = xcb_setup_roots_iterator(xcb_get_setup(m_x11connection)).data;
+    xcb_depth_iterator_t depthIter = xcb_screen_allowed_depths_iterator(screen);
+    while (depthIter.rem) {
+        xcb_visualtype_iterator_t visualIter = xcb_depth_visuals_iterator(depthIter.data);
+        while (visualIter.rem) {
+            if (visualIter.data->visual_id == visualId) {
+                return depthIter.data->depth;
+            }
+            xcb_visualtype_next(&visualIter);
+        }
+        xcb_depth_next(&depthIter);
+    }
+    return 0;
+}
+
 QImage Util::getX11WindowImageNonComposite(const xcb_window_t& window)
 {
     QSize size = getX11WindowGeometry(window).size();
     if (size.isEmpty()) {
         return QImage();
     }
-    
+
     xcb_image_t *image = xcb_image_get(m_x11connection, window, 0, 0, size.width(), size.height(), 0xFFFFFFFF, XCB_IMAGE_FORMAT_Z_PIXMAP);
 
     if (!image) {
         return QImage();
     }
 
-    QImage naiveConversion(image->data, image->width, image->height, QImage::Format_ARGB32);
+    uint8_t visualDepth = getWindowVisualDepth(window);
+    uint8_t imageDepth = image->depth;
+
+    if (visualDepth != 32) {
+        QImage result = convertFromNative(image, visualDepth);
+        if (isTransparentImage(result)) {
+            return QImage();
+        }
+        return result;
+    }
+
+    // X11 ARGB visual 的像素值是预乘 alpha 形式，使用 Format_ARGB32_Premultiplied
+    // 才能与数据语义匹配，避免半透明像素显示偏亮。
+    QImage naiveConversion(image->data, image->width, image->height, QImage::Format_ARGB32_Premultiplied);
     if (naiveConversion.isNull()) {
         xcb_image_destroy(image);
         return QImage();
     }
 
-    if (isTransparentImage(naiveConversion)) {
-        QImage elaborateConversion = QImage(convertFromNative(image));
-        if (isTransparentImage(elaborateConversion)) {
-            return QImage();
-        } else {
-            return elaborateConversion;
+    QImage result = naiveConversion.copy();
+    xcb_image_destroy(image);
+
+    int w = result.width(), h = result.height();
+    int minA = 255, maxA = 0;
+    for (int x = 0; x < w; ++x)
+        for (int y = 0; y < h; ++y) {
+            int a = qAlpha(result.pixel(x, y));
+            minA = qMin(minA, a);
+            maxA = qMax(maxA, a);
         }
-    } else {
-        QImage res = naiveConversion.copy();
-        xcb_image_destroy(image);
-        return res;
+
+    QRgb tl = result.pixel(0, 0);
+
+    if (maxA == 0) {
+        return QImage();
     }
+
+    if (minA == 255) {
+        qCWarning(TRAYUTIL) << "applying heuristic mask for all-opaque image";
+        QImage m = result.createHeuristicMask();
+        QPixmap p = QPixmap::fromImage(std::move(result));
+        p.setMask(QBitmap::fromImage(std::move(m)));
+        result = p.toImage();
+    }
+
+    return result;
 }
 
 bool Util::getX11WindowPixmapData(const xcb_window_t& window, QByteArray *data)
@@ -455,7 +509,7 @@ bool Util::isTransparentImage(const QImage &image)
     return true;
 }
 
-QImage Util::convertFromNative(xcb_image_t *xcbImage)
+QImage Util::convertFromNative(xcb_image_t *xcbImage, uint8_t visualDepth)
 {
     QImage::Format format = QImage::Format_Invalid;
 
@@ -498,7 +552,7 @@ QImage Util::convertFromNative(xcb_image_t *xcbImage)
     QImage deepCopy = image.copy();
     xcb_image_destroy(xcbImage);
 
-    if (format == QImage::Format_RGB32 && deepCopy.depth() == 32) {
+    if ((format == QImage::Format_RGB32 || (format == QImage::Format_ARGB32_Premultiplied && visualDepth != 32)) && deepCopy.depth() == 32) {
         QImage m = deepCopy.createHeuristicMask();
         QPixmap p = QPixmap::fromImage(std::move(deepCopy));
         p.setMask(QBitmap::fromImage(std::move(m)));

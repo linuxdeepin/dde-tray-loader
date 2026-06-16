@@ -250,14 +250,54 @@ void XembedProtocolHandler::initX11resources()
 {
     auto c = Util::instance()->getX11Connection();
     auto screen = xcb_setup_roots_iterator(xcb_get_setup(c)).data;
+
+    // 选出 32 位 TrueColor visual，与 _NET_SYSTEM_TRAY_VISUAL 广告保持一致。
+    // freedesktop system-tray spec 要求：广告了 _NET_SYSTEM_TRAY_VISUAL 的 tray，
+    // 其 socket 容器也必须用同一 visual 创建，否则被 reparent 进来的 ARGB icon
+    // 在 XWayland rootless 等 composite 环境下会丢失 alpha 通道（变黑）。
+    xcb_visualid_t containerVisual = screen->root_visual;
+    uint8_t containerDepth = 24;
+    xcb_depth_iterator_t depthIt = xcb_screen_allowed_depths_iterator(screen);
+    while (depthIt.rem) {
+        if (depthIt.data->depth == 32) {
+            xcb_visualtype_iterator_t visIt = xcb_depth_visuals_iterator(depthIt.data);
+            while (visIt.rem) {
+                if (visIt.data->_class == XCB_VISUAL_CLASS_TRUE_COLOR) {
+                    containerVisual = visIt.data->visual_id;
+                    containerDepth = 32;
+                    break;
+                }
+                xcb_visualtype_next(&visIt);
+            }
+            break;
+        }
+        xcb_depth_next(&depthIt);
+    }
+
     m_containerWid = xcb_generate_id(c);
-    uint32_t values[3];
-    uint32_t mask = XCB_CW_BACK_PIXEL | XCB_CW_OVERRIDE_REDIRECT | XCB_CW_EVENT_MASK;
-    values[0] = screen->black_pixel; // draw a solid background so the embedded icon doesn't get garbage in it
-    values[1] = true; // bypass wM
-    values[2] = XCB_EVENT_MASK_STRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT | XCB_EVENT_MASK_LEAVE_WINDOW | XCB_EVENT_MASK_ENTER_WINDOW;
+
+    // 32 位 visual 需要独立的 Colormap（不能复用 root 的）
+    xcb_colormap_t cmap = XCB_NONE;
+    if (containerDepth == 32) {
+        cmap = xcb_generate_id(c);
+        xcb_create_colormap(c, XCB_COLORMAP_ALLOC_NONE, cmap, screen->root, containerVisual);
+    }
+
+    uint32_t values[5];
+    int i = 0;
+    uint32_t mask = XCB_CW_BACK_PIXEL | XCB_CW_BORDER_PIXEL |
+                    XCB_CW_OVERRIDE_REDIRECT | XCB_CW_EVENT_MASK;
+    values[i++] = 0;        // back_pixel: ARGB 下 alpha=0，完全透明
+    values[i++] = 0;        // border_pixel: 必须显式设置，否则用默认深度颜色
+    values[i++] = true;     // bypass WM
+    values[i++] = XCB_EVENT_MASK_STRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT | XCB_EVENT_MASK_LEAVE_WINDOW | XCB_EVENT_MASK_ENTER_WINDOW;
+    if (containerDepth == 32) {
+        mask |= XCB_CW_COLORMAP;
+        values[i++] = cmap;
+    }
+
     xcb_create_window(c,
-                      XCB_COPY_FROM_PARENT,
+                      containerDepth,
                       m_containerWid,
                       screen->root,
                       0,
@@ -265,12 +305,14 @@ void XembedProtocolHandler::initX11resources()
                       1, 1,
                       0,
                       XCB_WINDOW_CLASS_INPUT_OUTPUT,
-                      screen->root_visual,
+                      containerVisual,
                       mask,
                       values);
 
+    // 24 位时代 socket 自带不透明黑底，需要 opacity=0 把它整体隐藏；
+    // 改 32 位后 background_pixel=0 已使其完全透明，不再需要 opacity=0，
+    // 否则会与 icon 自身的 alpha 叠加产生副作用。
     UTIL->setX11WindowInputShape(m_containerWid, QSize());
-    UTIL->setX11WindowOpacity(m_containerWid, 0);
 
     xcb_map_window(c, m_containerWid);
 
