@@ -44,6 +44,7 @@ public:
     QString getX11WindowName(const xcb_window_t& window);
     bool isValidX11Window(const xcb_window_t& window) const;
     void setX11WindowInputShape(const xcb_window_t& widnow, const QSize& size);
+    uint8_t getWindowVisualDepth(const xcb_window_t& window) const;
     QImage getX11WindowImageNonComposite(const xcb_window_t& window);
     bool getX11WindowPixmapData(const xcb_window_t& window, QByteArray *data);
     void setX11WindowOpacity(const xcb_window_t& window, const double& opacity);
@@ -71,7 +72,7 @@ private:
 
     bool isTransparentImage(const QImage &image);
 
-    QImage convertFromNative(xcb_image_t* image);
+    QImage convertFromNative(xcb_image_t* image, uint8_t visualDepth);
 
 private:
     xcb_ewmh_connection_t m_ewmh;
