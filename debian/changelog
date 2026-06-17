@@ -1,3 +1,9 @@
+dde-tray-loader (2.0.35) unstable; urgency=medium
+
+  * fix: use 32-bit visual to avoid alpha channel lost
+
+ -- zhangkun <zhangkun2@uniontech.com>  Wed, 17 Jun 2026 16:17:46 +0800
+
 dde-tray-loader (2.0.34) unstable; urgency=medium
 
   * fix: allow xdg activation without window information
