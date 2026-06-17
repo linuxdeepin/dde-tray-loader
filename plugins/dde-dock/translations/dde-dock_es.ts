@@ -363,7 +363,7 @@
     </message>
     <message>
         <source>Visual effect</source>
-        <translation>Efecto visual</translation>
+        <translation>Descanso visual</translation>
     </message>
 </context>
 <context>
