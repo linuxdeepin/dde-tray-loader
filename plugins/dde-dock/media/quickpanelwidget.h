@@ -8,6 +8,7 @@
 #include "commoniconbutton.h"
 #include "mediacontroller.h"
 
+#include <QGraphicsOpacityEffect>
 #include <QWidget>
 
 #include <DLabel>
@@ -21,7 +22,9 @@ public:
     ~QuickPanelWidget();
 
 protected:
-    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 Q_SIGNALS:
     void clicked();
@@ -32,6 +35,9 @@ private:
     void updateUI();
 
 private:
+    static constexpr qreal kNormalOpacity = 0.7;
+    static constexpr qreal kHoverOpacity = 1.0;
+
     MediaController *m_controller;
 
     DLabel *m_pixmap;
@@ -39,6 +45,7 @@ private:
     DLabel *m_artistLab;
     CommonIconButton *m_playButton;
     CommonIconButton *m_nextButton;
+    QGraphicsOpacityEffect *m_opacityEffect;
 };
 
 #endif

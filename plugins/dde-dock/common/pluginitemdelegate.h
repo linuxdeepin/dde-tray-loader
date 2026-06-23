@@ -9,6 +9,8 @@
 #include <DLabel>
 #include <DSpinner>
 
+#include <QGraphicsOpacityEffect>
+
 #include <QObject>
 #include <QStyledItemDelegate>
 #include <QStandardItem>
@@ -116,8 +118,13 @@ public Q_SLOTS:
 
 protected:
     bool event(QEvent *e) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
+    static constexpr qreal kNormalOpacity = 0.7;
+    static constexpr qreal kHoverOpacity = 1.0;
+
     PluginStandardItem *m_item;
 
     QHBoxLayout *m_mainLayout;
@@ -126,4 +133,5 @@ private:
     CommonIconButton *m_connBtn;
     DSpinner *m_spinner;
     QSpacerItem *m_rightIconSpacerItem;
+    QGraphicsOpacityEffect *m_opacityEffect;
 };
