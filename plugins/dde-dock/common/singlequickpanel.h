@@ -7,6 +7,7 @@
 
 #include "commoniconbutton.h"
 
+#include <QGraphicsOpacityEffect>
 #include <QWidget>
 #include <DLabel>
 
@@ -37,17 +38,27 @@ Q_SIGNALS:
 
 protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     void initUI();
+    void updateOpacity(bool hover);
 
 private slots:
     void refreshBg();
 
 private:
+    static constexpr qreal kNormalOpacity = 0.7;
+    static constexpr qreal kHoverOpacity = 1.0;
+
     CommonIconButton *m_icon;
     DLabel *m_description;
     bool m_active;
+    bool m_hovered = false;
+
+    QGraphicsOpacityEffect *m_iconEffect;
+    QGraphicsOpacityEffect *m_descEffect;
 };
 
 #endif

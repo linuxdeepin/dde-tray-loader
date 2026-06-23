@@ -9,6 +9,7 @@
 #include "soundcontroller.h"
 
 #include <DBlurEffectWidget>
+#include <QGraphicsOpacityEffect>
 #include <QWidget>
 
 class QDBusMessage;
@@ -31,6 +32,8 @@ Q_SIGNALS:
 protected:
     void initUi();
     void initConnection();
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     QString leftIcon();
@@ -42,7 +45,11 @@ private Q_SLOTS:
     void refreshWidget();
 
 private:
+    static constexpr qreal kNormalOpacity = 0.7;
+    static constexpr qreal kHoverOpacity = 1.0;
+
     SliderContainer *m_sliderContainer;
+    QGraphicsOpacityEffect *m_opacityEffect;
 };
 
 #endif // VOLUMEWIDGET_H

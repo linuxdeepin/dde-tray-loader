@@ -22,9 +22,13 @@ JumpSettingButton::JumpSettingButton(QWidget *parent)
     , m_autoShowPage(true)
     , m_iconButton(new CommonIconButton(this))
     , m_descriptionLabel(new DLabel(this))
+    , m_opacityEffect(new QGraphicsOpacityEffect(this))
 {
+    m_opacityEffect->setOpacity(kNormalOpacity);
+    setGraphicsEffect(m_opacityEffect);
     initUI();
 }
+
 
 JumpSettingButton::JumpSettingButton(const QIcon& icon, const QString& description, QWidget* parent)
     : QFrame(parent)
@@ -32,7 +36,10 @@ JumpSettingButton::JumpSettingButton(const QIcon& icon, const QString& descripti
     , m_autoShowPage(true)
     , m_iconButton(new CommonIconButton(this))
     , m_descriptionLabel(new DLabel(this))
+    , m_opacityEffect(new QGraphicsOpacityEffect(this))
 {
+    m_opacityEffect->setOpacity(kNormalOpacity);
+    setGraphicsEffect(m_opacityEffect);
     initUI();
 
     m_iconButton->setIcon(icon);
@@ -143,3 +150,16 @@ void JumpSettingButton::setDccPage(const QString &first, const QString &second)
     m_fistPage = first;
     m_secondPage = second;
 }
+
+void JumpSettingButton::enterEvent(QEnterEvent *event)
+{
+    m_opacityEffect->setOpacity(kHoverOpacity);
+    QFrame::enterEvent(event);
+}
+
+void JumpSettingButton::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event)
+    m_opacityEffect->setOpacity(kNormalOpacity);
+}
+

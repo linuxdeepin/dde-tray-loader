@@ -191,6 +191,7 @@ PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     , m_connBtn(nullptr)
     , m_spinner(nullptr)
     , m_rightIconSpacerItem(new QSpacerItem(0, 0))
+    , m_opacityEffect(new QGraphicsOpacityEffect(this))
 {
     if (!m_item) {
         QLabel *err = new QLabel(this);
@@ -242,7 +243,11 @@ PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     connect(m_item, &PluginStandardItem::stateChanged, this, &PluginItemWidget::updateState);
 
     connect(m_connBtn, &CommonIconButton::clicked, m_item, &PluginStandardItem::connectBtnClicked);
+
+    m_opacityEffect->setOpacity(kNormalOpacity);
+    setGraphicsEffect(m_opacityEffect);
 }
+
 
 PluginItemWidget::~PluginItemWidget()
 {
@@ -315,3 +320,16 @@ bool PluginItemWidget::event(QEvent *e)
     }
     return QWidget::event(e);
 }
+
+void PluginItemWidget::enterEvent(QEnterEvent *event)
+{
+    m_opacityEffect->setOpacity(kHoverOpacity);
+    QWidget::enterEvent(event);
+}
+
+void PluginItemWidget::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event)
+    m_opacityEffect->setOpacity(kNormalOpacity);
+}
+
