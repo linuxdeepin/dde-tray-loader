@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -183,7 +183,7 @@ void SoundApplet::onVolumeChanged(int volume)
 
 void SoundApplet::volumeSliderValueChanged()
 {
-    SoundController::ref().SetVolume(m_volumeSlider->value() * 0.01, true);
+    SoundController::ref().SetVolume(m_volumeSlider->value() * 0.01, !SoundModel::ref().isMute());
 }
 
 void SoundApplet::updatePorts()
