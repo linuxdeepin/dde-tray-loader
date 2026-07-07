@@ -154,6 +154,10 @@ bool FdoSelectionManager::nativeEventFilter(const QByteArray &eventType, void *m
         }
     } else if (responseType == m_damageEventBase + XCB_DAMAGE_NOTIFY) {
         const auto damagedWId = reinterpret_cast<xcb_damage_notify_event_t *>(ev)->drawable;
+        const xcb_damage_damage_t damageId = m_damageWatches.value(damagedWId);
+        if (damageId) {
+            xcb_damage_subtract(Util::instance()->getX11Connection(), damageId, XCB_NONE, XCB_NONE);
+        }
         m_trayManager->notifyIconChanged(damagedWId);
     } else if (responseType == XCB_CONFIGURE_REQUEST) {
         // const auto event = reinterpret_cast<xcb_configure_request_event_t *>(ev);
