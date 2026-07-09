@@ -7,7 +7,10 @@ set(PLUGIN_NAME "application-tray")
 project(${PLUGIN_NAME})
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED Core Gui Widgets DBus)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Core Gui Widgets DBus)
+if(Qt${QT_VERSION_MAJOR}_VERSION VERSION_GREATER_EQUAL 6.10)
+    find_package(Qt${QT_VERSION_MAJOR} COMPONENTS CorePrivate WidgetsPrivate REQUIRED)
+endif()
 find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED Core Gui Widget Tools)
 find_package(KF6WindowSystem 6.6 REQUIRED) # for x11 tray selection owner
 
