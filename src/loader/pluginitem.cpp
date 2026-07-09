@@ -291,8 +291,8 @@ void PluginItem::handleShutDownMenu(const QString &menuId)
 
 void PluginItem::init()
 {
-    winId();
     setAttribute(Qt::WA_TranslucentBackground);
+    winId();
 
     auto hLayout = new QHBoxLayout;
     hLayout->addWidget(centralWidget());
