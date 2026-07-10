@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -6,6 +6,9 @@
 #include "mediacontroller.h"
 #include "quickpanelwidget.h"
 #include "plugins-logging-category.h"
+
+#include <QQmlContext>
+#include <QQuickView>
 
 #define MEDIA_KEY "media-key"
 #define STATE_KEY  "enable"
@@ -19,6 +22,14 @@ MediaPlugin::MediaPlugin(QObject *parent)
 
 }
 
+MediaPlugin::~MediaPlugin()
+{
+    if (m_cardView) {
+        delete m_cardView;
+        m_cardView = nullptr;
+    }
+}
+
 void MediaPlugin::init(PluginProxyInterface *proxyInter)
 {
     m_proxyInter = proxyInter;
@@ -27,23 +38,14 @@ void MediaPlugin::init(PluginProxyInterface *proxyInter)
     m_quickPanelWidget.reset(new QuickPanelWidget(m_controller.data()));
     m_quickPanelWidget->setFixedHeight(60);
 
-    if (pluginIsDisable()) {
-        qCDebug(MEDIA) << "Media plugin init, plugin is disabled";
-        return;
-    }
-    connect(m_controller.data(), &MediaController::mediaAcquired, this, [this] {
-        m_proxyInter->itemAdded(this, MEDIA_KEY);
-    });
-    connect(m_controller.data(), &MediaController::mediaLosted, this, [this] {
-        m_proxyInter->itemRemoved(this, MEDIA_KEY);
-    });
+    connect(m_controller.data(), &MediaController::mediaAcquired, this, &MediaPlugin::refreshPluginItemsVisible);
+    connect(m_controller.data(), &MediaController::mediaLosted, this, &MediaPlugin::refreshPluginItemsVisible);
     connect(m_quickPanelWidget.data(), &QuickPanelWidget::requestHideApplet, this, [this] {
         if (m_proxyInter)
             m_proxyInter->requestSetAppletVisible(this, MEDIA_KEY, false);
     });
 
-    if (m_controller->isWorking())
-        m_proxyInter->itemAdded(this, MEDIA_KEY);
+    refreshPluginItemsVisible();
 }
 
 const QString MediaPlugin::pluginName() const
@@ -126,10 +128,41 @@ void MediaPlugin::pluginSettingsChanged()
 
 void MediaPlugin::refreshPluginItemsVisible()
 {
-    if (pluginIsDisable())
+    if (!m_proxyInter) {
+        return;
+    }
+
+    if (pluginIsDisable() || !m_controller || !m_controller->isWorking()) {
         m_proxyInter->itemRemoved(this, MEDIA_KEY);
-    else
-        m_proxyInter->itemAdded(this, MEDIA_KEY);
+        m_proxyInter->itemRemoved(this, cardItemKey());
+        return;
+    }
+
+    m_proxyInter->itemAdded(this, MEDIA_KEY);
+    m_proxyInter->itemAdded(this, cardItemKey());
 }
 
+QString MediaPlugin::cardItemKey() const
+{
+    return QStringLiteral("media-card");
+}
 
+QWindow *MediaPlugin::cardWindow() const
+{
+    if (m_cardView) {
+        return m_cardView;
+    }
+
+    auto view = new QQuickView;
+    view->setColor(Qt::transparent);
+    view->setResizeMode(QQuickView::SizeRootObjectToView);
+    view->rootContext()->setContextProperty(QStringLiteral("mediaController"), m_controller.data());
+    view->setSource(QUrl(QStringLiteral("qrc:/media/card")));
+    if (view->status() == QQuickView::Error) {
+        delete view;
+        return nullptr;
+    }
+
+    m_cardView = view;
+    return m_cardView;
+}

@@ -17,7 +17,7 @@ file(GLOB_RECURSE SRCS
 )
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Widgets Svg DBus)
+find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Widgets Svg DBus Quick Qml)
 find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget)
 
 add_definitions("${QT_DEFINITIONS} -DQT_PLUGIN")
@@ -33,6 +33,8 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE
     Qt${QT_VERSION_MAJOR}::DBus
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::Svg
+    Qt${QT_VERSION_MAJOR}::Quick
+    Qt${QT_VERSION_MAJOR}::Qml
     dockpluginmanager-interface
 )
 
