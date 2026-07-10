@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "pluginmanager.h"
+#include "pluginsiteminterface_v3.h"
 #include "pluginsiteminterface_v2.h"
 #include "widgetplugin.h"
 
@@ -76,7 +77,10 @@ void PluginManager::loadPlugin(const QString &pluginFilePath)
     }
 
     QObject *instance = pluginLoader->instance();
-    PluginsItemInterface *interface = qobject_cast<PluginsItemInterfaceV2 *>(instance);
+    PluginsItemInterface *interface = qobject_cast<PluginsItemInterfaceV3 *>(instance);
+    if (!interface) {
+        interface = qobject_cast<PluginsItemInterfaceV2 *>(instance);
+    }
     if (!interface) {
         interface = qobject_cast<PluginsItemInterface *>(instance);
     }

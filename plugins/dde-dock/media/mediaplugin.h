@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -6,19 +6,24 @@
 #define MEDIAPLUGIN_H
 
 #include "mediacontroller.h"
-#include "pluginsiteminterface_v2.h"
+#include "pluginsiteminterface_v3.h"
 #include "quickpanelwidget.h"
 
 #include "dtkcore_global.h"
 
-class MediaPlugin : public QObject, public PluginsItemInterfaceV2
+#include <QPointer>
+
+class QQuickView;
+
+class MediaPlugin : public QObject, public PluginsItemInterfaceV3
 {
     Q_OBJECT
-    Q_INTERFACES(PluginsItemInterfaceV2)
-    Q_PLUGIN_METADATA(IID ModuleInterface_iid_V2 FILE "media.json")
+    Q_INTERFACES(PluginsItemInterfaceV3)
+    Q_PLUGIN_METADATA(IID ModuleInterface_iid_V3 FILE "media.json")
 
 public:
     explicit MediaPlugin(QObject *parent = nullptr);
+    ~MediaPlugin() override;
 
     virtual const QString pluginName() const Q_DECL_OVERRIDE;
     virtual const QString pluginDisplayName() const Q_DECL_OVERRIDE;
@@ -34,8 +39,10 @@ public:
     virtual int itemSortKey(const QString &itemKey) Q_DECL_OVERRIDE;
     virtual void setSortKey(const QString &itemKey, const int order) Q_DECL_OVERRIDE;
     virtual void refreshIcon(const QString &itemKey) Q_DECL_OVERRIDE;
-    virtual Dock::PluginFlags flags() const override { return Dock::Type_Quick | Dock::Quick_Panel_Full; }
+    virtual Dock::PluginFlags flags() const override { return Dock::Type_Quick | Dock::Quick_Panel_Full | Dock::Attribute_HasCard; }
     virtual void pluginSettingsChanged() override;
+    QString cardItemKey() const override;
+    QWindow *cardWindow() const override;
 
 private:
     void refreshPluginItemsVisible();
@@ -43,6 +50,7 @@ private:
 private:
     QScopedPointer<MediaController> m_controller;
     QScopedPointer<QuickPanelWidget> m_quickPanelWidget;
+    mutable QPointer<QQuickView> m_cardView;
 };
 
 #endif // MEDIAPLUGIN_H
