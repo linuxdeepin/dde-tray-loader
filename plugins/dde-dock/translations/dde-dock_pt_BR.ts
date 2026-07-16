@@ -30,7 +30,7 @@
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation>Modo Avião</translation>
+        <translation>Modo avião</translation>
     </message>
 </context>
 <context>
