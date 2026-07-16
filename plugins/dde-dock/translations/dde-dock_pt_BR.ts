@@ -261,7 +261,7 @@
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation>Modo Não Perturbe</translation>
+        <translation>Modo não perturbe</translation>
     </message>
     <message>
         <source>DND mode settings</source>
