@@ -281,7 +281,7 @@
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation>Modo Não Perturbe desativado</translation>
+        <translation>Modo não perturbe desativado</translation>
     </message>
 </context>
 <context>
