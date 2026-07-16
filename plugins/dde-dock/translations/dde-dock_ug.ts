@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ug">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ug">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -52,7 +54,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>كالېندارنى ئېچىش</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>دۈشەنبە</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>سەيشەنبە</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>چارشەنبە</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>پەيشەنبە</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>جۈمە</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>شەنبە</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>يەكشەنبە</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>دۈشەنبە</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>سەيشەنبە</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>چارشەنبە</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>پەيشەنبە</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>جۈمە</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>شەنبە</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>يەكشەنبە</translation>
     </message>
 </context>
 <context>
@@ -439,7 +382,14 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -545,11 +495,11 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

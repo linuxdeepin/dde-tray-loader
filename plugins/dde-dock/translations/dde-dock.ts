@@ -194,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Monday</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Tuesday</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Wednesday</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Thursday</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Friday</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Saturday</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Sunday</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>monday</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>tuesday</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>wednesday</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>thursday</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>friday</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>saturday</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>sunday</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -441,6 +382,13 @@
     </message>
     <message>
         <source>Balance Performance</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

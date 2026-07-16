@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="gl_ES">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="gl_ES">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -48,11 +50,11 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Desactivado</translation>
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>Abrir o calendario</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Luns</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Martes</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Mércores</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Xoves</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Venres</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Sábado</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Domingo</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>luns</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>martes</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>miércoles</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>jueves</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>viernes</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>sábado</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>domingo</translation>
     </message>
 </context>
 <context>
@@ -443,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -545,18 +495,18 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Axustes de enerxía</translation>
     </message>
 </context>
 <context>
@@ -641,31 +591,31 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Luns</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Martes</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Mércores</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Xoves</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Venres</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Sábado</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Domingo</translation>
     </message>
     <message>
         <source>Jan</source>
@@ -721,7 +671,7 @@
     </message>
     <message>
         <source>monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">luns</translation>
     </message>
     <message>
         <source>tuesday</source>

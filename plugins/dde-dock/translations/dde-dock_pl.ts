@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pl">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pl">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -192,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Poniedziałek</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Wtorek</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Środa</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Czwartek</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Piątek</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Sobota</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Niedziela</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>poniedziałek</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>wtorek</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>środa</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>czwartek</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>piątek</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>sobota</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>niedziela</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -440,6 +383,13 @@
     <message>
         <source>Balance Performance</source>
         <translation>Wydajność zbalansowana</translation>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

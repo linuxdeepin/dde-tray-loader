@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fi">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fi">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -192,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Maanantai</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Tiistai</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Keskiviikko</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Torstai</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Perjantai</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Lauantai</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Sunnuntai</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>maanantai</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>tiistai</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>keskiviikko</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>torstai</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>perjantai</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>lauantai</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>sunnuntai</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -440,6 +383,13 @@
     <message>
         <source>Balance Performance</source>
         <translation>Tasapainoinen suoritusteho</translation>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="lo">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="lo">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>ເປີດປະຕິທິນ</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>ອາທິດ</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>ພັນຫັດ</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>ພັງສາ</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>ສຸກ</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>ເສັ້ນ</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>ເສາມ</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>ອາທິດ</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>ອາທິດ</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>ພັນຫັດ</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>ພັງສາ</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>ສຸກ</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>ເສັ້ນ</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>ສາາວານມືການ</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>ສາາວານອາທິດ</translation>
     </message>
 </context>
 <context>
@@ -443,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -545,11 +495,11 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

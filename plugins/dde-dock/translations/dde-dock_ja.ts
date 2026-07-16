@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ja">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ja">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>カレンダーを開く</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>月曜日</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>火曜日</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>水曜日</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>木曜日</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>金曜日</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>土曜日</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>日曜日</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>月曜日</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>火曜日</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>水曜日</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>木曜日</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>金曜日</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>土曜日</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>日曜日</translation>
     </message>
 </context>
 <context>
@@ -443,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -457,19 +407,19 @@
     </message>
     <message>
         <source>Capacity %1, %2 min remaining</source>
-        <translation>バッテリー残量 %1　残り %2 分</translation>
+        <translation>バッテリー残量 %1&#x3000;残り %2 分</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr %3 min remaining</source>
-        <translation>バッテリー残量 %1　残り %2 時間 %3 分</translation>
+        <translation>バッテリー残量 %1&#x3000;残り %2 時間 %3 分</translation>
     </message>
     <message>
         <source>Charging %1, %2 min until full</source>
-        <translation>充電中 %1　完了まで %2 分</translation>
+        <translation>充電中 %1&#x3000;完了まで %2 分</translation>
     </message>
     <message>
         <source>Charging %1, %2 hr %3 min until full</source>
-        <translation>充電中 %1　完了まで %2 時間 %3 分</translation>
+        <translation>充電中 %1&#x3000;完了まで %2 時間 %3 分</translation>
     </message>
     <message>
         <source>Capacity %1</source>
@@ -485,11 +435,11 @@
     </message>
     <message>
         <source>Capacity %1, fully charged</source>
-        <translation>バッテリー残量 %1　充電完了</translation>
+        <translation>バッテリー残量 %1&#x3000;充電完了</translation>
     </message>
     <message>
         <source>Capacity %1, not charging</source>
-        <translation>バッテリー残量 %1　充電していません</translation>
+        <translation>バッテリー残量 %1&#x3000;充電していません</translation>
     </message>
     <message>
         <source>Battery</source>
@@ -497,7 +447,7 @@
     </message>
     <message>
         <source>Charging, calculating estimated charging time</source>
-        <translation>充電中　完了までの時間を計算しています</translation>
+        <translation>充電中&#x3000;完了までの時間を計算しています</translation>
     </message>
     <message>
         <source>Calculating remaining usage time</source>
@@ -521,15 +471,15 @@
     </message>
     <message>
         <source>Charging, %1 min until full</source>
-        <translation>充電中　完了まで%1分</translation>
+        <translation>充電中&#x3000;完了まで%1分</translation>
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation>充電中　完了まで%1時間%2分</translation>
+        <translation>充電中&#x3000;完了まで%1時間%2分</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
-        <translation>バッテリー残量 %1　残り %2時間</translation>
+        <translation>バッテリー残量 %1&#x3000;残り %2時間</translation>
     </message>
     <message>
         <source>%1 hr remaining</source>
@@ -537,19 +487,19 @@
     </message>
     <message>
         <source>Charging %1, %2 hr until full</source>
-        <translation>充電中 %1　完了まで %2時間</translation>
+        <translation>充電中 %1&#x3000;完了まで %2時間</translation>
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
-        <translation>充電中　完了まで%1時間</translation>
+        <translation>充電中&#x3000;完了まで%1時間</translation>
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -625,19 +575,19 @@
     </message>
     <message>
         <source>Lunar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>y</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>m</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>d</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Monday</source>

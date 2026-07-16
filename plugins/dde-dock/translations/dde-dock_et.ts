@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="et">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="et">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -52,7 +54,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>Ava kalender</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Esmaspäev</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Teisipäev</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Kolmapäev</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Neljapäev</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Reede</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Laupäev</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Pühapäev</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>Esmaspäev</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>Teisipaev</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>Kuupaev</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>Reede</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>Laupäev</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>Pühapäev</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>Esmaspäev</translation>
     </message>
 </context>
 <context>
@@ -443,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -545,11 +495,11 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -641,27 +591,27 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Esmaspäev</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Teisipäev</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Kolmapäev</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Neljapäev</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Reede</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Laupäev</translation>
     </message>
     <message>
         <source>Sunday</source>

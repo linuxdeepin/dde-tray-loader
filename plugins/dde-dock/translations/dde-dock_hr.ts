@@ -194,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Ponedjeljak</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Utorak</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Srijeda</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Četvrtak</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Petak</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Subota</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Nedjelja</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>ponedjeljak</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>utorak</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>srijeda</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>četvrtak</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>petak</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>subota</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>nedjelja</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -445,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -543,6 +491,14 @@
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

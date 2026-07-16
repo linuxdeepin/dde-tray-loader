@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "pluginitemdelegate.h"
+#include "commontextbutton.h"
 
 #include <DStyleOption>
 #include <DPalette>
@@ -189,6 +190,8 @@ PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     , m_iconBtn(nullptr)
     , m_nameLabel(nullptr)
     , m_connBtn(nullptr)
+    , m_disConnectBtn(nullptr)
+    , m_state(NoState)
     , m_spinner(nullptr)
     , m_rightIconSpacerItem(new QSpacerItem(0, 0))
 {
@@ -213,10 +216,13 @@ PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
 
     m_connBtn = new CommonIconButton(this);
     m_connBtn->setIcon(QIcon::fromTheme("plugin_item_select"));
-    m_connBtn->setHoverIcon(QIcon::fromTheme("plugin_item_disconnect"));
     m_connBtn->setFixedSize(16, 16);
     m_connBtn->setClickable(true);
     m_connBtn->hide();
+
+    m_disConnectBtn = new CommonTextButton(this);
+    m_disConnectBtn->setText(tr("Disconnect"));
+    m_disConnectBtn->setVisible(false);
 
     m_spinner = new DSpinner(this);
     m_spinner->setFixedSize(16, 16);
@@ -231,6 +237,7 @@ PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     m_mainLayout->addStretch();
     m_mainLayout->addSpacerItem(m_rightIconSpacerItem);
     m_mainLayout->addWidget(m_connBtn, 0, Qt::AlignRight | Qt::AlignVCenter);
+    m_mainLayout->addWidget(m_disConnectBtn, 0, Qt::AlignRight | Qt::AlignVCenter);
     m_mainLayout->addWidget(m_spinner, 0, Qt::AlignRight | Qt::AlignVCenter);
     updateState(item->state());
 
@@ -241,7 +248,7 @@ PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     connect(m_item, &PluginStandardItem::nameChanged, this, &PluginItemWidget::updateName);
     connect(m_item, &PluginStandardItem::stateChanged, this, &PluginItemWidget::updateState);
 
-    connect(m_connBtn, &CommonIconButton::clicked, m_item, &PluginStandardItem::connectBtnClicked);
+    connect(m_disConnectBtn, &CommonTextButton::clicked, m_item, &PluginStandardItem::connectBtnClicked);
 }
 
 PluginItemWidget::~PluginItemWidget()
@@ -261,6 +268,7 @@ void PluginItemWidget::updateName(const QString &name)
 void PluginItemWidget::updateState(const PluginItemState state)
 {
     m_rightIconSpacerItem->changeSize(10, 0);
+    m_state = state;
     switch (state) {
     case PluginItemState::NoState:
         m_connBtn->setVisible(false);
@@ -314,4 +322,22 @@ bool PluginItemWidget::event(QEvent *e)
         break;
     }
     return QWidget::event(e);
+}
+
+void PluginItemWidget::enterEvent(QEnterEvent *event)
+{
+    if (m_state == PluginItemState::Connected) {
+        m_disConnectBtn->setVisible(true);
+        m_connBtn->setVisible(false);
+    }
+    QWidget::enterEvent(event);
+}
+
+void PluginItemWidget::leaveEvent(QEvent *event)
+{
+    m_disConnectBtn->setVisible(false);
+    if (m_state == PluginItemState::Connected) {
+        m_connBtn->setVisible(true);
+    };
+    QWidget::leaveEvent(event);
 }

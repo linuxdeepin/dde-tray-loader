@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ca">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ca">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -192,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Dilluns</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Dimarts</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Dimecres</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Dijous</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Divendres</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Dissabte</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Diumenge</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>dilluns</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>dimarts</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>dimecres</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>dijous</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>divendres</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>dissabte</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>diumenge</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -440,6 +383,13 @@
     <message>
         <source>Balance Performance</source>
         <translation>Equilibratge del rendiment</translation>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

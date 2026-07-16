@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="vi">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="vi">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -48,11 +50,11 @@
     </message>
     <message>
         <source>Turned off</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Đã tắt</translation>
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>Mở lịch</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Thứ hai</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Thứ ba</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Thứ tư</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Thứ năm</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Thứ sáu</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Thứ bảy</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Chủ nhật</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>thứ hai</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>thứ hai</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>thứ ba</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>thứ tư</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>thứ năm</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>thứ sáu</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>chủ nhật</translation>
     </message>
 </context>
 <context>
@@ -443,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -545,18 +495,18 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PowerStatusWidget</name>
     <message>
         <source>Power settings</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thiết lập năng lượng</translation>
     </message>
 </context>
 <context>
@@ -641,31 +591,31 @@
     </message>
     <message>
         <source>Monday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ hai</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ ba</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ tư</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ năm</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ sáu</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Thứ bảy</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">Chủ nhật</translation>
     </message>
     <message>
         <source>Jan</source>

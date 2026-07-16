@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="es">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -192,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Lunes</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Martes</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Miércoles</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Jueves</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Viernes</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Sábado</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Domingo</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>lunes</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>martes</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>miércoles</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>jueves</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>viernes</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>sábado</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>domingo</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -440,6 +383,13 @@
     <message>
         <source>Balance Performance</source>
         <translation>Rendimiento equilibrado</translation>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

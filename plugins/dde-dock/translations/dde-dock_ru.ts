@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>Открыть календарь</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Понедельник</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Вторник</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Среда</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Четверг</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Пятница</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Суббота</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Воскресенье</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>понедельник</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>вторник</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>среда</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>четверг</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>пятница</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>суббота</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>воскресенье</translation>
     </message>
 </context>
 <context>
@@ -443,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -549,7 +499,7 @@
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

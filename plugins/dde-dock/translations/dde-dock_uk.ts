@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="uk">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="uk">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -192,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Понеділок</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Вівторок</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Середа</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Четвер</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>П&apos;ятниця</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Субота</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Неділя</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>Понеділок</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>вівторок</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>середа</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>четвер</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>п&apos;ятниця</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>субота</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>неділя</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -440,6 +383,13 @@
     <message>
         <source>Balance Performance</source>
         <translation>Збалансована швидкодія</translation>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
