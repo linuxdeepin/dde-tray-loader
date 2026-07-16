@@ -19,7 +19,7 @@
     </message>
     <message>
         <source>Airplane Mode</source>
-        <translation>Modo Avião</translation>
+        <translation>Modo avião</translation>
     </message>
     <message>
         <source>Airplane mode settings</source>
