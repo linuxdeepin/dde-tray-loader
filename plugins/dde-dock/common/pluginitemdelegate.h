@@ -1,10 +1,11 @@
-// SPDX-FileCopyrightText: 2016 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
 #pragma once
 
 #include "commoniconbutton.h"
+#include "commontextbutton.h"
 
 #include <DLabel>
 #include <DSpinner>
@@ -116,14 +117,18 @@ public Q_SLOTS:
 
 protected:
     bool event(QEvent *e) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     PluginStandardItem *m_item;
 
     QHBoxLayout *m_mainLayout;
     CommonIconButton *m_iconBtn;
+    CommonTextButton *m_disConnectBtn;
     DLabel *m_nameLabel;
     CommonIconButton *m_connBtn;
     DSpinner *m_spinner;
     QSpacerItem *m_rightIconSpacerItem;
+    PluginItemState m_state;
 };

@@ -194,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>วันจันทร์</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>วันอังคาร</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>วันพุธ</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>วันพฤหัสบดี</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>วันศุกร์</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>วันศุกร์</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>วันอาทิตย์</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -445,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -543,6 +491,14 @@
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

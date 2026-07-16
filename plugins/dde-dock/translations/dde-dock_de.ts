@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="de">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="de">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -52,7 +54,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>Kalender öffnen</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Montag</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Dienstag</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Mittwoch</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Donnerstag</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Freitag</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Samstag</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Sonntag</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>Montag</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>Dienstag</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>Mittwoch</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>Donnerstag</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>Freitag</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>Samstag</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>Sonntag</translation>
     </message>
 </context>
 <context>
@@ -439,14 +382,21 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -545,11 +495,11 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -756,7 +706,7 @@
     </message>
     <message>
         <source>Output</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Sound settings</source>

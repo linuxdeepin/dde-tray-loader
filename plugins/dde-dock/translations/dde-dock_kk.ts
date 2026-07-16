@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="kk">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="kk">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -52,7 +54,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>Календарды басыңыз</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Пятіркі</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Сырткі</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Себті</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Жұма</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Денес</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Күні</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Жеке күні</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>пятіркі</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>сырткі</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>себті</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>жұма</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>денес</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>күні</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>жұлдыз</translation>
     </message>
 </context>
 <context>
@@ -443,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -545,11 +495,11 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

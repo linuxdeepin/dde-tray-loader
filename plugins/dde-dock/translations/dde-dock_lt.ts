@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="lt">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="lt">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -52,7 +54,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -189,65 +191,6 @@
     <message>
         <source>Open the calendar</source>
         <translation>Atverti kalendorių</translation>
-    </message>
-</context>
-<context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Pirmadienis</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Antradienis</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Trečiadienis</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Ketvirtadienis</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Penktadienis</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Šeštadienis</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Sekmadienis</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>pirmadienis</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>antradienis</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>trečiadienis</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>ketvirtadienis</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>penktadienis</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>šeštadienis</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>sekmadienis</translation>
     </message>
 </context>
 <context>
@@ -443,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -545,11 +495,11 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -194,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Pondelok</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Utorok</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Streda</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Štvrtok</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Piatok</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Sobota</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Nedeľa</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>pondelok</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>Utorok</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>streda</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>štvrtok</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>piatok</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>sobota</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>nedeľa</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -445,6 +386,13 @@
     </message>
 </context>
 <context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerApplet</name>
     <message>
         <source>Power</source>
@@ -543,6 +491,14 @@
     </message>
     <message>
         <source>Charging, %1 hr until full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Capacity %1, charging protection active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Charging protection active</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

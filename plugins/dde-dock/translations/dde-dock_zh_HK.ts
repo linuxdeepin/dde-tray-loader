@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_HK">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_HK">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -192,65 +194,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>星期一</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>星期二</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>星期三</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>星期四</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>星期五</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>星期六</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>星期日</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>週一</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>週二</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>週三</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>週四</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>週五</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>週六</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>週日</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -440,6 +383,13 @@
     <message>
         <source>Balance Performance</source>
         <translation>性能模式</translation>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
