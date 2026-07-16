@@ -288,7 +288,7 @@
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation>Modo Não Perturbe</translation>
+        <translation>Modo não perturbe</translation>
     </message>
 </context>
 <context>
