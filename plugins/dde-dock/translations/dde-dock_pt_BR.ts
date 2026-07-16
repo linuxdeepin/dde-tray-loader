@@ -172,7 +172,7 @@
     <name>DatetimePlugin</name>
     <message>
         <source>Datetime</source>
-        <translation>Data e Hora</translation>
+        <translation>Data e hora</translation>
     </message>
     <message>
         <source>12-hour time</source>
