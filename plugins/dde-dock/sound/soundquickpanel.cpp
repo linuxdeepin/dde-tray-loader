@@ -1,5 +1,5 @@
 // Copyright (C) 2022 ~ 2022 Deepin Technology Co., Ltd.
-// SPDX-FileCopyrightText: 2018 - 2026 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2018 - 2023 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -78,7 +78,7 @@ void SoundQuickPanel::initConnection()
     });
 
     connect(m_sliderContainer, &SliderContainer::sliderValueChanged, this, [this](int value) {
-        SoundController::ref().SetVolume(value * 0.01, !SoundModel::ref().isMute());
+        SoundController::ref().SetVolume(value * 0.01, true);
     });
     connect(&SoundModel::ref(), &SoundModel::activePortChanged, this, &SoundQuickPanel::refreshWidget);
     connect(&SoundModel::ref(), &SoundModel::cardsInfoChanged, this, &SoundQuickPanel::refreshWidget);
