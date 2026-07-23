@@ -1,3 +1,11 @@
+dde-tray-loader (2.0.37) unstable; urgency=medium
+
+  * build: request Qt CorePrivate/WidgetsPrivate components in
+    application-tray
+  * Revert "fix(sound): avoid muted slider double feedback"
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 23 Jul 2026 21:50:12 +0800
+
 dde-tray-loader (2.0.36) unstable; urgency=medium
 
   * fix(sound): avoid muted slider double feedback
