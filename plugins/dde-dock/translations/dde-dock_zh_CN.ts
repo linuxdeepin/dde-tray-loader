@@ -387,7 +387,7 @@
     <name>PluginItemWidget</name>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"/>
+        <translation>断 开</translation>
     </message>
 </context>
 <context>
