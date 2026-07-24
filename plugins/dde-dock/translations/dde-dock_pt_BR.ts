@@ -19,7 +19,7 @@
     </message>
     <message>
         <source>Airplane Mode</source>
-        <translation>Modo Avião</translation>
+        <translation>Modo avião</translation>
     </message>
     <message>
         <source>Airplane mode settings</source>
@@ -30,7 +30,7 @@
     <name>AirplaneModePlugin</name>
     <message>
         <source>Airplane Mode</source>
-        <translation>Modo Avião</translation>
+        <translation>Modo avião</translation>
     </message>
 </context>
 <context>
@@ -172,7 +172,7 @@
     <name>DatetimePlugin</name>
     <message>
         <source>Datetime</source>
-        <translation>Data e Hora</translation>
+        <translation>Data e hora</translation>
     </message>
     <message>
         <source>12-hour time</source>
@@ -261,11 +261,11 @@
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
-        <translation>Modo Não Perturbe</translation>
+        <translation>Modo não perturbe</translation>
     </message>
     <message>
         <source>DND mode settings</source>
-        <translation>Configurações do modo Não Perturbe</translation>
+        <translation>Configurações do modo não perturbe</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -277,18 +277,18 @@
     </message>
     <message>
         <source>DND mode enabled</source>
-        <translation>Modo Não Perturbe ativado</translation>
+        <translation>Modo não perturbe ativado</translation>
     </message>
     <message>
         <source>DND mode disabled</source>
-        <translation>Modo Não Perturbe desativado</translation>
+        <translation>Modo não perturbe desativado</translation>
     </message>
 </context>
 <context>
     <name>DndModePlugin</name>
     <message>
         <source>DND Mode</source>
-        <translation>Modo Não Perturbe</translation>
+        <translation>Modo não perturbe</translation>
     </message>
 </context>
 <context>
@@ -401,11 +401,11 @@
     </message>
     <message>
         <source>Turn off DND mode</source>
-        <translation>Desativar o modo Não Perturbe</translation>
+        <translation>Modo não perturbe</translation>
     </message>
     <message>
         <source>Turn on DND mode</source>
-        <translation>Ativar o modo Não Perturbe</translation>
+        <translation>Modo não perturbe</translation>
     </message>
     <message>
         <source>Notification</source>
