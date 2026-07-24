@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -389,7 +387,7 @@
     <name>PluginItemWidget</name>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -459,7 +457,7 @@
     </message>
     <message>
         <source>%1 hr %2 min remaining</source>
-        <translation>%1&#xa0;h&#xa0;%2 restant</translation>
+        <translation>%1 h %2 restant</translation>
     </message>
     <message>
         <source>Not charging</source>
@@ -475,7 +473,7 @@
     </message>
     <message>
         <source>Charging, %1 hr %2 min until full</source>
-        <translation>En charge, %1&#xa0;h&#xa0;%2 avant la charge complète</translation>
+        <translation>En charge, %1 h %2 avant la charge complète</translation>
     </message>
     <message>
         <source>Capacity %1, %2 hr remaining</source>
