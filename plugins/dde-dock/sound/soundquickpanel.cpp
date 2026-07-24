@@ -33,10 +33,14 @@ DGUI_USE_NAMESPACE
 SoundQuickPanel::SoundQuickPanel(QWidget* parent)
     : QWidget(parent)
     , m_sliderContainer(new SliderContainer(this))
+    , m_opacityEffect(new QGraphicsOpacityEffect(this))
 {
+    m_opacityEffect->setOpacity(kNormalOpacity);
+    setGraphicsEffect(m_opacityEffect);
     initUi();
     initConnection();
 }
+
 
 SoundQuickPanel::~SoundQuickPanel()
 {
@@ -161,3 +165,16 @@ int SoundQuickPanel::soundVolume() const
 {
     return SoundController::ref().existActiveOutputDevice() ? SoundModel::ref().volume() : 0;
 }
+
+void SoundQuickPanel::enterEvent(QEnterEvent *event)
+{
+    m_opacityEffect->setOpacity(kHoverOpacity);
+    QWidget::enterEvent(event);
+}
+
+void SoundQuickPanel::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event)
+    m_opacityEffect->setOpacity(kNormalOpacity);
+}
+

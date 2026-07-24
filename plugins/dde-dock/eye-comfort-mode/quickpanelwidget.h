@@ -6,6 +6,8 @@
 #ifndef QUICKPANELWIDGET_H
 #define QUICKPANELWIDGET_H
 
+#include <QGraphicsOpacityEffect>
+
 #include <DFloatingButton>
 #include <DLabel>
 #include <DStyleOption>
@@ -32,7 +34,6 @@ public:
     void setButtonMode(ButtonMode mode) {
         if (m_mode == mode)
             return;
-
         m_mode = mode;
         DStyleOptionButton option;
         initStyleOption(&option);
@@ -68,18 +69,29 @@ Q_SIGNALS:
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     void initUi();
     void initConnection();
+    void updateOpacity(bool hover);
 
 private:
+    static constexpr qreal kNormalOpacity = 0.7;
+    static constexpr qreal kHoverOpacity = 1.0;
+
     QuickButton *m_iconWidget;
     Dtk::Widget::DLabel *m_nameLabel;
     Dtk::Widget::DLabel *m_stateLabel;
     Dtk::Widget::DIconButton *m_expandLabel;
     QPoint m_clickPoint;
     bool m_eyeComfortModeEnabled;
+    bool m_active = false;
+    bool m_hovered = false;
+    QGraphicsOpacityEffect *m_iconEffect;
+    QGraphicsOpacityEffect *m_nameEffect;
+    QGraphicsOpacityEffect *m_stateEffect;
 };
 
 #endif // QUICKPANELWIDGET_H

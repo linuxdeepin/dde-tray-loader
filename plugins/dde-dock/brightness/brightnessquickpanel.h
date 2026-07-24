@@ -9,6 +9,7 @@
 #include "monitor.h"
 
 #include <DBlurEffectWidget>
+#include <QGraphicsOpacityEffect>
 #include <QWidget>
 #include <QPointer>
 
@@ -32,12 +33,18 @@ Q_SIGNALS:
 protected:
     void initUi();
     void initConnection();
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private Q_SLOTS:
     void refreshWidget();
     void UpdateDisplayStatus();
 
 private:
+    static constexpr qreal kNormalOpacity = 0.7;
+    static constexpr qreal kHoverOpacity = 1.0;
+
     SliderContainer *m_sliderContainer;
     QPointer<Monitor> m_currentMonitor;
+    QGraphicsOpacityEffect *m_opacityEffect;
 };

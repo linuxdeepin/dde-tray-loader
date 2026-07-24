@@ -20,6 +20,8 @@ SignalQuickPanel::SignalQuickPanel(QWidget *parent)
     , m_icon(new CommonIconButton(this))
     , m_description(new DLabel(this))
     , m_active(false)
+    , m_iconEffect(new QGraphicsOpacityEffect(m_icon))
+    , m_descEffect(new QGraphicsOpacityEffect(m_description))
 {
     initUI();
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &SignalQuickPanel::refreshBg);
@@ -34,9 +36,15 @@ void SignalQuickPanel::initUI()
 {
     m_icon->setFixedSize(QSize(24, 24));
 
+    m_iconEffect->setOpacity(kNormalOpacity);
+    m_icon->setGraphicsEffect(m_iconEffect);
+
     m_description->setElideMode(Qt::ElideRight);
     DToolTip::setToolTipShowMode(m_description, DToolTip::ShowWhenElided);
     DFontSizeManager::instance()->bind(m_description, DFontSizeManager::T10);
+
+    m_descEffect->setOpacity(kNormalOpacity);
+    m_description->setGraphicsEffect(m_descEffect);
 
     auto layout = new QVBoxLayout;
     layout->setContentsMargins(8, 8, 8, 8);
@@ -68,6 +76,29 @@ void SignalQuickPanel::setWidgetState(WidgetState state)
     m_active = (WS_ACTIVE == state);
 
     refreshBg();
+    updateOpacity(m_hovered);
+}
+
+void SignalQuickPanel::updateOpacity(bool hover)
+{
+    // icon: when active, always 1.0; otherwise follow hover
+    m_iconEffect->setOpacity((m_active || hover) ? kHoverOpacity : kNormalOpacity);
+    // text: always follow hover regardless of active state
+    m_descEffect->setOpacity(hover ? kHoverOpacity : kNormalOpacity);
+}
+
+void SignalQuickPanel::enterEvent(QEnterEvent *event)
+{
+    m_hovered = true;
+    updateOpacity(true);
+    QWidget::enterEvent(event);
+}
+
+void SignalQuickPanel::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event)
+    m_hovered = false;
+    updateOpacity(false);
 }
 
 void SignalQuickPanel::mouseReleaseEvent(QMouseEvent *event)

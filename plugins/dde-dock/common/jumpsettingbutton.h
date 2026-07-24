@@ -7,6 +7,8 @@
 
 #include "commoniconbutton.h"
 
+#include <QGraphicsOpacityEffect>
+
 #include <QFrame>
 #include <QLabel>
 
@@ -33,17 +35,23 @@ protected:
     bool event(QEvent* e) override;
     void paintEvent(QPaintEvent* e) override;
     void mouseReleaseEvent(QMouseEvent* event) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     void initUI();
 
 private:
+    static constexpr qreal kNormalOpacity = 0.7;
+    static constexpr qreal kHoverOpacity = 1.0;
+
     bool m_hover;
     bool m_autoShowPage;
     QString m_fistPage;
     QString m_secondPage;
     CommonIconButton *m_iconButton;
     Dtk::Widget::DLabel *m_descriptionLabel;
+    QGraphicsOpacityEffect *m_opacityEffect;
 };
 
 #endif

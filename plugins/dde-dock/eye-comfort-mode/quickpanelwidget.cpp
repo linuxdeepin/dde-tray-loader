@@ -64,10 +64,14 @@ QuickPanelWidget::QuickPanelWidget(QWidget *parent)
     , m_nameLabel(new DLabel(this))
     , m_stateLabel(new DLabel(this))
     , m_expandLabel(new DIconButton(this))
+    , m_iconEffect(new QGraphicsOpacityEffect(m_iconWidget))
+    , m_nameEffect(new QGraphicsOpacityEffect(m_nameLabel))
+    , m_stateEffect(new QGraphicsOpacityEffect(m_stateLabel))
 {
     initUi();
     initConnection();
 }
+
 
 QuickPanelWidget::~QuickPanelWidget() { }
 
@@ -88,8 +92,11 @@ void QuickPanelWidget::setDescription(const QString &description)
 
 void QuickPanelWidget::setActive(bool active)
 {
+    m_active = active;
     m_iconWidget->setBackgroundRole(active ? QPalette::Highlight : QPalette::BrightText);
+    updateOpacity(m_hovered);
 }
+
 
 void QuickPanelWidget::setButtonMode(QuickButton::ButtonMode mode)
 {
@@ -131,10 +138,16 @@ void QuickPanelWidget::initUi()
     m_nameLabel->setElideMode(Qt::ElideRight);
     m_nameLabel->setContentsMargins(0, 2, 0, 0);
     m_nameLabel->setForegroundRole(QPalette::BrightText);
+    m_nameEffect->setOpacity(kNormalOpacity);
+    m_nameLabel->setGraphicsEffect(m_nameEffect);
+
 
     DFontSizeManager::instance()->bind(m_stateLabel, DFontSizeManager::T10);
     DToolTip::setToolTipShowMode(m_stateLabel, DToolTip::ShowWhenElided);
     m_stateLabel->setElideMode(Qt::ElideRight);
+    m_stateEffect->setOpacity(kNormalOpacity);
+    m_stateLabel->setGraphicsEffect(m_stateEffect);
+
 
     QVBoxLayout *layout = new QVBoxLayout(labelWidget);
     layout->setContentsMargins(0, 8, 8, 8);
@@ -146,9 +159,12 @@ void QuickPanelWidget::initUi()
     m_iconWidget->setEnabledCircle(true);
     m_iconWidget->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     m_iconWidget->setIconSize(IconSize);
+    m_iconEffect->setOpacity(kNormalOpacity);
+    m_iconWidget->setGraphicsEffect(m_iconEffect);
     m_iconWidget->setCheckable(false);
     m_iconWidget->setFixedSize(QSize(40, 40));
     m_iconWidget->setFocusPolicy(Qt::NoFocus);
+
 
     // 进入图标
     m_expandLabel->setIcon(DStyle::standardIcon(style(), DStyle::SP_ArrowEnter));
@@ -173,3 +189,27 @@ void QuickPanelWidget::initConnection()
 {
     connect(m_iconWidget, &DFloatingButton::clicked, this, &QuickPanelWidget::iconClicked);
 }
+
+void QuickPanelWidget::updateOpacity(bool hover)
+{
+    // icon: when active, always 1.0; otherwise follow hover
+    m_iconEffect->setOpacity((m_active || hover) ? kHoverOpacity : kNormalOpacity);
+    // text: always follow hover regardless of active state
+    m_nameEffect->setOpacity(hover ? kHoverOpacity : kNormalOpacity);
+    m_stateEffect->setOpacity(hover ? kHoverOpacity : kNormalOpacity);
+}
+
+void QuickPanelWidget::enterEvent(QEnterEvent *event)
+{
+    m_hovered = true;
+    updateOpacity(true);
+    QWidget::enterEvent(event);
+}
+
+void QuickPanelWidget::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event)
+    m_hovered = false;
+    updateOpacity(false);
+}
+

@@ -24,13 +24,17 @@ BrightnessQuickPanel::BrightnessQuickPanel(QWidget* parent)
     : QWidget(parent)
     , m_sliderContainer(new SliderContainer(this))
     , m_currentMonitor(nullptr)
+    , m_opacityEffect(new QGraphicsOpacityEffect(this))
 {
+    m_opacityEffect->setOpacity(kNormalOpacity);
+    setGraphicsEffect(m_opacityEffect);
     initUi();
     initConnection();
 
     m_sliderContainer->setRange(BrightnessModel::ref().minBrightness(), BrightnessModel::ref().maxBrightness());
     UpdateDisplayStatus();
 }
+
 
 BrightnessQuickPanel::~BrightnessQuickPanel()
 {
@@ -110,3 +114,16 @@ void BrightnessQuickPanel::refreshWidget()
         m_sliderContainer->updateSliderValue(m_currentMonitor->brightness() * 100);
     }
 }
+
+void BrightnessQuickPanel::enterEvent(QEnterEvent *event)
+{
+    m_opacityEffect->setOpacity(kHoverOpacity);
+    QWidget::enterEvent(event);
+}
+
+void BrightnessQuickPanel::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event)
+    m_opacityEffect->setOpacity(kNormalOpacity);
+}
+

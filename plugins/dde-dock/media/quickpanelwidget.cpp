@@ -20,9 +20,13 @@ QuickPanelWidget::QuickPanelWidget(MediaController *controller, QWidget* parent)
     , m_artistLab(new DLabel(this))
     , m_playButton(new CommonIconButton(this))
     , m_nextButton(new CommonIconButton(this))
+    , m_opacityEffect(new QGraphicsOpacityEffect(this))
 {
+    m_opacityEffect->setOpacity(kNormalOpacity);
+    setGraphicsEffect(m_opacityEffect);
     init();
 }
+
 
 void QuickPanelWidget::init()
 {
@@ -126,6 +130,19 @@ void QuickPanelWidget::mouseReleaseEvent(QMouseEvent *event)
     }
     return QWidget::mouseReleaseEvent(event);
 }
+
+void QuickPanelWidget::enterEvent(QEnterEvent *event)
+{
+    m_opacityEffect->setOpacity(kHoverOpacity);
+    QWidget::enterEvent(event);
+}
+
+void QuickPanelWidget::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event)
+    m_opacityEffect->setOpacity(kNormalOpacity);
+}
+
 
 QuickPanelWidget::~QuickPanelWidget()
 {
