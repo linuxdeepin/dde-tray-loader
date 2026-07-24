@@ -192,65 +192,6 @@
     </message>
 </context>
 <context>
-    <name>DatetimeWidget</name>
-    <message>
-        <source>Monday</source>
-        <translation>Arim</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation>Aram</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation>Ahad</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation>Amhad</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation>Sem</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation>Sed</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation>Acer</translation>
-    </message>
-    <message>
-        <source>monday</source>
-        <translation>arim</translation>
-    </message>
-    <message>
-        <source>tuesday</source>
-        <translation>tuesday</translation>
-    </message>
-    <message>
-        <source>wednesday</source>
-        <translation>wednesday</translation>
-    </message>
-    <message>
-        <source>thursday</source>
-        <translation>thursday</translation>
-    </message>
-    <message>
-        <source>friday</source>
-        <translation>friday</translation>
-    </message>
-    <message>
-        <source>saturday</source>
-        <translation>saturday</translation>
-    </message>
-    <message>
-        <source>sunday</source>
-        <translation>sunday</translation>
-    </message>
-</context>
-<context>
     <name>DeviceControlWidget</name>
     <message>
         <source>Other Devices</source>
@@ -439,6 +380,13 @@
     </message>
     <message>
         <source>Balance Performance</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>PluginItemWidget</name>
+    <message>
+        <source>Disconnect</source>
         <translation type="unfinished"/>
     </message>
 </context>
