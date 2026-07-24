@@ -1,3 +1,11 @@
+dde-tray-loader (2.0.38) unstable; urgency=medium
+
+  * i18n: Updates for project Deepin Desktop Environment (#479)
+  * feat(dock-plugin): add disconnect button on hover for plugin items
+  * i18n: Updates for project Deepin Desktop Environment (#483)
+
+ -- zhangkun <zhangkun2@uniontech.com>  Fri, 24 Jul 2026 14:43:43 +0800
+
 dde-tray-loader (2.0.37) unstable; urgency=medium
 
   * build: request Qt CorePrivate/WidgetsPrivate components in
