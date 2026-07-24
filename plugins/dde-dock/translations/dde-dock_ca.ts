@@ -387,7 +387,7 @@
     <name>PluginItemWidget</name>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"/>
+        <translation>Desconnecta</translation>
     </message>
 </context>
 <context>
