@@ -5,7 +5,10 @@
 #include "abstracttrayprotocol.h"
 #include "traymanager1interface.h"
 #include "xembedprotocolhandler.h"
+
+#if _DDE_TRAY_LOADER_HANDLE_XEMBED_SELECTION_MANAGER
 #include "fdoselectionmanager.h"
+#endif // _DDE_TRAY_LOADER_HANDLE_XEMBED_SELECTION_MANAGER
 
 #include "util.h"
 #include "plugin.h"
@@ -41,10 +44,12 @@ XembedProtocol::XembedProtocol(QObject *parent)
 
     QMetaObject::invokeMethod(this, &XembedProtocol::onTrayIconsChanged, Qt::QueuedConnection);
 
+#if _DDE_TRAY_LOADER_HANDLE_XEMBED_SELECTION_MANAGER
     if ((qgetenv("XDG_SESSION_TYPE") == "wayland") && UTIL->isXAvaliable()) {
         qWarning() << "Not running on X11, registering FDO selection manager";
         m_selectionManager = new FdoSelectionManager(this);
     }
+#endif // _DDE_TRAY_LOADER_HANDLE_XEMBED_SELECTION_MANAGER
 
     QTimer::singleShot(0, this, [this](){
         m_trayManager->Manage();
