@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -114,6 +114,7 @@ enum PluginFlag {
     Attribute_CanInsert = 0x400, // 插件属性-是否支持在其前面插入其他的插件，普通的快捷插件是支持的
     Attribute_CanSetting = 0x800, // 插件属性-是否可以在控制中心设置显示或隐藏，如果设置了这个属性，请实现PluginsItemInterfaceV2::icon 接口，并返回在`控制中心-个性化-任务栏-插件区域`中显示的图标
     Attribute_ForceDock = 0x1000, // 插件属性-强制显示在任务栏上
+    Attribute_HasCard = 0x2000, // 插件属性-是否提供卡片区域 surface
 
     Attribute_Normal = Attribute_CanDrag | Attribute_CanInsert | Attribute_CanSetting, // 普通插件
 

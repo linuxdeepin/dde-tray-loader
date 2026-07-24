@@ -110,12 +110,19 @@ WidgetPlugin::WidgetPlugin(PluginsItemInterface* pluginsItemInterface, QObject *
 
 WidgetPlugin::~WidgetPlugin()
 {
+    qDeleteAll(m_cardItems);
+    m_cardItems.clear();
 }
 
 void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QString &itemKey)
 {
     qDebug() << "itemAdded:" << itemKey;
+
     auto flag = getPluginFlags();
+    if ((flag & Dock::Attribute_HasCard) && createCardItemIfNeeded(itemInter, itemKey)) {
+        return;
+    }
+
     if (flag & Dock::Type_Quick) {
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Quick)) {
             PluginItem *item = new QuickPluginItem(itemInter, itemKey);
@@ -216,6 +223,12 @@ void WidgetPlugin::itemUpdate(PluginsItemInterface * const itemInter, const QStr
 void WidgetPlugin::itemRemoved(PluginsItemInterface * const itemInter, const QString &itemKey)
 {
     Q_UNUSED(itemInter)
+    if (auto cardItem = m_cardItems.take(itemKey)) {
+        cardItem->hide();
+        cardItem->deleteLater();
+        return;
+    }
+
     auto widget = m_pluginsItemInterface->itemWidget(itemKey);
     if(widget && widget->window() && widget->window()->windowHandle()) {
         widget->window()->windowHandle()->hide();
@@ -365,6 +378,48 @@ Plugin::EmbedPlugin* WidgetPlugin::getPlugin(QWidget* widget)
     widget->setParent(nullptr);
     widget->winId();
     return Plugin::EmbedPlugin::get(widget->windowHandle());
+}
+
+bool WidgetPlugin::createCardItemIfNeeded(PluginsItemInterface *itemInter, const QString &itemKey)
+{
+    auto cardInterface = dynamic_cast<PluginsItemInterfaceV3 *>(itemInter);
+    if (!cardInterface || cardInterface->cardItemKey() != itemKey) {
+        return false;
+    }
+
+    if (auto cardItem = m_cardItems.value(itemKey)) {
+        cardItem->show();
+        return true;
+    }
+
+    auto cardItem = new CardPluginItem(cardInterface, itemKey, this);
+    if (!cardItem->init() || !cardItem->window()) {
+        cardItem->deleteLater();
+        qWarning() << "create card plugin surface failed" << itemInter->pluginName() << itemKey;
+        return false;
+    }
+
+    auto plugin = Plugin::EmbedPlugin::get(cardItem->window());
+    if (!plugin) {
+        qWarning() << "Failed to get EmbedPlugin for card window" << itemInter->pluginName() << itemKey;
+        cardItem->deleteLater();
+        return false;
+    }
+    
+    plugin->setPluginFlags(getPluginFlags());
+    plugin->setPluginId(itemInter->pluginName());
+    plugin->setDisplayName(itemInter->pluginDisplayName());
+    plugin->setItemKey(itemKey);
+    plugin->setPluginType(Plugin::EmbedPlugin::Card);
+    plugin->setPluginSizePolicy(itemInter->pluginSizePolicy());
+    connect(plugin, &Plugin::EmbedPlugin::dockColorThemeChanged, this, &WidgetPlugin::onDockColorThemeChanged, Qt::UniqueConnection);
+    connect(plugin, &Plugin::EmbedPlugin::eventGeometry, cardItem, [cardItem](const QRect &geometry) {
+        cardItem->resize(geometry.size());
+    });
+
+    m_cardItems.insert(itemKey, cardItem);
+    cardItem->show();
+    return true;
 }
 
 void WidgetPlugin::initConnections(Plugin::EmbedPlugin *plugin, PluginItem *pluginItem)
