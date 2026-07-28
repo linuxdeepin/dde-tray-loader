@@ -226,6 +226,7 @@ void PluginPopupSurface::plugin_popup_geometry(int32_t x, int32_t y, int32_t wid
     if (rect.height() <= 0)
         rect.setHeight(m_window->height());
 
+    setGeometryFromApplyConfigure(rect.topLeft(), rect.size());
     m_popup->setPluginPos(QPoint(x, y));
     if (plugin) {
         Q_EMIT plugin->eventGeometry(rect);
