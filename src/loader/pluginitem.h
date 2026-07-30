@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -13,6 +13,7 @@
 const int Attribute_ForceUnDock = 0x800000;
 
 class DockContextMenu;
+class PluginInteractionConfig;
 class PluginItem : public QWidget
 {
     Q_OBJECT
@@ -76,6 +77,7 @@ protected:
 private:
     QTimer* m_tooltipTimer;
     QPointer<QWidget> m_tipsWidget;
+    PluginInteractionConfig *m_interactionConfig = nullptr;
 
     QAction *m_unDockAction = nullptr;
     int m_pluginFlags = 0;
