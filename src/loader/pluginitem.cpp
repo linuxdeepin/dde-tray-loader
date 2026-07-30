@@ -7,6 +7,7 @@
 #include "plugin.h"
 #include "widgetplugin.h"
 #include "dockcontextmenu.h"
+#include "plugininteractionconfig.h"
 
 #include <xdgactivation.h>
 
@@ -16,8 +17,18 @@
 #include <QPainter>
 #include <QProcess>
 #include <QProcessEnvironment>
+#include <QUrl>
 
 const static QString DockQuickPlugins = "Dock_Quick_Plugins";
+
+namespace {
+constexpr auto PluginInteractionConfigAppId = "org.deepin.dde.tray-loader";
+
+QString pluginInteractionConfigSubpath(const QString &pluginId)
+{
+    return QStringLiteral("/%1").arg(QString::fromLatin1(QUrl::toPercentEncoding(pluginId)));
+}
+}
 
 PluginItem::PluginItem(PluginsItemInterface *pluginItemInterface, const QString &itemKey, QWidget *parent)
     : QWidget(parent)
@@ -69,6 +80,9 @@ PluginItem::~PluginItem()
 
 QWidget *PluginItem::itemPopupApplet()
 {
+    if (m_interactionConfig && !m_interactionConfig->itemActivationEnabled())
+        return nullptr;
+
     if (auto popup = m_pluginsItemInterface->itemPopupApplet(m_itemKey)) {
         bool existed = panelPopupExisted();
         bool embed = embedPanelPopupExisted();
@@ -101,6 +115,9 @@ QWidget *PluginItem::itemPopupApplet()
 
 QMenu *PluginItem::pluginContextMenu()
 {
+    if (m_interactionConfig && !m_interactionConfig->itemContextMenuEnabled())
+        return nullptr;
+
     if (!m_menu->actions().isEmpty()) {
         m_menu->clear();
     }
@@ -291,6 +308,27 @@ void PluginItem::handleShutDownMenu(const QString &menuId)
 
 void PluginItem::init()
 {
+    if (itemKey() != Dock::QUICK_ITEM_KEY && !m_interactionConfig) {
+        m_interactionConfig = PluginInteractionConfig::create(
+                QLatin1String(PluginInteractionConfigAppId),
+                pluginInteractionConfigSubpath(pluginId()),
+                this);
+        connect(m_interactionConfig,
+                &PluginInteractionConfig::itemContextMenuEnabledChanged,
+                this,
+                [this] {
+                    if (!m_interactionConfig->itemContextMenuEnabled())
+                        m_menu->close();
+                });
+        connect(m_interactionConfig,
+                &PluginInteractionConfig::itemTooltipEnabledChanged,
+                this,
+                [this] {
+                    if (!m_interactionConfig->itemTooltipEnabled())
+                        closeToolTip();
+                });
+    }
+
     setAttribute(Qt::WA_TranslucentBackground);
     winId();
 
@@ -305,6 +343,9 @@ void PluginItem::init()
 
 void PluginItem::initPluginMenu()
 {
+    if (m_interactionConfig && !m_interactionConfig->itemContextMenuEnabled())
+        return;
+
     const QString menuJson = m_pluginsItemInterface->itemContextMenu(m_itemKey);
     if (menuJson.isEmpty()) {
         qWarning() << "itemContextMenu is empty!";
@@ -335,6 +376,9 @@ void PluginItem::initPluginMenu()
 
 QWidget *PluginItem::pluginTooltip()
 {
+    if (m_interactionConfig && !m_interactionConfig->itemTooltipEnabled())
+        return nullptr;
+
     auto popup = m_pluginsItemInterface->itemPopupApplet(m_itemKey);
     if (popup && popup->isVisible())
         popup->windowHandle()->hide();
@@ -344,6 +388,9 @@ QWidget *PluginItem::pluginTooltip()
 
 QWidget * PluginItem::itemTooltip(const QString &itemKey)
 {
+    if (m_interactionConfig && !m_interactionConfig->itemTooltipEnabled())
+        return nullptr;
+
     if (!m_tipsWidget) {
         auto toolTip = m_pluginsItemInterface->itemTipsWidget(itemKey);
         if (!toolTip) {
@@ -375,6 +422,9 @@ QWidget * PluginItem::itemTooltip(const QString &itemKey)
 
 bool PluginItem::executeCommand()
 {
+    if (m_interactionConfig && !m_interactionConfig->itemActivationEnabled())
+        return false;
+
     const QString command = m_pluginsItemInterface->itemCommand(m_itemKey);
     if (!command.isEmpty()) {
         qInfo() << "command: " << command;

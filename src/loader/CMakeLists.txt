@@ -3,13 +3,22 @@
 # SPDX-License-Identifier: CC0-1.0
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets LinguistTools)
-find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Gui Widget)
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Widget Tools)
 
 file(GLOB SRCS "*.h" "*.cpp" "../../interfaces/*.h" "utils/*.h" "utils/*.cpp")
 
 file(GLOB TS_FILES "translations/*.ts")
 qt_add_translation(QM_FILES ${TS_FILES})
 add_custom_target(trayloader_translations ALL DEPENDS ${QM_FILES})
+
+set(PLUGIN_INTERACTION_CONFIG_META_FILE
+    "${CMAKE_CURRENT_SOURCE_DIR}/configs/org.deepin.dde.dock.plugin.interaction.json")
+dtk_add_config_to_cpp(
+    PLUGIN_INTERACTION_CONFIG_HEADER
+    "${PLUGIN_INTERACTION_CONFIG_META_FILE}"
+    OUTPUT_FILE_NAME plugininteractionconfig.h
+    CLASS_NAME PluginInteractionConfig
+)
 
 add_executable(trayplugin-loader
     main.cpp
@@ -19,6 +28,7 @@ add_executable(trayplugin-loader
     widgetplugin.cpp
     pluginitem.h
     pluginitem.cpp
+    "${PLUGIN_INTERACTION_CONFIG_HEADER}"
     quickpluginitem.h
     quickpluginitem.cpp
     utils/setproctitle.h
@@ -43,6 +53,7 @@ target_link_libraries(trayplugin-loader PRIVATE
     dockpluginmanager-interface
     Qt${QT_VERSION_MAJOR}::Core
     Qt${QT_VERSION_MAJOR}::Widgets
+    Dtk${DTK_VERSION_MAJOR}::Core
     Dtk${DTK_VERSION_MAJOR}::Widget
     Dtk${DTK_VERSION_MAJOR}::Gui
 )
@@ -52,6 +63,7 @@ install(TARGETS trayplugin-loader DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
 #dconfig
 dtk_add_config_meta_files(APPID org.deepin.dde.dock FILES ./configs/org.deepin.dde.dock.plugin.common.json) # compat
 dtk_add_config_meta_files(APPID org.deepin.dde.tray-loader FILES ./configs/org.deepin.dde.dock.plugin.common.json)
+dtk_add_config_meta_files(APPID org.deepin.dde.tray-loader FILES "${PLUGIN_INTERACTION_CONFIG_META_FILE}")
 
 # 安装 .qm 文件
 install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/trayplugin-loader/translations)

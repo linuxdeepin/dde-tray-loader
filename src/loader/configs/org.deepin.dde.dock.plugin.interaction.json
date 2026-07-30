@@ -1,0 +1,39 @@
+{
+    "magic": "dsg.config.meta",
+    "version": "1.0",
+    "contents": {
+        "itemActivationEnabled": {
+            "value": true,
+            "serial": 0,
+            "flags": [],
+            "name": "Enable plugin item activation",
+            "name[zh_CN]": "允许激活插件项",
+            "description": "Whether the tray loader may invoke itemCommand and itemPopupApplet for the taskbar items provided by this plugin.",
+            "description[zh_CN]": "是否允许任务栏加载器调用此插件在任务栏中各插件项的 itemCommand 和 itemPopupApplet 接口。",
+            "permissions": "readwrite",
+            "visibility": "private"
+        },
+        "itemContextMenuEnabled": {
+            "value": true,
+            "serial": 0,
+            "flags": [],
+            "name": "Enable plugin item context menu",
+            "name[zh_CN]": "允许插件项上下文菜单",
+            "description": "Whether the tray loader may invoke itemContextMenu and display framework-provided context menu actions for the taskbar items provided by this plugin.",
+            "description[zh_CN]": "是否允许任务栏加载器调用此插件在任务栏中各插件项的 itemContextMenu 接口，并显示任务栏提供的驻留或移除驻留菜单。",
+            "permissions": "readwrite",
+            "visibility": "private"
+        },
+        "itemTooltipEnabled": {
+            "value": true,
+            "serial": 0,
+            "flags": [],
+            "name": "Enable plugin item tooltip",
+            "name[zh_CN]": "允许插件项悬浮提示",
+            "description": "Whether the tray loader may invoke itemTipsWidget and display tooltips for the taskbar items provided by this plugin.",
+            "description[zh_CN]": "是否允许任务栏加载器调用此插件在任务栏中各插件项的 itemTipsWidget 接口并显示悬浮提示。",
+            "permissions": "readwrite",
+            "visibility": "private"
+        }
+    }
+}
