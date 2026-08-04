@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -89,6 +89,8 @@ void PluginManagerIntegration::plugin_manager_v1_event_message(const QString &ms
 
 void PluginManagerIntegration::plugin_manager_v1_active_color_changed(const QString &active_color, const QString &dark_active_color)
 {
+    qInfo() << "[DDE-50] plugin_manager_v1_active_color_changed active=" << active_color
+            << "darkActive=" << dark_active_color;
     PlatformInterfaceProxy::instance()->setActiveColor(QColor(active_color));
     PlatformInterfaceProxy::instance()->setDarkActiveColor(QColor(dark_active_color));
 }

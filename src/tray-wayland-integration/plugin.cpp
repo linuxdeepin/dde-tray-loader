@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -428,8 +428,11 @@ QColor PlatformInterfaceProxy::activeColor() const
 
 void PlatformInterfaceProxy::setActiveColor(const QColor &newActiveColor)
 {
-    if (m_activeColor == newActiveColor)
+    if (m_activeColor == newActiveColor) {
+        qInfo() << "[DDE-50] setActiveColor skipped (unchanged)" << newActiveColor.name() << "valid=" << newActiveColor.isValid();
         return;
+    }
+    qInfo() << "[DDE-50] setActiveColor" << newActiveColor.name() << "valid=" << newActiveColor.isValid() << "prev=" << m_activeColor.name();
     m_activeColor = newActiveColor;
     emit activeColorChanged(newActiveColor);
 }
@@ -443,6 +446,7 @@ void PlatformInterfaceProxy::setDarkActiveColor(const QColor &newDarkActiveColor
 {
     if (m_darkActiveColor == newDarkActiveColor)
         return;
+    qInfo() << "[DDE-50] setDarkActiveColor" << newDarkActiveColor.name() << "valid=" << newDarkActiveColor.isValid();
     m_darkActiveColor = newDarkActiveColor;
     emit darkActiveColorChanged(newDarkActiveColor);
 }

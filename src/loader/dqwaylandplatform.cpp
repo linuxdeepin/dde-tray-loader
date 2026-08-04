@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -33,7 +33,13 @@ qreal DQWaylandPlatformInterface::fontPointSize() const
 
 QColor DQWaylandPlatformInterface::activeColor() const
 {
-    return PlatformInterfaceProxy::instance()->activeColor();
+    auto c = PlatformInterfaceProxy::instance()->activeColor();
+    static QColor lastLogged;
+    if (c != lastLogged) {
+        lastLogged = c;
+        qInfo() << "[DDE-50] DQWaylandPlatformInterface::activeColor returns" << c.name() << "valid=" << c.isValid();
+    }
+    return c;
 }
 
 QColor DQWaylandPlatformInterface::darkActiveColor() const
