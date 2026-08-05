@@ -107,15 +107,20 @@ int main(int argc, char *argv[], char *envp[])
     // via the zwp_text_input family of protocols.
     qputenv("QT_IM_MODULE", "wayland");
 
-
-    qAddPreRoutine([] () {
-        if (!DGuiApplicationHelper::testAttribute(DGuiApplicationHelper::IsXWindowPlatform)) {
-            qDebug() << "Register platformInterface.";
-            DPlatformInterfaceFactory::registerInterface([] (DPlatformTheme* theme) -> DPlatformInterface *{
-                return new DQWaylandPlatformInterface(theme);
-            });
-        }
-    });
+    // 默认注册 DQWaylandPlatformInterface, 使服务端经 plugin_manager_v1 同步的
+    // 活动色、主题、字体等属性能够到达 DPlatformTheme。
+    // 必须在 LoaderApplication 构造之前注册: Qt 在构造 QCoreApplication 时会
+    // 查询 colorScheme() 触发 DGuiApplicationHelper::instance(), 提前创建
+    // systemTheme; 若工厂此时尚未注册, systemTheme 会落入默认的
+    // DTreelandPlatformInterface, 上述属性将永远无法生效。
+    // 手动独立运行(不由 dde-shell 托管, 如调试/复现旧行为)时,
+    // 设置 USE_DEFAULT_PLATFORMTHEME 环境变量可跳过注册。
+    if (!qEnvironmentVariableIsSet("USE_DEFAULT_PLATFORMTHEME")) {
+        qDebug() << "Register platformInterface.";
+        DPlatformInterfaceFactory::registerInterface([] (DPlatformTheme* theme) -> DPlatformInterface *{
+            return new DQWaylandPlatformInterface(theme);
+        });
+    }
 
     LoaderApplication app(argc, argv);
     app.setOrganizationName("deepin");
