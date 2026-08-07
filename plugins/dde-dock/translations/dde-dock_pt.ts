@@ -493,7 +493,7 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation>Capacidade %1, proteção de carregamento ativa</translation>
     </message>
     <message>
         <source>Charging protection active</source>
