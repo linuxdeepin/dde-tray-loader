@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -19,6 +19,8 @@ QMap<QString, QString> Device::deviceType2Icon = {
     {"input-gaming", "other"},
     {"input-tablet", "touchpad"},
     {"audio-card", "pheadset"},
+    {"audio-headset", "pheadset"},
+    {"audio-headphones", "pheadset"},
     {"network-wireless", "lan"},
     {"camera-video", "vidicon"},
     {"printer", "print"},
