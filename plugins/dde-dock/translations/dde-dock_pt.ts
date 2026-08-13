@@ -52,7 +52,7 @@
     </message>
     <message>
         <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation type="unfinished"/>
+        <translation>Desative primeiro o [Modo de Avião](#) se quiser conectar a um Bluetooth</translation>
     </message>
 </context>
 <context>
@@ -380,14 +380,14 @@
     </message>
     <message>
         <source>Balance Performance</source>
-        <translation type="unfinished"/>
+        <translation>Balancear Desempenho</translation>
     </message>
 </context>
 <context>
     <name>PluginItemWidget</name>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"/>
+        <translation>Desconectar</translation>
     </message>
 </context>
 <context>
@@ -493,11 +493,11 @@
     </message>
     <message>
         <source>Capacity %1, charging protection active</source>
-        <translation type="unfinished"/>
+        <translation>Capacidade %1, proteção de carregamento ativa</translation>
     </message>
     <message>
         <source>Charging protection active</source>
-        <translation type="unfinished"/>
+        <translation>Proteção de carregamento ativa</translation>
     </message>
 </context>
 <context>
