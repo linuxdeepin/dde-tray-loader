@@ -346,6 +346,8 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                 }
 
                 auto menu = menuImporter()->menu();
+                // SNI 懒加载应用（如 Snipaste）只有收到 AboutToShow 才填充菜单，因此主动调用 updateMenu() 触发一次 DBus AboutToShow
+                menuImporter()->updateMenu(menu);
                 menu->setFixedSize(menu->sizeHint());
                 menu->winId();
 
