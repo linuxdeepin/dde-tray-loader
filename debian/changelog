@@ -1,3 +1,18 @@
+dde-tray-loader (2.0.39) unstable; urgency=medium
+
+  * fix: set WA_TranslucentBackground before winId() in PluginItem
+  * fix(CI): update cppcheck.yml
+  * i18n: Updates for project Deepin Desktop Environment (#485)
+  * fix: ensure popup geometry is applied before setting plugin position
+  * feat: add plugin interaction config for tray plugins
+  * i18n: Translate trayplugin-loader.ts in pt (#490)
+  * fix(loader): gate wayland platform interface on env
+  * i18n: Updates for project Deepin Desktop Environment (#492)
+  * fix: align bluetooth audio device icon with control center in
+    taskbar
+
+ -- zhangkun <zhangkun2@uniontech.com>  Tue, 18 Aug 2026 13:31:26 +0800
+
 dde-tray-loader (2.0.38) unstable; urgency=medium
 
   * i18n: Updates for project Deepin Desktop Environment (#479)
