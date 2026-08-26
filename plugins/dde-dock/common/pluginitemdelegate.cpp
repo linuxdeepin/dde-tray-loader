@@ -221,6 +221,7 @@ PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     m_connBtn->hide();
 
     m_disConnectBtn = new CommonTextButton(this);
+    m_disConnectBtn->setObjectName("DisConnectBtn");
     m_disConnectBtn->setText(tr("Disconnect"));
     m_disConnectBtn->setVisible(false);
 

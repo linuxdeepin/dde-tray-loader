@@ -151,6 +151,7 @@ void DBusAdaptors::refreshMenu()
         const QString text = QString("%1 (%2)").arg(layoutLocalizedName, layoutName);
 
         QAction *action = new QAction(text, m_menu);
+        m_menu->setObjectName("Menu");
         action->setObjectName(layoutRawName);
         action->setCheckable(true);
         action->setChecked(layoutRawName == m_currentLayoutRaw);
@@ -161,6 +162,7 @@ void DBusAdaptors::refreshMenu()
 
     // will be deleted after QMenu->clear() above
     m_addLayoutAction = new QAction(tr("Add keyboard layout"), m_menu);
+    m_addLayoutAction->setObjectName("AddLayoutAction");
 
     m_menu->addAction(m_addLayoutAction);
 }

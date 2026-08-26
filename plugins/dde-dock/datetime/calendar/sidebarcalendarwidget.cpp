@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2019 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -90,6 +90,7 @@ void SidebarCalendarWidget::initView()
     m_nextPage->setFocusPolicy(Qt::NoFocus);
     m_previousPage->setFocusPolicy(Qt::NoFocus);
     m_bakTodayBtn->setFocusPolicy(Qt::NoFocus);
+    m_bakTodayBtn->setObjectName("BakTodayBtn");
 
     DFontSizeManager::instance()->bind(m_bakTodayBtn, DFontSizeManager::T6);
 
@@ -106,6 +107,7 @@ void SidebarCalendarWidget::initView()
     m_headWidget->setMinimumHeight(30);
 
     m_weekWidget->setAutoFontSizeByWindow(false);
+    m_weekWidget->setObjectName("WeekWidget");
     m_weekWidget->setFirstDay(Qt::Sunday);
     m_weekWidget->setMinimumHeight(20);
     DFontSizeManager::instance()->bind(m_weekWidget, DFontSizeManager::T6, 60);

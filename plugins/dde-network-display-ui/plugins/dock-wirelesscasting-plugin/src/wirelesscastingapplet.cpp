@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -121,6 +121,7 @@ void WirelessCastingApplet::initUI()
     DFontSizeManager::instance()->bind(multiscreenOptionsTitle, DFontSizeManager::T9);
     m_multiscreenOptionsWidget->setVisible(false);
     m_multiscreenOptionsListView->setItemDelegate(new MultiscreenOptionItemDelegate(m_multiscreenOptionsListView));
+    m_multiscreenOptionsListView->setObjectName("MultiscreenOptionsListView");
     m_multiscreenOptionsListView->setModel(m_multiscreenOptionsModel);
     m_multiscreenOptionsListView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     m_multiscreenOptionsListView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -442,6 +443,7 @@ StatePanel::StatePanel(WirelessCastingModel *model, QWidget *parent)
     m_connected->setWordWrap(true);
     m_connected->setAlignment(Qt::AlignCenter);
     m_disconnMonitor->setText(tr("Disconnect"));
+    m_disconnMonitor->setObjectName("DisconnMonitor");
     m_disconnMonitor->setFixedSize(130, 36);
     QVBoxLayout *connected = new QVBoxLayout(m_connectedDeviceBox);
     connected->setContentsMargins(0, 0, 0, 0);

@@ -344,6 +344,7 @@ void BluetoothAdapterItem::initUi()
     m_adapterLayout->addWidget(m_adapterLabel);
     m_adapterLabel->addButton(m_refreshBtn, 6);
     m_adapterLabel->addButton(m_adapterStateBtn, 0);
+    m_adapterStateBtn->setObjectName("AdapterStateBtn");
     DFontSizeManager::instance()->bind(m_adapterLabel->label(), DFontSizeManager::T4);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);

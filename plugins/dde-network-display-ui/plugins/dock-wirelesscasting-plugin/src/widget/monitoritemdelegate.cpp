@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -351,6 +351,7 @@ void MonitorItemWidget::initUI()
     tipLayout->addWidget(m_tipLabel);
 
     m_disconnectBtn = new CancelButton(this);
+    m_disconnectBtn->setObjectName("DisconnectBtn");
     m_disconnectBtn->setText(tr("Cancel"));
     m_disconnectBtn->setFixedSize(98, 36);
 
