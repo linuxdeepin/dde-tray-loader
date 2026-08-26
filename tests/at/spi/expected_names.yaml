@@ -1,0 +1,115 @@
+# SPDX-FileCopyrightText: 2026 UnionTech Software Technology Co., Ltd.
+# SPDX-License-Identifier: LGPL-3.0-or-later
+
+version: '1.0'
+widgets:
+- variable: m_adapterStateBtn
+  type: DSwitchButton *
+  object_name: AdapterStateBtn
+  source_file: plugins/dde-dock/bluetooth/componments/bluetoothadapteritem.cpp
+  class_name: BluetoothAdapterItem
+  line: 188
+- variable: m_expandLabel
+  type: Dtk::Widget::DIconButton *
+  object_name: ExpandLabel
+  source_file: plugins/dde-dock/bluetooth/quickpanelwidget.cpp
+  class_name: QuickPanelWidget
+  line: 47
+- variable: m_switchBtn
+  type: Dtk::Widget::DSwitchButton *
+  object_name: SwitchBtn
+  source_file: plugins/dde-dock/common/commonapplet.cpp
+  class_name: CommonApplet
+  line: 34
+- variable: m_disConnectBtn
+  type: CommonTextButton *
+  object_name: DisConnectBtn
+  source_file: plugins/dde-dock/common/pluginitemdelegate.cpp
+  class_name: PluginItemWidget
+  line: 128
+- variable: m_slider
+  type: QSlider *
+  object_name: Slider
+  source_file: plugins/dde-dock/common/slidercontainer.cpp
+  class_name: SliderContainer
+  line: 85
+- variable: m_weekWidget
+  type: CWeekWidget *
+  object_name: WeekWidget
+  source_file: plugins/dde-dock/datetime/calendar/sidebarcalendarwidget.cpp
+  class_name: SidebarCalendarWidget
+  line: 99
+- variable: m_bakTodayBtn
+  type: DCommandLinkButton *
+  object_name: BakTodayBtn
+  source_file: plugins/dde-dock/datetime/calendar/sidebarcalendarwidget.cpp
+  class_name: SidebarCalendarWidget
+  line: 113
+- variable: m_switchBtn
+  type: Dtk::Widget::DSwitchButton *
+  object_name: SwitchBtn
+  source_file: plugins/dde-dock/eye-comfort-mode/eyecomfortmodeapplet.cpp
+  class_name: EyeComfortmodeApplet
+  line: 52
+- variable: m_expandLabel
+  type: Dtk::Widget::DIconButton *
+  object_name: ExpandLabel
+  source_file: plugins/dde-dock/eye-comfort-mode/quickpanelwidget.cpp
+  class_name: QuickPanelWidget
+  line: 80
+- variable: m_menu
+  type: QMenu *
+  object_name: Menu
+  source_file: plugins/dde-dock/keyboard-layout/dbusadaptors.cpp
+  class_name: DBusAdaptors
+  line: 74
+- variable: m_addLayoutAction
+  type: QAction *
+  object_name: AddLayoutAction
+  source_file: plugins/dde-dock/keyboard-layout/dbusadaptors.cpp
+  class_name: DBusAdaptors
+  line: 75
+- variable: m_expandLabel
+  type: Dtk::Widget::DIconButton *
+  object_name: ExpandLabel
+  source_file: plugins/dde-network-display-ui/plugins/dock-wirelesscasting-plugin/src/quickpanelwidget.cpp
+  class_name: QLabel
+  line: 49
+- variable: m_disconnectBtn
+  type: CancelButton *
+  object_name: DisconnectBtn
+  source_file: plugins/dde-network-display-ui/plugins/dock-wirelesscasting-plugin/src/widget/monitoritemdelegate.cpp
+  class_name: MonitorItemWidget
+  line: 187
+- variable: m_multiscreenOptionsListView
+  type: MonitorListView *
+  object_name: MultiscreenOptionsListView
+  source_file: plugins/dde-network-display-ui/plugins/dock-wirelesscasting-plugin/src/wirelesscastingapplet.cpp
+  class_name: ''
+  line: 73
+- variable: m_disconnMonitor
+  type: CancelButton *
+  object_name: DisconnMonitor
+  source_file: plugins/dde-network-display-ui/plugins/dock-wirelesscasting-plugin/src/wirelesscastingapplet.cpp
+  class_name: ''
+  line: 124
+- variable: m_menu
+  type: QMenu *
+  object_name: Menu
+  source_file: src/loader/pluginitem.cpp
+  class_name: PluginItem
+  line: 74
+- variable: m_unDockAction
+  type: QAction *
+  object_name: UnDockAction
+  source_file: src/loader/pluginitem.cpp
+  class_name: PluginItem
+  line: 82
+- variable: m_onDockAction
+  type: QAction *
+  object_name: OnDockAction
+  source_file: src/loader/quickpluginitem.cpp
+  class_name: QuickPluginItem
+  line: 32
+qml_elements: []
+transient_elements: []

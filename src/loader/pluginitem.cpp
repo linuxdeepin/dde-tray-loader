@@ -127,9 +127,11 @@ QMenu *PluginItem::pluginContextMenu()
     if (m_pluginFlags & Dock::Attribute_CanSetting) {
         if (!m_unDockAction) {
             m_unDockAction = new QAction();
+            m_unDockAction->setObjectName("UnDockAction");
         }
         m_unDockAction->setEnabled(true);
         m_menu->addAction(m_unDockAction);
+        m_menu->setObjectName("Menu");
 
         m_unDockAction->setText(tr("Remove from dock"));
         m_unDockAction->setData(Dock::unDockMenuItemId);

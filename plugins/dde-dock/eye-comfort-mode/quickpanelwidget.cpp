@@ -1,5 +1,5 @@
-// Copyright (C) 2022 ~ 2022 Deepin Technology Co., Ltd.
-// SPDX-FileCopyrightText: 2018 - 2023 UnionTech Software Technology Co., Ltd.
+// Copyright (C) 2022 ~ 2026 Deepin Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2018 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -152,6 +152,7 @@ void QuickPanelWidget::initUi()
 
     // 进入图标
     m_expandLabel->setIcon(DStyle::standardIcon(style(), DStyle::SP_ArrowEnter));
+    m_expandLabel->setObjectName("ExpandLabel");
     m_expandLabel->setFlat(true);
     m_expandLabel->setFocusPolicy(Qt::NoFocus);
 

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -144,6 +144,7 @@ void QuickPanelWidget::initUi()
 
     // 进入图标
     m_expandLabel->setIcon(DStyle::standardIcon(style(), DStyle::SP_ArrowEnter));
+    m_expandLabel->setObjectName("ExpandLabel");
     m_expandLabel->setFlat(true);
     m_expandLabel->setFocusPolicy(Qt::NoFocus);
 

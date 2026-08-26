@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -22,6 +22,7 @@ CommonApplet::CommonApplet(QWidget *parent)
     , m_settingButton(new JumpSettingButton(this))
 {
     m_switchBtn->setFocusPolicy(Qt::NoFocus);
+    m_switchBtn->setObjectName("SwitchBtn");
     setFixedWidth(Dock::DOCK_POPUP_WIDGET_WIDTH);
 
     DFontSizeManager::instance()->bind(m_title, DFontSizeManager::T5);

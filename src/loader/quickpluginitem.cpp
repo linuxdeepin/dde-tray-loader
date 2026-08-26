@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -153,6 +153,7 @@ QMenu *QuickPluginItem::pluginContextMenu()
     if (flags & Dock::Attribute_CanSetting && !isForceUndock(flags)) {
         if (!m_onDockAction) {
             m_onDockAction = new QAction();
+            m_onDockAction->setObjectName("OnDockAction");
         }
         m_onDockAction->setEnabled(true);
         m_menu->addAction(m_onDockAction);
