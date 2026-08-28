@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -68,7 +68,6 @@ void SoundApplet::initUi()
     m_volumeSlider->setFixedHeight(36);
     m_volumeSlider->setMinimum(0);
     m_volumeSlider->setMaximum(SoundModel::ref().maxVolumeUI());
-    m_volumeSlider->slider()->setTracking(false);
     m_volumeSlider->setPageStep(2);
     m_sliderContainer->setSlider(m_volumeSlider);
     m_sliderContainer->addBackground();
