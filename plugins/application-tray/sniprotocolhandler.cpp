@@ -16,6 +16,7 @@
 #include <QWindow>
 #include <QThreadPool>
 #include <QRunnable>
+#include <DFontSizeManager>
 
 #include <DGuiApplicationHelper>
 #include <private/qobject_p.h>
@@ -249,6 +250,7 @@ QWidget* SniTrayProtocolHandler::tooltip() const
     if (!m_tooltip) {
         const_cast<SniTrayProtocolHandler*>(this)->m_tooltip = new QLabel();
         m_tooltip->setForegroundRole(QPalette::BrightText);
+        Dtk::Widget::DFontSizeManager::instance()->bind(m_tooltip, Dtk::Widget::DFontSizeManager::T8);
     }
     
     if (!m_sniInter->toolTip().title.isEmpty()) {
