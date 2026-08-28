@@ -7,7 +7,6 @@
 #include "brightnessmodel.h"
 
 
-#include <DFontSizeManager>
 #include <DGuiApplicationHelper>
 
 #include <QDBusConnection>
@@ -99,7 +98,6 @@ void BrightnessItem::updateTips()
         m_tipsLabel = new QLabel;
         m_tipsLabel->setForegroundRole(QPalette::BrightText);
         m_tipsLabel->setContentsMargins(0, 0, 0, 0);
-        DFontSizeManager::instance()->bind(m_tipsLabel, DFontSizeManager::T5);
         connect(&BrightnessModel::ref(), &BrightnessModel::enabledMonitorListChanged, this, &BrightnessItem::updateTips);
         connect(&BrightnessModel::ref(), &BrightnessModel::monitorBrightnessChanged, this, &BrightnessItem::updateTips);
     }

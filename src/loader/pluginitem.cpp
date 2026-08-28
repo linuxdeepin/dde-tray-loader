@@ -18,6 +18,7 @@
 #include <QProcess>
 #include <QProcessEnvironment>
 #include <QUrl>
+#include <DFontSizeManager>
 
 const static QString DockQuickPlugins = "Dock_Quick_Plugins";
 
@@ -398,6 +399,7 @@ QWidget * PluginItem::itemTooltip(const QString &itemKey)
             return nullptr;
         }
         m_tipsWidget = new QWidget();
+        Dtk::Widget::DFontSizeManager::instance()->bind(m_tipsWidget, Dtk::Widget::DFontSizeManager::T8);
         QVBoxLayout *layout = new QVBoxLayout(m_tipsWidget);
         // add content margin, tooltip popup do not need to set padding
         layout->setContentsMargins(8, 4, 8, 4);
