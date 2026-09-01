@@ -1,3 +1,9 @@
+dde-tray-loader (2.0.35.1) unstable; urgency=medium
+
+  * fix: enable real-time volume adjustment in sound applet
+
+ -- xionglinlin <xionglinlin@uniontech.com>  Tue, 01 Sep 2026 17:57:55 +0800
+
 dde-tray-loader (2.0.35) unstable; urgency=medium
 
   * fix: use 32-bit visual to avoid alpha channel lost
