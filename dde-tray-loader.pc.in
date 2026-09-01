@@ -1,7 +1,7 @@
 prefix=@CMAKE_INSTALL_PREFIX@
 exec_prefix=${prefix}
 libdir=@CMAKE_INSTALL_FULL_LIBDIR@
-includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/dde-tray-loader
+includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@/dde-dock
 
 Name: dde-tray-loader
 Description: tray plugin dev header for deepin
