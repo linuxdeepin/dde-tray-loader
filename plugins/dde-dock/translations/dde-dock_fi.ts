@@ -280,7 +280,7 @@
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation>Poista silmien mukavuus käytöstä</translation>
+        <translation>Sulje yövalo</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
