@@ -240,7 +240,7 @@
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation>Silmien mukavuus käytössä</translation>
+        <translation>Yövalo käytössä</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
