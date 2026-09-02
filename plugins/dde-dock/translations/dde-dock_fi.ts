@@ -284,7 +284,7 @@
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation>Ota silmien mukavuus käyttöön</translation>
+        <translation>Käytä yövaloa</translation>
     </message>
     <message>
         <source>Display Settings</source>
