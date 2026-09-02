@@ -236,7 +236,7 @@
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation>Silmien mukavuutta</translation>
+        <translation>Yövalo</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
