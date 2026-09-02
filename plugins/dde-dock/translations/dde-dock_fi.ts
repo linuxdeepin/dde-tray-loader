@@ -244,7 +244,7 @@
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation>Silmien mukavuus suljettu</translation>
+        <translation>Yövalo suljettu</translation>
     </message>
     <message>
         <source>Display settings</source>
