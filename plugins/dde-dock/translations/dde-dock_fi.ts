@@ -252,7 +252,7 @@
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation>Silmien mukavuus</translation>
+        <translation>Yövalo</translation>
     </message>
     <message>
         <source>Theme</source>
