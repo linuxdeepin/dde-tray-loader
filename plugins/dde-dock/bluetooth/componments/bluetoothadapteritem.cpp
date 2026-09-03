@@ -35,6 +35,11 @@ BluetoothDeviceItem::BluetoothDeviceItem(QStyle *style, const Device *device, Pl
     updateDeviceState(m_device->state());
 
     initConnect();
+
+    m_standardItem->updateBattery(m_device->battery());
+    connect(m_device, &Device::batteryChanged, this, [this](int battery) {
+        m_standardItem->updateBattery(battery);
+    });
 }
 
 BluetoothDeviceItem::~BluetoothDeviceItem()

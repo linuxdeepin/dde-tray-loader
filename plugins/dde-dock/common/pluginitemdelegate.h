@@ -89,18 +89,22 @@ public:
     QString name() const { return m_name; }
 
     void updateState(const PluginItemState state);
+    void updateBattery(const int battery);
     PluginItemState state() const { return m_state; }
+    int battery() const { return m_battery; }
 
 Q_SIGNALS:
     void iconChanged(const QIcon &icon);
     void nameChanged(const QString &name);
     void stateChanged(const PluginItemState state);
+    void batteryChanged(const int battery);
     void connectBtnClicked();
 
 private:
     QIcon m_icon;
     QString m_name;
     PluginItemState m_state;
+    int m_battery = -1;
 };
 
 class PluginItemWidget : public QWidget
@@ -114,6 +118,7 @@ public Q_SLOTS:
     void updateIcon(const QIcon &icon);
     void updateName(const QString &name);
     void updateState(const PluginItemState state);
+    void updateBatteryDisplay(int battery);
 
 protected:
     bool event(QEvent *e) override;
@@ -131,4 +136,6 @@ private:
     DSpinner *m_spinner;
     QSpacerItem *m_rightIconSpacerItem;
     PluginItemState m_state;
+    DLabel *m_batteryIcon;
+    DLabel *m_batteryPercent;
 };
