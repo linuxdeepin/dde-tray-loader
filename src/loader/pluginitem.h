@@ -40,6 +40,7 @@ public:
 signals:
     void recvMouseEvent(int type);
     void sigRequestShutdown(const QString &type);
+    void appletOpened(QWidget *applet);
 
 protected:
     void mousePressEvent(QMouseEvent *e) override;
