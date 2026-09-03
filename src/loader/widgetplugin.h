@@ -14,6 +14,7 @@
 #include <QPointer>
 #include <QWindow>
 #include <QScopedPointer>
+#include <QPointer>
 
 namespace Plugin {
 class EmbedPlugin;
@@ -47,6 +48,9 @@ public Q_SLOTS:
     void onDockDisplayModeChanged(uint32_t displayMode);
     void onDockEventMessageArrived(const QString &message);
 
+protected:
+    bool eventFilter(QObject *watched, QEvent *event) override;
+
 private:
     Plugin::EmbedPlugin* getPlugin(QWidget*);
     void initConnections(Plugin::EmbedPlugin *plugin, PluginItem *pluginItem);
@@ -56,6 +60,8 @@ private:
     bool bindCardPluginSurface(PluginsItemInterface *itemInter);
     int getPluginFlags();
     void pluginUpdateDockSize(const QSize &size);
+    void trackAppletWidget(QWidget *applet);
+    void flushPendingAppletMinHeight();
 
     static QString messageCallback(PluginsItemInterfaceV2 *, const QString &);
     static bool supportFlag(PluginsItemInterfaceV2 *pluginV2);
@@ -68,6 +74,8 @@ private:
     QPointer<CardPluginItem> m_cardItem;
     bool m_fashionMode = false;
     bool m_itemAdded = false;
+    QPointer<QWidget> m_appletWidget;
+    QString m_pendingAppletMinHeightMsg;
 };
 
 }
