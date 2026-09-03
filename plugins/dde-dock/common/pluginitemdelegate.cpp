@@ -8,7 +8,9 @@
 #include <DStyleOption>
 #include <DPalette>
 #include <DToolTip>
+#include <DFontSizeManager>
 
+#include <QGraphicsOpacityEffect>
 #include <QDebug>
 #include <QPainter>
 #include <QVariant>
@@ -183,6 +185,30 @@ void PluginStandardItem::updateState(const PluginItemState state)
     }
 }
 
+void PluginStandardItem::updateBattery(const int battery)
+{
+    if (m_battery != battery) {
+        m_battery = battery;
+        Q_EMIT batteryChanged(m_battery);
+    }
+}
+
+static QString batteryIconName(int battery)
+{
+    if (battery <= 5) return "battery-000-symbolic";
+    if (battery <= 10) return "battery-010-symbolic";
+    if (battery <= 20) return "battery-020-symbolic";
+    if (battery <= 30) return "battery-030-symbolic";
+    if (battery <= 40) return "battery-040-symbolic";
+    if (battery <= 50) return "battery-050-symbolic";
+    if (battery <= 60) return "battery-060-symbolic";
+    if (battery <= 70) return "battery-070-symbolic";
+    if (battery <= 80) return "battery-080-symbolic";
+    if (battery <= 90) return "battery-090-symbolic";
+    if (battery <= 100) return "battery-100-symbolic";
+    return {};
+}
+
 PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     : QWidget(parent)
     , m_item(item)
@@ -230,12 +256,29 @@ PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     m_spinner->hide();
     m_spinner->stop();
 
+    m_batteryPercent = new DLabel(this);
+    m_batteryPercent->setFont(DFontSizeManager::instance()->get(DFontSizeManager::T8));
+    auto *percentOpacityEffect = new QGraphicsOpacityEffect(m_batteryPercent);
+    percentOpacityEffect->setOpacity(0.5);
+    m_batteryPercent->setGraphicsEffect(percentOpacityEffect);
+    m_batteryPercent->hide();
+
+    m_batteryIcon = new DLabel(this);
+    m_batteryIcon->setFixedSize(16, 16);
+    auto *opacityEffect = new QGraphicsOpacityEffect(m_batteryIcon);
+    opacityEffect->setOpacity(0.5);
+    m_batteryIcon->setGraphicsEffect(opacityEffect);
+    m_batteryIcon->hide();
+
     m_mainLayout->setContentsMargins(10, 0, 10, 0);
     m_mainLayout->setSpacing(0);
     m_mainLayout->addWidget(m_iconBtn, 0);
     m_mainLayout->addSpacing(10);
     m_mainLayout->addWidget(m_nameLabel, 1);
     m_mainLayout->addStretch();
+    m_mainLayout->addWidget(m_batteryPercent, 0, Qt::AlignRight | Qt::AlignVCenter);
+    m_mainLayout->addSpacing(3);
+    m_mainLayout->addWidget(m_batteryIcon, 0, Qt::AlignRight | Qt::AlignVCenter);
     m_mainLayout->addSpacerItem(m_rightIconSpacerItem);
     m_mainLayout->addWidget(m_connBtn, 0, Qt::AlignRight | Qt::AlignVCenter);
     m_mainLayout->addWidget(m_disConnectBtn, 0, Qt::AlignRight | Qt::AlignVCenter);
@@ -248,6 +291,10 @@ PluginItemWidget::PluginItemWidget(PluginStandardItem *item, QWidget *parent)
     connect(m_item, &PluginStandardItem::iconChanged, this, &PluginItemWidget::updateIcon);
     connect(m_item, &PluginStandardItem::nameChanged, this, &PluginItemWidget::updateName);
     connect(m_item, &PluginStandardItem::stateChanged, this, &PluginItemWidget::updateState);
+    connect(m_item, &PluginStandardItem::batteryChanged, this, &PluginItemWidget::updateBatteryDisplay);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [this]() {
+        updateBatteryDisplay(m_item ? m_item->battery() : -1);
+    });
 
     connect(m_disConnectBtn, &CommonTextButton::clicked, m_item, &PluginStandardItem::connectBtnClicked);
 }
@@ -304,7 +351,23 @@ void PluginItemWidget::updateState(const PluginItemState state)
         break;
     }
 
+    updateBatteryDisplay(m_item ? m_item->battery() : -1);
+
     m_mainLayout->invalidate();
+}
+
+void PluginItemWidget::updateBatteryDisplay(int battery)
+{
+    if (!underMouse() && m_state == PluginItemState::Connected && battery > 0) {
+        QString iconName = batteryIconName(battery);
+        m_batteryIcon->setPixmap(QIcon::fromTheme(iconName).pixmap(16, 16));
+        m_batteryPercent->setText(QString("%1%").arg(battery));
+        m_batteryIcon->show();
+        m_batteryPercent->show();
+    } else {
+        m_batteryIcon->hide();
+        m_batteryPercent->hide();
+    }
 }
 
 bool PluginItemWidget::event(QEvent *e)
@@ -330,6 +393,7 @@ void PluginItemWidget::enterEvent(QEnterEvent *event)
     if (m_state == PluginItemState::Connected) {
         m_disConnectBtn->setVisible(true);
         m_connBtn->setVisible(false);
+        updateBatteryDisplay(m_item ? m_item->battery() : -1);
     }
     QWidget::enterEvent(event);
 }
@@ -339,6 +403,7 @@ void PluginItemWidget::leaveEvent(QEvent *event)
     m_disConnectBtn->setVisible(false);
     if (m_state == PluginItemState::Connected) {
         m_connBtn->setVisible(true);
-    };
+        updateBatteryDisplay(m_item ? m_item->battery() : -1);
+    }
     QWidget::leaveEvent(event);
 }

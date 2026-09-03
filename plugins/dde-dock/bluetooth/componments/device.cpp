@@ -36,6 +36,7 @@ Device::Device(QObject *parent)
     , m_rssi(0)
     , m_state(StateUnavailable)
     , m_connectState(false)
+    , m_battery(0)
 {
 }
 
@@ -100,6 +101,14 @@ void Device::setRssi(int rssi)
     if (m_rssi != rssi) {
         m_rssi = rssi;
         Q_EMIT rssiChanged(rssi);
+    }
+}
+
+void Device::setBattery(const int battery)
+{
+    if (m_battery != battery) {
+        m_battery = battery;
+        Q_EMIT batteryChanged(m_battery);
     }
 }
 

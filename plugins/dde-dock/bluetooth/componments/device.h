@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -55,6 +55,9 @@ public:
     inline void setAdapterId(const QString &id) { m_adapterId = id; }
     inline const QString &getAdapterId() const { return m_adapterId; }
 
+    inline int battery() const { return m_battery; }
+    void setBattery(const int battery);
+
     inline QString deviceType() const { return m_deviceType; }
     void setDeviceType(const QString &deviceType);
 
@@ -65,6 +68,7 @@ Q_SIGNALS:
     void stateChanged(const State state) const;
     void connectStateChanged(const bool connectState) const;
     void rssiChanged(const int rssi) const;
+    void batteryChanged(const int battery) const;
 
 private:
     QString m_id;
@@ -76,6 +80,7 @@ private:
     int m_rssi;
     State m_state;
     bool m_connectState;
+    int m_battery;
     QString m_adapterId;
     QString m_deviceType;
 };
