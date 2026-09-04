@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -6,6 +6,7 @@
 
 #include <DGuiApplicationHelper>
 #include <QMap>
+#include <QPointer>
 #include <cstdint>
 
 DGUI_USE_NAMESPACE
@@ -149,9 +150,15 @@ EmbedPlugin* EmbedPlugin::get(QWindow* window)
             s_map.remove(window);
         });
 
-        QObject::connect(window, &QWindow::visibleChanged, window, [window, plugin] (bool visible) {
+        QPointer<EmbedPlugin> pluginGuard(plugin);
+        QObject::connect(window, &QWindow::visibleChanged, window, [window, pluginGuard] (bool visible) {
             if (!visible) {
-                plugin->deleteLater();
+                if (!pluginGuard) {
+                    s_map.remove(window);
+                    return;
+                }
+
+                pluginGuard->deleteLater();
                 s_map.remove(window);
             }
         });

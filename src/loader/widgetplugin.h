@@ -1,15 +1,17 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #pragma once
 
+#include "cardpluginitem.h"
 #include "pluginitem.h"
-#include "pluginsiteminterface_v2.h"
+#include "pluginsiteminterface_v3.h"
 
 #include <QMenu>
 #include <QLabel>
 #include <QObject>
+#include <QPointer>
 #include <QWindow>
 #include <QScopedPointer>
 
@@ -47,6 +49,7 @@ public Q_SLOTS:
 private:
     Plugin::EmbedPlugin* getPlugin(QWidget*);
     void initConnections(Plugin::EmbedPlugin *plugin, PluginItem *pluginItem);
+    void createCardItemIfNeeded(PluginsItemInterface *itemInter);
     int getPluginFlags();
     void pluginUpdateDockSize(const QSize &size);
 
@@ -58,6 +61,7 @@ private:
 private:
     PluginsItemInterface* m_pluginsItemInterface;
     QScopedPointer<PluginItem> m_pluginItem;
+    QPointer<CardPluginItem> m_cardItem;
 };
 
 }
