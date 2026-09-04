@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -12,6 +12,7 @@
 #include <QObject>
 #include <QWindow>
 #include <QScopedPointer>
+#include <QPointer>
 
 namespace Plugin {
 class EmbedPlugin;
@@ -44,11 +45,16 @@ public Q_SLOTS:
     void onDockDisplayModeChanged(uint32_t displayMode);
     void onDockEventMessageArrived(const QString &message);
 
+protected:
+    bool eventFilter(QObject *watched, QEvent *event) override;
+
 private:
     Plugin::EmbedPlugin* getPlugin(QWidget*);
     void initConnections(Plugin::EmbedPlugin *plugin, PluginItem *pluginItem);
     int getPluginFlags();
     void pluginUpdateDockSize(const QSize &size);
+    void trackAppletWidget(QWidget *applet);
+    void flushPendingAppletMinHeight();
 
     static QString messageCallback(PluginsItemInterfaceV2 *, const QString &);
     static bool supportFlag(PluginsItemInterfaceV2 *pluginV2);
@@ -58,6 +64,8 @@ private:
 private:
     PluginsItemInterface* m_pluginsItemInterface;
     QScopedPointer<PluginItem> m_pluginItem;
+    QPointer<QWidget> m_appletWidget;
+    QString m_pendingAppletMinHeightMsg;
 };
 
 }

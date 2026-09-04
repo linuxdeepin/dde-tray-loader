@@ -109,6 +109,7 @@ QWidget *PluginItem::itemPopupApplet()
         pluginPopup->setPluginId(m_pluginsItemInterface->pluginName());
         pluginPopup->setItemKey(m_itemKey);
         pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypePanel);
+        Q_EMIT appletOpened(popup);
         return popup;
     }
     return nullptr;

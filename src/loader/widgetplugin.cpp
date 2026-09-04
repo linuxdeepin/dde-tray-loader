@@ -271,6 +271,8 @@ void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInte
             return;
         }
 
+        trackAppletWidget(appletWidget);
+
         updateDockContainerState(itemInter, false);
         if (Plugin::PluginPopup::contains(appletWidget->windowHandle())) {
             Plugin::PluginPopup::remove(appletWidget->windowHandle());
@@ -355,9 +357,50 @@ void WidgetPlugin::onDockDisplayModeChanged(uint32_t displayMode)
 void WidgetPlugin::onDockEventMessageArrived(const QString &message)
 {
     auto pluginsItemInterfaceV2 = dynamic_cast<PluginsItemInterfaceV2 *>(m_pluginsItemInterface);
-    if (pluginsItemInterfaceV2) {
-        pluginsItemInterfaceV2->message(message);
+    if (!pluginsItemInterfaceV2)
+        return;
+
+    if (getRootObj(message).value(Dock::MSG_TYPE).toString() == Dock::MSG_SET_APPLET_MIN_HEIGHT) {
+        if (m_appletWidget && m_appletWidget->isVisible()) {
+            m_pendingAppletMinHeightMsg = message;
+            return;
+        }
+        m_pendingAppletMinHeightMsg.clear();
     }
+
+    pluginsItemInterfaceV2->message(message);
+}
+
+void WidgetPlugin::trackAppletWidget(QWidget *applet)
+{
+    if (!applet || m_appletWidget == applet)
+        return;
+
+    if (m_appletWidget)
+        m_appletWidget->removeEventFilter(this);
+
+    m_appletWidget = applet;
+    m_appletWidget->installEventFilter(this);
+}
+
+void WidgetPlugin::flushPendingAppletMinHeight()
+{
+    if (m_pendingAppletMinHeightMsg.isEmpty())
+        return;
+
+    const QString message = m_pendingAppletMinHeightMsg;
+    m_pendingAppletMinHeightMsg.clear();
+
+    if (auto pluginsItemInterfaceV2 = dynamic_cast<PluginsItemInterfaceV2 *>(m_pluginsItemInterface))
+        pluginsItemInterfaceV2->message(message);
+}
+
+bool WidgetPlugin::eventFilter(QObject *watched, QEvent *event)
+{
+    if (watched == m_appletWidget && event->type() == QEvent::Show)
+        flushPendingAppletMinHeight();
+
+    return QObject::eventFilter(watched, event);
 }
 
 Plugin::EmbedPlugin* WidgetPlugin::getPlugin(QWidget* widget)
@@ -375,6 +418,7 @@ void WidgetPlugin::initConnections(Plugin::EmbedPlugin *plugin, PluginItem *plug
     connect(plugin, &Plugin::EmbedPlugin::dockColorThemeChanged, this, &WidgetPlugin::onDockColorThemeChanged, Qt::UniqueConnection);
     connect(plugin, &Plugin::EmbedPlugin::dockPositionChanged, this, &WidgetPlugin::onDockPositionChanged, Qt::UniqueConnection);
     connect(plugin, &Plugin::EmbedPlugin::eventMessage, this, &WidgetPlugin::onDockEventMessageArrived, Qt::UniqueConnection);
+    connect(pluginItem, &PluginItem::appletOpened, this, &WidgetPlugin::trackAppletWidget, Qt::UniqueConnection);
 
     connect(plugin, &Plugin::EmbedPlugin::eventGeometry, this, [this, plugin, pluginItem](const QRect &geometry) {
         if (plugin->pluginType() == Plugin::EmbedPlugin::Quick) {
