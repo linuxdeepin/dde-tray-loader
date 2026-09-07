@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -114,6 +114,7 @@ enum PluginFlag {
     Attribute_CanInsert = 0x400, // 插件属性-是否支持在其前面插入其他的插件，普通的快捷插件是支持的
     Attribute_CanSetting = 0x800, // 插件属性-是否可以在控制中心设置显示或隐藏，如果设置了这个属性，请实现PluginsItemInterfaceV2::icon 接口，并返回在`控制中心-个性化-任务栏-插件区域`中显示的图标
     Attribute_ForceDock = 0x1000, // 插件属性-强制显示在任务栏上
+    Attribute_HasCard = 0x2000, // 插件属性-是否提供卡片区域 surface
 
     Attribute_Normal = Attribute_CanDrag | Attribute_CanInsert | Attribute_CanSetting, // 普通插件
 
@@ -215,6 +216,15 @@ const int APPLET_CONTAINER_QUICK_PANEL = 1; // 快捷面板
  * true: 插件处于激活状态，false：插件出于失活状态
  */
 const QString MSG_ITEM_ACTIVE_STATE = QStringLiteral("itemActiveState");
+
+/**
+ * @brief 插件卡片的排序值；插件在卡片 surface 创建后主动上报给任务栏
+ * 任务栏按该值升序排列卡片，值最小的卡片显示在第一个，值相同则保持创建顺序。
+ * MSG_DATA 类型为 int。任务栏不解释具体数值，也不感知插件 id，
+ * 因此独立发布的插件也能参与排序。
+ */
+const QString MSG_CARD_ORDER = QStringLiteral("cardOrder");
+
 /**
  * @brief 插件请求任务栏更新插件的 tooltips
  * 任务栏收到请求后会主动调用 itemTips() 方法。
@@ -227,6 +237,13 @@ const QString MSG_UPDATE_TOOLTIPS_VISIBLE = QStringLiteral("updateTooltipsVisibl
  * 插件根据任务栏size做出大小调整，例如时间日期插件
  */
 const QString MSG_DOCK_PANEL_SIZE_CHANGED = QStringLiteral("dockPanelSizeChanged");
+
+/**
+ * @brief 任务栏是否处于时尚模式；插件 surface 创建时和模式变化时，任务栏主动发给插件
+ * MSG_DATA 类型为 bool。插件可以据此对时尚模式做单独的布局调整，
+ * 例如时间日期插件在时尚模式下把时间和日期并排显示成一行。
+ */
+const QString MSG_DOCK_FASHION_MODE = QStringLiteral("dockFashionMode");
 
 /**
  * @brief 插件属性，MSG_TYPE

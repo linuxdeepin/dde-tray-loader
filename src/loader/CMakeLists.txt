@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+# SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 #
 # SPDX-License-Identifier: CC0-1.0
 
@@ -26,6 +26,8 @@ add_executable(trayplugin-loader
     dockdbusproxy.h
     widgetplugin.h
     widgetplugin.cpp
+    cardpluginitem.h
+    cardpluginitem.cpp
     pluginitem.h
     pluginitem.cpp
     "${PLUGIN_INTERACTION_CONFIG_HEADER}"

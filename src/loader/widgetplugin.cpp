@@ -115,7 +115,18 @@ WidgetPlugin::~WidgetPlugin()
 void WidgetPlugin::itemAdded(PluginsItemInterface * const itemInter, const QString &itemKey)
 {
     qDebug() << "itemAdded:" << itemKey;
+
+    m_itemAdded = true;
     auto flag = getPluginFlags();
+    if (flag & Dock::Attribute_HasCard) {
+        // 卡片区只在时尚模式下存在，未开启时不创建卡片 surface，
+        // 免得白占一套 QtQuick 的渲染资源。任务栏会在插件 surface 创建后
+        // 下发 MSG_DOCK_FASHION_MODE，届时再按需创建。
+        if (m_fashionMode) {
+            createCardItemIfNeeded(itemInter);
+        }
+    }
+
     if (flag & Dock::Type_Quick) {
         if (!Plugin::EmbedPlugin::contains(itemInter->pluginName(), Plugin::EmbedPlugin::Quick)) {
             PluginItem *item = new QuickPluginItem(itemInter, itemKey);
@@ -216,6 +227,12 @@ void WidgetPlugin::itemUpdate(PluginsItemInterface * const itemInter, const QStr
 void WidgetPlugin::itemRemoved(PluginsItemInterface * const itemInter, const QString &itemKey)
 {
     Q_UNUSED(itemInter)
+
+    m_itemAdded = false;
+    if (m_cardItem) {
+        m_cardItem->hide();
+    }
+
     auto widget = m_pluginsItemInterface->itemWidget(itemKey);
     if(widget && widget->window() && widget->window()->windowHandle()) {
         widget->window()->windowHandle()->hide();
@@ -354,9 +371,42 @@ void WidgetPlugin::onDockDisplayModeChanged(uint32_t displayMode)
 
 void WidgetPlugin::onDockEventMessageArrived(const QString &message)
 {
+    const QJsonObject msgObj = QJsonDocument::fromJson(message.toUtf8()).object();
+    if (msgObj.value(Dock::MSG_TYPE).toString() == Dock::MSG_DOCK_FASHION_MODE) {
+        setFashionMode(msgObj.value(Dock::MSG_DATA).toBool());
+    }
+
     auto pluginsItemInterfaceV2 = dynamic_cast<PluginsItemInterfaceV2 *>(m_pluginsItemInterface);
     if (pluginsItemInterfaceV2) {
         pluginsItemInterfaceV2->message(message);
+    }
+}
+
+void WidgetPlugin::setFashionMode(bool fashionMode)
+{
+    if (m_fashionMode == fashionMode) {
+        return;
+    }
+
+    m_fashionMode = fashionMode;
+
+    if (!(getPluginFlags() & Dock::Attribute_HasCard)) {
+        return;
+    }
+
+    // 退出时尚模式时把卡片收起来，任务栏侧的 surface 随之销毁；
+    // 重新进入时 createCardItemIfNeeded() 会重建绑定再显示。
+    if (!m_fashionMode) {
+        if (m_cardItem) {
+            m_cardItem->hide();
+        }
+        return;
+    }
+
+    // 插件项还没添加（例如音乐插件此时没有播放器）时不建卡片，
+    // 等 itemAdded() 时再按当前模式创建。
+    if (m_itemAdded) {
+        createCardItemIfNeeded(m_pluginsItemInterface);
     }
 }
 
@@ -365,6 +415,93 @@ Plugin::EmbedPlugin* WidgetPlugin::getPlugin(QWidget* widget)
     widget->setParent(nullptr);
     widget->winId();
     return Plugin::EmbedPlugin::get(widget->windowHandle());
+}
+
+void WidgetPlugin::createCardItemIfNeeded(PluginsItemInterface *itemInter)
+{
+    auto cardInterface = dynamic_cast<PluginsItemInterfaceV3 *>(itemInter);
+    if (!cardInterface) {
+        return;
+    }
+
+    // The plugin may drop its card window while the item is removed, recreate it in that case.
+    if (m_cardItem && !m_cardItem->window()) {
+        delete m_cardItem;
+        m_cardItem = nullptr;
+    }
+
+    if (!m_cardItem) {
+        const QString itemKey = cardInterface->cardItemKey();
+        if (itemKey.isEmpty()) {
+            return;
+        }
+
+        auto cardItem = new CardPluginItem(cardInterface, itemKey, this);
+        if (!cardItem->init() || !cardItem->window()) {
+            cardItem->deleteLater();
+            qWarning() << "create card plugin surface failed" << itemInter->pluginName() << itemKey;
+            return;
+        }
+
+        m_cardItem = cardItem;
+    }
+
+    // The EmbedPlugin binding is dropped whenever the card window gets hidden, so it has to be
+    // rebuilt before showing again, otherwise the compositor refuses to create a plugin surface
+    // for this window and the card never shows up anymore.
+    if (!bindCardPluginSurface(itemInter)) {
+        return;
+    }
+
+    m_cardItem->show();
+}
+
+bool WidgetPlugin::bindCardPluginSurface(PluginsItemInterface *itemInter)
+{
+    auto cardInterface = dynamic_cast<PluginsItemInterfaceV3 *>(itemInter);
+    if (!cardInterface) {
+        return false;
+    }
+
+    if (!m_cardItem || !m_cardItem->window()) {
+        return false;
+    }
+
+    auto window = m_cardItem->window();
+    const bool bound = Plugin::EmbedPlugin::contains(window);
+    auto plugin = Plugin::EmbedPlugin::get(window);
+    if (!plugin) {
+        qWarning() << "Failed to get EmbedPlugin for card window" << itemInter->pluginName() << m_cardItem->itemKey();
+        return false;
+    }
+
+    plugin->setPluginFlags(getPluginFlags());
+    plugin->setPluginId(itemInter->pluginName());
+    plugin->setDisplayName(itemInter->pluginDisplayName());
+    plugin->setItemKey(m_cardItem->itemKey());
+    plugin->setPluginType(Plugin::EmbedPlugin::Card);
+    plugin->setPluginSizePolicy(itemInter->pluginSizePolicy());
+
+    if (bound) {
+        return true;
+    }
+
+    connect(plugin, &Plugin::EmbedPlugin::dockColorThemeChanged, this, &WidgetPlugin::onDockColorThemeChanged, Qt::UniqueConnection);
+    connect(plugin, &Plugin::EmbedPlugin::eventGeometry, m_cardItem, [this](const QRect &geometry) {
+        if (m_cardItem) {
+            m_cardItem->resize(geometry.size());
+        }
+    });
+
+    // The order has to travel as a message: it is only known after the plugin is
+    // loaded, while create_plugin() has already been sent by then.  Queue it so
+    // the plugin surface exists on the dock side before the message arrives.
+    const int order = cardInterface->cardOrder();
+    QMetaObject::invokeMethod(plugin, [plugin, order] {
+        Q_EMIT plugin->requestMessage(cardOrderMessage(order));
+    }, Qt::QueuedConnection);
+
+    return true;
 }
 
 void WidgetPlugin::initConnections(Plugin::EmbedPlugin *plugin, PluginItem *pluginItem)
@@ -518,6 +655,16 @@ QString WidgetPlugin::activeStateMessage(bool isActive)
     QJsonObject msg;
     msg[Dock::MSG_TYPE] = Dock::MSG_ITEM_ACTIVE_STATE;
     msg[Dock::MSG_DATA] = isActive;
+    QJsonDocument doc;
+    doc.setObject(msg);
+    return doc.toJson();
+}
+
+QString WidgetPlugin::cardOrderMessage(int order)
+{
+    QJsonObject msg;
+    msg[Dock::MSG_TYPE] = Dock::MSG_CARD_ORDER;
+    msg[Dock::MSG_DATA] = order;
     QJsonDocument doc;
     doc.setObject(msg);
     return doc.toJson();

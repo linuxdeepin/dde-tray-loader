@@ -100,8 +100,9 @@ void DatetimePlugin::loadPlugin()
     m_centralWidget.reset(new DatetimeWidget(m_RegionFormatModel));
 
     connect(m_centralWidget.data(), &DatetimeWidget::requestUpdateGeometry, this, [this] {
-        // label的文本和边框之间本身有一定的间距，这里通过减小外部widget的size方式，将内部的label挤压到一起，减小间距
-        m_centralWidget.data()->setFixedSize(m_centralWidget.data()->sizeHint() - QSize(0, 4));
+        // 两行显示时压掉 label 自带的文本间距、一行显示时撑到和其他插件一致的 hover 高度，
+        // 都在 DatetimeWidget::sizeHint() 里处理
+        m_centralWidget.data()->setFixedSize(m_centralWidget.data()->sizeHint());
         m_proxyInter->itemUpdate(this, pluginName());
     });
     connect(m_refershTimer, &QTimer::timeout, this, &DatetimePlugin::updateCurrentTimeString);
@@ -290,6 +291,10 @@ QString DatetimePlugin::message(const QString &message)
         int height = sizeObj["height"].toInt();
         if (m_centralWidget) {
             m_centralWidget.data()->setDockPanelSize(QSize(width, height));
+        }
+    } else if (cmdType == Dock::MSG_DOCK_FASHION_MODE) {
+        if (m_centralWidget) {
+            m_centralWidget.data()->setFashionMode(msgObj.value(Dock::MSG_DATA).toBool());
         }
     } else if (cmdType == Dock::MSG_PLUGIN_PROPERTY) {
         QMap<QString, QVariant> map;

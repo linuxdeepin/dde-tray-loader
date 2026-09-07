@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -133,6 +133,16 @@ void EmbedPlugin::setPluginSizePolicy(int sizePolicy)
 }
 
 static QMap<QWindow*, EmbedPlugin*> s_map;
+
+// Only drop the mapping when it still refers to the given plugin, a window may be bound to a new
+// plugin before the previous one is really destroyed by deleteLater().
+static void removeFromPluginMap(QWindow *window, EmbedPlugin *plugin)
+{
+    if (s_map.value(window) == plugin) {
+        s_map.remove(window);
+    }
+}
+
 EmbedPlugin *EmbedPlugin::getWithoutCreating(QWindow *window)
 {
     if (contains(window))
@@ -145,14 +155,16 @@ EmbedPlugin* EmbedPlugin::get(QWindow* window)
     if (!plugin) {
         plugin = new EmbedPlugin(window);
         s_map.insert(window, plugin);
-        QObject::connect(plugin, &EmbedPlugin::destroyed, window, [window] () {
-            s_map.remove(window);
+        QObject::connect(plugin, &EmbedPlugin::destroyed, window, [window, plugin] () {
+            removeFromPluginMap(window, plugin);
         });
 
-        QObject::connect(window, &QWindow::visibleChanged, window, [window, plugin] (bool visible) {
+        // Bind to the plugin instead of the window, so the connection dies together with the
+        // plugin and cannot unbind a plugin created later for the same window.
+        QObject::connect(window, &QWindow::visibleChanged, plugin, [window, plugin] (bool visible) {
             if (!visible) {
+                removeFromPluginMap(window, plugin);
                 plugin->deleteLater();
-                s_map.remove(window);
             }
         });
     }
