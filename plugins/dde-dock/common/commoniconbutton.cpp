@@ -219,9 +219,17 @@ void CommonIconButton::refreshIcon()
     setState(m_state);
 
     if (m_icon.isNull()) {
-        QTimer::singleShot(50, this, [this]() {
-            refreshIcon();
-        });
+        // 主题切换后图标主题可能尚未加载完成，进行有限次重试
+        if (m_refreshRetryCount < kMaxRefreshRetries) {
+            m_refreshRetryCount++;
+            QTimer::singleShot(50, this, [this]() {
+                refreshIcon();
+            });
+        } else {
+            m_refreshRetryCount = 0;
+        }
+    } else {
+        m_refreshRetryCount = 0;
     }
 }
 

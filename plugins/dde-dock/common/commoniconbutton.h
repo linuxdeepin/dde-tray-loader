@@ -73,6 +73,9 @@ private:
     QSize m_iconSize;
     qreal m_rotation;
     QPalette m_defaultPalette;
+
+    static constexpr int kMaxRefreshRetries = 10;
+    int m_refreshRetryCount = 0;
 };
 
 #endif // DOCKICONBUTTON_H
