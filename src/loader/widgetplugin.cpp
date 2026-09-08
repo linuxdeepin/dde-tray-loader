@@ -14,6 +14,7 @@
 #include <QVBoxLayout>
 #include <QMouseEvent>
 #include <QToolTip>
+#include <QTimer>
 
 #include <DGuiApplicationHelper>
 
@@ -337,7 +338,9 @@ void WidgetPlugin::updateDockContainerState(PluginsItemInterface *itemInter, boo
 void WidgetPlugin::onDockColorThemeChanged(uint32_t type)
 {
     qDebug() << "onDockColorThemeChanged:" << type;
-    DGuiApplicationHelper::instance()->setPaletteType(static_cast<DGuiApplicationHelper::ColorType>(type));
+    QTimer::singleShot(0, this, [type]() {
+        DGuiApplicationHelper::instance()->setPaletteType(static_cast<DGuiApplicationHelper::ColorType>(type));
+    });
 }
 
 void WidgetPlugin::onDockPositionChanged(uint32_t position)

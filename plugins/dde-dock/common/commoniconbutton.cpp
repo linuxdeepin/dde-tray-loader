@@ -133,15 +133,19 @@ void CommonIconButton::setIcon(const QString &icon, const QString &fallback, con
         addDarkMark(tmp);
         addDarkMark(tmpFallback);
     }
-    m_icon = QIcon::fromTheme(tmp);
+    QIcon newIcon = QIcon::fromTheme(tmp);
 
-    if (m_icon.isNull()) {
-        m_icon = QIcon::fromTheme(tmpFallback);
+    if (newIcon.isNull()) {
+        newIcon = QIcon::fromTheme(tmpFallback);
     }
 
-    if (m_icon.isNull()) {
+    if (newIcon.isNull()) {
         QString defaultIcon = m_fileMapping[State::Default].first;
-        m_icon = QIcon::fromTheme(defaultIcon);
+        newIcon = QIcon::fromTheme(defaultIcon);
+    }
+
+    if (!newIcon.isNull()) {
+        m_icon = newIcon;
     }
     update();
 }
@@ -213,6 +217,12 @@ void CommonIconButton::mouseReleaseEvent(QMouseEvent *event)
 void CommonIconButton::refreshIcon()
 {
     setState(m_state);
+
+    if (m_icon.isNull()) {
+        QTimer::singleShot(50, this, [this]() {
+            refreshIcon();
+        });
+    }
 }
 
 void CommonIconButton::setIconSize(const QSize &size)
