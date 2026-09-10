@@ -236,15 +236,15 @@
     <name>EyeComfortModeItem</name>
     <message>
         <source>Eye Comfort</source>
-        <translation>Silmien mukavuutta</translation>
+        <translation>Yövalo</translation>
     </message>
     <message>
         <source>Eye comfort enabled</source>
-        <translation>Silmien mukavuus käytössä</translation>
+        <translation>Yövalo käytössä</translation>
     </message>
     <message>
         <source>Eye comfort disabled</source>
-        <translation>Silmien mukavuus suljettu</translation>
+        <translation>Yövalo suljettu</translation>
     </message>
     <message>
         <source>Display settings</source>
@@ -252,7 +252,7 @@
     </message>
     <message>
         <source>Eye comfort</source>
-        <translation>Silmien mukavuus</translation>
+        <translation>Yövalo</translation>
     </message>
     <message>
         <source>Theme</source>
@@ -280,11 +280,11 @@
     </message>
     <message>
         <source>Disable eye comfort</source>
-        <translation>Poista silmien mukavuus käytöstä</translation>
+        <translation>Sulje yövalo</translation>
     </message>
     <message>
         <source>Enable eye comfort</source>
-        <translation>Ota silmien mukavuus käyttöön</translation>
+        <translation>Käytä yövaloa</translation>
     </message>
     <message>
         <source>Display Settings</source>
