@@ -49,6 +49,9 @@ void Util::dispatchEvents(DispatchEventsMode mode)
         qCWarning(TRAYUTIL, "Attempting to dispatch X11 events with no connection");
         return;
     }
+    if (m_x11ConnectionFailed || handleX11ConnectionError()) {
+        return;
+    }
 
     auto pollEventFunc = mode == DispatchEventsMode::Poll ? xcb_poll_for_event : xcb_poll_for_queued_event;
 
@@ -60,7 +63,31 @@ void Util::dispatchEvents(DispatchEventsMode mode)
         free(event);
     }
 
+    if (handleX11ConnectionError()) {
+        return;
+    }
+
     xcb_flush(connection);
+    handleX11ConnectionError();
+}
+
+bool Util::handleX11ConnectionError()
+{
+    if (m_x11ConnectionFailed || !m_x11connection) {
+        return m_x11ConnectionFailed;
+    }
+
+    const int error = xcb_connection_has_error(m_x11connection);
+    if (error == 0) {
+        return false;
+    }
+
+    m_x11ConnectionFailed = true;
+    if (m_x11EventNotifier) {
+        m_x11EventNotifier->setEnabled(false);
+    }
+    qCWarning(TRAYUTIL) << "X11 connection failed; disabling event notifier. Error:" << error;
+    return true;
 }
 
 Util::Util()
@@ -80,8 +107,8 @@ Util::Util()
     xcb_ewmh_init_atoms_replies(&m_ewmh, xcb_ewmh_init_atoms(m_x11connection, &m_ewmh), nullptr);
 
     const int fd = xcb_get_file_descriptor(m_x11connection);
-    QSocketNotifier * qfd = new QSocketNotifier(fd, QSocketNotifier::Read, this);
-    connect(qfd, &QSocketNotifier::activated, this, [this](){
+    m_x11EventNotifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
+    connect(m_x11EventNotifier, &QSocketNotifier::activated, this, [this](){
         dispatchEvents(DispatchEventsMode::Poll);
     });
 
