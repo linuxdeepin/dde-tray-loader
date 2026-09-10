@@ -1,3 +1,17 @@
+dde-tray-loader (2.0.40) unstable; urgency=medium
+
+  * fix: 修复 SNI 懒加载托盘图标右键菜单无法显示的问题
+  * i18n: Translate dde-dock.ts in ar (#498)
+  * fix: enable real-time volume adjustment in sound applet
+  * fix(dock): tooltips follow system font setting
+  * fix: 补全 AT-SPI objectName 定位锚点 (DDE-162)
+  * feat(bluetooth): add battery level display for bluetooth devices
+  * i18n: Updates for project Deepin Desktop Environment (#503)
+  * feat: add dock card surface support for plugins
+  * fix(loader): ignore applet min-height message while applet visible
+
+ -- zhangkun <zhangkun2@uniontech.com>  Thu, 10 Sep 2026 20:28:37 +0800
+
 dde-tray-loader (2.0.39) unstable; urgency=medium
 
   * fix: set WA_TranslucentBackground before winId() in PluginItem
