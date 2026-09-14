@@ -30,6 +30,7 @@ public:
     void setHoverEnable(bool enable);
     void setIconSize(const QSize &size);
     void setAllEnabled(bool enable);
+    void setParentHover(bool hover);
 
     void startRotate();
     void stopRotate();
@@ -64,6 +65,7 @@ private:
     QPoint m_pressPos;
     bool m_clickable;
     bool m_hover;
+    bool m_parentHover;
     QMap<State, QPair<QString, QString>> m_fileMapping;
     State m_state;
     QColor m_lightThemeColor;

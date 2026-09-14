@@ -64,7 +64,7 @@ void JumpSettingButton::initUI()
 
 void JumpSettingButton::setIcon(const QIcon &icon)
 {
-    m_iconButton->setIcon(icon, Qt::black, Qt::white);
+    m_iconButton->setIcon(icon, QColor(0, 0, 0, 178), QColor(255, 255, 255, 178));
 }
 
 void JumpSettingButton::setDescription(const QString& description)
@@ -78,6 +78,7 @@ bool JumpSettingButton::event(QEvent* e)
     case QEvent::Leave:
     case QEvent::Enter:
         m_hover = e->type() == QEvent::Enter;
+        m_iconButton->setParentHover(m_hover);
         update();
         break;
     case QEvent::Hide:
@@ -101,6 +102,7 @@ void JumpSettingButton::paintEvent(QPaintEvent* e)
         bgColor = palette.color(QPalette::Active, QPalette::Highlight);
     } else {
         textColor = palette.brightText().color();
+        textColor.setAlphaF(0.7);
         bgColor = palette.brightText().color();
         bgColor.setAlphaF(0.05);
     }
