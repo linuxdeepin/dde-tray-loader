@@ -9,6 +9,7 @@
 #include <DDBusSender>
 #include <DFontSizeManager>
 #include <DGuiApplicationHelper>
+#include <DIconTheme>
 
 #include <QDBusConnection>
 #include <QIcon>
@@ -50,7 +51,12 @@ BrightnessItem::~BrightnessItem()
 void BrightnessItem::init()
 {
     m_icon->setFixedSize(Dock::DOCK_PLUGIN_ITEM_FIXED_SIZE);
-    m_icon->setIcon(QIcon::fromTheme("display-brightness-control"));
+
+    auto dciPaths = Dtk::Gui::DIconTheme::dciThemeSearchPaths();
+    dciPaths.prepend("/usr/share/dde-dock/icons/dcc-setting");
+    Dtk::Gui::DIconTheme::setDciThemeSearchPaths(dciPaths);
+
+    m_icon->setIcon(QIcon::fromTheme("dcc-dde-brightness"));
     connect(m_applet, &BrightnessApplet::requestHideApplet, this, &BrightnessItem::requestHideApplet);
 }
 
