@@ -289,6 +289,25 @@ void SliderProxyStyle::drawComplexControl(QStyle::ComplexControl control, const 
     else
         drawNormalSlider(painter, rectGroove, rectHandle, widget);
 
+    if (option->state & QStyle::State_HasFocus) {
+        DPalette dpa = DPaletteHelper::instance()->palette(widget);
+        QColor focusColor = dpa.color(DPalette::Highlight);
+        int margin = 3;
+        QRect focusHandleRect = rectHandle;
+        if (m_drawSpecial == RoundHandler) {
+            int handleSize = qMin(rectHandle.width(), rectHandle.height());
+            focusHandleRect = QRect(
+                rectHandle.x() + (rectHandle.width() - handleSize) / 2,
+                rectGroove.y() + rectGroove.height() / 2 - handleSize / 2,
+                handleSize, handleSize);
+        }
+        QRect focusRect = focusHandleRect.adjusted(-margin, -margin, margin, margin);
+        painter->setPen(QPen(focusColor, 2));
+        painter->setBrush(Qt::NoBrush);
+        painter->drawRoundedRect(focusRect,
+            focusRect.height() / 2.0, focusRect.height() / 2.0);
+    }
+
     painter->restore();
 }
 
