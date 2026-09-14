@@ -77,6 +77,9 @@ private:
     void generateId();
     void init();
     DBusMenuImporter *menuImporter() const;
+    void showSniMenu(const QPoint &clickPos);
+    void tryActivate(const QPoint &clickPos);
+    void trySecondaryActivate(const QPoint &clickPos);
 
 private:
     QString m_dbusUniqueName;

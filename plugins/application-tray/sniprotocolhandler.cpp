@@ -16,6 +16,8 @@
 #include <QWindow>
 #include <QThreadPool>
 #include <QRunnable>
+#include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
 #include <DFontSizeManager>
 
 #include <DGuiApplicationHelper>
@@ -320,6 +322,11 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
         if (event->type() == QEvent::MouseButtonRelease) {
             QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
             if (mouseEvent->button() == Qt::LeftButton) {
+                if (m_sniInter->itemIsMenu()) {
+                    showSniMenu(mouseEvent->pos());
+                    return false;
+                }
+
                 auto *activation = new XdgActivation(this);
                 if (activation->isActive()) {
                     auto *win = window()->windowHandle();
@@ -328,45 +335,21 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
                         return false;
                     }
 
-                    auto sniInter = m_sniInter;
-                    connect(activation, &XdgActivation::tokenReady, this, [sniInter, activation](const QString &token) {
+                    const QPoint clickPos = mouseEvent->pos();
+                    connect(activation, &XdgActivation::tokenReady, this, [this, activation, clickPos](const QString &token) {
                         if (!token.isEmpty()) {
-                            sniInter->ProvideXdgActivationToken(token);
+                            m_sniInter->ProvideXdgActivationToken(token);
                         }
-                        sniInter->Activate(0, 0);
+                        tryActivate(clickPos);
                         activation->deleteLater();
                     }, Qt::SingleShotConnection);
                     activation->requestToken(win);
                 } else {
-                    m_sniInter->Activate(0, 0);
+                    tryActivate(mouseEvent->pos());
                     activation->deleteLater();
                 }
             } else if (mouseEvent->button() == Qt::RightButton) {
-                if (!menuImporter()) {
-                    m_sniInter->ContextMenu(0, 0);
-                    return false;
-                }
-
-                auto menu = menuImporter()->menu();
-                // SNI 懒加载应用（如 Snipaste）只有收到 AboutToShow 才填充菜单，因此主动调用 updateMenu() 触发一次 DBus AboutToShow
-                menuImporter()->updateMenu(menu);
-                menu->setFixedSize(menu->sizeHint());
-                menu->winId();
-
-                auto *win = window()->windowHandle();
-                if (!win)
-                    return false;
-
-                auto plugin = Plugin::EmbedPlugin::get(win);
-                auto geometry = plugin->pluginPos();
-                auto pluginPopup = Plugin::PluginPopup::get(menu->windowHandle());
-                pluginPopup->setPluginId("application-tray");
-                pluginPopup->setItemKey(id());
-                pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeMenu);
-                const auto offset = mouseEvent->pos();
-                pluginPopup->setX(geometry.x() + offset.x());
-                pluginPopup->setY(geometry.y() + offset.y());
-                menu->show();
+                showSniMenu(mouseEvent->pos());
             }
         }
     }
@@ -386,6 +369,58 @@ QPair<QString, QString> SniTrayProtocolHandler::serviceAndPath(const QString &se
     }
 
     return pair;
+}
+
+void SniTrayProtocolHandler::showSniMenu(const QPoint &clickPos)
+{
+    if (!menuImporter()) {
+        m_sniInter->ContextMenu(0, 0);
+        return;
+    }
+
+    auto menu = menuImporter()->menu();
+    // SNI 懒加载应用（如 Snipaste）只有收到 AboutToShow 才填充菜单，因此主动调用 updateMenu() 触发一次 DBus AboutToShow
+    menuImporter()->updateMenu(menu);
+    menu->setFixedSize(menu->sizeHint());
+    menu->winId();
+
+    auto *win = window()->windowHandle();
+    if (!win)
+        return;
+
+    auto plugin = Plugin::EmbedPlugin::get(win);
+    auto geometry = plugin->pluginPos();
+    auto pluginPopup = Plugin::PluginPopup::get(menu->windowHandle());
+    pluginPopup->setPluginId("application-tray");
+    pluginPopup->setItemKey(id());
+    pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeMenu);
+    pluginPopup->setX(geometry.x() + clickPos.x());
+    pluginPopup->setY(geometry.y() + clickPos.y());
+    menu->show();
+}
+
+void SniTrayProtocolHandler::tryActivate(const QPoint &clickPos)
+{
+    auto *watcher = new QDBusPendingCallWatcher(m_sniInter->Activate(0, 0), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, clickPos]() {
+        QDBusPendingReply<> reply = *watcher;
+        if (reply.isError()) {
+            trySecondaryActivate(clickPos);
+        }
+        watcher->deleteLater();
+    });
+}
+
+void SniTrayProtocolHandler::trySecondaryActivate(const QPoint &clickPos)
+{
+    auto *watcher = new QDBusPendingCallWatcher(m_sniInter->SecondaryActivate(0, 0), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher, clickPos]() {
+        QDBusPendingReply<> reply = *watcher;
+        if (reply.isError()) {
+            showSniMenu(clickPos);
+        }
+        watcher->deleteLater();
+    });
 }
 
 QIcon SniTrayProtocolHandler::dbusImageList2QIcon(const DBusImageList &dbusImageList)
