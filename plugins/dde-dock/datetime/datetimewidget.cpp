@@ -144,12 +144,18 @@ void DatetimeWidget::updateDateTimeString()
     m_dateTime = locale.toString(QDateTime::currentDateTime(), longDateFormat + " " + m_regionFormat->getLongTimeFormat());
 
     QDateTime current = QDateTime::currentDateTime();
+    // 12 小时制下，0:00-0:59 时 Qt 将时段标记为"上午"，与中文"凌晨"习惯不符，替换为"凌晨"
+    const bool isMidnightHour = !m_24HourFormat && current.time().hour() == 0;
+    if (isMidnightHour)
+        m_dateTime.replace(QStringLiteral("上午"), QStringLiteral("凌晨"));
 
     const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
     QString timeStr, dateString;
     if (position == Dock::Bottom || position == Dock::Top) {
         QString timeFormat = m_regionFormat->getShortTimeFormat();
         timeStr = locale.toString(current, timeFormat);
+        if (isMidnightHour)
+            timeStr.replace(QStringLiteral("上午"), QStringLiteral("凌晨"));
         dateString = locale.toString(current.date(), m_regionFormat->getShortDateFormat());
 
         m_timeLabel->setText(timeStr);
@@ -157,6 +163,8 @@ void DatetimeWidget::updateDateTimeString()
     } else {
         if (!m_24HourFormat) {
             QString apText = locale.toString(current, "AP");
+            if (isMidnightHour)
+                apText.replace(QStringLiteral("上午"), QStringLiteral("凌晨"));
             m_apLabel->setText(apText);
 
             QString timeFormat = m_regionFormat->getShortTimeFormat();
