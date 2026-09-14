@@ -26,6 +26,7 @@ public:
     QuickButton(QWidget *parent = nullptr)
         : DFloatingButton(parent)
         , m_mode(ButtonMode::ClickButton)
+        , m_parentHover(false)
     {
     }
 
@@ -38,11 +39,19 @@ public:
         initStyleOption(&option);
     }
 
+    void setParentHover(bool hover) {
+        if (m_parentHover == hover)
+            return;
+        m_parentHover = hover;
+        update();
+    }
+
 protected:
     void initStyleOption(DStyleOptionButton *option) const override;
 
 private:
     ButtonMode m_mode;
+    bool m_parentHover;
 };
 
 class QLabel;
@@ -68,10 +77,13 @@ Q_SIGNALS:
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     void initUi();
     void initConnection();
+    void updateTextColor(bool hover);
 
 private:
     QuickButton *m_iconWidget;
@@ -80,6 +92,7 @@ private:
     Dtk::Widget::DIconButton *m_expandLabel;
     QPoint m_clickPoint;
     bool m_eyeComfortModeEnabled;
+    bool m_hover;
 };
 
 #endif // QUICKPANELWIDGET_H
