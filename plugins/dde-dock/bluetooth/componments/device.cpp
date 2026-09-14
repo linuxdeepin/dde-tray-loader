@@ -19,6 +19,7 @@ QMap<QString, QString> Device::deviceType2Icon = {
     {"input-gaming", "other"},
     {"input-tablet", "touchpad"},
     {"audio-card", "pheadset"},
+    {"audio-avrcp-target", "pheadset"},
     {"network-wireless", "lan"},
     {"camera-video", "vidicon"},
     {"printer", "print"},
@@ -103,7 +104,7 @@ void Device::setRssi(int rssi)
 
 void Device::setDeviceType(const QString &deviceType)
 {
-    m_deviceType = deviceType2Icon[deviceType];
+    m_deviceType = deviceType2Icon.value(deviceType, "other");
 }
 
 QDebug &operator<<(QDebug &stream, const Device *device)
