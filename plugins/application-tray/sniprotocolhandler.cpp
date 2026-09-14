@@ -16,6 +16,9 @@
 #include <QWindow>
 #include <QThreadPool>
 #include <QRunnable>
+#include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
+#include <QLoggingCategory>
 #include <DFontSizeManager>
 
 #include <DGuiApplicationHelper>
@@ -25,6 +28,7 @@
 DGUI_USE_NAMESPACE
 
 // Q_LOGGING_CATEGORY(sniTrayLod, "dde.shell.tray.sni")
+Q_LOGGING_CATEGORY(sniTray, "dde.shell.tray.sni")
 
 namespace tray {
 static QString sniPfrefix = QStringLiteral("SNI:");
@@ -320,58 +324,134 @@ bool SniTrayProtocolHandler::eventFilter(QObject *watched, QEvent *event)
         if (event->type() == QEvent::MouseButtonRelease) {
             QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
             if (mouseEvent->button() == Qt::LeftButton) {
-                auto *activation = new XdgActivation(this);
-                if (activation->isActive()) {
-                    auto *win = window()->windowHandle();
-                    if (!win) {
-                        activation->deleteLater();
-                        return false;
-                    }
-
-                    auto sniInter = m_sniInter;
-                    connect(activation, &XdgActivation::tokenReady, this, [sniInter, activation](const QString &token) {
-                        if (!token.isEmpty()) {
-                            sniInter->ProvideXdgActivationToken(token);
-                        }
-                        sniInter->Activate(0, 0);
-                        activation->deleteLater();
-                    }, Qt::SingleShotConnection);
-                    activation->requestToken(win);
-                } else {
-                    m_sniInter->Activate(0, 0);
-                    activation->deleteLater();
-                }
+                activateWithFallback(mouseEvent->pos());
             } else if (mouseEvent->button() == Qt::RightButton) {
-                if (!menuImporter()) {
-                    m_sniInter->ContextMenu(0, 0);
-                    return false;
-                }
-
-                auto menu = menuImporter()->menu();
-                // SNI 懒加载应用（如 Snipaste）只有收到 AboutToShow 才填充菜单，因此主动调用 updateMenu() 触发一次 DBus AboutToShow
-                menuImporter()->updateMenu(menu);
-                menu->setFixedSize(menu->sizeHint());
-                menu->winId();
-
-                auto *win = window()->windowHandle();
-                if (!win)
-                    return false;
-
-                auto plugin = Plugin::EmbedPlugin::get(win);
-                auto geometry = plugin->pluginPos();
-                auto pluginPopup = Plugin::PluginPopup::get(menu->windowHandle());
-                pluginPopup->setPluginId("application-tray");
-                pluginPopup->setItemKey(id());
-                pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeMenu);
-                const auto offset = mouseEvent->pos();
-                pluginPopup->setX(geometry.x() + offset.x());
-                pluginPopup->setY(geometry.y() + offset.y());
-                menu->show();
+                showTrayMenu(mouseEvent->pos());
             }
         }
     }
 
     return false;
+}
+
+void SniTrayProtocolHandler::activateWithFallback(const QPoint &clickPos)
+{
+    // SNI 规范：声明 ItemIsMenu 的托盘项仅支持菜单，左键应直接弹菜单而非调用 Activate
+    if (m_sniInter->itemIsMenu()) {
+        qCDebug(sniTray) << "SNI item" << m_id << "declares ItemIsMenu, showing menu directly";
+        showTrayMenu(clickPos);
+        return;
+    }
+
+    auto *activation = new XdgActivation(this);
+    if (activation->isActive()) {
+        auto *win = window()->windowHandle();
+        if (!win) {
+            activation->deleteLater();
+            return;
+        }
+
+        connect(activation, &XdgActivation::tokenReady, this, [this, clickPos, activation](const QString &token) {
+            beginActivate(token, clickPos);
+            activation->deleteLater();
+        }, Qt::SingleShotConnection);
+        activation->requestToken(win);
+    } else {
+        beginActivate({}, clickPos);
+        activation->deleteLater();
+    }
+}
+
+void SniTrayProtocolHandler::beginActivate(const QString &token, const QPoint &clickPos)
+{
+    if (!token.isEmpty()) {
+        m_sniInter->ProvideXdgActivationToken(token);
+    }
+
+    // 监听 Activate 的异步回复，失败时分级 fallback，避免发后即忘导致点击静默丢失
+    auto *watcher = new QDBusPendingCallWatcher(m_sniInter->Activate(0, 0), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, clickPos](QDBusPendingCallWatcher *w) {
+        QDBusPendingReply<> reply = *w;
+        if (reply.isError()) {
+            qCDebug(sniTray) << "SNI Activate failed for" << m_id << ":"
+                             << reply.error().name() << reply.error().message()
+                             << "-> trying SecondaryActivate";
+            trySecondaryActivate(clickPos);
+        }
+        w->deleteLater();
+    });
+}
+
+void SniTrayProtocolHandler::trySecondaryActivate(const QPoint &clickPos)
+{
+    auto *watcher = new QDBusPendingCallWatcher(m_sniInter->SecondaryActivate(0, 0), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, clickPos](QDBusPendingCallWatcher *w) {
+        QDBusPendingReply<> reply = *w;
+        if (reply.isError()) {
+            qCDebug(sniTray) << "SNI SecondaryActivate failed for" << m_id << ":"
+                             << reply.error().name() << reply.error().message()
+                             << "-> falling back to menu / window activation";
+            fallbackToShowMenu(clickPos);
+        }
+        w->deleteLater();
+    });
+}
+
+void SniTrayProtocolHandler::fallbackToShowMenu(const QPoint &clickPos)
+{
+    // 优先展示 DBus 菜单（可在进程内渲染，最可靠）；无菜单时委托 ContextMenu 并尝试窗口激活兜底
+    if (menuImporter()) {
+        showTrayMenu(clickPos);
+        return;
+    }
+
+    m_sniInter->ContextMenu(0, 0);
+    tryWindowActivation();
+}
+
+void SniTrayProtocolHandler::showTrayMenu(const QPoint &offset)
+{
+    if (!menuImporter()) {
+        m_sniInter->ContextMenu(0, 0);
+        return;
+    }
+
+    auto menu = menuImporter()->menu();
+    // SNI 懒加载应用（如 Snipaste）只有收到 AboutToShow 才填充菜单，因此主动调用 updateMenu() 触发一次 DBus AboutToShow
+    menuImporter()->updateMenu(menu);
+    menu->setFixedSize(menu->sizeHint());
+    menu->winId();
+
+    auto *win = window()->windowHandle();
+    if (!win) {
+        return;
+    }
+
+    auto plugin = Plugin::EmbedPlugin::get(win);
+    auto geometry = plugin->pluginPos();
+    auto pluginPopup = Plugin::PluginPopup::get(menu->windowHandle());
+    pluginPopup->setPluginId("application-tray");
+    pluginPopup->setItemKey(id());
+    pluginPopup->setPopupType(Plugin::PluginPopup::PopupTypeMenu);
+    pluginPopup->setX(geometry.x() + offset.x());
+    pluginPopup->setY(geometry.y() + offset.y());
+    menu->show();
+}
+
+void SniTrayProtocolHandler::tryWindowActivation()
+{
+    // 末级兜底：仅在 X11 下通过 EWMH 激活应用窗口（Wayland 下 WindowId 无效，跳过）
+    if (!UTIL->isXAvaliable()) {
+        return;
+    }
+
+    const uint32_t wid = windowId();
+    if (wid == 0) {
+        return;
+    }
+
+    qCDebug(sniTray) << "SNI last-resort: activating X11 window" << wid << "for" << m_id;
+    UTIL->activateWindow(static_cast<xcb_window_t>(wid));
 }
 
 QPair<QString, QString> SniTrayProtocolHandler::serviceAndPath(const QString &servicePath)

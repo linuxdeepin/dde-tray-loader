@@ -48,6 +48,8 @@ public:
     QImage getX11WindowImageNonComposite(const xcb_window_t& window);
     bool getX11WindowPixmapData(const xcb_window_t& window, QByteArray *data);
     void setX11WindowOpacity(const xcb_window_t& window, const double& opacity);
+    // 通过 EWMH (_NET_ACTIVE_WINDOW) 请求窗口管理器激活指定窗口（仅 X11 有效）
+    void activateWindow(const xcb_window_t& window);
     pid_t getWindowPid(const xcb_window_t& window);
     QString getProcExe(const pid_t& pid);
 

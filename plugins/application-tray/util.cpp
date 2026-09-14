@@ -429,6 +429,36 @@ void Util::setX11WindowOpacity(const xcb_window_t& window, const double& opacity
     xcb_flush(m_x11connection);
 }
 
+void Util::activateWindow(const xcb_window_t& window)
+{
+    if (!m_x11connection || window == XCB_WINDOW_NONE) {
+        return;
+    }
+    if (!isValidX11Window(window)) {
+        return;
+    }
+
+    // 先 Map，避免窗口处于最小化/隐藏状态时无法被激活
+    xcb_map_window(m_x11connection, window);
+
+    xcb_client_message_event_t ev;
+    memset(&ev, 0, sizeof(ev));
+    ev.response_type = XCB_CLIENT_MESSAGE;
+    ev.format = 32;
+    ev.window = window;
+    ev.type = getAtomByName(QStringLiteral("_NET_ACTIVE_WINDOW"));
+    ev.data.data32[0] = 1;                // source indication: 1 = 普通应用
+    ev.data.data32[1] = XCB_CURRENT_TIME; // 时间戳
+    ev.data.data32[2] = XCB_NONE;         // 请求方当前活动窗口（无）
+    ev.data.data32[3] = 0;
+    ev.data.data32[4] = 0;
+
+    xcb_send_event(m_x11connection, false, m_rootWindow,
+                   XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT,
+                   reinterpret_cast<char *>(&ev));
+    xcb_flush(m_x11connection);
+}
+
 pid_t Util::getWindowPid(const xcb_window_t& window)
 {
     xcb_res_client_id_spec_t spec = { window, XCB_RES_CLIENT_ID_MASK_LOCAL_CLIENT_PID };

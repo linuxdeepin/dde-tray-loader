@@ -78,6 +78,14 @@ private:
     void init();
     DBusMenuImporter *menuImporter() const;
 
+    // SNI 左键激活与分级 fallback 处理
+    void activateWithFallback(const QPoint &clickPos);
+    void beginActivate(const QString &token, const QPoint &clickPos);
+    void trySecondaryActivate(const QPoint &clickPos);
+    void fallbackToShowMenu(const QPoint &clickPos);
+    void showTrayMenu(const QPoint &offset);
+    void tryWindowActivation();
+
 private:
     QString m_dbusUniqueName;
     QLabel *m_tooltip;
