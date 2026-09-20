@@ -669,31 +669,31 @@
     </message>
     <message>
         <source>monday</source>
-        <translation>Segunda-feira</translation>
+        <translation>segunda-feira</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation>Terça-feira</translation>
+        <translation>terça-feira</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation>Quarta-feira</translation>
+        <translation>quarta-feira</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation>Quinta-feira</translation>
+        <translation>quinta-feira</translation>
     </message>
     <message>
         <source>friday</source>
-        <translation>Sexta-feira</translation>
+        <translation>sexta-feira</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation>Sábado</translation>
+        <translation>sábado</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation>Domingo</translation>
+        <translation>domingo</translation>
     </message>
 </context>
 <context>
