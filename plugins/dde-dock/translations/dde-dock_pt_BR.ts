@@ -669,19 +669,19 @@
     </message>
     <message>
         <source>monday</source>
-        <translation>segunda-feira</translation>
+        <translation>Segunda-feira</translation>
     </message>
     <message>
         <source>tuesday</source>
-        <translation>terça-feira</translation>
+        <translation>Terça-feira</translation>
     </message>
     <message>
         <source>wednesday</source>
-        <translation>quarta-feira</translation>
+        <translation>Quarta-feira</translation>
     </message>
     <message>
         <source>thursday</source>
-        <translation>quinta-feira</translation>
+        <translation>Quinta-feira</translation>
     </message>
     <message>
         <source>friday</source>
