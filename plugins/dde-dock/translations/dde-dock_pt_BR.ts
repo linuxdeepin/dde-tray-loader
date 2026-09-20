@@ -685,15 +685,15 @@
     </message>
     <message>
         <source>friday</source>
-        <translation>sexta-feira</translation>
+        <translation>Sexta-feira</translation>
     </message>
     <message>
         <source>saturday</source>
-        <translation>sábado</translation>
+        <translation>Sábado</translation>
     </message>
     <message>
         <source>sunday</source>
-        <translation>domingo</translation>
+        <translation>Domingo</translation>
     </message>
 </context>
 <context>
