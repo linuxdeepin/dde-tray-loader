@@ -46,6 +46,20 @@ pkg_get_variable(WAYLAND_PROTOCOLS_DATADIR wayland-protocols pkgdatadir)
 add_subdirectory(plugins)
 add_subdirectory(src)
 
+## systemd user units
+# The target (and its instances, pulled in via dde-tray-loader.target.wants)
+# is started by dde-shell@DDE.service through Wants=dde-tray-loader.target.
+# The instance unit is a configure_file template so the loader path follows
+# CMAKE_INSTALL_FULL_LIBEXECDIR instead of being hard-coded.
+configure_file(systemd/dde-tray-loader@.service.in
+    "${CMAKE_CURRENT_BINARY_DIR}/dde-tray-loader@.service" @ONLY)
+install(FILES
+    systemd/dde-tray-loader.target
+    "${CMAKE_CURRENT_BINARY_DIR}/dde-tray-loader@.service"
+    DESTINATION lib/systemd/user)
+install(DIRECTORY systemd/dde-tray-loader.target.wants
+    DESTINATION lib/systemd/user)
+
 configure_file(dde-dock.pc.in dde-dock.pc @ONLY)
 install(FILES ${CMAKE_BINARY_DIR}/dde-dock.pc
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)

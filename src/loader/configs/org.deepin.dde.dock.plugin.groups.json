@@ -1,0 +1,64 @@
+{
+    "magic": "dsg.config.meta",
+    "version": "1.0",
+    "contents": {
+        "selfMaintenanceTrayPlugins": {
+            "value": [
+                "libapplication-tray.so",
+                "libbrightness.so",
+                "libdatetime.so",
+                "libdnd-mode.so",
+                "libeye-comfort-mode.so",
+                "libmedia.so",
+                "libnotification.so",
+                "libonboard.so",
+                "libshutdown.so",
+                "libairplane-mode.so",
+                "libbluetooth.so",
+                "libdock-network-plugin.so",
+                "libdock-wirelesscasting-plugin.so",
+                "libkeyboard-layout.so",
+                "libpower.so",
+                "libsound.so"
+            ],
+            "serial": 0,
+            "flags": [],
+            "name": "self maintenance tray plugins",
+            "name[zh_CN]": "自维护托盘插件",
+            "description": "Tray plugins maintained by their own lifecycle and not restarted on crash. Loaded together in one process group.",
+            "description[zh_CN]": "由自身维护生命周期、崩溃后不自动重启的托盘插件，集中在一个进程组中加载。",
+            "permissions": "readonly",
+            "visibility": "private"
+        },
+        "subprojectTrayPlugins": {
+            "value": [
+                "libdock-clipboard-plugin.so",
+                "libddegrandsearch_dockplugin.so",
+                "libdeepin-screen-recorder-plugin.so",
+                "libdeepin-system-monitor-plugin.so",
+                "libshot-start-plugin.so",
+                "libshot-start-record-plugin.so",
+                "libdde-disk-mount-plugin.so"
+            ],
+            "serial": 0,
+            "flags": [],
+            "name": "subproject tray plugins",
+            "name[zh_CN]": "子项目托盘插件",
+            "description": "Tray plugins maintained by sibling subprojects, isolated in their own process group.",
+            "description[zh_CN]": "由同级子项目维护的托盘插件，独立成组加载以便隔离。",
+            "permissions": "readwrite",
+            "visibility": "private"
+        },
+        "crashProneTrayPlugins": {
+            "value": [],
+            "serial": 0,
+            "flags": [],
+            "name": "crash-prone tray plugins",
+            "name[zh_CN]": "易于崩溃的托盘插件",
+            "description": "Tray plugins known to be unstable, isolated in their own process group so a crash does not affect other plugins.",
+            "description[zh_CN]": "已知不稳定的托盘插件，独立成组加载，崩溃时不影响其他插件。",
+            "permissions": "readwrite",
+            "visibility": "private"
+        }
+    }
+}

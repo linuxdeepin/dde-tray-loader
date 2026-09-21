@@ -46,6 +46,8 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  libkf6windowsystem6,
  dde-daemon (>=6.1.26),
  lastore-daemon (>=5.2.9),
+Breaks:
+ dde-shell (<< 2.0.55),
 Conflicts:
  dde-dock,
  dde-dock-onboard-plugin

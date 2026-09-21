@@ -5,12 +5,14 @@
 #include "setproctitle.h"
 #include "pluginsiteminterface_v2.h"
 #include "pluginmanager.h"
+#include "trayplugingroups.h"
 
 #include <DDBusSender>
 #include <DApplication>
 
 #include <QCommandLineOption>
 #include <QCommandLineParser>
+#include <QCoreApplication>
 
 #include <QStringLiteral>
 
@@ -72,6 +74,21 @@ public:
 
 int main(int argc, char *argv[], char *envp[])
 {
+    // ExecCondition checks membership without initializing the GUI or connecting
+    // to the dock compositor. Exit 1 skips an empty group; 255 reports an error.
+    if (argc > 1 && qstrcmp(argv[1], "--check-group") == 0) {
+        QCoreApplication app(argc, argv);
+        if (argc != 3 || !loader::isValidGroup(QString::fromLocal8Bit(argv[2]))) {
+            qCritical() << "Expected --check-group <valid group name>.";
+            return 255;
+        }
+        bool configOk = false;
+        const auto paths = loader::pluginPathsForGroup(QString::fromLocal8Bit(argv[2]), &configOk);
+        if (!configOk)
+            return 255;
+        return paths.isEmpty() ? 1 : 0;
+    }
+
 #ifndef QT_DEBUG
     // 设置信号处理函数
     struct sigaction sa;
@@ -151,18 +168,50 @@ int main(int argc, char *argv[], char *envp[])
         "Group name for the specified plugin path(s).",
         "group name"
     );
+    QCommandLineOption pluginGroupLoadOption(
+        "group",
+        "Load all plugins belonging to <group name> "
+        "(selfMaintenanceTrayPlugins, subprojectTrayPlugins, "
+        "crashProneTrayPlugins, otherTrayPlugins).",
+        "group name"
+    );
 
     parser.addOption(pluginPathsOption);
     parser.addOption(pluginGroupNameOption);
+    parser.addOption(pluginGroupLoadOption);
     parser.process(app);
 
-    if (!parser.isSet(pluginPathsOption)) {
-        qCritical() << "Error: -p is required.";
-        parser.showHelp(0);
+    if (parser.isSet(pluginPathsOption) == parser.isSet(pluginGroupLoadOption)) {
+        qCritical() << "Error: exactly one of -p or --group is required.";
+        parser.showHelp(1);
     }
 
-    auto paths = parser.value(pluginPathsOption);
-    auto pluginPaths = paths.split(';', Qt::SkipEmptyParts);
+    QStringList pluginPaths;
+    QString pluginGroupName;
+    if (parser.isSet(pluginGroupLoadOption)) {
+        pluginGroupName = parser.value(pluginGroupLoadOption);
+        if (!loader::isValidGroup(pluginGroupName)) {
+            qCritical() << "Error: unknown group" << pluginGroupName
+                        << ". Valid groups:" << loader::SelfMaintenanceGroup
+                        << loader::SubprojectGroup << loader::CrashProneGroup
+                        << loader::OtherGroup;
+            return 1;
+        }
+        bool configOk = false;
+        pluginPaths = loader::pluginPathsForGroup(pluginGroupName, &configOk);
+        if (!configOk) {
+            // Do not mask a config load failure as a successful empty group.
+            qCritical() << "Failed to load group config for" << pluginGroupName;
+            return 2;
+        }
+        if (pluginPaths.isEmpty()) {
+            // Also handle a group becoming empty after ExecCondition ran.
+            qWarning() << "No plugins in group" << pluginGroupName << ", exiting.";
+            return 0;
+        }
+    } else {
+        pluginPaths = parser.value(pluginPathsOption).split(';', Qt::SkipEmptyParts);
+    }
 
 #ifdef QT_DEBUG
     const QDir shellDir(QString("%1/../../plugins/").arg(QCoreApplication::applicationDirPath()));
@@ -183,18 +232,17 @@ int main(int argc, char *argv[], char *envp[])
         return -1;
     }
 
-    QString pluginGroupName;
-    if (parser.isSet(pluginPathsOption)) {
-        pluginGroupName = parser.value(pluginGroupNameOption);
-    }
+    // Display name precedence: explicit -g override, else the --group name
+    // (empty in -p mode), else fall back to the first loaded plugin's name.
+    QString displayGroupName = parser.value(pluginGroupNameOption);
+    if (displayGroupName.isEmpty())
+        displayGroupName = pluginGroupName;
+    if (displayGroupName.isEmpty())
+        displayGroupName = pluginManager.loadedPlugins()[0]->pluginName();
 
-    if (pluginGroupName.isEmpty()) {
-        pluginGroupName = pluginManager.loadedPlugins()[0]->pluginName();
-    }
-
-    app.setApplicationName(pluginGroupName);
-    app.setApplicationDisplayName(pluginGroupName);
-    setproctitle((QStringLiteral("tray plugin: ") + pluginGroupName).toStdString().c_str());
+    app.setApplicationName(displayGroupName);
+    app.setApplicationDisplayName(displayGroupName);
+    setproctitle((QStringLiteral("tray plugin: ") + displayGroupName).toStdString().c_str());
     qunsetenv("QT_SCALE_FACTOR");
     for (auto iter = oldEnvs.begin(); iter != oldEnvs.end(); iter++) {
         if (iter.value().isEmpty()) {

@@ -37,6 +37,8 @@ add_executable(trayplugin-loader
     utils/setproctitle.cpp
     pluginmanager.h
     pluginmanager.cpp
+    trayplugingroups.h
+    trayplugingroups.cpp
     loader.qrc
     dqwaylandplatform.h
     dqwaylandplatform.cpp
@@ -66,6 +68,7 @@ install(TARGETS trayplugin-loader DESTINATION ${CMAKE_INSTALL_LIBEXECDIR})
 dtk_add_config_meta_files(APPID org.deepin.dde.dock FILES ./configs/org.deepin.dde.dock.plugin.common.json) # compat
 dtk_add_config_meta_files(APPID org.deepin.dde.tray-loader FILES ./configs/org.deepin.dde.dock.plugin.common.json)
 dtk_add_config_meta_files(APPID org.deepin.dde.tray-loader FILES "${PLUGIN_INTERACTION_CONFIG_META_FILE}")
+dtk_add_config_meta_files(APPID org.deepin.dde.tray-loader FILES ./configs/org.deepin.dde.dock.plugin.groups.json)
 
 # 安装 .qm 文件
 install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/trayplugin-loader/translations)

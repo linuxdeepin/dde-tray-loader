@@ -1,0 +1,34 @@
+[Unit]
+Description=DDE Tray Plugin Loader (%i)
+Documentation=https://github.com/linuxdeepin/dde-tray-loader
+# Lifetime is bound to the dock shell transitively: the target's
+# BindsTo=dde-shell@DDE.service stops the target (and via PartOf, this
+# instance) whenever the shell stops or crashes, and the shell's
+# Wants=dde-tray-loader.target re-pulls the target (and this instance) on
+# shell restart. No direct BindsTo/After on the shell here — it would be
+# redundant with the target-level coupling.
+PartOf=dde-tray-loader.target
+After=dde-tray-loader.target
+# Match the former dock supervisor: one initial start and at most five crash
+# retries per dock lifetime. dde-shell@DDE.service resets this counter on start.
+StartLimitIntervalSec=infinity
+StartLimitBurst=6
+
+[Service]
+Type=simple
+# dde-shell@DDE.service is Type=dbus with BusName=org.deepin.dde.Dock1,
+# which is only acquired after the dockplugin compositor is ready, so by
+# the time this unit starts it is safe to connect to the dockplugin socket.
+# Empty groups skip ExecStart before any GUI or Wayland initialization.
+ExecCondition=@CMAKE_INSTALL_FULL_LIBEXECDIR@/trayplugin-loader --check-group %i
+ExecStart=@CMAKE_INSTALL_FULL_LIBEXECDIR@/trayplugin-loader --group %i -platform wayland
+# Normal exits (including nonzero codes) and explicit TERM/KILL do not restart.
+Restart=on-abnormal
+RestartPreventExitStatus=SIGTERM SIGKILL
+# systemd treats them as crashes.
+RestartForceExitStatus=SIGHUP SIGINT SIGPIPE
+RestartSec=1s
+Slice=session.slice
+# The loader connects to the dock's internal dockplugin compositor; it must
+# not pick up the outer session compositor configuration.
+UnsetEnvironment=DDE_CURRENT_COMPOSITOR
