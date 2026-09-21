@@ -1,5 +1,8 @@
 usr/libexec/trayplugin-loader
 usr/lib/*/libdde-trayplugin-interface.so.*
+usr/lib/systemd/user/dde-tray-loader.target
+usr/lib/systemd/user/dde-tray-loader@.service
+usr/lib/systemd/user/dde-tray-loader.target.wants/
 usr/share/dde-dock/translations
 usr/share/trayplugin-loader/translations
 usr/share/dsg/configs/*/*.json

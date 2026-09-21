@@ -1,0 +1,10 @@
+[Unit]
+Description=DDE Tray Plugin Loader target
+# Tray plugin processes render into the dock's internal dockplugin Wayland
+# compositor exported by dde-shell. Their lifetime is therefore bound to the
+# dock shell: when the shell stops or crashes, the loader instances are
+# stopped as well and restarted together with the shell.
+BindsTo=dde-shell@DDE.service
+After=dde-shell@DDE.service
+# Stop with the session core without delaying its startup for dock readiness.
+PartOf=dde-session-core.target
