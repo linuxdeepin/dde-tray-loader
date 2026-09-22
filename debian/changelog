@@ -1,3 +1,11 @@
+dde-tray-loader (2.0.41) unstable; urgency=medium
+
+  * chore(i18n): remove redundant ar_EG translations, keep ar (#516)
+  * fix(datetime): guard against empty date format string
+  * feat: add systemd units and plugin groups for tray loader
+
+ -- zhangkun <zhangkun2@uniontech.com>  Tue, 22 Sep 2026 20:45:54 +0800
+
 dde-tray-loader (2.0.40) unstable; urgency=medium
 
   * fix: 修复 SNI 懒加载托盘图标右键菜单无法显示的问题
