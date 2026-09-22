@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -85,6 +85,9 @@ void RegionFormat::setShortDateFormat(const QString &newShortDateFormat)
         format.remove('y');
         format.remove('Y');
     }
+
+    if (format.isEmpty())
+        return;
 
     if (!format.at(0).isLetter()) {
         format.remove(0, 1);
