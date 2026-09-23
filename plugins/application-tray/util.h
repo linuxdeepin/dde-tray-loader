@@ -7,6 +7,7 @@
 #include <QByteArray>
 #include <QHash>
 #include <QImage>
+#include <QSize>
 #include <QSharedPointer>
 #include <QSet>
 #include <QObject>
@@ -44,6 +45,7 @@ public:
     QString getX11WindowName(const xcb_window_t& window);
     bool isValidX11Window(const xcb_window_t& window) const;
     void setX11WindowInputShape(const xcb_window_t& widnow, const QSize& size);
+    void removeX11WindowInputShapeRecord(const xcb_window_t& window);
     uint8_t getWindowVisualDepth(const xcb_window_t& window) const;
     QImage getX11WindowImageNonComposite(const xcb_window_t& window);
     bool getX11WindowPixmapData(const xcb_window_t& window, QByteArray *data);
@@ -84,6 +86,11 @@ private:
 
     QSet<QString> m_currentIds;
     QMutex m_idMutex;
+    // Records the last input shape set per window, used for idempotency:
+    // setting the same shape again triggers Xwayland to recompute enter/leave
+    // and emit new LEAVE_NOTIFY events, forming an event storm (see
+    // XembedProtocol::nativeEventFilter).
+    QHash<xcb_window_t, QSize> m_inputShapes;
 };
 
 }

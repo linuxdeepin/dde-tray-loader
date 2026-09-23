@@ -69,8 +69,44 @@ bool XembedProtocol::nativeEventFilter(const QByteArray &eventType, void *messag
     const auto responseType = XCB_EVENT_RESPONSE_TYPE(ev);
     if (responseType == XCB_LEAVE_NOTIFY) {
         xcb_leave_notify_event_t *lE = (xcb_leave_notify_event_t *)ev;
-        UTIL->setX11WindowInputShape(lE->event, QSize(0, 0));
+
+        // Only handle LEAVE_NOTIFY for windows we actually manage (created or
+        // reparented). Previously every client window's LEAVE_NOTIFY was handled,
+        // so a leave event from any X11 client (wine WeCom, nm-applet, etc.)
+        // triggered setX11WindowInputShape, which in turn caused another
+        // enter/leave recomputation, forming an event-storm infinite loop.
+        const xcb_window_t eventWindow = lE->event;
+        bool managed = false;
+        for (auto it = m_registedItem.cbegin(); it != m_registedItem.cend(); ++it) {
+            auto handler = it.value().dynamicCast<XembedProtocolHandler>();
+            if (handler && handler->ownsX11Window(eventWindow)) {
+                managed = true;
+                break;
+            }
+        }
+        if (!managed) {
+            return false;
+        }
+
+        UTIL->setX11WindowInputShape(eventWindow, QSize(0, 0));
         return true;
+    } else if (responseType == XCB_DESTROY_NOTIFY) {
+        // The embedded client may destroy its icon window asynchronously; the
+        // DBus notification that removes the handler can lag behind by up to
+        // 200 ms. During that window X11 may recycle the destroyed window ID,
+        // so drop ownership synchronously here instead of waiting for the
+        // delayed tray-change callback.
+        auto *dE = reinterpret_cast<xcb_destroy_notify_event_t *>(ev);
+        const xcb_window_t destroyedWindow = dE->window;
+        for (auto it = m_registedItem.cbegin(); it != m_registedItem.cend(); ++it) {
+            auto handler = it.value().dynamicCast<XembedProtocolHandler>();
+            if (handler && handler->ownsX11Window(destroyedWindow)) {
+                handler->invalidate();
+                break;
+            }
+        }
+        // Fall through without consuming the event so FdoSelectionManager can
+        // still observe the destroy and undock the icon.
     }
 
     return false;
@@ -102,6 +138,10 @@ void XembedProtocol::onTrayIconsChanged()
         for (auto alreadyRegistedItem : m_registedItem.keys()) {
             if (!currentRegistedItems.contains(alreadyRegistedItem)) {
                 if (auto value = m_registedItem.value(alreadyRegistedItem, nullptr)) {
+                    auto handler = value.dynamicCast<XembedProtocolHandler>();
+                    if (handler) {
+                        handler->invalidate();
+                    }
                     uint pid = m_item2Pid[alreadyRegistedItem];
                     registeredMap.remove(pid);
                     m_item2Pid.remove(alreadyRegistedItem);
@@ -118,6 +158,9 @@ void XembedProtocol::onRemoveItemByPid(uint pid)
     const auto keys = m_registedItem.keys();
     auto it = std::find_if(keys.begin(), keys.end(), [this, pid] (uint id) { return pid == m_item2Pid[id]; });
     if (it != keys.end()) {
+        if (auto handler = m_registedItem.value(*it).dynamicCast<XembedProtocolHandler>()) {
+            handler->invalidate();
+        }
         m_item2Pid.remove(*it);
         m_registedItem.remove(*it);
     }
@@ -126,6 +169,7 @@ void XembedProtocol::onRemoveItemByPid(uint pid)
 XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent)
     : AbstractTrayProtocolHandler(parent)
     , m_enabled(false)
+    , m_owned(true)
     , m_windowId(id)
     , m_containerWid(0)
     , m_hoverTimer(new QTimer(this))
@@ -162,7 +206,12 @@ XembedProtocolHandler::~XembedProtocolHandler()
 {
     if (m_containerWid) {
         xcb_destroy_window(Util::instance()->getX11Connection(), m_containerWid);
+        Util::instance()->removeX11WindowInputShapeRecord(m_containerWid);
     }
+    // The icon window itself also gets its input shape cached when
+    // nativeEventFilter processes its LEAVE_NOTIFY. Drop that record too, so
+    // a recycled X11 window ID is never mistaken for an already-shaped window.
+    Util::instance()->removeX11WindowInputShapeRecord(m_windowId);
     UTIL->removeUniqueId(m_id);
 }
 
@@ -175,6 +224,30 @@ void XembedProtocolHandler::generateId()
 uint32_t XembedProtocolHandler::windowId() const
 {
     return m_windowId;
+}
+
+bool XembedProtocolHandler::ownsX11Window(const xcb_window_t& window) const
+{
+    // Only recognize the tray icon window we reparented and the container
+    // window we created for it, and only while the handler still owns them.
+    // After invalidate() the embedded icon is gone and X11 may recycle the
+    // window ID, so we must stop claiming ownership.
+    return m_owned && (window == m_windowId || window == m_containerWid);
+}
+
+void XembedProtocolHandler::invalidate()
+{
+    if (!m_owned) {
+        return;
+    }
+    m_owned = false;
+    // Drop the cached input shapes now: X11 may reuse these window IDs, and a
+    // stale "already 0x0" record would make the idempotency guard skip real
+    // shape requests for a new, unrelated window.
+    Util::instance()->removeX11WindowInputShapeRecord(m_windowId);
+    if (m_containerWid) {
+        Util::instance()->removeX11WindowInputShapeRecord(m_containerWid);
+    }
 }
 
 QString XembedProtocolHandler::id() const

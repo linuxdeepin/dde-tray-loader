@@ -269,6 +269,24 @@ bool Util::isValidX11Window(const xcb_window_t& window) const
 
 void Util::setX11WindowInputShape(const xcb_window_t& window, const QSize& size)
 {
+    // Idempotency guard: if this window's input shape is already the value we
+    // set last time, return early. Setting a shape (especially a 0x0 input
+    // shape) triggers Xwayland's miSetShape -> WindowsRestructured ->
+    // enter/leave recomputation, which broadcasts events to clients that
+    // selected LEAVE_NOTIFY. If nativeEventFilter receives that event and
+    // sets the same shape again, it forms a storm of hundreds of thousands
+    // of events per second and spins the CPU.
+    auto it = m_inputShapes.find(window);
+    if (it != m_inputShapes.end() && it.value() == size) {
+        // The stack mode is derived from the shape (non-empty -> ABOVE,
+        // empty -> BELOW), so an unchanged shape also means an unchanged
+        // stack mode. There is no other code path that restacks this window
+        // independently of its shape, hence no separate stacking cache is
+        // required.
+        return;
+    }
+    m_inputShapes.insert(window, size);
+
     xcb_rectangle_t rectangle;
     rectangle.x = 0;
     rectangle.y = 0;
@@ -280,6 +298,11 @@ void Util::setX11WindowInputShape(const xcb_window_t& window, const QSize& size)
     const uint32_t stackData[] = {size.width() > 0 && size.height() > 0 ? XCB_STACK_MODE_ABOVE : XCB_STACK_MODE_BELOW};
     xcb_configure_window(m_x11connection, window, XCB_CONFIG_WINDOW_STACK_MODE, stackData);
     xcb_flush(m_x11connection);
+}
+
+void Util::removeX11WindowInputShapeRecord(const xcb_window_t& window)
+{
+    m_inputShapes.remove(window);
 }
 
 uint8_t Util::getWindowVisualDepth(const xcb_window_t& window) const

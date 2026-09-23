@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -52,6 +52,17 @@ public:
 
     virtual uint32_t windowId() const override;
 
+    // Checks whether an X11 window is managed by this handler (the reparented
+    // icon window or its container). Used by nativeEventFilter to only handle
+    // LEAVE_NOTIFY of its own windows, avoiding shape event storms triggered by
+    // other clients' windows.
+    bool ownsX11Window(const xcb_window_t& window) const;
+
+    // Invalidates ownership when the embedded icon window is destroyed. X11 may
+    // reuse the window ID, so we must stop claiming it and drop the cached
+    // input shape to avoid mismatching a recycled ID.
+    void invalidate();
+
     virtual QString id() const override;
     
     virtual QString title() const override;
@@ -88,6 +99,7 @@ private:
     };
 
     bool m_enabled;
+    bool m_owned;
     uint32_t m_windowId;
     xcb_window_t m_containerWid;
     QPixmap m_icon;
