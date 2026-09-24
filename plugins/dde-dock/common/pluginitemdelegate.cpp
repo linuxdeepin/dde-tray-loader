@@ -53,6 +53,7 @@ void PluginItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &op
         }
     } else {
         textColor = boption.dpalette.brightText().color();
+        textColor.setAlphaF(0.7);
         bgColor = boption.dpalette.brightText().color();
         bgColor.setAlphaF(0.05);
     }
