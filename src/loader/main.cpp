@@ -13,6 +13,7 @@
 #include <QCommandLineOption>
 #include <QCommandLineParser>
 #include <QCoreApplication>
+#include <QElapsedTimer>
 
 #include <QStringLiteral>
 
@@ -74,8 +75,10 @@ public:
 
 int main(int argc, char *argv[], char *envp[])
 {
-    // ExecCondition checks membership without initializing the GUI or connecting
-    // to the dock compositor. Exit 1 skips an empty group; 255 reports an error.
+    QElapsedTimer startupTimer;
+    startupTimer.start();
+    // Retained for callers of the old ExecCondition interface. Check membership
+    // without GUI initialization: 1 skips an empty group, 255 reports an error.
     if (argc > 1 && qstrcmp(argv[1], "--check-group") == 0) {
         QCoreApplication app(argc, argv);
         if (argc != 3 || !loader::isValidGroup(QString::fromLocal8Bit(argv[2]))) {
@@ -205,7 +208,6 @@ int main(int argc, char *argv[], char *envp[])
             return 2;
         }
         if (pluginPaths.isEmpty()) {
-            // Also handle a group becoming empty after ExecCondition ran.
             qWarning() << "No plugins in group" << pluginGroupName << ", exiting.";
             return 0;
         }
@@ -227,29 +229,48 @@ int main(int argc, char *argv[], char *envp[])
 
     PluginManager pluginManager;
     pluginManager.setPluginPaths(pluginPaths);
-    if (!pluginManager.loadPlugins()) {
-        qWarning() << "No valid plugins were loaded.";
-        return -1;
-    }
-
+    // Plugin constructors/init use the private compositor environment. Between
+    // plugins, callbacks and commands must inherit the real session environment,
+    // just as they did after synchronous loading finished.
+    QMap<QByteArray, QByteArray> pluginEnvs;
+    for (auto iter = oldEnvs.cbegin(); iter != oldEnvs.cend(); ++iter)
+        pluginEnvs.insert(iter.key(), qgetenv(iter.key()));
+    pluginEnvs.insert("QT_SCALE_FACTOR", qgetenv("QT_SCALE_FACTOR"));
+    oldEnvs.insert("QT_SCALE_FACTOR", QByteArray());
+    const auto applyEnvs = [](const QMap<QByteArray, QByteArray> &envs) {
+        for (auto iter = envs.cbegin(); iter != envs.cend(); ++iter) {
+            if (iter.value().isEmpty())
+                qunsetenv(iter.key());
+            else
+                qputenv(iter.key(), iter.value());
+        }
+    };
+    QObject::connect(&pluginManager, &PluginManager::pluginLoadStarted, &app, [&] {
+        applyEnvs(pluginEnvs);
+    });
+    QObject::connect(&pluginManager, &PluginManager::pluginLoadFinished, &app, [&] {
+        applyEnvs(oldEnvs);
+    });
     // Display name precedence: explicit -g override, else the --group name
     // (empty in -p mode), else fall back to the first loaded plugin's name.
     QString displayGroupName = parser.value(pluginGroupNameOption);
     if (displayGroupName.isEmpty())
         displayGroupName = pluginGroupName;
-    if (displayGroupName.isEmpty())
-        displayGroupName = pluginManager.loadedPlugins()[0]->pluginName();
-
-    app.setApplicationName(displayGroupName);
-    app.setApplicationDisplayName(displayGroupName);
-    setproctitle((QStringLiteral("tray plugin: ") + displayGroupName).toStdString().c_str());
-    qunsetenv("QT_SCALE_FACTOR");
-    for (auto iter = oldEnvs.begin(); iter != oldEnvs.end(); iter++) {
-        if (iter.value().isEmpty()) {
-            qunsetenv(iter.key());
-        } else {
-            qputenv(iter.key(), iter.value());
+    QObject::connect(&pluginManager, &PluginManager::loadingFinished, &app, [&](bool success) {
+        if (!success) {
+            qWarning() << "No valid plugins were loaded.";
+            app.exit(-1);
+            return;
         }
-    }
+        if (displayGroupName.isEmpty())
+            displayGroupName = pluginManager.loadedPlugins()[0]->pluginName();
+
+        app.setApplicationName(displayGroupName);
+        app.setApplicationDisplayName(displayGroupName);
+        setproctitle((QStringLiteral("tray plugin: ") + displayGroupName).toStdString().c_str());
+        qInfo() << "Tray group initialized:" << displayGroupName << "in" << startupTimer.elapsed() << "ms";
+    });
+    pluginManager.loadPlugins();
+    applyEnvs(oldEnvs);
     return app.exec();
 }
