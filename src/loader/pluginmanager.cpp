@@ -9,6 +9,8 @@
 
 #include <QFileInfo>
 #include <QPluginLoader>
+#include <QElapsedTimer>
+#include <QTimer>
 
 PluginManager::PluginManager(QObject *parent)
     : QObject(parent)
@@ -20,7 +22,7 @@ void PluginManager::setPluginPaths(const QStringList &paths)
     m_pluginPaths = paths;
 }
 
-bool PluginManager::loadPlugins()
+void PluginManager::loadPlugins()
 {
     for (const QString &path : m_pluginPaths) {
         QFileInfo pathInfo(path);
@@ -33,13 +35,28 @@ bool PluginManager::loadPlugins()
         if (pathInfo.isDir()) {
             loadPluginsFromDir(path);
         } else if (pathInfo.isFile()) {
-            loadPlugin(path);
+            m_pendingPluginPaths.append(path);
         } else {
             qWarning() << "Unsupported path type:" << path;
         }
     }
 
-    return !m_loadedPlugins.isEmpty();
+    QTimer::singleShot(0, this, &PluginManager::loadNextPlugin);
+}
+
+void PluginManager::loadNextPlugin()
+{
+    if (m_pendingPluginPaths.isEmpty()) {
+        Q_EMIT loadingFinished(!m_loadedPlugins.isEmpty());
+        return;
+    }
+
+    // Give already initialized plugins a chance to paint and dispatch Wayland
+    // events before loading the next one. All widget work stays on this thread.
+    Q_EMIT pluginLoadStarted();
+    loadPlugin(m_pendingPluginPaths.takeFirst());
+    Q_EMIT pluginLoadFinished();
+    QTimer::singleShot(0, this, &PluginManager::loadNextPlugin);
 }
 
 QVector<PluginsItemInterface *> PluginManager::loadedPlugins() const
@@ -49,6 +66,8 @@ QVector<PluginsItemInterface *> PluginManager::loadedPlugins() const
 
 void PluginManager::loadPlugin(const QString &pluginFilePath)
 {
+    QElapsedTimer timer;
+    timer.start();
     QStringList blacklistedPluginPaths;
     // TODO: use dconfig for this purpose.
     if (qgetenv("XDG_SESSION_TYPE") == "wayland") {
@@ -96,6 +115,7 @@ void PluginManager::loadPlugin(const QString &pluginFilePath)
     qDebug() << "Loaded plugin:" << interface->pluginName();
 
     (void)new dock::WidgetPlugin(interface, this);
+    qInfo() << "Initialized plugin:" << interface->pluginName() << "in" << timer.elapsed() << "ms";
 }
 
 void PluginManager::loadPluginsFromDir(const QString &dirPath)
@@ -112,7 +132,7 @@ void PluginManager::loadPluginsFromDir(const QString &dirPath)
             loadPluginsFromDir(entry.absoluteFilePath());
         } else {
             if (entry.suffix() != "so") continue;
-            loadPlugin(entry.absoluteFilePath());
+            m_pendingPluginPaths.append(entry.absoluteFilePath());
         }
     }
 }
