@@ -42,7 +42,7 @@ QStringList allPluginPaths()
     for (const auto &pluginDir : std::as_const(dirs)) {
         QDir dir(pluginDir);
         if (!dir.exists()) {
-            qCWarning(loaderLog) << "The plugin directory does not exist:" << pluginDir;
+            qCDebug(loaderLog) << "The plugin directory does not exist:" << pluginDir;
             continue;
         }
 
