@@ -152,9 +152,11 @@ int main(int argc, char *argv[], char *envp[])
     for (const auto &path : dataDirs) {
         DPathBuf DPathBuf(path);
         translateDirs << (DPathBuf / "dde-dock/translations").toString();
+        translateDirs << (DPathBuf / "dcc-dock-plugins/translations").toString();
         translateDirs << (DPathBuf / "trayplugin-loader/translations").toString();
     }
     DGuiApplicationHelper::loadTranslator("dde-dock", translateDirs, QList<QLocale>() << QLocale::system());
+    DGuiApplicationHelper::loadTranslator("dcc-dock-plugins", translateDirs, QList<QLocale>() << QLocale::system());
     DGuiApplicationHelper::loadTranslator("trayplugin-loader", translateDirs, QList<QLocale>() << QLocale::system());
 
     QCommandLineParser parser;
