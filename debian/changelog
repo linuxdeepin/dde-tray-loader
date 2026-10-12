@@ -1,3 +1,14 @@
+dde-tray-loader (2.0.42) unstable; urgency=medium
+
+  * fix: update brightness DCI icon to match taskbar SVG
+  * fix: prevent X11 input shape event storm in application tray
+  * fix: prevent tray startup stalls and follow the dock lifecycle
+  * fix: demote missing tray plugin directory log to debug
+  * chore: update DTL version to 2.0.0
+  * chore: update pkg-config include path for tray loader
+
+ -- zhangkun <zhangkun2@uniontech.com>  Mon, 12 Oct 2026 18:14:59 +0800
+
 dde-tray-loader (2.0.41) unstable; urgency=medium
 
   * chore(i18n): remove redundant ar_EG translations, keep ar (#516)
