@@ -5,6 +5,7 @@
 #include "singlequickpanel.h"
 
 #include <QVBoxLayout>
+#include <QEnterEvent>
 #include <QMargins>
 
 #include <DFontSizeManager>
@@ -20,6 +21,7 @@ SignalQuickPanel::SignalQuickPanel(QWidget *parent)
     , m_icon(new CommonIconButton(this))
     , m_description(new DLabel(this))
     , m_active(false)
+    , m_hover(false)
 {
     initUI();
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &SignalQuickPanel::refreshBg);
@@ -52,7 +54,7 @@ void SignalQuickPanel::initUI()
 
 void SignalQuickPanel::setIcon(const QIcon &icon)
 {
-    m_icon->setIcon(icon, Qt::black, Qt::white);
+    m_icon->setIcon(icon, QColor(0, 0, 0, 178), QColor(255, 255, 255, 178));
 }
 
 void SignalQuickPanel::setDescription(const QString &description)
@@ -81,5 +83,36 @@ void SignalQuickPanel::mouseReleaseEvent(QMouseEvent *event)
 void SignalQuickPanel::refreshBg()
 {
     m_description->setForegroundRole(m_icon->activeState() ? QPalette::Highlight : QPalette::NoRole);
+    updateTextColor();
     update();
+}
+
+void SignalQuickPanel::enterEvent(QEnterEvent *event)
+{
+    m_hover = true;
+    m_icon->setParentHover(true);
+    updateTextColor();
+    QWidget::enterEvent(event);
+}
+
+void SignalQuickPanel::leaveEvent(QEvent *event)
+{
+    m_hover = false;
+    m_icon->setParentHover(false);
+    updateTextColor();
+    QWidget::leaveEvent(event);
+}
+
+void SignalQuickPanel::updateTextColor()
+{
+    if (m_active)
+        return;
+
+    bool isLight = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType;
+    QColor color = isLight ? QColor(0, 0, 0) : QColor(255, 255, 255);
+    color.setAlphaF(m_hover ? 1.0 : 0.7);
+
+    QPalette pa = m_description->palette();
+    pa.setColor(QPalette::WindowText, color);
+    m_description->setPalette(pa);
 }
