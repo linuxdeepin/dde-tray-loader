@@ -21,6 +21,7 @@
 #include <xcb/xcb_image.h>
 
 struct _XDisplay;
+class QSocketNotifier;
 
 namespace tray {
 #define UTIL Util::instance()
@@ -71,6 +72,7 @@ private:
         EventQueue
     };
     void dispatchEvents(DispatchEventsMode mode);
+    bool handleX11ConnectionError();
 
     bool isTransparentImage(const QImage &image);
 
@@ -83,6 +85,8 @@ private:
     xcb_connection_t* m_x11connection;
     xcb_window_t m_rootWindow;
     _XDisplay *m_display;
+    QSocketNotifier *m_x11EventNotifier = nullptr;
+    bool m_x11ConnectionFailed = false;
 
     QSet<QString> m_currentIds;
     QMutex m_idMutex;
