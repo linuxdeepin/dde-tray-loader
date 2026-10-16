@@ -179,6 +179,13 @@ SniTrayProtocolHandler::SniTrayProtocolHandler(const QString &sniServicePath, QO
     connect(m_sniInter, &StatusNotifierItem::NewTitle, this, &SniTrayProtocolHandler::titleChanged);
     connect(m_sniInter, &StatusNotifierItem::NewStatus, this, &SniTrayProtocolHandler::statusChanged);
     connect(m_sniInter, &StatusNotifierItem::NewToolTip, this, &SniTrayProtocolHandler::tooltiChanged);
+    connect(m_sniInter, &StatusNotifierItem::NewMenu, this, [this] {
+        m_menuPath = m_sniInter->menu().path();
+        if (m_dbusMenuImporter) {
+            delete m_dbusMenuImporter;
+            m_dbusMenuImporter = nullptr;
+        }
+    });
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, [this](DGuiApplicationHelper::ColorType themeType) {
         Q_UNUSED(themeType)
         if (auto menu = menuImporter()) {
@@ -200,7 +207,6 @@ SniTrayProtocolHandler::~SniTrayProtocolHandler()
 void SniTrayProtocolHandler::init()
 {
     generateId();
-    m_menuPath = m_sniInter->menu().path();
     m_cachedIcon = dbusImageList2QIcon(m_sniInter->iconPixmap());
     m_cachedAttentionIcon = dbusImageList2QIcon(m_sniInter->attentionIconPixmap());
     m_cachedOverlayIcon = dbusImageList2QIcon(m_sniInter->overlayIconPixmap());
@@ -216,7 +222,10 @@ DBusMenuImporter *SniTrayProtocolHandler::menuImporter() const
 {
     if (!m_dbusMenuImporter) {
         auto that = const_cast<SniTrayProtocolHandler *>(this);
-        if (that->m_menuPath == QLatin1String("/NO_DBUSMENU")) {
+        if (that->m_menuPath.isEmpty()) {
+            that->m_menuPath = m_sniInter->menu().path();
+        }
+        if (that->m_menuPath.isEmpty() || that->m_menuPath == QLatin1String("/NO_DBUSMENU")) {
             return nullptr;
         }
         that->m_dbusMenuImporter = new DBusMenu(m_service, m_menuPath, that);

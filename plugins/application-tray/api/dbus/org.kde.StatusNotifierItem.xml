@@ -58,6 +58,7 @@
     <signal name="NewAttentionIcon"/>
     <signal name="NewOverlayIcon"/>
     <signal name="NewToolTip"/>
+    <signal name="NewMenu"/>
     <signal name="NewStatus">
         <arg type="s" name="status"/>
     </signal>
