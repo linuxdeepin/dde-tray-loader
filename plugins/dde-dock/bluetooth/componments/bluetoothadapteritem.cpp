@@ -22,6 +22,30 @@
 #include <QBoxLayout>
 #include <QStandardItemModel>
 
+namespace {
+
+constexpr int DefaultScanIntervalSeconds = 5;
+
+int scanIntervalMs()
+{
+    bool ok = false;
+    int seconds = DConfigHelper::instance()->getConfig(
+        "org.deepin.dde.tray-loader",
+        "org.deepin.dde.dock.plugin.bluetooth",
+        QString(),
+        "scanInterval",
+        DefaultScanIntervalSeconds).toInt(&ok);
+
+    // DConfig does not enforce a range, and QTimer treats 0 as "fire
+    // immediately", which would restart discovery as soon as it finishes.
+    if (!ok || seconds <= 0)
+        seconds = DefaultScanIntervalSeconds;
+
+    return seconds * 1000;
+}
+
+} // namespace
+
 BluetoothDeviceItem::BluetoothDeviceItem(QStyle *style, const Device *device, PluginListView *parent)
     : m_style(style)
     , m_device(device)
@@ -404,9 +428,9 @@ void BluetoothAdapterItem::initUi()
 
 void BluetoothAdapterItem::initConnect()
 {
-    m_scanTimer->setInterval(DConfigHelper::instance()->getConfig("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.bluetooth", "", "scanInterval", 5).toInt() * 1000);
-    DConfigHelper::instance()->bind("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.bluetooth", "", this, "scanInterval", [this] (const QString&, const QVariant&, QObject*) {
-        m_scanTimer->setInterval(DConfigHelper::instance()->getConfig("org.deepin.dde.dock", "org.deepin.dde.dock.plugin.bluetooth", "", "scanInterval", 5).toInt() * 1000);
+    m_scanTimer->setInterval(scanIntervalMs());
+    DConfigHelper::instance()->bind("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.bluetooth", "", this, "scanInterval", [this] (const QString&, const QVariant&, QObject*) {
+        m_scanTimer->setInterval(scanIntervalMs());
     });
     connect(m_scanTimer, &QTimer::timeout, this, [this] {
         if (isVisible())
