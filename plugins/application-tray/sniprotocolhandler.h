@@ -7,6 +7,7 @@
 #include "abstracttrayprotocol.h"
 #include "statusnotifieriteminterface.h"
 #include "statusnotifierwatcherinterface.h"
+#include <QtDBus/QDBusConnectionInterface>
 #include "api/types/dbusimagelist.h"
 
 #include <QMenu>
@@ -33,9 +34,11 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void registedItemChanged();
+    void onServiceOwnerChanged(const QString &name, const QString &oldOwner, const QString &newOwner);
 
 private:
     OrgKdeStatusNotifierWatcherInterface* m_trayManager;
+    QDBusConnectionInterface *m_dbusInterface;
 
     QHash<QString, QSharedPointer<SniTrayProtocolHandler>> m_registedItem;
     QHash<QString, uint> m_item2Pid;
