@@ -1,3 +1,10 @@
+dde-tray-loader (2.0.44) unstable; urgency=medium
+
+  * fix: install the missing bluetooth DConfig meta file (#531)
+  * fix: handle SNI NewMenu signal and empty menu path
+
+ -- zhangkun <zhangkun2@uniontech.com>  Tue, 20 Oct 2026 21:31:32 +0800
+
 dde-tray-loader (2.0.43) unstable; urgency=medium
 
   * i18n: Updates for project Deepin Desktop Environment (#527)
