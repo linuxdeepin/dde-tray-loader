@@ -14,7 +14,6 @@
 #include <QPointer>
 #include <QWindow>
 #include <QScopedPointer>
-#include <QPointer>
 
 namespace Plugin {
 class EmbedPlugin;
