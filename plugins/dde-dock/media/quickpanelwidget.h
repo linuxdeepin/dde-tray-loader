@@ -22,6 +22,8 @@ public:
 
 protected:
     void mouseReleaseEvent(QMouseEvent *event);
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 Q_SIGNALS:
     void clicked();
@@ -30,6 +32,7 @@ Q_SIGNALS:
 private:
     void init();
     void updateUI();
+    void updateTextColor(bool hover);
 
 private:
     MediaController *m_controller;
@@ -39,6 +42,7 @@ private:
     DLabel *m_artistLab;
     CommonIconButton *m_playButton;
     CommonIconButton *m_nextButton;
+    bool m_hover;
 };
 
 #endif
