@@ -35,7 +35,7 @@ public:
     QWidget* itemWidget() const { return m_iconWidget; }
     PowerApplet *popupApplet() const { return m_applet; }
 
-signals:
+Q_SIGNALS:
     void requestContextMenu(const QString &itemKey) const;
     void requestHideApplet();
 

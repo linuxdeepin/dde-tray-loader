@@ -22,7 +22,7 @@ public:
     void setType(Type type);
     void setSwitchFork(bool switchFork);
 
-signals:
+Q_SIGNALS:
     void click();
 
 protected:

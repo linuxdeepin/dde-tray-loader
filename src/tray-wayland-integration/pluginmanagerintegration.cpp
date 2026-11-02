@@ -107,7 +107,7 @@ void PluginManagerIntegration::plugin_manager_v1_theme_changed(const QString &th
 
 void PluginManagerIntegration::xembedWindowMovedCallback()
 {
-    emit xembedWindowMoved();
+    Q_EMIT xembedWindowMoved();
 }
 
 bool PluginManagerIntegration::tryCreatePopupForSubWindow(QWindow *window)

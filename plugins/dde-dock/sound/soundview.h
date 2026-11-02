@@ -38,7 +38,7 @@ public:
     void refreshTips(const bool force = false);
     void setAppletMinHeight(int minHeight);
 
-signals:
+Q_SIGNALS:
     void requestContextMenu() const;
     void requestHideApplet();
 
@@ -46,7 +46,7 @@ protected:
     void resizeEvent(QResizeEvent *e) override;
     bool eventFilter(QObject *watched, QEvent *event) override;
 
-private slots:
+private Q_SLOTS:
     void refresh();
 
 private:

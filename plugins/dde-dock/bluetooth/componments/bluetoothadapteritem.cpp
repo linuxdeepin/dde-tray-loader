@@ -60,12 +60,12 @@ void BluetoothDeviceItem::updateDeviceState(Device::State state)
         m_standardItem->updateState(PluginItemState::Connecting);
     } else if (state == Device::StateConnected) {
         m_standardItem->updateState(PluginItemState::Connected);
-        emit requestTopDeviceItem(m_standardItem);
+        Q_EMIT requestTopDeviceItem(m_standardItem);
     } else {
         m_standardItem->updateState(PluginItemState::NoState);
     }
 
-    emit deviceStateChanged(m_device);
+    Q_EMIT deviceStateChanged(m_device);
 }
 
 BluetoothAdapterItem::BluetoothAdapterItem(Adapter *adapter, QWidget *parent)
@@ -111,7 +111,7 @@ void BluetoothAdapterItem::onConnectDevice(const QModelIndex &index)
             continue;
 
         if (item->standardItem() == deviceitem) {
-            emit connectDevice(item->device(), m_adapter);
+            Q_EMIT connectDevice(item->device(), m_adapter);
         }
     }
 }
@@ -183,7 +183,7 @@ void BluetoothAdapterItem::initData()
     setUnnamedDevicesVisible(m_showUnnamedDevices);
 
     if (m_adapterSwitchEnabled) {
-        emit deviceCountChanged();
+        Q_EMIT deviceCountChanged();
     }
 }
 
@@ -229,7 +229,7 @@ void BluetoothAdapterItem::onDeviceAdded(const Device *device)
     connect(deviceItem, &BluetoothDeviceItem::disconnectDevice, this, [this, deviceItem](){
         // 只有已连接状态才发送connectDevice信号（connectDevice信号连接的槽为取反操作，而非仅仅连接）
         if (deviceItem->device()->state() == Device::StateConnected) {
-            emit connectDevice(deviceItem->device(), m_adapter);
+            Q_EMIT connectDevice(deviceItem->device(), m_adapter);
         }
     });
     connect(device, &Device::pairedChanged, deviceItem, [this, deviceItem](const bool paired) {
@@ -260,7 +260,7 @@ void BluetoothAdapterItem::onDeviceAdded(const Device *device)
         m_myDeviceWidget->setVisible(m_myDeviceModel->rowCount() > 0 && m_adapterStateBtn->isChecked());
 
         if (m_adapterSwitchEnabled) {
-            emit deviceCountChanged();
+            Q_EMIT deviceCountChanged();
         }
     });
 
@@ -277,7 +277,7 @@ void BluetoothAdapterItem::onDeviceAdded(const Device *device)
     }
 
     if (m_adapterSwitchEnabled) {
-        emit deviceCountChanged();
+        Q_EMIT deviceCountChanged();
     }
     m_myDeviceWidget->setVisible(m_myDeviceModel->rowCount() > 0 && m_adapterStateBtn->isChecked());
 }
@@ -318,7 +318,7 @@ void BluetoothAdapterItem::onDeviceRemoved(const Device *device)
             m_myDeviceWidget->setVisible(false);
             m_otherDeviceControlWidget->setExpandState(true);
         }
-        emit deviceCountChanged();
+        Q_EMIT deviceCountChanged();
     }
 }
 
@@ -410,7 +410,7 @@ void BluetoothAdapterItem::initConnect()
     });
     connect(m_scanTimer, &QTimer::timeout, this, [this] {
         if (isVisible())
-            emit requestRefreshAdapter(m_adapter);
+            Q_EMIT requestRefreshAdapter(m_adapter);
         m_scanTimer->stop();
     });
     connect(m_adapter, &Adapter::deviceAdded, this, &BluetoothAdapterItem::onDeviceAdded);
@@ -430,7 +430,7 @@ void BluetoothAdapterItem::initConnect()
     });
 
     connect(m_refreshBtn, &CommonIconButton::clicked, this, [ = ] {
-        emit requestRefreshAdapter(m_adapter);
+        Q_EMIT requestRefreshAdapter(m_adapter);
     });
 
     connect(m_adapter, &Adapter::poweredChanged, this, [ = ](bool state) {
@@ -446,7 +446,7 @@ void BluetoothAdapterItem::initConnect()
         m_otherDeviceListView->setVisible(state && (m_otherDeviceControlWidget->isExpand() || m_myDeviceModel->rowCount() < 1));
         m_adapterStateBtn->setChecked(state);
         m_adapterStateBtn->setEnabled(m_stateBtnEnabled);
-        emit adapterPowerChanged();
+        Q_EMIT adapterPowerChanged();
     });
     connect(m_adapterStateBtn, &DSwitchButton::clicked, this, [ = ](bool state) {
         m_adapterSwitchEnabled = state;
@@ -455,7 +455,7 @@ void BluetoothAdapterItem::initConnect()
         m_otherDeviceListView->setVisible(false);
         m_adapterStateBtn->setEnabled(false);
         m_refreshBtn->setVisible(state);
-        emit requestSetAdapterPower(m_adapter, state);
+        Q_EMIT requestSetAdapterPower(m_adapter, state);
     });
     connect(m_bluetoothInter, &DBusBluetooth::DisplaySwitchChanged, this, [ = ](bool value) {
         m_showUnnamedDevices = value;
@@ -464,7 +464,7 @@ void BluetoothAdapterItem::initConnect()
     connect(m_otherDeviceControlWidget, &DeviceControlWidget::expandStateChanged, this, [this] {
         m_otherDeviceListView->setVisible(m_adapter->powered() && m_otherDeviceControlWidget->isExpand());
         if (m_adapterSwitchEnabled) {
-            emit deviceCountChanged();
+            Q_EMIT deviceCountChanged();
         }
     });
 
@@ -535,12 +535,12 @@ void BluetoothAdapterItem::showEvent(QShowEvent *event)
         m_otherDeviceListView->setVisible(shouldExpand);
     }
     
-    emit deviceCountChanged();
+    Q_EMIT deviceCountChanged();
     if (m_adapter->discover()) {
         return;
     } else if (m_adapter->powered()) {
         // 蓝牙适配器开启了，但是未开启搜索，刷新蓝牙设备列表
-        emit requestRefreshAdapter(m_adapter);
+        Q_EMIT requestRefreshAdapter(m_adapter);
     }
 
     QWidget::showEvent(event);

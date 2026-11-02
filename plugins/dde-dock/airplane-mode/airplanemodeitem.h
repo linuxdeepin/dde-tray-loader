@@ -35,7 +35,7 @@ public:
 protected:
     void resizeEvent(QResizeEvent *e);
 
-signals:
+Q_SIGNALS:
     void airplaneEnableChanged(bool enable);
     void requestHideApplet();
 

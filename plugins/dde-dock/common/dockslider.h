@@ -17,7 +17,7 @@ public:
 
     void setValue(const int value);
 
-signals:
+Q_SIGNALS:
     void requestPlaySoundEffect() const;
 
 protected:
@@ -26,7 +26,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *e) override;
     void wheelEvent(QWheelEvent *e) override;
 
-private slots:
+private Q_SLOTS:
     void onTimeout();
 
 private:

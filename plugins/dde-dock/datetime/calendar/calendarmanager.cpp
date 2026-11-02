@@ -78,7 +78,7 @@ void CalendarManager::setFirstDayOfWeek(int day, bool update)
     m_firstDayOfWeek = day;
     //更新显示界面
     if (update) {
-        emit sidebarFirstDayChanged(day);
+        Q_EMIT sidebarFirstDayChanged(day);
     }
 }
 

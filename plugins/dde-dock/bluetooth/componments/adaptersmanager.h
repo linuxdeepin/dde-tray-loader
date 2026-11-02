@@ -23,11 +23,11 @@ public:
     void adapterRefresh(const Adapter *adapter);
     QList<const Adapter *> adapters();
 
-signals:
+Q_SIGNALS:
     void adapterIncreased(Adapter *adapter);
     void adapterDecreased(Adapter *adapter);
 
-private slots:
+private Q_SLOTS:
     void onAdapterPropertiesChanged(const QString &json);
     void onDevicePropertiesChanged(const QString &json);
 

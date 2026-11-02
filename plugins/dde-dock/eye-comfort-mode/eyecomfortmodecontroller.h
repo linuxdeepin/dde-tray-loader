@@ -33,7 +33,7 @@ Q_SIGNALS:
     void supportColorTemperatureChanged(bool support);
     void globalThemeChanged(const QString &value);
 
-public slots:
+public Q_SLOTS:
     void setGtkTheme(const QString &value);
     // 适配v23接口
     void setGlobalTheme(const QString &value);
@@ -43,7 +43,7 @@ private:
 
     ~EyeComfortModeController() {}
 
-private slots:
+private Q_SLOTS:
     void onPropertiesChanged(const QString &interfaceName, const QVariantMap &changedProperties, const QStringList &invalidatedProperties);
 
 private:

@@ -72,7 +72,7 @@ Q_SIGNALS:
     void sliderValueChanged(int value);
     void panelClicked();
 
-public slots:
+public Q_SLOTS:
     void updateSliderValue(int value);
 
 protected:

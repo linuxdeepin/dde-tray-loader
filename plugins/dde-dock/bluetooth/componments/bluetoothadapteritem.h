@@ -42,11 +42,11 @@ public:
     PluginStandardItem *standardItem() { return m_standardItem; }
     const Device *device() { return m_device; }
 
-public slots:
+public Q_SLOTS:
     // 更新蓝牙设备的连接状态
     void updateDeviceState(Device::State state);
 
-signals:
+Q_SIGNALS:
     void requestTopDeviceItem(PluginStandardItem *item);
     void deviceStateChanged(const Device *device);
     void disconnectDevice();
@@ -147,7 +147,7 @@ public:
     QStringList connectedDevicesName();
     void setStateBtnEnabled(bool);
 
-public slots:
+public Q_SLOTS:
     // 添加蓝牙设备
     void onDeviceAdded(const Device *device);
     // 移除蓝牙设备
@@ -166,7 +166,7 @@ public slots:
 protected:
     void showEvent(QShowEvent *event) override;
 
-signals:
+Q_SIGNALS:
     void adapterPowerChanged();
     void requestSetAdapterPower(Adapter *adapter, bool state);
     void requestRefreshAdapter(Adapter *adapter);

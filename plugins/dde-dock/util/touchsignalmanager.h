@@ -19,7 +19,7 @@ public:
     static TouchSignalManager *instance();
     bool isDragIconPress() const;
 
-signals:
+Q_SIGNALS:
     // 转发后端拖拽图标触控按压信号，当前设计200ms
     void shortTouchPress(int time, double scaleX, double scaleY);
     void touchRelease(double scaleX, double scaleY);
@@ -27,7 +27,7 @@ signals:
     void middleTouchPress(double scaleX, double scaleY);
     void touchMove(double scaleX, double scaleY);
 
-private slots:
+private Q_SLOTS:
     void dealShortTouchPress(int time, double scaleX, double scaleY);
     void dealTouchRelease(double scaleX, double scaleY);
     void dealMiddleTouchPress(double scaleX, double scaleY);

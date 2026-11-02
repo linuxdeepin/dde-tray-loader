@@ -31,15 +31,15 @@ public:
     void setEyeComfortVisible(bool visible);
     void setHeight(int height);
 
-signals:
+Q_SIGNALS:
     void enableChanged(bool enable);
     void requestHideApplet();
     void globalThemeChanged(const QString &globalTheme);
 
-public slots:
+public Q_SLOTS:
     void onGlobalThemeChanged(const QString &value);
 
-private slots:
+private Q_SLOTS:
     void onThemeListClicked(const QModelIndex &index);
 
 private:

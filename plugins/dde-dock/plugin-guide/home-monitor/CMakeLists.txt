@@ -16,6 +16,8 @@ set(PLUGIN_NAME "home-monitor")
 # 设置项目名称
 project(${PLUGIN_NAME})
 
+add_compile_definitions(QT_NO_KEYWORDS)
+
 # 启用 qt moc 的支持
 set(CMAKE_AUTOMOC ON)
 # 启用 qrc 资源文件的支持

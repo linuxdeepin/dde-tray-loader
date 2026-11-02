@@ -19,7 +19,7 @@ public:
 
     inline QStorageInfo * storageInfo() { return m_storageInfo; }
 
-private slots:
+private Q_SLOTS:
     // 用于更新数据的槽函数
     void refreshInfo();
 

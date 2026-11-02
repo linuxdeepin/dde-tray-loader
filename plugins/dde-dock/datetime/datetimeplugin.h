@@ -53,7 +53,7 @@ public:
     virtual QString message(const QString &) override;
     virtual void positionChanged(const Dock::Position position) override;
 
-private slots:
+private Q_SLOTS:
     void updateCurrentTimeString();
     void refreshPluginItemsVisible();
 

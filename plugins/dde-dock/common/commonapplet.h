@@ -25,7 +25,7 @@ public:
     void setDccPage(const QString &first, const QString &second);
     void hideSettingButton();
 
-signals:
+Q_SIGNALS:
     void enableChanged(bool enable);
     void requestHideApplet();
 

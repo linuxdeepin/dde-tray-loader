@@ -69,7 +69,7 @@ void DisplayModel::setMonitors(const QList<QDBusObjectPath> &monitors)
             }
             // 按照名称排序，显示的时候VGA在前，HDMI在后
             std::sort(m_monitors.begin(), m_monitors.end(), std::greater<QString>());
-            emit monitorsChanged(m_monitors);
+            Q_EMIT monitorsChanged(m_monitors);
         }
     });
 }

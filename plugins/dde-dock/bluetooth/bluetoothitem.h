@@ -42,7 +42,7 @@ public:
 protected:
     void resizeEvent(QResizeEvent *event);
 
-signals:
+Q_SIGNALS:
     void noAdapter();
     void justHasAdapter();
     void requestExpand();

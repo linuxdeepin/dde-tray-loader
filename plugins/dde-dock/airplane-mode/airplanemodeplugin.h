@@ -54,7 +54,7 @@ private:
     bool getAirplaneDconfig() const;
     void notifySupportFlagChanged(bool supportFlag);
 
-public slots:
+public Q_SLOTS:
     void refreshAirplaneEnableState();
     void onAirplaneEnableChanged(bool enable);
     void updatePluginVisible();

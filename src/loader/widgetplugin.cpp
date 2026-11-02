@@ -274,7 +274,7 @@ void WidgetPlugin::requestSetAppletVisible(PluginsItemInterface * const itemInte
                 Plugin::EmbedPlugin *plugin = Plugin::EmbedPlugin::get(widget->window()->windowHandle());
                 if (plugin) {
                     qDebug() << "send hide quick panel message";
-                    emit plugin->closeQuickPanel();
+                    Q_EMIT plugin->closeQuickPanel();
                 } else {
                     qWarning() << "plugin is null";
                 }

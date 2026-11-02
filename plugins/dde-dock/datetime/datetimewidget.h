@@ -36,10 +36,10 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
     bool eventFilter(QObject *watched, QEvent *event) override;
 
-signals:
+Q_SIGNALS:
     void requestUpdateGeometry() const;
 
-public slots:
+public Q_SLOTS:
     void set24HourFormat(const bool value);
     void updateDateTimeString();
 

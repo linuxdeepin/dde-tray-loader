@@ -44,7 +44,7 @@ public Q_SLOTS:
 
     void setClickable(bool clickable);
 
-signals:
+Q_SIGNALS:
     void clicked();
 
 protected:

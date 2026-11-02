@@ -42,11 +42,11 @@ public:
     ThemeType getThemeType(const QString &globalTheme);
     void setAppletHeight(int height);
 
-signals:
+Q_SIGNALS:
     void requestHideApplet();
     void requestExpand();
 
-public slots:
+public Q_SLOTS:
     void updateDescription();
 
 protected:

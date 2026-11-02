@@ -18,7 +18,7 @@ public:
     void startRotate();
     void stopRotate();
 
-signals:
+Q_SIGNALS:
     void clicked();
 
 protected:

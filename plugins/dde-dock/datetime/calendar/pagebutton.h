@@ -17,7 +17,7 @@ public:
 
     void setIcon(const QIcon &icon);
 
-signals:
+Q_SIGNALS:
     void clicked();
 
 protected:

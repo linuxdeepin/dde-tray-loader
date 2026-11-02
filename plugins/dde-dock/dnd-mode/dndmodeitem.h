@@ -30,7 +30,7 @@ public:
 
     bool airplaneEnable();
 
-signals:
+Q_SIGNALS:
     void requestHideApplet();
 
 protected:

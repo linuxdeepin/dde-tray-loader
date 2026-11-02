@@ -42,7 +42,7 @@ protected:
 
 public Q_SLOTS:
 
-signals:
+Q_SIGNALS:
     void canCastingChanged(bool canCasting);
     void requestExpand();
     void requestHideApplet();

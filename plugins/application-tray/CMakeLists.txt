@@ -6,6 +6,8 @@ set(PLUGIN_NAME "application-tray")
 
 project(${PLUGIN_NAME})
 
+add_compile_definitions(QT_NO_KEYWORDS)
+
 find_package(PkgConfig REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS Core Gui Widgets DBus)
 if(Qt${QT_VERSION_MAJOR}_VERSION VERSION_GREATER_EQUAL 6.10)

@@ -58,10 +58,10 @@ public:
     //设置选中的日期
     void setSelectedDate(const QDate &date);
 
-signals:
+Q_SIGNALS:
     void jumpButtonClicked();
 
-private slots:
+private Q_SLOTS:
     //日期按键点击事件
     void onKeyButtonClicked(const QDate &date);
     //下一页按钮点击事件
@@ -137,10 +137,10 @@ public:
     inline bool isSelected() { return m_isSelected;}
     inline void setIsSelected(bool isSelected) { m_isSelected = isSelected; update(); }
 
-signals:
+Q_SIGNALS:
     void clicked(const QDate &date);
 
-public slots:
+public Q_SLOTS:
     void onClick();
 
 protected:

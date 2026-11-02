@@ -60,12 +60,12 @@ public:
     DateFormat dateFormat() const;
     void setDateFormat(DateFormat format);
 
-signals:
+Q_SIGNALS:
     void dateFormatChanged(DateFormat format);
     void sidebarFirstDayChanged(int value);
     void weekDayFormatChanged(WeekDayFormat value);
 
-private slots:
+private Q_SLOTS:
     void onWeekBeginsChanged(int value);
     void onDateFormatChanged(int value);
     void onWeekDayFormatChanged(int value);

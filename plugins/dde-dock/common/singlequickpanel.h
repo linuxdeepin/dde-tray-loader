@@ -41,7 +41,7 @@ protected:
 private:
     void initUI();
 
-private slots:
+private Q_SLOTS:
     void refreshBg();
 
 private:

@@ -28,7 +28,7 @@ public:
     void invokeMenuItem(const QString menuId, const bool checked);
     void updateTips();
 
-signals:
+Q_SIGNALS:
     void requestHideApplet();
 
 private:

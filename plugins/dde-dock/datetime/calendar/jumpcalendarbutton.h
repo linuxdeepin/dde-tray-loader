@@ -21,7 +21,7 @@ public:
     void setIcon(const QIcon &icon);
     void setDescription(const QString& description);
 
-signals:
+Q_SIGNALS:
     void clicked();
 
 protected:

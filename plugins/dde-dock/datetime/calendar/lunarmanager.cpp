@@ -43,7 +43,7 @@ void LunarManager::asyncRequestLunar(const QDate& date)
             CaHuangLiDayInfo info;
             info.strJsonToInfo(replyStr, isVaild);
             if (isVaild) {
-                emit lunarInfoReady(info);
+                Q_EMIT lunarInfoReady(info);
             } else {
                 qWarning()<< "parse huangli json error:" << replyStr;
             }

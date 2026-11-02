@@ -114,7 +114,7 @@ void TrayManager1::notifyInited()
 bool TrayManager1::Manage()
 {
     qCDebug(TRAYMGR) << "Manage() called via DBus";
-    emit reclainRequested();
+    Q_EMIT reclainRequested();
     return true;
 }
 
