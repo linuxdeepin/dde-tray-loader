@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2019 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -33,7 +33,7 @@ Q_SIGNALS:
     void supportColorTemperatureChanged(bool support);
     void globalThemeChanged(const QString &value);
 
-public slots:
+public Q_SLOTS:
     void setGtkTheme(const QString &value);
     // 适配v23接口
     void setGlobalTheme(const QString &value);
@@ -43,7 +43,7 @@ private:
 
     ~EyeComfortModeController() {}
 
-private slots:
+private Q_SLOTS:
     void onPropertiesChanged(const QString &interfaceName, const QVariantMap &changedProperties, const QStringList &invalidatedProperties);
 
 private:

@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+# SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 #
 # SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -15,6 +15,8 @@ set(PLUGIN_NAME "home-monitor")
 
 # 设置项目名称
 project(${PLUGIN_NAME})
+
+add_compile_definitions(QT_NO_KEYWORDS)
 
 # 启用 qt moc 的支持
 set(CMAKE_AUTOMOC ON)

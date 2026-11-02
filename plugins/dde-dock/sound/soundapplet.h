@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -49,7 +49,7 @@ public:
     DockSlider* mainSlider();
     void setMinHeight(int minHeight);
 
-private slots:
+private Q_SLOTS:
     void onDefaultSinkChanged();
     void onVolumeChanged(int volume);
     void volumeSliderValueChanged();
@@ -58,7 +58,7 @@ private slots:
     void removePort(const QString& key);
     void addPort(const SoundCardPort* port);
 
-signals:
+Q_SIGNALS:
     void requestHideApplet();
 
 private:

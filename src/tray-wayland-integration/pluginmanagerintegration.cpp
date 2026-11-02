@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -107,7 +107,7 @@ void PluginManagerIntegration::plugin_manager_v1_theme_changed(const QString &th
 
 void PluginManagerIntegration::xembedWindowMovedCallback()
 {
-    emit xembedWindowMoved();
+    Q_EMIT xembedWindowMoved();
 }
 
 bool PluginManagerIntegration::tryCreatePopupForSubWindow(QWindow *window)

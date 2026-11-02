@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -17,7 +17,7 @@ public:
 
     void setValue(const int value);
 
-signals:
+Q_SIGNALS:
     void requestPlaySoundEffect() const;
 
 protected:
@@ -26,7 +26,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *e) override;
     void wheelEvent(QWheelEvent *e) override;
 
-private slots:
+private Q_SLOTS:
     void onTimeout();
 
 private:

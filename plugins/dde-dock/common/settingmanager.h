@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -29,7 +29,7 @@ public:
 public:
     void setPluginDocked(const QString &pluginName, bool docked);
 
-signals:
+Q_SIGNALS:
     void onlyShowPrimaryChanged(bool);
     void alwaysHideDockChanged(bool);
     void toggleDesktopIntervalChanged(int);
@@ -40,7 +40,7 @@ protected:
     explicit SettingManager(QObject *parent = nullptr);
     ~SettingManager();
 
-private slots:
+private Q_SLOTS:
     void onDockConfigChanged(const QString &key);
     void onQuickPanelConfigChanged(const QString &key);
 

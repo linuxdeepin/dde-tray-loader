@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -54,7 +54,7 @@ private:
     bool getAirplaneDconfig() const;
     void notifySupportFlagChanged(bool supportFlag);
 
-public slots:
+public Q_SLOTS:
     void refreshAirplaneEnableState();
     void onAirplaneEnableChanged(bool enable);
     void updatePluginVisible();

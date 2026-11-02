@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -39,7 +39,7 @@ public:
     QString hwAddress() { return m_name; }
     NdSinkState state() { return m_state; }
 
-signals:
+Q_SIGNALS:
     void stateChanged(const NdSinkState state);
     void StatusChanged(int status);
     void NameChanged(const QString &name);
@@ -84,11 +84,11 @@ public:
     bool multiscreensFlag() { return m_hasMultiscreens; }
     void setMultiscreensFlag(bool hasMultiscreens);
 
-public slots:
+public Q_SLOTS:
     void handleMonitorStateChanged(const Monitor::NdSinkState state);
     void onDBusNameOwnerChanged(const QString &name, const QString &oldOwner, const QString &newOwner);
 
-signals:
+Q_SIGNALS:
     void addMonitor(const QString &path, Monitor *monitor);
     void removeMonitor(const QString &path);
     void stateChanged(CastingState state);

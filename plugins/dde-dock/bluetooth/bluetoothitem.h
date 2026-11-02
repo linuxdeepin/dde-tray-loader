@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -42,7 +42,7 @@ public:
 protected:
     void resizeEvent(QResizeEvent *event);
 
-signals:
+Q_SIGNALS:
     void noAdapter();
     void justHasAdapter();
     void requestExpand();

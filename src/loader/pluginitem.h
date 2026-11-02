@@ -37,7 +37,7 @@ public:
 
     int getSpacing() const { return m_spacing; }
 
-signals:
+Q_SIGNALS:
     void recvMouseEvent(int type);
     void sigRequestShutdown(const QString &type);
     void appletOpened(QWidget *applet);

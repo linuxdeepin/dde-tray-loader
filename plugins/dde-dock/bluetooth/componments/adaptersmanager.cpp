@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -161,7 +161,7 @@ void AdaptersManager::onRemoveAdapter(const QString &json)
     if (adapter) {
         m_adapters.remove(id);
         m_adapterIds.removeOne(id);
-        emit adapterDecreased(adapter);
+        Q_EMIT adapterDecreased(adapter);
         adapter->deleteLater();
     }
 }
@@ -222,7 +222,7 @@ void AdaptersManager::adapterAdd(Adapter *adapter, const QJsonObject &adpterObj)
                 const QString replyStr = reply.value();
                 QJsonDocument doc = QJsonDocument::fromJson(replyStr.toUtf8());
                 adapter->initDevicesList(doc);
-                emit this->adapterIncreased(adapter);
+                Q_EMIT this->adapterIncreased(adapter);
             } else {
                 qCWarning(BLUETOOTH) << "Add adapter error: " << call.error().message();
             }

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -42,11 +42,11 @@ public:
     ThemeType getThemeType(const QString &globalTheme);
     void setAppletHeight(int height);
 
-signals:
+Q_SIGNALS:
     void requestHideApplet();
     void requestExpand();
 
-public slots:
+public Q_SLOTS:
     void updateDescription();
 
 protected:

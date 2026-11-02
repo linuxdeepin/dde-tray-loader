@@ -81,7 +81,7 @@ void DatetimeWidget::set24HourFormat(const bool value)
     update();
 
     if (isVisible()) {
-        emit requestUpdateGeometry();
+        Q_EMIT requestUpdateGeometry();
     }
 }
 
@@ -182,7 +182,7 @@ void DatetimeWidget::updateDateTime()
     update();
 
     if (isVisible()) {
-        emit requestUpdateGeometry();
+        Q_EMIT requestUpdateGeometry();
     }
 }
 
@@ -274,7 +274,7 @@ void DatetimeWidget::alignSingleLineBaseline()
 void DatetimeWidget::resizeEvent(QResizeEvent *event)
 {
     if (isVisible())
-        emit requestUpdateGeometry();
+        Q_EMIT requestUpdateGeometry();
 
     QWidget::resizeEvent(event);
 }

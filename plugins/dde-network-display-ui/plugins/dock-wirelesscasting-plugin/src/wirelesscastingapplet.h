@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -40,13 +40,13 @@ public:
     QWidget *refreshButton() { return m_refresh; };
 #endif
 
-public slots:
+public Q_SLOTS:
     void onStateChanged(WirelessCastingModel::CastingState status);
     void onAddMonitor(const QString &path, Monitor *monitor);
     void onRemoveMonitor(const QString &path);
     bool casting() const;
 
-signals:
+Q_SIGNALS:
     void castingChanged(bool casting);
     void requestHideApplet();
 
@@ -105,10 +105,10 @@ public:
     ~StatePanel() Q_DECL_OVERRIDE;
     int infoHeight();
 
-public slots:
+public Q_SLOTS:
     void setState(WirelessCastingModel::CastingState status);
 
-signals:
+Q_SIGNALS:
     void disconnMonitor();
 
 private:

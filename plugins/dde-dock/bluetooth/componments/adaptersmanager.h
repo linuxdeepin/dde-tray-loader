@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -23,11 +23,11 @@ public:
     void adapterRefresh(const Adapter *adapter);
     QList<const Adapter *> adapters();
 
-signals:
+Q_SIGNALS:
     void adapterIncreased(Adapter *adapter);
     void adapterDecreased(Adapter *adapter);
 
-private slots:
+private Q_SLOTS:
     void onAdapterPropertiesChanged(const QString &json);
     void onDevicePropertiesChanged(const QString &json);
 

@@ -108,7 +108,7 @@ void SniTrayProtocol::registedItemChanged()
 
                     m_item2Pid[currentRegistedItem] = pid;
                     if (registeredMap[pid] != SNI)
-                        emit removeXEmbedItemByPid(pid);
+                        Q_EMIT removeXEmbedItemByPid(pid);
                     registeredMap[pid] = SNI;
                     m_registedItem.insert(currentRegistedItem, trayHandler);
                     Q_EMIT AbstractTrayProtocol::trayCreated(trayHandler.get());

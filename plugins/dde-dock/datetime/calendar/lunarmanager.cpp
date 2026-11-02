@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2019 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -43,7 +43,7 @@ void LunarManager::asyncRequestLunar(const QDate& date)
             CaHuangLiDayInfo info;
             info.strJsonToInfo(replyStr, isVaild);
             if (isVaild) {
-                emit lunarInfoReady(info);
+                Q_EMIT lunarInfoReady(info);
             } else {
                 qWarning()<< "parse huangli json error:" << replyStr;
             }

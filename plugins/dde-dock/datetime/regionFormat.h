@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -48,14 +48,14 @@ public:
 
     QString originShortDateFormat() const { return m_originShortDateFormat; }
 
-signals:
+Q_SIGNALS:
     void shortDateFormatChanged() const;
     void longDateFormatChanged() const;
     void shortTimeFormatChanged() const;
     void longTimeFormatChanged() const;
     void localeNameChanged(const QString &localeName);
 
-public slots:
+public Q_SLOTS:
     void onDockPositionChanged(int position);
 
 private:
