@@ -9,6 +9,7 @@ import org.deepin.dtk 1.0 as D
 
 Item {
     id: root
+    Accessible.id: "MusicCard"
 
     implicitWidth: 190
     implicitHeight: 40
@@ -50,6 +51,7 @@ Item {
 
     component MusicActionButton: Item {
         id: button
+        Accessible.id: "MusicActionButton"
 
         property string iconName
         property int layoutIndex
