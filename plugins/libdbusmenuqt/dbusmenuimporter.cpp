@@ -55,6 +55,7 @@ static QAction *createKdeTitle(QAction *action, QWidget *parent)
 {
     QToolButton *titleWidget = new QToolButton(nullptr);
     QFont font = titleWidget->font();
+    titleWidget->setObjectName("menutitle");
     font.setBold(true);
     titleWidget->setFont(font);
     titleWidget->setIcon(action->icon());

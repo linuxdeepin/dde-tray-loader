@@ -119,6 +119,7 @@ void SidebarCalendarWidget::initView()
     for (int i = 0; i < MONTH_METRIC_NUM; ++i) {
         SidebarCalendarKeyButton* button = new SidebarCalendarKeyButton();
         button->setFocusPolicy(Qt::NoFocus);
+        button->setObjectName("calendardatebutton");
         m_keyButtonList.push_back(button);
         m_keyLayout->addWidget(button, i / DAYS_INWEEK, i % DAYS_INWEEK, 1, 1, Qt::AlignCenter);
         connect(button, &SidebarCalendarKeyButton::clicked, this, &SidebarCalendarWidget::onKeyButtonClicked);
