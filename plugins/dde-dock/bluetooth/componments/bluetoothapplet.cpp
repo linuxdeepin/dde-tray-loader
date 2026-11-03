@@ -254,6 +254,7 @@ void BluetoothApplet::initUi()
     m_mainLayout->addWidget(m_airplaneModeWidget);
 
     QToolButton *disableIcon = new QToolButton(m_disableWidget);
+    disableIcon->setObjectName("bluetoothdisabledicon");
     disableIcon->setAttribute(Qt::WA_TransparentForMouseEvents);
     disableIcon->setIcon(QIcon::fromTheme("bluetooth_disable"));
     disableIcon->setIconSize(QSize(96, 96));

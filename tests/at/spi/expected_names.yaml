@@ -111,5 +111,37 @@ widgets:
   source_file: src/loader/quickpluginitem.cpp
   class_name: QuickPluginItem
   line: 32
-qml_elements: []
+- variable: disableIcon
+  type: QToolButton *
+  object_name: bluetoothdisabledicon
+  source_file: plugins/dde-dock/bluetooth/componments/bluetoothapplet.cpp
+  class_name: BluetoothApplet
+  line: 257
+- variable: button
+  type: SidebarCalendarKeyButton *
+  object_name: calendardatebutton
+  source_file: plugins/dde-dock/datetime/calendar/sidebarcalendarwidget.cpp
+  class_name: SidebarCalendarWidget
+  line: 122
+- variable: titleWidget
+  type: QToolButton *
+  object_name: menutitle
+  source_file: plugins/libdbusmenuqt/dbusmenuimporter.cpp
+  class_name: ''
+  line: 58
+qml_elements:
+- element_type: Item
+  id: root
+  accessible_id: MusicCard
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: ''
+  line: 10
+- element_type: Item
+  id: button
+  accessible_id: MusicActionButton
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: ''
+  line: 51
 transient_elements: []
