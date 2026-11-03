@@ -111,5 +111,93 @@ widgets:
   source_file: src/loader/quickpluginitem.cpp
   class_name: QuickPluginItem
   line: 32
-qml_elements: []
+- variable: disableIcon
+  type: QToolButton *
+  object_name: bluetooth disabled icon
+  source_file: plugins/dde-dock/bluetooth/componments/bluetoothapplet.cpp
+  class_name: BluetoothApplet
+  line: 257
+- variable: button
+  type: SidebarCalendarKeyButton *
+  object_name: calendar date button
+  source_file: plugins/dde-dock/datetime/calendar/sidebarcalendarwidget.cpp
+  class_name: SidebarCalendarWidget
+  line: 122
+- variable: titleWidget
+  type: QToolButton *
+  object_name: menu title
+  source_file: plugins/libdbusmenuqt/dbusmenuimporter.cpp
+  class_name: ''
+  line: 58
+qml_elements:
+- element_type: Item
+  id: ''
+  accessible_id: MusicCard
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: ''
+  line: 10
+- element_type: Item
+  id: ''
+  accessible_id: MusicActionButton
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: ''
+  line: 46
+- element_type: MusicActionButton
+  id: ''
+  accessible_id: MusicActionButton_Previous
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: Item
+  line: 261
+- element_type: MusicActionButton
+  id: ''
+  accessible_id: MusicActionButton_PlayPause
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: Item
+  line: 270
+- element_type: MusicActionButton
+  id: ''
+  accessible_id: MusicActionButton_Next
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: Item
+  line: 278
+- element_type: Item
+  id: ''
+  accessible_id: MusicCard
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: ''
+  line: 10
+- element_type: Item
+  id: ''
+  accessible_id: MusicActionButton
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: ''
+  line: 46
+- element_type: MusicActionButton
+  id: ''
+  accessible_id: MusicActionButton_Previous
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: Item
+  line: 261
+- element_type: MusicActionButton
+  id: ''
+  accessible_id: MusicActionButton_PlayPause
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: Item
+  line: 270
+- element_type: MusicActionButton
+  id: ''
+  accessible_id: MusicActionButton_Next
+  accessible_role: ''
+  source_file: plugins/dde-dock/media/resources/qml/MusicCard.qml
+  parent_type: Item
+  line: 278
 transient_elements: []

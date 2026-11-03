@@ -9,6 +9,7 @@ import org.deepin.dtk 1.0 as D
 
 Item {
     id: root
+    Accessible.id: "MusicCard"
 
     implicitWidth: 190
     implicitHeight: 40
@@ -48,8 +49,9 @@ Item {
         onClicked: mediaController.raise()
     }
 
-    component MusicActionButton: Item {
-        id: button
+   component MusicActionButton: Item {
+       id: button
+       Accessible.id: "MusicActionButton"
 
         property string iconName
         property int layoutIndex
@@ -256,25 +258,28 @@ Item {
                 width: root.buttonSize * 3 + root.buttonSpacing * 2
                 height: root.buttonSize
 
-                MusicActionButton {
-                    layoutIndex: 0
-                    hoverDelay: 24
-                    iconName: "play-previous"
+               MusicActionButton {
+                   layoutIndex: 0
+                   Accessible.id: "MusicActionButton_Previous"
+                   hoverDelay: 24
+                   iconName: "play-previous"
                     enabled: mediaController.canGoPrevious
                     onClicked: mediaController.previous()
                 }
 
-                MusicActionButton {
-                    layoutIndex: 1
-                    iconName: mediaController.playing ? "play-pause" : "play-start"
+               MusicActionButton {
+                   layoutIndex: 1
+                   Accessible.id: "MusicActionButton_PlayPause"
+                   iconName: mediaController.playing ? "play-pause" : "play-start"
                     enabled: mediaController.canTogglePlayback
                     onClicked: mediaController.togglePlayback()
                 }
 
-                MusicActionButton {
-                    layoutIndex: 2
-                    hoverDelay: 48
-                    iconName: "play-next"
+               MusicActionButton {
+                   layoutIndex: 2
+                   Accessible.id: "MusicActionButton_Next"
+                   hoverDelay: 48
+                   iconName: "play-next"
                     enabled: mediaController.canGoNext
                     onClicked: mediaController.next()
                 }
