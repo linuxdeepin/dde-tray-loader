@@ -37,9 +37,12 @@ Q_SIGNALS:
 
 protected:
     void mouseReleaseEvent(QMouseEvent *event) override;
+    void enterEvent(QEnterEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     void initUI();
+    void updateTextColor();
 
 private slots:
     void refreshBg();
@@ -48,6 +51,7 @@ private:
     CommonIconButton *m_icon;
     DLabel *m_description;
     bool m_active;
+    bool m_hover;
 };
 
 #endif

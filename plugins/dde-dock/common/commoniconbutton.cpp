@@ -16,9 +16,10 @@ CommonIconButton::CommonIconButton(QWidget *parent)
     , m_refreshTimer(nullptr)
     , m_clickable(false)
     , m_hover(false)
+    , m_parentHover(false)
     , m_state(Default)
-    , m_lightThemeColor(Qt::black)
-    , m_darkThemeColor(Qt::white)
+    , m_lightThemeColor(QColor(0, 0, 0, 178))
+    , m_darkThemeColor(QColor(255, 255, 255, 178))
     , m_activeState(false)
     , m_hoverEnable(true)
     , m_iconSize(QSize())
@@ -87,6 +88,9 @@ void CommonIconButton::updatePalette()
         if (m_lightThemeColor.isValid() && m_darkThemeColor.isValid()) {
             if (!m_activeState) {
                 QColor color = DGuiApplicationHelper::instance()->themeType() == DGuiApplicationHelper::LightType ? m_lightThemeColor : m_darkThemeColor;
+                if (m_hover || m_parentHover) {
+                    color.setAlpha(255);
+                }
                 auto pa = palette();
                 pa.setColor(QPalette::WindowText, color);
                 setPalette(pa);
@@ -111,6 +115,12 @@ void CommonIconButton::setActiveState(bool state)
 void CommonIconButton::setHoverEnable(bool enable)
 {
     m_hoverEnable = enable;
+}
+
+void CommonIconButton::setParentHover(bool hover)
+{
+    m_parentHover = hover;
+    updatePalette();
 }
 
 void CommonIconButton::setIcon(const QString &icon, const QString &fallback, const QString &suffix)
@@ -162,7 +172,7 @@ bool CommonIconButton::event(QEvent *e)
     case QEvent::Leave:
     case QEvent::Enter:
         m_hover = e->type() == QEvent::Enter;
-        update();
+        updatePalette();
         break;
     default:
         break;
