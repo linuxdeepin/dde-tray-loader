@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2019 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -78,7 +78,7 @@ void CalendarManager::setFirstDayOfWeek(int day, bool update)
     m_firstDayOfWeek = day;
     //更新显示界面
     if (update) {
-        emit sidebarFirstDayChanged(day);
+        Q_EMIT sidebarFirstDayChanged(day);
     }
 }
 

@@ -100,7 +100,7 @@ void RegionFormat::setShortDateFormat(const QString &newShortDateFormat)
     if (shortDateFormat == format)
         return;
     shortDateFormat = format;
-    emit shortDateFormatChanged();
+    Q_EMIT shortDateFormatChanged();
 }
 
 QString RegionFormat::getLongDateFormat() const
@@ -113,7 +113,7 @@ void RegionFormat::setLongDateFormat(const QString &newLongDateFormat)
     if (longDateFormat == newLongDateFormat)
         return;
     longDateFormat = newLongDateFormat;
-    emit longDateFormatChanged();
+    Q_EMIT longDateFormatChanged();
 }
 
 QString RegionFormat::getShortTimeFormat() const
@@ -131,7 +131,7 @@ void RegionFormat::setShortTimeFormat(const QString &newShortTimeFormat)
     }
 
     shortTimeFormat = newShortTimeFormat;
-    emit shortTimeFormatChanged();
+    Q_EMIT shortTimeFormatChanged();
 }
 
 QString RegionFormat::getLongTimeFormat() const
@@ -144,7 +144,7 @@ void RegionFormat::setLongTimeFormat(const QString &newLongTimeFormat)
     if (longTimeFormat == newLongTimeFormat)
         return;
     longTimeFormat = newLongTimeFormat;
-    emit longTimeFormatChanged();
+    Q_EMIT longTimeFormatChanged();
 }
 
 QString RegionFormat::getLocaleName() const
@@ -157,7 +157,7 @@ void RegionFormat::setLocaleName(const QString &newLocaleName)
     if (localeName == newLocaleName)
         return;
     localeName = newLocaleName;
-    emit localeNameChanged(localeName);
+    Q_EMIT localeNameChanged(localeName);
 }
 
 void RegionFormat::onDockPositionChanged(int position)

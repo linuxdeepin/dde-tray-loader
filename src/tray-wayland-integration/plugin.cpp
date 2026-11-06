@@ -417,7 +417,7 @@ void PlatformInterfaceProxy::setFontName(const QByteArray &newFontName)
     if (m_fontName == newFontName)
         return;
     m_fontName = newFontName;
-    emit fontNameChanged(newFontName);
+    Q_EMIT fontNameChanged(newFontName);
 }
 
 qreal PlatformInterfaceProxy::fontPointSize() const
@@ -430,7 +430,7 @@ void PlatformInterfaceProxy::setFontPointSize(qreal newFontPointSize)
     if (qFuzzyCompare(m_fontPointSize, newFontPointSize))
         return;
     m_fontPointSize = newFontPointSize;
-    emit fontPointSizeChanged(newFontPointSize);
+    Q_EMIT fontPointSizeChanged(newFontPointSize);
 }
 
 QColor PlatformInterfaceProxy::activeColor() const
@@ -443,7 +443,7 @@ void PlatformInterfaceProxy::setActiveColor(const QColor &newActiveColor)
     if (m_activeColor == newActiveColor)
         return;
     m_activeColor = newActiveColor;
-    emit activeColorChanged(newActiveColor);
+    Q_EMIT activeColorChanged(newActiveColor);
 }
 
 QColor PlatformInterfaceProxy::darkActiveColor() const
@@ -456,7 +456,7 @@ void PlatformInterfaceProxy::setDarkActiveColor(const QColor &newDarkActiveColor
     if (m_darkActiveColor == newDarkActiveColor)
         return;
     m_darkActiveColor = newDarkActiveColor;
-    emit darkActiveColorChanged(newDarkActiveColor);
+    Q_EMIT darkActiveColorChanged(newDarkActiveColor);
 }
 
 QByteArray PlatformInterfaceProxy::themeName() const
@@ -469,7 +469,7 @@ void PlatformInterfaceProxy::setThemeName(const QByteArray &newThemeName)
     if (m_themeName == newThemeName)
         return;
     m_themeName = newThemeName;
-    emit themeNameChanged(newThemeName);
+    Q_EMIT themeNameChanged(newThemeName);
 }
 
 QByteArray PlatformInterfaceProxy::iconThemeName() const
@@ -482,7 +482,7 @@ void PlatformInterfaceProxy::setIconThemeName(const QByteArray &newIconThemeName
     if (m_iconThemeName == newIconThemeName)
         return;
     m_iconThemeName = newIconThemeName;
-    emit iconThemeNameChanged(newIconThemeName);
+    Q_EMIT iconThemeNameChanged(newIconThemeName);
 }
 
 PlatformInterfaceProxy::PlatformInterfaceProxy(QObject *parent)

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -49,7 +49,7 @@ void StateButton::mousePressEvent(QMouseEvent *event)
 {
     QWidget::mousePressEvent(event);
     if (m_switchFork)
-        emit click();
+        Q_EMIT click();
 }
 
 void StateButton::enterEvent(QEnterEvent *event)

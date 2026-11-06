@@ -463,7 +463,7 @@ SidebarCalendarKeyButton::SidebarCalendarKeyButton(QWidget* parent)
  */
 void SidebarCalendarKeyButton::onClick()
 {
-    emit clicked(date());
+    Q_EMIT clicked(date());
 }
 
 void SidebarCalendarKeyButton::mousePressEvent(QMouseEvent* event)

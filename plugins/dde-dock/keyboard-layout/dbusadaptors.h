@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -40,14 +40,14 @@ public:
 
     Keyboard *getCurrentKeyboard();
 
-public slots:
+public Q_SLOTS:
     void onClicked(int button, int x, int y);
 
-signals:
+Q_SIGNALS:
     void layoutChanged(QString text);
     void fcitxStatusChanged(bool running);
 
-private slots:
+private Q_SLOTS:
     void onCurrentLayoutChanged(const QString & value);
     void onUserLayoutListChanged(const QStringList & value);
     void initAllLayoutList();
@@ -55,7 +55,7 @@ private slots:
     void refreshMenuSelection();
     void handleActionTriggered(QAction *action);
 
-private slots:
+private Q_SLOTS:
     void onGSettingsChanged(const QString &key);
     void onFcitxConnected(const QString &service);
     void onFcitxDisconnected(const QString &service);

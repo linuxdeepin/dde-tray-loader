@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -25,7 +25,7 @@ public:
     void setDccPage(const QString &first, const QString &second);
     void hideSettingButton();
 
-signals:
+Q_SIGNALS:
     void enableChanged(bool enable);
     void requestHideApplet();
 

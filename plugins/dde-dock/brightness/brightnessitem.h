@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -28,7 +28,7 @@ public:
     void invokeMenuItem(const QString menuId, const bool checked);
     void updateTips();
 
-signals:
+Q_SIGNALS:
     void requestHideApplet();
 
 private:

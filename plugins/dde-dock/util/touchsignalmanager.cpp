@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -42,18 +42,18 @@ bool TouchSignalManager::isDragIconPress() const
 void TouchSignalManager::dealShortTouchPress(int time, double scaleX, double scaleY)
 {
     m_dragIconPressed = true;
-    emit shortTouchPress(time, scaleX, scaleY);
+    Q_EMIT shortTouchPress(time, scaleX, scaleY);
 }
 
 void TouchSignalManager::dealTouchRelease(double scaleX, double scaleY)
 {
     m_dragIconPressed = false;
-    emit touchRelease(scaleX, scaleY);
+    Q_EMIT touchRelease(scaleX, scaleY);
 }
 
 void TouchSignalManager::dealMiddleTouchPress(double scaleX, double scaleY)
 {
-    emit middleTouchPress(scaleX, scaleY);
+    Q_EMIT middleTouchPress(scaleX, scaleY);
 }
 
 void TouchSignalManager::dealTouchPress(int figerNum, int time, double scaleX, double scaleY)

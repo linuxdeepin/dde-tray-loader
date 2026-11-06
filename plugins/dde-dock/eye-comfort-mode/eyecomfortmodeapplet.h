@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -31,15 +31,15 @@ public:
     void setEyeComfortVisible(bool visible);
     void setHeight(int height);
 
-signals:
+Q_SIGNALS:
     void enableChanged(bool enable);
     void requestHideApplet();
     void globalThemeChanged(const QString &globalTheme);
 
-public slots:
+public Q_SLOTS:
     void onGlobalThemeChanged(const QString &value);
 
-private slots:
+private Q_SLOTS:
     void onThemeListClicked(const QModelIndex &index);
 
 private:

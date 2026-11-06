@@ -435,7 +435,7 @@ bool PluginItem::executeCommand()
         qInfo() << "command: " << command;
 
         if (command == Dock::REQUEST_SHUTDOWN) {
-            emit sigRequestShutdown(QString());
+            Q_EMIT sigRequestShutdown(QString());
             return true;
         }
 

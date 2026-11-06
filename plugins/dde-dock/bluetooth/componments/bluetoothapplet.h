@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2016 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2016 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -42,7 +42,7 @@ public:
 
     DLabel *label() { return m_label; }
 
-signals:
+Q_SIGNALS:
     void clicked();
 
 protected:
@@ -71,14 +71,14 @@ public:
 
     inline bool airplaneModeEnable() const { return m_airplaneModeEnable; }
 
-signals:
+Q_SIGNALS:
     void noAdapter();
     void justHasAdapter();
     void powerChanged(bool state);
     void deviceStateChanged(const Device *device);
     void requestHideApplet();
 
-public slots:
+public Q_SLOTS:
     // 蓝牙适配器增加
     void onAdapterAdded(Adapter *adapter);
     // 蓝牙适配器移除

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -53,7 +53,7 @@ public:
     virtual QString message(const QString &) override;
     virtual void positionChanged(const Dock::Position position) override;
 
-private slots:
+private Q_SLOTS:
     void updateCurrentTimeString();
     void refreshPluginItemsVisible();
 

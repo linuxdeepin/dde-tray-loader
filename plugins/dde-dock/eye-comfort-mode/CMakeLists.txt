@@ -6,6 +6,8 @@ set(PLUGIN_NAME "eye-comfort-mode")
 
 project(${PLUGIN_NAME})
 
+add_compile_definitions(QT_NO_KEYWORDS)
+
 # Sources files
 file(GLOB_RECURSE SRCS
     "*.h"

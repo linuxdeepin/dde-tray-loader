@@ -57,7 +57,7 @@ void Adapter::addDevice(const QJsonObject &deviceObj)
 
     m_devices[id] = device;
 
-    emit deviceAdded(device);
+    Q_EMIT deviceAdded(device);
 }
 
 void Adapter::removeDevice(const QString &deviceId)
@@ -66,7 +66,7 @@ void Adapter::removeDevice(const QString &deviceId)
     auto device = const_cast<Device *>(constDevice);
     if (device) {
         m_devices.remove(deviceId);
-        emit deviceRemoved(device);
+        Q_EMIT deviceRemoved(device);
         delete device;
     }
 }
@@ -100,7 +100,7 @@ void Adapter::updateDevice(const QJsonObject &dviceJson)
         device->setState(state);
         device->setDeviceType(bluetoothDeviceType);
         device->setBattery(battery);
-        emit deviceNameUpdated(device);
+        Q_EMIT deviceNameUpdated(device);
     }
 }
 

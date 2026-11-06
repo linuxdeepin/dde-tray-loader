@@ -75,7 +75,7 @@ QString DBusAdaptors::layout() const
 void DBusAdaptors::setLayout(const QString &str)
 {
     m_currentLayout = str;
-    emit layoutChanged(str);
+    Q_EMIT layoutChanged(str);
 }
 
 Keyboard *DBusAdaptors::getCurrentKeyboard()
@@ -107,7 +107,7 @@ void DBusAdaptors::onCurrentLayoutChanged(const QString &value)
 
     refreshMenuSelection();
 
-    emit layoutChanged(layout());
+    Q_EMIT layoutChanged(layout());
 }
 
 void DBusAdaptors::onUserLayoutListChanged(const QStringList &value)
@@ -116,7 +116,7 @@ void DBusAdaptors::onUserLayoutListChanged(const QStringList &value)
 
     initAllLayoutList();
 
-    emit layoutChanged(layout());
+    Q_EMIT layoutChanged(layout());
 }
 
 void DBusAdaptors::initAllLayoutList()

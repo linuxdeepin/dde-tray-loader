@@ -168,7 +168,7 @@ void BluetoothApplet::onAdapterAdded(Adapter *adapter)
     updateSize();
 
     if (m_adapterItems.size()) {
-        emit justHasAdapter();
+        Q_EMIT justHasAdapter();
     }
 }
 
@@ -178,7 +178,7 @@ void BluetoothApplet::onAdapterRemoved(Adapter *adapter)
     m_adapterItems.value(adapter->id())->deleteLater();
     m_adapterItems.remove(adapter->id());
     if (m_adapterItems.isEmpty()) {
-        emit noAdapter();
+        Q_EMIT noAdapter();
     }
     updateBluetoothPowerState();
     updateSize();
@@ -198,12 +198,12 @@ void BluetoothApplet::updateBluetoothPowerState()
 
     foreach (const auto item, m_adapterItems) {
         if (item->adapter()->powered()) {
-            emit powerChanged(true);
+            Q_EMIT powerChanged(true);
             updateSize();
             return;
         }
     }
-    emit powerChanged(false);
+    Q_EMIT powerChanged(false);
     updateSize();
 }
 

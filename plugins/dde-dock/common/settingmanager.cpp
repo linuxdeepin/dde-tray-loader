@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -131,13 +131,13 @@ void SettingManager::onDockConfigChanged(const QString &key)
         m_showWindowName = dockConfig->value(DCONFIG_SHOW_WINDOW_NAME).toInt();
     } else if (key == DCONFIG_TOGGLE_DESKTOP_INTERVAL) {
         m_toggleDesktopInterval = dockConfig->value(DCONFIG_TOGGLE_DESKTOP_INTERVAL).toInt();
-        emit toggleDesktopIntervalChanged(m_toggleDesktopInterval);
+        Q_EMIT toggleDesktopIntervalChanged(m_toggleDesktopInterval);
     } else if (key == DCONFIG_ALWAYS_HIDE_DOCK) {
         m_alwaysHideDock = dockConfig->value(DCONFIG_ALWAYS_HIDE_DOCK).toBool();
-        emit alwaysHideDockChanged(m_alwaysHideDock);
+        Q_EMIT alwaysHideDockChanged(m_alwaysHideDock);
     } else if (DCONFIG_ENABLE_SHOWDESKTOP == key)
         m_enableShowDesktop = dockConfig->value(DCONFIG_ENABLE_SHOWDESKTOP).toBool();
-        emit enableShowDesktopChanged(m_enableShowDesktop);
+        Q_EMIT enableShowDesktopChanged(m_enableShowDesktop);
 }
 
 void SettingManager::onQuickPanelConfigChanged(const QString &key)

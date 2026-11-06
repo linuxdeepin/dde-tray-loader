@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -19,7 +19,7 @@ public:
 
     inline QStorageInfo * storageInfo() { return m_storageInfo; }
 
-private slots:
+private Q_SLOTS:
     // 用于更新数据的槽函数
     void refreshInfo();
 

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 - 2025 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2019 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #ifndef PAGEBUTTON_H
@@ -17,7 +17,7 @@ public:
 
     void setIcon(const QIcon &icon);
 
-signals:
+Q_SIGNALS:
     void clicked();
 
 protected:

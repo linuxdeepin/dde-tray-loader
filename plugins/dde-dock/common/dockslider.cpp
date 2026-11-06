@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2011 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2011 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -48,7 +48,7 @@ void DockSlider::mouseMoveEvent(QMouseEvent *e)
     DSlider::setValue(normalized);
 
     blockSignals(true);
-    emit valueChanged(normalized);
+    Q_EMIT valueChanged(normalized);
     blockSignals(false);
 }
 
@@ -57,7 +57,7 @@ void DockSlider::mouseReleaseEvent(QMouseEvent *e)
     if (e->button() == Qt::LeftButton)
     {
         m_pressed = false;
-        emit requestPlaySoundEffect();
+        Q_EMIT requestPlaySoundEffect();
     }
 }
 
@@ -73,5 +73,5 @@ void DockSlider::wheelEvent(QWheelEvent *e)
 void DockSlider::onTimeout()
 {
     m_timer->stop();
-    emit requestPlaySoundEffect();
+    Q_EMIT requestPlaySoundEffect();
 }

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -42,7 +42,7 @@ protected:
 
 public Q_SLOTS:
 
-signals:
+Q_SIGNALS:
     void canCastingChanged(bool canCasting);
     void requestExpand();
     void requestHideApplet();
