@@ -21,6 +21,7 @@
 #include <xcb/xcb_image.h>
 
 struct _XDisplay;
+class QSocketNotifier;
 
 namespace tray {
 #define UTIL Util::instance()
@@ -81,6 +82,7 @@ private:
     QHash<QString, xcb_atom_t> m_atoms;
 
     xcb_connection_t* m_x11connection;
+    QSocketNotifier *m_x11SocketNotifier = nullptr;
     xcb_window_t m_rootWindow;
     _XDisplay *m_display;
 

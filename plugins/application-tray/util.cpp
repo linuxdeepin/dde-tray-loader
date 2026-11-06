@@ -45,22 +45,33 @@ Util* Util::instance()
 void Util::dispatchEvents(DispatchEventsMode mode)
 {
     xcb_connection_t *connection = m_x11connection;
-    if (!connection) {
-        qCWarning(TRAYUTIL, "Attempting to dispatch X11 events with no connection");
+    if (!m_x11SocketNotifier || !m_x11SocketNotifier->isEnabled()) {
         return;
     }
 
-    auto pollEventFunc = mode == DispatchEventsMode::Poll ? xcb_poll_for_event : xcb_poll_for_queued_event;
+    if (!xcb_connection_has_error(connection)) {
+        auto pollEventFunc = mode == DispatchEventsMode::Poll ? xcb_poll_for_event : xcb_poll_for_queued_event;
 
-    while (xcb_generic_event_t *event = pollEventFunc(connection)) {
-        qintptr result = 0;
+        while (xcb_generic_event_t *event = pollEventFunc(connection)) {
+            qintptr result = 0;
 
-        QAbstractEventDispatcher *dispatcher = QCoreApplication::eventDispatcher();
-        dispatcher->filterNativeEvent(QByteArrayLiteral("xcb_generic_event_t"), event, &result);
-        free(event);
+            QAbstractEventDispatcher *dispatcher = QCoreApplication::eventDispatcher();
+            dispatcher->filterNativeEvent(QByteArrayLiteral("xcb_generic_event_t"), event, &result);
+            free(event);
+        }
+
+        xcb_flush(connection);
     }
 
-    xcb_flush(connection);
+    // Polling or flushing may discover a disconnect. A hung-up socket stays
+    // readable, so leaving the notifier enabled would spin the GUI thread.
+    if (const int error = xcb_connection_has_error(connection)) {
+        m_x11SocketNotifier->setEnabled(false);
+        disconnect(QCoreApplication::eventDispatcher(), nullptr, this, nullptr);
+        qCWarning(TRAYUTIL) << "X11 connection lost; disabling event dispatch, error:" << error;
+        // Keep the connection alive: KSelectionOwner and XEmbed handlers still
+        // borrow it. Reconnecting also requires rebuilding their X11 resources.
+    }
 }
 
 Util::Util()
@@ -80,8 +91,8 @@ Util::Util()
     xcb_ewmh_init_atoms_replies(&m_ewmh, xcb_ewmh_init_atoms(m_x11connection, &m_ewmh), nullptr);
 
     const int fd = xcb_get_file_descriptor(m_x11connection);
-    QSocketNotifier * qfd = new QSocketNotifier(fd, QSocketNotifier::Read, this);
-    connect(qfd, &QSocketNotifier::activated, this, [this](){
+    m_x11SocketNotifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
+    connect(m_x11SocketNotifier, &QSocketNotifier::activated, this, [this](){
         dispatchEvents(DispatchEventsMode::Poll);
     });
 
@@ -101,6 +112,10 @@ Util::~Util()
 
 bool Util::isXAvaliable()
 {
+    if (!m_x11connection || xcb_connection_has_error(m_x11connection)) {
+        return false;
+    }
+
     static std::once_flag flag;
     static bool avaliable = false;
 
@@ -127,7 +142,7 @@ bool Util::isXAvaliable()
             (ewmh._NET_WM_STATE && ewmh._NET_WM_WINDOW_TYPE);
     });
 
-    return avaliable;
+    return avaliable && !xcb_connection_has_error(m_x11connection);
 }
 
 xcb_connection_t* Util::getX11Connection()

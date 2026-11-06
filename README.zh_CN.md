@@ -45,6 +45,11 @@ Dock 在合成器就绪后注册总线名称，以此提供就绪保证，无需
 执行 `ctest --test-dir build --output-on-failure` 运行事件分发测试。
 测试使用 offscreen 平台、构建目录中的接口库和可写缓存，无需运行中的桌面。
 
+配置时若已安装 `Xvfb`，CTest 还会运行 X11 断线回归测试。测试启动独立的虚拟
+X server，验证正常事件分发，并在关闭该 server 后检查事件循环不再忙轮询，
+覆盖轮询发现断线和其他 XCB 调用先发现连接错误两种情况，不影响实际桌面。
+当前断线处理会停用 X11 事件监听；恢复 XEmbed 托盘需重启对应插件组。
+
 如需验证 systemd 集成，在具备用户 systemd manager 和 `python3-gi` 的环境运行
 `python3 tests/test_systemd_lifecycle.py ../dde-session`。
 此手动测试通过临时模拟单元验证启动、重启、失败恢复及退出顺序，不重启实际桌面服务，

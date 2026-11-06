@@ -35,3 +35,24 @@ add_executable(power-dbus-cache-test EXCLUDE_FROM_ALL
     ../plugins/dde-dock/power/dbus/dbuspower.h)
 target_include_directories(power-dbus-cache-test PRIVATE ../plugins/dde-dock/power/dbus)
 target_link_libraries(power-dbus-cache-test PRIVATE Qt${QT_VERSION_MAJOR}::DBus Dtk${DTK_VERSION_MAJOR}::Core)
+
+# Exercise a real X11 disconnect on a private server without a desktop session.
+find_program(XVFB_EXECUTABLE Xvfb)
+if(XVFB_EXECUTABLE)
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(TRAY_X11_TEST REQUIRED IMPORTED_TARGET
+        x11 xcb xcb-image xcb-composite xcb-shape xcb-util xcb-xtest xcb-res xcb-ewmh)
+    qt_add_executable(tray-x11-disconnect-test
+        x11disconnect.cpp
+        ../plugins/application-tray/util.cpp
+        ../plugins/application-tray/util.h)
+    target_include_directories(tray-x11-disconnect-test PRIVATE ../plugins/application-tray)
+    target_link_libraries(tray-x11-disconnect-test PRIVATE
+        Qt${QT_VERSION_MAJOR}::Gui
+        PkgConfig::TRAY_X11_TEST)
+    add_test(NAME tray-x11-disconnect
+        COMMAND tray-x11-disconnect-test "${XVFB_EXECUTABLE}")
+    add_test(NAME tray-x11-existing-error
+        COMMAND tray-x11-disconnect-test "${XVFB_EXECUTABLE}" --error-before-dispatch)
+    set_tests_properties(tray-x11-disconnect tray-x11-existing-error PROPERTIES TIMEOUT 15)
+endif()
