@@ -105,7 +105,7 @@ void BluetoothAdapterItem::onConnectDevice(const QModelIndex &index)
         return;
     PluginStandardItem *deviceitem = dynamic_cast<PluginStandardItem *>(deviceModel->item(index.row()));
 
-    foreach (const auto item, m_deviceItems) {
+    Q_FOREACH (const auto item, m_deviceItems) {
         // 只有非连接状态才发送connectDevice信号（connectDevice信号连接的槽为取反操作，而非仅仅连接）
         if (!(item->device()->state() == Device::StateUnavailable))
             continue;
@@ -176,7 +176,7 @@ void BluetoothAdapterItem::initData()
     if (m_adapter && !m_adapter->powered())
         return;
 
-    foreach (const auto device, m_adapter->devices()) {
+    Q_FOREACH (const auto device, m_adapter->devices()) {
         if (!m_deviceItems.contains(device))
             onDeviceAdded(device);
     }

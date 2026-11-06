@@ -100,7 +100,7 @@ BluetoothApplet::BluetoothApplet(AdaptersManager *adapterManager, QWidget *paren
 
 bool BluetoothApplet::poweredInitState()
 {
-    foreach (const auto adapter, m_adapterItems) {
+    Q_FOREACH (const auto adapter, m_adapterItems) {
         if (adapter->adapter()->powered()) {
             return true;
         }
@@ -159,7 +159,7 @@ void BluetoothApplet::onAdapterAdded(Adapter *adapter)
     m_adapterItems.insert(adapter->id(), adapterItem);
 
     // 如果开启了飞行模式，置灰蓝牙适配器使能开关
-    foreach (const auto item, m_adapterItems) {
+    Q_FOREACH (const auto item, m_adapterItems) {
         item->setStateBtnEnabled(!m_airPlaneModeInter->enabled());
     }
 
@@ -196,7 +196,7 @@ void BluetoothApplet::updateBluetoothPowerState()
     m_disableWidget->setVisible(m_airplaneModeEnable ? false : isOneDisable);
     m_airplaneModeWidget->setVisible(m_airplaneModeEnable);
 
-    foreach (const auto item, m_adapterItems) {
+    Q_FOREACH (const auto item, m_adapterItems) {
         if (item->adapter()->powered()) {
             Q_EMIT powerChanged(true);
             updateSize();
@@ -297,7 +297,7 @@ void BluetoothApplet::initConnect()
 
     connect(m_airPlaneModeInter, &DBusAirplaneMode::EnabledChanged, this, &BluetoothApplet::setAirplaneModeEnabled);
     connect(m_airPlaneModeInter, &DBusAirplaneMode::EnabledChanged, this, [this](bool enabled) {
-        foreach (const auto item, m_adapterItems) {
+        Q_FOREACH (const auto item, m_adapterItems) {
             item->setStateBtnEnabled(!enabled);
         }
         m_disableWidget->setVisible(false);
@@ -333,7 +333,7 @@ void BluetoothApplet::updateSize()
     int height = 0;
 
     // 各蓝牙适配器高度之和
-    foreach (const auto item, m_adapterItems) {
+    Q_FOREACH (const auto item, m_adapterItems) {
         height += item->sizeHint().height();
     }
     int adapterHeight = height;

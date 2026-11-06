@@ -617,11 +617,11 @@ QString WidgetPlugin::messageCallback(PluginsItemInterfaceV2 *pluginItem, const 
     auto msgType = rootObj.value(Dock::MSG_TYPE);
     if (msgType == Dock::MSG_SUPPORT_FLAG_CHANGED) {
         bool changed = supportFlag(pluginItem);
-        foreach (auto plugin, Plugin::EmbedPlugin::all()) {
+        Q_FOREACH (auto plugin, Plugin::EmbedPlugin::all()) {
             Q_EMIT plugin->pluginSupportFlagChanged(changed);
         }
     } else {
-        foreach (auto plugin, Plugin::EmbedPlugin::all()) {
+        Q_FOREACH (auto plugin, Plugin::EmbedPlugin::all()) {
             if (plugin->pluginId() == pluginItem->pluginName()) {
                 Q_EMIT plugin->requestMessage(msg);
                 break;

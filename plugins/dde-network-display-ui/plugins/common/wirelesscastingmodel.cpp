@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2020 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -103,7 +103,7 @@ void WirelessCastingModel::updateSinkList(const QVariant &sinkList)
 
     bool hasConnected = false;
 
-    foreach (const QDBusObjectPath &var, list) {
+    Q_FOREACH (const QDBusObjectPath &var, list) {
         QString const path = var.path();
         tmpList.append(path);
         if (!m_monitors.contains(path)) {
@@ -208,7 +208,7 @@ void WirelessCastingModel::prepareDbus()
 
         // 先检查是否有无线设备，有无线设备的情况再检查无线设备是否启用
         // 遍历设备列表并检查是否有无线网卡设备
-        foreach (const QDBusObjectPath &devicePath, devices) {
+        Q_FOREACH (const QDBusObjectPath &devicePath, devices) {
             DDBusInterface deviceInterface("org.freedesktop.NetworkManager", devicePath.path(), "org.freedesktop.NetworkManager.Device", QDBusConnection::systemBus());
 
             // 获取设备类型
