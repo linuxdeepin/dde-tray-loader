@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2017 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -38,6 +38,12 @@ static const int FontSizeSixteen = 16;
 static const int FontSizeTwentyfour = 24;
 static const int FontSizeTwenty = 20;
 static const int FontSizeTen = 10;
+
+// 日历弹窗单元格尺寸（逻辑像素，随系统缩放比例自动放大）
+static const int CalendarCellWidth = 48;
+static const int CalendarCellHeight = 56;
+// 弹窗左侧日期详情面板宽度
+static const int CalendarPanelLeftWidth = 250;
 
 };
 

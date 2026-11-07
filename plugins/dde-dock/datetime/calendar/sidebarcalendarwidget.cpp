@@ -18,6 +18,13 @@
 #include <QMouseEvent>
 #include <QScreen>
 #include <QJsonObject>
+#include <QFontMetrics>
+
+// 初一的农历月名颜色（蓝色标记）
+static const QColor LunarMonthBlue(0, 129, 255);
+// 调休角标颜色：休-绿色，班-红色
+static const QColor HolidayRestColor(46, 160, 67);
+static const QColor HolidayWorkColor(233, 68, 68);
 
 SidebarCalendarWidget::SidebarCalendarWidget(RegionFormat *regionFormat, QWidget* parent)
     : QWidget(parent)
@@ -53,22 +60,31 @@ SidebarCalendarWidget::SidebarCalendarWidget(RegionFormat *regionFormat, QWidget
 void SidebarCalendarWidget::initView()
 {
     setFocusPolicy(Qt::NoFocus);
-    setFixedSize(500, 300);
+    // 面板尺寸：左侧日期详情面板宽度 + 6 行 7 列日期网格，再加上右侧布局的边距。
+    // 全部使用逻辑像素，缩放时由 Qt 按系统缩放比例自动放大
+    const int gridW = DDECalendar::CalendarCellWidth * DAYS_INWEEK;
+    const int gridH = DDECalendar::CalendarCellHeight * WEEKS_NUM;
+    const int layoutHMargin = 5 + 15;   // rightLayout 左右边距
+    const int layoutVMargin = 5 + 15;   // rightLayout 上下边距
+    const int headHeight = 30;          // m_headWidget 最小高度
+    const int weekHeight = 36;          // m_weekWidget 最小高度
+    const int headSpacing = 6;          // 头部上方的间隔
+    setFixedSize(DDECalendar::CalendarPanelLeftWidth + gridW + layoutHMargin,
+                 layoutVMargin + headSpacing + headHeight + weekHeight + gridH);
     QVBoxLayout *leftLayout = new QVBoxLayout;
     QVBoxLayout *rightLayout = new QVBoxLayout;
 
-    DFontSizeManager::instance()->bind(m_weekLabel, DFontSizeManager::T5, 70);
-    DFontSizeManager::instance()->bind(m_leftdateLabel, DFontSizeManager::T5, 70);
-    DFontSizeManager::instance()->bind(m_lunarLabel, DFontSizeManager::T6, 62);
-    DFontSizeManager::instance()->bind(m_lunarDetailLabel, DFontSizeManager::T6, 62);
+    DFontSizeManager::instance()->bind(m_weekLabel, DFontSizeManager::T4, 70);
+    DFontSizeManager::instance()->bind(m_leftdateLabel, DFontSizeManager::T4, 70);
+    DFontSizeManager::instance()->bind(m_lunarLabel, DFontSizeManager::T4, 62);
+    DFontSizeManager::instance()->bind(m_lunarDetailLabel, DFontSizeManager::T5, 62);
 
     m_jumpCalendarButton->setIcon(QIcon::fromTheme("open-calendar"));
     m_jumpCalendarButton->setDescription(tr("Open the calendar"));
     m_jumpCalendarButton->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     m_jumpCalendarButton->setFixedWidth(m_jumpCalendarButton->sizeHint().width());
 
-    m_lunarDetailLabel->setElideMode(Qt::TextElideMode::ElideRight);
-    DToolTip::setToolTipShowMode(m_lunarDetailLabel, DToolTip::ShowWhenElided);
+    m_lunarDetailLabel->setWordWrap(true);
 
     leftLayout->setSpacing(0);
     leftLayout->addStretch(1);
@@ -83,7 +99,7 @@ void SidebarCalendarWidget::initView()
     leftLayout->addWidget(m_jumpCalendarButton);
     leftLayout->setContentsMargins(20, 0, 10, 20);
 
-    DFontSizeManager::instance()->bind(m_dateLabel, DFontSizeManager::T5, 65);
+    DFontSizeManager::instance()->bind(m_dateLabel, DFontSizeManager::T3, 65);
     m_nextPage->setIcon(DStyle().standardIcon(QStyle::SP_ArrowRight));
     m_previousPage->setIcon(DStyle().standardIcon(QStyle::SP_ArrowLeft));
 
@@ -109,18 +125,20 @@ void SidebarCalendarWidget::initView()
     m_weekWidget->setAutoFontSizeByWindow(false);
     m_weekWidget->setObjectName("WeekWidget");
     m_weekWidget->setFirstDay(Qt::Sunday);
-    m_weekWidget->setMinimumHeight(20);
-    DFontSizeManager::instance()->bind(m_weekWidget, DFontSizeManager::T6, 60);
+    m_weekWidget->setMinimumHeight(weekHeight);
+    DFontSizeManager::instance()->bind(m_weekWidget, DFontSizeManager::T5, 60);
 
     m_keyLayout->setContentsMargins(0, 0, 0, 0);
     m_keyLayout->setSpacing(0);
     m_keyWidget->setLayout(m_keyLayout);
+    // 日期网格固定为 6 行 7 列，单元格尺寸由 constants.h 决定，行列等分
+    m_keyWidget->setFixedSize(gridW, gridH);
     //循坏实例化6*7个日期按键
     for (int i = 0; i < MONTH_METRIC_NUM; ++i) {
         SidebarCalendarKeyButton* button = new SidebarCalendarKeyButton();
         button->setFocusPolicy(Qt::NoFocus);
         m_keyButtonList.push_back(button);
-        m_keyLayout->addWidget(button, i / DAYS_INWEEK, i % DAYS_INWEEK, 1, 1, Qt::AlignCenter);
+        m_keyLayout->addWidget(button, i / DAYS_INWEEK, i % DAYS_INWEEK);
         connect(button, &SidebarCalendarKeyButton::clicked, this, &SidebarCalendarWidget::onKeyButtonClicked);
     }
 
@@ -136,7 +154,7 @@ void SidebarCalendarWidget::initView()
     // 为设置左右比例和固定大小，使用widget包起来
     m_leftWidget->setLayout(leftLayout);
     m_rightWidget->setLayout(rightLayout);
-    m_leftWidget->setMinimumWidth(230);
+    m_leftWidget->setMinimumWidth(DDECalendar::CalendarPanelLeftWidth);
     updateBackground();
 
     mainLayout->addWidget(m_leftWidget);
@@ -177,6 +195,7 @@ void SidebarCalendarWidget::initConnection()
                                     + info.mGanZhiMonth + tr("m") + " "
                                     + info.mGanZhiDay + tr("d"));
     });
+    connect(LunarManager::instace(), &LunarManager::monthInfoReady, this, &SidebarCalendarWidget::onMonthInfoReady);
 }
 
 /**
@@ -234,6 +253,14 @@ void SidebarCalendarWidget::setDate(const QDate &date)
 
     //计算当前月日历第一天该显示的时间
     QDate dateInMonth = firstDateInMonth.addDays(-(day - m_firstday + DAYS_INWEEK) % DAYS_INWEEK);
+
+    //网格首尾可能落在前后月，把网格覆盖到的月份（最多 3 个）的农历/节气/节假日/调休数据一起请求
+    m_gridMonths.clear();
+    const QDate lastVisibleDate = dateInMonth.addDays(MONTH_METRIC_NUM - 1);
+    for (QDate month(dateInMonth.year(), dateInMonth.month(), 1); month <= lastVisibleDate; month = month.addMonths(1)) {
+        m_gridMonths.append(month);
+        LunarManager::instace()->requestMonth(month);
+    }
     for (SidebarCalendarKeyButton* btn : m_keyButtonList) {
         btn->setDate(dateInMonth);
 
@@ -241,9 +268,33 @@ void SidebarCalendarWidget::setDate(const QDate &date)
         btn->setIsThisMonth(dateInMonth.month() == m_displayedMonth.month());
         btn->setIsSelected(dateInMonth == m_selectedData);
 
+        const auto infoIt = m_dayInfos.constFind(dateInMonth);
+        if (infoIt != m_dayInfos.constEnd())
+            btn->setDayInfo(infoIt.value());
+        else
+            btn->clearDayInfo();
+
         dateInMonth = dateInMonth.addDays(1);
     }
     update();
+}
+
+void SidebarCalendarWidget::onMonthInfoReady(const QDate &month, const QMap<QDate, CalendarDayInfo> &infos)
+{
+    // 已翻页、或不属于当前网格的月份，忽略过期数据
+    if (!m_gridMonths.contains(month))
+        return;
+
+    for (auto it = infos.constBegin(); it != infos.constEnd(); ++it)
+        m_dayInfos.insert(it.key(), it.value());
+
+    for (SidebarCalendarKeyButton *btn : m_keyButtonList) {
+        const auto infoIt = m_dayInfos.constFind(btn->date());
+        if (infoIt != m_dayInfos.constEnd())
+            btn->setDayInfo(infoIt.value());
+        else
+            btn->clearDayInfo();
+    }
 }
 
 void SidebarCalendarWidget::updateBackground()
@@ -454,7 +505,30 @@ SidebarCalendarKeyButton::SidebarCalendarKeyButton(QWidget* parent)
     , m_isSelected(false)
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    setMinimumHeight(35);
+    setMinimumSize(40, 40);
+}
+
+void SidebarCalendarKeyButton::setDayInfo(const CalendarDayInfo &info)
+{
+    // 非中文环境不显示农历/节气/节日/调休（与左侧农历面板的显隐规则一致，数据本身也只有中文）
+    if (QLocale::system().language() != QLocale::Language::Chinese) {
+        clearDayInfo();
+        return;
+    }
+
+    m_dayInfo = info;
+    m_hasDayInfo = true;
+    bool isLunarMonthName = false;
+    setToolTip(resolveInfoText(isLunarMonthName));
+    update();
+}
+
+void SidebarCalendarKeyButton::clearDayInfo()
+{
+    m_hasDayInfo = false;
+    m_dayInfo = CalendarDayInfo();
+    setToolTip(QString());
+    update();
 }
 
 /**
@@ -498,70 +572,180 @@ void SidebarCalendarKeyButton::mouseMoveEvent(QMouseEvent* event)
     }
 }
 
+bool SidebarCalendarKeyButton::event(QEvent *event)
+{
+    // 单元格信息（农历/节气/节日）显示不全时，悬停用 tooltip 显示完整文本
+    if (event->type() == QEvent::ToolTip) {
+        QHelpEvent *helpEvent = static_cast<QHelpEvent*>(event);
+        QToolTip::showText(helpEvent->globalPos(), toolTip(), this);
+        event->accept();
+        return true;
+    }
+    return QPushButton::event(event);
+}
+
 void SidebarCalendarKeyButton::paintEvent(QPaintEvent* event)
 {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
 
-    qreal w = width();
-    qreal h = height();
-    const qreal r = w > h ? h : w;
-    QRectF rectf(qRound((w - r) / 2), qRound((h - r) / 2), r, r); //绘制区域
-
-    QFont font;
-    font.setPixelSize(DDECalendar::FontSizeFourteen);
-    painter.setFont(font);
+    const qreal w = width();
+    const qreal h = height();
 
     QStyleOption opt;
     opt.initFrom(this);
     auto pa = DPaletteHelper::instance()->palette(this);
 
-    if (opt.state & QStyle::StateFlag::State_MouseOver) {
-        painter.setPen(Qt::NoPen);
-        auto color = pa.windowText().color();
-        color.setAlphaF(0.1);
-        painter.setBrush(color);
-        painter.drawRoundedRect(rectf.marginsRemoved(
-                                    QMargins(RECT_MARGINS,
-                                             RECT_MARGINS,
-                                             RECT_MARGINS,
-                                             RECT_MARGINS)
-                                    ), ROUND_CORNER, ROUND_CORNER);
-        painter.setPen(pa.windowText().color());
-    }
+    //单元格绘制区域，内缩 0.5px 避免圆角被裁切
+    const QRectF cellRect(0.5, 0.5, w - 1, h - 1);
+    const QMargins innerMargin(RECT_MARGINS, RECT_MARGINS, RECT_MARGINS, RECT_MARGINS);
 
-    const QString &text = QString::number(m_date.day());
+    QColor dayColor = pa.windowText().color();
+    QColor infoColor = dayColor;
 
     if (m_isToday) {
-       painter.setPen(Qt::NoPen);
-       painter.setBrush(pa.highlight());
-       //绘制高亮背景
-       painter.drawRoundedRect(rectf.marginsRemoved(
-                                   QMargins(RECT_MARGINS,
-                                            RECT_MARGINS,
-                                            RECT_MARGINS,
-                                            RECT_MARGINS)
-                                   ), ROUND_CORNER, ROUND_CORNER);
-       //设置高亮下的字体颜色
-       painter.setPen(pa.highlightedText().color());
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(pa.highlight());
+        //绘制高亮背景
+        painter.drawRoundedRect(cellRect.marginsRemoved(innerMargin), ROUND_CORNER, ROUND_CORNER);
+        //设置高亮下的字体颜色
+        dayColor = pa.highlightedText().color();
+        infoColor = dayColor;
     } else if (m_isSelected) {
         QPen pen;
         pen.setColor(pa.highlight().color());
         pen.setWidth(RECT_PENWIDTH);
         painter.setPen(pen);
-        //绘制高亮背景
-        painter.drawRoundedRect(rectf.adjusted(RECT_PENWIDTH,
-                                               RECT_PENWIDTH,
-                                               -RECT_PENWIDTH,
-                                               -RECT_PENWIDTH)
+        painter.setBrush(Qt::NoBrush);
+        //绘制选中边框
+        painter.drawRoundedRect(cellRect.adjusted(RECT_PENWIDTH,
+                                                  RECT_PENWIDTH,
+                                                  -RECT_PENWIDTH,
+                                                  -RECT_PENWIDTH)
                                 , ROUND_CORNER, ROUND_CORNER);
-    } else if (!m_isThisMonth) {
-        //设置正常显示状态下的字体颜色
-        painter.setOpacity(0.3);
-    } else {
-        painter.setPen(pa.windowText().color());
+    } else if (opt.state & QStyle::StateFlag::State_MouseOver) {
+        painter.setPen(Qt::NoPen);
+        auto color = pa.windowText().color();
+        color.setAlphaF(0.1);
+        painter.setBrush(color);
+        painter.drawRoundedRect(cellRect.marginsRemoved(innerMargin), ROUND_CORNER, ROUND_CORNER);
     }
-    painter.drawText(rectf, text, QTextOption(Qt::AlignCenter));
 
-    QWidget::paintEvent(event);
+    //非本月日期整体淡化，但农历信息仍然保持可读
+    if (!m_isThisMonth && !m_isToday)
+        painter.setOpacity(0.45);
+
+    //上半区：公历日期，有休/班角标时和角标并排整体居中
+    QFont dayFont;
+    dayFont.setPixelSize(DDECalendar::FontSizeFourteen);
+    const QFontMetricsF dayMetrics(dayFont);
+    painter.setFont(dayFont);
+    painter.setPen(dayColor);
+
+    const QString dayStr = QString::number(m_date.day());
+    const bool showBadge = (m_hasDayInfo && m_dayInfo.holidayStatus != 0);
+    const qreal sideMargin = 4.0;      //农历/角标与单元格左右边缘的间距
+    const qreal blockGap = 3.0;        //公历与农历之间的间距
+    const qreal badgeWidth = 14.0;     //休/班角标宽度
+    const qreal dayBlockHeight = dayMetrics.height();
+
+    qreal dayBlockWidth = dayMetrics.horizontalAdvance(dayStr);
+    if (showBadge)
+        dayBlockWidth += badgeWidth;
+
+    //下半区：农历/节气/节日/农历月名
+    bool isLunarMonthName = false;
+    const QString infoText = resolveInfoText(isLunarMonthName);
+
+    //超过 3 个字按每行 3 个字折行，最多两行，超出部分省略
+    QStringList infoLines;
+    if (!infoText.isEmpty()) {
+        infoLines << infoText.left(3);
+        if (infoText.size() > 3)
+            infoLines << (infoText.size() > 6 ? infoText.mid(3, 2) + "…" : infoText.mid(3));
+    }
+
+    //字号自适应：单元格放不下就逐级缩小
+    const int minInfoFontPx = 4;
+    int infoFontPx = DDECalendar::FontSizeTwelve;
+    QFont infoFont;
+    infoFont.setPixelSize(infoFontPx);
+    QFontMetrics infoMetrics(infoFont);
+    const qreal infoAvailWidth = w - sideMargin * 2;
+    if (!infoLines.isEmpty()) {
+        auto linesFit = [&infoLines, infoAvailWidth, h](const QFontMetrics &fm) {
+            qreal maxLineWidth = 0;
+            for (const QString &line : infoLines)
+                maxLineWidth = qMax(maxLineWidth, qreal(fm.horizontalAdvance(line)));
+            return maxLineWidth <= infoAvailWidth && fm.height() * infoLines.size() <= h;
+        };
+        while (infoFontPx > minInfoFontPx && !linesFit(infoMetrics)) {
+            --infoFontPx;
+            infoFont.setPixelSize(infoFontPx);
+            infoMetrics = QFontMetrics(infoFont);
+        }
+    }
+
+    //整体（公历 + 间隙 + 农历）在单元格内垂直居中
+    const qreal infoLineHeight = infoLines.isEmpty() ? 0 : infoMetrics.height();
+    const qreal contentHeight = dayBlockHeight
+            + (infoLines.isEmpty() ? 0 : blockGap + infoLineHeight * infoLines.size());
+    const qreal contentTop = (h - contentHeight) / 2.0;
+    const QRectF dayBlockRect((w - dayBlockWidth) / 2.0, contentTop, dayBlockWidth, dayBlockHeight);
+
+    //日期数字左对齐在自己的块里，剩余宽度留给角标
+    QRectF dateRect = dayBlockRect;
+    if (showBadge)
+        dateRect.setRight(dateRect.right() - badgeWidth);
+    painter.drawText(dateRect, Qt::AlignLeft | Qt::AlignVCenter, dayStr);
+
+    //绘制休/班角标
+    if (showBadge) {
+        QFont badgeFont;
+        badgeFont.setPixelSize(DDECalendar::FontSizeTwelve);
+        painter.setFont(badgeFont);
+        const bool isRest = (m_dayInfo.holidayStatus == 1);
+        painter.setPen(m_isToday ? infoColor : (isRest ? HolidayRestColor : HolidayWorkColor));
+
+        QRectF badgeRect = dayBlockRect;
+        badgeRect.setLeft(badgeRect.right() - badgeWidth);
+        painter.drawText(badgeRect, Qt::AlignCenter, isRest ? tr("休") : tr("班"));
+    }
+
+    //绘制农历/节气/节日/农历月名：公历下方水平居中
+    if (!infoLines.isEmpty()) {
+        painter.setFont(infoFont);
+        painter.setPen(isLunarMonthName ? LunarMonthBlue : infoColor);
+        for (int i = 0; i < infoLines.size(); ++i) {
+            const QRectF lineRect(sideMargin,
+                                  dayBlockRect.bottom() + blockGap + i * infoLineHeight,
+                                  infoAvailWidth,
+                                  infoLineHeight);
+            painter.drawText(lineRect, Qt::AlignHCenter | Qt::AlignVCenter, infoLines.at(i));
+        }
+    }
+}
+
+QString SidebarCalendarKeyButton::resolveInfoText(bool &isLunarMonthName) const
+{
+    isLunarMonthName = false;
+    if (!m_hasDayInfo)
+        return QString();
+
+    const CaHuangLiDayInfo &lunar = m_dayInfo.lunar;
+    //节日优先：农历节日 > 公历节日（除夕显示"除夕"而非"春节"）
+    if (!lunar.mLunarFestival.isEmpty())
+        return lunar.mLunarFestival;
+    if (!lunar.mSolarFestival.isEmpty())
+        return lunar.mSolarFestival;
+    //初一：只显示农历月名（如"八月"），用蓝色标记
+    if (lunar.mLunarDayName == QStringLiteral("初一")) {
+        isLunarMonthName = true;
+        return lunar.mLunarMonthName;
+    }
+    //节气
+    if (!lunar.mTerm.isEmpty())
+        return lunar.mTerm;
+    //农历日
+    return lunar.mLunarDayName;
 }
