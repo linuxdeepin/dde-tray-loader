@@ -5,6 +5,7 @@
 #include "sniprotocolhandler.h"
 #include "abstracttrayprotocol.h"
 #include "statusnotifieriteminterface.h"
+#include <QtDBus/QDBusConnectionInterface>
 
 #include "util.h"
 #include "plugin.h"
@@ -68,10 +69,59 @@ public:
 SniTrayProtocol::SniTrayProtocol(QObject *parent)
     : AbstractTrayProtocol(parent)
     , m_trayManager(new OrgKdeStatusNotifierWatcherInterface("org.kde.StatusNotifierWatcher", "/StatusNotifierWatcher", QDBusConnection::sessionBus(), this))
+    , m_dbusInterface(QDBusConnection::sessionBus().interface())
 {
     connect(m_trayManager, &OrgKdeStatusNotifierWatcherInterface::StatusNotifierItemRegistered, this, &SniTrayProtocol::registedItemChanged);
     connect(m_trayManager, &OrgKdeStatusNotifierWatcherInterface::StatusNotifierItemUnregistered, this, &SniTrayProtocol::registedItemChanged);
+
+    // Monitor DBus NameOwnerChanged to detect SNI service disappearance that
+    // the StatusNotifierWatcher may miss (e.g. process killed via SIGKILL).
+    // When a service owner becomes empty, proactively clean up stale handlers
+    // so that re-registration after force-quit works correctly.
+    connect(m_dbusInterface, &QDBusConnectionInterface::serviceOwnerChanged,
+            this, &SniTrayProtocol::onServiceOwnerChanged);
+
     QMetaObject::invokeMethod(this, &SniTrayProtocol::registedItemChanged, Qt::QueuedConnection);
+}
+
+void SniTrayProtocol::onServiceOwnerChanged(const QString &name, const QString &oldOwner, const QString &newOwner)
+{
+    Q_UNUSED(oldOwner);
+
+    // Only handle service disappearance: newOwner is empty means the service
+    // has no owner anymore (process exited / was killed).
+    if (!newOwner.isEmpty()) {
+        return;
+    }
+
+    // Find registered items whose dbus service name matches the disappeared one.
+    // The item key format is "<service>/<path>"; extract the service part for
+    // comparison.
+    QList<QString> keysToRemove;
+    for (const auto &itemKey : m_registedItem.keys()) {
+        if (SniTrayProtocolHandler::serviceAndPath(itemKey).first == name) {
+            keysToRemove.append(itemKey);
+        }
+    }
+
+    for (const auto &itemKey : keysToRemove) {
+        uint pid = m_item2Pid.value(itemKey);
+        m_item2Pid.remove(itemKey);
+        registeredMap.remove(pid);
+        m_registedItem.remove(itemKey);
+    }
+
+    // Also clean up pending items (async handler creation in progress) whose
+    // service has disappeared, so the lambda does not insert a stale handler.
+    QList<QString> pendingToRemove;
+    for (const auto &pendingItem : m_pendingItems) {
+        if (SniTrayProtocolHandler::serviceAndPath(pendingItem).first == name) {
+            pendingToRemove.append(pendingItem);
+        }
+    }
+    for (const auto &item : pendingToRemove) {
+        m_pendingItems.remove(item);
+    }
 }
 
 SniTrayProtocol::~SniTrayProtocol()
