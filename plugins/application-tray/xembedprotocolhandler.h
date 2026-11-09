@@ -87,6 +87,12 @@ private:
     void sendHover();
     void sendClick(uint8_t mouseButton);
 
+    // Re-evaluates whether the tray item should be enabled (icon readable or
+    // attention active) and emits enabledChanged on transition. Called after
+    // every icon (re)capture so a handler that was created before the client
+    // drew its icon is not stuck disabled forever.
+    void updateEnabledState();
+
     [[nodiscard]] inline QPoint updateEmbedWindowPosForGetInputEvent();
 
 protected:
@@ -98,6 +104,11 @@ private:
         XTest,
     };
 
+    // Maximum number of 200ms retries when the embedded client has not drawn
+    // its icon yet (10s total). After that the handler stays disabled, but a
+    // later redraw can still enable it via the attention timer chain.
+    static constexpr int MaxIconRetries = 50;
+
     bool m_enabled;
     bool m_owned;
     uint32_t m_windowId;
@@ -106,6 +117,7 @@ private:
     QPixmap m_attentionIcon;
     InjectMode m_injectMode;
     QString m_id;
+    int m_iconRetryCount = 0;
 
     QTimer *m_hoverTimer;
     QTimer *m_attentionTimer;

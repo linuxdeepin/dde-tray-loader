@@ -194,9 +194,22 @@ XembedProtocolHandler::XembedProtocolHandler(const uint32_t& id, QObject* parent
         m_iconUpdateTimer->start();
     });
 
+    // Re-captures the icon whenever the client redraws it (triggered by
+    // attention updates). Also re-evaluates the enabled state: if the icon was
+    // not readable yet (e.g. the client had not drawn into the freshly embedded
+    // window), keep retrying so the tray item is shown as soon as it is.
     connect(m_iconUpdateTimer, &QTimer::timeout, this, [this](){
         m_icon = getPixmapFromWidnow();
         Q_EMIT AbstractTrayProtocolHandler::iconChanged();
+        updateEnabledState();
+        // If the icon is still not readable, keep retrying (bounded) so a
+        // handler created before the client drew its icon is not stuck
+        // disabled forever. A later redraw also re-enters this path via the
+        // attention timer chain, so stopping here is safe.
+        if (!m_enabled && m_iconRetryCount < MaxIconRetries) {
+            ++m_iconRetryCount;
+            m_iconUpdateTimer->start();
+        }
     });
 
     QMetaObject::invokeMethod(this, &XembedProtocolHandler::initX11resources, Qt::QueuedConnection);
@@ -288,6 +301,15 @@ QIcon XembedProtocolHandler::icon() const
 bool XembedProtocolHandler::enabled() const
 {
     return m_enabled;
+}
+
+void XembedProtocolHandler::updateEnabledState()
+{
+    const bool enable = !m_icon.isNull() || m_attentionTimer->isActive();
+    if (m_enabled != enable) {
+        m_enabled = enable;
+        Q_EMIT AbstractTrayProtocolHandler::enabledChanged();
+    }
 }
 
 void XembedProtocolHandler::xembedTrayIconChanged(uint32_t windowId)
@@ -408,10 +430,13 @@ void XembedProtocolHandler::initX11resources()
         m_icon = getPixmapFromWidnow();
 
         Q_EMIT AbstractTrayProtocolHandler::iconChanged();
-        auto enable = !m_icon.isNull() || m_attentionTimer->isActive();
-        if (m_enabled != enable) {
-            m_enabled = enable;
-            Q_EMIT AbstractTrayProtocolHandler::enabledChanged();
+        updateEnabledState();
+        // The embedded client may take a moment to draw its icon after being
+        // re-parented and mapped; if the icon is not readable yet, keep polling
+        // so the tray item appears once the client has actually rendered.
+        if (!m_enabled && m_iconRetryCount < MaxIconRetries) {
+            ++m_iconRetryCount;
+            m_iconUpdateTimer->start();
         }
     });
 }
