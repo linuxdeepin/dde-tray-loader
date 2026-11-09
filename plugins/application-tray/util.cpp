@@ -364,9 +364,6 @@ QImage Util::getX11WindowImageNonComposite(const xcb_window_t& window)
 
     if (visualDepth != 32) {
         QImage result = convertFromNative(image, visualDepth);
-        if (isTransparentImage(result)) {
-            return QImage();
-        }
         return result;
     }
 
@@ -391,10 +388,6 @@ QImage Util::getX11WindowImageNonComposite(const xcb_window_t& window)
         }
 
     QRgb tl = result.pixel(0, 0);
-
-    if (maxA == 0) {
-        return QImage();
-    }
 
     if (minA == 255) {
         qCWarning(TRAYUTIL) << "applying heuristic mask for all-opaque image";
