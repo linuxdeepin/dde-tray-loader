@@ -1,0 +1,28 @@
+{
+    "magic": "dsg.config.meta",
+    "version": "1.0",
+    "contents": {
+        "showSeconds": {
+            "value": false,
+            "serial": 0,
+            "flags": [],
+            "name": "show seconds",
+            "name[zh_CN]": "显示秒",
+            "description": "Whether to show seconds in the datetime plugin on the dock",
+            "description[zh_CN]": "任务栏时间插件是否显示秒，关闭时按短时间格式显示，打开时在短时间格式基础上补充显示秒",
+            "permissions": "readwrite",
+            "visibility": "public"
+        },
+        "showSecondsMode": {
+            "value": 0,
+            "serial": 0,
+            "flags": [],
+            "name": "show seconds mode",
+            "name[zh_CN]": "显示秒数开关模式",
+            "description": "Display state of the show-seconds toggle in control center: 0=show, 1=hide, 2=disable. Only effective when the dock datetime plugin provides a showSeconds config.",
+            "description[zh_CN]": "控制中心中显示秒数开关的显示状态：0=显示，1=隐藏，2=禁用。仅在任务栏时间插件提供 showSeconds 配置时生效。",
+            "permissions": "readwrite",
+            "visibility": "public"
+        }
+    }
+}
