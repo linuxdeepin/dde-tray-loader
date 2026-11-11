@@ -72,8 +72,6 @@ void PluginManager::loadPlugin(const QString &pluginFilePath)
     // TODO: use dconfig for this purpose.
     if (qgetenv("XDG_SESSION_TYPE") == "wayland") {
         blacklistedPluginPaths.append(QStringList{
-            "libshot-start-record-plugin.so",
-            "libdeepin-screen-recorder-plugin.so",
             "libeye-comfort-mode.so",
         });
     }
