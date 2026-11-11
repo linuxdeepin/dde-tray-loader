@@ -68,9 +68,3 @@ Provides:
  dde-dock-dev (=6.1.0)
 Description: deepin desktop-environment - tray plugins module development files
  Tray plugins module development files of deepin desktop-environment
-
-Package: dde-wirelesscasting-plugin
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: deepin desktop-environment - wireless casting plugin for dde-dock
- wireless casting plugin module
