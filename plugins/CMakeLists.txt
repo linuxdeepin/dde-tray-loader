@@ -18,4 +18,3 @@ find_package(Qt${QT_VERSION_MAJOR} ${REQUIRED_QT_VERSION} COMPONENTS Core Widget
 add_subdirectory(application-tray)
 add_subdirectory(dde-dock)
 add_subdirectory(libdbusmenuqt)
-add_subdirectory(dde-network-display-ui)
