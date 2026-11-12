@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="es">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -31,103 +33,6 @@
     <message>
         <source>Airplane Mode</source>
         <translation>Modo avión</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothAdapterItem</name>
-    <message>
-        <source>My Devices</source>
-        <translation>Mis dispositivos</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothApplet</name>
-    <message>
-        <source>Bluetooth settings</source>
-        <translation>Ajustes de Bluetooth</translation>
-    </message>
-    <message>
-        <source>Turned off</source>
-        <translation>Desactivado</translation>
-    </message>
-    <message>
-        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation>Si desea conectarse por Bluetooth, primero desactive el [modo avión](#)</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothItem</name>
-    <message>
-        <source>Turn off</source>
-        <translation>Desactivar</translation>
-    </message>
-    <message>
-        <source>Turn on</source>
-        <translation>Activar</translation>
-    </message>
-    <message>
-        <source>Bluetooth settings</source>
-        <translation>Ajustes de Bluetooth</translation>
-    </message>
-    <message>
-        <source>%1 connected</source>
-        <translation>%1 conectado</translation>
-    </message>
-    <message>
-        <source>Connecting...</source>
-        <translation>Conectando...</translation>
-    </message>
-    <message>
-        <source>Bluetooth</source>
-        <translation>Bluetooth</translation>
-    </message>
-    <message>
-        <source>Turned off</source>
-        <translation>Desactivado</translation>
-    </message>
-    <message>
-        <source>Connected %1</source>
-        <translation>Conectado %1</translation>
-    </message>
-    <message>
-        <source>Not connected</source>
-        <translation>No conectado</translation>
-    </message>
-    <message>
-        <source>Off</source>
-        <translation>Apagado</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothPlugin</name>
-    <message>
-        <source>Bluetooth</source>
-        <translation>Bluetooth</translation>
-    </message>
-</context>
-<context>
-    <name>BrightnessApplet</name>
-    <message>
-        <source>Brightness</source>
-        <translation>Brillo</translation>
-    </message>
-    <message>
-        <source>Display settings</source>
-        <translation>Ajustes de pantalla</translation>
-    </message>
-</context>
-<context>
-    <name>BrightnessItem</name>
-    <message>
-        <source>Display settings</source>
-        <translation>Ajustes de pantalla</translation>
-    </message>
-</context>
-<context>
-    <name>BrightnessPlugin</name>
-    <message>
-        <source>Brightness</source>
-        <translation>Brillo</translation>
     </message>
 </context>
 <context>
@@ -192,13 +97,6 @@
     </message>
 </context>
 <context>
-    <name>DeviceControlWidget</name>
-    <message>
-        <source>Other Devices</source>
-        <translation>Otros dispositivos</translation>
-    </message>
-</context>
-<context>
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
@@ -233,97 +131,10 @@
     </message>
 </context>
 <context>
-    <name>EyeComfortModeItem</name>
+    <name>MediaController</name>
     <message>
-        <source>Eye Comfort</source>
-        <translation>Descanso visual</translation>
-    </message>
-    <message>
-        <source>Eye comfort enabled</source>
-        <translation>Descanso visual activado</translation>
-    </message>
-    <message>
-        <source>Eye comfort disabled</source>
-        <translation>Descanso visual desactivado</translation>
-    </message>
-    <message>
-        <source>Display settings</source>
-        <translation>Ajustes de pantalla</translation>
-    </message>
-    <message>
-        <source>Eye comfort</source>
-        <translation>Descanso visual</translation>
-    </message>
-    <message>
-        <source>Theme</source>
-        <translation>Tema</translation>
-    </message>
-    <message>
-        <source>On</source>
-        <translation>Encendido</translation>
-    </message>
-    <message>
-        <source>Off</source>
-        <translation>Apagado</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation>Claro</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation>Oscuro</translation>
-    </message>
-    <message>
-        <source>Auto</source>
-        <translation>Automático</translation>
-    </message>
-    <message>
-        <source>Disable eye comfort</source>
-        <translation>Desactivar el descanso visual</translation>
-    </message>
-    <message>
-        <source>Enable eye comfort</source>
-        <translation>Activar el descanso visual</translation>
-    </message>
-    <message>
-        <source>Display Settings</source>
-        <translation>Ajustes de pantalla</translation>
-    </message>
-    <message>
-        <source>Theme: Light</source>
-        <translation>Tema: Claro</translation>
-    </message>
-    <message>
-        <source>Theme: Dark</source>
-        <translation>Tema: Oscuro</translation>
-    </message>
-    <message>
-        <source>Theme: Auto</source>
-        <translation>Tema: Automático</translation>
-    </message>
-    <message>
-        <source>Visual effect</source>
-        <translation>Descanso visual</translation>
-    </message>
-</context>
-<context>
-    <name>EyeComfortmodeApplet</name>
-    <message>
-        <source>Light</source>
-        <translation>Claro</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation>Oscuro</translation>
-    </message>
-    <message>
-        <source>Auto</source>
-        <translation>Automático</translation>
-    </message>
-    <message>
-        <source>Theme</source>
-        <translation>Tema</translation>
+        <source>Music</source>
+        <translation type="unfinished">Música</translation>
     </message>
 </context>
 <context>
@@ -387,7 +198,7 @@
     <name>PluginItemWidget</name>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -694,51 +505,6 @@
     <message>
         <source>sunday</source>
         <translation>domingo</translation>
-    </message>
-</context>
-<context>
-    <name>SoundApplet</name>
-    <message>
-        <source>Volume</source>
-        <translation>Volumen</translation>
-    </message>
-    <message>
-        <source>Output</source>
-        <translation>Salida</translation>
-    </message>
-    <message>
-        <source>Sound settings</source>
-        <translation>Ajustes de sonido</translation>
-    </message>
-</context>
-<context>
-    <name>SoundPlugin</name>
-    <message>
-        <source>Sound</source>
-        <translation>Sonido</translation>
-    </message>
-</context>
-<context>
-    <name>SoundView</name>
-    <message>
-        <source>Unmute</source>
-        <translation>Activar sonido</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Silenciar</translation>
-    </message>
-    <message>
-        <source>Sound settings</source>
-        <translation>Ajustes de sonido</translation>
-    </message>
-    <message>
-        <source>No output devices</source>
-        <translation>Sin dispositivos de salida</translation>
-    </message>
-    <message>
-        <source>Volume %1</source>
-        <translation>Volumen %1</translation>
     </message>
 </context>
 </TS>
