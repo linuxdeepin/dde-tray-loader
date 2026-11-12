@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="mn">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="mn">
 <context>
     <name>AirplaneModeItem</name>
     <message>
@@ -31,103 +33,6 @@
     <message>
         <source>Airplane Mode</source>
         <translation>Нисэх онгоцны горим</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothAdapterItem</name>
-    <message>
-        <source>My Devices</source>
-        <translation>Миний төхөөрөмжүүд</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothApplet</name>
-    <message>
-        <source>Bluetooth settings</source>
-        <translation>Bluetooth тохиргоо</translation>
-    </message>
-    <message>
-        <source>Turned off</source>
-        <translation>Унтраалттай</translation>
-    </message>
-    <message>
-        <source>Disable [Airplane Mode](#) first if you want to connect to a Bluetooth</source>
-        <translation>Bluetooth-тэй холбогдохын тулд эхлээд [Нисэх онгоцны горим](#)-г унтраана уу</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothItem</name>
-    <message>
-        <source>Turn off</source>
-        <translation>Унтраах</translation>
-    </message>
-    <message>
-        <source>Turn on</source>
-        <translation>Асаах</translation>
-    </message>
-    <message>
-        <source>Bluetooth settings</source>
-        <translation>Bluetooth тохиргоо</translation>
-    </message>
-    <message>
-        <source>%1 connected</source>
-        <translation>%1 холбогдсон</translation>
-    </message>
-    <message>
-        <source>Connecting...</source>
-        <translation>Холбож байна...</translation>
-    </message>
-    <message>
-        <source>Bluetooth</source>
-        <translation>Блютүүт</translation>
-    </message>
-    <message>
-        <source>Turned off</source>
-        <translation>Унтраалттай</translation>
-    </message>
-    <message>
-        <source>Connected %1</source>
-        <translation>%1 холбогдсон</translation>
-    </message>
-    <message>
-        <source>Not connected</source>
-        <translation>Холбогдоогүй</translation>
-    </message>
-    <message>
-        <source>Off</source>
-        <translation>Унтраалттай</translation>
-    </message>
-</context>
-<context>
-    <name>BluetoothPlugin</name>
-    <message>
-        <source>Bluetooth</source>
-        <translation>Блютүүт</translation>
-    </message>
-</context>
-<context>
-    <name>BrightnessApplet</name>
-    <message>
-        <source>Brightness</source>
-        <translation>Гэрэлтэлт</translation>
-    </message>
-    <message>
-        <source>Display settings</source>
-        <translation>Дэлгэцийн тохиргоо</translation>
-    </message>
-</context>
-<context>
-    <name>BrightnessItem</name>
-    <message>
-        <source>Display settings</source>
-        <translation>Дэлгэцийн тохиргоо</translation>
-    </message>
-</context>
-<context>
-    <name>BrightnessPlugin</name>
-    <message>
-        <source>Brightness</source>
-        <translation>Гэрэлтэлт</translation>
     </message>
 </context>
 <context>
@@ -192,13 +97,6 @@
     </message>
 </context>
 <context>
-    <name>DeviceControlWidget</name>
-    <message>
-        <source>Other Devices</source>
-        <translation>Бусад төхөөрөмж</translation>
-    </message>
-</context>
-<context>
     <name>DndModeItem</name>
     <message>
         <source>DND Mode</source>
@@ -233,97 +131,10 @@
     </message>
 </context>
 <context>
-    <name>EyeComfortModeItem</name>
+    <name>MediaController</name>
     <message>
-        <source>Eye Comfort</source>
-        <translation>Нүдний тав тух</translation>
-    </message>
-    <message>
-        <source>Eye comfort enabled</source>
-        <translation>Нүдний тав тух асаалттай</translation>
-    </message>
-    <message>
-        <source>Eye comfort disabled</source>
-        <translation>Нүдний тав тух унтраалттай</translation>
-    </message>
-    <message>
-        <source>Display settings</source>
-        <translation>Дэлгэцийн тохиргоо</translation>
-    </message>
-    <message>
-        <source>Eye comfort</source>
-        <translation>Нүдний тав тух</translation>
-    </message>
-    <message>
-        <source>Theme</source>
-        <translation>Загвар</translation>
-    </message>
-    <message>
-        <source>On</source>
-        <translation>Асаалттай</translation>
-    </message>
-    <message>
-        <source>Off</source>
-        <translation>Унтраалттай</translation>
-    </message>
-    <message>
-        <source>Light</source>
-        <translation>Гэрэлтэй</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation>Бараан</translation>
-    </message>
-    <message>
-        <source>Auto</source>
-        <translation>Автомат</translation>
-    </message>
-    <message>
-        <source>Disable eye comfort</source>
-        <translation>Нүдний тав тухыг унтраах</translation>
-    </message>
-    <message>
-        <source>Enable eye comfort</source>
-        <translation>Нүдний тав тухыг асаах</translation>
-    </message>
-    <message>
-        <source>Display Settings</source>
-        <translation>Дэлгэцийн тохиргоо</translation>
-    </message>
-    <message>
-        <source>Theme: Light</source>
-        <translation>Загвар: Гэрэлтэй</translation>
-    </message>
-    <message>
-        <source>Theme: Dark</source>
-        <translation>Загвар: Бараан</translation>
-    </message>
-    <message>
-        <source>Theme: Auto</source>
-        <translation>Загвар: Автомат</translation>
-    </message>
-    <message>
-        <source>Visual effect</source>
-        <translation>Харааны эффект</translation>
-    </message>
-</context>
-<context>
-    <name>EyeComfortmodeApplet</name>
-    <message>
-        <source>Light</source>
-        <translation>Гэрэлтэй</translation>
-    </message>
-    <message>
-        <source>Dark</source>
-        <translation>Бараан</translation>
-    </message>
-    <message>
-        <source>Auto</source>
-        <translation>Автомат</translation>
-    </message>
-    <message>
-        <source>Theme</source>
-        <translation>Загвар</translation>
+        <source>Music</source>
+        <translation type="unfinished">Хөгжим</translation>
     </message>
 </context>
 <context>
@@ -694,51 +505,6 @@
     <message>
         <source>sunday</source>
         <translation>ням</translation>
-    </message>
-</context>
-<context>
-    <name>SoundApplet</name>
-    <message>
-        <source>Volume</source>
-        <translation>Дууны хэмжээ</translation>
-    </message>
-    <message>
-        <source>Output</source>
-        <translation>Гаралт</translation>
-    </message>
-    <message>
-        <source>Sound settings</source>
-        <translation>Дууны тохиргоо</translation>
-    </message>
-</context>
-<context>
-    <name>SoundPlugin</name>
-    <message>
-        <source>Sound</source>
-        <translation>Дуу</translation>
-    </message>
-</context>
-<context>
-    <name>SoundView</name>
-    <message>
-        <source>Unmute</source>
-        <translation>Дуу нээх</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Дууг хаах</translation>
-    </message>
-    <message>
-        <source>Sound settings</source>
-        <translation>Дууны тохиргоо</translation>
-    </message>
-    <message>
-        <source>No output devices</source>
-        <translation>Гаралтын төхөөрөмж байхгүй</translation>
-    </message>
-    <message>
-        <source>Volume %1</source>
-        <translation>Дууны хэмжээ %1</translation>
     </message>
 </context>
 </TS>
