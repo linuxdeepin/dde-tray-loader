@@ -320,7 +320,7 @@ void ShutdownPlugin::invokedMenuItem(const QString &itemKey, const QString &menu
 #endif
 
         } else {
-            QProcess::execute("bash -c \"originmap=$(setxkbmap -query | grep option | awk -F ' ' '{print $2}');/usr/bin/setxkbmap -option grab:break_actions&&/usr/bin/xdotool key XF86Ungrab&&dbus-send --print-reply --dest=org.deepin.dde.LockFront1 /org/deepin/dde/LockFront1 org.deepin.dde.LockFront1.Show&&setxkbmap -option $originmap\"");
+            lockWithBreakActions();
         }
     } else
         DDBusSender()
@@ -329,6 +329,42 @@ void ShutdownPlugin::invokedMenuItem(const QString &itemKey, const QString &menu
         .path("/org/deepin/dde/ShutdownFront1")
         .method(QString(menuId))
         .call();
+}
+
+void ShutdownPlugin::lockWithBreakActions()
+{
+    // Query current xkbmap option
+    QProcess queryProc;
+    queryProc.start("setxkbmap", {"-query"});
+    queryProc.waitForFinished();
+    QString output = QString::fromLocal8Bit(queryProc.readAllStandardOutput());
+
+    QString originmap;
+    for (const QString &line : output.split('\n')) {
+        if (line.startsWith("options:")) {
+            originmap = line.section(':', 1).trimmed();
+            break;
+        }
+    }
+
+    // Set grab:break_actions, send XF86Ungrab, then call LockFront1.Show
+    if (QProcess::execute("setxkbmap", {"-option", "grab:break_actions"}) == 0) {
+        if (QProcess::execute("xdotool", {"key", "XF86Ungrab"}) == 0) {
+            QDBusMessage msg = QDBusMessage::createMethodCall(
+                "org.deepin.dde.LockFront1",
+                "/org/deepin/dde/LockFront1",
+                "org.deepin.dde.LockFront1",
+                "Show");
+            QDBusConnection::sessionBus().call(msg);
+        }
+    }
+
+    // Restore original xkbmap option (unconditional)
+    if (originmap.isEmpty()) {
+        QProcess::execute("setxkbmap", {"-option"});
+    } else {
+        QProcess::execute("setxkbmap", {"-option", originmap});
+    }
 }
 
 void ShutdownPlugin::displayModeChanged(const Dock::DisplayMode displayMode)
