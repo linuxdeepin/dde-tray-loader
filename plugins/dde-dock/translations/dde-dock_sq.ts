@@ -132,7 +132,7 @@
     <name>MediaController</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"/>
+        <translation>Muzikë</translation>
     </message>
 </context>
 <context>
@@ -196,7 +196,7 @@
     <name>PluginItemWidget</name>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"/>
+        <translation>Shkëputu</translation>
     </message>
 </context>
 <context>
