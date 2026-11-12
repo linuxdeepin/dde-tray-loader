@@ -132,7 +132,7 @@
     <name>MediaController</name>
     <message>
         <source>Music</source>
-        <translation type="unfinished"/>
+        <translation>Música</translation>
     </message>
 </context>
 <context>
