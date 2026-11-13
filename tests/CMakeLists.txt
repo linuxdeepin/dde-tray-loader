@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets DBus)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets DBus Test)
 
 foreach(stage RANGE 1 2)
     add_library(startup-plugin-${stage} MODULE startupplugin.cpp)
@@ -56,3 +56,15 @@ if(XVFB_EXECUTABLE)
         COMMAND tray-x11-disconnect-test "${XVFB_EXECUTABLE}" --error-before-dispatch)
     set_tests_properties(tray-x11-disconnect tray-x11-existing-error PROPERTIES TIMEOUT 15)
 endif()
+
+add_executable(timeformat_test
+    timeformat_test.cpp
+    ../plugins/dde-dock/datetime/timeformat.cpp
+)
+target_include_directories(timeformat_test PRIVATE ../plugins/dde-dock/datetime)
+target_link_libraries(timeformat_test PRIVATE
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Test
+)
+
+add_test(NAME timeformat_test COMMAND timeformat_test)

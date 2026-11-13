@@ -5,10 +5,12 @@
 #include "datetimewidget.h"
 #include "constants.h"
 #include "regionFormat.h"
+#include "timeformat.h"
 
 #include <QApplication>
 #include <QPainter>
 #include <QDebug>
+#include <QFontMetrics>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QMouseEvent>
@@ -20,6 +22,12 @@
 
 // 任务栏给时间插件的上下边距，见 PluginItem::updatePluginContentMargin() 里 datetime 的特殊处理
 static const int DOCK_ITEM_VERTICAL_MARGIN = 2;
+// 左右任务栏时，任务栏给时间插件左右各留的边距，见 PluginItem::updatePluginContentMargin()
+static const int DOCK_ITEM_HORIZONTAL_MARGIN = 1;
+// 计算可用宽度时额外预留的余量，避免字体 bearing 和取整误差把数字挤出任务栏
+static const int TIME_TEXT_WIDTH_SAFETY = 2;
+// 竖向任务栏显示秒时允许的最小时间字号，再小就不建议显示秒（约对应 48px 的任务栏厚度）
+static const int MIN_SECONDS_TIME_FONT_SIZE = 11;
 // 可用高度（任务栏高度 - 上边距 - 下边距）小于等于该值时，时间和日期并排显示成一行。
 // 上下边距各 2，对应任务栏高度 40 及以下走一行，41 及以上走两行。
 static const int SINGLE_LINE_MAX_AVAILABLE_HEIGHT = 36;
@@ -52,8 +60,19 @@ DatetimeWidget::DatetimeWidget(RegionFormat* regionFormat, QWidget *parent)
     , m_dockSize(QSize(1920, 37))
     , m_timedateInter(new Timedate1Inter("org.deepin.dde.Timedate1", "/org/deepin/dde/Timedate1", QDBusConnection::sessionBus(), this))
     , m_regionFormat(regionFormat)
+    , m_dconfig(Dtk::Core::DConfig::create("org.deepin.dde.tray-loader", "org.deepin.dde.dock.plugin.datetime", "", this))
 {
     initUI();
+
+    if (m_dconfig && m_dconfig->isValid()) {
+        m_showSeconds = m_dconfig->value("showSeconds", false).toBool();
+        connect(m_dconfig, &Dtk::Core::DConfig::valueChanged, this, [this](const QString &key) {
+            if (key == "showSeconds") {
+                m_showSeconds = m_dconfig->value("showSeconds", false).toBool();
+                updateDateTime();
+            }
+        });
+    }
 
     setWeekdayFormat(m_timedateInter->weekdayFormat());
     connect(m_timedateInter, &Timedate1Inter::WeekdayFormatChanged, this, &DatetimeWidget::setWeekdayFormat);
@@ -111,6 +130,79 @@ void DatetimeWidget::updateWeekdayFormat()
     }
 }
 
+QString DatetimeWidget::effectiveTimeFormat() const
+{
+    if (!m_showSeconds)
+        return m_regionFormat->getShortTimeFormat();
+
+    // 左右任务栏的可用宽度只有任务栏厚度，厚度不够时显示秒会把时间数字压缩，
+    // 此时回退到短时间格式。
+    if (isVerticalDock() && !canShowSecondsInVerticalDock())
+        return m_regionFormat->getShortTimeFormat();
+
+    return secondsTimeFormat();
+}
+
+QString DatetimeWidget::secondsTimeFormat() const
+{
+    return addSecondsToShortTimeFormat(m_regionFormat->getShortTimeFormat(),
+                                       m_regionFormat->getLongTimeFormat());
+}
+
+bool DatetimeWidget::isVerticalDock() const
+{
+    const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
+    return position == Dock::Left || position == Dock::Right;
+}
+
+int DatetimeWidget::availableTimeWidth() const
+{
+    const int thickness = m_dockSize.width() / devicePixelRatioF();
+    return thickness - DOCK_ITEM_HORIZONTAL_MARGIN * 2 - TIME_TEXT_WIDTH_SAFETY;
+}
+
+int DatetimeWidget::maxTimeTextWidth(const QFont &font, const QString &timeFormat) const
+{
+    const QLocale locale(m_regionFormat->getLocaleName());
+    // 保留 12:59:59 和 23:59:59 两个样本：
+    // - 12:59:59 覆盖 12 小时制的两位数小时，作为 12 小时制下的兜底；
+    // - 23:59:59 覆盖 24 小时制的最大两位数小时。
+    // 一位数小时一定更窄，因此不需要额外样本。
+    static const QList<QTime> sampleTimes {
+        QTime(12, 59, 59),
+        QTime(23, 59, 59),
+    };
+
+    const QFontMetrics fontMetrics(font);
+    int maxWidth = 0;
+    for (const QTime &sampleTime : sampleTimes) {
+        const QString text = (isVerticalDock() && !m_24HourFormat)
+            ? formatTimeWithoutAmPm(locale, sampleTime, timeFormat)
+            : locale.toString(sampleTime, timeFormat);
+        maxWidth = qMax(maxWidth, fontMetrics.horizontalAdvance(text));
+    }
+
+    return maxWidth;
+}
+
+bool DatetimeWidget::canShowSecondsInVerticalDock() const
+{
+    if (!isVerticalDock())
+        return true;
+
+    const int thickness = m_dockSize.width() / devicePixelRatioF();
+    if (secondsTimeFontSizeForDockThickness(thickness) == 0)
+        return false;
+
+    const int availableWidth = availableTimeWidth();
+    if (availableWidth <= 0)
+        return false;
+
+    QFont font = m_timeLabel->font();
+    font.setPixelSize(MIN_SECONDS_TIME_FONT_SIZE);
+    return maxTimeTextWidth(font, secondsTimeFormat()) <= availableWidth;
+}
+
 void DatetimeWidget::setRegionFormat(RegionFormat *newRegionFormat)
 {
     m_regionFormat = newRegionFormat;
@@ -148,7 +240,7 @@ void DatetimeWidget::updateDateTimeString()
     const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
     QString timeStr, dateString;
     if (position == Dock::Bottom || position == Dock::Top) {
-        QString timeFormat = m_regionFormat->getShortTimeFormat();
+        QString timeFormat = effectiveTimeFormat();
         timeStr = locale.toString(current, timeFormat);
         dateString = locale.toString(current.date(), m_regionFormat->getShortDateFormat());
 
@@ -156,15 +248,12 @@ void DatetimeWidget::updateDateTimeString()
         m_dateLabel->setText(dateString);
     } else {
         if (!m_24HourFormat) {
-            QString apText = locale.toString(current, "AP");
+            const QString apText = locale.toString(current, "AP");
             m_apLabel->setText(apText);
 
-            QString timeFormat = m_regionFormat->getShortTimeFormat();
-            timeFormat.replace("AP", "");
-            timeFormat.replace(" ", "");
-            timeStr = locale.toString(current.time(), timeFormat);
+            timeStr = formatTimeWithoutAmPm(locale, current.time(), effectiveTimeFormat());
         } else {
-            timeStr = locale.toString(current.time(), m_regionFormat->getShortTimeFormat());
+            timeStr = locale.toString(current.time(), effectiveTimeFormat());
         }
 
         m_timeLabel->setText(timeStr);
@@ -177,6 +266,8 @@ void DatetimeWidget::updateDateTime()
 {
     m_24HourFormat = m_regionFormat->is24HourFormat();
     adjustUI();
+    // 显示秒的开关或区域格式变化后，时间字号曲线也要跟着切换
+    adjustFontSize();
     adjustLayout();
     updateDateTimeString();
     update();
@@ -189,9 +280,9 @@ void DatetimeWidget::updateDateTime()
 void DatetimeWidget::adjustFontSize()
 {
     const int MAX_DISTANCE = 999;
-    const auto position = qApp->property(PROP_POSITION).value<Dock::Position>();
+    const bool verticalDock = isVerticalDock();
     int validDistance = m_dockSize.height() / devicePixelRatioF();
-    if (position == Dock::Left || position == Dock::Right) {
+    if (verticalDock) {
         validDistance = m_dockSize.width() / devicePixelRatioF();
     }
 
@@ -202,6 +293,7 @@ void DatetimeWidget::adjustFontSize()
     }
 
     // 根据时间和日期字体大小的跨度，将dock栏大小分为不同的区间，每个区域对应不同的字体大小，然后通过判断dock栏大小所在的区间来设置字体大小
+    // 这里是“不显示秒”时的基准曲线；左右任务栏显示秒时会换成按文本宽度估算的曲线
     // 如果任务栏小于37，则字体始终取最小值；如果任务栏大于61，则字体始终取最大值；如果任务栏在37和61之间，则字体大小随任务栏大小线性变化
     static const QMap<int, QPair<int, int>> fontSizeMap {
         {0, {13, 10}},
@@ -230,6 +322,24 @@ void DatetimeWidget::adjustFontSize()
 
     Q_ASSERT(timeFontSize != 0 && dateFontSize != 0);
 
+    const bool secondsVisible = verticalDock && m_showSeconds && canShowSecondsInVerticalDock();
+    if (secondsVisible) {
+        // 显示秒时时间文本变长，原来的字号曲线是按没有秒设计的，
+        // 这里换成按任务栏厚度估算的“显示秒”曲线。
+        timeFontSize = secondsTimeFontSizeForDockThickness(validDistance);
+
+        // 再按实际文本宽度收一次字号，避免字体/本地化差异把时间数字挤出任务栏。
+        // 只作用于显示秒的情况，不显示秒时保持和 master 完全一致的字号曲线。
+        const int availableWidth = availableTimeWidth();
+        while (timeFontSize > MIN_SECONDS_TIME_FONT_SIZE) {
+            QFont font = m_timeLabel->font();
+            font.setPixelSize(timeFontSize);
+            if (maxTimeTextWidth(font, secondsTimeFormat()) <= availableWidth)
+                break;
+            --timeFontSize;
+        }
+    }
+
     QFont timeFont = m_timeLabel->font();
     timeFont.setPixelSize(timeFontSize);
     m_timeLabel->setFont(timeFont);
@@ -238,6 +348,17 @@ void DatetimeWidget::adjustFontSize()
     QFont dateFont = m_dateLabel->font();
     dateFont.setPixelSize(dateFontSize);
     m_dateLabel->setFont(dateFont);
+
+    // 按最宽的时间文本预留宽度，避免秒数或数字宽度变化时被裁剪。
+    // 左右任务栏不显示秒时保持原有行为，宽度仍由当前文本决定。
+    if (!verticalDock || secondsVisible) {
+        int reservedWidth = maxTimeTextWidth(timeFont, effectiveTimeFormat());
+        if (verticalDock)
+            reservedWidth = qMin(reservedWidth, availableTimeWidth());
+        m_timeLabel->setMinimumWidth(qMax(0, reservedWidth));
+    } else {
+        m_timeLabel->setMinimumWidth(0);
+    }
 
     // 字号变了要重新按基线对齐
     alignSingleLineBaseline();
@@ -302,6 +423,8 @@ void DatetimeWidget::setDockPanelSize(const QSize &dockSize)
         m_dockSize = dockSize;
         adjustFontSize();
         adjustLayout();
+        // 任务栏厚度变化可能影响是否还能显示秒
+        updateDateTimeString();
         update();
     }
 
@@ -323,7 +446,6 @@ void DatetimeWidget::dockPositionChanged()
     // 等待位置变换完成后再更新
     QTimer::singleShot(300, this, [this]{
         updateDateTime();
-        adjustFontSize();
     });
 
     adjustUI();
