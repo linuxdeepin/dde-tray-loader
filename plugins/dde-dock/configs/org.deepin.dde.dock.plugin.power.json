@@ -22,7 +22,7 @@
             "description[zh_CN]": "充电保护状态触发的电量区间",
             "description":"",
             "permissions":"readwrite",
-            "visibility":"public"
+            "visibility":"private"
         }
     }
 }
