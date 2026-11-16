@@ -17,7 +17,7 @@
             "description[zh_CN]": "默认驻留在任务栏上的插件，内容是插件的名称，仅处理默认驻留的状态，代码不会也不应该修改此值。\n注意：快捷面板里面的插件要默认驻留在任务栏，需要修改org.deepin.dde.dock.plugin.quick-panel中的dockedQuickPlugins配置。  \n重启后生效",
             "description": "",
             "permissions": "readonly",
-            "visibility": "public"
+            "visibility": "private"
         },
         "pluginsOrder": {
             "value": "{\"2\": [\"dde-tray\", \"network-item-key\", \"dde-quick-panel\", \"AiAssistant\", \"notifications\", \"power\", \"shutdown\"], \"3\": [ \"show-desktop\", \"multitasking\" ], \"7\": [ \"datetime\", \"trash\" ] }",
