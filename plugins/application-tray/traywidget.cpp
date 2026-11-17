@@ -56,6 +56,14 @@ void TrayWidget::showEvent(QShowEvent* event)
     window()->setMouseTracking(true);
 }
 
+bool TrayWidget::event(QEvent* event)
+{
+    if (event->type() == QEvent::DevicePixelRatioChange && m_handler)
+        m_handler->refreshIcon();
+
+    return QWidget::event(event);
+}
+
 void TrayWidget::paintEvent(QPaintEvent* event)
 {
     Q_UNUSED(event)

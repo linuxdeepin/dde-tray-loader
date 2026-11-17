@@ -14,6 +14,7 @@
 #include <QWindow>
 #include <QMouseEvent>
 #include <QGuiApplication>
+#include <QtMath>
 #include <DWindowManagerHelper>
 
 #include <xcb/xcb.h>
@@ -298,6 +299,17 @@ QIcon XembedProtocolHandler::icon() const
     return m_icon;
 }
 
+void XembedProtocolHandler::refreshIcon()
+{
+    const QPixmap icon = getPixmapFromWidnow();
+    if (icon.isNull())
+        return;
+
+    m_icon = icon;
+    Q_EMIT iconChanged();
+    updateEnabledState();
+}
+
 bool XembedProtocolHandler::enabled() const
 {
     return m_enabled;
@@ -443,21 +455,19 @@ void XembedProtocolHandler::initX11resources()
 
 QPixmap XembedProtocolHandler::getPixmapFromWidnow()
 {
-    QPixmap res;
     QImage image = UTIL->getX11WindowImageNonComposite(m_windowId);
-    if (image.isNull()) {
-        return res;
-    }
+    if (image.isNull())
+        return {};
 
-    int w = image.width();
-    int h = image.height();
+    const qreal dpr = window() ? window()->devicePixelRatioF() : qApp->devicePixelRatio();
+    const int size = qMax(1, qRound(trayIconSize * dpr));
 
-    res = QPixmap::fromImage(std::move(image));
-    if (w > trayIconSize || h > trayIconSize) {
-        res = res.scaled(trayIconSize, trayIconSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    }
+    QPixmap pixmap = QPixmap::fromImage(image);
+    if (pixmap.size() != QSize(size, size))
+        pixmap = pixmap.scaled(size, size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    pixmap.setDevicePixelRatio(dpr);
 
-    return res;
+    return pixmap;
 }
 
 QPoint XembedProtocolHandler::updateEmbedWindowPosForGetInputEvent()

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -69,6 +69,8 @@ public:
     virtual QIcon icon() const = 0;
     virtual QWidget *tooltip() const {return nullptr;}
 
+    virtual void refreshIcon() {}
+
     virtual bool enabled() const {return false;}
     void setWindow(QWidget *window) {m_window = window;}
     QWidget *window() const {return m_window;}
@@ -89,6 +91,6 @@ Q_SIGNALS:
     void enabledChanged();
 
 private:
-    QWidget* m_window;
+    QWidget* m_window = nullptr;
 };
 }
