@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2024-2026 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2024 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -73,6 +73,7 @@ public:
     virtual QIcon overlayIcon() const override;
     virtual QIcon attentionIcon() const override;
     virtual QIcon icon() const override;
+    virtual void refreshIcon() override;
 
     virtual bool enabled() const override;
 
