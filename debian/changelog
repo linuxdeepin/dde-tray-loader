@@ -1,3 +1,17 @@
+dde-tray-loader (6.2.0) unstable; urgency=medium
+
+  * fix: stop XCB event polling after connection failure
+  * fix: tray icon not shown after force-quit restart
+  * fix: add AT-SPI accessible properties for interactive controls
+  * refactor: move dock plugins to dde-control-center
+  * i18n: drop translations of plugins migrated to dde-control-center
+  * chore: Sync by
+    https://github.com/linuxdeepin/.github/commit/88d36aea6c90c8d1de4d42
+    c68aebbf72bcb80b1c
+  * feat(datetime): support showing seconds in dock datetime plugin
+
+ -- zhangkun <zhangkun2@uniontech.com>  Tue, 17 Nov 2026 22:06:47 +0800
+
 dde-tray-loader (2.0.44) unstable; urgency=medium
 
   * fix: install the missing bluetooth DConfig meta file (#531)
