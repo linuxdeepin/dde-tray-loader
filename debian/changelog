@@ -1,3 +1,9 @@
+dde-tray-loader (6.2.1) unstable; urgency=medium
+
+  * fix: keep internal tray plugin configuration private
+
+ -- zhaofangxun <zhaofangxun@uniontech.com>  Thu, 19 Nov 2026 20:49:16 +0800
+
 dde-tray-loader (6.2.0) unstable; urgency=medium
 
   * fix: stop XCB event polling after connection failure
