@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2019 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 
@@ -8,6 +8,7 @@
 #include "cweekwidget.h"
 #include "datetitlewidget.h"
 #include "calendarmanager.h"
+#include "lunarmanager.h"
 
 #include <DLabel>
 #include <DToolButton>
@@ -17,6 +18,10 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QDate>
+#include <QMap>
+#include <QList>
+#include <QHelpEvent>
+#include <QToolTip>
 
 DWIDGET_USE_NAMESPACE
 
@@ -74,6 +79,8 @@ private slots:
     void onWeekDayFormatChanged(CalendarManager::WeekDayFormat format);
     void backToday();
     void onShortDateFormatChanged();
+    //农历/节气/节假日/调休月度数据就绪
+    void onMonthInfoReady(const QDate &month, const QMap<QDate, CalendarDayInfo> &infos);
 
 protected:
     void hideEvent(QHideEvent *event) override;
@@ -118,6 +125,8 @@ private:
     CalendarManager::WeekDayFormat m_weekdayFormat;
     int m_deltaSum;
     QTimer *m_timer;
+    QList<QDate> m_gridMonths;                 //当前网格覆盖的月份（用于过滤过期数据）
+    QMap<QDate, CalendarDayInfo> m_dayInfos;   //已加载的日期信息（农历/节气/节假日/调休）
 };
 
 
@@ -136,6 +145,9 @@ public:
     inline void setIsThisMonth(bool isThisMonth) { m_isThisMonth = isThisMonth; update(); }
     inline bool isSelected() { return m_isSelected;}
     inline void setIsSelected(bool isSelected) { m_isSelected = isSelected; update(); }
+    //设置该日期对应的农历/节气/节假日/调休信息
+    void setDayInfo(const CalendarDayInfo &info);
+    void clearDayInfo();
 
 signals:
     void clicked(const QDate &date);
@@ -148,6 +160,11 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
+    bool event(QEvent *event) override;
+
+private:
+    //计算单元格信息区文本；isLunarMonthName 为 true 表示初一只显示农历月名（蓝色）
+    QString resolveInfoText(bool &isLunarMonthName) const;
 
 private:
     bool m_pressed;
@@ -155,6 +172,8 @@ private:
     bool m_isToday;
     bool m_isThisMonth;
     bool m_isSelected;
+    CalendarDayInfo m_dayInfo;   //农历/节气/节假日/调休
+    bool m_hasDayInfo = false;
 };
 
 #endif // SIDEBARCALENDARWIDGET_H

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2019 - 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2019 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: LGPL-3.0-or-later
 #include "datetitlewidget.h"
@@ -16,11 +16,11 @@ DateTitleWidget::DateTitleWidget(QWidget *parent)
 
     leftlayout->addStretch();
     leftlayout->addWidget(m_dayofMonthLabel);
-    m_dayofMonthLabel->setFixedHeight(100);
+    m_dayofMonthLabel->setFixedHeight(110);
     rightlayout->addStretch();
     rightlayout->addWidget(m_monthLabel);
 
-    DFontSizeManager::instance()->bind(m_monthLabel, DFontSizeManager::T4, 70);
+    DFontSizeManager::instance()->bind(m_monthLabel, DFontSizeManager::T3, 70);
 
     auto font = m_dayofMonthLabel->font();
     font.setPointSize(80);
