@@ -320,7 +320,36 @@ void ShutdownPlugin::invokedMenuItem(const QString &itemKey, const QString &menu
 #endif
 
         } else {
-            QProcess::execute("bash -c \"originmap=$(setxkbmap -query | grep option | awk -F ' ' '{print $2}');/usr/bin/setxkbmap -option grab:break_actions&&/usr/bin/xdotool key XF86Ungrab&&dbus-send --print-reply --dest=org.deepin.dde.LockFront1 /org/deepin/dde/LockFront1 org.deepin.dde.LockFront1.Show&&setxkbmap -option $originmap\"");
+            // Save current xkbmap option value
+            QProcess proc;
+            proc.start("/usr/bin/setxkbmap", {"-query"});
+            proc.waitForFinished();
+            QString output = QString::fromLocal8Bit(proc.readAllStandardOutput());
+            QString originmap;
+            for (const QString &line : output.split('\n')) {
+                if (line.trimmed().startsWith("option:")) {
+                    QStringList parts = line.split(":");
+                    if (parts.size() >= 2) {
+                        originmap = parts[1].trimmed();
+                    }
+                    break;
+                }
+            }
+
+            // Apply grab:break_actions
+            QProcess::execute("/usr/bin/setxkbmap", {"-option", "grab:break_actions"});
+
+            // Send XF86Ungrab key
+            QProcess::execute("/usr/bin/xdotool", {"key", "XF86Ungrab"});
+
+            // Show lock front via dbus-send
+            QProcess::execute("dbus-send", {"--print-reply", "--dest=org.deepin.dde.LockFront1",
+                            "/org/deepin/dde/LockFront1", "org.deepin.dde.LockFront1.Show"});
+
+            // Restore original xkbmap option
+            if (!originmap.isEmpty()) {
+                QProcess::execute("/usr/bin/setxkbmap", {"-option", originmap});
+            }
         }
     } else
         DDBusSender()
