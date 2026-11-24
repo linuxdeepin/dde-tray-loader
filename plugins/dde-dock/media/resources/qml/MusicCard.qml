@@ -22,12 +22,12 @@ Item {
     readonly property int twoLineMinHeight: 28
     readonly property bool singleLineText: availableHeight < twoLineMinHeight
     readonly property int contentHeight: {
-        const cardHeight = Math.max(30, availableHeight)
+        const cardHeight = Math.max(24, availableHeight)
         const verticalInset = Math.max(4, Math.round(cardHeight * 0.16))
         return Math.max(24, cardHeight - verticalInset * 2)
     }
     readonly property int artworkSize: Math.max(22, Math.min(34, Math.round(contentHeight * 0.86)))
-    readonly property int buttonSize: Math.max(26, Math.min(30, contentHeight))
+    readonly property int buttonSize: Math.max(24, Math.min(30, contentHeight))
     readonly property int buttonSpacing: Math.max(3, Math.round(contentHeight * 0.07))
     readonly property int animationDuration: 100
     property real hoverProgress: hoverHandler.hovered ? 1 : 0
