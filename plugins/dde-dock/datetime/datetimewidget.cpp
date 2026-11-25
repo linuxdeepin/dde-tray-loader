@@ -13,6 +13,7 @@
 #include <QFontMetrics>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QRegularExpression>
 #include <QMouseEvent>
 #include <DFontSizeManager>
 
@@ -492,6 +493,41 @@ void DatetimeWidget::adjustUI()
         if (!m_24HourFormat) {
             m_spacerItem->setVisible(true);
             m_apLabel->setVisible(true);
+
+            // 根据 12 小时制时间格式字符串中 AP 标记与 hour 字段的相对位置，
+            // 动态调整 m_apLabel 和 m_timeLabel 在布局中的排列顺序。
+            // 英文格式 "h:mm AP" → 时间在前、AM/PM 在后；
+            // 中文格式 "AP h:mm" → AM/PM 在前、时间在后。
+            const QString format = effectiveTimeFormat();
+            // Qt 日期格式中单引号 '...' 包裹的是字面文本，
+            // 搜索 hour 和 AP 标记时应忽略引号内的内容，避免误匹配。
+            QString pureFormat;
+            pureFormat.reserve(format.size());
+            bool inQuote = false;
+            for (const QChar &ch : format) {
+                if (ch == QLatin1Char('\'')) {
+                    inQuote = !inQuote;
+                    continue;
+                }
+                if (!inQuote) {
+                    pureFormat.append(ch);
+                }
+            }
+            static const QRegularExpression hourRe(QStringLiteral("[hH]"));
+            const int hourPos = pureFormat.indexOf(hourRe);
+            const int apPos = pureFormat.indexOf(QStringLiteral("AP"), 0, Qt::CaseInsensitive);
+            const bool apBeforeHour = (apPos >= 0 && hourPos >= 0 && apPos < hourPos);
+
+            m_layout->removeWidget(m_apLabel);
+            m_layout->removeWidget(m_timeLabel);
+            if (apBeforeHour) {
+                m_layout->insertWidget(0, m_apLabel);
+                m_layout->insertWidget(1, m_timeLabel);
+            } else {
+                m_layout->insertWidget(0, m_timeLabel);
+                m_layout->insertWidget(1, m_apLabel);
+            }
+
             return;
         }
     }
