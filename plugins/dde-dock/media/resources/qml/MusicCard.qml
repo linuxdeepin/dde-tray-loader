@@ -18,9 +18,10 @@ Item {
     // 任务栏按“任务栏高度 - 上边距 - 下边距”设置卡片 surface 的高度，
     // 所以这里的高度就是卡片区域实际可用的高度。
     readonly property int availableHeight: height > 0 ? height : implicitHeight
-    // 可用高度放不下两行文字时（任务栏拉到最小附近），只显示歌名，不显示歌手名。
-    readonly property int twoLineMinHeight: 28
-    readonly property bool singleLineText: availableHeight < twoLineMinHeight
+    // Use the actual font metrics: two lines can exceed a fixed height even
+    // with the same pixel size, depending on the system font and track text.
+    readonly property bool singleLineText: availableHeight < titleLabel.implicitHeight
+        + subtitleLabel.implicitHeight + infoColumn.spacing
     readonly property int contentHeight: {
         const cardHeight = Math.max(30, availableHeight)
         const verticalInset = Math.max(4, Math.round(cardHeight * 0.16))
@@ -127,10 +128,7 @@ Item {
     }
 
     Item {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        height: root.contentHeight
+        anchors.fill: parent
 
         Item {
             id: artworkSlot
@@ -209,37 +207,41 @@ Item {
             anchors.left: artworkSlot.right
             anchors.leftMargin: 4
             anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            height: Math.max(infoColumn.implicitHeight, controls.height)
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
             clip: true
 
             Column {
                 id: infoColumn
 
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
                 width: parent.width
                 spacing: 1
                 opacity: 1 - root.hoverProgress
-                scale: 1 - root.hoverProgress * 0.08
-                x: -10 * root.hoverProgress
+                // Keep glyphs at their rendered size and on whole pixels while
+                // resizing or fading them out for the playback controls.
+                x: Math.round(-10 * root.hoverProgress)
+                y: Math.round((parent.height - height) / 2)
                 visible: opacity > 0.01
 
                 Text {
+                    id: titleLabel
+
                     width: parent.width
                     text: mediaController.titleText
                     color: root.dark ? Qt.rgba(1, 1, 1, 0.96) : Qt.rgba(0, 0, 0, 0.92)
                     font.pixelSize: Math.max(11, Math.round(root.contentHeight * 0.4))
-                    renderType: Text.NativeRendering
+                    renderType: Text.QtRendering
                     elide: Text.ElideRight
                 }
 
                 Text {
+                    id: subtitleLabel
+
                     width: parent.width
                     text: mediaController.subtitleText
                     color: root.dark ? Qt.rgba(1, 1, 1, 0.68) : Qt.rgba(0, 0, 0, 0.58)
                     font.pixelSize: Math.max(9, Math.round(root.contentHeight * 0.24))
-                    renderType: Text.NativeRendering
+                    renderType: Text.QtRendering
                     elide: Text.ElideRight
                     visible: !root.singleLineText && text.length > 0
                 }
