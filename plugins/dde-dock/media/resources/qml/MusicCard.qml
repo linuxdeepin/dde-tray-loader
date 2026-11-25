@@ -27,7 +27,8 @@ Item {
         return Math.max(24, cardHeight - verticalInset * 2)
     }
     readonly property int artworkSize: Math.max(22, Math.min(34, Math.round(contentHeight * 0.86)))
-    readonly property int buttonSize: Math.max(26, Math.min(30, contentHeight))
+    // 最小任务栏的卡片只有 25px 高，按钮及其悬停背景必须完整落在 surface 内。
+    readonly property int buttonSize: Math.min(availableHeight, Math.max(26, Math.min(30, contentHeight)))
     readonly property int buttonSpacing: Math.max(3, Math.round(contentHeight * 0.07))
     readonly property int animationDuration: 100
     property real hoverProgress: hoverHandler.hovered ? 1 : 0
@@ -102,23 +103,17 @@ Item {
             }
         }
 
-        Image {
-            id: iconImage
-
+        D.DciIcon {
             anchors.centerIn: parent
             width: 16
             height: 16
-            source: "qrc:/icons/deepin/builtin/texts/" + button.iconName + "_24px.svg"
+            name: button.iconName
+            theme: root.dark ? D.ApplicationHelper.DarkType : D.ApplicationHelper.LightType
+            palette.foreground: root.dark ? "white" : "black"
+
             sourceSize: Qt.size(width, height)
             fillMode: Image.PreserveAspectFit
             smooth: true
-            visible: false
-        }
-
-        ColorOverlay {
-            anchors.fill: iconImage
-            source: iconImage
-            color: root.dark ? "white" : "black"
             opacity: button.enabled ? 1 : 0.38
         }
 
@@ -261,14 +256,14 @@ Item {
                 MusicActionButton {
                     layoutIndex: 0
                     hoverDelay: 24
-                    iconName: "play-previous"
+                    iconName: "dock-music-previous"
                     enabled: mediaController.canGoPrevious
                     onClicked: mediaController.previous()
                 }
 
                 MusicActionButton {
                     layoutIndex: 1
-                    iconName: mediaController.playing ? "play-pause" : "play-start"
+                    iconName: mediaController.playing ? "dock-music-paused" : "dock-music-start"
                     enabled: mediaController.canTogglePlayback
                     onClicked: mediaController.togglePlayback()
                 }
@@ -276,7 +271,7 @@ Item {
                 MusicActionButton {
                     layoutIndex: 2
                     hoverDelay: 48
-                    iconName: "play-next"
+                    iconName: "dock-music-next"
                     enabled: mediaController.canGoNext
                     onClicked: mediaController.next()
                 }
