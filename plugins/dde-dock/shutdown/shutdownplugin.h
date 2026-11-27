@@ -92,6 +92,7 @@ public:
 private:
     void loadPlugin();
     void refreshPluginItemsVisible();
+    void lockWithBreakActions();
 
 private:
     bool m_pluginLoaded;
